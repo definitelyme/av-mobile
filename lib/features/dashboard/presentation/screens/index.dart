@@ -1,0 +1,9 @@
+export 'dashboard_screen.dart';
+export 'deal_detail_screen.dart';
+export 'my_bids_screen.dart';
+export 'my_reviews_screen.dart';
+export 'my_sellings_screen.dart';
+export 'my_wishlist_screen.dart';
+export 'wallet_history_screen.dart';
+export 'edit_profile_screen.dart';
+export 'product_list_screen.dart';

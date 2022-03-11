@@ -1,0 +1,246 @@
+name: auctionvillage
+description: An application for foodies
+
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+9
+
+environment:
+  sdk: ">=2.17.0-69.2.beta <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  equatable: any
+  # Contains utility classes in the style of
+  # dart:async to work with asynchronous computations.
+  # async: ^2.8.2
+  # Flutter package for generating palette colors from a source image.
+  palette_generator: ^0.3.1
+  # RxDart extends the capabilities of Dart Streams and StreamControllers.
+  rxdart: ^0.27.3
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.4
+  # Draw SVG files on a Flutter Widget.
+  flutter_svg: ^1.0.3
+  ###
+  ### Firebase Packages ###
+  ###
+  firebase_core: ^1.13.1
+  # A Flutter plugin to use the Google Analytics for Firebase API.
+  firebase_analytics: ^9.1.2
+  # Crashlytics helps you to collect analytics and
+  # details about crashes and errors that occur in your app.
+  firebase_crashlytics: ^2.5.3
+  # Flutter plugin for Firebase Cloud Messaging, a cross-platform
+  # messaging solution that lets you reliably deliver messages on Android and iOS.
+  firebase_messaging: ^11.2.8
+  # A complete solution to create Local Notifications and Push Notifications.
+  awesome_notifications: ^0.6.21
+  # Google services & Authentication
+  google_sign_in: ^5.2.4
+  # Flutter bridge to initiate Sign in with Apple (on iOS, macOS, and Android).
+  # Includes support for keychain entries as well as signing in with an Apple ID.
+  sign_in_with_apple: ^3.3.0
+  # Customize App font
+  google_fonts: ^2.3.1
+  # Permission plugin for Flutter.
+  # This plugin provides a cross-platform (iOS, Android) API to request and check permissions.
+  permission_handler: ^8.2.5
+  # This plugin allows Flutter apps to discover network connectivity
+  # and configure themselves accordingly.
+  connectivity_plus: ^2.2.0
+  # Check Internet connectivity
+  internet_connection_checker: ^0.0.1+3
+  # Service locator
+  get_it: ^7.2.0
+  # Useful platform aware widgets to bring a Material app to Cupertino.
+  enough_platform_widgets: ^0.3.0
+  # A powerful Http client for Dart, which supports Interceptors,
+  # Global configuration, FormData, Request Cancellation, File downloading, Timeout etc.
+  dio: ^4.0.4
+  # Pretty Dio logger is a Dio interceptor that logs network calls in a pretty, easy to read format.
+  pretty_dio_logger: ^1.1.1
+  # Dio HTTP cache interceptor with multiple stores respecting HTTP directives (or not).
+  dio_cache_interceptor: ^3.2.2
+  # Flutter BloC for state management
+  flutter_bloc: ^8.0.1
+  # Automatically persists and restores bloc states
+  hydrated_bloc: ^8.1.0
+  # Custom event transformers inspired by ember concurrency.
+  # Built to be used with the bloc state management package.
+  bloc_concurrency: ^0.2.0
+  # A lightweight and blazing fast key-value database written in pure Dart.
+  hive_flutter: ^1.1.0
+  # Provides:
+  # - Immutable value types
+  # - EnumClass, classes that behave like enums
+  # - JSON serialization
+  built_value: ^8.1.4
+  # Provides: Immutable collections
+  built_collection: ^5.1.1
+  # Functional Programming
+  dartz: ^0.10.1
+  # For regular Unions
+  freezed_annotation: ^1.1.0
+  # For generating unique UUIDs
+  uuid: ^3.0.6
+  # Flutter widget that automatically resizes text to fit perfectly within its bounds
+  auto_size_text: ^3.0.0
+  # simplifies dependency injection
+  injectable: ^1.5.3
+  # provides internationalization
+  # and localization facilities
+  intl: ^0.17.0
+  # A declarative routing solution
+  auto_route: ^3.2.2
+  # A collection of loading indicators animated with flutter.
+  flutter_spinkit: ^5.1.0
+  # Shimmer Skeleton Library.
+  shimmer: ^2.0.0
+  # Now this toast library supports two kinds of toast messages:
+  # - one which requires BuildContext
+  # - other with No BuildContext
+  fluttertoast: ^8.0.8
+  # Wraps platform-specific persistent storage for simple data
+  shared_preferences: ^2.0.12
+  # A Flutter plugin for finding commonly used locations on the filesystem.
+  path_provider: ^2.0.8
+  # A port of Kotlin's Kotlin Standard library for Dart/Flutter projects.
+  kt_dart: ^0.10.0
+  # A port of the Rails/ActiveSupport inflector library to Dart.
+  inflection3: ^0.5.3+2
+  # Customizable animated page indicator with a set of built-in effects.
+  smooth_page_indicator: ^1.0.0+2
+  # Defines the annotations used by json_serializable
+  # to create code for JSON serialization and deserialization.
+  json_annotation: ^4.4.0
+  # retrofit.dart is a type conversion dio client generator
+  # using source_gen and inspired by Chopper and Retrofit.
+  retrofit: ^3.0.1+1
+  # Floor provides a neat SQLite abstraction for your Flutter applications
+  # inspired by the Room persistence library.
+  floor: ^1.2.0
+  # A flutter package which will help you to
+  # generate pin code fields with beautiful design and animations.
+  pin_code_fields: ^7.3.0
+  # Use this package if you need more customization when notifying your user.
+  another_flushbar: ^1.10.28
+  # A simple API to format dates.
+  date_format: ^2.0.5
+  # A flutter library to show images from the internet
+  # and keep them in the cache directory.
+  cached_network_image: ^3.2.0
+  # Approximate how your app looks and performs on another device.
+  # device_preview: ^1.0.0-alpha.15
+  # A flutter package which provides a simple way to Showcase/Highlight your widgets step by step.
+  showcaseview: ^1.1.5
+  # A flutter plugin for adapting screen and font size.Let your UI
+  # display a reasonable layout on different screen sizes!
+  flutter_screenutil: ^5.2.0
+  # A Flutter plugin for iOS and Android for picking images from the image library,
+  # and taking new pictures with the camera.
+  image_picker: ^0.8.4+10
+  # Cupertino version of the stock Material ListTile in Flutter.
+  # PS: This is not a pixel perfect interpretation of the iOS Human Interface Guidelines.
+  cupertino_list_tile: ^0.2.1
+  # Create awesome and powerful modal bottom sheets.
+  modal_bottom_sheet: ^2.0.0
+  # A Flutter widget that can be expanded or collapsed by the user.
+  expandable: ^5.0.1
+  # Fast and easy way to build a custom search experience in you app.
+  search_page: ^2.0.0+1
+  # Customize Flutter's default white native splash screen with background color and splash image.
+  # Supports dark mode, full screen, and more.
+  flutter_native_splash: ^2.0.5
+  # Masked text input for flutter.
+  flutter_masked_text2:
+    git:
+      url: git://github.com/Flutter-Fox/flutter_masked_text.git
+      ref: hotfix-0.9.1
+  # Flutter plugin for sharing content via the platform share UI,6
+  # using the ACTION_SEND intent on Android and UIActivityViewController on iOS.
+  share_plus: ^3.0.4
+  # A simple yet fully customizable ratingbar for
+  # flutter which also include a rating bar indicator,
+  # supporting any fraction of rating.
+  flutter_rating_bar: ^4.0.0
+  # a widget provided to the flutter scroll component drop-down refresh and pull up load.
+  pull_to_refresh: ^2.0.0
+  # Flutter plugin for launching a URL. Supports web, phone, SMS, and email schemes.
+  url_launcher: ^6.0.18
+  # A carousel slider widget, support infinite scroll and custom child widget.
+  carousel_slider: ^4.0.0
+  # Port of official Laravel Echo package for your Flutter apps.
+  laravel_echo: ^1.0.0-beta.1
+  # A Pusher Channels client plugin for Flutter targeting Android and iOS.
+  # It wraps pusher-websocket-java v2.2.5 and pusher-websocket-swift v8.0.0.
+  pusher_client:
+    git:
+      url: git://github.com/thijskuilman/pusher_client.git
+  # An abstraction for two-way communication channels based on the Dart Stream class.
+  stream_channel: ^2.1.0
+  # A flutter package for creating badges.
+  # Badges can be used for an additional marker for any widget, e.g. show a number of items in a shopping cart.
+  badges: ^2.0.2
+  # extended nested scroll view to fix pinned header and inner scrollables sync issues.
+  extended_nested_scroll_view: ^5.0.0
+  # Photo View provides a gesture sensitive zoomable widget.
+  # Photo View is largely used to show interactive images and other stuff such as SVG.
+  photo_view: ^0.13.0
+
+dependency_overrides:
+  async: ^2.8.2
+  provider: ^6.0.1
+  analyzer: "2.8.0"
+  dart_style: ">=2.1.1 <=2.2.0"
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  # bloc_test: ^8.1.0
+  logger: ^1.0.0
+  flutter_launcher_icons: ^0.9.1
+  # Pedantic lints your whole project strictly
+  # Pedantic does a great job keeping the project with similar code styles
+  pedantic: ^1.11.1
+  # Code Generators
+  build_runner: ^2.1.7
+  freezed: ^1.1.0
+  injectable_generator: ^1.5.3
+  built_value_generator: ^8.1.4
+  auto_route_generator: ^3.2.3
+  retrofit_generator:
+    git:
+      url: git://github.com/Flutter-Fox/retrofit.dart.git
+      ref: ft/app_http_client
+      path: generator/
+  json_serializable: ^6.1.4
+  floor_generator:
+    git:
+      url: git://github.com/Flutter-Fox/floor.git
+      ref: ft/require-freezed
+      path: floor_generator/
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/
+    - assets/images/
+    - assets/images/logo/
+    - assets/images/dashboard/
+    - assets/svgs/
+    - assets/svgs/auth/
+    - assets/svgs/logo/
+    - assets/svgs/dashboard/
+    - assets/raw/
+
+  fonts:
+    - family: AppIcons
+      fonts:
+        - asset: assets/fonts/AppIcons.ttf
+    - family: AVIcons
+      fonts:
+        - asset: assets/fonts/AVIcons.ttf

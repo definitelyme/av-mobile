@@ -1,0 +1,84 @@
+library pps_terms_widget.dart;
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:auctionvillage/features/auth/presentation/managers/managers.dart';
+import 'package:auctionvillage/utils/utils.dart';
+import 'package:auctionvillage/widgets/widgets.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+class PPsTermsWidget extends StatelessWidget {
+  const PPsTermsWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        BlocSelector<AuthCubit, AuthState, bool>(
+          selector: (s) => s.acceptedTerms,
+          builder: (c, accepted) => Material(
+            type: MaterialType.transparency,
+            child: Checkbox(
+              value: accepted,
+              side: Utils.platform_(
+                  cupertino: BorderSide(
+                      color: CupertinoColors.systemGrey.resolveFrom(context),
+                      width: 1)),
+              onChanged: c.read<AuthCubit>().toggleAcceptTerms,
+              activeColor: Palette.accentColor,
+            ),
+          ),
+        ),
+        //
+        Flexible(
+          child: AdaptiveText.rich(
+            TextSpan(children: [
+              const TextSpan(
+                text: 'By signing up, I agree to the ',
+              ),
+              //
+              TextSpan(
+                text: 'Terms of Service',
+                style: const TextStyle(
+                  fontWeight: FontWeight.w600,
+                  decoration: TextDecoration.underline,
+                  color: Palette.accentColor,
+                ),
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () async {
+                    final link = 'https://auctionvillage.com/terms';
+                    final launchable = await canLaunch('$link');
+                    if (launchable) await launch('$link');
+                  },
+              ),
+              //
+              const TextSpan(
+                text: ' & ',
+              ),
+              //
+              TextSpan(
+                text: 'Privacy Policy.',
+                style: const TextStyle(
+                  fontWeight: FontWeight.w600,
+                  decoration: TextDecoration.underline,
+                  color: Palette.accentColor,
+                ),
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () async {
+                    final link = 'https://auctionvillage.com/privacy-policy';
+                    final launchable = await canLaunch('$link');
+                    if (launchable) await launch('$link');
+                  },
+              ),
+            ]),
+            fontSize: 16.sp,
+            fontWeight: FontWeight.w400,
+            letterSpacing: Utils.letterSpacing,
+          ),
+        ),
+      ],
+    );
+  }
+}

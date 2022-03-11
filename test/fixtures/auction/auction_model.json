@@ -1,0 +1,101 @@
+{
+    "status": "PENDING",
+    "_id": "62237f60b6c907001ac6f092",
+    "user": {
+        "_id": "62176e1244cd9cf9a2eb818d",
+        "firstName": "Admin",
+        "lastName": "Auction"
+    },
+    "type": "AUCTION",
+    "vendor": {
+        "type": "INDIVIDUAL",
+        "isPrivate": true,
+        "_id": "621aa8af5060933a1a6e5f96",
+        "mobile": "2348154640224",
+        "createdBy": "6218fc0b118066001af05d66",
+        "updatedBy": "6218fc0b118066001af05d66",
+        "fullName": "John Doe",
+        "email": "vendor2@example.com",
+        "avatar": "https://res.cloudinary.com/dpiyqfdpk/image/upload/v1645893780/r3nzduasjutldthfuqju.png",
+        "createdAt": "2022-02-26T22:24:47.721Z",
+        "updatedAt": "2022-02-26T22:29:55.930Z",
+        "__v": 0,
+        "id": "621aa8af5060933a1a6e5f96"
+    },
+    "product": {
+        "brandInformation": {
+            "brand": {
+                "active": true,
+                "_id": "62195d44c0f145f365e77b94",
+                "createdBy": "6215b9f309e5ed68f7396131",
+                "name": "General Auctions",
+                "description": "This is General Auctions description",
+                "slug": "general-auctions",
+                "createdAt": "2022-02-25T22:50:44.431Z",
+                "updatedAt": "2022-02-25T22:50:44.431Z",
+                "__v": 0,
+                "id": "62195d44c0f145f365e77b94"
+            },
+            "brandModel": {
+                "active": true,
+                "_id": "621973a82fdd3808f129eb2e",
+                "createdBy": "6215b9f309e5ed68f7396131",
+                "name": "General Product",
+                "description": "This is General Product description",
+                "brand": "62195d44c0f145f365e77b94",
+                "slug": "general-product",
+                "createdAt": "2022-02-26T00:26:16.509Z",
+                "updatedAt": "2022-02-26T00:26:16.509Z",
+                "__v": 0,
+                "id": "621973a82fdd3808f129eb2e"
+            },
+            "yearOfManufacturer": 2020,
+            "color": "#000000",
+            "condition": "Brand New",
+            "description": "None"
+        },
+        "shippingInformation": {
+            "width": 100,
+            "height": 200,
+            "deliveryPeriod": "1 month",
+            "pickUpAvailable": "Yes",
+            "description": "None"
+        },
+        "termsInformation": {
+            "yearOfPurchase": 2021,
+            "repairHistory": "Yes",
+            "refundPolicy": "No"
+        },
+        "photos": [
+            "https://res.cloudinary.com/dpiyqfdpk/image/upload/v1646493023/ueyjkdofpys8f57thzvq.png"
+        ],
+        "status": "PENDING",
+        "active": true,
+        "_id": "62237f60b6c907001ac6f094",
+        "deal": "62237f60b6c907001ac6f092",
+        "__v": 0,
+        "category": {
+            "productsAssigned": 0,
+            "percentageIncrease": 3,
+            "charge": 2,
+            "active": true,
+            "_id": "621bb266105715001afbea16",
+            "image": "https://res.cloudinary.com/dpiyqfdpk/image/upload/v1645982395/fgsgrwgw4gtsucsismyp.jpg",
+            "name": "Luxury",
+            "description": "This is not luxury ",
+            "slug": "",
+            "createdAt": "2022-02-27T17:18:30.396Z",
+            "updatedAt": "2022-02-27T23:36:50.156Z",
+            "__v": 0,
+            "id": "621bb266105715001afbea16"
+        },
+        "createdAt": "2022-03-05T15:18:56.647Z",
+        "lga": "Ikeja",
+        "name": "Luxury  Car",
+        "state": "Lagos",
+        "updatedAt": "2022-03-05T15:18:56.647Z",
+        "vendor": "621aa8af5060933a1a6e5f96",
+        "id": "62237f60b6c907001ac6f094"
+    },
+    "id": "62237f60b6c907001ac6f092"
+}
