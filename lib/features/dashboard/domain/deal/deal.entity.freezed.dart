@@ -24,20 +24,24 @@ class _$DealTearOff {
       required AmountField<double> lastPriceOffered,
       bool isPrivate = false,
       bool isSponsored = false,
+      bool hasWish = false,
       required AmountField<double?> admittanceFee,
-      required BasicTextField<int> dealPriority,
-      required BasicTextField<int> clicks,
-      BidStatus bidStatus = BidStatus.closed,
+      required BasicTextField<int?> dealPriority,
+      required BasicTextField<String?> address,
+      required BasicTextField<int?> clicks,
+      BidStatus bidStatus = defaultBidStatus,
       bool isClosing = false,
       bool isActive = false,
-      DealStatus status = DealStatus.pending,
-      DealType type = DealType.buyNow,
-      OfferType offerType = OfferType.nonNegotiable,
-      DealPlan dealPlan = DealPlan.free,
+      DealStatus status = defaultDealStatus,
+      DealType type = defaultDealType,
+      OfferType offerType = defaultOfferType,
+      DealPlanType dealPlan = defaultDealPlanType,
+      QuantityType quantity = defaultQuantityType,
+      BiddingType biddingType = defaultBiddingType,
       User? user,
       User? vendor,
+      User? lastBidder,
       Product? product,
-      DealCategory? category,
       required DateTimeField startDate,
       required DateTimeField endDate,
       DateTime? createdAt,
@@ -48,8 +52,10 @@ class _$DealTearOff {
       lastPriceOffered: lastPriceOffered,
       isPrivate: isPrivate,
       isSponsored: isSponsored,
+      hasWish: hasWish,
       admittanceFee: admittanceFee,
       dealPriority: dealPriority,
+      address: address,
       clicks: clicks,
       bidStatus: bidStatus,
       isClosing: isClosing,
@@ -58,10 +64,12 @@ class _$DealTearOff {
       type: type,
       offerType: offerType,
       dealPlan: dealPlan,
+      quantity: quantity,
+      biddingType: biddingType,
       user: user,
       vendor: vendor,
+      lastBidder: lastBidder,
       product: product,
-      category: category,
       startDate: startDate,
       endDate: endDate,
       createdAt: createdAt,
@@ -81,20 +89,25 @@ mixin _$Deal {
       throw _privateConstructorUsedError;
   bool get isPrivate => throw _privateConstructorUsedError;
   bool get isSponsored => throw _privateConstructorUsedError;
+  bool get hasWish => throw _privateConstructorUsedError;
   AmountField<double?> get admittanceFee => throw _privateConstructorUsedError;
-  BasicTextField<int> get dealPriority => throw _privateConstructorUsedError;
-  BasicTextField<int> get clicks => throw _privateConstructorUsedError;
+  BasicTextField<int?> get dealPriority => throw _privateConstructorUsedError;
+  BasicTextField<String?> get address => throw _privateConstructorUsedError;
+  BasicTextField<int?> get clicks => throw _privateConstructorUsedError;
   BidStatus get bidStatus => throw _privateConstructorUsedError;
   bool get isClosing => throw _privateConstructorUsedError;
   bool get isActive => throw _privateConstructorUsedError;
   DealStatus get status => throw _privateConstructorUsedError;
   DealType get type => throw _privateConstructorUsedError;
   OfferType get offerType => throw _privateConstructorUsedError;
-  DealPlan get dealPlan => throw _privateConstructorUsedError;
+  DealPlanType get dealPlan => throw _privateConstructorUsedError;
+  QuantityType get quantity => throw _privateConstructorUsedError;
+  BiddingType get biddingType => throw _privateConstructorUsedError;
   User? get user => throw _privateConstructorUsedError;
   User? get vendor => throw _privateConstructorUsedError;
-  Product? get product => throw _privateConstructorUsedError;
-  DealCategory? get category => throw _privateConstructorUsedError;
+  User? get lastBidder => throw _privateConstructorUsedError;
+  Product? get product =>
+      throw _privateConstructorUsedError; // DealCategory? category,
   DateTimeField get startDate => throw _privateConstructorUsedError;
   DateTimeField get endDate => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
@@ -114,20 +127,24 @@ abstract class $DealCopyWith<$Res> {
       AmountField<double> lastPriceOffered,
       bool isPrivate,
       bool isSponsored,
+      bool hasWish,
       AmountField<double?> admittanceFee,
-      BasicTextField<int> dealPriority,
-      BasicTextField<int> clicks,
+      BasicTextField<int?> dealPriority,
+      BasicTextField<String?> address,
+      BasicTextField<int?> clicks,
       BidStatus bidStatus,
       bool isClosing,
       bool isActive,
       DealStatus status,
       DealType type,
       OfferType offerType,
-      DealPlan dealPlan,
+      DealPlanType dealPlan,
+      QuantityType quantity,
+      BiddingType biddingType,
       User? user,
       User? vendor,
+      User? lastBidder,
       Product? product,
-      DealCategory? category,
       DateTimeField startDate,
       DateTimeField endDate,
       DateTime? createdAt,
@@ -135,8 +152,8 @@ abstract class $DealCopyWith<$Res> {
 
   $UserCopyWith<$Res>? get user;
   $UserCopyWith<$Res>? get vendor;
+  $UserCopyWith<$Res>? get lastBidder;
   $ProductCopyWith<$Res>? get product;
-  $DealCategoryCopyWith<$Res>? get category;
 }
 
 /// @nodoc
@@ -154,8 +171,10 @@ class _$DealCopyWithImpl<$Res> implements $DealCopyWith<$Res> {
     Object? lastPriceOffered = freezed,
     Object? isPrivate = freezed,
     Object? isSponsored = freezed,
+    Object? hasWish = freezed,
     Object? admittanceFee = freezed,
     Object? dealPriority = freezed,
+    Object? address = freezed,
     Object? clicks = freezed,
     Object? bidStatus = freezed,
     Object? isClosing = freezed,
@@ -164,10 +183,12 @@ class _$DealCopyWithImpl<$Res> implements $DealCopyWith<$Res> {
     Object? type = freezed,
     Object? offerType = freezed,
     Object? dealPlan = freezed,
+    Object? quantity = freezed,
+    Object? biddingType = freezed,
     Object? user = freezed,
     Object? vendor = freezed,
+    Object? lastBidder = freezed,
     Object? product = freezed,
-    Object? category = freezed,
     Object? startDate = freezed,
     Object? endDate = freezed,
     Object? createdAt = freezed,
@@ -194,6 +215,10 @@ class _$DealCopyWithImpl<$Res> implements $DealCopyWith<$Res> {
           ? _value.isSponsored
           : isSponsored // ignore: cast_nullable_to_non_nullable
               as bool,
+      hasWish: hasWish == freezed
+          ? _value.hasWish
+          : hasWish // ignore: cast_nullable_to_non_nullable
+              as bool,
       admittanceFee: admittanceFee == freezed
           ? _value.admittanceFee
           : admittanceFee // ignore: cast_nullable_to_non_nullable
@@ -201,11 +226,15 @@ class _$DealCopyWithImpl<$Res> implements $DealCopyWith<$Res> {
       dealPriority: dealPriority == freezed
           ? _value.dealPriority
           : dealPriority // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<int>,
+              as BasicTextField<int?>,
+      address: address == freezed
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as BasicTextField<String?>,
       clicks: clicks == freezed
           ? _value.clicks
           : clicks // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<int>,
+              as BasicTextField<int?>,
       bidStatus: bidStatus == freezed
           ? _value.bidStatus
           : bidStatus // ignore: cast_nullable_to_non_nullable
@@ -233,7 +262,15 @@ class _$DealCopyWithImpl<$Res> implements $DealCopyWith<$Res> {
       dealPlan: dealPlan == freezed
           ? _value.dealPlan
           : dealPlan // ignore: cast_nullable_to_non_nullable
-              as DealPlan,
+              as DealPlanType,
+      quantity: quantity == freezed
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as QuantityType,
+      biddingType: biddingType == freezed
+          ? _value.biddingType
+          : biddingType // ignore: cast_nullable_to_non_nullable
+              as BiddingType,
       user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -242,14 +279,14 @@ class _$DealCopyWithImpl<$Res> implements $DealCopyWith<$Res> {
           ? _value.vendor
           : vendor // ignore: cast_nullable_to_non_nullable
               as User?,
+      lastBidder: lastBidder == freezed
+          ? _value.lastBidder
+          : lastBidder // ignore: cast_nullable_to_non_nullable
+              as User?,
       product: product == freezed
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
               as Product?,
-      category: category == freezed
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as DealCategory?,
       startDate: startDate == freezed
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
@@ -292,6 +329,17 @@ class _$DealCopyWithImpl<$Res> implements $DealCopyWith<$Res> {
   }
 
   @override
+  $UserCopyWith<$Res>? get lastBidder {
+    if (_value.lastBidder == null) {
+      return null;
+    }
+
+    return $UserCopyWith<$Res>(_value.lastBidder!, (value) {
+      return _then(_value.copyWith(lastBidder: value));
+    });
+  }
+
+  @override
   $ProductCopyWith<$Res>? get product {
     if (_value.product == null) {
       return null;
@@ -299,17 +347,6 @@ class _$DealCopyWithImpl<$Res> implements $DealCopyWith<$Res> {
 
     return $ProductCopyWith<$Res>(_value.product!, (value) {
       return _then(_value.copyWith(product: value));
-    });
-  }
-
-  @override
-  $DealCategoryCopyWith<$Res>? get category {
-    if (_value.category == null) {
-      return null;
-    }
-
-    return $DealCategoryCopyWith<$Res>(_value.category!, (value) {
-      return _then(_value.copyWith(category: value));
     });
   }
 }
@@ -325,20 +362,24 @@ abstract class _$DealCopyWith<$Res> implements $DealCopyWith<$Res> {
       AmountField<double> lastPriceOffered,
       bool isPrivate,
       bool isSponsored,
+      bool hasWish,
       AmountField<double?> admittanceFee,
-      BasicTextField<int> dealPriority,
-      BasicTextField<int> clicks,
+      BasicTextField<int?> dealPriority,
+      BasicTextField<String?> address,
+      BasicTextField<int?> clicks,
       BidStatus bidStatus,
       bool isClosing,
       bool isActive,
       DealStatus status,
       DealType type,
       OfferType offerType,
-      DealPlan dealPlan,
+      DealPlanType dealPlan,
+      QuantityType quantity,
+      BiddingType biddingType,
       User? user,
       User? vendor,
+      User? lastBidder,
       Product? product,
-      DealCategory? category,
       DateTimeField startDate,
       DateTimeField endDate,
       DateTime? createdAt,
@@ -349,9 +390,9 @@ abstract class _$DealCopyWith<$Res> implements $DealCopyWith<$Res> {
   @override
   $UserCopyWith<$Res>? get vendor;
   @override
-  $ProductCopyWith<$Res>? get product;
+  $UserCopyWith<$Res>? get lastBidder;
   @override
-  $DealCategoryCopyWith<$Res>? get category;
+  $ProductCopyWith<$Res>? get product;
 }
 
 /// @nodoc
@@ -370,8 +411,10 @@ class __$DealCopyWithImpl<$Res> extends _$DealCopyWithImpl<$Res>
     Object? lastPriceOffered = freezed,
     Object? isPrivate = freezed,
     Object? isSponsored = freezed,
+    Object? hasWish = freezed,
     Object? admittanceFee = freezed,
     Object? dealPriority = freezed,
+    Object? address = freezed,
     Object? clicks = freezed,
     Object? bidStatus = freezed,
     Object? isClosing = freezed,
@@ -380,10 +423,12 @@ class __$DealCopyWithImpl<$Res> extends _$DealCopyWithImpl<$Res>
     Object? type = freezed,
     Object? offerType = freezed,
     Object? dealPlan = freezed,
+    Object? quantity = freezed,
+    Object? biddingType = freezed,
     Object? user = freezed,
     Object? vendor = freezed,
+    Object? lastBidder = freezed,
     Object? product = freezed,
-    Object? category = freezed,
     Object? startDate = freezed,
     Object? endDate = freezed,
     Object? createdAt = freezed,
@@ -410,6 +455,10 @@ class __$DealCopyWithImpl<$Res> extends _$DealCopyWithImpl<$Res>
           ? _value.isSponsored
           : isSponsored // ignore: cast_nullable_to_non_nullable
               as bool,
+      hasWish: hasWish == freezed
+          ? _value.hasWish
+          : hasWish // ignore: cast_nullable_to_non_nullable
+              as bool,
       admittanceFee: admittanceFee == freezed
           ? _value.admittanceFee
           : admittanceFee // ignore: cast_nullable_to_non_nullable
@@ -417,11 +466,15 @@ class __$DealCopyWithImpl<$Res> extends _$DealCopyWithImpl<$Res>
       dealPriority: dealPriority == freezed
           ? _value.dealPriority
           : dealPriority // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<int>,
+              as BasicTextField<int?>,
+      address: address == freezed
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as BasicTextField<String?>,
       clicks: clicks == freezed
           ? _value.clicks
           : clicks // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<int>,
+              as BasicTextField<int?>,
       bidStatus: bidStatus == freezed
           ? _value.bidStatus
           : bidStatus // ignore: cast_nullable_to_non_nullable
@@ -449,7 +502,15 @@ class __$DealCopyWithImpl<$Res> extends _$DealCopyWithImpl<$Res>
       dealPlan: dealPlan == freezed
           ? _value.dealPlan
           : dealPlan // ignore: cast_nullable_to_non_nullable
-              as DealPlan,
+              as DealPlanType,
+      quantity: quantity == freezed
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as QuantityType,
+      biddingType: biddingType == freezed
+          ? _value.biddingType
+          : biddingType // ignore: cast_nullable_to_non_nullable
+              as BiddingType,
       user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -458,14 +519,14 @@ class __$DealCopyWithImpl<$Res> extends _$DealCopyWithImpl<$Res>
           ? _value.vendor
           : vendor // ignore: cast_nullable_to_non_nullable
               as User?,
+      lastBidder: lastBidder == freezed
+          ? _value.lastBidder
+          : lastBidder // ignore: cast_nullable_to_non_nullable
+              as User?,
       product: product == freezed
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
               as Product?,
-      category: category == freezed
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as DealCategory?,
       startDate: startDate == freezed
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
@@ -495,20 +556,24 @@ class _$_Deal extends _Deal {
       required this.lastPriceOffered,
       this.isPrivate = false,
       this.isSponsored = false,
+      this.hasWish = false,
       required this.admittanceFee,
       required this.dealPriority,
+      required this.address,
       required this.clicks,
-      this.bidStatus = BidStatus.closed,
+      this.bidStatus = defaultBidStatus,
       this.isClosing = false,
       this.isActive = false,
-      this.status = DealStatus.pending,
-      this.type = DealType.buyNow,
-      this.offerType = OfferType.nonNegotiable,
-      this.dealPlan = DealPlan.free,
+      this.status = defaultDealStatus,
+      this.type = defaultDealType,
+      this.offerType = defaultOfferType,
+      this.dealPlan = defaultDealPlanType,
+      this.quantity = defaultQuantityType,
+      this.biddingType = defaultBiddingType,
       this.user,
       this.vendor,
+      this.lastBidder,
       this.product,
-      this.category,
       required this.startDate,
       required this.endDate,
       this.createdAt,
@@ -527,12 +592,17 @@ class _$_Deal extends _Deal {
   @JsonKey()
   @override
   final bool isSponsored;
+  @JsonKey()
+  @override
+  final bool hasWish;
   @override
   final AmountField<double?> admittanceFee;
   @override
-  final BasicTextField<int> dealPriority;
+  final BasicTextField<int?> dealPriority;
   @override
-  final BasicTextField<int> clicks;
+  final BasicTextField<String?> address;
+  @override
+  final BasicTextField<int?> clicks;
   @JsonKey()
   @override
   final BidStatus bidStatus;
@@ -553,16 +623,22 @@ class _$_Deal extends _Deal {
   final OfferType offerType;
   @JsonKey()
   @override
-  final DealPlan dealPlan;
+  final DealPlanType dealPlan;
+  @JsonKey()
+  @override
+  final QuantityType quantity;
+  @JsonKey()
+  @override
+  final BiddingType biddingType;
   @override
   final User? user;
   @override
   final User? vendor;
   @override
+  final User? lastBidder;
+  @override
   final Product? product;
-  @override
-  final DealCategory? category;
-  @override
+  @override // DealCategory? category,
   final DateTimeField startDate;
   @override
   final DateTimeField endDate;
@@ -573,7 +649,7 @@ class _$_Deal extends _Deal {
 
   @override
   String toString() {
-    return 'Deal(id: $id, basePrice: $basePrice, lastPriceOffered: $lastPriceOffered, isPrivate: $isPrivate, isSponsored: $isSponsored, admittanceFee: $admittanceFee, dealPriority: $dealPriority, clicks: $clicks, bidStatus: $bidStatus, isClosing: $isClosing, isActive: $isActive, status: $status, type: $type, offerType: $offerType, dealPlan: $dealPlan, user: $user, vendor: $vendor, product: $product, category: $category, startDate: $startDate, endDate: $endDate, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'Deal(id: $id, basePrice: $basePrice, lastPriceOffered: $lastPriceOffered, isPrivate: $isPrivate, isSponsored: $isSponsored, hasWish: $hasWish, admittanceFee: $admittanceFee, dealPriority: $dealPriority, address: $address, clicks: $clicks, bidStatus: $bidStatus, isClosing: $isClosing, isActive: $isActive, status: $status, type: $type, offerType: $offerType, dealPlan: $dealPlan, quantity: $quantity, biddingType: $biddingType, user: $user, vendor: $vendor, lastBidder: $lastBidder, product: $product, startDate: $startDate, endDate: $endDate, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -588,10 +664,12 @@ class _$_Deal extends _Deal {
             const DeepCollectionEquality().equals(other.isPrivate, isPrivate) &&
             const DeepCollectionEquality()
                 .equals(other.isSponsored, isSponsored) &&
+            const DeepCollectionEquality().equals(other.hasWish, hasWish) &&
             const DeepCollectionEquality()
                 .equals(other.admittanceFee, admittanceFee) &&
             const DeepCollectionEquality()
                 .equals(other.dealPriority, dealPriority) &&
+            const DeepCollectionEquality().equals(other.address, address) &&
             const DeepCollectionEquality().equals(other.clicks, clicks) &&
             const DeepCollectionEquality().equals(other.bidStatus, bidStatus) &&
             const DeepCollectionEquality().equals(other.isClosing, isClosing) &&
@@ -600,10 +678,14 @@ class _$_Deal extends _Deal {
             const DeepCollectionEquality().equals(other.type, type) &&
             const DeepCollectionEquality().equals(other.offerType, offerType) &&
             const DeepCollectionEquality().equals(other.dealPlan, dealPlan) &&
+            const DeepCollectionEquality().equals(other.quantity, quantity) &&
+            const DeepCollectionEquality()
+                .equals(other.biddingType, biddingType) &&
             const DeepCollectionEquality().equals(other.user, user) &&
             const DeepCollectionEquality().equals(other.vendor, vendor) &&
+            const DeepCollectionEquality()
+                .equals(other.lastBidder, lastBidder) &&
             const DeepCollectionEquality().equals(other.product, product) &&
-            const DeepCollectionEquality().equals(other.category, category) &&
             const DeepCollectionEquality().equals(other.startDate, startDate) &&
             const DeepCollectionEquality().equals(other.endDate, endDate) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
@@ -618,8 +700,10 @@ class _$_Deal extends _Deal {
         const DeepCollectionEquality().hash(lastPriceOffered),
         const DeepCollectionEquality().hash(isPrivate),
         const DeepCollectionEquality().hash(isSponsored),
+        const DeepCollectionEquality().hash(hasWish),
         const DeepCollectionEquality().hash(admittanceFee),
         const DeepCollectionEquality().hash(dealPriority),
+        const DeepCollectionEquality().hash(address),
         const DeepCollectionEquality().hash(clicks),
         const DeepCollectionEquality().hash(bidStatus),
         const DeepCollectionEquality().hash(isClosing),
@@ -628,10 +712,12 @@ class _$_Deal extends _Deal {
         const DeepCollectionEquality().hash(type),
         const DeepCollectionEquality().hash(offerType),
         const DeepCollectionEquality().hash(dealPlan),
+        const DeepCollectionEquality().hash(quantity),
+        const DeepCollectionEquality().hash(biddingType),
         const DeepCollectionEquality().hash(user),
         const DeepCollectionEquality().hash(vendor),
+        const DeepCollectionEquality().hash(lastBidder),
         const DeepCollectionEquality().hash(product),
-        const DeepCollectionEquality().hash(category),
         const DeepCollectionEquality().hash(startDate),
         const DeepCollectionEquality().hash(endDate),
         const DeepCollectionEquality().hash(createdAt),
@@ -651,20 +737,24 @@ abstract class _Deal extends Deal {
       required AmountField<double> lastPriceOffered,
       bool isPrivate,
       bool isSponsored,
+      bool hasWish,
       required AmountField<double?> admittanceFee,
-      required BasicTextField<int> dealPriority,
-      required BasicTextField<int> clicks,
+      required BasicTextField<int?> dealPriority,
+      required BasicTextField<String?> address,
+      required BasicTextField<int?> clicks,
       BidStatus bidStatus,
       bool isClosing,
       bool isActive,
       DealStatus status,
       DealType type,
       OfferType offerType,
-      DealPlan dealPlan,
+      DealPlanType dealPlan,
+      QuantityType quantity,
+      BiddingType biddingType,
       User? user,
       User? vendor,
+      User? lastBidder,
       Product? product,
-      DealCategory? category,
       required DateTimeField startDate,
       required DateTimeField endDate,
       DateTime? createdAt,
@@ -682,11 +772,15 @@ abstract class _Deal extends Deal {
   @override
   bool get isSponsored;
   @override
+  bool get hasWish;
+  @override
   AmountField<double?> get admittanceFee;
   @override
-  BasicTextField<int> get dealPriority;
+  BasicTextField<int?> get dealPriority;
   @override
-  BasicTextField<int> get clicks;
+  BasicTextField<String?> get address;
+  @override
+  BasicTextField<int?> get clicks;
   @override
   BidStatus get bidStatus;
   @override
@@ -700,16 +794,20 @@ abstract class _Deal extends Deal {
   @override
   OfferType get offerType;
   @override
-  DealPlan get dealPlan;
+  DealPlanType get dealPlan;
+  @override
+  QuantityType get quantity;
+  @override
+  BiddingType get biddingType;
   @override
   User? get user;
   @override
   User? get vendor;
   @override
+  User? get lastBidder;
+  @override
   Product? get product;
-  @override
-  DealCategory? get category;
-  @override
+  @override // DealCategory? category,
   DateTimeField get startDate;
   @override
   DateTimeField get endDate;

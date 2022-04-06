@@ -20,11 +20,9 @@ class InfoResponse with _$InfoResponse implements Info {
     @JsonKey(ignore: true) @Default(false) bool pop,
   }) = _InfoResponse;
 
-  factory InfoResponse.processing() =>
-      const InfoResponse(message: 'Processing information..please wait!');
+  factory InfoResponse.processing() => const InfoResponse(message: 'Processing information..please wait!');
 
-  factory InfoResponse.endOfList([String? message]) => InfoResponse(
-      message: message ?? 'That’s all for now 🙂', type: InfoType.endOfList);
+  factory InfoResponse.endOfList([String? message]) => InfoResponse(message: message ?? "You've reached the end", type: InfoType.endOfList);
 }
 
 extension InfoTypeX on InfoType {

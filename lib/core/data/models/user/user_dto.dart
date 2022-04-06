@@ -12,15 +12,17 @@ class UserDTO with _$UserDTO {
   const factory UserDTO({
     @primaryKey @JsonKey(name: '_id') String? id,
     String? token,
-    @JsonKey(name: 'firstName') String? firstName,
-    @JsonKey(name: 'lastName') String? lastName,
-    @JsonKey(name: 'fullName') String? fullName,
+    String? firstName,
+    String? lastName,
+    String? fullName,
     @BooleanSerializer() bool? isPrivate,
     String? email,
     @JsonKey(name: 'mobile') String? phone,
     String? password,
     @JsonKey(name: 'current_password') String? oldPassword,
     @JsonKey(name: 'password_confirmation') String? confirmation,
+    @JsonKey(name: 'country') String? countryName,
+    String? platform,
     String? avatar,
     @BooleanSerializer() bool? active,
     @BooleanSerializer() bool? accountVerified,
@@ -40,28 +42,26 @@ class UserDTO with _$UserDTO {
         lastName: instance?.lastName.getOrNull,
         email: instance?.email.getOrNull,
         password: instance?.password.getOrNull,
-        phone: instance?.phone.getOrNull
-            ?.trim()
-            .removeNewLines()
-            .trimWhiteSpaces(),
+        phone: instance?.phone.getOrNull?.trim().removeNewLines().trimWhiteSpaces(),
+        countryName: (instance?.country?.name.getOrNull ?? instance?.phone.country?.name.getOrNull)?.toUpperCase(),
+        platform: 'MOBILE',
       );
 
-  factory UserDTO.fromJson(Map<String, dynamic> json) =>
-      _$UserDTOFromJson(json);
+  factory UserDTO.fromJson(Map<String, dynamic> json) => _$UserDTOFromJson(json);
 
   User get domain => User(
         id: UniqueId.fromExternal(id),
         firstName: DisplayName(firstName),
         lastName: DisplayName(lastName),
-        name: DisplayName(fullName),
+        name: DisplayName(fullName ?? '${firstName ?? ''} ${lastName ?? ''}'),
         email: EmailAddress(email),
         phone: Phone(phone),
         password: Password(password),
         photo: MediaField(avatar),
-        isPrivate: isPrivate!,
-        provider: provider!,
-        active: active!,
-        accountVerified: accountVerified!,
+        isPrivate: isPrivate ?? false,
+        provider: provider ?? AuthProvider.regular,
+        active: active ?? false,
+        accountVerified: accountVerified ?? false,
         createdAt: createdAt,
         updatedAt: updatedAt,
         deletedAt: deletedAt,
@@ -82,6 +82,8 @@ class UserDTO with _$UserDTO {
         provider: provider,
         isPrivate: isPrivate,
         active: active,
+        platform: platform,
+        countryName: countryName,
         accountVerified: accountVerified,
         createdBy: createdBy,
         updatedBy: updatedBy,
@@ -98,10 +100,8 @@ class UserDTO with _$UserDTO {
   }
 }
 
-UserListDTO deserializeUserListDTO(Map<String, dynamic> json) =>
-    UserListDTO.fromJson(json);
-Map<String, dynamic> serializeUserListDTO(UserListDTO object) =>
-    object.toJson();
+UserListDTO deserializeUserListDTO(Map<String, dynamic> json) => UserListDTO.fromJson(json);
+Map<String, dynamic> serializeUserListDTO(UserListDTO object) => object.toJson();
 
 @freezed
 @immutable
@@ -114,8 +114,7 @@ class UserListDTO with _$UserListDTO {
   }) = _UserListDTO;
 
   /// Maps the incoming Json to a Data Transfer Object (DTO).
-  factory UserListDTO.fromJson(Map<String, dynamic> json) =>
-      _$UserListDTOFromJson(json);
+  factory UserListDTO.fromJson(Map<String, dynamic> json) => _$UserListDTOFromJson(json);
 
   /// Maps the Data Transfer Object to a KtList<DomainEntity> Object.
   KtList<User> get domain => KtList.from(data.map((e) => e.domain));

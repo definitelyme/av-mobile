@@ -1,3 +1,5 @@
+// ignore_for_file: unused_element
+
 import 'package:auctionvillage/utils/utils.dart';
 import 'package:auctionvillage/widgets/adaptive/adaptive.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,8 +9,7 @@ import 'package:kt_dart/collection.dart';
 
 class AdaptiveDropdown<Model> extends StatelessWidget {
   static const double kErrorHeightDiff = 21;
-  static const EdgeInsetsGeometry kdropdownContentPadding =
-      EdgeInsets.symmetric(vertical: 7.0, horizontal: 12.0);
+  static const EdgeInsetsGeometry kdropdownContentPadding = EdgeInsets.symmetric(vertical: 7.0, horizontal: 12.0);
   static const double kdropdownHeight = 46;
 
   final String? Function(Model?)? text;
@@ -32,7 +33,7 @@ class AdaptiveDropdown<Model> extends StatelessWidget {
   final Color? dropdownColor;
   final int elevation;
   final InputBorder? errorBorder;
-  final String? errorText;
+  final String? Function(Model?)? errorText;
   final InputBorder? focusedErrorBorder;
   final double? height;
   final Color? highlightColor;
@@ -119,14 +120,6 @@ class AdaptiveDropdown<Model> extends StatelessWidget {
     this.platform,
   }) : super(key: key);
 
-  double get _height => validate &&
-          !errorText.isNullOrBlank &&
-          !App.platform.isIOS
-      ? height != null
-          ? height! + AdaptiveDropdown.kErrorHeightDiff
-          : AdaptiveDropdown.kdropdownHeight + AdaptiveDropdown.kErrorHeightDiff
-      : height ?? AdaptiveDropdown.kdropdownHeight;
-
   @override
   Widget build(BuildContext context) {
     return IgnorePointer(
@@ -190,36 +183,29 @@ class AdaptiveDropdown<Model> extends StatelessWidget {
           children: [
             Flexible(
               child: ConstrainedBox(
-                constraints: BoxConstraints(maxHeight: _height),
+                constraints: BoxConstraints(maxHeight: height ?? AdaptiveDropdown.kdropdownHeight),
                 child: Row(
                   children: [
                     if (decoration?.prefixIcon != null) decoration!.prefixIcon!,
                     //
                     Flexible(
                       child: Material(
-                        color: App.resolveColor(
-                            CupertinoColors.lightBackgroundGray,
-                            dark: Palette.cardColorDark),
+                        color: App.resolveColor(CupertinoColors.lightBackgroundGray, dark: Palette.cardColorDark),
                         shape: shape ??
                             RoundedRectangleBorder(
                               side: BorderSide(
                                 color: App.resolveColor(
-                                  backgroundColorLight ??
-                                      Palette.inputDarkBorderColor,
-                                  dark: backgroundColorDark ??
-                                      Palette.cardColorDark,
+                                  backgroundColorLight ?? Palette.inputDarkBorderColor,
+                                  dark: backgroundColorDark ?? Palette.cardColorDark,
                                 )!,
                               ),
-                              borderRadius: borderRadius ??
-                                  BorderRadius.circular(
-                                      radius ?? Utils.inputBorderRadius),
+                              borderRadius: borderRadius ?? BorderRadius.circular(radius ?? Utils.inputBorderRadius),
                             ),
                         child: AdaptiveInkWell(
                           onTap: () async {
                             if (disabled) return;
                             //
-                            final result =
-                                await App.showAdaptiveBottomSheet<Model?>(
+                            final result = await App.showAdaptiveBottomSheet<Model?>(
                               context,
                               bounce: true,
                               // isDismissible: false,
@@ -260,22 +246,17 @@ class AdaptiveDropdown<Model> extends StatelessWidget {
                             alignment: Alignment.centerLeft,
                             child: Padding(
                               padding: contentPadding?.let(
-                                    (it) => AdaptiveDropdown
-                                        .kdropdownContentPadding
-                                        .add(it),
+                                    (it) => AdaptiveDropdown.kdropdownContentPadding.add(it),
                                   ) ??
                                   AdaptiveDropdown.kdropdownContentPadding,
                               child: child?.call(selected) ??
                                   Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Expanded(
                                         flex: 2,
                                         child: AdaptiveText(
-                                          selected != null
-                                              ? '${text?.call(selected) ?? "- Please set 'text' property -"}'
-                                              : '-- Choose --',
+                                          selected != null ? '${text?.call(selected) ?? "- Please set 'text' property -"}' : '-- Choose --',
                                           maxLines: maxLines,
                                           minFontSize: minFontSize,
                                           maxFontSize: maxFontSize,
@@ -291,9 +272,7 @@ class AdaptiveDropdown<Model> extends StatelessWidget {
                                         CupertinoIcons.chevron_down,
                                         size: 20,
                                         color: CupertinoDynamicColor.resolve(
-                                          Utils.foldTheme(
-                                              light: () => Palette.iconLight,
-                                              dark: () => Palette.iconDark),
+                                          Utils.foldTheme(light: () => Palette.iconLight, dark: () => Palette.iconDark),
                                           context,
                                         ),
                                       ),
@@ -311,7 +290,7 @@ class AdaptiveDropdown<Model> extends StatelessWidget {
             //
             if (errorText != null && validate)
               AdaptiveText(
-                '$errorText',
+                '${errorText?.call(selected)}',
                 maxLines: 1,
                 softWrap: false,
                 wrapWords: false,
@@ -372,8 +351,7 @@ class _CupertinoPicker<Model> extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<_CupertinoPicker<Model>> createState() =>
-      _CupertinoPickerState<Model>();
+  State<_CupertinoPicker<Model>> createState() => _CupertinoPickerState<Model>();
 }
 
 class _CupertinoPickerState<Model> extends State<_CupertinoPicker<Model>> {
@@ -385,20 +363,14 @@ class _CupertinoPickerState<Model> extends State<_CupertinoPicker<Model>> {
 
   @override
   void initState() {
-    scrollController = FixedExtentScrollController(
-        initialItem: widget.selected != null
-            ? widget.items.indexOf(widget.selected!)
-            : 0);
-    _selectedItemIndex =
-        widget.items.indexOf(widget.selected ?? widget.items[0]);
+    scrollController = FixedExtentScrollController(initialItem: widget.selected != null ? widget.items.indexOf(widget.selected!) : 0);
+    _selectedItemIndex = widget.items.indexOf(widget.selected ?? widget.items[0]);
     super.initState();
   }
 
-  Color get _backgroundLight =>
-      widget.backgroundColorLight ?? CupertinoColors.lightBackgroundGray;
+  Color get _backgroundLight => widget.backgroundColorLight ?? CupertinoColors.lightBackgroundGray;
 
-  Color get _backgroundDark =>
-      widget.backgroundColorDark ?? CupertinoColors.darkBackgroundGray;
+  Color get _backgroundDark => widget.backgroundColorDark ?? CupertinoColors.darkBackgroundGray;
 
   double get fontSize => widget.itemFontSize ?? 16.sp;
 
@@ -411,24 +383,21 @@ class _CupertinoPickerState<Model> extends State<_CupertinoPicker<Model>> {
           CupertinoPicker(
             scrollController: scrollController,
             itemExtent: kMinInteractiveDimensionCupertino,
-            backgroundColor:
-                App.resolveColor(_backgroundLight, dark: _backgroundDark),
+            backgroundColor: App.resolveColor(_backgroundLight, dark: _backgroundDark),
             magnification: widget.magnification,
             looping: widget.looping,
             useMagnifier: widget.useMagnifier,
             diameterRatio: widget.diameterRatio,
             offAxisFraction: widget.offAxisFraction,
             selectionOverlay: widget.selectionOverlay,
-            onSelectedItemChanged: (index) =>
-                setState(() => _selectedItemIndex = index),
+            onSelectedItemChanged: (index) => setState(() => _selectedItemIndex = index),
             children: widget.items
                 .toImmutableList()
                 .mapIndexed((i, item) =>
                     widget.child?.call(item) ??
                     Center(
                       child: Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: App.sidePadding),
+                        padding: EdgeInsets.symmetric(horizontal: App.sidePadding),
                         child: AdaptiveText(
                           '${widget.text?.call(item) ?? "- Please set 'text' property -"}',
                           maxLines: widget.maxLines,
@@ -436,11 +405,8 @@ class _CupertinoPickerState<Model> extends State<_CupertinoPicker<Model>> {
                           overflow: TextOverflow.ellipsis,
                           softWrap: widget.maxLines != 1,
                           wrapWords: widget.maxLines != 1,
-                          fontSize:
-                              i == _selectedItemIndex ? fontSize + 2 : fontSize,
-                          fontWeight: i == _selectedItemIndex
-                              ? FontWeight.w600
-                              : widget.itemFontWeight,
+                          fontSize: i == _selectedItemIndex ? fontSize + 2 : fontSize,
+                          fontWeight: i == _selectedItemIndex ? FontWeight.w600 : widget.itemFontWeight,
                         ),
                       ),
                     ))
@@ -492,7 +458,7 @@ class _MaterialDropdown<Model> extends StatelessWidget {
   final Color? dropdownColor;
   final int elevation;
   final InputBorder? errorBorder;
-  final String? errorText;
+  final String? Function(Model?)? errorText;
   final InputBorder? focusedErrorBorder;
   final double? height;
   final Color? highlightColor;
@@ -522,6 +488,7 @@ class _MaterialDropdown<Model> extends StatelessWidget {
   final Color? splashColor;
   final bool useMagnifier;
   final bool validate;
+  final PlatformType? platform;
 
   const _MaterialDropdown({
     Key? key,
@@ -573,20 +540,28 @@ class _MaterialDropdown<Model> extends StatelessWidget {
     this.useMagnifier = true,
     this.diameterRatio = 1.07,
     this.offAxisFraction = 0.0,
+    this.platform,
     this.selectionOverlay = const CupertinoPickerDefaultSelectionOverlay(),
   }) : super(key: key);
 
-  // bool get _showErrors => validate == true && !errorText.isNullOrBlank;
-  double get _height => validate && !errorText.isNullOrBlank
-      ? height != null
-          ? height! + AdaptiveDropdown.kErrorHeightDiff
-          : AdaptiveDropdown.kdropdownHeight + AdaptiveDropdown.kErrorHeightDiff
-      : height ?? AdaptiveDropdown.kdropdownHeight;
+  PlatformType get _platform => platform ?? Utils.platform_(material: PlatformType.android, cupertino: PlatformType.ios)!;
+
+  bool get _showErrors => validate && errorText != null;
+
+  double get _height {
+    // log.w('Has error text ==> ${validate && (errorText?.call(selected) != null)}\n'
+    //     'Error text ====>>  ${errorText?.call(selected)}');
+    return _showErrors
+        ? (height != null
+            ? height! + AdaptiveDropdown.kErrorHeightDiff
+            : AdaptiveDropdown.kdropdownHeight + AdaptiveDropdown.kErrorHeightDiff)
+        : height ?? AdaptiveDropdown.kdropdownHeight;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: _height,
+    return LimitedBox(
+      maxHeight: _height,
       child: DropdownButtonHideUnderline(
         child: ButtonTheme(
           alignedDropdown: alignedDropdown,
@@ -604,12 +579,10 @@ class _MaterialDropdown<Model> extends StatelessWidget {
                     dark: backgroundColorDark ?? Palette.cardColorDark,
                   )!,
                 ),
-                borderRadius: borderRadius ??
-                    BorderRadius.circular(radius ?? Utils.inputBorderRadius),
+                borderRadius: borderRadius ?? BorderRadius.circular(radius ?? Utils.inputBorderRadius),
               ),
           child: DropdownButtonFormField<Model?>(
-            autovalidateMode:
-                validate ? AutovalidateMode.always : AutovalidateMode.disabled,
+            autovalidateMode: validate ? AutovalidateMode.always : AutovalidateMode.disabled,
             decoration: InputDecoration(
               border: border,
               errorBorder: errorBorder,
@@ -624,7 +597,7 @@ class _MaterialDropdown<Model> extends StatelessWidget {
             dropdownColor: dropdownColor,
             isDense: isDense,
             itemHeight: kMinInteractiveDimension,
-            validator: (value) => errorText,
+            validator: (it) => validate && errorText?.call(it) != null ? errorText?.call(selected) : null,
             iconDisabledColor: iconDisabledColor,
             iconEnabledColor: iconEnabledColor,
             menuMaxHeight: menuMaxHeight,
@@ -671,8 +644,7 @@ class _MaterialDropdown<Model> extends StatelessWidget {
                               Icon(
                                 Icons.check_circle,
                                 size: 20,
-                                color: iconEnabledColor ??
-                                    Palette.accentColor.shade400,
+                                color: iconEnabledColor ?? Palette.accentColor.shade400,
                               ),
                           ],
                         ),
@@ -706,7 +678,7 @@ class _MaterialDropdown<Model> extends StatelessWidget {
                   ),
                 ),
             value: selected,
-            isExpanded: isExpanded,
+            // isExpanded: isExpanded,
             icon: const Icon(Icons.keyboard_arrow_down),
             iconSize: iconSize,
             onChanged: onChanged,

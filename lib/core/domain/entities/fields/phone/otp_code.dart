@@ -4,7 +4,7 @@ import 'package:auctionvillage/core/domain/validator/validator.dart';
 import 'package:dartz/dartz.dart';
 
 class OTPCode extends FieldObject<String?> {
-  static const CODE_LENGTH = 5;
+  static const CODE_LENGTH = 4;
 
   @override
   final Either<FieldObjectException<String>, String?> value;
@@ -19,6 +19,5 @@ class OTPCode extends FieldObject<String?> {
   const OTPCode._(this.value);
 
   @override
-  OTPCode copyWith(String? newValue, [int? length]) =>
-      OTPCode(newValue, length);
+  OTPCode copyWith(String? newValue, [int? length]) => OTPCode(newValue, length);
 }

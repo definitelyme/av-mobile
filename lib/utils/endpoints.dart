@@ -1,8 +1,6 @@
 mixin EndPoints {
   static const String APP_DEV_DOMAIN = 'auction-backend-api.herokuapp.com';
   static const String APP_PROD_DOMAIN = 'auction-backend-api.herokuapp.com';
-  static const String DEV_WEB_URL = 'https://$APP_DEV_DOMAIN';
-  static const String PROD_WEB_URL = 'https://$APP_PROD_DOMAIN';
   static const String API_ENDPOINT = '/api/v1';
   static const String PUSHER_AUTH_URL = '/broadcasting/auth';
   static const String SLEEP = '/sleep';
@@ -17,7 +15,7 @@ mixin EndPoints {
   // RESET ASSWORD
   static const String SEND_PASSWORD_RESET_MESSAGE = '/auth/forgot-password';
   static const String CONFIRM_PASSWORD_RESET = '/auth/reset-password';
-  static const String UPDATE_PASSWORD = '/user/password'; // (POST)
+  static const String UPDATE_PASSWORD = '/auth/change-password'; // (POST)
   // SOCIALS AUTH
   static const String GOOGLE_SIGNIN = '/auth/social/google';
   static const String FACEBOOK_SIGNIN = '/auth/social/facebook';
@@ -26,9 +24,31 @@ mixin EndPoints {
 
   /// .......///////...// USER ENDPOINTS .......///////./....//
   static const String GET_USER = '/users/me';
+  static const String USER_WALLET = '/wallets/me';
+  static const String UPDATE_USER_PROFILE = '/users';
   static const String UPDATE_PHONE = '/user/phone'; // (POST)
   static const String CONFIRM_UPDATE_PHONE = '/profile/phone'; // (PATCH)
 
   /// .......///////...// PROFILE ENDPOINTS .......///////./....//
+  static const String ADD_DEBIT_CARD = '/users/{id}/card';
+  static const String GET_USER_DEBIT_CARD = '/users/me';
+  static const String FUND_WALLET = '/wallets/fund';
+  static const String WITHDRAW_WALLET = '/wallets/withdraw';
+  static const String SETUP_WITHDRAWAL_PIN = '/user/add-pin';
+  static const String GET_NG_BANKS_LIST = 'https://api.flutterwave.com/v3/banks/NG';
+  static const String RESOLVE_BANK_ACCOUNT = 'https://api.flutterwave.com/v3/accounts/resolve';
 
+  /// .......///////...// DEALS ENDPOINTS .......///////./....//
+  static const String CREATE_PRODUCT = '/products/sponsored';
+  static const String FIND_DEALS = '/deals';
+  static const String GET_SINGLE_DEAL = '/deals/{id}';
+  static const String PLACE_A_BID = '/deals/{id}/bid';
+  static const String FIND_CATEGORIES = '/categories';
+  static const String GET_SINGLE_CATEGORY = '/categories/{id}';
+  static const String BID_HISTORY = '/data/deals-histories/{id}/user/stats';
+  static const String SELL_HISTORY = '/data/deals/{id}/user/stats';
+  static const String WISHLIST = '/deals/me/wishlist';
+  static const String MY_REVIEWS = '/ratings/get-rating';
+  static const String GET_DEAL_REVIEW = '/ratings/get-rating/{id}';
+  static const String GET_AVAILABLE_PLANS = '/plans';
 }

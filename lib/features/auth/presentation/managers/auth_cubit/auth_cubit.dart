@@ -6,6 +6,8 @@ import 'package:auctionvillage/core/data/response/index.dart';
 import 'package:auctionvillage/core/domain/entities/entities.dart';
 import 'package:auctionvillage/core/presentation/managers/managers.dart';
 import 'package:auctionvillage/features/auth/domain/index.dart';
+import 'package:auctionvillage/features/auth/presentation/managers/watcher/auth_watcher_cubit.dart';
+import 'package:auctionvillage/manager/locator/locator.dart';
 import 'package:auctionvillage/manager/settings/external/preference_repository.dart';
 import 'package:auctionvillage/utils/utils.dart';
 import 'package:bloc/bloc.dart';
@@ -13,14 +15,15 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:injectable/injectable.dart';
+import 'package:kt_dart/collection.dart';
 
 part 'auth_cubit.freezed.dart';
 part 'auth_state.dart';
 
 @injectable
-class AuthCubit extends Cubit<AuthState>
-    with BaseCubit<AuthState>, _ImagePickerMixin {
+class AuthCubit extends Cubit<AuthState> with BaseCubit<AuthState>, _ImagePickerMixin {
   final AuthFacade _auth;
   final PreferenceRepository _preferences;
   User? _temp = User.blank();
@@ -36,29 +39,55 @@ class AuthCubit extends Cubit<AuthState>
     return super.close();
   }
 
+  KtList<Country> get countries => getIt<AuthWatcherCubit>().state.countries;
+
+  Country? get _defaultCountry => countries.firstOrNull((e) => e.iso.getOrNull?.toLowerCase() == Country.defaultISO.toLowerCase());
+
+  Future<Phone?> _parsePhoneNumber(String? phone) async {
+    try {
+      final _phoneNumberData = await phone?.let((it) async => await PhoneNumber.getRegionInfoFromPhoneNumber(it));
+
+      final _country = countries.firstOrNull((e) => e.iso.getOrNull?.toLowerCase() == _phoneNumberData?.isoCode?.toLowerCase());
+
+      countryChanged(_country);
+
+      return _phoneNumberData?.let((it) => Phone(it.phoneNumber, country: _country));
+    } catch (e, tr) {
+      await App.report(exception: e, stack: tr);
+      return null;
+    }
+  }
+
   void init({bool loader = false}) async {
     if (loader) toggleLoading(true, none());
+
+    Future.delayed(const Duration(milliseconds: 8), () => toggleLoading(false));
 
     // Retrieve stored / cached user data
     final _cached = await _preferences.getString(Const.kPhoneNumberPrefKey);
 
-    _temp = state.user;
+    User? _user = state.user;
 
-    final Phone _phoneNumber;
+    Phone? _phoneNumber;
 
-    if (_cached != null) {
-      _phoneNumber = Phone(_cached);
-    } else {
-      _temp = (await _auth.user).getOrElse(() => state.user);
-      _phoneNumber = Phone(_temp?.phone.getOrNull);
-    }
+    _phoneNumber = await _parsePhoneNumber(_cached);
 
-    _temp = _temp?.copyWith(phone: _phoneNumber);
+    _user = (await _auth.user).getOrElse(() => state.user);
+
+    final p = ((_user?.phone.getOrNull != null && !_user!.phone.getOrNull!.startsWith('+')))
+        ? '+${_user.phone.getOrNull}'
+        : _user?.phone.getOrNull;
+    _phoneNumber = await _parsePhoneNumber(p);
+
+    if (_phoneNumber?.getOrNull == null) countryChanged();
+
+    _user = _user?.copyWith(phone: _phoneNumber ?? _user.phone.ensure((p0) => (p0 as Phone), orElse: (_) => state.user.phone));
+
+    _temp = _user;
 
     emit(state.copyWith(
-      user: _temp!,
-      phoneTextController: state.phoneTextController
-        ..text = _phoneNumber.noDialCode?.getOrNull ?? '',
+      user: _user!,
+      phoneTextController: state.phoneTextController..text = _phoneNumber?.noDialCode?.getOrNull ?? '',
     ));
 
     if (loader) toggleLoading(false);
@@ -75,17 +104,12 @@ class AuthCubit extends Cubit<AuthState>
         // full name
         final fullName = user?.firstName.getOrNull?.split(' ');
         // first name
-        final firstName = fullName != null && fullName.isNotEmpty
-            ? DisplayName(fullName[0])
-            : user?.firstName;
-        final lastName = fullName != null && fullName.length > 1
-            ? DisplayName(fullName[1])
-            : user?.lastName;
+        final firstName = fullName != null && fullName.isNotEmpty ? DisplayName(fullName[0]) : user?.firstName;
+        final lastName = fullName != null && fullName.length > 1 ? DisplayName(fullName[1]) : user?.lastName;
 
         if (!isClosed)
           emit(state.copyWith(
-            user: user?.copyWith(firstName: firstName!, lastName: lastName!) ??
-                state.user,
+            user: user?.copyWith(firstName: firstName!, lastName: lastName!) ?? state.user,
           ));
       },
     );
@@ -96,27 +120,28 @@ class AuthCubit extends Cubit<AuthState>
   bool get isDirty => _temp != state.user;
 
   void toggleLoading([bool? isLoading, Option<AppHttpResponse?>? status]) =>
-      emit(state.copyWith(
-          isLoading: isLoading ?? !state.isLoading,
-          status: status ?? state.status));
+      emit(state.copyWith(isLoading: isLoading ?? !state.isLoading, status: status ?? state.status));
 
-  void toggleOldPasswordVisibility() =>
-      emit(state.copyWith(isOldPasswordHidden: !state.isOldPasswordHidden));
+  void toggleOldPasswordVisibility() => emit(state.copyWith(isOldPasswordHidden: !state.isOldPasswordHidden));
 
-  void togglePasswordVisibility() =>
-      emit(state.copyWith(isPasswordHidden: !state.isPasswordHidden));
+  void togglePasswordVisibility() => emit(state.copyWith(isPasswordHidden: !state.isPasswordHidden));
 
-  void firstNameChanged(String value) =>
-      emit(state.copyWith.user.call(firstName: DisplayName(value.trim())));
+  void firstNameChanged(String value) => emit(state.copyWith.user(firstName: DisplayName(value.trim())));
 
-  void lastNameChanged(String value) =>
-      emit(state.copyWith.user.call(lastName: DisplayName(value.trim())));
+  void lastNameChanged(String value) => emit(state.copyWith.user(lastName: DisplayName(value.trim())));
 
-  void emailChanged(String value) =>
-      emit(state.copyWith.user.call(email: EmailAddress(value.trim())));
+  void emailChanged(String value) => emit(state.copyWith.user(email: EmailAddress(value.trim())));
 
-  void oldPasswordChanged(String value) =>
-      emit(state.copyWith(oldPassword: Password(value)));
+  void oldPasswordChanged(String value) => emit(state.copyWith(oldPassword: Password(value)));
+
+  void countryChanged([Country? country]) {
+    phoneNumberChanged(state.phoneTextController.text);
+
+    emit(state.copyWith.user(
+      phone: state.user.phone.copyWith(state.user.phone.getOrNull, country: country),
+      country: country,
+    ));
+  }
 
   void passwordChanged(String value) => emit(state.copyWith(
         passwordMatches: state.confirmPassword.compare(value),
@@ -130,24 +155,34 @@ class AuthCubit extends Cubit<AuthState>
     ));
   }
 
-  void toggleAcceptTerms([bool? value]) =>
-      emit(state.copyWith(acceptedTerms: value ?? !state.acceptedTerms));
+  void toggleAcceptTerms([bool? value]) => emit(state.copyWith(acceptedTerms: value ?? !state.acceptedTerms));
 
   void phoneNumberChanged(String value) async {
+    final country = state.user.phone.country ?? _defaultCountry;
+    var phoneNumber = value;
+
+    try {
+      if (value.length > 2) {
+        var number = await PhoneNumber.getRegionInfoFromPhoneNumber(value, country?.iso.getOrNull ?? '');
+        var _parsed = await PhoneNumber.getParsableNumber(number);
+        if (_parsed.isNotEmpty) phoneNumber = _parsed;
+      }
+    } catch (e, tr) {
+      await App.report(exception: e, stack: tr);
+    }
+
     emit(state.copyWith(
-      user: state.user.copyWith(phone: Phone(value.trim())),
+      user: state.user.copyWith(phone: Phone(value.trim(), country: country)),
       phoneTextController: state.phoneTextController
-        ..text = value
+        ..text = phoneNumber
         ..value = TextEditingValue(
-          text: value,
-          selection:
-              TextSelection.fromPosition(TextPosition(offset: value.length)),
+          text: phoneNumber,
+          selection: TextSelection.fromPosition(TextPosition(offset: phoneNumber.length)),
         ),
     ));
   }
 
-  void otpCodeChanged(String value) =>
-      emit(state.copyWith(code: OTPCode(value, AuthState.OTP_CODE_LENGTH)));
+  void otpCodeChanged(String value) => emit(state.copyWith(code: OTPCode(value, AuthState.OTP_CODE_LENGTH)));
 
   void createAccount() async {
     toggleLoading(true, none());
@@ -156,8 +191,7 @@ class AuthCubit extends Cubit<AuthState>
 
     if (!state.acceptedTerms) {
       emit(state.copyWith(
-        status:
-            some(AppHttpResponse.failure('Please accept the Terms of Use!')),
+        status: some(AppHttpResponse.failure('Please accept the Terms of Use!')),
         isLoading: false,
       ));
       return;
@@ -170,12 +204,9 @@ class AuthCubit extends Cubit<AuthState>
 
           if (state.user.firstName.getOrNull == null) firstNameChanged('Dummy');
           if (state.user.lastName.getOrNull == null) lastNameChanged('Joe');
-          if (state.user.email.getOrNull == null)
-            emailChanged('${UniqueId.v4().value}@forx.anonaddy.com');
-          if (state.user.phone.getOrNull == null)
-            phoneNumberChanged('${UniqueId.int(500000000, 4699999999).value}');
-          if (state.user.password.getOrNull == null)
-            passwordChanged('password');
+          if (state.user.email.getOrNull == null) emailChanged('${UniqueId.v4().value}@forx.anonaddy.com');
+          if (state.user.phone.getOrNull == null) phoneNumberChanged('${UniqueId.int(500000000, 4699999999).value}');
+          if (state.user.password.getOrNull == null) passwordChanged('password');
         }
       },
       prod: () => null,
@@ -209,7 +240,7 @@ class AuthCubit extends Cubit<AuthState>
     env.flavor.fold(
       dev: () {
         if (state.user.login.isSome()) {
-          emailChanged('johndoe@gmail.com');
+          emailChanged('brianna@forx.anonaddy.com');
           passwordChanged('password');
         }
       },
@@ -255,8 +286,7 @@ class AuthCubit extends Cubit<AuthState>
 
       await result.response.maybeMap(
         orElse: () async => null,
-        success: (s) async =>
-            await _preferences.remove(Const.kPhoneNumberPrefKey),
+        success: (s) async => await _preferences.remove(Const.kPhoneNumberPrefKey),
       );
 
       emit(state.copyWith(
@@ -283,9 +313,7 @@ class AuthCubit extends Cubit<AuthState>
     emit(state.copyWith(validate: true, status: none()));
 
     if (state.user.phone.isValid) {
-      final phone = state.user.phone.formatted?.getOrNull != null
-          ? state.user.phone.formatted!
-          : state.user.phone;
+      final phone = state.user.phone.formatted?.getOrNull != null ? state.user.phone.formatted! : state.user.phone;
 
       result = await _auth.sendPasswordResetInstructions(phone);
 
@@ -311,12 +339,7 @@ class AuthCubit extends Cubit<AuthState>
 
     toggleLoading(false);
 
-    return result?.response.map(
-          info: (_) => false,
-          error: (_) => false,
-          success: (_) => true,
-        ) ??
-        false;
+    return result?.response.mapOrNull(success: (_) => true) ?? false;
   }
 
   void resetPassword() async {
@@ -334,15 +357,14 @@ class AuthCubit extends Cubit<AuthState>
         state.passwordMatches) {
       result = await _auth.confirmPasswordReset(
         code: state.code,
-        phone: state.user.phone,
+        phone: state.user.phone.formatted!,
         newPassword: state.user.password,
         confirmation: state.confirmPassword,
       );
 
       await result.response.maybeMap(
         orElse: () async => null,
-        success: (s) async =>
-            await _preferences.remove(Const.kPhoneNumberPrefKey),
+        success: (s) async => await _preferences.remove(Const.kPhoneNumberPrefKey),
       );
 
       emit(state.copyWith(
@@ -370,6 +392,7 @@ class AuthCubit extends Cubit<AuthState>
 
     if (state.user.profile.isNone()) {
       result = await _auth.updateProfile(
+        state.user,
         firstName: state.user.firstName,
         lastName: state.user.lastName,
         email: state.user.email,
@@ -477,10 +500,7 @@ class AuthCubit extends Cubit<AuthState>
     // Enable form validation
     emit(state.copyWith(validate: true, status: none()));
 
-    if (state.oldPassword.isValid &&
-        state.user.password.isValid &&
-        state.confirmPassword.isValid &&
-        state.passwordMatches) {
+    if (state.oldPassword.isValid && state.user.password.isValid && state.confirmPassword.isValid && state.passwordMatches) {
       result = await _auth.updatePassword(
         current: state.oldPassword,
         newPassword: state.user.password,
@@ -544,8 +564,7 @@ mixin _ImagePickerMixin on Cubit<AuthState> {
   Future<File?> _attemptFileRetrieval(ImagePicker? picker) async {
     if (picker == null) return null;
     final _response = await _picker.retrieveLostData();
-    if (!_response.isEmpty && _response.file != null)
-      return File(_response.file!.path);
+    if (!_response.isEmpty && _response.file != null) return File(_response.file!.path);
     return null;
   }
 }

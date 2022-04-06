@@ -24,12 +24,18 @@ class _$ShippingInformationDTOTearOff {
   const _$ShippingInformationDTOTearOff();
 
   _ShippingInformationDTO call(
-      {@DoubleSerializer() double? width,
-      @DoubleSerializer() double? weight,
-      @DoubleSerializer() double? height,
-      @DoubleSerializer() double? length,
+      {@DoubleSerializer()
+          double? width,
+      @DoubleSerializer()
+          double? weight,
+      @DoubleSerializer()
+          double? height,
+      @DoubleSerializer()
+          double? length,
       String? deliveryPeriod,
-      @BooleanSerializer() bool? pickUpAvailable,
+      @JsonKey(toJson: BooleanSerializer.toJsonString)
+      @BooleanSerializer()
+          bool? pickUpAvailable,
       String? description}) {
     return _ShippingInformationDTO(
       width: width,
@@ -61,6 +67,7 @@ mixin _$ShippingInformationDTO {
   @DoubleSerializer()
   double? get length => throw _privateConstructorUsedError;
   String? get deliveryPeriod => throw _privateConstructorUsedError;
+  @JsonKey(toJson: BooleanSerializer.toJsonString)
   @BooleanSerializer()
   bool? get pickUpAvailable => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
@@ -77,12 +84,18 @@ abstract class $ShippingInformationDTOCopyWith<$Res> {
           $Res Function(ShippingInformationDTO) then) =
       _$ShippingInformationDTOCopyWithImpl<$Res>;
   $Res call(
-      {@DoubleSerializer() double? width,
-      @DoubleSerializer() double? weight,
-      @DoubleSerializer() double? height,
-      @DoubleSerializer() double? length,
+      {@DoubleSerializer()
+          double? width,
+      @DoubleSerializer()
+          double? weight,
+      @DoubleSerializer()
+          double? height,
+      @DoubleSerializer()
+          double? length,
       String? deliveryPeriod,
-      @BooleanSerializer() bool? pickUpAvailable,
+      @JsonKey(toJson: BooleanSerializer.toJsonString)
+      @BooleanSerializer()
+          bool? pickUpAvailable,
       String? description});
 }
 
@@ -146,12 +159,18 @@ abstract class _$ShippingInformationDTOCopyWith<$Res>
       __$ShippingInformationDTOCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@DoubleSerializer() double? width,
-      @DoubleSerializer() double? weight,
-      @DoubleSerializer() double? height,
-      @DoubleSerializer() double? length,
+      {@DoubleSerializer()
+          double? width,
+      @DoubleSerializer()
+          double? weight,
+      @DoubleSerializer()
+          double? height,
+      @DoubleSerializer()
+          double? length,
       String? deliveryPeriod,
-      @BooleanSerializer() bool? pickUpAvailable,
+      @JsonKey(toJson: BooleanSerializer.toJsonString)
+      @BooleanSerializer()
+          bool? pickUpAvailable,
       String? description});
 }
 
@@ -213,12 +232,18 @@ class __$ShippingInformationDTOCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ShippingInformationDTO extends _ShippingInformationDTO {
   _$_ShippingInformationDTO(
-      {@DoubleSerializer() this.width,
-      @DoubleSerializer() this.weight,
-      @DoubleSerializer() this.height,
-      @DoubleSerializer() this.length,
+      {@DoubleSerializer()
+          this.width,
+      @DoubleSerializer()
+          this.weight,
+      @DoubleSerializer()
+          this.height,
+      @DoubleSerializer()
+          this.length,
       this.deliveryPeriod,
-      @BooleanSerializer() this.pickUpAvailable,
+      @JsonKey(toJson: BooleanSerializer.toJsonString)
+      @BooleanSerializer()
+          this.pickUpAvailable,
       this.description})
       : super._();
 
@@ -240,6 +265,7 @@ class _$_ShippingInformationDTO extends _ShippingInformationDTO {
   @override
   final String? deliveryPeriod;
   @override
+  @JsonKey(toJson: BooleanSerializer.toJsonString)
   @BooleanSerializer()
   final bool? pickUpAvailable;
   @override
@@ -292,12 +318,18 @@ class _$_ShippingInformationDTO extends _ShippingInformationDTO {
 
 abstract class _ShippingInformationDTO extends ShippingInformationDTO {
   factory _ShippingInformationDTO(
-      {@DoubleSerializer() double? width,
-      @DoubleSerializer() double? weight,
-      @DoubleSerializer() double? height,
-      @DoubleSerializer() double? length,
+      {@DoubleSerializer()
+          double? width,
+      @DoubleSerializer()
+          double? weight,
+      @DoubleSerializer()
+          double? height,
+      @DoubleSerializer()
+          double? length,
       String? deliveryPeriod,
-      @BooleanSerializer() bool? pickUpAvailable,
+      @JsonKey(toJson: BooleanSerializer.toJsonString)
+      @BooleanSerializer()
+          bool? pickUpAvailable,
       String? description}) = _$_ShippingInformationDTO;
   _ShippingInformationDTO._() : super._();
 
@@ -319,6 +351,7 @@ abstract class _ShippingInformationDTO extends ShippingInformationDTO {
   @override
   String? get deliveryPeriod;
   @override
+  @JsonKey(toJson: BooleanSerializer.toJsonString)
   @BooleanSerializer()
   bool? get pickUpAvailable;
   @override

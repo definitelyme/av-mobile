@@ -23,15 +23,19 @@ class _$BrandInformationDTOTearOff {
   const _$BrandInformationDTOTearOff();
 
   _BrandInformationDTO call(
-      {BrandDTO? brand,
-      BrandModelDTO? brandModel,
+      {String? brand,
+      String? brandModel,
+      String? transmission,
       int? yearOfManufacturer,
       String? color,
-      String? condition,
+      @JsonKey(toJson: ItemConditionSerializer.toJsonString)
+      @ItemConditionSerializer()
+          ItemCondition? condition,
       String? description}) {
     return _BrandInformationDTO(
       brand: brand,
       brandModel: brandModel,
+      transmission: transmission,
       yearOfManufacturer: yearOfManufacturer,
       color: color,
       condition: condition,
@@ -49,11 +53,14 @@ const $BrandInformationDTO = _$BrandInformationDTOTearOff();
 
 /// @nodoc
 mixin _$BrandInformationDTO {
-  BrandDTO? get brand => throw _privateConstructorUsedError;
-  BrandModelDTO? get brandModel => throw _privateConstructorUsedError;
+  String? get brand => throw _privateConstructorUsedError;
+  String? get brandModel => throw _privateConstructorUsedError;
+  String? get transmission => throw _privateConstructorUsedError;
   int? get yearOfManufacturer => throw _privateConstructorUsedError;
   String? get color => throw _privateConstructorUsedError;
-  String? get condition => throw _privateConstructorUsedError;
+  @JsonKey(toJson: ItemConditionSerializer.toJsonString)
+  @ItemConditionSerializer()
+  ItemCondition? get condition => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -68,15 +75,15 @@ abstract class $BrandInformationDTOCopyWith<$Res> {
           BrandInformationDTO value, $Res Function(BrandInformationDTO) then) =
       _$BrandInformationDTOCopyWithImpl<$Res>;
   $Res call(
-      {BrandDTO? brand,
-      BrandModelDTO? brandModel,
+      {String? brand,
+      String? brandModel,
+      String? transmission,
       int? yearOfManufacturer,
       String? color,
-      String? condition,
+      @JsonKey(toJson: ItemConditionSerializer.toJsonString)
+      @ItemConditionSerializer()
+          ItemCondition? condition,
       String? description});
-
-  $BrandDTOCopyWith<$Res>? get brand;
-  $BrandModelDTOCopyWith<$Res>? get brandModel;
 }
 
 /// @nodoc
@@ -92,6 +99,7 @@ class _$BrandInformationDTOCopyWithImpl<$Res>
   $Res call({
     Object? brand = freezed,
     Object? brandModel = freezed,
+    Object? transmission = freezed,
     Object? yearOfManufacturer = freezed,
     Object? color = freezed,
     Object? condition = freezed,
@@ -101,11 +109,15 @@ class _$BrandInformationDTOCopyWithImpl<$Res>
       brand: brand == freezed
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
-              as BrandDTO?,
+              as String?,
       brandModel: brandModel == freezed
           ? _value.brandModel
           : brandModel // ignore: cast_nullable_to_non_nullable
-              as BrandModelDTO?,
+              as String?,
+      transmission: transmission == freezed
+          ? _value.transmission
+          : transmission // ignore: cast_nullable_to_non_nullable
+              as String?,
       yearOfManufacturer: yearOfManufacturer == freezed
           ? _value.yearOfManufacturer
           : yearOfManufacturer // ignore: cast_nullable_to_non_nullable
@@ -117,34 +129,12 @@ class _$BrandInformationDTOCopyWithImpl<$Res>
       condition: condition == freezed
           ? _value.condition
           : condition // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as ItemCondition?,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
-  }
-
-  @override
-  $BrandDTOCopyWith<$Res>? get brand {
-    if (_value.brand == null) {
-      return null;
-    }
-
-    return $BrandDTOCopyWith<$Res>(_value.brand!, (value) {
-      return _then(_value.copyWith(brand: value));
-    });
-  }
-
-  @override
-  $BrandModelDTOCopyWith<$Res>? get brandModel {
-    if (_value.brandModel == null) {
-      return null;
-    }
-
-    return $BrandModelDTOCopyWith<$Res>(_value.brandModel!, (value) {
-      return _then(_value.copyWith(brandModel: value));
-    });
   }
 }
 
@@ -156,17 +146,15 @@ abstract class _$BrandInformationDTOCopyWith<$Res>
       __$BrandInformationDTOCopyWithImpl<$Res>;
   @override
   $Res call(
-      {BrandDTO? brand,
-      BrandModelDTO? brandModel,
+      {String? brand,
+      String? brandModel,
+      String? transmission,
       int? yearOfManufacturer,
       String? color,
-      String? condition,
+      @JsonKey(toJson: ItemConditionSerializer.toJsonString)
+      @ItemConditionSerializer()
+          ItemCondition? condition,
       String? description});
-
-  @override
-  $BrandDTOCopyWith<$Res>? get brand;
-  @override
-  $BrandModelDTOCopyWith<$Res>? get brandModel;
 }
 
 /// @nodoc
@@ -184,6 +172,7 @@ class __$BrandInformationDTOCopyWithImpl<$Res>
   $Res call({
     Object? brand = freezed,
     Object? brandModel = freezed,
+    Object? transmission = freezed,
     Object? yearOfManufacturer = freezed,
     Object? color = freezed,
     Object? condition = freezed,
@@ -193,11 +182,15 @@ class __$BrandInformationDTOCopyWithImpl<$Res>
       brand: brand == freezed
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
-              as BrandDTO?,
+              as String?,
       brandModel: brandModel == freezed
           ? _value.brandModel
           : brandModel // ignore: cast_nullable_to_non_nullable
-              as BrandModelDTO?,
+              as String?,
+      transmission: transmission == freezed
+          ? _value.transmission
+          : transmission // ignore: cast_nullable_to_non_nullable
+              as String?,
       yearOfManufacturer: yearOfManufacturer == freezed
           ? _value.yearOfManufacturer
           : yearOfManufacturer // ignore: cast_nullable_to_non_nullable
@@ -209,7 +202,7 @@ class __$BrandInformationDTOCopyWithImpl<$Res>
       condition: condition == freezed
           ? _value.condition
           : condition // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as ItemCondition?,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -224,9 +217,12 @@ class _$_BrandInformationDTO extends _BrandInformationDTO {
   _$_BrandInformationDTO(
       {this.brand,
       this.brandModel,
+      this.transmission,
       this.yearOfManufacturer,
       this.color,
-      this.condition,
+      @JsonKey(toJson: ItemConditionSerializer.toJsonString)
+      @ItemConditionSerializer()
+          this.condition,
       this.description})
       : super._();
 
@@ -234,21 +230,25 @@ class _$_BrandInformationDTO extends _BrandInformationDTO {
       _$$_BrandInformationDTOFromJson(json);
 
   @override
-  final BrandDTO? brand;
+  final String? brand;
   @override
-  final BrandModelDTO? brandModel;
+  final String? brandModel;
+  @override
+  final String? transmission;
   @override
   final int? yearOfManufacturer;
   @override
   final String? color;
   @override
-  final String? condition;
+  @JsonKey(toJson: ItemConditionSerializer.toJsonString)
+  @ItemConditionSerializer()
+  final ItemCondition? condition;
   @override
   final String? description;
 
   @override
   String toString() {
-    return 'BrandInformationDTO(brand: $brand, brandModel: $brandModel, yearOfManufacturer: $yearOfManufacturer, color: $color, condition: $condition, description: $description)';
+    return 'BrandInformationDTO(brand: $brand, brandModel: $brandModel, transmission: $transmission, yearOfManufacturer: $yearOfManufacturer, color: $color, condition: $condition, description: $description)';
   }
 
   @override
@@ -259,6 +259,8 @@ class _$_BrandInformationDTO extends _BrandInformationDTO {
             const DeepCollectionEquality().equals(other.brand, brand) &&
             const DeepCollectionEquality()
                 .equals(other.brandModel, brandModel) &&
+            const DeepCollectionEquality()
+                .equals(other.transmission, transmission) &&
             const DeepCollectionEquality()
                 .equals(other.yearOfManufacturer, yearOfManufacturer) &&
             const DeepCollectionEquality().equals(other.color, color) &&
@@ -272,6 +274,7 @@ class _$_BrandInformationDTO extends _BrandInformationDTO {
       runtimeType,
       const DeepCollectionEquality().hash(brand),
       const DeepCollectionEquality().hash(brandModel),
+      const DeepCollectionEquality().hash(transmission),
       const DeepCollectionEquality().hash(yearOfManufacturer),
       const DeepCollectionEquality().hash(color),
       const DeepCollectionEquality().hash(condition),
@@ -291,11 +294,14 @@ class _$_BrandInformationDTO extends _BrandInformationDTO {
 
 abstract class _BrandInformationDTO extends BrandInformationDTO {
   factory _BrandInformationDTO(
-      {BrandDTO? brand,
-      BrandModelDTO? brandModel,
+      {String? brand,
+      String? brandModel,
+      String? transmission,
       int? yearOfManufacturer,
       String? color,
-      String? condition,
+      @JsonKey(toJson: ItemConditionSerializer.toJsonString)
+      @ItemConditionSerializer()
+          ItemCondition? condition,
       String? description}) = _$_BrandInformationDTO;
   _BrandInformationDTO._() : super._();
 
@@ -303,15 +309,19 @@ abstract class _BrandInformationDTO extends BrandInformationDTO {
       _$_BrandInformationDTO.fromJson;
 
   @override
-  BrandDTO? get brand;
+  String? get brand;
   @override
-  BrandModelDTO? get brandModel;
+  String? get brandModel;
+  @override
+  String? get transmission;
   @override
   int? get yearOfManufacturer;
   @override
   String? get color;
   @override
-  String? get condition;
+  @JsonKey(toJson: ItemConditionSerializer.toJsonString)
+  @ItemConditionSerializer()
+  ItemCondition? get condition;
   @override
   String? get description;
   @override

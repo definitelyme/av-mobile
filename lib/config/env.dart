@@ -48,42 +48,31 @@ class BuildEnvironment implements Secrets {
   final BuildFlavor flavor;
   final Uri? baseUri;
 
-  factory BuildEnvironment.factory({required BuildFlavor flavor, Uri? uri}) =>
-      BuildEnvironment._(flavor: flavor, baseUri: uri);
+  factory BuildEnvironment.factory({required BuildFlavor flavor, Uri? uri}) => BuildEnvironment._(flavor: flavor, baseUri: uri);
 
-  BuildEnvironment._(
-      {this.flavor = const BuildFlavor(BuildFlavor.dev), this.baseUri});
+  BuildEnvironment._({this.flavor = const BuildFlavor(BuildFlavor.dev), this.baseUri});
 
   String get appApiKey => 'AuctionDevKey';
 
-  String get domain => env.flavor.fold(
-      dev: () => '${EndPoints.APP_DEV_DOMAIN}',
-      prod: () => '${EndPoints.APP_PROD_DOMAIN}');
+  static String domain([BuildFlavor? value]) => (value ?? env.flavor).fold(
+        dev: () => '${EndPoints.APP_DEV_DOMAIN}',
+        prod: () => kDebugMode ? '${EndPoints.APP_DEV_DOMAIN}' : '${EndPoints.APP_PROD_DOMAIN}',
+        // prod: () => '${EndPoints.APP_PROD_DOMAIN}',
+      );
 
-  String get httpsDomain => env.flavor.fold(
-      dev: () => '${EndPoints.DEV_WEB_URL}',
-      prod: () => '${EndPoints.PROD_WEB_URL}');
-
-  String get packageName => env.flavor.fold(
-      dev: () => '${Const.packageNameDev}', prod: () => '${Const.packageName}');
+  String get packageName => env.flavor.fold(dev: () => '${Const.packageNameDev}', prod: () => '${Const.packageName}');
 
   Duration get greetingDuration => const Duration(milliseconds: 1200);
 
-  String get googleMapsAPI => Utils.platform_(
-      material: Secrets.androidAPIKey, cupertino: Secrets.iOSAPIKey)!;
+  String get googleMapsAPI => Utils.platform_(material: Secrets.androidAPIKey, cupertino: Secrets.iOSAPIKey)!;
 
-  String get paystackKey => flavor.fold(
-      dev: () => Secrets.paystackKeyDev, prod: () => Secrets.paystackKeyProd);
+  String get paystackKey => flavor.fold(dev: () => Secrets.paystackKeyDev, prod: () => Secrets.paystackKeyProd);
 
-  String get flwPublicKey => flavor.fold(
-      dev: () => Secrets.flutterwaveKeyDev,
-      prod: () => Secrets.flutterwaveKeyProd);
+  String get flwPublicKey => flavor.fold(dev: () => Secrets.flutterwaveKeyDev, prod: () => Secrets.flutterwaveKeyProd);
 
   String get flwEncryptionKey => Secrets.flutterwaveEncrptionKey;
 
-  Duration get splashDuration => flavor.fold(
-      dev: () => const Duration(milliseconds: 1200),
-      prod: () => const Duration(milliseconds: 1700));
+  Duration get splashDuration => flavor.fold(dev: () => const Duration(milliseconds: 1200), prod: () => const Duration(milliseconds: 1700));
 
   String get pusherKey => Secrets.pusherKey;
 
@@ -91,20 +80,15 @@ class BuildEnvironment implements Secrets {
 
   String get pusherAppId => Secrets.pusherAppId;
 
-  String get pusherAuthUrl =>
-      Uri.https('$domain', '${EndPoints.PUSHER_AUTH_URL}').toString();
+  String get pusherAuthUrl => Uri.https('${domain()}', '${EndPoints.PUSHER_AUTH_URL}').toString();
+
+  String get cloudName => Secrets.cloudName;
+
+  String get uploadPreset => Secrets.uploadPreset;
 
   /// Sets up the top-level [env] getter on the first call only.
   static Future<void> init({required BuildFlavor flavor}) async {
-    _env ??= BuildEnvironment.factory(
-      flavor: flavor,
-      uri: Uri.https(
-        flavor.fold(
-            dev: () => '${EndPoints.APP_DEV_DOMAIN}',
-            prod: () => '${EndPoints.APP_PROD_DOMAIN}'),
-        EndPoints.API_ENDPOINT,
-      ),
-    );
+    _env ??= BuildEnvironment.factory(flavor: flavor, uri: Uri.https(domain(flavor), EndPoints.API_ENDPOINT));
 
     // This app is designed only to work vertically, so we limit
     // orientations to portrait up and down.
@@ -121,13 +105,11 @@ class BuildEnvironment implements Secrets {
     await flavor.fold(
       dev: () async {
         await locator(BuildFlavor.dev);
-        await getIt<FirebaseCrashlytics>()
-            .setCrashlyticsCollectionEnabled(!kDebugMode);
+        await getIt<FirebaseCrashlytics>().setCrashlyticsCollectionEnabled(!kDebugMode);
       },
       prod: () async {
         await locator(BuildFlavor.prod);
-        await getIt<FirebaseCrashlytics>()
-            .setCrashlyticsCollectionEnabled(!kDebugMode);
+        await getIt<FirebaseCrashlytics>().setCrashlyticsCollectionEnabled(!kDebugMode);
       },
     );
   }

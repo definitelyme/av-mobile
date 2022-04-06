@@ -12,3 +12,6 @@ export 'sell_page_widgets/terms_page.dart';
 export 'wallet_balance_card.dart';
 export 'up_down_indicator.dart';
 export 'transaction_tile.dart';
+export 'grouped_history_card.dart';
+export 'currency_prefix_widget.dart';
+export 'image_upload_widget.dart';

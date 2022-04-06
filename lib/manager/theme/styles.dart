@@ -108,33 +108,27 @@ class AppTheme extends HiveObject {
         contentPadding: Utils.inputPadding,
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Palette.inputLightBorderColor),
-          borderRadius:
-              BorderRadius.all(Radius.circular(Utils.inputBorderRadius)),
+          borderRadius: BorderRadius.all(Radius.circular(Utils.inputBorderRadius)),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Palette.inputLightBorderFocusedColor),
-          borderRadius:
-              BorderRadius.all(Radius.circular(Utils.inputBorderRadius)),
+          borderRadius: BorderRadius.all(Radius.circular(Utils.inputBorderRadius)),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Palette.errorRed, width: 2.0),
-          borderRadius:
-              BorderRadius.all(Radius.circular(Utils.inputBorderRadius)),
+          borderRadius: BorderRadius.all(Radius.circular(Utils.inputBorderRadius)),
         ),
         border: OutlineInputBorder(
           borderSide: BorderSide(color: Palette.inputLightBorderColor),
-          borderRadius:
-              BorderRadius.all(Radius.circular(Utils.inputBorderRadius)),
+          borderRadius: BorderRadius.all(Radius.circular(Utils.inputBorderRadius)),
         ),
         disabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Palette.disabledBorderLight),
-          borderRadius:
-              BorderRadius.all(Radius.circular(Utils.inputBorderRadius)),
+          borderRadius: BorderRadius.all(Radius.circular(Utils.inputBorderRadius)),
         ),
-        errorBorder: UnderlineInputBorder(
+        errorBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Palette.errorRed, width: 1.3),
-          borderRadius:
-              BorderRadius.all(Radius.circular(Utils.inputBorderRadius)),
+          borderRadius: BorderRadius.all(Radius.circular(Utils.inputBorderRadius)),
         ),
       );
 
@@ -216,33 +210,27 @@ class AppTheme extends HiveObject {
         contentPadding: Utils.inputPadding,
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Palette.inputDarkBorderColor),
-          borderRadius:
-              BorderRadius.all(Radius.circular(Utils.inputBorderRadius)),
+          borderRadius: BorderRadius.all(Radius.circular(Utils.inputBorderRadius)),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Palette.inputDarkBorderFocusedColor),
-          borderRadius:
-              BorderRadius.all(Radius.circular(Utils.inputBorderRadius)),
+          borderRadius: BorderRadius.all(Radius.circular(Utils.inputBorderRadius)),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Palette.errorRed, width: 2.0),
-          borderRadius:
-              BorderRadius.all(Radius.circular(Utils.inputBorderRadius)),
+          borderRadius: BorderRadius.all(Radius.circular(Utils.inputBorderRadius)),
         ),
         border: OutlineInputBorder(
           borderSide: BorderSide(color: Palette.inputDarkBorderColor),
-          borderRadius:
-              BorderRadius.all(Radius.circular(Utils.inputBorderRadius)),
+          borderRadius: BorderRadius.all(Radius.circular(Utils.inputBorderRadius)),
         ),
         disabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Palette.disabledBorderLight),
-          borderRadius:
-              BorderRadius.all(Radius.circular(Utils.inputBorderRadius)),
+          borderRadius: BorderRadius.all(Radius.circular(Utils.inputBorderRadius)),
         ),
-        errorBorder: UnderlineInputBorder(
+        errorBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Palette.errorRed, width: 1.3),
-          borderRadius:
-              BorderRadius.all(Radius.circular(Utils.inputBorderRadius)),
+          borderRadius: BorderRadius.all(Radius.circular(Utils.inputBorderRadius)),
         ),
       );
 
@@ -416,8 +404,7 @@ class AppTheme extends HiveObject {
       primaryColorDark: primaryColorDark ?? _primaryColorDark,
       primaryColorLight: primaryColorLight ?? _primaryColorLight,
       inputTheme: textFieldTheme ?? _textFieldTheme,
-      scaffoldBackgroundColor:
-          scaffoldBackgroundColor ?? _scaffoldBackgroundColor,
+      scaffoldBackgroundColor: scaffoldBackgroundColor ?? _scaffoldBackgroundColor,
       toggleableActiveColor: toggleableActiveColor ?? _toggleableActiveColor,
       accentColor: accentColor ?? _accentColor,
       splashColor: splashColor ?? _splashColor,
@@ -426,8 +413,7 @@ class AppTheme extends HiveObject {
       visualDensity: visualDensity ?? _visualDensity,
       textTheme: textTheme ?? _textTheme,
       bottomSheetThemeData: bottomSheetThemeData ?? _bottomSheetThemeData,
-      bottomNavigationBarTheme:
-          bottomNavigationBarTheme ?? _bottomNavigationBarTheme,
+      bottomNavigationBarTheme: bottomNavigationBarTheme ?? _bottomNavigationBarTheme,
       buttonThemeData: buttonThemeData ?? _buttonThemeData,
       radioThemeData: radioThemeData ?? _radioThemeData,
       switchThemeData: switchThemeData ?? _switchThemeData,

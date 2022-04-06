@@ -8,8 +8,8 @@ part of 'success_response.dart';
 
 _$_SuccessResponse _$$_SuccessResponseFromJson(Map<String, dynamic> json) =>
     _$_SuccessResponse(
-      status: json['Status'] as bool? ?? true,
-      message: json['Message'] as String? ?? '',
+      status: json['status'] as bool? ?? true,
+      message: json['message'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$_SuccessResponseToJson(_$_SuccessResponse instance) {
@@ -21,7 +21,7 @@ Map<String, dynamic> _$$_SuccessResponseToJson(_$_SuccessResponse instance) {
     }
   }
 
-  writeNotNull('Status', instance.status);
-  val['Message'] = instance.message;
+  writeNotNull('status', instance.status);
+  val['message'] = instance.message;
   return val;
 }

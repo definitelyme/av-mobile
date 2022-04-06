@@ -1,7 +1,6 @@
 library generic_list_object.dart;
 
 import 'package:auctionvillage/core/data/models/index.dart';
-import 'package:auctionvillage/manager/serializer/serializers.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:kt_dart/kt.dart';
 
@@ -11,7 +10,7 @@ part 'generic_list_object.g.dart';
 class GenericListDTO<T> {
   final List<T> data;
 
-  @JsonKey(defaultValue: [], name: '_meta')
+  @JsonKey(name: '_meta')
   final MetaDTO? meta;
 
   const GenericListDTO({
@@ -25,14 +24,12 @@ class GenericListDTO<T> {
   ) =>
       _$GenericListDTOFromJson<T>(json, fromJsonT);
 
-  Map<String, dynamic> toJson(Object Function(T value) toJsonT) =>
-      _$GenericListDTOToJson<T>(this, toJsonT);
+  Map<String, dynamic> toJson(Object Function(T value) toJsonT) => _$GenericListDTOToJson<T>(this, toJsonT);
 }
 
 extension GenericListDTOCopyWith<T> on GenericListDTO<T> {
   /// Maps the Data Transfer Object to a KtList<DeliveryHistory> Object.
-  KtList<U> domain<U>(U Function(T) serializer) =>
-      KtList.from(data.map((e) => serializer.call(e)).toList());
+  KtList<U> domain<U>(U Function(T) serializer) => KtList.from(data.map((e) => serializer.call(e)).toList());
 
   GenericListDTO<T> copyWith({
     List<T>? data,

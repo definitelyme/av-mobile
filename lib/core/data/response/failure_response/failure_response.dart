@@ -21,45 +21,35 @@ class FailureResponse with _$FailureResponse implements Failure {
     @JsonKey(defaultValue: '') required String message,
     @JsonKey(ignore: true) String? details,
     @JsonKey(ignore: true) @Default(true) bool pop,
+    @JsonKey(ignore: true) @Default(true) bool show,
   }) = _FailureResponse;
 
   const FailureResponse._();
 
-  factory FailureResponse.aborted() =>
-      const FailureResponse(message: _kAborted);
+  factory FailureResponse.aborted() => const FailureResponse(message: _kAborted);
 
-  factory FailureResponse.inProgress() =>
-      const FailureResponse(message: _kInProgress);
+  factory FailureResponse.inProgress() => const FailureResponse(message: _kInProgress);
 
-  factory FailureResponse.alreadyExists(String message) =>
-      FailureResponse(message: message);
+  factory FailureResponse.alreadyExists(String message) => FailureResponse(message: message);
 
-  factory FailureResponse.cancelled(String message) =>
-      FailureResponse(message: message);
+  factory FailureResponse.cancelled(String message) => FailureResponse(message: message);
 
   /// Maps the incoming Json to a Data Transfer Object (DTO).
-  factory FailureResponse.fromJson(Map<String, dynamic> json) =>
-      _$FailureResponseFromJson(json);
+  factory FailureResponse.fromJson(Map<String, dynamic> json) => _$FailureResponseFromJson(json);
 
-  factory FailureResponse.insufficientPermissions(String message) =>
-      FailureResponse(message: message);
+  factory FailureResponse.insufficientPermissions(String message) => FailureResponse(message: message);
 
-  factory FailureResponse.invalidArguments(String message) =>
-      FailureResponse(message: message);
+  factory FailureResponse.invalidArguments(String message) => FailureResponse(message: message);
 
-  factory FailureResponse.notFound() =>
-      const FailureResponse(message: _kNotFound);
+  factory FailureResponse.notFound() => const FailureResponse(message: _kNotFound);
 
-  factory FailureResponse.unImplemented(String message) =>
-      FailureResponse(message: message);
+  factory FailureResponse.unImplemented(String message) => FailureResponse(message: message);
 
   factory FailureResponse.unknown({
     required String? message,
     int? code,
   }) =>
-      FailureResponse(
-          message: '${message ?? 'Unknown error! Please contact support.'}',
-          code: code);
+      FailureResponse(message: '${message ?? 'Unknown error! Please contact support.'}', code: code);
 
   @override
   Exception? get exception => Exception(message);

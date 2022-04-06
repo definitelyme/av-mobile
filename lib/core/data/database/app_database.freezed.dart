@@ -25,15 +25,17 @@ class _$UserDTOTearOff {
   _UserDTO call(
       {@primaryKey @JsonKey(name: '_id') String? id,
       String? token,
-      @JsonKey(name: 'firstName') String? firstName,
-      @JsonKey(name: 'lastName') String? lastName,
-      @JsonKey(name: 'fullName') String? fullName,
+      String? firstName,
+      String? lastName,
+      String? fullName,
       @BooleanSerializer() bool? isPrivate,
       String? email,
       @JsonKey(name: 'mobile') String? phone,
       String? password,
       @JsonKey(name: 'current_password') String? oldPassword,
       @JsonKey(name: 'password_confirmation') String? confirmation,
+      @JsonKey(name: 'country') String? countryName,
+      String? platform,
       String? avatar,
       @BooleanSerializer() bool? active,
       @BooleanSerializer() bool? accountVerified,
@@ -56,6 +58,8 @@ class _$UserDTOTearOff {
       password: password,
       oldPassword: oldPassword,
       confirmation: confirmation,
+      countryName: countryName,
+      platform: platform,
       avatar: avatar,
       active: active,
       accountVerified: accountVerified,
@@ -83,11 +87,8 @@ mixin _$UserDTO {
   @JsonKey(name: '_id')
   String? get id => throw _privateConstructorUsedError;
   String? get token => throw _privateConstructorUsedError;
-  @JsonKey(name: 'firstName')
   String? get firstName => throw _privateConstructorUsedError;
-  @JsonKey(name: 'lastName')
   String? get lastName => throw _privateConstructorUsedError;
-  @JsonKey(name: 'fullName')
   String? get fullName => throw _privateConstructorUsedError;
   @BooleanSerializer()
   bool? get isPrivate => throw _privateConstructorUsedError;
@@ -99,6 +100,9 @@ mixin _$UserDTO {
   String? get oldPassword => throw _privateConstructorUsedError;
   @JsonKey(name: 'password_confirmation')
   String? get confirmation => throw _privateConstructorUsedError;
+  @JsonKey(name: 'country')
+  String? get countryName => throw _privateConstructorUsedError;
+  String? get platform => throw _privateConstructorUsedError;
   String? get avatar => throw _privateConstructorUsedError;
   @BooleanSerializer()
   bool? get active => throw _privateConstructorUsedError;
@@ -131,15 +135,17 @@ abstract class $UserDTOCopyWith<$Res> {
   $Res call(
       {@primaryKey @JsonKey(name: '_id') String? id,
       String? token,
-      @JsonKey(name: 'firstName') String? firstName,
-      @JsonKey(name: 'lastName') String? lastName,
-      @JsonKey(name: 'fullName') String? fullName,
+      String? firstName,
+      String? lastName,
+      String? fullName,
       @BooleanSerializer() bool? isPrivate,
       String? email,
       @JsonKey(name: 'mobile') String? phone,
       String? password,
       @JsonKey(name: 'current_password') String? oldPassword,
       @JsonKey(name: 'password_confirmation') String? confirmation,
+      @JsonKey(name: 'country') String? countryName,
+      String? platform,
       String? avatar,
       @BooleanSerializer() bool? active,
       @BooleanSerializer() bool? accountVerified,
@@ -173,6 +179,8 @@ class _$UserDTOCopyWithImpl<$Res> implements $UserDTOCopyWith<$Res> {
     Object? password = freezed,
     Object? oldPassword = freezed,
     Object? confirmation = freezed,
+    Object? countryName = freezed,
+    Object? platform = freezed,
     Object? avatar = freezed,
     Object? active = freezed,
     Object? accountVerified = freezed,
@@ -229,6 +237,14 @@ class _$UserDTOCopyWithImpl<$Res> implements $UserDTOCopyWith<$Res> {
           ? _value.confirmation
           : confirmation // ignore: cast_nullable_to_non_nullable
               as String?,
+      countryName: countryName == freezed
+          ? _value.countryName
+          : countryName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      platform: platform == freezed
+          ? _value.platform
+          : platform // ignore: cast_nullable_to_non_nullable
+              as String?,
       avatar: avatar == freezed
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
@@ -281,15 +297,17 @@ abstract class _$UserDTOCopyWith<$Res> implements $UserDTOCopyWith<$Res> {
   $Res call(
       {@primaryKey @JsonKey(name: '_id') String? id,
       String? token,
-      @JsonKey(name: 'firstName') String? firstName,
-      @JsonKey(name: 'lastName') String? lastName,
-      @JsonKey(name: 'fullName') String? fullName,
+      String? firstName,
+      String? lastName,
+      String? fullName,
       @BooleanSerializer() bool? isPrivate,
       String? email,
       @JsonKey(name: 'mobile') String? phone,
       String? password,
       @JsonKey(name: 'current_password') String? oldPassword,
       @JsonKey(name: 'password_confirmation') String? confirmation,
+      @JsonKey(name: 'country') String? countryName,
+      String? platform,
       String? avatar,
       @BooleanSerializer() bool? active,
       @BooleanSerializer() bool? accountVerified,
@@ -324,6 +342,8 @@ class __$UserDTOCopyWithImpl<$Res> extends _$UserDTOCopyWithImpl<$Res>
     Object? password = freezed,
     Object? oldPassword = freezed,
     Object? confirmation = freezed,
+    Object? countryName = freezed,
+    Object? platform = freezed,
     Object? avatar = freezed,
     Object? active = freezed,
     Object? accountVerified = freezed,
@@ -380,6 +400,14 @@ class __$UserDTOCopyWithImpl<$Res> extends _$UserDTOCopyWithImpl<$Res>
           ? _value.confirmation
           : confirmation // ignore: cast_nullable_to_non_nullable
               as String?,
+      countryName: countryName == freezed
+          ? _value.countryName
+          : countryName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      platform: platform == freezed
+          ? _value.platform
+          : platform // ignore: cast_nullable_to_non_nullable
+              as String?,
       avatar: avatar == freezed
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
@@ -431,15 +459,17 @@ class _$_UserDTO extends _UserDTO {
   const _$_UserDTO(
       {@primaryKey @JsonKey(name: '_id') this.id,
       this.token,
-      @JsonKey(name: 'firstName') this.firstName,
-      @JsonKey(name: 'lastName') this.lastName,
-      @JsonKey(name: 'fullName') this.fullName,
+      this.firstName,
+      this.lastName,
+      this.fullName,
       @BooleanSerializer() this.isPrivate,
       this.email,
       @JsonKey(name: 'mobile') this.phone,
       this.password,
       @JsonKey(name: 'current_password') this.oldPassword,
       @JsonKey(name: 'password_confirmation') this.confirmation,
+      @JsonKey(name: 'country') this.countryName,
+      this.platform,
       this.avatar,
       @BooleanSerializer() this.active,
       @BooleanSerializer() this.accountVerified,
@@ -462,13 +492,10 @@ class _$_UserDTO extends _UserDTO {
   @override
   final String? token;
   @override
-  @JsonKey(name: 'firstName')
   final String? firstName;
   @override
-  @JsonKey(name: 'lastName')
   final String? lastName;
   @override
-  @JsonKey(name: 'fullName')
   final String? fullName;
   @override
   @BooleanSerializer()
@@ -486,6 +513,11 @@ class _$_UserDTO extends _UserDTO {
   @override
   @JsonKey(name: 'password_confirmation')
   final String? confirmation;
+  @override
+  @JsonKey(name: 'country')
+  final String? countryName;
+  @override
+  final String? platform;
   @override
   final String? avatar;
   @override
@@ -518,7 +550,7 @@ class _$_UserDTO extends _UserDTO {
 
   @override
   String toString() {
-    return 'UserDTO(id: $id, token: $token, firstName: $firstName, lastName: $lastName, fullName: $fullName, isPrivate: $isPrivate, email: $email, phone: $phone, password: $password, oldPassword: $oldPassword, confirmation: $confirmation, avatar: $avatar, active: $active, accountVerified: $accountVerified, provider: $provider, createdBy: $createdBy, updatedBy: $updatedBy, deletedBy: $deletedBy, createdAt: $createdAt, updatedAt: $updatedAt, deletedAt: $deletedAt)';
+    return 'UserDTO(id: $id, token: $token, firstName: $firstName, lastName: $lastName, fullName: $fullName, isPrivate: $isPrivate, email: $email, phone: $phone, password: $password, oldPassword: $oldPassword, confirmation: $confirmation, countryName: $countryName, platform: $platform, avatar: $avatar, active: $active, accountVerified: $accountVerified, provider: $provider, createdBy: $createdBy, updatedBy: $updatedBy, deletedBy: $deletedBy, createdAt: $createdAt, updatedAt: $updatedAt, deletedAt: $deletedAt)';
   }
 
   @override
@@ -539,6 +571,9 @@ class _$_UserDTO extends _UserDTO {
                 .equals(other.oldPassword, oldPassword) &&
             const DeepCollectionEquality()
                 .equals(other.confirmation, confirmation) &&
+            const DeepCollectionEquality()
+                .equals(other.countryName, countryName) &&
+            const DeepCollectionEquality().equals(other.platform, platform) &&
             const DeepCollectionEquality().equals(other.avatar, avatar) &&
             const DeepCollectionEquality().equals(other.active, active) &&
             const DeepCollectionEquality()
@@ -566,6 +601,8 @@ class _$_UserDTO extends _UserDTO {
         const DeepCollectionEquality().hash(password),
         const DeepCollectionEquality().hash(oldPassword),
         const DeepCollectionEquality().hash(confirmation),
+        const DeepCollectionEquality().hash(countryName),
+        const DeepCollectionEquality().hash(platform),
         const DeepCollectionEquality().hash(avatar),
         const DeepCollectionEquality().hash(active),
         const DeepCollectionEquality().hash(accountVerified),
@@ -593,15 +630,17 @@ abstract class _UserDTO extends UserDTO {
   const factory _UserDTO(
       {@primaryKey @JsonKey(name: '_id') String? id,
       String? token,
-      @JsonKey(name: 'firstName') String? firstName,
-      @JsonKey(name: 'lastName') String? lastName,
-      @JsonKey(name: 'fullName') String? fullName,
+      String? firstName,
+      String? lastName,
+      String? fullName,
       @BooleanSerializer() bool? isPrivate,
       String? email,
       @JsonKey(name: 'mobile') String? phone,
       String? password,
       @JsonKey(name: 'current_password') String? oldPassword,
       @JsonKey(name: 'password_confirmation') String? confirmation,
+      @JsonKey(name: 'country') String? countryName,
+      String? platform,
       String? avatar,
       @BooleanSerializer() bool? active,
       @BooleanSerializer() bool? accountVerified,
@@ -623,13 +662,10 @@ abstract class _UserDTO extends UserDTO {
   @override
   String? get token;
   @override
-  @JsonKey(name: 'firstName')
   String? get firstName;
   @override
-  @JsonKey(name: 'lastName')
   String? get lastName;
   @override
-  @JsonKey(name: 'fullName')
   String? get fullName;
   @override
   @BooleanSerializer()
@@ -647,6 +683,11 @@ abstract class _UserDTO extends UserDTO {
   @override
   @JsonKey(name: 'password_confirmation')
   String? get confirmation;
+  @override
+  @JsonKey(name: 'country')
+  String? get countryName;
+  @override
+  String? get platform;
   @override
   String? get avatar;
   @override

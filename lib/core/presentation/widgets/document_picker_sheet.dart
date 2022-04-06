@@ -7,13 +7,12 @@ class DocumentPickerSheet extends StatelessWidget {
   final List<DocumentPicker> pickers;
   final bool pop;
 
-  const DocumentPickerSheet(
-      {Key? key, this.pickers = const [], this.pop = true})
-      : super(key: key);
+  const DocumentPickerSheet({Key? key, this.pickers = const [], this.pop = true}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AdaptiveBottomSheet(
+      topRadius: Radius.zero,
       child: SafeArea(
         top: false,
         left: false,

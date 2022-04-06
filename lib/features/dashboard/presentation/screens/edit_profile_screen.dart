@@ -21,17 +21,13 @@ class EditProfileScreen extends StatelessWidget with AutoRouteWrapper {
       child: BlocListener<AuthCubit, AuthState>(
         listenWhen: (p, c) =>
             p.status.getOrElse(() => null) != c.status.getOrElse(() => null) ||
-            (c.status.getOrElse(() => null) != null &&
-                (c.status
-                    .getOrElse(() => null)!
-                    .response
-                    .maybeMap(orElse: () => false))),
+            (c.status.getOrElse(() => null) != null && (c.status.getOrElse(() => null)!.response.maybeMap(orElse: () => false))),
         listener: (c, s) => s.status.fold(
           () => null,
           (it) => it?.response.map(
-            info: (i) => PopupDialog.info(message: i.message).render(c),
-            error: (f) => PopupDialog.error(message: f.message).render(c),
-            success: (s) => PopupDialog.success(message: s.message).render(c),
+            info: (i) => PopupDialog.info(message: i.message, show: i.message.isNotEmpty).render(c),
+            error: (f) => PopupDialog.error(message: f.message, show: f.show && f.message.isNotEmpty).render(c),
+            success: (s) => PopupDialog.success(message: s.message, show: s.message.isNotEmpty).render(c),
           ),
         ),
         child: this,
@@ -49,16 +45,14 @@ class EditProfileScreen extends StatelessWidget with AutoRouteWrapper {
             visible: s.user.phone.getOrNull == null && s.isLoading,
             child: Padding(
               padding: const EdgeInsets.all(3).copyWith(right: App.sidePadding),
-              child:
-                  Utils.circularLoader(color: Palette.accentColor, stroke: 2),
+              child: Utils.circularLoader(color: Palette.accentColor, stroke: 2),
             ),
           ),
         ),
       ],
       slivers: [
         SliverPadding(
-          padding: EdgeInsets.symmetric(
-              horizontal: App.sidePadding, vertical: 0.02.h),
+          padding: EdgeInsets.symmetric(horizontal: App.sidePadding, vertical: 0.02.h),
           sliver: SliverToBoxAdapter(
             child: Row(
               children: [
@@ -73,8 +67,7 @@ class EditProfileScreen extends StatelessWidget with AutoRouteWrapper {
                         fit: BoxFit.cover,
                         borderRadius: 100.br,
                         border: Border.all(color: Colors.white, width: 0.5),
-                        replacement: Image.asset('${AppAssets.avatarImg}',
-                            fit: BoxFit.cover),
+                        replacement: Image.asset('${AppAssets.avatarImg}', fit: BoxFit.cover),
                         onPressed: (provider) {
                           print('kumbaya!');
                         },
@@ -86,13 +79,11 @@ class EditProfileScreen extends StatelessWidget with AutoRouteWrapper {
                         child: DecoratedBox(
                           decoration: BoxDecoration(
                             color: Palette.accentGreen,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(100)),
+                            borderRadius: BorderRadius.all(Radius.circular(100)),
                           ),
                           child: Padding(
                             padding: EdgeInsets.all(2),
-                            child:
-                                Icon(Icons.add, color: Colors.white, size: 17),
+                            child: Icon(Icons.add, color: Colors.white, size: 17),
                           ),
                         ),
                       ),
@@ -108,75 +99,80 @@ class EditProfileScreen extends StatelessWidget with AutoRouteWrapper {
           padding: EdgeInsets.symmetric(horizontal: App.sidePadding),
           sliver: SliverList(
             delegate: SliverChildListDelegate.fixed([
-              const Align(
-                alignment: Alignment.centerLeft,
-                child: TextFormInputLabel(
-                    text: 'First Name', textColor: Colors.black87),
-              ),
+              if (!App.platform.isIOS)
+                const Align(
+                  alignment: Alignment.centerLeft,
+                  child: TextFormInputLabel(text: 'First Name', textColor: Colors.black87),
+                ),
               //
               NameFormField<AuthCubit, AuthState>(
-                initial: (s) => s.user.firstName.getOrNull,
+                initial: (s) => s.user.firstName.getOrEmpty,
                 prefix: 'First Name',
                 disabled: (s) => s.isLoading,
                 validate: (s) => s.validate,
                 field: (s) => s.user.firstName,
                 focus: AuthState.firstNameFocus,
                 next: AuthState.lastNameFocus,
-                hintText: (s) => 'Enter First Name',
+                hintText: (s) => App.platform.cupertino('First Name'),
                 onChanged: (it, str) => it.firstNameChanged(str),
               ),
               //
               0.01.verticalh,
               //
-              const Align(
-                alignment: Alignment.centerLeft,
-                child: TextFormInputLabel(
-                    text: 'Last Name', textColor: Colors.black87),
-              ),
+              if (!App.platform.isIOS)
+                const Align(
+                  alignment: Alignment.centerLeft,
+                  child: TextFormInputLabel(text: 'Last Name', textColor: Colors.black87),
+                ),
               //
               NameFormField<AuthCubit, AuthState>(
-                initial: (s) => s.user.lastName.getOrNull,
+                initial: (s) => s.user.lastName.getOrEmpty,
                 prefix: 'Last Name',
                 disabled: (s) => s.isLoading,
                 validate: (s) => s.validate,
                 field: (s) => s.user.lastName,
                 focus: AuthState.lastNameFocus,
                 next: AuthState.emailFocus,
-                hintText: (s) => 'Enter Surname',
+                hintText: (s) => App.platform.cupertino('Surname'),
                 onChanged: (it, str) => it.lastNameChanged(str),
               ),
               0.01.verticalh,
               //
-              const MyHero(
-                tag: Const.emailLabelHeroTag,
-                child: TextFormInputLabel(
-                    text: 'E-mail', textColor: Colors.black87),
-              ),
+              if (!App.platform.isIOS)
+                const MyHero(
+                  tag: Const.emailLabelHeroTag,
+                  child: TextFormInputLabel(text: 'E-mail', textColor: Colors.black87),
+                ),
               //
               EmailFormField<AuthCubit, AuthState>(
-                initial: (s) => s.user.email.getOrNull,
+                initial: (s) => s.user.email.getOrEmpty,
                 useHero: false,
                 disabled: (s) => true,
                 validate: (s) => false,
                 field: (s) => s.user.email,
-                hintText: (s) => 'Your E-mail Address',
+                hintText: (s) => App.platform.cupertino('Your E-mail Address'),
               ),
               //
               0.01.verticalh,
               //
-              const TextFormInputLabel(
-                  text: 'Phone Number', textColor: Colors.black87),
+              if (!App.platform.isIOS) const TextFormInputLabel(text: 'Phone Number', textColor: Colors.black87),
               //
               PhoneFormField<AuthCubit, AuthState>(
-                initial: (s) => s.user.phone.getOrNull,
+                initial: (s) => s.user.phone.getOrEmpty,
                 disabled: (s) => s.isLoading,
                 validate: (s) => s.validate,
                 field: (s) => s.user.phone,
                 response: (s) => s.status,
+                controller: (s) => s.phoneTextController,
+                autoDisposeController: false,
                 focus: AuthState.phoneFocus,
                 next: AuthState.passwordFocus,
-                hintText: (s) => 'Your Phone Number',
-                onChanged: (fn, str) => fn.phoneNumberChanged(str),
+                hintText: (s) => App.platform.cupertino('Your Phone Number'),
+                initialCountryCode: (s) => s.user.country?.iso.getOrNull ?? s.user.phone.country?.iso.getOrNull,
+                selectedCountry: (s) => s.user.country ?? s.user.phone.country,
+                hideCountryPicker: (s) => s.user.country?.name.getOrNull == null && s.user.phone.country?.name.getOrNull == null,
+                onCountryChanged: (cubit, country) => cubit.countryChanged(country),
+                onChanged: (cubit, str) => cubit.phoneNumberChanged(str),
               ),
             ]),
           ),

@@ -12,10 +12,8 @@ mixin Const {
   static const String passwordFieldHeroTag = 'password-input--hero-tag';
   static const String authButtonHeroTag = 'auth-btns-hero-tag';
   static const String oauthBtnHeroTag = 'google-facebook-hero-tag';
-  static const String loginAndSignupSwitchTag =
-      'login-and-signup-toggle-hero-tag';
-  static const String profileLogoutBtnHerotag =
-      'profile-logout-button-hero-tag';
+  static const String loginAndSignupSwitchTag = 'login-and-signup-toggle-hero-tag';
+  static const String profileLogoutBtnHerotag = 'profile-logout-button-hero-tag';
   static const String walletBalanceCardTag = 'wallet-balance-card-hero-tag';
   static const String profilePhotoHeroTag = 'user=profile-photo-hero-tag';
 
@@ -25,5 +23,9 @@ mixin Const {
   static const String kPhoneNumberPrefKey = 'user-phone-number-pref-key';
 
   static const double maxImageUploadSize = 1e+7;
+  static const double maxVideoUploadSize = 1e+7;
   static const int kPerPage = 5;
+
+  //
+  static const String kDebitCardsCollection = 'debit_cards';
 }

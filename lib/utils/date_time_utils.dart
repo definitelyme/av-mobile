@@ -27,20 +27,25 @@ mixin DateTimeUtils {
     }
   }
 
-  static String dayOfMonth(DateTime date) {
+  static String dayOfMonth(DateTime date, {String Function(String)? pattern, bool addTime = false}) {
     // var suffix = 'th';
     // var digit = date.day % 10;
     // if ((digit > 0 && digit < 4) && (date.day < 11 || date.day > 13)) {
     //   suffix = ['st', 'nd', 'rd'][digit - 1];
     // }
     final suffix = getDayOfMonthSuffix(date, prefixDay: false);
-    return DateFormat("EEEE MMMM d'$suffix', yyyy").format(date);
+    final _pattern = pattern?.call(suffix) ?? '$suffix';
+    print('suffix: $_pattern');
+    if (addTime)
+      return DateFormat("MMM '$suffix', yyyy | HH:mm").format(date);
+    else
+      return DateFormat("MMM '$suffix', yyyy").format(date);
+    // return DateFormat('$_pattern').format(date);
   }
 
   static String to12HrsFormat(String time, {bool local = true}) {
     final tempDate = DateFormat('hh:mm').parse(time);
-    final dateFormat =
-        DateFormat('h:mm:ss a'); // you can change the format here
+    final dateFormat = DateFormat('h:mm:ss a'); // you can change the format here
     final utcDate = dateFormat.format(tempDate); // pass the UTC time here
     final String localDate;
     if (local)
@@ -50,8 +55,7 @@ mixin DateTimeUtils {
     return dateFormat.format(DateTime.parse(localDate));
   }
 
-  static DateTime? tryParseTime(String time,
-      {Duration offset = Duration.zero}) {
+  static DateTime? tryParseTime(String time, {Duration offset = Duration.zero}) {
     final formatted = DateFormat('yyyy-MM-dd').format(DateTime.now());
     final date = DateTime.tryParse('${formatted}T${time}Z')?.toUtc();
 

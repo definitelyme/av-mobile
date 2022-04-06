@@ -24,7 +24,7 @@ class _$ShippingInformationTearOff {
       required BasicTextField<double?> height,
       required BasicTextField<double?> length,
       required BasicTextField<String?> description,
-      DeliveryPeriod deliveryPeriod = DeliveryPeriod.immediate,
+      required BasicTextField<String?> deliveryPeriod,
       bool isPickup = false}) {
     return _ShippingInformation(
       width: width,
@@ -48,7 +48,8 @@ mixin _$ShippingInformation {
   BasicTextField<double?> get height => throw _privateConstructorUsedError;
   BasicTextField<double?> get length => throw _privateConstructorUsedError;
   BasicTextField<String?> get description => throw _privateConstructorUsedError;
-  DeliveryPeriod get deliveryPeriod => throw _privateConstructorUsedError;
+  BasicTextField<String?> get deliveryPeriod =>
+      throw _privateConstructorUsedError;
   bool get isPickup => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -67,7 +68,7 @@ abstract class $ShippingInformationCopyWith<$Res> {
       BasicTextField<double?> height,
       BasicTextField<double?> length,
       BasicTextField<String?> description,
-      DeliveryPeriod deliveryPeriod,
+      BasicTextField<String?> deliveryPeriod,
       bool isPickup});
 }
 
@@ -114,7 +115,7 @@ class _$ShippingInformationCopyWithImpl<$Res>
       deliveryPeriod: deliveryPeriod == freezed
           ? _value.deliveryPeriod
           : deliveryPeriod // ignore: cast_nullable_to_non_nullable
-              as DeliveryPeriod,
+              as BasicTextField<String?>,
       isPickup: isPickup == freezed
           ? _value.isPickup
           : isPickup // ignore: cast_nullable_to_non_nullable
@@ -136,7 +137,7 @@ abstract class _$ShippingInformationCopyWith<$Res>
       BasicTextField<double?> height,
       BasicTextField<double?> length,
       BasicTextField<String?> description,
-      DeliveryPeriod deliveryPeriod,
+      BasicTextField<String?> deliveryPeriod,
       bool isPickup});
 }
 
@@ -185,7 +186,7 @@ class __$ShippingInformationCopyWithImpl<$Res>
       deliveryPeriod: deliveryPeriod == freezed
           ? _value.deliveryPeriod
           : deliveryPeriod // ignore: cast_nullable_to_non_nullable
-              as DeliveryPeriod,
+              as BasicTextField<String?>,
       isPickup: isPickup == freezed
           ? _value.isPickup
           : isPickup // ignore: cast_nullable_to_non_nullable
@@ -203,7 +204,7 @@ class _$_ShippingInformation extends _ShippingInformation {
       required this.height,
       required this.length,
       required this.description,
-      this.deliveryPeriod = DeliveryPeriod.immediate,
+      required this.deliveryPeriod,
       this.isPickup = false})
       : super._();
 
@@ -217,9 +218,8 @@ class _$_ShippingInformation extends _ShippingInformation {
   final BasicTextField<double?> length;
   @override
   final BasicTextField<String?> description;
-  @JsonKey()
   @override
-  final DeliveryPeriod deliveryPeriod;
+  final BasicTextField<String?> deliveryPeriod;
   @JsonKey()
   @override
   final bool isPickup;
@@ -270,7 +270,7 @@ abstract class _ShippingInformation extends ShippingInformation {
       required BasicTextField<double?> height,
       required BasicTextField<double?> length,
       required BasicTextField<String?> description,
-      DeliveryPeriod deliveryPeriod,
+      required BasicTextField<String?> deliveryPeriod,
       bool isPickup}) = _$_ShippingInformation;
   const _ShippingInformation._() : super._();
 
@@ -285,7 +285,7 @@ abstract class _ShippingInformation extends ShippingInformation {
   @override
   BasicTextField<String?> get description;
   @override
-  DeliveryPeriod get deliveryPeriod;
+  BasicTextField<String?> get deliveryPeriod;
   @override
   bool get isPickup;
   @override

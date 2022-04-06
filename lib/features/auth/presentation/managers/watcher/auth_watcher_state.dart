@@ -9,7 +9,8 @@ class AuthWatcherState with _$AuthWatcherState {
     @Default(false) bool isListeningForAuthChanges,
     @Default(false) bool isListeningForUserChanges,
     User? user,
-    User? guest,
+    UserWallet? wallet,
+    @Default(KtList.empty()) KtList<Country> countries,
     @Default(None()) Option<User?> option,
     @Default(None()) Option<AppHttpResponse?> status,
   }) = _AuthWatcherState;

@@ -23,6 +23,7 @@ class _MorePageState extends State<MorePage> {
   Widget build(BuildContext context) {
     return AdaptiveScaffold(
       backgroundColor: Palette.accentColor,
+      overlayStyle: App.customSystemOverlay(ctx: context, android: Brightness.light, ios: Brightness.light),
       body: CustomScrollView(
         slivers: [
           SliverSafeArea(
@@ -45,8 +46,7 @@ class _MorePageState extends State<MorePage> {
                         borderRadius: 100.br,
                         expandsFullscreen: true,
                         border: Border.all(color: Colors.white, width: 0.5),
-                        replacement: Image.asset('${AppAssets.avatarImg}',
-                            fit: BoxFit.cover),
+                        replacement: Image.asset('${AppAssets.avatarImg}', fit: BoxFit.cover),
                       ),
                       //
                       0.03.horizontalw,
@@ -54,8 +54,7 @@ class _MorePageState extends State<MorePage> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          BlocSelector<AuthWatcherCubit, AuthWatcherState,
-                              User?>(
+                          BlocSelector<AuthWatcherCubit, AuthWatcherState, User?>(
                             selector: (s) => s.user,
                             builder: (c, user) => AdaptiveText(
                               '${user?.fullName.getOrEmpty}',
@@ -80,9 +79,7 @@ class _MorePageState extends State<MorePage> {
                               0.01.horizontalw,
                               //
                               Icon(
-                                Utils.platform_(
-                                    material: Icons.edit,
-                                    cupertino: CupertinoIcons.pencil),
+                                Utils.platform_(material: Icons.edit, cupertino: CupertinoIcons.pencil),
                                 color: Colors.white,
                                 size: 11.sp,
                               ),
@@ -99,36 +96,36 @@ class _MorePageState extends State<MorePage> {
           //
           SliverFillRemaining(
             child: Material(
-              color: App.resolveColor(Palette.cardColorLight,
-                  dark: Palette.secondaryColor),
+              color: App.resolveColor(Palette.cardColorLight, dark: Palette.secondaryColor),
               child: Padding(
                 padding: EdgeInsets.all(App.sidePadding),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    const WalletBalanceCard(),
-                    //
-                    0.018.verticalh,
-                    //
-                    AdaptiveInkWell(
-                      onTap: () =>
-                          navigator.navigate(const WalletHistoryRoute()),
-                      borderRadius: 5.br,
-                      child: Center(
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(vertical: 0.015.h),
-                          child: AdaptiveText(
-                            'See wallet history',
-                            maxLines: 1,
-                            softWrap: true,
-                            fontSize: 17.sp,
-                            textColor: Palette.accentColor,
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: Utils.letterSpacing,
-                          ),
-                        ),
-                      ),
+                    BlocBuilder<AuthWatcherCubit, AuthWatcherState>(
+                      builder: (c, s) => s.wallet != null ? WalletBalanceCard(balance: '${s.wallet?.balance.getOrEmpty}') : Utils.nothing,
                     ),
+                    //
+                    // 0.018.verticalh,
+                    // //
+                    // AdaptiveInkWell(
+                    //   onTap: () => navigator.navigate(const WalletHistoryRoute()),
+                    //   borderRadius: 5.br,
+                    //   child: Center(
+                    //     child: Padding(
+                    //       padding: EdgeInsets.symmetric(vertical: 0.015.h),
+                    //       child: AdaptiveText(
+                    //         'See wallet history',
+                    //         maxLines: 1,
+                    //         softWrap: true,
+                    //         fontSize: 17.sp,
+                    //         textColor: Palette.accentColor,
+                    //         fontWeight: FontWeight.w600,
+                    //         letterSpacing: Utils.letterSpacing,
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
                     //
                     GridView.builder(
                       shrinkWrap: true,
@@ -217,14 +214,12 @@ class _Action {
         ),
         _Action(
           title: 'My Sellings',
-          asset: AppAssets.shoppingBag(
-              Palette.accentColor, Size(0.035.w, 0.035.h)),
+          asset: AppAssets.shoppingBag(Palette.accentColor, Size(0.035.w, 0.035.h)),
           onPressed: () => navigator.navigate(const MySellingsRoute()),
         ),
         _Action(
           title: 'My Wishlist',
-          asset:
-              AppAssets.bookmark(Palette.accentColor, Size(0.035.w, 0.035.h)),
+          asset: AppAssets.bookmark(Palette.accentColor, Size(0.035.w, 0.035.h)),
           onPressed: () => navigator.navigate(const MyWishlistRoute()),
         ),
         _Action(

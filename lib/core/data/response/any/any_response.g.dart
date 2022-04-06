@@ -9,11 +9,11 @@ part of any_response.dart;
 _$ErrorResponse _$$ErrorResponseFromJson(Map<String, dynamic> json) =>
     _$ErrorResponse(
       code: json['statusCode'] as int?,
-      status: json['Status'] as bool?,
+      status: json['status'] as bool?,
       messageTxt: json['message'] as String?,
-      errors: json['Errors'] == null
+      errors: json['errors'] == null
           ? null
-          : ServerFieldErrors.fromJson(json['Errors'] as Map<String, dynamic>),
+          : ServerFieldErrors.fromJson(json['errors'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$ErrorResponseToJson(_$ErrorResponse instance) {
@@ -26,15 +26,15 @@ Map<String, dynamic> _$$ErrorResponseToJson(_$ErrorResponse instance) {
   }
 
   writeNotNull('statusCode', instance.code);
-  writeNotNull('Status', instance.status);
+  writeNotNull('status', instance.status);
   writeNotNull('message', instance.messageTxt);
-  writeNotNull('Errors', instance.errors?.toJson());
+  writeNotNull('errors', instance.errors?.toJson());
   return val;
 }
 
 _$InfoResponseType _$$InfoResponseTypeFromJson(Map<String, dynamic> json) =>
     _$InfoResponseType(
-      status: json['Status'] as bool?,
+      status: json['status'] as bool?,
       messageTxt: json['message'] as String?,
     );
 
@@ -47,14 +47,14 @@ Map<String, dynamic> _$$InfoResponseTypeToJson(_$InfoResponseType instance) {
     }
   }
 
-  writeNotNull('Status', instance.status);
+  writeNotNull('status', instance.status);
   writeNotNull('message', instance.messageTxt);
   return val;
 }
 
 _$SuccessfulResponse _$$SuccessfulResponseFromJson(Map<String, dynamic> json) =>
     _$SuccessfulResponse(
-      status: json['Status'] as bool?,
+      status: json['status'] as bool?,
       messageTxt: json['message'] as String?,
     );
 
@@ -68,7 +68,7 @@ Map<String, dynamic> _$$SuccessfulResponseToJson(
     }
   }
 
-  writeNotNull('Status', instance.status);
+  writeNotNull('status', instance.status);
   writeNotNull('message', instance.messageTxt);
   return val;
 }

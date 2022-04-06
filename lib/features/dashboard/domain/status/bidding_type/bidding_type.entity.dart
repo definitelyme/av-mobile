@@ -1,10 +1,13 @@
 library bidding_type.entity.dart;
 
+import 'package:auctionvillage/utils/utils.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'bidding_type.entity.g.dart';
+
+const BiddingType defaultBiddingType = BiddingType.online;
 
 class BiddingType extends EnumClass {
   @BuiltValueEnumConst(fallback: true)
@@ -13,7 +16,7 @@ class BiddingType extends EnumClass {
 
   const BiddingType._(String name) : super(name);
 
-  String get value {
+  String get formatted {
     switch (this) {
       case BiddingType.online:
         return 'Online Bidding';
@@ -23,22 +26,26 @@ class BiddingType extends EnumClass {
     }
   }
 
+  String get sentence => name.replaceAll('_', ' ').sentenceCase();
+
   static BuiltSet<BiddingType> get values => _$values;
 
   static BiddingType valueOf(String name) => _$valueOf(name);
 
   @override
-  String toString() => value;
+  String toString() => '$name'.toUpperCase();
 }
 
 class BiddingTypeSerializer implements JsonConverter<BiddingType?, String?> {
   const BiddingTypeSerializer();
 
   @override
-  BiddingType fromJson(String? value) => BiddingType.valueOf('$value'.toUpperCase());
+  BiddingType fromJson(String? value) => BiddingType.valueOf('$value'.toLowerCase());
+
+  static String? toJsonString(BiddingType? instance) => instance?.name.toUpperCase();
 
   @override
-  String? toJson(BiddingType? instance) => '${instance?.name}';
+  String? toJson(BiddingType? instance) => toJsonString(instance);
 }
 
 extension BiddingTypeX on BiddingType {

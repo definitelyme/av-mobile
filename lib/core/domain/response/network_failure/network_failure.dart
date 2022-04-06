@@ -9,12 +9,10 @@ part 'network_failure.freezed.dart';
 @freezed
 @immutable
 class NetworkFailure with _$NetworkFailure implements Failure {
-  static const String _CONNECT_TIMEOUT_MSG =
-      'Connection Timeout! Please try again later.';
+  static const String _CONNECT_TIMEOUT_MSG = 'Connection Timeout! Please try again later.';
   static const String _OFFLINE_MSG = 'You are offline!';
   static const String _POOR_INTERNET_MSG = 'Poor Internet Connection!';
-  static const String _RECEIVE_TIMEOUT_MSG =
-      'Receive Timeout! Please try again after 10seconds.';
+  static const String _RECEIVE_TIMEOUT_MSG = 'Receive Timeout! Please try again after 10seconds.';
 
   const NetworkFailure._();
 
@@ -43,9 +41,6 @@ class NetworkFailure with _$NetworkFailure implements Failure {
 
   @override
   String? get details => null;
-
-  @override
-  String? get error => null;
 
   @override
   ServerFieldErrors? get errors => null;

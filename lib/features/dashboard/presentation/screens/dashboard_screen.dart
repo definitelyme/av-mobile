@@ -5,6 +5,8 @@ import 'dart:async';
 import 'package:auctionvillage/core/presentation/index.dart';
 import 'package:auctionvillage/features/auth/presentation/managers/managers.dart';
 import 'package:auctionvillage/features/dashboard/domain/index.dart';
+import 'package:auctionvillage/features/dashboard/presentation/managers/index.dart';
+import 'package:auctionvillage/manager/locator/locator.dart';
 import 'package:auctionvillage/utils/utils.dart' hide HomePage;
 import 'package:auctionvillage/widgets/widgets.dart';
 import 'package:async/async.dart';
@@ -23,15 +25,17 @@ class DashboardScreen extends StatefulWidget with AutoRouteWrapper {
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider.value(
-      value: BlocProvider.of<TabNavigationCubit>(context),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider.value(value: BlocProvider.of<TabNavigationCubit>(context)),
+        BlocProvider(create: (_) => getIt<DealCubit>()),
+      ],
       child: this,
     );
   }
 }
 
-class _DashboardScreenState extends State<DashboardScreen>
-    with AutomaticKeepAliveClientMixin<DashboardScreen> {
+class _DashboardScreenState extends State<DashboardScreen> with AutomaticKeepAliveClientMixin<DashboardScreen> {
   final AsyncMemoizer<dynamic> _memoizer = AsyncMemoizer();
   late TabNavigationCubit _navCubit;
   DateTime _timestampPressed = DateTime.now();
@@ -82,10 +86,7 @@ class _DashboardScreenState extends State<DashboardScreen>
             label: i.title,
             icon: Icon(
               i.icon,
-              color: currentIndex == i.id
-                  ? App.resolveColor(Palette.accentColor,
-                      dark: Palette.accentColor.shade100)
-                  : Colors.grey,
+              color: currentIndex == i.id ? App.resolveColor(Palette.accentColor, dark: Palette.accentColor.shade100) : Colors.grey,
             ),
           ),
         )
@@ -119,30 +120,31 @@ class _DashboardScreenState extends State<DashboardScreen>
           });
 
           return BlocBuilder<TabNavigationCubit, TabNavigationState>(
-            buildWhen: (p, c) =>
-                p.currentIndex != c.currentIndex || p.isInit != c.isInit,
+            buildWhen: (p, c) => p.currentIndex != c.currentIndex || p.isInit != c.isInit,
             builder: (c, s) {
               final currentIndex = s.currentIndex;
 
               return s.isInit
-                  ? CircularProgressBar.adaptive(
-                      value: animation.value,
-                      strokeWidth: 2,
-                      width: 25,
-                      height: 25,
+                  ? AdaptiveScaffold(
+                      body: Center(
+                        child: CircularProgressBar.adaptive(
+                          value: animation.value,
+                          strokeWidth: 2,
+                          width: 25,
+                          height: 25,
+                        ),
+                      ),
                     )
                   : FutureBuilder(
                       future: _memoizer.runOnce(
                         () async {
-                          final authWatcherCubit =
-                              BlocProvider.of<AuthWatcherCubit>(App.context);
+                          final authWatcherCubit = BlocProvider.of<AuthWatcherCubit>(App.context);
 
                           unawaited(authWatcherCubit.subscribeUserChanges());
                         },
                       ),
                       builder: (_, snapshot) => AdaptiveScaffold(
-                        cupertinoTabBuilder: (_, i) =>
-                            s.tabs.toList()[i].values.first,
+                        cupertinoTabBuilder: (_, i) => s.tabs.toList()[i].values.first,
                         body: FadeTransition(opacity: animation, child: child),
                         adaptiveBottomNav: PlatformNavBar(
                           items: navItems(currentIndex),
@@ -151,25 +153,19 @@ class _DashboardScreenState extends State<DashboardScreen>
                             elevation: 0.0,
                             type: BottomNavigationBarType.fixed,
                             unselectedItemColor: Colors.grey,
-                            selectedItemColor: App.resolveColor(
-                                Palette.accentColor,
-                                dark: Palette.accentColor.shade100),
+                            selectedItemColor: App.resolveColor(Palette.accentColor, dark: Palette.accentColor.shade100),
                           ),
                           cupertino: (_, __) => CupertinoTabBarData(
                             iconSize: 20,
                             inactiveColor: Colors.grey,
                             backgroundColor: App.resolveColor(
-                              CupertinoColors.lightBackgroundGray
-                                  .withAlpha(254),
+                              CupertinoColors.lightBackgroundGray.withAlpha(254),
                               dark: CupertinoColors.quaternarySystemFill,
                             )!,
                             currentIndex: currentIndex,
-                            activeColor: App.resolveColor(Palette.accentColor,
-                                dark: Palette.accentColor.shade100),
+                            activeColor: App.resolveColor(Palette.accentColor, dark: Palette.accentColor.shade100),
                           ),
-                          itemChanged: (i) => c
-                              .read<TabNavigationCubit>()
-                              .setCurrentIndex(context, i),
+                          itemChanged: (i) => c.read<TabNavigationCubit>().setCurrentIndex(context, i),
                         ),
                       ),
                     );

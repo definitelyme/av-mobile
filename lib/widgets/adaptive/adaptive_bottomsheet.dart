@@ -25,10 +25,8 @@ class AdaptiveBottomSheet extends StatelessWidget {
       scrollDirection: Axis.vertical,
       padding: MediaQuery.of(context).viewInsets,
       child: Material(
-        color: App.resolveColor(Palette.primaryColor,
-            dark: Palette.secondaryColor),
-        borderRadius:
-            BorderRadius.only(topLeft: topRadius, topRight: topRadius),
+        color: App.resolveColor(Palette.primaryColor, dark: Palette.secondaryColor),
+        borderRadius: BorderRadius.only(topLeft: topRadius, topRight: topRadius),
         child: child,
       ),
     );

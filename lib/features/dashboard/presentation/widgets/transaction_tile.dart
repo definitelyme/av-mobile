@@ -17,8 +17,7 @@ class TransactionTile extends StatelessWidget {
   final DateTime? createdAt;
   final bool showLeading;
 
-  const TransactionTile._(this.title, this.subtitle, this.status,
-      this.createdAt, this.showLeading, this.onPressed, this._type);
+  const TransactionTile._(this.title, this.subtitle, this.status, this.createdAt, this.showLeading, this.onPressed, this._type);
 
   const TransactionTile.down({
     String? title,
@@ -27,8 +26,7 @@ class TransactionTile extends StatelessWidget {
     DateTime? createdAt,
     VoidCallback? onPressed,
     bool showLeading = true,
-  }) : this._(title, subtitle, status, createdAt, showLeading, onPressed,
-            IndicatorType.down);
+  }) : this._(title, subtitle, status, createdAt, showLeading, onPressed, IndicatorType.down);
 
   const TransactionTile.up({
     String? title,
@@ -37,8 +35,7 @@ class TransactionTile extends StatelessWidget {
     DateTime? createdAt,
     VoidCallback? onPressed,
     bool showLeading = true,
-  }) : this._(title, subtitle, status, createdAt, showLeading, onPressed,
-            IndicatorType.up);
+  }) : this._(title, subtitle, status, createdAt, showLeading, onPressed, IndicatorType.up);
 
   Widget get _title => AdaptiveText(
         '$title',
@@ -48,6 +45,7 @@ class TransactionTile extends StatelessWidget {
         textColor: const Color(0xff58595B),
         fontWeight: FontWeight.w600,
         textAlign: TextAlign.left,
+        textColorDark: Palette.text100Dark,
         overflow: TextOverflow.ellipsis,
       );
 
@@ -59,13 +57,12 @@ class TransactionTile extends StatelessWidget {
         textColor: const Color(0xff58595B),
         fontWeight: FontWeight.w500,
         textAlign: TextAlign.left,
+        textColorDark: Palette.text100Dark.withOpacity(0.7),
         overflow: TextOverflow.ellipsis,
       );
 
   Widget get _leading => Material(
-        color: _type
-            .when(up: const Color(0xFF2E2A88), down: Palette.accentGreen)
-            .withOpacity(0.1),
+        color: _type.when(up: const Color(0xFF2E2A88), down: Palette.accentGreen).withOpacity(0.1),
         borderRadius: 8.br,
         child: SizedBox(
           width: 40,
@@ -74,8 +71,7 @@ class TransactionTile extends StatelessWidget {
             quarterTurns: _type.when(up: 1, down: 3),
             child: Icon(
               Icons.keyboard_backspace_rounded,
-              color: _type.when(
-                  up: const Color(0xFF2E2A88), down: Palette.accentGreen),
+              color: _type.when(up: const Color(0xFF2E2A88), down: Palette.accentGreen),
             ),
           ),
         ),
@@ -102,10 +98,7 @@ class TransactionTile extends StatelessWidget {
             ),
           ),
           //
-          if (createdAt != null)
-            AdaptiveText(
-              '${TimeOfDay.fromDateTime(createdAt!).format(c)}',
-            ),
+          if (createdAt != null) AdaptiveText('${TimeOfDay.fromDateTime(createdAt!).format(c)}'),
         ],
       );
 

@@ -12,21 +12,30 @@ class TermsInformationDTO with _$TermsInformationDTO {
   const TermsInformationDTO._();
 
   factory TermsInformationDTO({
-    int? yearOfPurchase,
-    @BooleanSerializer() bool? repairHistory,
-    @BooleanSerializer() bool? refundPolicy,
-    @BooleanSerializer() bool? warranty,
+    @StringSerializer() int? yearOfPurchase,
+    @JsonKey(toJson: BooleanSerializer.toJsonString) @BooleanSerializer() bool? repairHistory,
+    @JsonKey(toJson: BooleanSerializer.toJsonString) @BooleanSerializer() bool? refundPolicy,
+    String? warranty,
+    String? otherInfo,
   }) = _TermsInformationDTO;
 
-  factory TermsInformationDTO.fromJson(Map<String, dynamic> json) =>
-      _$TermsInformationDTOFromJson(json);
+  /// Maps TermsInformation to a Data Transfer Object.
+  factory TermsInformationDTO.fromDomain(TermsInformation? instance) => TermsInformationDTO(
+        yearOfPurchase: int.tryParse(instance?.yearOfPurchase.getOrNull ?? ''),
+        repairHistory: instance?.hasRepairHistory,
+        refundPolicy: instance?.hasRefundPolicy,
+        warranty: instance?.warranty.getOrNull,
+        otherInfo: instance?.otherInformation.getOrNull,
+      );
+
+  factory TermsInformationDTO.fromJson(Map<String, dynamic> json) => _$TermsInformationDTOFromJson(json);
 
   /// Maps the Data Transfer Object to a TermsInformation Object.
   TermsInformation get domain => TermsInformation.blank(
-        yearOfPurchase:
-            yearOfPurchase != null ? DateTime(yearOfPurchase!) : null,
+        yearOfPurchase: yearOfPurchase,
         refundPolicy: refundPolicy!,
-        warranty: warranty!,
+        warranty: warranty,
         repairHistory: repairHistory!,
+        otherInformation: otherInfo,
       );
 }

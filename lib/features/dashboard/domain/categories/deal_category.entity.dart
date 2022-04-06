@@ -15,6 +15,7 @@ class DealCategory extends BaseEntity with _$DealCategory {
     required MediaField asset,
     @Default(false) bool isActive,
     required BasicTextField<String?> name,
+    required BasicTextField<String?> slug,
     required BasicTextField<String?> description,
     required BasicTextField<double?> charge,
     required BasicTextField<double?> percentageIncrease,
@@ -27,6 +28,7 @@ class DealCategory extends BaseEntity with _$DealCategory {
     String? id,
     String? photo,
     String? name,
+    String? slug,
     String? description,
     bool? active,
     double? charge,
@@ -40,6 +42,7 @@ class DealCategory extends BaseEntity with _$DealCategory {
         isActive: active ?? false,
         asset: MediaField(photo),
         name: BasicTextField(name),
+        slug: BasicTextField(slug),
         description: BasicTextField(description),
         charge: BasicTextField(charge),
         percentageIncrease: BasicTextField(percentageIncrease),
@@ -48,31 +51,19 @@ class DealCategory extends BaseEntity with _$DealCategory {
         updatedAt: updatedAt,
       );
 
-  // static List<DealCategory> get list => [
-  //       DealCategory(
-  //         id: UniqueId.v4(),
-  //         name: BasicTextField('Property'),
-  //         asset: MediaField(AppAssets.categoryProperty, validate: false),
-  //       ),
-  //       DealCategory(
-  //         id: UniqueId.v4(),
-  //         name: BasicTextField('Artwork & Artefact'),
-  //         asset: MediaField(AppAssets.categoryArtefact, validate: false),
-  //       ),
-  //       DealCategory(
-  //         id: UniqueId.v4(),
-  //         name: BasicTextField('General'),
-  //         asset: MediaField(AppAssets.categoryGeneral, validate: false),
-  //       ),
-  //       DealCategory(
-  //         id: UniqueId.v4(),
-  //         name: BasicTextField('Automobile'),
-  //         asset: MediaField(AppAssets.categoryAutoMobile, validate: false),
-  //       ),
-  //       DealCategory(
-  //         id: UniqueId.v4(),
-  //         name: BasicTextField('Luxury'),
-  //         asset: MediaField(AppAssets.categoryLuxury, validate: false),
-  //       ),
-  //     ];
+  DealCategory merge(DealCategory? other) => copyWith(
+        id: other?.id.value != null ? other!.id : id,
+        asset: other?.asset.isNotNull((it) => it as MediaField, orElse: (_) => asset) ?? asset,
+        isActive: other?.isActive ?? isActive,
+        name: other?.name.isNotNull((it) => it as BasicTextField<String?>, orElse: (_) => name) ?? name,
+        slug: other?.slug.isNotNull((it) => it as BasicTextField<String?>, orElse: (_) => slug) ?? slug,
+        description: other?.description.isNotNull((it) => it as BasicTextField<String?>, orElse: (_) => description) ?? description,
+        charge: other?.charge.isNotNull((it) => it as BasicTextField<double?>, orElse: (_) => charge) ?? charge,
+        percentageIncrease: other?.percentageIncrease.isNotNull((it) => it as BasicTextField<double?>, orElse: (_) => percentageIncrease) ??
+            percentageIncrease,
+        productsAssigned:
+            other?.productsAssigned.isNotNull((it) => it as BasicTextField<int>, orElse: (_) => productsAssigned) ?? productsAssigned,
+        createdAt: other?.createdAt ?? createdAt,
+        updatedAt: other?.updatedAt ?? updatedAt,
+      );
 }

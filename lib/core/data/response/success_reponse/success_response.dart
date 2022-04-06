@@ -17,6 +17,5 @@ class SuccessResponse with _$SuccessResponse implements Success {
   }) = _SuccessResponse;
 
   /// Maps the incoming Json to a Data Transfer Object (DTO).
-  factory SuccessResponse.fromJson(Map<String, dynamic> json) =>
-      _$SuccessResponseFromJson(json);
+  factory SuccessResponse.fromJson(Map<String, dynamic> json) => _$SuccessResponseFromJson(json);
 }

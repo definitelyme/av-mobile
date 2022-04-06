@@ -8,13 +8,13 @@ part of registered_user_dto.dart;
 
 _$_RegisteredUserDTO _$$_RegisteredUserDTOFromJson(Map<String, dynamic> json) =>
     _$_RegisteredUserDTO(
-      status: json['Status'] as String?,
-      data: json['Data'] == null
+      status: json['status'] as String?,
+      data: json['data'] == null
           ? null
-          : UserDTO.fromJson(json['Data'] as Map<String, dynamic>),
-      user: json['User'] == null
+          : UserDTO.fromJson(json['data'] as Map<String, dynamic>),
+      user: json['user'] == null
           ? null
-          : UserDTO.fromJson(json['User'] as Map<String, dynamic>),
+          : UserDTO.fromJson(json['user'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_RegisteredUserDTOToJson(
@@ -27,8 +27,8 @@ Map<String, dynamic> _$$_RegisteredUserDTOToJson(
     }
   }
 
-  writeNotNull('Status', instance.status);
-  writeNotNull('Data', instance.data?.toJson());
-  writeNotNull('User', instance.user?.toJson());
+  writeNotNull('status', instance.status);
+  writeNotNull('data', instance.data?.toJson());
+  writeNotNull('user', instance.user?.toJson());
   return val;
 }

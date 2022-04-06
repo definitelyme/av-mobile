@@ -11,10 +11,10 @@ GenericObjectDTO<T> _$GenericObjectDTOFromJson<T extends Object?>(
   T Function(Object? json) fromJsonT,
 ) =>
     GenericObjectDTO<T>(
-      data: _$nullableGenericFromJson(json['Data'], fromJsonT),
-      meta: json['Meta'] == null
+      data: _$nullableGenericFromJson(json['data'], fromJsonT),
+      meta: json['meta'] == null
           ? null
-          : MetaDTO.fromJson(json['Meta'] as Map<String, dynamic>),
+          : MetaDTO.fromJson(json['meta'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$GenericObjectDTOToJson<T extends Object?>(
@@ -29,8 +29,8 @@ Map<String, dynamic> _$GenericObjectDTOToJson<T extends Object?>(
     }
   }
 
-  writeNotNull('Data', _$nullableGenericToJson(instance.data, toJsonT));
-  writeNotNull('Meta', instance.meta?.toJson());
+  writeNotNull('data', _$nullableGenericToJson(instance.data, toJsonT));
+  writeNotNull('meta', instance.meta?.toJson());
   return val;
 }
 

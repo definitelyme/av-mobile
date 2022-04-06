@@ -1,27 +1,16 @@
 {
+    "basePrice": 40,
+    "isPrivate": false,
     "status": "PENDING",
-    "_id": "62237f60b6c907001ac6f092",
-    "user": {
-        "_id": "62176e1244cd9cf9a2eb818d",
-        "firstName": "Admin",
-        "lastName": "Auction"
-    },
-    "type": "AUCTION",
-    "vendor": {
-        "type": "INDIVIDUAL",
-        "isPrivate": true,
-        "_id": "621aa8af5060933a1a6e5f96",
-        "mobile": "2348154640224",
-        "createdBy": "6218fc0b118066001af05d66",
-        "updatedBy": "6218fc0b118066001af05d66",
-        "fullName": "John Doe",
-        "email": "vendor2@example.com",
-        "avatar": "https://res.cloudinary.com/dpiyqfdpk/image/upload/v1645893780/r3nzduasjutldthfuqju.png",
-        "createdAt": "2022-02-26T22:24:47.721Z",
-        "updatedAt": "2022-02-26T22:29:55.930Z",
-        "__v": 0,
-        "id": "621aa8af5060933a1a6e5f96"
-    },
+    "sponsored": false,
+    "plan": "FREE",
+    "admittanceFee": 0,
+    "clicks": 0,
+    "dealPriority": 1,
+    "bidStatus": "LIVE",
+    "isClosing": false,
+    "active": true,
+    "_id": "622bb53fffac8d001a82faf7",
     "product": {
         "brandInformation": {
             "brand": {
@@ -42,7 +31,7 @@
                 "createdBy": "6215b9f309e5ed68f7396131",
                 "name": "General Product",
                 "description": "This is General Product description",
-                "brand": "62195d44c0f145f365e77b94",
+                "brand": null,
                 "slug": "general-product",
                 "createdAt": "2022-02-26T00:26:16.509Z",
                 "updatedAt": "2022-02-26T00:26:16.509Z",
@@ -59,21 +48,43 @@
             "height": 200,
             "deliveryPeriod": "1 month",
             "pickUpAvailable": "Yes",
-            "description": "None"
+            "description": "Shipping"
         },
         "termsInformation": {
-            "yearOfPurchase": 2021,
-            "repairHistory": "Yes",
+            "yearOfPurchase": 2020,
+            "repairHistory": "No",
+            "warranty": "No warranty",
             "refundPolicy": "No"
         },
         "photos": [
-            "https://res.cloudinary.com/dpiyqfdpk/image/upload/v1646493023/ueyjkdofpys8f57thzvq.png"
+            "https://res.cloudinary.com/dpiyqfdpk/image/upload/v1647030436/id8zcay1gn5v2xs9lxa3.jpg",
+            "https://res.cloudinary.com/dpiyqfdpk/image/upload/v1647031549/sqn9eeovyshbyiaxlyhg.png"
         ],
         "status": "PENDING",
         "active": true,
-        "_id": "62237f60b6c907001ac6f094",
-        "deal": "62237f60b6c907001ac6f092",
-        "__v": 0,
+        "_id": "622bb53fffac8d001a82faf5",
+        "user": {
+            "location": {
+                "coordinates": []
+            },
+            "accountVerified": false,
+            "active": false,
+            "changePassword": false,
+            "passwordReset": true,
+            "isAdmin": false,
+            "userType": "user",
+            "pinAdded": false,
+            "_id": "622ba46f0b525a001a322781",
+            "firstName": "New ",
+            "lastName": "Account",
+            "email": "cidon24705@shopxda.com",
+            "mobile": "+234887990354",
+            "verificationCode": "7331",
+            "__v": 0
+        },
+        "state": "Lagos",
+        "lga": "Ikeja",
+        "name": "New Buy Now",
         "category": {
             "productsAssigned": 0,
             "percentageIncrease": 3,
@@ -89,13 +100,26 @@
             "__v": 0,
             "id": "621bb266105715001afbea16"
         },
-        "createdAt": "2022-03-05T15:18:56.647Z",
-        "lga": "Ikeja",
-        "name": "Luxury  Car",
-        "state": "Lagos",
-        "updatedAt": "2022-03-05T15:18:56.647Z",
-        "vendor": "621aa8af5060933a1a6e5f96",
-        "id": "62237f60b6c907001ac6f094"
+        "description": "NFT",
+        "createdAt": "2022-03-11T20:46:55.876Z",
+        "updatedAt": "2022-03-11T20:46:56.058Z",
+        "__v": 0,
+        "deal": null,
+        "vendor": null,
+        "id": "622bb53fffac8d001a82faf5"
     },
-    "id": "62237f60b6c907001ac6f092"
+    "__v": 0,
+    "createdAt": "2022-03-11T20:46:55.961Z",
+    "endDate": "2022-03-18T20:46:55.803Z",
+    "lastPriceOffered": 40,
+    "offerType": "NEGOTIABLE",
+    "startDate": "2022-03-11T20:46:55.803Z",
+    "type": "BUY_NOW",
+    "updatedAt": "2022-03-11T20:46:55.961Z",
+    "user": {
+        "_id": "622ba46f0b525a001a322781",
+        "firstName": "New ",
+        "lastName": "Account"
+    },
+    "id": "622bb53fffac8d001a82faf7"
 }

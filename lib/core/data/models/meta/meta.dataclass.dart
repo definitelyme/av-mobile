@@ -14,10 +14,10 @@ class MetaDTO with _$MetaDTO {
   const factory MetaDTO({
     int? statusCode,
     bool? status,
+    String? message,
     PaginationDTO? pagination,
   }) = _MetaDTO;
 
   /// Maps the incoming Json to a Data Transfer Object (DTO).
-  factory MetaDTO.fromJson(Map<String, dynamic> json) =>
-      _$MetaDTOFromJson(json);
+  factory MetaDTO.fromJson(Map<String, dynamic> json) => _$MetaDTOFromJson(json);
 }

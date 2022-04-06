@@ -9,16 +9,14 @@ part of brand_information_dto.dart;
 _$_BrandInformationDTO _$$_BrandInformationDTOFromJson(
         Map<String, dynamic> json) =>
     _$_BrandInformationDTO(
-      brand: json['Brand'] == null
-          ? null
-          : BrandDTO.fromJson(json['Brand'] as Map<String, dynamic>),
-      brandModel: json['BrandModel'] == null
-          ? null
-          : BrandModelDTO.fromJson(json['BrandModel'] as Map<String, dynamic>),
-      yearOfManufacturer: json['YearOfManufacturer'] as int?,
-      color: json['Color'] as String?,
-      condition: json['Condition'] as String?,
-      description: json['Description'] as String?,
+      brand: json['brand'] as String?,
+      brandModel: json['brandModel'] as String?,
+      transmission: json['transmission'] as String?,
+      yearOfManufacturer: json['yearOfManufacturer'] as int?,
+      color: json['color'] as String?,
+      condition: const ItemConditionSerializer()
+          .fromJson(json['condition'] as String?),
+      description: json['description'] as String?,
     );
 
 Map<String, dynamic> _$$_BrandInformationDTOToJson(
@@ -31,11 +29,13 @@ Map<String, dynamic> _$$_BrandInformationDTOToJson(
     }
   }
 
-  writeNotNull('Brand', instance.brand?.toJson());
-  writeNotNull('BrandModel', instance.brandModel?.toJson());
-  writeNotNull('YearOfManufacturer', instance.yearOfManufacturer);
-  writeNotNull('Color', instance.color);
-  writeNotNull('Condition', instance.condition);
-  writeNotNull('Description', instance.description);
+  writeNotNull('brand', instance.brand);
+  writeNotNull('brandModel', instance.brandModel);
+  writeNotNull('transmission', instance.transmission);
+  writeNotNull('yearOfManufacturer', instance.yearOfManufacturer);
+  writeNotNull('color', instance.color);
+  writeNotNull(
+      'condition', ItemConditionSerializer.toJsonString(instance.condition));
+  writeNotNull('description', instance.description);
   return val;
 }

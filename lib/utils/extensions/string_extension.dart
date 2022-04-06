@@ -12,20 +12,60 @@ extension StringX on String {
   /// Capitalize only first letter in string
   ///
   /// Example: your name => Your name
-  String capitalizeFirst([String? str]) =>
-      '${(str ?? this[0]).toUpperCase()}${substring(1).toLowerCase()}';
+  String capitalizeFirst() => '${(this[0]).toUpperCase()}${substring(1).toLowerCase()}';
+
+  String get camelCase {
+    final subject = this;
+
+    final _splittedString = words(subject);
+
+    if (_splittedString == null || _splittedString.isEmpty) return '';
+
+    final _firstWord = _splittedString[0].toLowerCase();
+    final _restWords = _splittedString.sublist(1).map((String x) => capitalizeFirst()).toList();
+
+    return _firstWord + _restWords.join('');
+  }
 
   String titleCase() {
     var splitStr = toLowerCase().split(' ');
-    for (var i = 0; i < splitStr.length; i++)
-      splitStr[i] =
-          splitStr[i][0].toUpperCase() + splitStr[i].substring(1).toLowerCase();
+    for (var i = 0; i < splitStr.length; i++) splitStr[i] = splitStr[i][0].toUpperCase() + splitStr[i].substring(1).toLowerCase();
     return splitStr.join(' ');
   }
 
+  // String titleCase([List<String> notSplitList = const []]) {
+  //   final subject = this;
+
+  //   if (subject.isEmpty) return '';
+
+  //   final _wordPattern = RegExp('[A-Za-z0-9]');
+
+  //   var index = 0;
+
+  //   String replacer(Match m) {
+  //     final subString = m[0];
+  //     if (subString == null) return '';
+
+  //     index = subject.indexOf(subString, index);
+
+  //     final previousIndex = index - 1;
+
+  //     if (previousIndex >= 0 && notSplitList.contains(subject[previousIndex])) {
+  //       index += subString.length;
+  //       return subString.toLowerCase();
+  //     } else {
+  //       index += subString.length;
+  //       return capitalizeFirst();
+  //     }
+  //   }
+
+  //   return subject.replaceAllMapped(_wordPattern, replacer);
+  // }
+
+  String sentenceCase() => split(' ').map((str) => str.capitalizeFirst()).join(' ');
+
   String get kebabCase {
-    final split = this.split(
-        r'/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g');
+    final split = this.split(r'/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g');
     return split.fold('', (prev, n) => prev.isEmpty ? '$prev$n' : '$prev-$n');
   }
 
@@ -42,9 +82,24 @@ extension StringX on String {
     }
   }
 
+  List<String>? words([Pattern customPattern = ' ']) {
+    final subject = this;
+
+    if (subject.isEmpty) return [];
+
+    RegExp? pattern;
+
+    if (customPattern is String) {
+      pattern = RegExp(customPattern);
+    } else if (customPattern is RegExp) {
+      pattern = customPattern;
+    }
+
+    return pattern?.allMatches(subject).map((m) => m.group(0)).where((e) => e != null).map((e) => e!).toList();
+  }
+
   /// Checks if String contains b (Treating or interpreting upper- and lowercase letters as being the same).
-  bool caseInsensitiveContains(String? b) =>
-      toLowerCase().contains('${b?.toLowerCase()}');
+  bool caseInsensitiveContains(String? b) => toLowerCase().contains('${b?.toLowerCase()}');
 
   /// Checks if String contains b or b contains String (Treating or interpreting upper- and lowercase letters as being the same).
   bool containsAny(String? b) {
@@ -55,15 +110,11 @@ extension StringX on String {
 
   bool equals(String? other, {bool lowercase = true}) {
     final _this = lowercase ? toLowerCase() : this;
-    return identical(_this, other?.toLowerCase()) ||
-        const DeepCollectionEquality().equals(_this, other?.toLowerCase());
+    return identical(_this, other?.toLowerCase()) || const DeepCollectionEquality().equals(_this, other?.toLowerCase());
   }
 
   /// Erase occurrence of strings matching Patterns
-  String erase(List<Pattern> patterns,
-      {bool recursive = true,
-      Direction position = Direction.left,
-      int startIndex = 0}) {
+  String erase(List<Pattern> patterns, {bool recursive = true, Direction position = Direction.left, int startIndex = 0}) {
     var init = this;
     patterns.forEach((pattern) {
       if (pattern.toString().isEmpty) return;
@@ -118,10 +169,7 @@ extension StringX on String {
     }
   }
 
-  String padIf(
-      [bool condition = true,
-      String? pad = '',
-      Direction position = Direction.right]) {
+  String padIf([bool condition = true, String? pad = '', Direction position = Direction.right]) {
     if (condition) return this.pad(pad, position);
     return this;
   }
@@ -145,11 +193,7 @@ extension StringX on String {
     final _this = num.tryParse(this);
 
     return asCurrencyFormat(
-            mask: mask,
-            includeSymbol: symbol,
-            currency: currency,
-            decimal: _this != null && !_this.isInteger,
-            locale: locale)
+            mask: mask, includeSymbol: symbol, currency: currency, decimal: _this != null && !_this.isInteger, locale: locale)
         .format(_this);
   }
 
@@ -157,10 +201,7 @@ extension StringX on String {
   String onlyInitials({Pattern pattern = ' ', String glue = '.'}) {
     if (trim().isEmpty) return this;
     var split = this.split(pattern);
-    var join = split.fold<String>(
-        '',
-        (previousValue, element) =>
-            '$previousValue${element.substring(0, 1)}$glue');
+    var join = split.fold<String>('', (previousValue, element) => '$previousValue${element.substring(0, 1)}$glue');
     return join.erase([glue], recursive: false, position: Direction.right);
   }
 
@@ -198,21 +239,11 @@ extension StringX on String {
 
   String replaceRandom() {
     return split('').asMap().entries.map((e) {
-      final check1 = RegExp(r'[A-Za-z0-9][@][A-Za-z]{1}')
-              .stringMatch(this)
-              ?.caseInsensitiveContains(e.value) ??
-          false;
+      final check1 = RegExp(r'[A-Za-z0-9][@][A-Za-z]{1}').stringMatch(this)?.caseInsensitiveContains(e.value) ?? false;
 
-      final check2 = RegExp(r'\.[A-Za-z]+$')
-              .stringMatch(this)
-              ?.caseInsensitiveContains(e.value) ??
-          false;
+      final check2 = RegExp(r'\.[A-Za-z]+$').stringMatch(this)?.caseInsensitiveContains(e.value) ?? false;
 
-      if (e.value.isNotEmpty &&
-          e.key != 0 &&
-          e.key != 1 &&
-          !check1 &&
-          !check2) {
+      if (e.value.isNotEmpty && e.key != 0 && e.key != 1 && !check1 && !check2) {
         return e.value.replaceFirst(e.value, '.');
       }
       return e.value;

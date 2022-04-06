@@ -1,6 +1,7 @@
 import 'package:auctionvillage/core/data/response/index.dart';
 import 'package:auctionvillage/core/domain/entities/entities.dart';
 import 'package:auctionvillage/core/domain/validator/validator.dart';
+import 'package:auctionvillage/core/presentation/index.dart';
 import 'package:auctionvillage/utils/utils.dart';
 import 'package:auctionvillage/widgets/widgets.dart';
 import 'package:dartz/dartz.dart';
@@ -12,8 +13,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 /// A stateless widget to render Form Field for Phone Inputs.
 // ignore: must_be_immutable
-class PhoneFormField<Reactive extends BlocBase<ReactiveState>, ReactiveState>
-    extends StatelessWidget {
+class PhoneFormField<Reactive extends BlocBase<ReactiveState>, ReactiveState> extends StatelessWidget {
   late ReactiveState _state;
 
   final bool Function(ReactiveState)? validate;
@@ -21,6 +21,10 @@ class PhoneFormField<Reactive extends BlocBase<ReactiveState>, ReactiveState>
   final String? Function(ReactiveState)? initial;
   final FieldObject<String?>? Function(ReactiveState)? field;
   final String? Function(ReactiveState)? hintText;
+  final bool Function(ReactiveState)? hideCountryPicker;
+  final void Function(Reactive, Country?)? onCountryChanged;
+  final String? Function(ReactiveState)? initialCountryCode;
+  final Country? Function(ReactiveState)? selectedCountry;
   final TextStyle? hintStyle;
   final void Function(Reactive, String)? onChanged;
   final int? Function(ReactiveState)? maxLength;
@@ -71,11 +75,28 @@ class PhoneFormField<Reactive extends BlocBase<ReactiveState>, ReactiveState>
     this.focusedErrorBorder,
     this.onEditingComplete,
     this.autoDisposeController = true,
+    this.initialCountryCode,
+    this.onCountryChanged,
+    this.selectedCountry,
+    this.hideCountryPicker,
   }) : super(key: key);
 
   ReactiveState get state => _state;
 
   set __state(ReactiveState value) => _state = value;
+
+  bool _hideCountryPicker(ReactiveState s) => (hideCountryPicker?.call(s) ?? false);
+
+  Widget countryPicker(BuildContext c, ReactiveState s) => ConstrainedBox(
+        constraints: BoxConstraints(maxWidth: 0.23.w),
+        child: _hideCountryPicker(s)
+            ? null
+            : CountryPicker.dialcode(
+                initialValue: initialCountryCode?.call(s),
+                selected: selectedCountry?.call(s),
+                onChanged: (value) => onCountryChanged?.call(c.read<Reactive>(), value),
+              ),
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +109,7 @@ class PhoneFormField<Reactive extends BlocBase<ReactiveState>, ReactiveState>
           cupertinoPadding: cupertinoPadding,
           materialPadding: materialPadding,
           prefixMode: OverlayVisibilityMode.always,
-          prefixIcon: prefixWidget,
+          prefixIcon: prefixWidget ?? countryPicker(c, s),
           initial: initial?.call(s),
           disabled: disabled?.call(s) ?? false,
           validate: validate?.call(s) ?? false,
@@ -104,9 +125,7 @@ class PhoneFormField<Reactive extends BlocBase<ReactiveState>, ReactiveState>
           errorBorder: errorBorder,
           focusedErrorBorder: focusedErrorBorder,
           autoDisposeController: autoDisposeController,
-          inputFormatters: [
-            FilteringTextInputFormatter.allow(RegExp('$phonePattern'))
-          ],
+          inputFormatters: [FilteringTextInputFormatter.allow(RegExp('$phonePattern'))],
           autoFillHints: [AutofillHints.telephoneNumberLocal],
           focus: focus,
           next: next,
@@ -117,18 +136,14 @@ class PhoneFormField<Reactive extends BlocBase<ReactiveState>, ReactiveState>
                 (_) => response?.call(s).fold(
                       () => null,
                       (http) => http?.response.maybeMap(
-                        error: (f) =>
-                            f.errors?.phone?.firstOrNone ??
-                            errorField?.call(f)?.firstOrNone,
+                        error: (f) => f.errors?.phone?.firstOrNone ?? errorField?.call(f)?.firstOrNone,
                         orElse: () => null,
                       ),
                     ),
               ),
         );
 
-        return heroTag != null && !heroTag.isBlank
-            ? Hero(tag: heroTag!, child: _input)
-            : _input;
+        return heroTag != null && !heroTag.isBlank ? Hero(tag: heroTag!, child: _input) : _input;
       },
     );
   }

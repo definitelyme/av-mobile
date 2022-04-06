@@ -39,7 +39,14 @@ class PlatformBuilder extends StatelessWidget {
   }
 }
 
-extension on PlatformType {
+extension PlatformTypeX on PlatformType {
+  bool get isIOS => this == PlatformType.ios;
+  bool get isAndroid => this == PlatformType.android;
+  bool get isWeb => this == PlatformType.web;
+  bool get isLinux => this == PlatformType.linux;
+  bool get isMac => this == PlatformType.macosx;
+  bool get isOther => this == PlatformType.other;
+
   T when<T>({
     T Function()? android,
     T Function()? ios,

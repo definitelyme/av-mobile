@@ -81,7 +81,46 @@ import 'package:auto_route/auto_route.dart';
       fullMatch: true,
       maintainState: true,
       usesPathAsKey: true,
+      page: DealsListScreen,
+    ),
+    //
+    AdaptiveRoute(
+      fullMatch: true,
+      maintainState: true,
+      usesPathAsKey: true,
       page: ProductListScreen,
+    ),
+    //
+    AdaptiveRoute(
+      fullMatch: true,
+      maintainState: true,
+      usesPathAsKey: true,
+      page: FundWalletScreen,
+      cupertinoPageTitle: 'Fund Wallet',
+    ),
+    //
+    AdaptiveRoute(
+      fullMatch: true,
+      maintainState: true,
+      usesPathAsKey: true,
+      page: AddCardScreen,
+      cupertinoPageTitle: 'Add Card',
+    ),
+    //
+    AdaptiveRoute(
+      fullMatch: true,
+      maintainState: true,
+      usesPathAsKey: true,
+      page: WithdrawalScreen,
+      cupertinoPageTitle: 'Withdraw to Account',
+    ),
+    //
+    AdaptiveRoute(
+      fullMatch: true,
+      maintainState: true,
+      usesPathAsKey: true,
+      page: TransactionPinSetupScreen,
+      cupertinoPageTitle: 'Withdraw PIN Setup',
     ),
     //
     AdaptiveRoute(
@@ -137,7 +176,24 @@ import 'package:auto_route/auto_route.dart';
       maintainState: true,
       usesPathAsKey: true,
       fullscreenDialog: true,
+      cupertinoPageTitle: 'Pricing Plan',
+      page: PricingPlanScreen,
+    ),
+    //
+    AdaptiveRoute(
+      fullMatch: true,
+      maintainState: true,
+      usesPathAsKey: true,
+      fullscreenDialog: true,
       page: SuccessScreen,
+    ),
+    //
+    AdaptiveRoute(
+      fullMatch: true,
+      maintainState: true,
+      usesPathAsKey: true,
+      fullscreenDialog: true,
+      page: CountryPickerScreen,
     ),
   ],
 )

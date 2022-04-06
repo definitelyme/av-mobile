@@ -12,8 +12,8 @@ part 'category_dto.freezed.dart';
 CategoryDTO deserializeCategoryDTO(Map<String, dynamic> json) => CategoryDTO.fromJson(json);
 Map<String, dynamic> serializeCategoryDTO(CategoryDTO object) => object.toJson();
 
-@Freezed(maybeMap: false)
 @immutable
+@Freezed(maybeMap: false)
 class CategoryDTO with _$CategoryDTO {
   const CategoryDTO._();
 
@@ -32,8 +32,8 @@ class CategoryDTO with _$CategoryDTO {
 CategoryDTOData deserializeCategoryDTOData(Map<String, dynamic> json) => CategoryDTOData.fromJson(json);
 Map<String, dynamic> serializeCategoryDTOData(CategoryDTOData object) => object.toJson();
 
-@Freezed(maybeMap: false)
 @immutable
+@Freezed(maybeMap: false)
 class CategoryDTOData with _$CategoryDTOData {
   const CategoryDTOData._();
 
@@ -50,6 +50,21 @@ class CategoryDTOData with _$CategoryDTOData {
     @TimestampConverter() DateTime? createdAt,
     @TimestampConverter() DateTime? updatedAt,
   }) = _CategoryDTOData;
+
+  /// Maps DealCategory to a Data Transfer Object.
+  factory CategoryDTOData.fromDomain(DealCategory? instance) => CategoryDTOData(
+        id: instance?.id.value,
+        name: instance?.name.getOrNull,
+        active: instance?.isActive,
+        charge: instance?.charge.getOrNull,
+        slug: instance?.slug.getOrNull,
+        description: instance?.description.getOrNull,
+        image: instance?.asset.getOrNull,
+        percentageIncrease: instance?.percentageIncrease.getOrNull,
+        productsAssigned: instance?.productsAssigned.getOrNull,
+        createdAt: instance?.createdAt,
+        updatedAt: instance?.updatedAt,
+      );
 
   factory CategoryDTOData.fromJson(Map<String, dynamic> json) => _$CategoryDTODataFromJson(json);
 
@@ -71,8 +86,8 @@ class CategoryDTOData with _$CategoryDTOData {
 CategoryListDTO deserializeCategoryListDTO(Map<String, dynamic> json) => CategoryListDTO.fromJson(json);
 Map<String, dynamic> serializeCategoryListDTO(CategoryListDTO object) => object.toJson();
 
-@Freezed(maybeMap: false)
 @immutable
+@Freezed(maybeMap: false)
 class CategoryListDTO with _$CategoryListDTO {
   const CategoryListDTO._();
 

@@ -36,8 +36,9 @@
         android:extractNativeLibs="true"
         android:usesCleartextTraffic="true"
         android:requestLegacyExternalStorage="true"
-        android:allowBackup="true"
-        android:fullBackupOnly="true"
+        android:allowBackup="false"
+        android:fullBackupOnly="false"
+        android:fullBackupContent="false"
         tools:replace="android:extractNativeLibs"
         tools:targetApi="m">
         

@@ -19,6 +19,7 @@ abstract class Failure with _FailureMixin implements Response {
   static const int UNVERIFIED_PHONE = 4031;
 
   int? get code;
+  bool get show;
   Exception? get exception;
 }
 
@@ -42,8 +43,8 @@ class UnExpectedFailure implements Failure {
   @override
   final String? details;
 
-  // @override
-  // final String? error;
+  @override
+  final bool show;
 
   @override
   final String message;
@@ -54,7 +55,7 @@ class UnExpectedFailure implements Failure {
   UnExpectedFailure({
     required this.message,
     this.status,
-    // this.error,
+    this.show = true,
     this.code,
     this.details,
   });

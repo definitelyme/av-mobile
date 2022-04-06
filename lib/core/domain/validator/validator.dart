@@ -18,8 +18,7 @@ const Pattern numberPattern = '[0-9]+';
 const Pattern phonePattern = r'^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$';
 const Pattern symbolPattern = r"[-!$@%^&#*()_+|~=`{}\[\]:\;'<>?\\,.\/]";
 const Pattern onlyNumbersPattern = '^[0-9]*\$';
-const Pattern datePattern =
-    r'(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)[0-9]{2}';
+const Pattern datePattern = r'(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)[0-9]{2}';
 
 enum FIELD_VALIDATION { NONE, BASIC, DEEP }
 
@@ -34,14 +33,11 @@ class Validator with _CreditCardValidator {
     // Returns the string without any leading and trailing whitespace
     if (value == null) return left(FieldObjectException.empty());
 
-    if (value is String && value.trim().isEmpty)
-      return left(FieldObjectException.empty());
+    if (value is String && value.trim().isEmpty) return left(FieldObjectException.empty());
 
-    if (value is KtList && value.isEmpty())
-      return left(FieldObjectException.empty());
+    if (value is KtList && value.isEmpty()) return left(FieldObjectException.empty());
 
-    if (value is BuiltList && value.isEmpty)
-      return left(FieldObjectException.empty());
+    if (value is BuiltList && value.isEmpty) return left(FieldObjectException.empty());
 
     return right((value is String ? value.trim() as T : value));
   }
@@ -71,8 +67,7 @@ class Validator with _CreditCardValidator {
 
     if (clean.isEmpty) return left(FieldObjectException.empty());
 
-    if (!RegExp('$emailPattern').hasMatch(clean))
-      return left(FieldObjectException.invalid(message: INVALID_EMAIL_MESSAGE));
+    if (!RegExp('$emailPattern').hasMatch(clean)) return left(FieldObjectException.invalid(message: INVALID_EMAIL_MESSAGE));
 
     return right(email);
   }
@@ -111,16 +106,14 @@ class Validator with _CreditCardValidator {
       case FIELD_VALIDATION.DEEP:
       default:
         if (clean.isEmpty) return left(FieldObjectException.empty());
-        if (!formattedPhoneNumber)
-          return left(FieldObjectException.invalid(message: INVALID_PHONE));
+        if (!formattedPhoneNumber) return left(FieldObjectException.invalid(message: INVALID_PHONE));
         break;
     }
 
     return right(phone);
   }
 
-  static StringValidator<String?> otpCodeValidator(String? code,
-      {int max = 6}) {
+  static StringValidator<String?> otpCodeValidator(String? code, {int max = 6}) {
     if (code == null) return left(FieldObjectException.empty());
 
     var clean = code.trim();
@@ -143,9 +136,7 @@ class Validator with _CreditCardValidator {
     var month = date.month < 10 ? '0${date.month}' : date.month.toString();
     var _date = '$day/$month/${date.year}';
 
-    var isValid = RegExp(
-            r'(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)[0-9]{2}')
-        .hasMatch(_date);
+    var isValid = RegExp(r'(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)[0-9]{2}').hasMatch(_date);
 
     if (!isValid)
       return left(FieldObjectException.invalid(
@@ -158,44 +149,32 @@ class Validator with _CreditCardValidator {
   static Either<FieldObjectException<String>, String?> validUrl(String? url) {
     if (url == null) return left(FieldObjectException.empty());
 
-    var isValid = RegExp(
-            r'(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.'
+    var isValid = RegExp(r'(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.'
             '[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))'
             '[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})')
         .hasMatch(url);
 
-    if (!isValid)
-      return left(FieldObjectException.invalid(message: INVALID_URL));
+    if (!isValid) return left(FieldObjectException.invalid(message: INVALID_URL));
 
     return right(url);
   }
 
-  static StringValidator<U> mustBeGreaterThan<U>(U input,
-      {num? other, String? msg}) {
+  static StringValidator<U> mustBeGreaterThan<U>(U input, {num? other, String? msg}) {
     if (input == null) return left(FieldObjectException.empty());
 
-    if (other == null)
-      return left(FieldObjectException.invalid(
-          message: 'FATAL: "Other" cannot be null!'));
+    if (other == null) return left(FieldObjectException.invalid(message: 'FATAL: "Other" cannot be null!'));
 
-    if (input is num && input <= other)
-      return left(FieldObjectException.exceedsLength(
-          message: msg ?? 'Must be greater than $other'));
+    if (input is num && input <= other) return left(FieldObjectException.exceedsLength(message: msg ?? 'Must be greater than $other'));
 
     return right(input);
   }
 
-  static StringValidator<U> mustBeLessThan<U>(U input,
-      {num? other, String? msg}) {
+  static StringValidator<U> mustBeLessThan<U>(U input, {num? other, String? msg}) {
     if (input == null) return left(FieldObjectException.empty());
 
-    if (other == null)
-      return left(FieldObjectException.invalid(
-          message: 'FATAL: "Other" cannot be null!'));
+    if (other == null) return left(FieldObjectException.invalid(message: 'FATAL: "Other" cannot be null!'));
 
-    if (input is num && input >= other)
-      return left(FieldObjectException.exceedsLength(
-          message: msg ?? 'Must be less than $other'));
+    if (input is num && input >= other) return left(FieldObjectException.exceedsLength(message: msg ?? 'Must be less than $other'));
 
     return right(input);
   }
@@ -203,15 +182,12 @@ class Validator with _CreditCardValidator {
   static StringValidator<U> amount<U>(U input) {
     if (input == null) return left(FieldObjectException.empty());
 
-    if (input is num && input < 0)
-      return left(
-          FieldObjectException.invalid(message: 'Amount cannot be negative'));
+    if (input is num && input < 0) return left(FieldObjectException.invalid(message: 'Amount cannot be negative'));
 
     return right(input);
   }
 
-  static StringValidator<U?> exactLength<U>(U? input,
-      {int? length, bool enforce = false, String? msg}) {
+  static StringValidator<U?> exactLength<U>(U? input, {int? length, bool enforce = false, String? msg}) {
     if (!enforce && length == null) return right(input);
 
     if (enforce && length == null)
@@ -231,8 +207,7 @@ class Validator with _CreditCardValidator {
     return right(input);
   }
 
-  static StringValidator<U?> minLength<U>(U? input,
-      {int? length, bool enforce = false, String? msg}) {
+  static StringValidator<U?> minLength<U>(U? input, {int? length, bool enforce = false, String? msg}) {
     if (!enforce && length == null) return right(input);
 
     if (enforce && length == null)
@@ -252,8 +227,7 @@ class Validator with _CreditCardValidator {
     return right(input);
   }
 
-  static StringValidator<U?> maxLength<U>(U? input,
-      {int? length, bool enforce = false, String? msg}) {
+  static StringValidator<U?> maxLength<U>(U? input, {int? length, bool enforce = false, String? msg}) {
     if (!enforce && length == null) return right(input);
 
     if (enforce && length == null)
@@ -273,12 +247,9 @@ class Validator with _CreditCardValidator {
     return right(input);
   }
 
-  static StringValidator<String> cardNumber(String? input) =>
-      _CreditCardValidator.validateCreditCardNumber(input);
+  static StringValidator<String> cardNumber(String? input) => _CreditCardValidator.validateCreditCardNumber(input);
 
-  static StringValidator<String> cardExpiration(String? input) =>
-      _CreditCardValidator.validateCardExpiryDate(input);
+  static StringValidator<String> cardExpiration(String? input) => _CreditCardValidator.validateCardExpiryDate(input);
 
-  static StringValidator<String> cardCVV(String? input) =>
-      _CreditCardValidator.validateCardCVV(input);
+  static StringValidator<String> cardCVV(String? input) => _CreditCardValidator.validateCardCVV(input);
 }

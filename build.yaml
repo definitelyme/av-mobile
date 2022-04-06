@@ -12,10 +12,13 @@ targets:
           create_to_json: true
           explicit_to_json: true
           include_if_null: false
-          field_rename: pascal
+          field_rename: none
       freezed:
         options:
           union_key: type
           union_value_case: snake
           maybe_when: false
           # maybe_map: false
+      # source_gen:combining_builder:
+      #   generate_for:
+      #     - lib/**/remote/

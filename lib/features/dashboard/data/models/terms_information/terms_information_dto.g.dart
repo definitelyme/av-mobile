@@ -9,10 +9,11 @@ part of terms_information_dto.dart;
 _$_TermsInformationDTO _$$_TermsInformationDTOFromJson(
         Map<String, dynamic> json) =>
     _$_TermsInformationDTO(
-      yearOfPurchase: json['YearOfPurchase'] as int?,
-      repairHistory: const BooleanSerializer().fromJson(json['RepairHistory']),
-      refundPolicy: const BooleanSerializer().fromJson(json['RefundPolicy']),
-      warranty: const BooleanSerializer().fromJson(json['Warranty']),
+      yearOfPurchase: json['yearOfPurchase'] as int?,
+      repairHistory: const BooleanSerializer().fromJson(json['repairHistory']),
+      refundPolicy: const BooleanSerializer().fromJson(json['refundPolicy']),
+      warranty: json['warranty'] as String?,
+      otherInfo: json['otherInfo'] as String?,
     );
 
 Map<String, dynamic> _$$_TermsInformationDTOToJson(
@@ -25,11 +26,12 @@ Map<String, dynamic> _$$_TermsInformationDTOToJson(
     }
   }
 
-  writeNotNull('YearOfPurchase', instance.yearOfPurchase);
-  writeNotNull('RepairHistory',
-      const BooleanSerializer().toJson(instance.repairHistory));
+  writeNotNull('yearOfPurchase', instance.yearOfPurchase);
   writeNotNull(
-      'RefundPolicy', const BooleanSerializer().toJson(instance.refundPolicy));
-  writeNotNull('Warranty', const BooleanSerializer().toJson(instance.warranty));
+      'repairHistory', BooleanSerializer.toJsonString(instance.repairHistory));
+  writeNotNull(
+      'refundPolicy', BooleanSerializer.toJsonString(instance.refundPolicy));
+  writeNotNull('warranty', instance.warranty);
+  writeNotNull('otherInfo', instance.otherInfo);
   return val;
 }

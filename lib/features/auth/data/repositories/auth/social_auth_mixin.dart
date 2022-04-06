@@ -25,8 +25,7 @@ mixin SocialAuthMixin on AuthFacade {
   FirebaseAnalytics get analytics;
 
   @override
-  Future<Option<AppHttpResponse?>> googleAuthentication(
-      [bool notify = false]) async {
+  Future<Option<AppHttpResponse?>> googleAuthentication([bool notify = false]) async {
     // First we'll check for stable Internet connection
     final _conn = await checkInternetConnectivity();
 
@@ -35,8 +34,7 @@ mixin SocialAuthMixin on AuthFacade {
       (_) async {
         try {
           // Clear cached / authenticated user but do not notify UI
-          if (await googleSignIn.isSignedIn())
-            await signOut(notify: notify, regular: false);
+          if (await googleSignIn.isSignedIn()) await signOut(notify: notify, regular: false);
 
           // Attempt authenticating user with google credentials
           var account = await googleSignIn.signIn();
@@ -66,8 +64,7 @@ mixin SocialAuthMixin on AuthFacade {
   }
 
   @override
-  Future<Option<AppHttpResponse?>> appleAuthentication(
-      [bool notify = false]) async {
+  Future<Option<AppHttpResponse?>> appleAuthentication([bool notify = false]) async {
     final _conn = await checkInternetConnectivity();
 
     return await _conn.fold(
@@ -75,10 +72,7 @@ mixin SocialAuthMixin on AuthFacade {
       (_) async {
         try {
           final credential = await SignInWithApple.getAppleIDCredential(
-            scopes: [
-              AppleIDAuthorizationScopes.email,
-              AppleIDAuthorizationScopes.fullName
-            ],
+            scopes: [AppleIDAuthorizationScopes.email, AppleIDAuthorizationScopes.fullName],
           );
 
           // Attempt to authenticate the user with apple credentials
@@ -93,8 +87,7 @@ mixin SocialAuthMixin on AuthFacade {
         } on SignInWithAppleNotSupportedException catch (e) {
           return some(AppHttpResponse.failure('${e.message}'));
         } on SignInWithAppleException catch (_) {
-          return some(
-              AppHttpResponse.failure('${FailureResponse.aborted().message}'));
+          return some(AppHttpResponse.failure('${FailureResponse.aborted().message}'));
         }
       },
     );

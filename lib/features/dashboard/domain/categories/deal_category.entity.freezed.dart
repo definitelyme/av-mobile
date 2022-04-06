@@ -23,6 +23,7 @@ class _$DealCategoryTearOff {
       required MediaField asset,
       bool isActive = false,
       required BasicTextField<String?> name,
+      required BasicTextField<String?> slug,
       required BasicTextField<String?> description,
       required BasicTextField<double?> charge,
       required BasicTextField<double?> percentageIncrease,
@@ -34,6 +35,7 @@ class _$DealCategoryTearOff {
       asset: asset,
       isActive: isActive,
       name: name,
+      slug: slug,
       description: description,
       charge: charge,
       percentageIncrease: percentageIncrease,
@@ -53,6 +55,7 @@ mixin _$DealCategory {
   MediaField get asset => throw _privateConstructorUsedError;
   bool get isActive => throw _privateConstructorUsedError;
   BasicTextField<String?> get name => throw _privateConstructorUsedError;
+  BasicTextField<String?> get slug => throw _privateConstructorUsedError;
   BasicTextField<String?> get description => throw _privateConstructorUsedError;
   BasicTextField<double?> get charge => throw _privateConstructorUsedError;
   BasicTextField<double?> get percentageIncrease =>
@@ -77,6 +80,7 @@ abstract class $DealCategoryCopyWith<$Res> {
       MediaField asset,
       bool isActive,
       BasicTextField<String?> name,
+      BasicTextField<String?> slug,
       BasicTextField<String?> description,
       BasicTextField<double?> charge,
       BasicTextField<double?> percentageIncrease,
@@ -99,6 +103,7 @@ class _$DealCategoryCopyWithImpl<$Res> implements $DealCategoryCopyWith<$Res> {
     Object? asset = freezed,
     Object? isActive = freezed,
     Object? name = freezed,
+    Object? slug = freezed,
     Object? description = freezed,
     Object? charge = freezed,
     Object? percentageIncrease = freezed,
@@ -122,6 +127,10 @@ class _$DealCategoryCopyWithImpl<$Res> implements $DealCategoryCopyWith<$Res> {
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as BasicTextField<String?>,
+      slug: slug == freezed
+          ? _value.slug
+          : slug // ignore: cast_nullable_to_non_nullable
               as BasicTextField<String?>,
       description: description == freezed
           ? _value.description
@@ -163,6 +172,7 @@ abstract class _$DealCategoryCopyWith<$Res>
       MediaField asset,
       bool isActive,
       BasicTextField<String?> name,
+      BasicTextField<String?> slug,
       BasicTextField<String?> description,
       BasicTextField<double?> charge,
       BasicTextField<double?> percentageIncrease,
@@ -187,6 +197,7 @@ class __$DealCategoryCopyWithImpl<$Res> extends _$DealCategoryCopyWithImpl<$Res>
     Object? asset = freezed,
     Object? isActive = freezed,
     Object? name = freezed,
+    Object? slug = freezed,
     Object? description = freezed,
     Object? charge = freezed,
     Object? percentageIncrease = freezed,
@@ -210,6 +221,10 @@ class __$DealCategoryCopyWithImpl<$Res> extends _$DealCategoryCopyWithImpl<$Res>
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as BasicTextField<String?>,
+      slug: slug == freezed
+          ? _value.slug
+          : slug // ignore: cast_nullable_to_non_nullable
               as BasicTextField<String?>,
       description: description == freezed
           ? _value.description
@@ -247,6 +262,7 @@ class _$_DealCategory extends _DealCategory {
       required this.asset,
       this.isActive = false,
       required this.name,
+      required this.slug,
       required this.description,
       required this.charge,
       required this.percentageIncrease,
@@ -265,6 +281,8 @@ class _$_DealCategory extends _DealCategory {
   @override
   final BasicTextField<String?> name;
   @override
+  final BasicTextField<String?> slug;
+  @override
   final BasicTextField<String?> description;
   @override
   final BasicTextField<double?> charge;
@@ -279,7 +297,7 @@ class _$_DealCategory extends _DealCategory {
 
   @override
   String toString() {
-    return 'DealCategory(id: $id, asset: $asset, isActive: $isActive, name: $name, description: $description, charge: $charge, percentageIncrease: $percentageIncrease, productsAssigned: $productsAssigned, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'DealCategory(id: $id, asset: $asset, isActive: $isActive, name: $name, slug: $slug, description: $description, charge: $charge, percentageIncrease: $percentageIncrease, productsAssigned: $productsAssigned, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -291,6 +309,7 @@ class _$_DealCategory extends _DealCategory {
             const DeepCollectionEquality().equals(other.asset, asset) &&
             const DeepCollectionEquality().equals(other.isActive, isActive) &&
             const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.slug, slug) &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.charge, charge) &&
@@ -309,6 +328,7 @@ class _$_DealCategory extends _DealCategory {
       const DeepCollectionEquality().hash(asset),
       const DeepCollectionEquality().hash(isActive),
       const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(slug),
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(charge),
       const DeepCollectionEquality().hash(percentageIncrease),
@@ -328,6 +348,7 @@ abstract class _DealCategory extends DealCategory {
       required MediaField asset,
       bool isActive,
       required BasicTextField<String?> name,
+      required BasicTextField<String?> slug,
       required BasicTextField<String?> description,
       required BasicTextField<double?> charge,
       required BasicTextField<double?> percentageIncrease,
@@ -344,6 +365,8 @@ abstract class _DealCategory extends DealCategory {
   bool get isActive;
   @override
   BasicTextField<String?> get name;
+  @override
+  BasicTextField<String?> get slug;
   @override
   BasicTextField<String?> get description;
   @override

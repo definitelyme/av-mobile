@@ -82,7 +82,7 @@ class _$AppDatabase extends AppDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `users` (`id` TEXT, `token` TEXT, `firstName` TEXT, `lastName` TEXT, `fullName` TEXT, `isPrivate` INTEGER, `email` TEXT, `phone` TEXT, `password` TEXT, `oldPassword` TEXT, `confirmation` TEXT, `avatar` TEXT, `active` INTEGER, `accountVerified` INTEGER, `provider` TEXT, `createdBy` INTEGER, `updatedBy` INTEGER, `deletedBy` INTEGER, `createdAt` INTEGER, `updatedAt` INTEGER, `deletedAt` INTEGER, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `users` (`id` TEXT, `token` TEXT, `firstName` TEXT, `lastName` TEXT, `fullName` TEXT, `isPrivate` INTEGER, `email` TEXT, `phone` TEXT, `password` TEXT, `oldPassword` TEXT, `confirmation` TEXT, `countryName` TEXT, `platform` TEXT, `avatar` TEXT, `active` INTEGER, `accountVerified` INTEGER, `provider` TEXT, `createdBy` INTEGER, `updatedBy` INTEGER, `deletedBy` INTEGER, `createdAt` INTEGER, `updatedAt` INTEGER, `deletedAt` INTEGER, PRIMARY KEY (`id`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -115,6 +115,8 @@ class _$UserDAO extends UserDAO {
                   'password': item.password,
                   'oldPassword': item.oldPassword,
                   'confirmation': item.confirmation,
+                  'countryName': item.countryName,
+                  'platform': item.platform,
                   'avatar': item.avatar,
                   'active': item.active == null ? null : (item.active! ? 1 : 0),
                   'accountVerified': item.accountVerified == null
@@ -146,6 +148,8 @@ class _$UserDAO extends UserDAO {
                   'password': item.password,
                   'oldPassword': item.oldPassword,
                   'confirmation': item.confirmation,
+                  'countryName': item.countryName,
+                  'platform': item.platform,
                   'avatar': item.avatar,
                   'active': item.active == null ? null : (item.active! ? 1 : 0),
                   'accountVerified': item.accountVerified == null
@@ -177,6 +181,8 @@ class _$UserDAO extends UserDAO {
                   'password': item.password,
                   'oldPassword': item.oldPassword,
                   'confirmation': item.confirmation,
+                  'countryName': item.countryName,
+                  'platform': item.platform,
                   'avatar': item.avatar,
                   'active': item.active == null ? null : (item.active! ? 1 : 0),
                   'accountVerified': item.accountVerified == null
@@ -221,6 +227,8 @@ class _$UserDAO extends UserDAO {
             password: row['password'] as String?,
             oldPassword: row['oldPassword'] as String?,
             confirmation: row['confirmation'] as String?,
+            countryName: row['countryName'] as String?,
+            platform: row['platform'] as String?,
             avatar: row['avatar'] as String?,
             active: row['active'] == null ? null : (row['active'] as int) != 0,
             accountVerified: row['accountVerified'] == null
@@ -261,6 +269,8 @@ class _$UserDAO extends UserDAO {
             password: row['password'] as String?,
             oldPassword: row['oldPassword'] as String?,
             confirmation: row['confirmation'] as String?,
+            countryName: row['countryName'] as String?,
+            platform: row['platform'] as String?,
             avatar: row['avatar'] as String?,
             active: row['active'] == null ? null : (row['active'] as int) != 0,
             accountVerified: row['accountVerified'] == null
@@ -299,6 +309,8 @@ class _$UserDAO extends UserDAO {
             password: row['password'] as String?,
             oldPassword: row['oldPassword'] as String?,
             confirmation: row['confirmation'] as String?,
+            countryName: row['countryName'] as String?,
+            platform: row['platform'] as String?,
             avatar: row['avatar'] as String?,
             active: row['active'] == null ? null : (row['active'] as int) != 0,
             accountVerified: row['accountVerified'] == null
@@ -343,6 +355,8 @@ class _$UserDAO extends UserDAO {
             password: row['password'] as String?,
             oldPassword: row['oldPassword'] as String?,
             confirmation: row['confirmation'] as String?,
+            countryName: row['countryName'] as String?,
+            platform: row['platform'] as String?,
             avatar: row['avatar'] as String?,
             active: row['active'] == null ? null : (row['active'] as int) != 0,
             accountVerified: row['accountVerified'] == null
@@ -397,34 +411,36 @@ final _authProviderFloorConverter = AuthProviderFloorConverter();
 
 _$_UserDTO _$$_UserDTOFromJson(Map<String, dynamic> json) => _$_UserDTO(
       id: json['_id'] as String?,
-      token: json['Token'] as String?,
+      token: json['token'] as String?,
       firstName: json['firstName'] as String?,
       lastName: json['lastName'] as String?,
       fullName: json['fullName'] as String?,
-      isPrivate: const BooleanSerializer().fromJson(json['IsPrivate']),
-      email: json['Email'] as String?,
+      isPrivate: const BooleanSerializer().fromJson(json['isPrivate']),
+      email: json['email'] as String?,
       phone: json['mobile'] as String?,
-      password: json['Password'] as String?,
+      password: json['password'] as String?,
       oldPassword: json['current_password'] as String?,
       confirmation: json['password_confirmation'] as String?,
-      avatar: json['Avatar'] as String?,
-      active: const BooleanSerializer().fromJson(json['Active']),
+      countryName: json['country'] as String?,
+      platform: json['platform'] as String?,
+      avatar: json['avatar'] as String?,
+      active: const BooleanSerializer().fromJson(json['active']),
       accountVerified:
-          const BooleanSerializer().fromJson(json['AccountVerified']),
+          const BooleanSerializer().fromJson(json['accountVerified']),
       provider:
-          const AuthProviderSerializer().fromJson(json['Provider'] as String?),
+          const AuthProviderSerializer().fromJson(json['provider'] as String?),
       createdBy:
-          const TimestampConverter().fromJson(json['CreatedBy'] as String?),
+          const TimestampConverter().fromJson(json['createdBy'] as String?),
       updatedBy:
-          const TimestampConverter().fromJson(json['UpdatedBy'] as String?),
+          const TimestampConverter().fromJson(json['updatedBy'] as String?),
       deletedBy:
-          const TimestampConverter().fromJson(json['DeletedBy'] as String?),
+          const TimestampConverter().fromJson(json['deletedBy'] as String?),
       createdAt:
-          const TimestampConverter().fromJson(json['CreatedAt'] as String?),
+          const TimestampConverter().fromJson(json['createdAt'] as String?),
       updatedAt:
-          const TimestampConverter().fromJson(json['UpdatedAt'] as String?),
+          const TimestampConverter().fromJson(json['updatedAt'] as String?),
       deletedAt:
-          const TimestampConverter().fromJson(json['DeletedAt'] as String?),
+          const TimestampConverter().fromJson(json['deletedAt'] as String?),
     );
 
 Map<String, dynamic> _$$_UserDTOToJson(_$_UserDTO instance) {
@@ -437,52 +453,54 @@ Map<String, dynamic> _$$_UserDTOToJson(_$_UserDTO instance) {
   }
 
   writeNotNull('_id', instance.id);
-  writeNotNull('Token', instance.token);
+  writeNotNull('token', instance.token);
   writeNotNull('firstName', instance.firstName);
   writeNotNull('lastName', instance.lastName);
   writeNotNull('fullName', instance.fullName);
   writeNotNull(
-      'IsPrivate', const BooleanSerializer().toJson(instance.isPrivate));
-  writeNotNull('Email', instance.email);
+      'isPrivate', const BooleanSerializer().toJson(instance.isPrivate));
+  writeNotNull('email', instance.email);
   writeNotNull('mobile', instance.phone);
-  writeNotNull('Password', instance.password);
+  writeNotNull('password', instance.password);
   writeNotNull('current_password', instance.oldPassword);
   writeNotNull('password_confirmation', instance.confirmation);
-  writeNotNull('Avatar', instance.avatar);
-  writeNotNull('Active', const BooleanSerializer().toJson(instance.active));
-  writeNotNull('AccountVerified',
+  writeNotNull('country', instance.countryName);
+  writeNotNull('platform', instance.platform);
+  writeNotNull('avatar', instance.avatar);
+  writeNotNull('active', const BooleanSerializer().toJson(instance.active));
+  writeNotNull('accountVerified',
       const BooleanSerializer().toJson(instance.accountVerified));
   writeNotNull(
-      'Provider', const AuthProviderSerializer().toJson(instance.provider));
+      'provider', const AuthProviderSerializer().toJson(instance.provider));
   writeNotNull(
-      'CreatedBy', const TimestampConverter().toJson(instance.createdBy));
+      'createdBy', const TimestampConverter().toJson(instance.createdBy));
   writeNotNull(
-      'UpdatedBy', const TimestampConverter().toJson(instance.updatedBy));
+      'updatedBy', const TimestampConverter().toJson(instance.updatedBy));
   writeNotNull(
-      'DeletedBy', const TimestampConverter().toJson(instance.deletedBy));
+      'deletedBy', const TimestampConverter().toJson(instance.deletedBy));
   writeNotNull(
-      'CreatedAt', const TimestampConverter().toJson(instance.createdAt));
+      'createdAt', const TimestampConverter().toJson(instance.createdAt));
   writeNotNull(
-      'UpdatedAt', const TimestampConverter().toJson(instance.updatedAt));
+      'updatedAt', const TimestampConverter().toJson(instance.updatedAt));
   writeNotNull(
-      'DeletedAt', const TimestampConverter().toJson(instance.deletedAt));
+      'deletedAt', const TimestampConverter().toJson(instance.deletedAt));
   return val;
 }
 
 _$_UserListDTO _$$_UserListDTOFromJson(Map<String, dynamic> json) =>
     _$_UserListDTO(
-      data: (json['Data'] as List<dynamic>?)
+      data: (json['data'] as List<dynamic>?)
               ?.map((e) => UserDTO.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      meta: json['Meta'] == null
+      meta: json['meta'] == null
           ? null
-          : MetaDTO.fromJson(json['Meta'] as Map<String, dynamic>),
+          : MetaDTO.fromJson(json['meta'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_UserListDTOToJson(_$_UserListDTO instance) {
   final val = <String, dynamic>{
-    'Data': instance.data.map((e) => e.toJson()).toList(),
+    'data': instance.data.map((e) => e.toJson()).toList(),
   };
 
   void writeNotNull(String key, dynamic value) {
@@ -491,6 +509,6 @@ Map<String, dynamic> _$$_UserListDTOToJson(_$_UserListDTO instance) {
     }
   }
 
-  writeNotNull('Meta', instance.meta?.toJson());
+  writeNotNull('meta', instance.meta?.toJson());
   return val;
 }

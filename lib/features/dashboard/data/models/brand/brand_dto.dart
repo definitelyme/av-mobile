@@ -1,6 +1,5 @@
 import 'package:auctionvillage/features/dashboard/domain/index.dart';
 import 'package:auctionvillage/manager/serializer/serializers.dart';
-import 'package:collection/collection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'brand_dto.g.dart';
@@ -21,8 +20,7 @@ class BrandDTO with _$BrandDTO {
     @TimestampConverter() DateTime? updatedAt,
   }) = _BrandDTO;
 
-  factory BrandDTO.fromJson(Map<String, dynamic> json) =>
-      _$BrandDTOFromJson(json);
+  factory BrandDTO.fromJson(Map<String, dynamic> json) => _$BrandDTOFromJson(json);
 
   /// Maps the Data Transfer Object to a ProductBrandModel Object.
   ProductBrand get domain => ProductBrand.blank(

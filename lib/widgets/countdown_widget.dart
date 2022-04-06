@@ -27,8 +27,7 @@ class CountdownWidget extends StatefulWidget {
   State<CountdownWidget> createState() => _CountdownWidgetState();
 }
 
-class _CountdownWidgetState extends State<CountdownWidget>
-    with AutomaticKeepAliveClientMixin<CountdownWidget> {
+class _CountdownWidgetState extends State<CountdownWidget> with AutomaticKeepAliveClientMixin<CountdownWidget> {
   static const oneSec = Duration(seconds: 1);
 
   late Duration duration;
@@ -51,11 +50,14 @@ class _CountdownWidgetState extends State<CountdownWidget>
   @override
   bool get wantKeepAlive => true;
 
-  String get tick => '${duration.inMinutes} : '
-      '${((duration.inSeconds) % 60).toString().padLeft(2, '0')}';
+  String _twoDigits(int n) => n.toString().padLeft(2, '0');
 
-  Widget get _ticker =>
-      widget.ticker?.call(tick) ?? AdaptiveText(tick, fontSize: 15.0);
+  String get tick => '${duration.inDays > 0 ? '${duration.inDays} days ' : ''}'
+      '${duration.inHours > 0 ? ' ${_twoDigits(duration.inHours.remainder(60))} :' : ''}'
+      '${duration.inMinutes > 0 ? ' ${_twoDigits(duration.inMinutes.remainder(60))} :' : ''}'
+      ' ${_twoDigits(duration.inSeconds.remainder(60))}';
+
+  Widget get _ticker => widget.ticker?.call(tick) ?? AdaptiveText(tick, fontSize: 15.0);
 
   void startCountdown() {
     // Reset Duration

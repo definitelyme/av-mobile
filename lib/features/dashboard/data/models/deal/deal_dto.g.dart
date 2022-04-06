@@ -10,7 +10,7 @@ _$_DealDTO _$$_DealDTOFromJson(Map<String, dynamic> json) => _$_DealDTO(
       meta: json['_meta'] == null
           ? null
           : MetaDTO.fromJson(json['_meta'] as Map<String, dynamic>),
-      data: DealDTOData.fromJson(json['Data'] as Map<String, dynamic>),
+      data: DealDTOData.fromJson(json['data'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_DealDTOToJson(_$_DealDTO instance) {
@@ -23,47 +23,55 @@ Map<String, dynamic> _$$_DealDTOToJson(_$_DealDTO instance) {
   }
 
   writeNotNull('_meta', instance.meta?.toJson());
-  val['Data'] = instance.data.toJson();
+  val['data'] = instance.data.toJson();
   return val;
 }
 
 _$_DealDTOData _$$_DealDTODataFromJson(Map<String, dynamic> json) =>
     _$_DealDTOData(
       id: json['_id'] as String?,
-      basePrice: const DoubleSerializer().fromJson(json['BasePrice']),
-      isPrivate: const BooleanSerializer().fromJson(json['IsPrivate']),
-      status: json['status'] as String?,
-      sponsored: const BooleanSerializer().fromJson(json['Sponsored']),
-      dealPlan: json['plan'] as String?,
-      admittanceFee: const DoubleSerializer().fromJson(json['AdmittanceFee']),
-      clicks: const IntegerSerializer().fromJson(json['Clicks']),
-      dealPriority: const IntegerSerializer().fromJson(json['DealPriority']),
-      bidStatus: json['BidStatus'] as String?,
-      isClosing: const BooleanSerializer().fromJson(json['IsClosing']),
-      active: const BooleanSerializer().fromJson(json['Active']),
+      basePrice: const StringSerializer().fromJson(json['basePrice']),
+      amount: const StringSerializer().fromJson(json['amount']),
+      isPrivate: const BooleanSerializer().fromJson(json['isPrivate']),
+      isFavorite: const BooleanSerializer().fromJson(json['isFavorite']),
+      dealStatus:
+          const DealStatusSerializer().fromJson(json['status'] as String?),
+      sponsored: const BooleanSerializer().fromJson(json['sponsored']),
+      dealPlan:
+          const DealPlanTypeSerializer().fromJson(json['plan'] as String?),
+      admittanceFee: const DoubleSerializer().fromJson(json['admittanceFee']),
+      address: json['address'] as String?,
+      clicks: const IntegerSerializer().fromJson(json['clicks']),
+      dealPriority: const IntegerSerializer().fromJson(json['dealPriority']),
+      bidStatus:
+          const BidStatusSerializer().fromJson(json['bidStatus'] as String?),
+      isClosing: const BooleanSerializer().fromJson(json['isClosing']),
+      active: const BooleanSerializer().fromJson(json['active']),
       lastPriceOffered:
-          const DoubleSerializer().fromJson(json['LastPriceOffered']),
-      offerType: json['OfferType'] as String?,
+          const DoubleSerializer().fromJson(json['lastPriceOffered']),
+      offerType:
+          const OfferTypeSerializer().fromJson(json['offerType'] as String?),
       startDate:
-          const TimestampConverter().fromJson(json['StartDate'] as String?),
-      endDate: const TimestampConverter().fromJson(json['EndDate'] as String?),
-      type: json['Type'] as String?,
-      user: json['User'] == null
+          const TimestampConverter().fromJson(json['startDate'] as String?),
+      endDate: const TimestampConverter().fromJson(json['endDate'] as String?),
+      type: const DealTypeSerializer().fromJson(json['type'] as String?),
+      quantity:
+          const QuantityTypeSerializer().fromJson(json['quantity'] as String?),
+      biddingType: const BiddingTypeSerializer()
+          .fromJson(json['biddingType'] as String?),
+      user: json['user'] == null
           ? null
-          : UserDTO.fromJson(json['User'] as Map<String, dynamic>),
-      vendor: json['Vendor'] == null
+          : UserDTO.fromJson(json['user'] as Map<String, dynamic>),
+      vendor: json['vendor'] == null
           ? null
-          : UserDTO.fromJson(json['Vendor'] as Map<String, dynamic>),
-      product: json['Product'] == null
+          : UserDTO.fromJson(json['vendor'] as Map<String, dynamic>),
+      product: json['product'] == null
           ? null
-          : ProductDTOData.fromJson(json['Product'] as Map<String, dynamic>),
-      category: json['Category'] == null
-          ? null
-          : CategoryDTOData.fromJson(json['Category'] as Map<String, dynamic>),
+          : ProductDTOData.fromJson(json['product'] as Map<String, dynamic>),
       createdAt:
-          const TimestampConverter().fromJson(json['CreatedAt'] as String?),
+          const TimestampConverter().fromJson(json['createdAt'] as String?),
       updatedAt:
-          const TimestampConverter().fromJson(json['UpdatedAt'] as String?),
+          const TimestampConverter().fromJson(json['updatedAt'] as String?),
     );
 
 Map<String, dynamic> _$$_DealDTODataToJson(_$_DealDTOData instance) {
@@ -77,37 +85,47 @@ Map<String, dynamic> _$$_DealDTODataToJson(_$_DealDTOData instance) {
 
   writeNotNull('_id', instance.id);
   writeNotNull(
-      'BasePrice', const DoubleSerializer().toJson(instance.basePrice));
+      'basePrice', const StringSerializer().toJson(instance.basePrice));
+  writeNotNull('amount', const StringSerializer().toJson(instance.amount));
   writeNotNull(
-      'IsPrivate', const BooleanSerializer().toJson(instance.isPrivate));
-  writeNotNull('status', instance.status);
+      'isPrivate', const BooleanSerializer().toJson(instance.isPrivate));
   writeNotNull(
-      'Sponsored', const BooleanSerializer().toJson(instance.sponsored));
-  writeNotNull('plan', instance.dealPlan);
+      'isFavorite', const BooleanSerializer().toJson(instance.isFavorite));
   writeNotNull(
-      'AdmittanceFee', const DoubleSerializer().toJson(instance.admittanceFee));
-  writeNotNull('Clicks', const IntegerSerializer().toJson(instance.clicks));
+      'status', DealStatusSerializer.toJsonString(instance.dealStatus));
   writeNotNull(
-      'DealPriority', const IntegerSerializer().toJson(instance.dealPriority));
-  writeNotNull('BidStatus', instance.bidStatus);
+      'sponsored', const BooleanSerializer().toJson(instance.sponsored));
+  writeNotNull('plan', DealPlanTypeSerializer.toJsonString(instance.dealPlan));
   writeNotNull(
-      'IsClosing', const BooleanSerializer().toJson(instance.isClosing));
-  writeNotNull('Active', const BooleanSerializer().toJson(instance.active));
-  writeNotNull('LastPriceOffered',
+      'admittanceFee', const DoubleSerializer().toJson(instance.admittanceFee));
+  writeNotNull('address', instance.address);
+  writeNotNull('clicks', const IntegerSerializer().toJson(instance.clicks));
+  writeNotNull(
+      'dealPriority', const IntegerSerializer().toJson(instance.dealPriority));
+  writeNotNull(
+      'bidStatus', BidStatusSerializer.toJsonString(instance.bidStatus));
+  writeNotNull(
+      'isClosing', const BooleanSerializer().toJson(instance.isClosing));
+  writeNotNull('active', const BooleanSerializer().toJson(instance.active));
+  writeNotNull('lastPriceOffered',
       const DoubleSerializer().toJson(instance.lastPriceOffered));
-  writeNotNull('OfferType', instance.offerType);
   writeNotNull(
-      'StartDate', const TimestampConverter().toJson(instance.startDate));
-  writeNotNull('EndDate', const TimestampConverter().toJson(instance.endDate));
-  writeNotNull('Type', instance.type);
-  writeNotNull('User', instance.user?.toJson());
-  writeNotNull('Vendor', instance.vendor?.toJson());
-  writeNotNull('Product', instance.product?.toJson());
-  writeNotNull('Category', instance.category?.toJson());
+      'offerType', OfferTypeSerializer.toJsonString(instance.offerType));
   writeNotNull(
-      'CreatedAt', const TimestampConverter().toJson(instance.createdAt));
+      'startDate', const TimestampConverter().toJson(instance.startDate));
+  writeNotNull('endDate', const TimestampConverter().toJson(instance.endDate));
+  writeNotNull('type', DealTypeSerializer.toJsonString(instance.type));
   writeNotNull(
-      'UpdatedAt', const TimestampConverter().toJson(instance.updatedAt));
+      'quantity', QuantityTypeSerializer.toJsonString(instance.quantity));
+  writeNotNull(
+      'biddingType', BiddingTypeSerializer.toJsonString(instance.biddingType));
+  writeNotNull('user', instance.user?.toJson());
+  writeNotNull('vendor', instance.vendor?.toJson());
+  writeNotNull('product', instance.product?.toJson());
+  writeNotNull(
+      'createdAt', const TimestampConverter().toJson(instance.createdAt));
+  writeNotNull(
+      'updatedAt', const TimestampConverter().toJson(instance.updatedAt));
   return val;
 }
 
@@ -116,7 +134,7 @@ _$_DealListDTO _$$_DealListDTOFromJson(Map<String, dynamic> json) =>
       meta: json['_meta'] == null
           ? null
           : MetaDTO.fromJson(json['_meta'] as Map<String, dynamic>),
-      data: (json['Data'] as List<dynamic>?)
+      data: (json['data'] as List<dynamic>?)
               ?.map((e) => DealDTOData.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
@@ -132,6 +150,6 @@ Map<String, dynamic> _$$_DealListDTOToJson(_$_DealListDTO instance) {
   }
 
   writeNotNull('_meta', instance.meta?.toJson());
-  val['Data'] = instance.data.map((e) => e.toJson()).toList();
+  val['data'] = instance.data.map((e) => e.toJson()).toList();
   return val;
 }

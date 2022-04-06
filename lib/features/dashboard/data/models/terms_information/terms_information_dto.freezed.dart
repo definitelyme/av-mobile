@@ -23,15 +23,22 @@ class _$TermsInformationDTOTearOff {
   const _$TermsInformationDTOTearOff();
 
   _TermsInformationDTO call(
-      {int? yearOfPurchase,
-      @BooleanSerializer() bool? repairHistory,
-      @BooleanSerializer() bool? refundPolicy,
-      @BooleanSerializer() bool? warranty}) {
+      {@StringSerializer()
+          int? yearOfPurchase,
+      @JsonKey(toJson: BooleanSerializer.toJsonString)
+      @BooleanSerializer()
+          bool? repairHistory,
+      @JsonKey(toJson: BooleanSerializer.toJsonString)
+      @BooleanSerializer()
+          bool? refundPolicy,
+      String? warranty,
+      String? otherInfo}) {
     return _TermsInformationDTO(
       yearOfPurchase: yearOfPurchase,
       repairHistory: repairHistory,
       refundPolicy: refundPolicy,
       warranty: warranty,
+      otherInfo: otherInfo,
     );
   }
 
@@ -45,13 +52,16 @@ const $TermsInformationDTO = _$TermsInformationDTOTearOff();
 
 /// @nodoc
 mixin _$TermsInformationDTO {
+  @StringSerializer()
   int? get yearOfPurchase => throw _privateConstructorUsedError;
+  @JsonKey(toJson: BooleanSerializer.toJsonString)
   @BooleanSerializer()
   bool? get repairHistory => throw _privateConstructorUsedError;
+  @JsonKey(toJson: BooleanSerializer.toJsonString)
   @BooleanSerializer()
   bool? get refundPolicy => throw _privateConstructorUsedError;
-  @BooleanSerializer()
-  bool? get warranty => throw _privateConstructorUsedError;
+  String? get warranty => throw _privateConstructorUsedError;
+  String? get otherInfo => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -65,10 +75,16 @@ abstract class $TermsInformationDTOCopyWith<$Res> {
           TermsInformationDTO value, $Res Function(TermsInformationDTO) then) =
       _$TermsInformationDTOCopyWithImpl<$Res>;
   $Res call(
-      {int? yearOfPurchase,
-      @BooleanSerializer() bool? repairHistory,
-      @BooleanSerializer() bool? refundPolicy,
-      @BooleanSerializer() bool? warranty});
+      {@StringSerializer()
+          int? yearOfPurchase,
+      @JsonKey(toJson: BooleanSerializer.toJsonString)
+      @BooleanSerializer()
+          bool? repairHistory,
+      @JsonKey(toJson: BooleanSerializer.toJsonString)
+      @BooleanSerializer()
+          bool? refundPolicy,
+      String? warranty,
+      String? otherInfo});
 }
 
 /// @nodoc
@@ -86,6 +102,7 @@ class _$TermsInformationDTOCopyWithImpl<$Res>
     Object? repairHistory = freezed,
     Object? refundPolicy = freezed,
     Object? warranty = freezed,
+    Object? otherInfo = freezed,
   }) {
     return _then(_value.copyWith(
       yearOfPurchase: yearOfPurchase == freezed
@@ -103,7 +120,11 @@ class _$TermsInformationDTOCopyWithImpl<$Res>
       warranty: warranty == freezed
           ? _value.warranty
           : warranty // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as String?,
+      otherInfo: otherInfo == freezed
+          ? _value.otherInfo
+          : otherInfo // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -116,10 +137,16 @@ abstract class _$TermsInformationDTOCopyWith<$Res>
       __$TermsInformationDTOCopyWithImpl<$Res>;
   @override
   $Res call(
-      {int? yearOfPurchase,
-      @BooleanSerializer() bool? repairHistory,
-      @BooleanSerializer() bool? refundPolicy,
-      @BooleanSerializer() bool? warranty});
+      {@StringSerializer()
+          int? yearOfPurchase,
+      @JsonKey(toJson: BooleanSerializer.toJsonString)
+      @BooleanSerializer()
+          bool? repairHistory,
+      @JsonKey(toJson: BooleanSerializer.toJsonString)
+      @BooleanSerializer()
+          bool? refundPolicy,
+      String? warranty,
+      String? otherInfo});
 }
 
 /// @nodoc
@@ -139,6 +166,7 @@ class __$TermsInformationDTOCopyWithImpl<$Res>
     Object? repairHistory = freezed,
     Object? refundPolicy = freezed,
     Object? warranty = freezed,
+    Object? otherInfo = freezed,
   }) {
     return _then(_TermsInformationDTO(
       yearOfPurchase: yearOfPurchase == freezed
@@ -156,7 +184,11 @@ class __$TermsInformationDTOCopyWithImpl<$Res>
       warranty: warranty == freezed
           ? _value.warranty
           : warranty // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as String?,
+      otherInfo: otherInfo == freezed
+          ? _value.otherInfo
+          : otherInfo // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -165,30 +197,40 @@ class __$TermsInformationDTOCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_TermsInformationDTO extends _TermsInformationDTO {
   _$_TermsInformationDTO(
-      {this.yearOfPurchase,
-      @BooleanSerializer() this.repairHistory,
-      @BooleanSerializer() this.refundPolicy,
-      @BooleanSerializer() this.warranty})
+      {@StringSerializer()
+          this.yearOfPurchase,
+      @JsonKey(toJson: BooleanSerializer.toJsonString)
+      @BooleanSerializer()
+          this.repairHistory,
+      @JsonKey(toJson: BooleanSerializer.toJsonString)
+      @BooleanSerializer()
+          this.refundPolicy,
+      this.warranty,
+      this.otherInfo})
       : super._();
 
   factory _$_TermsInformationDTO.fromJson(Map<String, dynamic> json) =>
       _$$_TermsInformationDTOFromJson(json);
 
   @override
+  @StringSerializer()
   final int? yearOfPurchase;
   @override
+  @JsonKey(toJson: BooleanSerializer.toJsonString)
   @BooleanSerializer()
   final bool? repairHistory;
   @override
+  @JsonKey(toJson: BooleanSerializer.toJsonString)
   @BooleanSerializer()
   final bool? refundPolicy;
   @override
-  @BooleanSerializer()
-  final bool? warranty;
+  final String? warranty;
+  @override
+  final String? otherInfo;
 
   @override
   String toString() {
-    return 'TermsInformationDTO(yearOfPurchase: $yearOfPurchase, repairHistory: $repairHistory, refundPolicy: $refundPolicy, warranty: $warranty)';
+    return 'TermsInformationDTO(yearOfPurchase: $yearOfPurchase, repairHistory: $repairHistory, refundPolicy: $refundPolicy, warranty: $warranty, otherInfo: $otherInfo)';
   }
 
   @override
@@ -202,7 +244,8 @@ class _$_TermsInformationDTO extends _TermsInformationDTO {
                 .equals(other.repairHistory, repairHistory) &&
             const DeepCollectionEquality()
                 .equals(other.refundPolicy, refundPolicy) &&
-            const DeepCollectionEquality().equals(other.warranty, warranty));
+            const DeepCollectionEquality().equals(other.warranty, warranty) &&
+            const DeepCollectionEquality().equals(other.otherInfo, otherInfo));
   }
 
   @override
@@ -211,7 +254,8 @@ class _$_TermsInformationDTO extends _TermsInformationDTO {
       const DeepCollectionEquality().hash(yearOfPurchase),
       const DeepCollectionEquality().hash(repairHistory),
       const DeepCollectionEquality().hash(refundPolicy),
-      const DeepCollectionEquality().hash(warranty));
+      const DeepCollectionEquality().hash(warranty),
+      const DeepCollectionEquality().hash(otherInfo));
 
   @JsonKey(ignore: true)
   @override
@@ -227,26 +271,36 @@ class _$_TermsInformationDTO extends _TermsInformationDTO {
 
 abstract class _TermsInformationDTO extends TermsInformationDTO {
   factory _TermsInformationDTO(
-      {int? yearOfPurchase,
-      @BooleanSerializer() bool? repairHistory,
-      @BooleanSerializer() bool? refundPolicy,
-      @BooleanSerializer() bool? warranty}) = _$_TermsInformationDTO;
+      {@StringSerializer()
+          int? yearOfPurchase,
+      @JsonKey(toJson: BooleanSerializer.toJsonString)
+      @BooleanSerializer()
+          bool? repairHistory,
+      @JsonKey(toJson: BooleanSerializer.toJsonString)
+      @BooleanSerializer()
+          bool? refundPolicy,
+      String? warranty,
+      String? otherInfo}) = _$_TermsInformationDTO;
   _TermsInformationDTO._() : super._();
 
   factory _TermsInformationDTO.fromJson(Map<String, dynamic> json) =
       _$_TermsInformationDTO.fromJson;
 
   @override
+  @StringSerializer()
   int? get yearOfPurchase;
   @override
+  @JsonKey(toJson: BooleanSerializer.toJsonString)
   @BooleanSerializer()
   bool? get repairHistory;
   @override
+  @JsonKey(toJson: BooleanSerializer.toJsonString)
   @BooleanSerializer()
   bool? get refundPolicy;
   @override
-  @BooleanSerializer()
-  bool? get warranty;
+  String? get warranty;
+  @override
+  String? get otherInfo;
   @override
   @JsonKey(ignore: true)
   _$TermsInformationDTOCopyWith<_TermsInformationDTO> get copyWith =>

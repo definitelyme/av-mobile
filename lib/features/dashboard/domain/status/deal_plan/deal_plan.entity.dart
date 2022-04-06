@@ -1,55 +1,45 @@
 library deal_plan.entity.dart;
 
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/built_value.dart';
-import 'package:json_annotation/json_annotation.dart';
+import 'package:auctionvillage/core/domain/entities/entities.dart';
+import 'package:auctionvillage/features/dashboard/domain/index.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:kt_dart/collection.dart';
 
-part 'deal_plan.entity.g.dart';
+part 'deal_plan.entity.freezed.dart';
 
-class DealPlan extends EnumClass {
-  static const DealPlan basic = _$basic;
-  static const DealPlan professional = _$professional;
-  static const DealPlan enterprise = _$enterprise;
-  @BuiltValueEnumConst(fallback: true)
-  static const DealPlan free = _$free;
+@immutable
+@Freezed(maybeMap: false, maybeWhen: false)
+class DealPlan extends BaseEntity with _$DealPlan {
+  const DealPlan._();
 
-  const DealPlan._(String name) : super(name);
+  const factory DealPlan({
+    required UniqueId<String?> id,
+    required AmountField<double> amount,
+    required BasicTextField<int?> priority,
+    @Default(KtList.empty()) KtList<String?> features,
+    @Default(DealPlanType.free) DealPlanType name,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  }) = _DealPlan;
 
-  static BuiltSet<DealPlan> get values => _$values;
+  bool get isRecommended => name == DealPlanType.professional;
 
-  static DealPlan valueOf(String name) => _$valueOf(name);
-
-  @override
-  String toString() => '$name';
-}
-
-class DealPlanSerializer implements JsonConverter<DealPlan?, String?> {
-  const DealPlanSerializer();
-
-  @override
-  DealPlan fromJson(String? value) => DealPlan.valueOf('$value'.toUpperCase());
-
-  @override
-  String? toJson(DealPlan? instance) => '${instance?.name}';
-}
-
-extension DealPlanX on DealPlan {
-  T when<T>({
-    required T Function() basic,
-    required T Function() professional,
-    required T Function() enterprise,
-    required T Function() free,
-  }) {
-    switch (this) {
-      case DealPlan.basic:
-        return basic.call();
-      case DealPlan.professional:
-        return professional.call();
-      case DealPlan.enterprise:
-        return enterprise.call();
-      case DealPlan.free:
-      default:
-        return free.call();
-    }
-  }
+  factory DealPlan.blank({
+    String? id,
+    double? amount,
+    int? priority,
+    List<String> features = const [],
+    DealPlanType? name,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  }) =>
+      DealPlan(
+        id: UniqueId.fromExternal(id),
+        amount: AmountField(amount ?? 0),
+        priority: BasicTextField(priority),
+        features: KtList.from(features),
+        name: name ?? DealPlanType.free,
+        createdAt: createdAt,
+        updatedAt: updatedAt,
+      );
 }

@@ -86,6 +86,8 @@ dependencies:
   freezed_annotation: ^1.1.0
   # For generating unique UUIDs
   uuid: ^3.0.6
+  # Dart library for validating and sanitizing strings, especially those from user input.
+  string_validator: ^0.3.0
   # Flutter widget that automatically resizes text to fit perfectly within its bounds
   auto_size_text: ^3.0.0
   # simplifies dependency injection
@@ -129,6 +131,8 @@ dependencies:
   another_flushbar: ^1.10.28
   # A simple API to format dates.
   date_format: ^2.0.5
+  # in intl / international format uses Google's libphonenumber
+  intl_phone_number_input: ^0.7.0+2
   # A flutter library to show images from the internet
   # and keep them in the cache directory.
   cached_network_image: ^3.2.0
@@ -189,6 +193,17 @@ dependencies:
   # Photo View provides a gesture sensitive zoomable widget.
   # Photo View is largely used to show interactive images and other stuff such as SVG.
   photo_view: ^0.13.0
+  # A date time picker for flutter, you can choose date / time / date&time in English Dutch and Chinese,
+  # and you can also custom your own picker content
+  flutter_datetime_picker: ^1.5.1
+  # A package of formatters for international phone numbers, credit / debit cards and a masked formatter
+  flutter_multi_formatter: ^2.5.1
+  # A JSON file-based storage package provides a persistent repository for simple NoSQL database.
+  localstore: ^1.2.3
+  # NoSQL persistent embedded file system document-based database for Dart VM and Flutter with encryption support.
+  sembast: ^3.2.0
+  # This package allows you to upload media files directly to cloudinary, without exposing your apiKey or secretKey.
+  cloudinary_public: ^0.11.0
 
 dependency_overrides:
   async: ^2.8.2
@@ -231,6 +246,7 @@ flutter:
     - assets/images/
     - assets/images/logo/
     - assets/images/dashboard/
+    - assets/images/dashboard/card_logos/
     - assets/svgs/
     - assets/svgs/auth/
     - assets/svgs/logo/

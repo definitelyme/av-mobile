@@ -1,4 +1,6 @@
+typedef ProgressReport = void Function(int count, int total);
 typedef AwaitCallback = void Function(bool);
+typedef EndOfListCallback = void Function();
 
 abstract class BaseProgressAdapter {
   /// Final size of the download. If count is unknown this will be null.
@@ -16,16 +18,16 @@ abstract class BaseProgressAdapter {
 
   void listen(AwaitCallback it);
 
-  BaseProgressAdapter(this.count, this.downloaded);
+  const BaseProgressAdapter(this.count, this.downloaded);
 }
 
 class SendProgressCallback extends BaseProgressAdapter {
-  SendProgressCallback(int? count, int downloaded) : super(count, downloaded);
+  const SendProgressCallback(int? count, int downloaded) : super(count, downloaded);
 
   @override
   double? get progress {
-    if (count == null || downloaded > count!) return null;
-    return downloaded / count!;
+    if (count == null || downloaded < count!) return null;
+    return count! / downloaded;
   }
 
   @override
@@ -39,13 +41,12 @@ class SendProgressCallback extends BaseProgressAdapter {
 }
 
 class ReceiveProgressCallback extends BaseProgressAdapter {
-  ReceiveProgressCallback(int? count, int downloaded)
-      : super(count, downloaded);
+  const ReceiveProgressCallback(int? count, int downloaded) : super(count, downloaded);
 
   @override
   double? get progress {
-    if (count == null || downloaded > count!) return null;
-    return downloaded / count!;
+    if (count == null || downloaded < count!) return null;
+    return count! / downloaded;
   }
 
   @override

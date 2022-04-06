@@ -8,11 +8,14 @@ part of country_dto.dart;
 
 _$_CountryDTO _$$_CountryDTOFromJson(Map<String, dynamic> json) =>
     _$_CountryDTO(
-      id: json['Id'] as String?,
-      name: json['Name'] as String?,
-      iso2: json['Iso2'] as String?,
-      iso3: json['Iso3'] as String?,
-      dialCode: json['phone_code'] as String?,
+      id: json['id'] as String?,
+      name: json['name'] as String?,
+      iso: json['isoCode'] as String?,
+      dialCode: json['dialCode'] as String?,
+      flagUrl: json['flag'] as String?,
+      currency:
+          const CurrencyTypeSerializer().fromJson(json['currency'] as String?),
+      currencyIcon: json['currency_icon'] as String?,
     );
 
 Map<String, dynamic> _$$_CountryDTOToJson(_$_CountryDTO instance) {
@@ -24,10 +27,13 @@ Map<String, dynamic> _$$_CountryDTOToJson(_$_CountryDTO instance) {
     }
   }
 
-  writeNotNull('Id', instance.id);
-  writeNotNull('Name', instance.name);
-  writeNotNull('Iso2', instance.iso2);
-  writeNotNull('Iso3', instance.iso3);
-  writeNotNull('phone_code', instance.dialCode);
+  writeNotNull('id', instance.id);
+  writeNotNull('name', instance.name);
+  writeNotNull('isoCode', instance.iso);
+  writeNotNull('dialCode', instance.dialCode);
+  writeNotNull('flag', instance.flagUrl);
+  writeNotNull(
+      'currency', const CurrencyTypeSerializer().toJson(instance.currency));
+  writeNotNull('currency_icon', instance.currencyIcon);
   return val;
 }

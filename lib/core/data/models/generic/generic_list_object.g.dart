@@ -11,9 +11,9 @@ GenericListDTO<T> _$GenericListDTOFromJson<T>(
   T Function(Object? json) fromJsonT,
 ) =>
     GenericListDTO<T>(
-      data: (json['Data'] as List<dynamic>).map(fromJsonT).toList(),
+      data: (json['data'] as List<dynamic>).map(fromJsonT).toList(),
       meta: json['_meta'] == null
-          ? []
+          ? null
           : MetaDTO.fromJson(json['_meta'] as Map<String, dynamic>),
     );
 
@@ -22,7 +22,7 @@ Map<String, dynamic> _$GenericListDTOToJson<T>(
   Object? Function(T value) toJsonT,
 ) {
   final val = <String, dynamic>{
-    'Data': instance.data.map(toJsonT).toList(),
+    'data': instance.data.map(toJsonT).toList(),
   };
 
   void writeNotNull(String key, dynamic value) {

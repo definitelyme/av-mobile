@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:auctionvillage/core/data/index.dart';
 import 'package:auctionvillage/core/domain/entities/entities.dart';
 import 'package:auctionvillage/core/domain/response/index.dart';
+import 'package:auctionvillage/features/dashboard/domain/index.dart';
 import 'package:auctionvillage/manager/locator/locator.dart';
 import 'package:auctionvillage/utils/utils.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -35,7 +36,8 @@ abstract class AuthFacade {
     required Phone phone,
   });
 
-  Future<AppHttpResponse> updateProfile({
+  Future<AppHttpResponse> updateProfile(
+    User user, {
     DisplayName firstName,
     DisplayName lastName,
     EmailAddress email,
@@ -84,6 +86,8 @@ abstract class AuthFacade {
 
   Future<AppHttpResponse> deleteAccount();
 
+  Future<Either<AppHttpResponse, UserWallet>> wallet();
+
   Future<void> sleep();
 
   Future<Either<AppHttpResponse, Option<User?>>> retrieveAndCacheUpdatedUser({
@@ -93,18 +97,13 @@ abstract class AuthFacade {
   });
 
   Future<Either<AppHttpResponse, bool>> checkInternetConnectivity() async {
-    final isConnected = (await getIt<Connectivity>().checkConnectivity()) !=
-        ConnectivityResult.none;
+    final isConnected = (await getIt<Connectivity>().checkConnectivity()) != ConnectivityResult.none;
 
-    if (!isConnected)
-      return left(AppHttpResponse(
-          AnyResponse.fromFailure(const NetworkFailure.notConnected())));
+    if (!isConnected) return left(AppHttpResponse(AnyResponse.fromFailure(const NetworkFailure.notConnected())));
 
     final hasInternet = await getIt<InternetConnectionChecker>().hasConnection;
 
-    if (isConnected && !hasInternet)
-      return left(AppHttpResponse(
-          AnyResponse.fromFailure(const NetworkFailure.poorInternet())));
+    if (isConnected && !hasInternet) return left(AppHttpResponse(AnyResponse.fromFailure(const NetworkFailure.poorInternet())));
 
     return right(isConnected && hasInternet);
   }
@@ -121,9 +120,7 @@ abstract class AuthFacade {
       case AppNetworkExceptionReason.responseError:
       default:
         // Log Unknown Exceptions to Firebase Analytics
-        await env.flavor.fold(
-            prod: () => App.reportFlutterError(e, trace,
-                reason: 'Probably an invalid access token'));
+        await env.flavor.fold(prod: () => App.reportFlutterError(e, trace, reason: 'Probably an invalid access token'));
 
         // Log the user of if access token has expired
         return await e.fold(

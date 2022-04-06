@@ -27,6 +27,7 @@ class _$UserTearOff {
       required Phone phone,
       required Password password,
       required MediaField photo,
+      Country? country,
       bool isPrivate = false,
       AuthProvider provider = AuthProvider.regular,
       bool? active = false,
@@ -43,6 +44,7 @@ class _$UserTearOff {
       phone: phone,
       password: password,
       photo: photo,
+      country: country,
       isPrivate: isPrivate,
       provider: provider,
       active: active,
@@ -67,6 +69,7 @@ mixin _$User {
   Phone get phone => throw _privateConstructorUsedError;
   Password get password => throw _privateConstructorUsedError;
   MediaField get photo => throw _privateConstructorUsedError;
+  Country? get country => throw _privateConstructorUsedError;
   bool get isPrivate => throw _privateConstructorUsedError;
   AuthProvider get provider => throw _privateConstructorUsedError;
   bool? get active => throw _privateConstructorUsedError;
@@ -92,6 +95,7 @@ abstract class $UserCopyWith<$Res> {
       Phone phone,
       Password password,
       MediaField photo,
+      Country? country,
       bool isPrivate,
       AuthProvider provider,
       bool? active,
@@ -99,6 +103,8 @@ abstract class $UserCopyWith<$Res> {
       DateTime? createdAt,
       DateTime? updatedAt,
       DateTime? deletedAt});
+
+  $CountryCopyWith<$Res>? get country;
 }
 
 /// @nodoc
@@ -119,6 +125,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
     Object? phone = freezed,
     Object? password = freezed,
     Object? photo = freezed,
+    Object? country = freezed,
     Object? isPrivate = freezed,
     Object? provider = freezed,
     Object? active = freezed,
@@ -160,6 +167,10 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
           ? _value.photo
           : photo // ignore: cast_nullable_to_non_nullable
               as MediaField,
+      country: country == freezed
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
+              as Country?,
       isPrivate: isPrivate == freezed
           ? _value.isPrivate
           : isPrivate // ignore: cast_nullable_to_non_nullable
@@ -190,6 +201,17 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
               as DateTime?,
     ));
   }
+
+  @override
+  $CountryCopyWith<$Res>? get country {
+    if (_value.country == null) {
+      return null;
+    }
+
+    return $CountryCopyWith<$Res>(_value.country!, (value) {
+      return _then(_value.copyWith(country: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -206,6 +228,7 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       Phone phone,
       Password password,
       MediaField photo,
+      Country? country,
       bool isPrivate,
       AuthProvider provider,
       bool? active,
@@ -213,6 +236,9 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       DateTime? createdAt,
       DateTime? updatedAt,
       DateTime? deletedAt});
+
+  @override
+  $CountryCopyWith<$Res>? get country;
 }
 
 /// @nodoc
@@ -234,6 +260,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object? phone = freezed,
     Object? password = freezed,
     Object? photo = freezed,
+    Object? country = freezed,
     Object? isPrivate = freezed,
     Object? provider = freezed,
     Object? active = freezed,
@@ -275,6 +302,10 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           ? _value.photo
           : photo // ignore: cast_nullable_to_non_nullable
               as MediaField,
+      country: country == freezed
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
+              as Country?,
       isPrivate: isPrivate == freezed
           ? _value.isPrivate
           : isPrivate // ignore: cast_nullable_to_non_nullable
@@ -319,6 +350,7 @@ class _$_User extends _User with DiagnosticableTreeMixin {
       required this.phone,
       required this.password,
       required this.photo,
+      this.country,
       this.isPrivate = false,
       this.provider = AuthProvider.regular,
       this.active = false,
@@ -344,6 +376,8 @@ class _$_User extends _User with DiagnosticableTreeMixin {
   final Password password;
   @override
   final MediaField photo;
+  @override
+  final Country? country;
   @JsonKey()
   @override
   final bool isPrivate;
@@ -365,7 +399,7 @@ class _$_User extends _User with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'User(id: $id, firstName: $firstName, lastName: $lastName, name: $name, email: $email, phone: $phone, password: $password, photo: $photo, isPrivate: $isPrivate, provider: $provider, active: $active, accountVerified: $accountVerified, createdAt: $createdAt, updatedAt: $updatedAt, deletedAt: $deletedAt)';
+    return 'User(id: $id, firstName: $firstName, lastName: $lastName, name: $name, email: $email, phone: $phone, password: $password, photo: $photo, country: $country, isPrivate: $isPrivate, provider: $provider, active: $active, accountVerified: $accountVerified, createdAt: $createdAt, updatedAt: $updatedAt, deletedAt: $deletedAt)';
   }
 
   @override
@@ -381,6 +415,7 @@ class _$_User extends _User with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('phone', phone))
       ..add(DiagnosticsProperty('password', password))
       ..add(DiagnosticsProperty('photo', photo))
+      ..add(DiagnosticsProperty('country', country))
       ..add(DiagnosticsProperty('isPrivate', isPrivate))
       ..add(DiagnosticsProperty('provider', provider))
       ..add(DiagnosticsProperty('active', active))
@@ -403,6 +438,7 @@ class _$_User extends _User with DiagnosticableTreeMixin {
             const DeepCollectionEquality().equals(other.phone, phone) &&
             const DeepCollectionEquality().equals(other.password, password) &&
             const DeepCollectionEquality().equals(other.photo, photo) &&
+            const DeepCollectionEquality().equals(other.country, country) &&
             const DeepCollectionEquality().equals(other.isPrivate, isPrivate) &&
             const DeepCollectionEquality().equals(other.provider, provider) &&
             const DeepCollectionEquality().equals(other.active, active) &&
@@ -424,6 +460,7 @@ class _$_User extends _User with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(phone),
       const DeepCollectionEquality().hash(password),
       const DeepCollectionEquality().hash(photo),
+      const DeepCollectionEquality().hash(country),
       const DeepCollectionEquality().hash(isPrivate),
       const DeepCollectionEquality().hash(provider),
       const DeepCollectionEquality().hash(active),
@@ -448,6 +485,7 @@ abstract class _User extends User {
       required Phone phone,
       required Password password,
       required MediaField photo,
+      Country? country,
       bool isPrivate,
       AuthProvider provider,
       bool? active,
@@ -473,6 +511,8 @@ abstract class _User extends User {
   Password get password;
   @override
   MediaField get photo;
+  @override
+  Country? get country;
   @override
   bool get isPrivate;
   @override

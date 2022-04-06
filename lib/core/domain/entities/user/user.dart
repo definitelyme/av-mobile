@@ -23,6 +23,7 @@ class User extends BaseEntity with _$User {
     required Phone phone,
     required Password password,
     required MediaField photo,
+    Country? country,
     @Default(false) bool isPrivate,
     @Default(AuthProvider.regular) AuthProvider provider,
     @Default(false) bool? active,
@@ -33,15 +34,12 @@ class User extends BaseEntity with _$User {
   }) = _User;
 
   DisplayName get fullName {
-    return name ??
-        lastName.getOrNull
-            ?.let((it) => DisplayName('${firstName.getOrEmpty} $it')) ??
-        DisplayName('${firstName.getOrEmpty}');
+    return name?.getOrNull != null
+        ? name!
+        : lastName.getOrNull?.let((it) => DisplayName('${firstName.getOrEmpty} $it')) ?? DisplayName('${firstName.getOrEmpty}');
   }
 
-  String? get sharelink => fullName.isValid
-      ? 'AmatNow.com/${fullName.getOrEmpty?.toLowerCase().trimWhiteSpaces()}'
-      : null;
+  String? get sharelink => fullName.isValid ? 'AmatNow.com/${fullName.getOrEmpty?.toLowerCase().trimWhiteSpaces()}' : null;
 
   bool get isEmptyObj => this == User.blank();
 
@@ -70,19 +68,13 @@ class User extends BaseEntity with _$User {
       .andThen(phone.mapped)
       .fold((f) => some(f), (_) => none());
 
-  Option<FieldObjectException<dynamic>> get login =>
-      email.mapped.andThen(password.mapped).fold((f) => some(f), (_) => none());
+  Option<FieldObjectException<dynamic>> get login => email.mapped.andThen(password.mapped).fold((f) => some(f), (_) => none());
 
-  Option<FieldObjectException<dynamic>> get reset =>
-      phone.mapped.andThen(password.mapped).fold((f) => some(f), (_) => none());
+  Option<FieldObjectException<dynamic>> get reset => phone.mapped.andThen(password.mapped).fold((f) => some(f), (_) => none());
 
-  Option<FieldObjectException<dynamic>> get profile => firstName.mapped
-      .andThen(lastName.mapped)
-      .andThen(email.mapped)
-      .fold((f) => some(f), (_) => none());
+  Option<FieldObjectException<dynamic>> get profile =>
+      firstName.mapped.andThen(lastName.mapped).andThen(email.mapped).fold((f) => some(f), (_) => none());
 
-  Option<FieldObjectException<dynamic>> get socials => firstName.mapped
-      .andThen(lastName.mapped)
-      .andThen(phone.mapped)
-      .fold((f) => some(f), (_) => none());
+  Option<FieldObjectException<dynamic>> get socials =>
+      firstName.mapped.andThen(lastName.mapped).andThen(phone.mapped).fold((f) => some(f), (_) => none());
 }

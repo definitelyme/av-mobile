@@ -15,7 +15,7 @@ import 'package:injectable/injectable.dart';
 
 @singleton
 class AuthRemoteDatasource {
-  static const String profileImgKey = 'image';
+  static const String profileImgKey = 'avatar';
   static const String socialsTokenKey = 'token';
 
   final AppHttpClient _dio;
@@ -44,9 +44,7 @@ class AuthRemoteDatasource {
 
   Future<Response<dynamic>> resendPhoneVerification(String? phone) {
     // Generate Form Data for request
-    final data = FormData.fromMap(
-        UserDTO(phone: phone?.trim().removeNewLines().trimWhiteSpaces())
-            .toJson());
+    final data = FormData.fromMap(UserDTO(phone: phone?.trim().removeNewLines().trimWhiteSpaces()).toJson());
     // Perform POST request based on role / user_type
     return _dio.post(EndPoints.RESEND_PHONE_VERIFICATION, data: data);
   }
@@ -56,8 +54,7 @@ class AuthRemoteDatasource {
     required String? token,
   }) async {
     // Convert data to DTO
-    final dto = UserDTO(
-        phone: phone?.trim().removeNewLines().trimWhiteSpaces(), token: token);
+    final dto = UserDTO(phone: phone?.trim().removeNewLines().trimWhiteSpaces(), token: token);
     // Generate Form Data for request
     final data = FormData.fromMap(dto.toJson());
     // Perform POST request based on role / user_type
@@ -66,9 +63,7 @@ class AuthRemoteDatasource {
 
   Future<Response<dynamic>> sendPasswordResetMessage(String? phone) async {
     // Generate Form Data for request
-    final data = FormData.fromMap(
-        UserDTO(phone: phone?.trim().removeNewLines().trimWhiteSpaces())
-            .toJson());
+    final data = FormData.fromMap(UserDTO(phone: phone?.trim().removeNewLines().trimWhiteSpaces()).toJson());
     // Perform request to send password reset email
     return _dio.post(EndPoints.SEND_PASSWORD_RESET_MESSAGE, data: data);
   }
@@ -97,15 +92,13 @@ class AuthRemoteDatasource {
     part?.let((it) => _data.files.add(MapEntry('$profileImgKey', it)));
 
     // Perform PUT request to update user's profile
-    return _dio.post('EndPoints.UPDATE_USER_PROFILE', data: _data);
+    return _dio.post('${EndPoints.UPDATE_USER_PROFILE}/${dto?.id}', data: _data);
     // return _dio.get(EndPoints.SLEEP);
   }
 
   Future<Response<dynamic>> updatePhoneNumber(String? phone) {
     // Generate Form Data for request
-    final _data = FormData.fromMap(
-        UserDTO(phone: phone?.trim().removeNewLines().trimWhiteSpaces())
-            .toJson());
+    final _data = FormData.fromMap(UserDTO(phone: phone?.trim().removeNewLines().trimWhiteSpaces()).toJson());
     // Perform PUT request to update user's profile
     return _dio.post(EndPoints.UPDATE_PHONE, data: _data);
   }
@@ -126,8 +119,7 @@ class AuthRemoteDatasource {
   }
 
   Future<Response<dynamic>> signInWithGoogle(String? token) async {
-    return _dio
-        .post(EndPoints.GOOGLE_SIGNIN, data: {'$socialsTokenKey': token});
+    return _dio.post(EndPoints.GOOGLE_SIGNIN, data: {'$socialsTokenKey': token});
   }
 
   Future<Response<dynamic>> signInWithApple(String? token) async {
@@ -144,20 +136,23 @@ class AuthRemoteDatasource {
     return _dio.delete('EndPoints.DELETE_USER_ACCOUNT');
   }
 
+  Future<Response<dynamic>> userWallet() async {
+    // Perform request to reset user's password
+    return _dio.get(EndPoints.USER_WALLET);
+  }
+
   Future<Either<AppHttpResponse, UserDTO?>> getUser([
     VoidCallback? callback,
   ]) async {
     try {
-      final _result = (await getIt<AppHttpClient>().get(EndPoints.GET_USER))
-          .data as Map<String, dynamic>;
+      final _result = (await getIt<AppHttpClient>().get(EndPoints.GET_USER)).data as Map<String, dynamic>;
 
       final _response = AppHttpResponse.fromJson(_result);
 
       if (_result.containsKey('status')) {
         return _response.response.map(
           info: (info) => left(_response),
-          error: (error) => left(
-              _response.copyWith(response: _response.response, data: _result)),
+          error: (error) => left(_response.copyWith(response: _response.response, data: _result)),
           success: (_) {
             preferences.remove(Const.kPhoneNumberPrefKey);
             return right(RegisteredUserDTO.fromJson(_result).data);
@@ -166,10 +161,10 @@ class AuthRemoteDatasource {
       } else {
         return right(RegisteredUserDTO.fromJson(_result).data);
       }
-    } on AppHttpResponse catch (e, trace) {
-      return _catchBlock(e, callback, trace);
-    } on AppNetworkException catch (e, trace) {
-      return _catchBlock(e.asResponse(), callback, trace);
+    } on AppHttpResponse catch (e, tr) {
+      return _catchBlock(e, callback, tr);
+    } on AppNetworkException catch (e, tr) {
+      return _catchBlock(e.asResponse(), callback, tr);
     }
   }
 

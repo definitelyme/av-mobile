@@ -155,26 +155,19 @@ class AdaptiveTextFormInput extends StatefulWidget {
     Color? cupertinoBorderColorDark,
     Brightness? keyboardAppearance,
   })  : cupertinoPadding = cupertinoPadding ??
-            (prefixIcon != null &&
-                        (prefixMode == OverlayVisibilityMode.always ||
-                            prefixMode == OverlayVisibilityMode.editing)
+            (prefixIcon != null && (prefixMode == OverlayVisibilityMode.always || prefixMode == OverlayVisibilityMode.editing)
                     ? const EdgeInsets.symmetric(horizontal: 0)
                     : Utils.inputPadding)
                 .copyWith(top: 10.0, bottom: 10.0)
                 .merge(materialPadding),
-        borderRadius = borderRadius ??
-            const BorderRadius.all(Radius.circular(Utils.inputBorderRadius)),
+        borderRadius = borderRadius ?? const BorderRadius.all(Radius.circular(Utils.inputBorderRadius)),
         _formType = cupertinoFormType ?? CupertinoFormType.textfield,
         _prefixMode = prefixMode ?? OverlayVisibilityMode.editing,
         _suffixMode = suffixMode ?? OverlayVisibilityMode.editing,
         _clearButtonMode = clearButtonMode ?? OverlayVisibilityMode.never,
-        cupertinoBorderColorLight =
-            cupertinoBorderColorLight ?? Palette.inputLightBorderColor,
-        cupertinoBorderColorDark =
-            cupertinoBorderColorDark ?? Palette.inputDarkBorderColor,
-        keyboardAppearance = keyboardAppearance ??
-            Utils.foldTheme(
-                light: () => Brightness.light, dark: () => Brightness.dark),
+        cupertinoBorderColorLight = cupertinoBorderColorLight ?? Palette.inputLightBorderColor,
+        cupertinoBorderColorDark = cupertinoBorderColorDark ?? Palette.inputDarkBorderColor,
+        keyboardAppearance = keyboardAppearance ?? Utils.foldTheme(light: () => Brightness.light, dark: () => Brightness.dark),
         super(key: key);
 
   AdaptiveTextFormInput.flat({
@@ -247,26 +240,19 @@ class AdaptiveTextFormInput extends StatefulWidget {
     Color? cupertinoBorderColorDark,
     Brightness? keyboardAppearance,
   })  : cupertinoPadding = cupertinoPadding ??
-            (prefixIcon != null &&
-                        (prefixMode == OverlayVisibilityMode.always ||
-                            prefixMode == OverlayVisibilityMode.editing)
+            (prefixIcon != null && (prefixMode == OverlayVisibilityMode.always || prefixMode == OverlayVisibilityMode.editing)
                     ? const EdgeInsets.symmetric(horizontal: 0)
                     : Utils.inputPadding)
                 .copyWith(top: 10.0, bottom: 10.0)
                 .merge(materialPadding),
-        borderRadius = borderRadius ??
-            const BorderRadius.all(Radius.circular(Utils.inputBorderRadius)),
+        borderRadius = borderRadius ?? const BorderRadius.all(Radius.circular(Utils.inputBorderRadius)),
         _formType = CupertinoFormType.flat,
         _prefixMode = prefixMode ?? OverlayVisibilityMode.editing,
         _suffixMode = suffixMode ?? OverlayVisibilityMode.editing,
         _clearButtonMode = clearButtonMode ?? OverlayVisibilityMode.never,
-        cupertinoBorderColorLight =
-            cupertinoBorderColorLight ?? Palette.inputLightBorderColor,
-        cupertinoBorderColorDark =
-            cupertinoBorderColorDark ?? Palette.inputDarkBorderColor,
-        keyboardAppearance = keyboardAppearance ??
-            Utils.foldTheme(
-                light: () => Brightness.light, dark: () => Brightness.dark),
+        cupertinoBorderColorLight = cupertinoBorderColorLight ?? Palette.inputLightBorderColor,
+        cupertinoBorderColorDark = cupertinoBorderColorDark ?? Palette.inputDarkBorderColor,
+        keyboardAppearance = keyboardAppearance ?? Utils.foldTheme(light: () => Brightness.light, dark: () => Brightness.dark),
         super(key: key);
 
   AdaptiveTextFormInput.row({
@@ -339,34 +325,26 @@ class AdaptiveTextFormInput extends StatefulWidget {
     Color? cupertinoBorderColorDark,
     Brightness? keyboardAppearance,
   })  : cupertinoPadding = cupertinoPadding ??
-            (prefixIcon != null &&
-                        (prefixMode == OverlayVisibilityMode.always ||
-                            prefixMode == OverlayVisibilityMode.editing)
+            (prefixIcon != null && (prefixMode == OverlayVisibilityMode.always || prefixMode == OverlayVisibilityMode.editing)
                     ? const EdgeInsets.symmetric(horizontal: 0)
                     : Utils.inputPadding)
                 .copyWith(top: 10.0, bottom: 10.0)
                 .merge(materialPadding),
-        borderRadius = borderRadius ??
-            const BorderRadius.all(Radius.circular(Utils.inputBorderRadius)),
+        borderRadius = borderRadius ?? const BorderRadius.all(Radius.circular(Utils.inputBorderRadius)),
         _formType = CupertinoFormType.row,
         _prefixMode = prefixMode ?? OverlayVisibilityMode.editing,
         _suffixMode = suffixMode ?? OverlayVisibilityMode.editing,
         _clearButtonMode = clearButtonMode ?? OverlayVisibilityMode.never,
-        cupertinoBorderColorLight =
-            cupertinoBorderColorLight ?? CupertinoColors.lightBackgroundGray,
-        cupertinoBorderColorDark = cupertinoBorderColorDark ??
-            CupertinoColors.darkBackgroundGray.withOpacity(0.4),
-        keyboardAppearance = keyboardAppearance ??
-            Utils.foldTheme(
-                light: () => Brightness.light, dark: () => Brightness.dark),
+        cupertinoBorderColorLight = cupertinoBorderColorLight ?? CupertinoColors.lightBackgroundGray,
+        cupertinoBorderColorDark = cupertinoBorderColorDark ?? CupertinoColors.darkBackgroundGray.withOpacity(0.4),
+        keyboardAppearance = keyboardAppearance ?? Utils.foldTheme(light: () => Brightness.light, dark: () => Brightness.dark),
         super(key: key);
 
   @override
   _AdaptiveTextFormInputState createState() => _AdaptiveTextFormInputState();
 }
 
-class _AdaptiveTextFormInputState extends State<AdaptiveTextFormInput>
-    with AutomaticKeepAliveClientMixin<AdaptiveTextFormInput> {
+class _AdaptiveTextFormInputState extends State<AdaptiveTextFormInput> with AutomaticKeepAliveClientMixin<AdaptiveTextFormInput> {
   late TextEditingController _textEditingController;
   bool didUpdateInitial = false;
 
@@ -378,17 +356,14 @@ class _AdaptiveTextFormInputState extends State<AdaptiveTextFormInput>
 
   @override
   void initState() {
-    _textEditingController =
-        widget.controller ?? TextEditingController(text: widget.initial);
+    _textEditingController = widget.controller ?? TextEditingController(text: widget.initial);
 
     super.initState();
   }
 
   @override
   void didUpdateWidget(covariant AdaptiveTextFormInput oldWidget) {
-    if (widget.controller == null) if (widget.initial !=
-            _textEditingController.text &&
-        !didUpdateInitial)
+    if (widget.controller == null) if (widget.initial != _textEditingController.text && !didUpdateInitial)
       setState(() {
         _textEditingController = TextEditingController(text: widget.initial);
         didUpdateInitial = true;
@@ -414,24 +389,18 @@ class _AdaptiveTextFormInputState extends State<AdaptiveTextFormInput>
         flat: _cupertinoTextField(c),
         textfield: CupertinoFormRow(
           prefix: widget.prefix,
-          error: widget.validate
-              ? widget.errorText?.let((it) =>
-                  Text(it, style: const TextStyle(color: Palette.errorRed)))
-              : Utils.nothing,
+          error: widget.validate ? widget.errorText?.let((it) => Text(it, style: const TextStyle(color: Palette.errorRed))) : Utils.nothing,
           padding: EdgeInsets.zero,
           child: _cupertinoTextField(c),
         ),
         row: CupertinoFormRow(
           prefix: widget.prefix,
           error: widget.validate && !widget.cupertinoUseValidator
-              ? widget.errorText?.let((it) => Text(it,
-                      style: const TextStyle(color: Palette.errorRed))) ??
-                  Utils.nothing
+              ? widget.errorText?.let((it) => Text(it, style: const TextStyle(color: Palette.errorRed))) ?? Utils.nothing
               : Utils.nothing,
           padding: widget.prefix == null
               ? EdgeInsets.zero
-              : widget.cupertinoPadding ??
-                  const EdgeInsets.symmetric(vertical: 4.0, horizontal: 12.0),
+              : widget.cupertinoPadding ?? const EdgeInsets.symmetric(vertical: 4.0, horizontal: 12.0),
           child: _cupertinoTextFormField(c),
         ),
       ),
@@ -442,17 +411,12 @@ class _AdaptiveTextFormInputState extends State<AdaptiveTextFormInput>
   Widget _cupertinoTextFormField(BuildContext c) => CupertinoTextFormFieldRow(
         decoration: BoxDecoration(
           borderRadius: widget.borderRadius,
-          color: widget.disabled
-              ? CupertinoColors.lightBackgroundGray
-              : (widget.fillColor ?? CupertinoColors.extraLightBackgroundGray),
-          border: Border.all(
-              color: CupertinoColors.lightBackgroundGray, width: 1.5),
+          color: widget.disabled ? CupertinoColors.lightBackgroundGray : (widget.fillColor ?? CupertinoColors.extraLightBackgroundGray),
+          border: Border.all(color: CupertinoColors.lightBackgroundGray, width: 1.5),
         ),
         maxLines: widget.minLines == null ? widget.maxLines : null,
         minLines: widget.minLines,
-        expands: widget.minLines == null && widget.maxLines == null
-            ? widget.expands
-            : false,
+        expands: widget.minLines == null && widget.maxLines == null ? widget.expands : false,
         maxLength: widget.showMaxLength ? widget.maxLength : null,
         enableSuggestions: widget.enableSuggestions,
         obscureText: widget.obscureText,
@@ -462,11 +426,8 @@ class _AdaptiveTextFormInputState extends State<AdaptiveTextFormInput>
         showCursor: widget.showCursor,
         keyboardType: widget.keyboardType,
         textCapitalization: widget.capitalization,
-        textInputAction: widget.next == null
-            ? widget.action ?? TextInputAction.done
-            : widget.action ?? TextInputAction.next,
-        cursorColor: widget.cursorColor ??
-            CupertinoColors.systemGrey.resolveFrom(context),
+        textInputAction: widget.next == null ? widget.action ?? TextInputAction.done : widget.action ?? TextInputAction.next,
+        cursorColor: widget.cursorColor ?? CupertinoColors.systemGrey.resolveFrom(context),
         controller: _textEditingController,
         enableInteractiveSelection: widget.enableInteractiveSelection,
         keyboardAppearance: widget.keyboardAppearance,
@@ -475,30 +436,22 @@ class _AdaptiveTextFormInputState extends State<AdaptiveTextFormInput>
         enabled: !widget.disabled,
         padding: widget.cupertinoPadding!,
         inputFormatters: [
-          if (widget.maxLength != null)
-            LengthLimitingTextInputFormatter(widget.maxLength),
+          if (widget.maxLength != null) LengthLimitingTextInputFormatter(widget.maxLength),
           ...widget.inputFormatters,
         ],
         style: widget.style,
         placeholder: widget.hintText,
         onTap: widget.onTap,
-        placeholderStyle: TextStyle(
-                color: App.resolveColor(Palette.text40, dark: Colors.white30))
-            .merge(widget.hintStyle),
+        placeholderStyle: TextStyle(color: App.resolveColor(Palette.text40, dark: Colors.white30)).merge(widget.hintStyle),
         toolbarOptions: widget.toolbarOptions,
         textAlign: widget.textAlign,
         selectionControls: widget.selectionControls,
         textAlignVertical: widget.textAlignVertical,
         textDirection: widget.textDirection,
         onChanged: widget.onChanged,
-        validator: (value) =>
-            widget.cupertinoUseValidator ? widget.errorText : null,
-        autovalidateMode: widget.validate
-            ? AutovalidateMode.always
-            : AutovalidateMode.disabled,
-        onFieldSubmitted: (_) => widget.next == null
-            ? FocusScope.of(c).unfocus()
-            : FocusScope.of(c).requestFocus(widget.next),
+        validator: (value) => widget.cupertinoUseValidator ? widget.errorText : null,
+        autovalidateMode: widget.validate ? AutovalidateMode.always : AutovalidateMode.disabled,
+        onFieldSubmitted: (_) => widget.next == null ? FocusScope.of(c).unfocus() : FocusScope.of(c).requestFocus(widget.next),
         onEditingComplete: widget.onEditingComplete,
       );
 
@@ -525,19 +478,15 @@ class _AdaptiveTextFormInputState extends State<AdaptiveTextFormInput>
               color: widget.fillColor,
               border: Border.all(
                 color: widget.enabledBorder?.borderSide.color ??
-                    App.resolveColor(widget.cupertinoBorderColorLight,
-                        dark: widget.cupertinoBorderColorDark)!,
+                    App.resolveColor(widget.cupertinoBorderColorLight, dark: widget.cupertinoBorderColorDark)!,
                 width: widget.enabledBorder?.borderSide.width ?? 1.5,
               ),
             ),
             maxLines: widget.minLines == null ? widget.maxLines : null,
             minLines: widget.minLines,
-            expands: widget.minLines == null && widget.maxLines == null
-                ? widget.expands
-                : false,
+            expands: widget.minLines == null && widget.maxLines == null ? widget.expands : false,
             maxLength: widget.showMaxLength ? widget.maxLength : null,
-            maxLengthEnforcement:
-                widget.showMaxLength ? widget.maxLengthEnforcement : null,
+            maxLengthEnforcement: widget.showMaxLength ? widget.maxLengthEnforcement : null,
             enableSuggestions: widget.enableSuggestions,
             obscureText: widget.obscureText,
             autofocus: widget.autoFocus,
@@ -546,11 +495,8 @@ class _AdaptiveTextFormInputState extends State<AdaptiveTextFormInput>
             showCursor: widget.showCursor,
             keyboardType: widget.keyboardType,
             textCapitalization: widget.capitalization,
-            textInputAction: widget.next == null
-                ? (widget.action ?? TextInputAction.done)
-                : (widget.action ?? TextInputAction.next),
-            cursorColor: widget.cursorColor ??
-                CupertinoColors.systemGrey.resolveFrom(context),
+            textInputAction: widget.next == null ? (widget.action ?? TextInputAction.done) : (widget.action ?? TextInputAction.next),
+            cursorColor: widget.cursorColor ?? CupertinoColors.systemGrey.resolveFrom(context),
             controller: _textEditingController,
             enableInteractiveSelection: widget.enableInteractiveSelection,
             keyboardAppearance: widget.keyboardAppearance,
@@ -565,30 +511,24 @@ class _AdaptiveTextFormInputState extends State<AdaptiveTextFormInput>
             onTap: widget.onTap,
             padding: widget.cupertinoPadding!,
             inputFormatters: [
-              if (widget.maxLength != null)
-                LengthLimitingTextInputFormatter(widget.maxLength),
+              if (widget.maxLength != null) LengthLimitingTextInputFormatter(widget.maxLength),
               ...widget.inputFormatters,
             ],
             // style: TextStyle(color: App.resolveColor(Palette.text100, dark: Palette.text100Dark)).merge(widget.style),
             style: TextStyle(
               color: widget.disabled
-                  ? App.resolveColor(Palette.text60,
-                      dark: Colors.black.withOpacity(0.5))
-                  : App.resolveColor(Palette.text100,
-                      dark: Palette.text100Dark),
+                  ? App.resolveColor(Palette.text60, dark: Colors.black.withOpacity(0.5))
+                  : App.resolveColor(Palette.text100, dark: Palette.text100Dark),
             ).merge(widget.style),
             placeholder: widget.hintText,
-            placeholderStyle: TextStyle(color: App.resolveColor(Palette.text60))
-                .merge(widget.hintStyle),
+            placeholderStyle: TextStyle(color: App.resolveColor(Palette.text60)).merge(widget.hintStyle),
             toolbarOptions: widget.toolbarOptions,
             textAlign: widget.textAlign,
             selectionControls: widget.selectionControls,
             textAlignVertical: widget.textAlignVertical,
             textDirection: widget.textDirection,
             onChanged: widget.onChanged,
-            onSubmitted: (_) => widget.next == null
-                ? FocusScope.of(c).unfocus()
-                : FocusScope.of(c).requestFocus(widget.next),
+            onSubmitted: (_) => widget.next == null ? FocusScope.of(c).unfocus() : FocusScope.of(c).requestFocus(widget.next),
             onEditingComplete: widget.onEditingComplete,
           ),
         ),
@@ -606,12 +546,9 @@ class _AdaptiveTextFormInputState extends State<AdaptiveTextFormInput>
             child: TextFormField(
               maxLines: widget.minLines == null ? widget.maxLines : null,
               minLines: widget.minLines,
-              expands: widget.minLines == null && widget.maxLines == null
-                  ? widget.expands
-                  : false,
+              expands: widget.minLines == null && widget.maxLines == null ? widget.expands : false,
               maxLength: widget.showMaxLength ? widget.maxLength : null,
-              maxLengthEnforcement:
-                  widget.showMaxLength ? widget.maxLengthEnforcement : null,
+              maxLengthEnforcement: widget.showMaxLength ? widget.maxLengthEnforcement : null,
               enableSuggestions: widget.enableSuggestions,
               enableInteractiveSelection: widget.enableInteractiveSelection,
               obscureText: widget.obscureText,
@@ -619,14 +556,11 @@ class _AdaptiveTextFormInputState extends State<AdaptiveTextFormInput>
               autofocus: widget.autoFocus,
               controller: _textEditingController,
               showCursor: widget.showCursor,
-              cursorColor: widget.cursorColor ??
-                  App.resolveColor(Palette.accentColor, dark: Colors.white70),
+              cursorColor: widget.cursorColor ?? App.resolveColor(Palette.accentColor, dark: Colors.white70),
               keyboardType: widget.keyboardType,
               textCapitalization: widget.capitalization,
               keyboardAppearance: widget.keyboardAppearance,
-              textInputAction: widget.next == null
-                  ? widget.action ?? TextInputAction.done
-                  : widget.action ?? TextInputAction.next,
+              textInputAction: widget.next == null ? widget.action ?? TextInputAction.done : widget.action ?? TextInputAction.next,
               focusNode: widget.focus,
               readOnly: widget.readOnly ?? widget.disabled,
               enabled: !widget.disabled,
@@ -654,8 +588,7 @@ class _AdaptiveTextFormInputState extends State<AdaptiveTextFormInput>
               ).merge(widget.decoration),
               autofillHints: _autoFillHints,
               inputFormatters: [
-                if (widget.maxLength != null)
-                  LengthLimitingTextInputFormatter(widget.maxLength),
+                if (widget.maxLength != null) LengthLimitingTextInputFormatter(widget.maxLength),
                 ...widget.inputFormatters,
               ],
               textAlign: widget.textAlign,
@@ -664,19 +597,12 @@ class _AdaptiveTextFormInputState extends State<AdaptiveTextFormInput>
               textDirection: widget.textDirection,
               toolbarOptions: widget.toolbarOptions,
               style: TextStyle(
-                color: widget.disabled
-                    ? App.resolveColor(Palette.text60,
-                        dark: Colors.black.withOpacity(0.5))
-                    : null,
+                color: widget.disabled ? App.resolveColor(Palette.text60, dark: Colors.black.withOpacity(0.5)) : null,
               ).merge(widget.style),
-              autovalidateMode: widget.validate
-                  ? AutovalidateMode.always
-                  : AutovalidateMode.disabled,
+              autovalidateMode: widget.validate ? AutovalidateMode.always : AutovalidateMode.disabled,
               onChanged: widget.onChanged,
               validator: (value) => widget.errorText,
-              onFieldSubmitted: (_) => widget.next == null
-                  ? FocusScope.of(c).unfocus()
-                  : FocusScope.of(c).requestFocus(widget.next),
+              onFieldSubmitted: (_) => widget.next == null ? FocusScope.of(c).unfocus() : FocusScope.of(c).requestFocus(widget.next),
               onEditingComplete: widget.onEditingComplete,
             ),
           ),

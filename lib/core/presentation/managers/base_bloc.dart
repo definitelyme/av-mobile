@@ -9,8 +9,7 @@ import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:rxdart/rxdart.dart';
 
 Future<Option<AppHttpResponse?>> _connection() async {
-  final isConnected = (await getIt<Connectivity>().checkConnectivity()) !=
-      ConnectivityResult.none;
+  final isConnected = (await getIt<Connectivity>().checkConnectivity()) != ConnectivityResult.none;
 
   if (!isConnected)
     return some(AppHttpResponse(AnyResponse.fromFailure(
@@ -38,10 +37,8 @@ abstract class BaseBlocState {
   bool get validate;
 }
 
-mixin BaseBloc<Event extends BaseBlocEvent, State extends BaseBlocState>
-    on Bloc<Event, State> {
-  EventTransformer<Evt> debounce<Evt>(Duration duration) =>
-      (events, transform) => events.debounceTime(duration).switchMap(transform);
+mixin BaseBloc<Event extends BaseBlocEvent, State extends BaseBlocState> on Bloc<Event, State> {
+  EventTransformer<Evt> debounce<Evt>(Duration duration) => (events, transform) => events.debounceTime(duration).switchMap(transform);
 
   Future<Option<AppHttpResponse?>> connection() => _connection();
 }
@@ -60,13 +57,11 @@ abstract class BaseSearchState {
   SearchModel get model;
 }
 
-mixin BaseSearchBloc<Event extends BaseSearchEvent,
-    State extends BaseSearchState> on Bloc<Event, State> {
+mixin BaseSearchBloc<Event extends BaseSearchEvent, State extends BaseSearchState> on Bloc<Event, State> {
   EventTransformer<Evt> debounceRestartable<Evt>(Duration duration) {
     // This feeds the debounced event stream to restartable() and returns that
     // as a transformer.
-    return (events, mapper) =>
-        restartable<Evt>().call(events.debounceTime(duration), mapper);
+    return (events, mapper) => restartable<Evt>().call(events.debounceTime(duration), mapper);
   }
 
   Future<Option<AppHttpResponse?>> connection() => _connection();

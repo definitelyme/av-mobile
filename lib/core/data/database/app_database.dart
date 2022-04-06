@@ -1,7 +1,6 @@
 library app_database.dart;
 
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:auctionvillage/core/data/models/index.dart';
 import 'package:auctionvillage/core/domain/entities/entities.dart';

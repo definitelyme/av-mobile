@@ -217,37 +217,76 @@ class _$DealDTODataTearOff {
   const _$DealDTODataTearOff();
 
   _DealDTOData call(
-      {@JsonKey(name: '_id') String? id,
-      @DoubleSerializer() double? basePrice,
-      @BooleanSerializer() bool? isPrivate,
-      @JsonKey(name: 'status') String? status,
-      @BooleanSerializer() bool? sponsored,
-      @JsonKey(name: 'plan') String? dealPlan,
-      @DoubleSerializer() double? admittanceFee,
-      @IntegerSerializer() int? clicks,
-      @IntegerSerializer() int? dealPriority,
-      String? bidStatus,
-      @BooleanSerializer() bool? isClosing,
-      @BooleanSerializer() bool? active,
-      @DoubleSerializer() double? lastPriceOffered,
-      String? offerType,
-      @TimestampConverter() DateTime? startDate,
-      @TimestampConverter() DateTime? endDate,
-      String? type,
+      {@JsonKey(name: '_id')
+          String? id,
+      @StringSerializer()
+          String? basePrice,
+      @StringSerializer()
+          String? amount,
+      @BooleanSerializer()
+          bool? isPrivate,
+      @JsonKey(name: 'isFavorite')
+      @BooleanSerializer()
+          bool? isFavorite,
+      @JsonKey(name: 'status', toJson: DealStatusSerializer.toJsonString)
+      @DealStatusSerializer()
+          DealStatus? dealStatus,
+      @BooleanSerializer()
+          bool? sponsored,
+      @JsonKey(name: 'plan', toJson: DealPlanTypeSerializer.toJsonString)
+      @DealPlanTypeSerializer()
+          DealPlanType? dealPlan,
+      @DoubleSerializer()
+          double? admittanceFee,
+      @JsonKey(name: 'address')
+          String? address,
+      @IntegerSerializer()
+          int? clicks,
+      @IntegerSerializer()
+          int? dealPriority,
+      @JsonKey(toJson: BidStatusSerializer.toJsonString)
+      @BidStatusSerializer()
+          BidStatus? bidStatus,
+      @BooleanSerializer()
+          bool? isClosing,
+      @BooleanSerializer()
+          bool? active,
+      @DoubleSerializer()
+          double? lastPriceOffered,
+      @JsonKey(toJson: OfferTypeSerializer.toJsonString)
+      @OfferTypeSerializer()
+          OfferType? offerType,
+      @TimestampConverter()
+          DateTime? startDate,
+      @TimestampConverter()
+          DateTime? endDate,
+      @JsonKey(toJson: DealTypeSerializer.toJsonString)
+      @DealTypeSerializer()
+          DealType? type,
+      @JsonKey(toJson: QuantityTypeSerializer.toJsonString)
+      @QuantityTypeSerializer()
+          QuantityType? quantity,
+      @JsonKey(toJson: BiddingTypeSerializer.toJsonString)
+      @BiddingTypeSerializer()
+          BiddingType? biddingType,
       UserDTO? user,
       UserDTO? vendor,
       ProductDTOData? product,
-      CategoryDTOData? category,
-      @TimestampConverter() DateTime? createdAt,
-      @TimestampConverter() DateTime? updatedAt}) {
+      @TimestampConverter()
+          DateTime? createdAt,
+      @TimestampConverter()
+          DateTime? updatedAt}) {
     return _DealDTOData(
       id: id,
       basePrice: basePrice,
+      amount: amount,
       isPrivate: isPrivate,
-      status: status,
+      isFavorite: isFavorite,
+      dealStatus: dealStatus,
       sponsored: sponsored,
       dealPlan: dealPlan,
       admittanceFee: admittanceFee,
+      address: address,
       clicks: clicks,
       dealPriority: dealPriority,
       bidStatus: bidStatus,
@@ -258,10 +297,11 @@ class _$DealDTODataTearOff {
       startDate: startDate,
       endDate: endDate,
       type: type,
+      quantity: quantity,
+      biddingType: biddingType,
       user: user,
       vendor: vendor,
       product: product,
-      category: category,
       createdAt: createdAt,
       updatedAt: updatedAt,
     );
@@ -279,39 +319,61 @@ const $DealDTOData = _$DealDTODataTearOff();
 mixin _$DealDTOData {
   @JsonKey(name: '_id')
   String? get id => throw _privateConstructorUsedError;
-  @DoubleSerializer()
-  double? get basePrice => throw _privateConstructorUsedError;
+  @StringSerializer()
+  String? get basePrice => throw _privateConstructorUsedError;
+  @StringSerializer()
+  String? get amount => throw _privateConstructorUsedError;
   @BooleanSerializer()
   bool? get isPrivate => throw _privateConstructorUsedError;
-  @JsonKey(name: 'status')
-  String? get status => throw _privateConstructorUsedError;
+  @JsonKey(name: 'isFavorite')
+  @BooleanSerializer()
+  bool? get isFavorite => throw _privateConstructorUsedError;
+  @JsonKey(name: 'status', toJson: DealStatusSerializer.toJsonString)
+  @DealStatusSerializer()
+  DealStatus? get dealStatus => throw _privateConstructorUsedError;
   @BooleanSerializer()
   bool? get sponsored => throw _privateConstructorUsedError;
-  @JsonKey(name: 'plan')
-  String? get dealPlan => throw _privateConstructorUsedError;
+  @JsonKey(name: 'plan', toJson: DealPlanTypeSerializer.toJsonString)
+  @DealPlanTypeSerializer()
+  DealPlanType? get dealPlan => throw _privateConstructorUsedError;
   @DoubleSerializer()
   double? get admittanceFee => throw _privateConstructorUsedError;
+  @JsonKey(name: 'address')
+  String? get address => throw _privateConstructorUsedError;
   @IntegerSerializer()
   int? get clicks => throw _privateConstructorUsedError;
   @IntegerSerializer()
   int? get dealPriority => throw _privateConstructorUsedError;
-  String? get bidStatus => throw _privateConstructorUsedError;
+  @JsonKey(toJson: BidStatusSerializer.toJsonString)
+  @BidStatusSerializer()
+  BidStatus? get bidStatus => throw _privateConstructorUsedError;
   @BooleanSerializer()
   bool? get isClosing => throw _privateConstructorUsedError;
   @BooleanSerializer()
   bool? get active => throw _privateConstructorUsedError;
   @DoubleSerializer()
   double? get lastPriceOffered => throw _privateConstructorUsedError;
-  String? get offerType => throw _privateConstructorUsedError;
+  @JsonKey(toJson: OfferTypeSerializer.toJsonString)
+  @OfferTypeSerializer()
+  OfferType? get offerType => throw _privateConstructorUsedError;
   @TimestampConverter()
   DateTime? get startDate => throw _privateConstructorUsedError;
   @TimestampConverter()
   DateTime? get endDate => throw _privateConstructorUsedError;
-  String? get type => throw _privateConstructorUsedError;
+  @JsonKey(toJson: DealTypeSerializer.toJsonString)
+  @DealTypeSerializer()
+  DealType? get type => throw _privateConstructorUsedError;
+  @JsonKey(toJson: QuantityTypeSerializer.toJsonString)
+  @QuantityTypeSerializer()
+  QuantityType? get quantity => throw _privateConstructorUsedError;
+  @JsonKey(toJson: BiddingTypeSerializer.toJsonString)
+  @BiddingTypeSerializer()
+  BiddingType? get biddingType => throw _privateConstructorUsedError;
   UserDTO? get user => throw _privateConstructorUsedError;
-  UserDTO? get vendor => throw _privateConstructorUsedError;
-  ProductDTOData? get product => throw _privateConstructorUsedError;
-  CategoryDTOData? get category => throw _privateConstructorUsedError;
+  UserDTO? get vendor =>
+      throw _privateConstructorUsedError; // UserDTO? lastBidder,
+  ProductDTOData? get product =>
+      throw _privateConstructorUsedError; // CategoryDTOData? category,
   @TimestampConverter()
   DateTime? get createdAt => throw _privateConstructorUsedError;
   @TimestampConverter()
@@ -329,34 +391,69 @@ abstract class $DealDTODataCopyWith<$Res> {
           DealDTOData value, $Res Function(DealDTOData) then) =
       _$DealDTODataCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: '_id') String? id,
-      @DoubleSerializer() double? basePrice,
-      @BooleanSerializer() bool? isPrivate,
-      @JsonKey(name: 'status') String? status,
-      @BooleanSerializer() bool? sponsored,
-      @JsonKey(name: 'plan') String? dealPlan,
-      @DoubleSerializer() double? admittanceFee,
-      @IntegerSerializer() int? clicks,
-      @IntegerSerializer() int? dealPriority,
-      String? bidStatus,
-      @BooleanSerializer() bool? isClosing,
-      @BooleanSerializer() bool? active,
-      @DoubleSerializer() double? lastPriceOffered,
-      String? offerType,
-      @TimestampConverter() DateTime? startDate,
-      @TimestampConverter() DateTime? endDate,
-      String? type,
+      {@JsonKey(name: '_id')
+          String? id,
+      @StringSerializer()
+          String? basePrice,
+      @StringSerializer()
+          String? amount,
+      @BooleanSerializer()
+          bool? isPrivate,
+      @JsonKey(name: 'isFavorite')
+      @BooleanSerializer()
+          bool? isFavorite,
+      @JsonKey(name: 'status', toJson: DealStatusSerializer.toJsonString)
+      @DealStatusSerializer()
+          DealStatus? dealStatus,
+      @BooleanSerializer()
+          bool? sponsored,
+      @JsonKey(name: 'plan', toJson: DealPlanTypeSerializer.toJsonString)
+      @DealPlanTypeSerializer()
+          DealPlanType? dealPlan,
+      @DoubleSerializer()
+          double? admittanceFee,
+      @JsonKey(name: 'address')
+          String? address,
+      @IntegerSerializer()
+          int? clicks,
+      @IntegerSerializer()
+          int? dealPriority,
+      @JsonKey(toJson: BidStatusSerializer.toJsonString)
+      @BidStatusSerializer()
+          BidStatus? bidStatus,
+      @BooleanSerializer()
+          bool? isClosing,
+      @BooleanSerializer()
+          bool? active,
+      @DoubleSerializer()
+          double? lastPriceOffered,
+      @JsonKey(toJson: OfferTypeSerializer.toJsonString)
+      @OfferTypeSerializer()
+          OfferType? offerType,
+      @TimestampConverter()
+          DateTime? startDate,
+      @TimestampConverter()
+          DateTime? endDate,
+      @JsonKey(toJson: DealTypeSerializer.toJsonString)
+      @DealTypeSerializer()
+          DealType? type,
+      @JsonKey(toJson: QuantityTypeSerializer.toJsonString)
+      @QuantityTypeSerializer()
+          QuantityType? quantity,
+      @JsonKey(toJson: BiddingTypeSerializer.toJsonString)
+      @BiddingTypeSerializer()
+          BiddingType? biddingType,
       UserDTO? user,
       UserDTO? vendor,
       ProductDTOData? product,
-      CategoryDTOData? category,
-      @TimestampConverter() DateTime? createdAt,
-      @TimestampConverter() DateTime? updatedAt});
+      @TimestampConverter()
+          DateTime? createdAt,
+      @TimestampConverter()
+          DateTime? updatedAt});
 
   $UserDTOCopyWith<$Res>? get user;
   $UserDTOCopyWith<$Res>? get vendor;
   $ProductDTODataCopyWith<$Res>? get product;
-  $CategoryDTODataCopyWith<$Res>? get category;
 }
 
 /// @nodoc
@@ -371,11 +468,14 @@ class _$DealDTODataCopyWithImpl<$Res> implements $DealDTODataCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? basePrice = freezed,
+    Object? amount = freezed,
     Object? isPrivate = freezed,
-    Object? status = freezed,
+    Object? isFavorite = freezed,
+    Object? dealStatus = freezed,
     Object? sponsored = freezed,
     Object? dealPlan = freezed,
     Object? admittanceFee = freezed,
+    Object? address = freezed,
     Object? clicks = freezed,
     Object? dealPriority = freezed,
     Object? bidStatus = freezed,
@@ -386,10 +486,11 @@ class _$DealDTODataCopyWithImpl<$Res> implements $DealDTODataCopyWith<$Res> {
     Object? startDate = freezed,
     Object? endDate = freezed,
     Object? type = freezed,
+    Object? quantity = freezed,
+    Object? biddingType = freezed,
     Object? user = freezed,
     Object? vendor = freezed,
     Object? product = freezed,
-    Object? category = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -401,15 +502,23 @@ class _$DealDTODataCopyWithImpl<$Res> implements $DealDTODataCopyWith<$Res> {
       basePrice: basePrice == freezed
           ? _value.basePrice
           : basePrice // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as String?,
+      amount: amount == freezed
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as String?,
       isPrivate: isPrivate == freezed
           ? _value.isPrivate
           : isPrivate // ignore: cast_nullable_to_non_nullable
               as bool?,
-      status: status == freezed
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String?,
+      isFavorite: isFavorite == freezed
+          ? _value.isFavorite
+          : isFavorite // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      dealStatus: dealStatus == freezed
+          ? _value.dealStatus
+          : dealStatus // ignore: cast_nullable_to_non_nullable
+              as DealStatus?,
       sponsored: sponsored == freezed
           ? _value.sponsored
           : sponsored // ignore: cast_nullable_to_non_nullable
@@ -417,11 +526,15 @@ class _$DealDTODataCopyWithImpl<$Res> implements $DealDTODataCopyWith<$Res> {
       dealPlan: dealPlan == freezed
           ? _value.dealPlan
           : dealPlan // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DealPlanType?,
       admittanceFee: admittanceFee == freezed
           ? _value.admittanceFee
           : admittanceFee // ignore: cast_nullable_to_non_nullable
               as double?,
+      address: address == freezed
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String?,
       clicks: clicks == freezed
           ? _value.clicks
           : clicks // ignore: cast_nullable_to_non_nullable
@@ -433,7 +546,7 @@ class _$DealDTODataCopyWithImpl<$Res> implements $DealDTODataCopyWith<$Res> {
       bidStatus: bidStatus == freezed
           ? _value.bidStatus
           : bidStatus // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as BidStatus?,
       isClosing: isClosing == freezed
           ? _value.isClosing
           : isClosing // ignore: cast_nullable_to_non_nullable
@@ -449,7 +562,7 @@ class _$DealDTODataCopyWithImpl<$Res> implements $DealDTODataCopyWith<$Res> {
       offerType: offerType == freezed
           ? _value.offerType
           : offerType // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as OfferType?,
       startDate: startDate == freezed
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
@@ -461,7 +574,15 @@ class _$DealDTODataCopyWithImpl<$Res> implements $DealDTODataCopyWith<$Res> {
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DealType?,
+      quantity: quantity == freezed
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as QuantityType?,
+      biddingType: biddingType == freezed
+          ? _value.biddingType
+          : biddingType // ignore: cast_nullable_to_non_nullable
+              as BiddingType?,
       user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -474,10 +595,6 @@ class _$DealDTODataCopyWithImpl<$Res> implements $DealDTODataCopyWith<$Res> {
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
               as ProductDTOData?,
-      category: category == freezed
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as CategoryDTOData?,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -521,17 +638,6 @@ class _$DealDTODataCopyWithImpl<$Res> implements $DealDTODataCopyWith<$Res> {
       return _then(_value.copyWith(product: value));
     });
   }
-
-  @override
-  $CategoryDTODataCopyWith<$Res>? get category {
-    if (_value.category == null) {
-      return null;
-    }
-
-    return $CategoryDTODataCopyWith<$Res>(_value.category!, (value) {
-      return _then(_value.copyWith(category: value));
-    });
-  }
 }
 
 /// @nodoc
@@ -542,29 +648,65 @@ abstract class _$DealDTODataCopyWith<$Res>
       __$DealDTODataCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: '_id') String? id,
-      @DoubleSerializer() double? basePrice,
-      @BooleanSerializer() bool? isPrivate,
-      @JsonKey(name: 'status') String? status,
-      @BooleanSerializer() bool? sponsored,
-      @JsonKey(name: 'plan') String? dealPlan,
-      @DoubleSerializer() double? admittanceFee,
-      @IntegerSerializer() int? clicks,
-      @IntegerSerializer() int? dealPriority,
-      String? bidStatus,
-      @BooleanSerializer() bool? isClosing,
-      @BooleanSerializer() bool? active,
-      @DoubleSerializer() double? lastPriceOffered,
-      String? offerType,
-      @TimestampConverter() DateTime? startDate,
-      @TimestampConverter() DateTime? endDate,
-      String? type,
+      {@JsonKey(name: '_id')
+          String? id,
+      @StringSerializer()
+          String? basePrice,
+      @StringSerializer()
+          String? amount,
+      @BooleanSerializer()
+          bool? isPrivate,
+      @JsonKey(name: 'isFavorite')
+      @BooleanSerializer()
+          bool? isFavorite,
+      @JsonKey(name: 'status', toJson: DealStatusSerializer.toJsonString)
+      @DealStatusSerializer()
+          DealStatus? dealStatus,
+      @BooleanSerializer()
+          bool? sponsored,
+      @JsonKey(name: 'plan', toJson: DealPlanTypeSerializer.toJsonString)
+      @DealPlanTypeSerializer()
+          DealPlanType? dealPlan,
+      @DoubleSerializer()
+          double? admittanceFee,
+      @JsonKey(name: 'address')
+          String? address,
+      @IntegerSerializer()
+          int? clicks,
+      @IntegerSerializer()
+          int? dealPriority,
+      @JsonKey(toJson: BidStatusSerializer.toJsonString)
+      @BidStatusSerializer()
+          BidStatus? bidStatus,
+      @BooleanSerializer()
+          bool? isClosing,
+      @BooleanSerializer()
+          bool? active,
+      @DoubleSerializer()
+          double? lastPriceOffered,
+      @JsonKey(toJson: OfferTypeSerializer.toJsonString)
+      @OfferTypeSerializer()
+          OfferType? offerType,
+      @TimestampConverter()
+          DateTime? startDate,
+      @TimestampConverter()
+          DateTime? endDate,
+      @JsonKey(toJson: DealTypeSerializer.toJsonString)
+      @DealTypeSerializer()
+          DealType? type,
+      @JsonKey(toJson: QuantityTypeSerializer.toJsonString)
+      @QuantityTypeSerializer()
+          QuantityType? quantity,
+      @JsonKey(toJson: BiddingTypeSerializer.toJsonString)
+      @BiddingTypeSerializer()
+          BiddingType? biddingType,
       UserDTO? user,
       UserDTO? vendor,
       ProductDTOData? product,
-      CategoryDTOData? category,
-      @TimestampConverter() DateTime? createdAt,
-      @TimestampConverter() DateTime? updatedAt});
+      @TimestampConverter()
+          DateTime? createdAt,
+      @TimestampConverter()
+          DateTime? updatedAt});
 
   @override
   $UserDTOCopyWith<$Res>? get user;
@@ -572,8 +714,6 @@ abstract class _$DealDTODataCopyWith<$Res>
   $UserDTOCopyWith<$Res>? get vendor;
   @override
   $ProductDTODataCopyWith<$Res>? get product;
-  @override
-  $CategoryDTODataCopyWith<$Res>? get category;
 }
 
 /// @nodoc
@@ -590,11 +730,14 @@ class __$DealDTODataCopyWithImpl<$Res> extends _$DealDTODataCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? basePrice = freezed,
+    Object? amount = freezed,
     Object? isPrivate = freezed,
-    Object? status = freezed,
+    Object? isFavorite = freezed,
+    Object? dealStatus = freezed,
     Object? sponsored = freezed,
     Object? dealPlan = freezed,
     Object? admittanceFee = freezed,
+    Object? address = freezed,
     Object? clicks = freezed,
     Object? dealPriority = freezed,
     Object? bidStatus = freezed,
@@ -605,10 +748,11 @@ class __$DealDTODataCopyWithImpl<$Res> extends _$DealDTODataCopyWithImpl<$Res>
     Object? startDate = freezed,
     Object? endDate = freezed,
     Object? type = freezed,
+    Object? quantity = freezed,
+    Object? biddingType = freezed,
     Object? user = freezed,
     Object? vendor = freezed,
     Object? product = freezed,
-    Object? category = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -620,15 +764,23 @@ class __$DealDTODataCopyWithImpl<$Res> extends _$DealDTODataCopyWithImpl<$Res>
       basePrice: basePrice == freezed
           ? _value.basePrice
           : basePrice // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as String?,
+      amount: amount == freezed
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as String?,
       isPrivate: isPrivate == freezed
           ? _value.isPrivate
           : isPrivate // ignore: cast_nullable_to_non_nullable
               as bool?,
-      status: status == freezed
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String?,
+      isFavorite: isFavorite == freezed
+          ? _value.isFavorite
+          : isFavorite // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      dealStatus: dealStatus == freezed
+          ? _value.dealStatus
+          : dealStatus // ignore: cast_nullable_to_non_nullable
+              as DealStatus?,
       sponsored: sponsored == freezed
           ? _value.sponsored
           : sponsored // ignore: cast_nullable_to_non_nullable
@@ -636,11 +788,15 @@ class __$DealDTODataCopyWithImpl<$Res> extends _$DealDTODataCopyWithImpl<$Res>
       dealPlan: dealPlan == freezed
           ? _value.dealPlan
           : dealPlan // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DealPlanType?,
       admittanceFee: admittanceFee == freezed
           ? _value.admittanceFee
           : admittanceFee // ignore: cast_nullable_to_non_nullable
               as double?,
+      address: address == freezed
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String?,
       clicks: clicks == freezed
           ? _value.clicks
           : clicks // ignore: cast_nullable_to_non_nullable
@@ -652,7 +808,7 @@ class __$DealDTODataCopyWithImpl<$Res> extends _$DealDTODataCopyWithImpl<$Res>
       bidStatus: bidStatus == freezed
           ? _value.bidStatus
           : bidStatus // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as BidStatus?,
       isClosing: isClosing == freezed
           ? _value.isClosing
           : isClosing // ignore: cast_nullable_to_non_nullable
@@ -668,7 +824,7 @@ class __$DealDTODataCopyWithImpl<$Res> extends _$DealDTODataCopyWithImpl<$Res>
       offerType: offerType == freezed
           ? _value.offerType
           : offerType // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as OfferType?,
       startDate: startDate == freezed
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
@@ -680,7 +836,15 @@ class __$DealDTODataCopyWithImpl<$Res> extends _$DealDTODataCopyWithImpl<$Res>
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DealType?,
+      quantity: quantity == freezed
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as QuantityType?,
+      biddingType: biddingType == freezed
+          ? _value.biddingType
+          : biddingType // ignore: cast_nullable_to_non_nullable
+              as BiddingType?,
       user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -693,10 +857,6 @@ class __$DealDTODataCopyWithImpl<$Res> extends _$DealDTODataCopyWithImpl<$Res>
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
               as ProductDTOData?,
-      category: category == freezed
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as CategoryDTOData?,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -713,29 +873,65 @@ class __$DealDTODataCopyWithImpl<$Res> extends _$DealDTODataCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_DealDTOData extends _DealDTOData {
   const _$_DealDTOData(
-      {@JsonKey(name: '_id') this.id,
-      @DoubleSerializer() this.basePrice,
-      @BooleanSerializer() this.isPrivate,
-      @JsonKey(name: 'status') this.status,
-      @BooleanSerializer() this.sponsored,
-      @JsonKey(name: 'plan') this.dealPlan,
-      @DoubleSerializer() this.admittanceFee,
-      @IntegerSerializer() this.clicks,
-      @IntegerSerializer() this.dealPriority,
-      this.bidStatus,
-      @BooleanSerializer() this.isClosing,
-      @BooleanSerializer() this.active,
-      @DoubleSerializer() this.lastPriceOffered,
-      this.offerType,
-      @TimestampConverter() this.startDate,
-      @TimestampConverter() this.endDate,
-      this.type,
+      {@JsonKey(name: '_id')
+          this.id,
+      @StringSerializer()
+          this.basePrice,
+      @StringSerializer()
+          this.amount,
+      @BooleanSerializer()
+          this.isPrivate,
+      @JsonKey(name: 'isFavorite')
+      @BooleanSerializer()
+          this.isFavorite,
+      @JsonKey(name: 'status', toJson: DealStatusSerializer.toJsonString)
+      @DealStatusSerializer()
+          this.dealStatus,
+      @BooleanSerializer()
+          this.sponsored,
+      @JsonKey(name: 'plan', toJson: DealPlanTypeSerializer.toJsonString)
+      @DealPlanTypeSerializer()
+          this.dealPlan,
+      @DoubleSerializer()
+          this.admittanceFee,
+      @JsonKey(name: 'address')
+          this.address,
+      @IntegerSerializer()
+          this.clicks,
+      @IntegerSerializer()
+          this.dealPriority,
+      @JsonKey(toJson: BidStatusSerializer.toJsonString)
+      @BidStatusSerializer()
+          this.bidStatus,
+      @BooleanSerializer()
+          this.isClosing,
+      @BooleanSerializer()
+          this.active,
+      @DoubleSerializer()
+          this.lastPriceOffered,
+      @JsonKey(toJson: OfferTypeSerializer.toJsonString)
+      @OfferTypeSerializer()
+          this.offerType,
+      @TimestampConverter()
+          this.startDate,
+      @TimestampConverter()
+          this.endDate,
+      @JsonKey(toJson: DealTypeSerializer.toJsonString)
+      @DealTypeSerializer()
+          this.type,
+      @JsonKey(toJson: QuantityTypeSerializer.toJsonString)
+      @QuantityTypeSerializer()
+          this.quantity,
+      @JsonKey(toJson: BiddingTypeSerializer.toJsonString)
+      @BiddingTypeSerializer()
+          this.biddingType,
       this.user,
       this.vendor,
       this.product,
-      this.category,
-      @TimestampConverter() this.createdAt,
-      @TimestampConverter() this.updatedAt})
+      @TimestampConverter()
+          this.createdAt,
+      @TimestampConverter()
+          this.updatedAt})
       : super._();
 
   factory _$_DealDTOData.fromJson(Map<String, dynamic> json) =>
@@ -745,23 +941,35 @@ class _$_DealDTOData extends _DealDTOData {
   @JsonKey(name: '_id')
   final String? id;
   @override
-  @DoubleSerializer()
-  final double? basePrice;
+  @StringSerializer()
+  final String? basePrice;
+  @override
+  @StringSerializer()
+  final String? amount;
   @override
   @BooleanSerializer()
   final bool? isPrivate;
   @override
-  @JsonKey(name: 'status')
-  final String? status;
+  @JsonKey(name: 'isFavorite')
+  @BooleanSerializer()
+  final bool? isFavorite;
+  @override
+  @JsonKey(name: 'status', toJson: DealStatusSerializer.toJsonString)
+  @DealStatusSerializer()
+  final DealStatus? dealStatus;
   @override
   @BooleanSerializer()
   final bool? sponsored;
   @override
-  @JsonKey(name: 'plan')
-  final String? dealPlan;
+  @JsonKey(name: 'plan', toJson: DealPlanTypeSerializer.toJsonString)
+  @DealPlanTypeSerializer()
+  final DealPlanType? dealPlan;
   @override
   @DoubleSerializer()
   final double? admittanceFee;
+  @override
+  @JsonKey(name: 'address')
+  final String? address;
   @override
   @IntegerSerializer()
   final int? clicks;
@@ -769,7 +977,9 @@ class _$_DealDTOData extends _DealDTOData {
   @IntegerSerializer()
   final int? dealPriority;
   @override
-  final String? bidStatus;
+  @JsonKey(toJson: BidStatusSerializer.toJsonString)
+  @BidStatusSerializer()
+  final BidStatus? bidStatus;
   @override
   @BooleanSerializer()
   final bool? isClosing;
@@ -780,7 +990,9 @@ class _$_DealDTOData extends _DealDTOData {
   @DoubleSerializer()
   final double? lastPriceOffered;
   @override
-  final String? offerType;
+  @JsonKey(toJson: OfferTypeSerializer.toJsonString)
+  @OfferTypeSerializer()
+  final OfferType? offerType;
   @override
   @TimestampConverter()
   final DateTime? startDate;
@@ -788,16 +1000,24 @@ class _$_DealDTOData extends _DealDTOData {
   @TimestampConverter()
   final DateTime? endDate;
   @override
-  final String? type;
+  @JsonKey(toJson: DealTypeSerializer.toJsonString)
+  @DealTypeSerializer()
+  final DealType? type;
+  @override
+  @JsonKey(toJson: QuantityTypeSerializer.toJsonString)
+  @QuantityTypeSerializer()
+  final QuantityType? quantity;
+  @override
+  @JsonKey(toJson: BiddingTypeSerializer.toJsonString)
+  @BiddingTypeSerializer()
+  final BiddingType? biddingType;
   @override
   final UserDTO? user;
   @override
   final UserDTO? vendor;
-  @override
+  @override // UserDTO? lastBidder,
   final ProductDTOData? product;
-  @override
-  final CategoryDTOData? category;
-  @override
+  @override // CategoryDTOData? category,
   @TimestampConverter()
   final DateTime? createdAt;
   @override
@@ -806,7 +1026,7 @@ class _$_DealDTOData extends _DealDTOData {
 
   @override
   String toString() {
-    return 'DealDTOData(id: $id, basePrice: $basePrice, isPrivate: $isPrivate, status: $status, sponsored: $sponsored, dealPlan: $dealPlan, admittanceFee: $admittanceFee, clicks: $clicks, dealPriority: $dealPriority, bidStatus: $bidStatus, isClosing: $isClosing, active: $active, lastPriceOffered: $lastPriceOffered, offerType: $offerType, startDate: $startDate, endDate: $endDate, type: $type, user: $user, vendor: $vendor, product: $product, category: $category, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'DealDTOData(id: $id, basePrice: $basePrice, amount: $amount, isPrivate: $isPrivate, isFavorite: $isFavorite, dealStatus: $dealStatus, sponsored: $sponsored, dealPlan: $dealPlan, admittanceFee: $admittanceFee, address: $address, clicks: $clicks, dealPriority: $dealPriority, bidStatus: $bidStatus, isClosing: $isClosing, active: $active, lastPriceOffered: $lastPriceOffered, offerType: $offerType, startDate: $startDate, endDate: $endDate, type: $type, quantity: $quantity, biddingType: $biddingType, user: $user, vendor: $vendor, product: $product, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -816,12 +1036,17 @@ class _$_DealDTOData extends _DealDTOData {
             other is _DealDTOData &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.basePrice, basePrice) &&
+            const DeepCollectionEquality().equals(other.amount, amount) &&
             const DeepCollectionEquality().equals(other.isPrivate, isPrivate) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
+            const DeepCollectionEquality()
+                .equals(other.isFavorite, isFavorite) &&
+            const DeepCollectionEquality()
+                .equals(other.dealStatus, dealStatus) &&
             const DeepCollectionEquality().equals(other.sponsored, sponsored) &&
             const DeepCollectionEquality().equals(other.dealPlan, dealPlan) &&
             const DeepCollectionEquality()
                 .equals(other.admittanceFee, admittanceFee) &&
+            const DeepCollectionEquality().equals(other.address, address) &&
             const DeepCollectionEquality().equals(other.clicks, clicks) &&
             const DeepCollectionEquality()
                 .equals(other.dealPriority, dealPriority) &&
@@ -834,10 +1059,12 @@ class _$_DealDTOData extends _DealDTOData {
             const DeepCollectionEquality().equals(other.startDate, startDate) &&
             const DeepCollectionEquality().equals(other.endDate, endDate) &&
             const DeepCollectionEquality().equals(other.type, type) &&
+            const DeepCollectionEquality().equals(other.quantity, quantity) &&
+            const DeepCollectionEquality()
+                .equals(other.biddingType, biddingType) &&
             const DeepCollectionEquality().equals(other.user, user) &&
             const DeepCollectionEquality().equals(other.vendor, vendor) &&
             const DeepCollectionEquality().equals(other.product, product) &&
-            const DeepCollectionEquality().equals(other.category, category) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
@@ -847,11 +1074,14 @@ class _$_DealDTOData extends _DealDTOData {
         runtimeType,
         const DeepCollectionEquality().hash(id),
         const DeepCollectionEquality().hash(basePrice),
+        const DeepCollectionEquality().hash(amount),
         const DeepCollectionEquality().hash(isPrivate),
-        const DeepCollectionEquality().hash(status),
+        const DeepCollectionEquality().hash(isFavorite),
+        const DeepCollectionEquality().hash(dealStatus),
         const DeepCollectionEquality().hash(sponsored),
         const DeepCollectionEquality().hash(dealPlan),
         const DeepCollectionEquality().hash(admittanceFee),
+        const DeepCollectionEquality().hash(address),
         const DeepCollectionEquality().hash(clicks),
         const DeepCollectionEquality().hash(dealPriority),
         const DeepCollectionEquality().hash(bidStatus),
@@ -862,10 +1092,11 @@ class _$_DealDTOData extends _DealDTOData {
         const DeepCollectionEquality().hash(startDate),
         const DeepCollectionEquality().hash(endDate),
         const DeepCollectionEquality().hash(type),
+        const DeepCollectionEquality().hash(quantity),
+        const DeepCollectionEquality().hash(biddingType),
         const DeepCollectionEquality().hash(user),
         const DeepCollectionEquality().hash(vendor),
         const DeepCollectionEquality().hash(product),
-        const DeepCollectionEquality().hash(category),
         const DeepCollectionEquality().hash(createdAt),
         const DeepCollectionEquality().hash(updatedAt)
       ]);
@@ -883,29 +1114,65 @@ class _$_DealDTOData extends _DealDTOData {
 
 abstract class _DealDTOData extends DealDTOData {
   const factory _DealDTOData(
-      {@JsonKey(name: '_id') String? id,
-      @DoubleSerializer() double? basePrice,
-      @BooleanSerializer() bool? isPrivate,
-      @JsonKey(name: 'status') String? status,
-      @BooleanSerializer() bool? sponsored,
-      @JsonKey(name: 'plan') String? dealPlan,
-      @DoubleSerializer() double? admittanceFee,
-      @IntegerSerializer() int? clicks,
-      @IntegerSerializer() int? dealPriority,
-      String? bidStatus,
-      @BooleanSerializer() bool? isClosing,
-      @BooleanSerializer() bool? active,
-      @DoubleSerializer() double? lastPriceOffered,
-      String? offerType,
-      @TimestampConverter() DateTime? startDate,
-      @TimestampConverter() DateTime? endDate,
-      String? type,
+      {@JsonKey(name: '_id')
+          String? id,
+      @StringSerializer()
+          String? basePrice,
+      @StringSerializer()
+          String? amount,
+      @BooleanSerializer()
+          bool? isPrivate,
+      @JsonKey(name: 'isFavorite')
+      @BooleanSerializer()
+          bool? isFavorite,
+      @JsonKey(name: 'status', toJson: DealStatusSerializer.toJsonString)
+      @DealStatusSerializer()
+          DealStatus? dealStatus,
+      @BooleanSerializer()
+          bool? sponsored,
+      @JsonKey(name: 'plan', toJson: DealPlanTypeSerializer.toJsonString)
+      @DealPlanTypeSerializer()
+          DealPlanType? dealPlan,
+      @DoubleSerializer()
+          double? admittanceFee,
+      @JsonKey(name: 'address')
+          String? address,
+      @IntegerSerializer()
+          int? clicks,
+      @IntegerSerializer()
+          int? dealPriority,
+      @JsonKey(toJson: BidStatusSerializer.toJsonString)
+      @BidStatusSerializer()
+          BidStatus? bidStatus,
+      @BooleanSerializer()
+          bool? isClosing,
+      @BooleanSerializer()
+          bool? active,
+      @DoubleSerializer()
+          double? lastPriceOffered,
+      @JsonKey(toJson: OfferTypeSerializer.toJsonString)
+      @OfferTypeSerializer()
+          OfferType? offerType,
+      @TimestampConverter()
+          DateTime? startDate,
+      @TimestampConverter()
+          DateTime? endDate,
+      @JsonKey(toJson: DealTypeSerializer.toJsonString)
+      @DealTypeSerializer()
+          DealType? type,
+      @JsonKey(toJson: QuantityTypeSerializer.toJsonString)
+      @QuantityTypeSerializer()
+          QuantityType? quantity,
+      @JsonKey(toJson: BiddingTypeSerializer.toJsonString)
+      @BiddingTypeSerializer()
+          BiddingType? biddingType,
       UserDTO? user,
       UserDTO? vendor,
       ProductDTOData? product,
-      CategoryDTOData? category,
-      @TimestampConverter() DateTime? createdAt,
-      @TimestampConverter() DateTime? updatedAt}) = _$_DealDTOData;
+      @TimestampConverter()
+          DateTime? createdAt,
+      @TimestampConverter()
+          DateTime? updatedAt}) = _$_DealDTOData;
   const _DealDTOData._() : super._();
 
   factory _DealDTOData.fromJson(Map<String, dynamic> json) =
@@ -915,23 +1182,35 @@ abstract class _DealDTOData extends DealDTOData {
   @JsonKey(name: '_id')
   String? get id;
   @override
-  @DoubleSerializer()
-  double? get basePrice;
+  @StringSerializer()
+  String? get basePrice;
+  @override
+  @StringSerializer()
+  String? get amount;
   @override
   @BooleanSerializer()
   bool? get isPrivate;
   @override
-  @JsonKey(name: 'status')
-  String? get status;
+  @JsonKey(name: 'isFavorite')
+  @BooleanSerializer()
+  bool? get isFavorite;
+  @override
+  @JsonKey(name: 'status', toJson: DealStatusSerializer.toJsonString)
+  @DealStatusSerializer()
+  DealStatus? get dealStatus;
   @override
   @BooleanSerializer()
   bool? get sponsored;
   @override
-  @JsonKey(name: 'plan')
-  String? get dealPlan;
+  @JsonKey(name: 'plan', toJson: DealPlanTypeSerializer.toJsonString)
+  @DealPlanTypeSerializer()
+  DealPlanType? get dealPlan;
   @override
   @DoubleSerializer()
   double? get admittanceFee;
+  @override
+  @JsonKey(name: 'address')
+  String? get address;
   @override
   @IntegerSerializer()
   int? get clicks;
@@ -939,7 +1218,9 @@ abstract class _DealDTOData extends DealDTOData {
   @IntegerSerializer()
   int? get dealPriority;
   @override
-  String? get bidStatus;
+  @JsonKey(toJson: BidStatusSerializer.toJsonString)
+  @BidStatusSerializer()
+  BidStatus? get bidStatus;
   @override
   @BooleanSerializer()
   bool? get isClosing;
@@ -950,7 +1231,9 @@ abstract class _DealDTOData extends DealDTOData {
   @DoubleSerializer()
   double? get lastPriceOffered;
   @override
-  String? get offerType;
+  @JsonKey(toJson: OfferTypeSerializer.toJsonString)
+  @OfferTypeSerializer()
+  OfferType? get offerType;
   @override
   @TimestampConverter()
   DateTime? get startDate;
@@ -958,16 +1241,24 @@ abstract class _DealDTOData extends DealDTOData {
   @TimestampConverter()
   DateTime? get endDate;
   @override
-  String? get type;
+  @JsonKey(toJson: DealTypeSerializer.toJsonString)
+  @DealTypeSerializer()
+  DealType? get type;
+  @override
+  @JsonKey(toJson: QuantityTypeSerializer.toJsonString)
+  @QuantityTypeSerializer()
+  QuantityType? get quantity;
+  @override
+  @JsonKey(toJson: BiddingTypeSerializer.toJsonString)
+  @BiddingTypeSerializer()
+  BiddingType? get biddingType;
   @override
   UserDTO? get user;
   @override
   UserDTO? get vendor;
-  @override
+  @override // UserDTO? lastBidder,
   ProductDTOData? get product;
-  @override
-  CategoryDTOData? get category;
-  @override
+  @override // CategoryDTOData? category,
   @TimestampConverter()
   DateTime? get createdAt;
   @override

@@ -19,15 +19,17 @@ class _$BrandInformationTearOff {
   const _$BrandInformationTearOff();
 
   _BrandInformation call(
-      {required ProductBrand brand,
-      required ProductBrandModel brandModel,
-      required BasicTextField<String?> condition,
+      {required BasicTextField<String?> brand,
+      required BasicTextField<String?> brandModel,
+      required BasicTextField<String?> transmission,
+      ItemCondition condition = ItemCondition.brand_new,
       required BasicTextField<String?> description,
       ColorField? color,
-      DateTime? yearOfManufacture}) {
+      required BasicTextField<String?> yearOfManufacture}) {
     return _BrandInformation(
       brand: brand,
       brandModel: brandModel,
+      transmission: transmission,
       condition: condition,
       description: description,
       color: color,
@@ -41,12 +43,15 @@ const $BrandInformation = _$BrandInformationTearOff();
 
 /// @nodoc
 mixin _$BrandInformation {
-  ProductBrand get brand => throw _privateConstructorUsedError;
-  ProductBrandModel get brandModel => throw _privateConstructorUsedError;
-  BasicTextField<String?> get condition => throw _privateConstructorUsedError;
+  BasicTextField<String?> get brand => throw _privateConstructorUsedError;
+  BasicTextField<String?> get brandModel => throw _privateConstructorUsedError;
+  BasicTextField<String?> get transmission =>
+      throw _privateConstructorUsedError;
+  ItemCondition get condition => throw _privateConstructorUsedError;
   BasicTextField<String?> get description => throw _privateConstructorUsedError;
   ColorField? get color => throw _privateConstructorUsedError;
-  DateTime? get yearOfManufacture => throw _privateConstructorUsedError;
+  BasicTextField<String?> get yearOfManufacture =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BrandInformationCopyWith<BrandInformation> get copyWith =>
@@ -59,15 +64,13 @@ abstract class $BrandInformationCopyWith<$Res> {
           BrandInformation value, $Res Function(BrandInformation) then) =
       _$BrandInformationCopyWithImpl<$Res>;
   $Res call(
-      {ProductBrand brand,
-      ProductBrandModel brandModel,
-      BasicTextField<String?> condition,
+      {BasicTextField<String?> brand,
+      BasicTextField<String?> brandModel,
+      BasicTextField<String?> transmission,
+      ItemCondition condition,
       BasicTextField<String?> description,
       ColorField? color,
-      DateTime? yearOfManufacture});
-
-  $ProductBrandCopyWith<$Res> get brand;
-  $ProductBrandModelCopyWith<$Res> get brandModel;
+      BasicTextField<String?> yearOfManufacture});
 }
 
 /// @nodoc
@@ -83,6 +86,7 @@ class _$BrandInformationCopyWithImpl<$Res>
   $Res call({
     Object? brand = freezed,
     Object? brandModel = freezed,
+    Object? transmission = freezed,
     Object? condition = freezed,
     Object? description = freezed,
     Object? color = freezed,
@@ -92,15 +96,19 @@ class _$BrandInformationCopyWithImpl<$Res>
       brand: brand == freezed
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
-              as ProductBrand,
+              as BasicTextField<String?>,
       brandModel: brandModel == freezed
           ? _value.brandModel
           : brandModel // ignore: cast_nullable_to_non_nullable
-              as ProductBrandModel,
+              as BasicTextField<String?>,
+      transmission: transmission == freezed
+          ? _value.transmission
+          : transmission // ignore: cast_nullable_to_non_nullable
+              as BasicTextField<String?>,
       condition: condition == freezed
           ? _value.condition
           : condition // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as ItemCondition,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -112,22 +120,8 @@ class _$BrandInformationCopyWithImpl<$Res>
       yearOfManufacture: yearOfManufacture == freezed
           ? _value.yearOfManufacture
           : yearOfManufacture // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as BasicTextField<String?>,
     ));
-  }
-
-  @override
-  $ProductBrandCopyWith<$Res> get brand {
-    return $ProductBrandCopyWith<$Res>(_value.brand, (value) {
-      return _then(_value.copyWith(brand: value));
-    });
-  }
-
-  @override
-  $ProductBrandModelCopyWith<$Res> get brandModel {
-    return $ProductBrandModelCopyWith<$Res>(_value.brandModel, (value) {
-      return _then(_value.copyWith(brandModel: value));
-    });
   }
 }
 
@@ -139,17 +133,13 @@ abstract class _$BrandInformationCopyWith<$Res>
       __$BrandInformationCopyWithImpl<$Res>;
   @override
   $Res call(
-      {ProductBrand brand,
-      ProductBrandModel brandModel,
-      BasicTextField<String?> condition,
+      {BasicTextField<String?> brand,
+      BasicTextField<String?> brandModel,
+      BasicTextField<String?> transmission,
+      ItemCondition condition,
       BasicTextField<String?> description,
       ColorField? color,
-      DateTime? yearOfManufacture});
-
-  @override
-  $ProductBrandCopyWith<$Res> get brand;
-  @override
-  $ProductBrandModelCopyWith<$Res> get brandModel;
+      BasicTextField<String?> yearOfManufacture});
 }
 
 /// @nodoc
@@ -167,6 +157,7 @@ class __$BrandInformationCopyWithImpl<$Res>
   $Res call({
     Object? brand = freezed,
     Object? brandModel = freezed,
+    Object? transmission = freezed,
     Object? condition = freezed,
     Object? description = freezed,
     Object? color = freezed,
@@ -176,15 +167,19 @@ class __$BrandInformationCopyWithImpl<$Res>
       brand: brand == freezed
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
-              as ProductBrand,
+              as BasicTextField<String?>,
       brandModel: brandModel == freezed
           ? _value.brandModel
           : brandModel // ignore: cast_nullable_to_non_nullable
-              as ProductBrandModel,
+              as BasicTextField<String?>,
+      transmission: transmission == freezed
+          ? _value.transmission
+          : transmission // ignore: cast_nullable_to_non_nullable
+              as BasicTextField<String?>,
       condition: condition == freezed
           ? _value.condition
           : condition // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as ItemCondition,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -196,7 +191,7 @@ class __$BrandInformationCopyWithImpl<$Res>
       yearOfManufacture: yearOfManufacture == freezed
           ? _value.yearOfManufacture
           : yearOfManufacture // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as BasicTextField<String?>,
     ));
   }
 }
@@ -207,28 +202,32 @@ class _$_BrandInformation extends _BrandInformation {
   const _$_BrandInformation(
       {required this.brand,
       required this.brandModel,
-      required this.condition,
+      required this.transmission,
+      this.condition = ItemCondition.brand_new,
       required this.description,
       this.color,
-      this.yearOfManufacture})
+      required this.yearOfManufacture})
       : super._();
 
   @override
-  final ProductBrand brand;
+  final BasicTextField<String?> brand;
   @override
-  final ProductBrandModel brandModel;
+  final BasicTextField<String?> brandModel;
   @override
-  final BasicTextField<String?> condition;
+  final BasicTextField<String?> transmission;
+  @JsonKey()
+  @override
+  final ItemCondition condition;
   @override
   final BasicTextField<String?> description;
   @override
   final ColorField? color;
   @override
-  final DateTime? yearOfManufacture;
+  final BasicTextField<String?> yearOfManufacture;
 
   @override
   String toString() {
-    return 'BrandInformation(brand: $brand, brandModel: $brandModel, condition: $condition, description: $description, color: $color, yearOfManufacture: $yearOfManufacture)';
+    return 'BrandInformation(brand: $brand, brandModel: $brandModel, transmission: $transmission, condition: $condition, description: $description, color: $color, yearOfManufacture: $yearOfManufacture)';
   }
 
   @override
@@ -239,6 +238,8 @@ class _$_BrandInformation extends _BrandInformation {
             const DeepCollectionEquality().equals(other.brand, brand) &&
             const DeepCollectionEquality()
                 .equals(other.brandModel, brandModel) &&
+            const DeepCollectionEquality()
+                .equals(other.transmission, transmission) &&
             const DeepCollectionEquality().equals(other.condition, condition) &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
@@ -252,6 +253,7 @@ class _$_BrandInformation extends _BrandInformation {
       runtimeType,
       const DeepCollectionEquality().hash(brand),
       const DeepCollectionEquality().hash(brandModel),
+      const DeepCollectionEquality().hash(transmission),
       const DeepCollectionEquality().hash(condition),
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(color),
@@ -265,26 +267,30 @@ class _$_BrandInformation extends _BrandInformation {
 
 abstract class _BrandInformation extends BrandInformation {
   const factory _BrandInformation(
-      {required ProductBrand brand,
-      required ProductBrandModel brandModel,
-      required BasicTextField<String?> condition,
-      required BasicTextField<String?> description,
-      ColorField? color,
-      DateTime? yearOfManufacture}) = _$_BrandInformation;
+          {required BasicTextField<String?> brand,
+          required BasicTextField<String?> brandModel,
+          required BasicTextField<String?> transmission,
+          ItemCondition condition,
+          required BasicTextField<String?> description,
+          ColorField? color,
+          required BasicTextField<String?> yearOfManufacture}) =
+      _$_BrandInformation;
   const _BrandInformation._() : super._();
 
   @override
-  ProductBrand get brand;
+  BasicTextField<String?> get brand;
   @override
-  ProductBrandModel get brandModel;
+  BasicTextField<String?> get brandModel;
   @override
-  BasicTextField<String?> get condition;
+  BasicTextField<String?> get transmission;
+  @override
+  ItemCondition get condition;
   @override
   BasicTextField<String?> get description;
   @override
   ColorField? get color;
   @override
-  DateTime? get yearOfManufacture;
+  BasicTextField<String?> get yearOfManufacture;
   @override
   @JsonKey(ignore: true)
   _$BrandInformationCopyWith<_BrandInformation> get copyWith =>

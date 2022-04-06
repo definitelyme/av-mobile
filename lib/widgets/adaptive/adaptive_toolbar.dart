@@ -5,6 +5,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
 class AdaptiveToolbar {
@@ -26,6 +27,7 @@ class AdaptiveToolbar {
   final List<Widget> actions;
   final String? tooltip;
   final String? semantics;
+  final SystemUiOverlayStyle? overlayStyle;
   // Cupertino
   final Widget? titleWidget;
   // final Widget? cupertinoLeadingIcon;
@@ -40,8 +42,7 @@ class AdaptiveToolbar {
   final bool transitionBetweenRoutes;
   // Adaptive
   final MaterialAppBarData Function(BuildContext, PlatformTarget)? material;
-  final CupertinoNavigationBarData Function(BuildContext, PlatformTarget)?
-      cupertino;
+  final CupertinoNavigationBarData Function(BuildContext, PlatformTarget)? cupertino;
 
   const AdaptiveToolbar({
     this.key,
@@ -65,6 +66,7 @@ class AdaptiveToolbar {
     this.semantics,
     this.cupertinoImplyLeading = true,
     this.implyMiddle = false,
+    this.overlayStyle,
     // this.cupertinoLeadingIcon,
     this.cupertinoLeading = 'Close',
     this.cupertinoLeadingStyle,
@@ -105,12 +107,9 @@ class AdaptiveToolbar {
         ),
       );
 
-  Widget? get _materialLeading => showCustomLeading ??
-          getIt<AppRouter>()
-              .navigatorKey
-              .currentContext!
-              .watchRouter
-              .canPopSelfOrChildren
+  SystemUiOverlayStyle get systemUIOverlayStyle => overlayStyle ?? App.systemUIOverlayStyle(getIt<AppRouter>().navigatorKey.currentContext);
+
+  Widget? get _materialLeading => showCustomLeading ?? getIt<AppRouter>().navigatorKey.currentContext!.watchRouter.canPopSelfOrChildren
       ? Semantics.fromProperties(
           properties: SemanticsProperties(
             label: tooltip,
@@ -122,9 +121,7 @@ class AdaptiveToolbar {
             child: IconButton(
               icon: leadingIcon ?? const Icon(Icons.keyboard_backspace_rounded),
               onPressed: leadingAction ?? navigator.pop,
-              color: buttonColor ??
-                  Utils.computeLuminance(
-                      Theme.of(App.context).scaffoldBackgroundColor),
+              color: buttonColor ?? Utils.computeLuminance(Theme.of(App.context).scaffoldBackgroundColor),
             ),
           ),
         )
@@ -145,8 +142,7 @@ class AdaptiveToolbar {
                   cupertinoLeading,
                   style: cupertinoLeadingStyle ??
                       TextStyle(
-                        color:
-                            Utils.computeLuminance(_cupertinoBackgroundColor),
+                        color: Utils.computeLuminance(_cupertinoBackgroundColor),
                       ),
                 ),
               ),
@@ -172,6 +168,7 @@ class AdaptiveToolbar {
                 titleTextStyle: titleStyle,
                 automaticallyImplyLeading: implyLeading,
                 centerTitle: centerTitle,
+                systemOverlayStyle: systemUIOverlayStyle,
                 elevation: elevation,
                 backgroundColor: backgroundColor ?? Colors.transparent,
                 actions: actions,
@@ -188,10 +185,7 @@ class AdaptiveToolbar {
                 brightness: brightness,
                 transitionBetweenRoutes: transitionBetweenRoutes,
                 title: !implyMiddle
-                    ? (cupertinoTitleAlignment != null
-                        ? Align(
-                            alignment: cupertinoTitleAlignment!, child: _title)
-                        : _title)
+                    ? (cupertinoTitleAlignment != null ? Align(alignment: cupertinoTitleAlignment!, child: _title) : _title)
                     : null,
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
@@ -201,12 +195,7 @@ class AdaptiveToolbar {
                 leading: leadingIcon ??
                     (cupertinoImplyLeading
                         ? null
-                        : (showCustomLeading ??
-                                getIt<AppRouter>()
-                                    .navigatorKey
-                                    .currentContext!
-                                    .watchRouter
-                                    .canPopSelfOrChildren)
+                        : (showCustomLeading ?? getIt<AppRouter>().navigatorKey.currentContext!.watchRouter.canPopSelfOrChildren)
                             ? _cupertinoLeading
                             : null),
               ),

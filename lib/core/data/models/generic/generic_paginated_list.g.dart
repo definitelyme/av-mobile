@@ -11,10 +11,10 @@ GenericPaginatedListDTO<T> _$GenericPaginatedListDTOFromJson<T>(
   T Function(Object? json) fromJsonT,
 ) =>
     GenericPaginatedListDTO<T>(
-      data: (json['Data'] as List<dynamic>).map(fromJsonT).toList(),
-      meta: json['Meta'] == null
+      data: (json['data'] as List<dynamic>).map(fromJsonT).toList(),
+      meta: json['meta'] == null
           ? null
-          : MetaDTO.fromJson(json['Meta'] as Map<String, dynamic>),
+          : MetaDTO.fromJson(json['meta'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$GenericPaginatedListDTOToJson<T>(
@@ -22,7 +22,7 @@ Map<String, dynamic> _$GenericPaginatedListDTOToJson<T>(
   Object? Function(T value) toJsonT,
 ) {
   final val = <String, dynamic>{
-    'Data': instance.data.map(toJsonT).toList(),
+    'data': instance.data.map(toJsonT).toList(),
   };
 
   void writeNotNull(String key, dynamic value) {
@@ -31,6 +31,6 @@ Map<String, dynamic> _$GenericPaginatedListDTOToJson<T>(
     }
   }
 
-  writeNotNull('Meta', instance.meta?.toJson());
+  writeNotNull('meta', instance.meta?.toJson());
   return val;
 }

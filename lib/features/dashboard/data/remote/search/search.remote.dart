@@ -2,7 +2,6 @@ library search.remote.dart;
 
 import 'package:auctionvillage/core/data/index.dart';
 import 'package:auctionvillage/features/dashboard/data/models/models.dart';
-import 'package:auctionvillage/utils/utils.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';

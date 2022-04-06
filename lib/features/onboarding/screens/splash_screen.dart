@@ -23,22 +23,15 @@ class SplashScreen extends StatelessWidget {
 
   static void _navigateUser(BuildContext c) {
     final option = c.read<AuthWatcherCubit>().state.status;
-    final _authRoutes = [
-      LoginRoute.name,
-      SignupRoute.name,
-      ForgotPasswordRoute.name,
-      PasswordResetRoute.name
-    ];
+    final _authRoutes = [LoginRoute.name, SignupRoute.name, ForgotPasswordRoute.name, PasswordResetRoute.name];
 
     option.fold(
       () => null,
       (o) {
         if (o != null) {
-          if (!_authRoutes.contains(App.currentRoute))
-            navigator.replaceAll([const LoginRoute()]);
+          if (!_authRoutes.contains(App.currentRoute)) navigator.replaceAll([const LoginRoute()]);
         } else {
-          if (App.currentRoute != DashboardRoute.name)
-            navigator.replaceAll([const DashboardRoute()]);
+          if (App.currentRoute != DashboardRoute.name) navigator.replaceAll([const DashboardRoute()]);
         }
       },
     );
@@ -48,14 +41,14 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return AdaptiveScaffold(
       backgroundColor: Palette.accentColor,
+      overlayStyle: App.customSystemOverlay(ctx: context, android: Brightness.light, ios: Brightness.dark),
       body: Center(
         child: FutureBuilder(
           future: _memoizer.runOnce(
             () => Future.delayed(
               env.splashDuration,
               () async {
-                await BlocProvider.of<AuthWatcherCubit>(App.context)
-                    .subscribeToAuthChanges(
+                await BlocProvider.of<AuthWatcherCubit>(App.context).subscribeToAuthChanges(
                   (either) => either.fold(
                     (_) => SplashScreen.navigateIfNotAuthenticated(),
                     (option) {

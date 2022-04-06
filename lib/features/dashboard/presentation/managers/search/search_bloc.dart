@@ -46,8 +46,7 @@ class SearchBloc extends Bloc<_SearchEvent, SearchState> with BaseSearchBloc {
   PaginationDTO? _usersMeta;
   PaginationDTO? _productsMeta;
 
-  void _onRefreshEvent(
-      _RefreshModelHistoryEvent evt, Emitter<SearchState> emit) async {
+  void _onRefreshEvent(_RefreshModelHistoryEvent evt, Emitter<SearchState> emit) async {
     emit(state.copyWith(model: evt.model));
 
     if (state.searchQuery != null && state.searchQuery!.isNotEmpty) {
@@ -84,16 +83,12 @@ class SearchBloc extends Bloc<_SearchEvent, SearchState> with BaseSearchBloc {
   }
 
   void _onSearchEvent(___SearchEvent evt, Emitter<SearchState> emit) async {
-    if (state.status.getOrNull == AppHttpResponse.endOfList &&
-        evt.nextPage &&
-        evt.model == state.model) return evt.callback?.call(false);
+    if (state.status.getOrNull == AppHttpResponse.endOfList && evt.nextPage && evt.model == state.model) return evt.callback?.call(false);
 
     if (!evt.nextPage) {
-      if ((evt.model == null && evt.query == state.searchQuery) ||
-          evt.query.isEmpty) return evt.callback?.call(false);
+      if ((evt.model == null && evt.query == state.searchQuery) || evt.query.isEmpty) return evt.callback?.call(false);
 
-      if ((evt.model == state.model && evt.query == state.searchQuery) ||
-          evt.query.isEmpty) return evt.callback?.call(false);
+      if ((evt.model == state.model && evt.query == state.searchQuery) || evt.query.isEmpty) return evt.callback?.call(false);
     }
 
     if (evt.query.isEmpty) return evt.callback?.call(false);
@@ -132,31 +127,23 @@ class SearchBloc extends Bloc<_SearchEvent, SearchState> with BaseSearchBloc {
               if (nextPage) {
                 assert(_usersMeta != null);
 
-                if (_usersMeta?.currentPage != _usersMeta?.lastPage) {
+                if (_usersMeta?.next == null) {
                   listDTO = await _remote.users(
                     param: query,
                     page: _usersMeta!.currentPage! + 1,
                     perPage: _perPage,
                   );
 
-                  emit(state.copyWith(
-                      users: state.users.plusIfAbsent(listDTO.domain),
-                      isSearching: false,
-                      searchQuery: query));
+                  emit(state.copyWith(users: state.users.plusIfAbsent(listDTO.domain), isSearching: false, searchQuery: query));
                 } else
                   emit(state.copyWith(status: some(AppHttpResponse.endOfList)));
               } else {
-                final _perPageValue = _usersMeta?.currentPage != null
-                    ? _usersMeta!.currentPage! * _perPage
-                    : _perPage;
+                final _perPageValue = _usersMeta?.currentPage != null ? _usersMeta!.currentPage! * _perPage : _perPage;
 
-                listDTO =
-                    await _remote.users(param: query, perPage: _perPageValue);
+                listDTO = await _remote.users(param: query, perPage: _perPageValue);
 
                 emit(state.copyWith(
-                  users: listDTO.data.isEmpty
-                      ? const KtList.empty()
-                      : listDTO.domain,
+                  users: listDTO.data.isEmpty ? const KtList.empty() : listDTO.domain,
                   isSearching: false,
                   searchQuery: query,
                 ));
@@ -171,31 +158,23 @@ class SearchBloc extends Bloc<_SearchEvent, SearchState> with BaseSearchBloc {
               if (nextPage) {
                 assert(_productsMeta != null);
 
-                if (_productsMeta?.currentPage != _productsMeta?.lastPage) {
+                if (_productsMeta?.next == null) {
                   listDTO = await _remote.products(
                     param: query,
                     page: _productsMeta!.currentPage! + 1,
                     perPage: _perPage,
                   );
 
-                  emit(state.copyWith(
-                      products: state.products.plusIfAbsent(listDTO.domain),
-                      isSearching: false,
-                      searchQuery: query));
+                  emit(state.copyWith(products: state.products.plusIfAbsent(listDTO.domain), isSearching: false, searchQuery: query));
                 } else
                   emit(state.copyWith(status: some(AppHttpResponse.endOfList)));
               } else {
-                final _perPageValue = _productsMeta?.currentPage != null
-                    ? _productsMeta!.currentPage! * _perPage
-                    : _perPage;
+                final _perPageValue = _productsMeta?.currentPage != null ? _productsMeta!.currentPage! * _perPage : _perPage;
 
-                listDTO = await _remote.products(
-                    param: query, perPage: _perPageValue);
+                listDTO = await _remote.products(param: query, perPage: _perPageValue);
 
                 emit(state.copyWith(
-                  products: listDTO.data.isEmpty
-                      ? const KtList.empty()
-                      : listDTO.domain,
+                  products: listDTO.data.isEmpty ? const KtList.empty() : listDTO.domain,
                   isSearching: false,
                   searchQuery: query,
                 ));
@@ -208,8 +187,7 @@ class SearchBloc extends Bloc<_SearchEvent, SearchState> with BaseSearchBloc {
         } on AppHttpResponse catch (e) {
           return emit(state.copyWith(status: optionOf(e), isSearching: false));
         } on AppNetworkException catch (e) {
-          return emit(state.copyWith(
-              status: optionOf(e.asResponse()), isSearching: false));
+          return emit(state.copyWith(status: optionOf(e.asResponse()), isSearching: false));
         }
       },
       (failure) async => emit(state.copyWith(status: optionOf(failure))),

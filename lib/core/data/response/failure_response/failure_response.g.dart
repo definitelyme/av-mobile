@@ -8,12 +8,12 @@ part of 'failure_response.dart';
 
 _$_FailureResponse _$$_FailureResponseFromJson(Map<String, dynamic> json) =>
     _$_FailureResponse(
-      code: json['Code'] as int?,
-      status: json['Status'] as bool? ?? false,
-      errors: json['Errors'] == null
+      code: json['code'] as int?,
+      status: json['status'] as bool? ?? false,
+      errors: json['errors'] == null
           ? null
-          : ServerFieldErrors.fromJson(json['Errors'] as Map<String, dynamic>),
-      message: json['Message'] as String? ?? '',
+          : ServerFieldErrors.fromJson(json['errors'] as Map<String, dynamic>),
+      message: json['message'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$_FailureResponseToJson(_$_FailureResponse instance) {
@@ -25,9 +25,9 @@ Map<String, dynamic> _$$_FailureResponseToJson(_$_FailureResponse instance) {
     }
   }
 
-  writeNotNull('Code', instance.code);
-  writeNotNull('Status', instance.status);
-  writeNotNull('Errors', instance.errors?.toJson());
-  val['Message'] = instance.message;
+  writeNotNull('code', instance.code);
+  writeNotNull('status', instance.status);
+  writeNotNull('errors', instance.errors?.toJson());
+  val['message'] = instance.message;
   return val;
 }

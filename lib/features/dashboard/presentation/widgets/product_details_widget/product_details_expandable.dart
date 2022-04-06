@@ -9,8 +9,9 @@ import 'package:expandable/expandable.dart';
 /// A stateless widget to render ProductDetailsExpandable.
 class ProductDetailsExpandable extends StatelessWidget {
   final Product product;
+  final BiddingType? biddingType;
 
-  const ProductDetailsExpandable(this.product, {Key? key}) : super(key: key);
+  const ProductDetailsExpandable(this.product, {Key? key, this.biddingType}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +24,7 @@ class ProductDetailsExpandable extends StatelessWidget {
           tapBodyToCollapse: false,
           useInkWell: Utils.platform_(material: true, cupertino: false),
           headerAlignment: ExpandablePanelHeaderAlignment.center,
-          iconColor: App.platform
-              .cupertino(App.resolveColor(null, dark: Colors.white)),
+          iconColor: App.platform.cupertino(App.resolveColor(null, dark: Colors.white)),
         ),
         child: ExpandableNotifier(
           // initialExpanded: true,
@@ -34,8 +34,7 @@ class ProductDetailsExpandable extends StatelessWidget {
                 dense: true,
                 material: true,
                 enabled: true,
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: App.sidePadding),
+                contentPadding: EdgeInsets.symmetric(horizontal: App.sidePadding),
                 title: AdaptiveText(
                   'Product Details',
                   maxLines: 1,
@@ -46,116 +45,173 @@ class ProductDetailsExpandable extends StatelessWidget {
               ),
               collapsed: Utils.nothing,
               expanded: Material(
-                color: App.resolveColor(Palette.cardColorLight,
-                    dark: Palette.secondaryColor),
+                color: App.resolveColor(Palette.cardColorLight, dark: Palette.secondaryColor),
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: App.sidePadding),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       0.01.verticalh,
                       //
-                      AdaptiveText(
-                        'Look at the sunset, life is amazing, life is beautiful, life is what you make it. Mogul talk. Watch your back, but more importantly when you get out the shower, dry your back, it’s a cold world out there.',
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w400,
-                        letterSpacing: Utils.letterSpacing,
-                      ),
+                      if (product.description.isValid) ...[
+                        AdaptiveText(
+                          '${product.description.getOrEmpty}',
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w400,
+                          letterSpacing: Utils.letterSpacing,
+                        ),
+                        //
+                        0.01.verticalh,
+                      ],
                       //
-                      0.01.verticalh,
+                      if (product.brandInformation?.color?.getOrNull != null && product.brandInformation!.color!.isValid) ...[
+                        Row(
+                          children: [
+                            AdaptiveText(
+                              'Color: ',
+                              maxLines: 1,
+                              fontSize: 17.sp,
+                              letterSpacing: Utils.letterSpacing,
+                            ),
+                            //
+                            0.02.horizontalw,
+                            //
+                            SizedBox(
+                              width: 0.18.w,
+                              height: 0.025.h,
+                              child: DecoratedBox(decoration: BoxDecoration(color: product.brandInformation?.color?.getOrNull)),
+                            ),
+                          ],
+                        ),
+                        //
+                        0.008.verticalh,
+                      ],
                       //
-                      Row(
-                        children: [
-                          AdaptiveText(
-                            'Model: ',
-                            maxLines: 1,
-                            fontSize: 17.sp,
-                            letterSpacing: Utils.letterSpacing,
-                          ),
-                          //
-                          0.04.horizontalw,
-                          //
-                          AdaptiveText(
-                            'iPhone 12 PRO',
-                            maxLines: 1,
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: Utils.letterSpacing,
-                          ),
-                        ],
-                      ),
+                      if (product.brandInformation?.brand.getOrNull != null && product.brandInformation!.brand.isValid) ...[
+                        Row(
+                          children: [
+                            AdaptiveText(
+                              'Brand: ',
+                              maxLines: 1,
+                              fontSize: 17.sp,
+                              letterSpacing: Utils.letterSpacing,
+                            ),
+                            //
+                            0.02.horizontalw,
+                            //
+                            AdaptiveText(
+                              product.brandInformation!.brand.getOrNull!,
+                              maxLines: 1,
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w600,
+                              letterSpacing: Utils.letterSpacing,
+                            ),
+                          ],
+                        ),
+                        //
+                        0.008.verticalh,
+                      ],
                       //
-                      0.008.verticalh,
+                      if (product.brandInformation?.brandModel.getOrNull != null && product.brandInformation!.brandModel.isValid) ...[
+                        Row(
+                          children: [
+                            AdaptiveText(
+                              'Brand Model: ',
+                              maxLines: 1,
+                              fontSize: 17.sp,
+                              letterSpacing: Utils.letterSpacing,
+                            ),
+                            //
+                            0.02.horizontalw,
+                            //
+                            AdaptiveText(
+                              product.brandInformation!.brandModel.getOrNull!,
+                              maxLines: 1,
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w600,
+                              letterSpacing: Utils.letterSpacing,
+                            ),
+                          ],
+                        ),
+                        //
+                        0.008.verticalh,
+                      ],
                       //
-                      Row(
-                        children: [
-                          AdaptiveText(
-                            'Storage: ',
-                            maxLines: 1,
-                            fontSize: 17.sp,
-                            letterSpacing: Utils.letterSpacing,
-                          ),
-                          //
-                          0.04.horizontalw,
-                          //
-                          AdaptiveText(
-                            '256GB',
-                            maxLines: 1,
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: Utils.letterSpacing,
-                          ),
-                        ],
-                      ),
+                      if (product.brandInformation?.yearOfManufacture.getOrNull != null) ...[
+                        Row(
+                          children: [
+                            AdaptiveText(
+                              'Year of Manufacture: ',
+                              maxLines: 1,
+                              fontSize: 17.sp,
+                              letterSpacing: Utils.letterSpacing,
+                            ),
+                            //
+                            0.02.horizontalw,
+                            //
+                            AdaptiveText(
+                              '${product.brandInformation!.yearOfManufacture.getOrNull}',
+                              maxLines: 1,
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w600,
+                              letterSpacing: Utils.letterSpacing,
+                            ),
+                          ],
+                        ),
+                        //
+                        0.008.verticalh,
+                      ],
                       //
-                      0.008.verticalh,
+                      if (product.brandInformation?.condition != null) ...[
+                        Row(
+                          children: [
+                            AdaptiveText(
+                              'Condition: ',
+                              maxLines: 1,
+                              fontSize: 17.sp,
+                              letterSpacing: Utils.letterSpacing,
+                            ),
+                            //
+                            0.02.horizontalw,
+                            //
+                            AdaptiveText(
+                              product.brandInformation!.condition.formatted,
+                              maxLines: 1,
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w600,
+                              letterSpacing: Utils.letterSpacing,
+                            ),
+                          ],
+                        ),
+                        //
+                        0.008.verticalh,
+                      ],
                       //
-                      Row(
-                        children: [
-                          AdaptiveText(
-                            'Brand: ',
-                            maxLines: 1,
-                            fontSize: 17.sp,
-                            letterSpacing: Utils.letterSpacing,
-                          ),
-                          //
-                          0.04.horizontalw,
-                          //
-                          AdaptiveText(
-                            'Apple',
-                            maxLines: 1,
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: Utils.letterSpacing,
-                          ),
-                        ],
-                      ),
-                      //
-                      0.008.verticalh,
-                      //
-                      Row(
-                        children: [
-                          AdaptiveText(
-                            'Location: ',
-                            maxLines: 1,
-                            fontSize: 17.sp,
-                            letterSpacing: Utils.letterSpacing,
-                          ),
-                          //
-                          0.04.horizontalw,
-                          //
-                          AdaptiveText(
-                            'Online',
-                            maxLines: 1,
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: Utils.letterSpacing,
-                          ),
-                        ],
-                      ),
-                      //
-                      VerticalSpace(height: 0.02.h),
+                      if (biddingType != null) ...[
+                        Row(
+                          children: [
+                            AdaptiveText(
+                              'Location: ',
+                              maxLines: 1,
+                              fontSize: 17.sp,
+                              letterSpacing: Utils.letterSpacing,
+                            ),
+                            //
+                            0.02.horizontalw,
+                            //
+                            AdaptiveText(
+                              '${biddingType?.formatted}',
+                              maxLines: 1,
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w600,
+                              letterSpacing: Utils.letterSpacing,
+                            ),
+                          ],
+                        ),
+                        //
+                        0.008.verticalh,
+                      ],
                     ],
                   ),
                 ),

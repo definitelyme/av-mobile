@@ -18,7 +18,6 @@ class ImageBox extends StatefulWidget {
   final bool applyConstraintToReplacement;
   final BoxBorder? border;
   final BorderRadius? borderRadius;
-  final bool canZoom;
   final double elevation;
   final BoxFit fit;
   final double height;
@@ -28,6 +27,10 @@ class ImageBox extends StatefulWidget {
   final bool useDefaultRadius;
   final double width;
   final bool expandsFullscreen;
+  final List<Widget> Function(Widget)? stackChildren;
+  final AlignmentGeometry stackAlignment;
+  final StackFit stackFit;
+  final Clip stackClip;
   final void Function(ImageProvider?)? onPressed;
 
   const ImageBox.asset({
@@ -44,7 +47,10 @@ class ImageBox extends StatefulWidget {
     this.applyConstraintToReplacement = true,
     this.useDefaultRadius = true,
     this.expandsFullscreen = false,
-    this.canZoom = false,
+    this.stackChildren,
+    this.stackAlignment = AlignmentDirectional.topStart,
+    this.stackFit = StackFit.loose,
+    this.stackClip = Clip.hardEdge,
     this.onPressed,
   })  : _type = _ImageType.asset,
         replacementAsset = null,
@@ -65,7 +71,10 @@ class ImageBox extends StatefulWidget {
     this.applyConstraintToReplacement = true,
     this.useDefaultRadius = true,
     this.expandsFullscreen = false,
-    this.canZoom = false,
+    this.stackChildren,
+    this.stackAlignment = AlignmentDirectional.topStart,
+    this.stackFit = StackFit.loose,
+    this.stackClip = Clip.hardEdge,
     this.onPressed,
   })  : _type = _ImageType.file,
         super(key: key);
@@ -85,7 +94,10 @@ class ImageBox extends StatefulWidget {
     this.applyConstraintToReplacement = true,
     this.useDefaultRadius = true,
     this.expandsFullscreen = false,
-    this.canZoom = false,
+    this.stackChildren,
+    this.stackAlignment = AlignmentDirectional.topStart,
+    this.stackFit = StackFit.loose,
+    this.stackClip = Clip.hardEdge,
     this.onPressed,
   })  : _type = _ImageType.network,
         super(key: key);
@@ -94,59 +106,33 @@ class ImageBox extends StatefulWidget {
   State<ImageBox> createState() => _ImageBoxState();
 }
 
-class _ImageBoxState extends State<ImageBox>
-    with AutomaticKeepAliveClientMixin<ImageBox> {
+class _ImageBoxState extends State<ImageBox> with AutomaticKeepAliveClientMixin<ImageBox> {
   @override
   bool get wantKeepAlive => true;
 
-  Widget get _image =>
-      widget.photo?.let(
-        (it) => widget._type.when(
-          asset: _imageBuilder(AssetImage(it)),
-          file: _imageBuilder(FileImage(File(it))),
-          network: CachedNetworkImage(
-            imageUrl: it,
-            fit: widget.fit,
-            width: widget.width,
-            height: widget.height,
-            imageBuilder: (context, provider) => _imageBuilder(provider),
-            errorWidget: (_, url, error) => replacement,
-            progressIndicatorBuilder: (_, url, download) => ConstrainedBox(
-              constraints: constraints,
-              child: Center(
-                child: CircularProgressBar.adaptive(
-                  value: download.progress,
-                  strokeWidth: 2,
-                  width: 25,
-                  height: 25,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ) ??
-      replacement;
+  Widget _image(ImageProvider provider) => Image(
+        width: widget.width,
+        height: widget.height,
+        image: provider,
+        fit: widget.fit,
+        isAntiAlias: true,
+      );
 
   ImageProvider? get provider => widget.photo?.let((it) => widget._type.when(
         asset: AssetImage(it),
         file: FileImage(File(it)),
         network: CachedNetworkImageProvider(
           it,
-          maxHeight:
-              widget.height == double.infinity ? null : widget.height.ceil(),
-          maxWidth:
-              widget.width == double.infinity ? null : widget.width.ceil(),
+          maxHeight: widget.height == double.infinity ? null : widget.height.ceil(),
+          maxWidth: widget.width == double.infinity ? null : widget.width.ceil(),
         ),
       ));
 
-  BoxConstraints get constraints =>
-      BoxConstraints(minWidth: widget.width, minHeight: widget.height);
+  BoxConstraints get constraints => BoxConstraints(minWidth: widget.width, minHeight: widget.height);
 
   Widget get replacement =>
       widget.replacementAsset?.let((it) => _imageBuilder(AssetImage(it))) ??
-      (widget.applyConstraintToReplacement
-          ? ConstrainedBox(constraints: constraints, child: widget.replacement)
-          : widget.replacement);
+      (widget.applyConstraintToReplacement ? ConstrainedBox(constraints: constraints, child: widget.replacement) : widget.replacement);
 
   Object? get _heroTag => widget.heroTag ?? UniqueId.v4().value;
 
@@ -159,8 +145,7 @@ class _ImageBoxState extends State<ImageBox>
         border: widget.border,
       ),
       child: ClipRRect(
-        borderRadius:
-            widget.borderRadius ?? (widget.useDefaultRadius ? 8.br : null),
+        borderRadius: widget.borderRadius ?? (widget.useDefaultRadius ? 8.br : null),
         clipBehavior: Clip.hardEdge,
         child: MyHero(
           tag: _heroTag,
@@ -175,13 +160,14 @@ class _ImageBoxState extends State<ImageBox>
                       imageProvider: provider,
                     ))
                 : () => widget.onPressed?.call(provider),
-            child: Image(
-              width: widget.width,
-              height: widget.height,
-              image: provider,
-              fit: widget.fit,
-              isAntiAlias: true,
-            ),
+            child: widget.stackChildren != null
+                ? Stack(
+                    alignment: widget.stackAlignment,
+                    clipBehavior: widget.stackClip,
+                    fit: widget.stackFit,
+                    children: widget.stackChildren!.call(_image(provider)),
+                  )
+                : _image(provider),
           ),
         ),
       ),
@@ -192,7 +178,32 @@ class _ImageBoxState extends State<ImageBox>
   Widget build(BuildContext context) {
     super.build(context);
 
-    return widget.canZoom ? InteractiveViewer(child: _image) : _image;
+    return widget.photo?.let(
+          (it) => widget._type.when(
+            asset: _imageBuilder(AssetImage(it)),
+            file: _imageBuilder(FileImage(File(it))),
+            network: CachedNetworkImage(
+              imageUrl: it,
+              fit: widget.fit,
+              width: widget.width,
+              height: widget.height,
+              imageBuilder: (context, provider) => _imageBuilder(provider),
+              errorWidget: (_, url, error) => replacement,
+              progressIndicatorBuilder: (_, url, download) => ConstrainedBox(
+                constraints: constraints,
+                child: Center(
+                  child: CircularProgressBar.adaptive(
+                    value: download.progress,
+                    strokeWidth: 2,
+                    width: 25,
+                    height: 25,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ) ??
+        replacement;
   }
 }
 

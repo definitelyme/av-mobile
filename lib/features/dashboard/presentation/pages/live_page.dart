@@ -1,10 +1,14 @@
 library live_page.dart;
 
 import 'package:auctionvillage/features/dashboard/domain/index.dart';
+import 'package:auctionvillage/features/dashboard/presentation/managers/index.dart';
 import 'package:auctionvillage/features/dashboard/presentation/widgets/index.dart';
+import 'package:auctionvillage/manager/locator/locator.dart';
 import 'package:auctionvillage/utils/utils.dart';
 import 'package:auctionvillage/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kt_dart/collection.dart';
 
 /// A stateful widget to render LivePage.
 class LivePage extends StatefulWidget {
@@ -15,20 +19,49 @@ class LivePage extends StatefulWidget {
 }
 
 class _LivePageState extends State<LivePage> {
-  final _products = Product.dummy;
+  late DealCubit _cubit;
+
+  @override
+  void initState() {
+    _cubit = blocMaybeOf(context, orElse: () => getIt<DealCubit>());
+    super.initState();
+  }
+
+  void onLoadMore(DragToRefreshState refresh) async {
+    if (!_cubit.state.isLoading && _cubit.state.deals.isNotEmpty())
+      await _cubit.fetchLiveDeals(
+        nextPage: true,
+        perPage: 7,
+        isHomePage: false,
+        endOfList: () => refresh.loadNoData(),
+        callback: (_) => refresh.loadComplete(),
+      );
+    else if (_cubit.state.status.getOrNull != null && _cubit.state.status.getOrNull!.isEndOfList) refresh.loadNoData();
+  }
+
+  void onRefresh(DragToRefreshState refresh) {
+    if (!_cubit.state.isLoading)
+      _cubit.fetchLiveDeals(
+        perPage: 7,
+        isHomePage: false,
+        endOfList: () => refresh.loadNoData(),
+        callback: (_) => refresh.refreshCompleted(resetFooterState: true),
+      );
+  }
 
   @override
   Widget build(BuildContext context) {
     return AdaptiveScaffold(
       backgroundColor: Palette.accentColor,
       adaptiveToolbar: AdaptiveToolbar(
-        title: 'Live Action',
+        title: 'Live Auctions',
         titleStyle: App.titleStyle,
         elevation: 0,
         showCustomLeading: false,
         implyLeading: false,
         centerTitle: true,
         cupertinoImplyLeading: false,
+        overlayStyle: App.customSystemOverlay(ctx: context, android: Brightness.light, ios: Brightness.light),
         actions: [
           ...Utils.platform_(
             cupertino: [Center(child: AdaptiveText('Live Action', maxLines: 1, style: App.titleStyle))],
@@ -36,49 +69,79 @@ class _LivePageState extends State<LivePage> {
           )!,
         ],
       ),
-      body: SafeArea(
-        left: false,
-        right: false,
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: App.sidePadding),
-              child: const SearchWidget(),
+      body: BlocProvider(
+        create: (_) => _cubit,
+        child: BlocListener<DealCubit, DealState>(
+          listenWhen: (p, c) =>
+              p.status.getOrElse(() => null) != c.status.getOrElse(() => null) ||
+              (c.status.getOrElse(() => null) != null && (c.status.getOrElse(() => null)!.response.maybeMap(orElse: () => false))),
+          listener: (c, s) => s.status.fold(
+            () => null,
+            (it) => it?.response.map(
+              info: (i) => PopupDialog.info(message: i.message, show: i.message.isNotEmpty).render(c),
+              error: (f) => PopupDialog.error(message: f.message, show: f.show && f.message.isNotEmpty).render(c),
+              success: (s) => PopupDialog.success(message: s.message, show: s.message.isNotEmpty).render(c),
             ),
-            //
-            0.02.verticalh,
-            //
-            Expanded(
-              child: Material(
-                color: App.resolveColor(Palette.cardColorLight, dark: Palette.cardColorDark),
-                child: CustomScrollView(
-                  slivers: [
-                    SliverSafeArea(
-                      top: false,
-                      left: false,
-                      right: false,
-                      sliver: SliverPadding(
-                        padding: EdgeInsets.symmetric(horizontal: App.sidePadding, vertical: App.sidePadding),
-                        sliver: SliverList(
-                          delegate: SliverChildBuilderDelegate(
-                            (_, i) => Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                ProductCard(_products.elementAt(i)),
-                                //
-                                if (i < _products.length - 1) 0.01.verticalh,
-                              ],
+          ),
+          child: SafeArea(
+            left: false,
+            right: false,
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: App.sidePadding),
+                  child: const SearchWidget(),
+                ),
+                //
+                0.02.verticalh,
+                //
+                Expanded(
+                  child: Material(
+                    color: App.resolveColor(Palette.cardColorLight, dark: Palette.cardColorDark),
+                    child: DragToRefresh(
+                      initialRefresh: true,
+                      enablePullUp: true,
+                      onRefresh: onRefresh,
+                      onLoading: onLoadMore,
+                      child: CustomScrollView(
+                        primary: false,
+                        physics: Utils.physics,
+                        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+                        slivers: [
+                          SliverSafeArea(
+                            top: false,
+                            left: false,
+                            right: false,
+                            sliver: BlocSelector<DealCubit, DealState, KtList<Deal>>(
+                              selector: (s) => s.liveDeals,
+                              builder: (c, deals) => SliverPadding(
+                                padding: EdgeInsets.symmetric(horizontal: App.sidePadding, vertical: App.sidePadding),
+                                sliver: SliverList(
+                                  delegate: SliverChildBuilderDelegate(
+                                    (_, i) => Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        if (deals.isNotEmpty()) ...[
+                                          ProductCard(deals.get(i), index: i),
+                                          //
+                                          if (i < deals.size - 1) 0.01.verticalh,
+                                        ],
+                                      ],
+                                    ),
+                                    childCount: deals.size,
+                                  ),
+                                ),
+                              ),
                             ),
-                            childCount: _products.length,
                           ),
-                        ),
+                        ],
                       ),
                     ),
-                  ],
+                  ),
                 ),
-              ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

@@ -12,20 +12,13 @@ abstract class BaseRepository {
   InternetConnectionChecker get connectionChecker;
 
   Future<Either<AppHttpResponse, Unit>> checkConnectivity() async {
-    final isConnected =
-        (await connectivity.checkConnectivity()) != ConnectivityResult.none;
+    final isConnected = (await connectivity.checkConnectivity()) != ConnectivityResult.none;
 
-    if (!isConnected)
-      return left(AppHttpResponse(AnyResponse.fromFailure(
-        const NetworkFailure.notConnected(),
-      )));
+    if (!isConnected) return left(AppHttpResponse(AnyResponse.fromFailure(const NetworkFailure.notConnected())));
 
     final hasInternet = await connectionChecker.hasConnection;
 
-    if (isConnected && !hasInternet)
-      return left(AppHttpResponse(AnyResponse.fromFailure(
-        const NetworkFailure.poorInternet(),
-      )));
+    if (isConnected && !hasInternet) return left(AppHttpResponse(AnyResponse.fromFailure(const NetworkFailure.poorInternet())));
 
     return right(unit);
   }

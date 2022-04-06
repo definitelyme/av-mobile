@@ -1,6 +1,5 @@
 library shipping_information_dto.dart;
 
-import 'package:auctionvillage/core/domain/entities/entities.dart';
 import 'package:auctionvillage/features/dashboard/domain/index.dart';
 import 'package:auctionvillage/manager/serializer/serializers.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -18,9 +17,20 @@ class ShippingInformationDTO with _$ShippingInformationDTO {
     @DoubleSerializer() double? height,
     @DoubleSerializer() double? length,
     String? deliveryPeriod,
-    @BooleanSerializer() bool? pickUpAvailable,
+    @JsonKey(toJson: BooleanSerializer.toJsonString) @BooleanSerializer() bool? pickUpAvailable,
     String? description,
   }) = _ShippingInformationDTO;
+
+  /// Maps ShippingInformation to a Data Transfer Object.
+  factory ShippingInformationDTO.fromDomain(ShippingInformation? instance) => ShippingInformationDTO(
+        width: instance?.width.getOrNull,
+        weight: instance?.weight.getOrNull,
+        height: instance?.height.getOrNull,
+        length: instance?.length.getOrNull,
+        pickUpAvailable: instance?.isPickup,
+        deliveryPeriod: instance?.deliveryPeriod.getOrNull,
+        description: instance?.description.getOrNull,
+      );
 
   factory ShippingInformationDTO.fromJson(Map<String, dynamic> json) => _$ShippingInformationDTOFromJson(json);
 
@@ -31,8 +41,7 @@ class ShippingInformationDTO with _$ShippingInformationDTO {
         height: height,
         length: length,
         description: description,
-        // deliveryPeriod: DeliveryPeriod.valueOf(deliveryPeriod),
-        deliveryPeriod: DeliveryPeriod.later,
-        isPickup: pickUpAvailable!,
+        deliveryPeriod: deliveryPeriod,
+        isPickup: pickUpAvailable,
       );
 }

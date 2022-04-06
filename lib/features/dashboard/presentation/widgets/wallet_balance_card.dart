@@ -8,10 +8,9 @@ import 'package:flutter/material.dart';
 class WalletBalanceCard extends StatelessWidget {
   final List<Widget> top;
   final List<Widget> bottom;
+  final String balance;
 
-  const WalletBalanceCard(
-      {Key? key, this.top = const [], this.bottom = const []})
-      : super(key: key);
+  const WalletBalanceCard({Key? key, required this.balance, this.top = const [], this.bottom = const []}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +20,7 @@ class WalletBalanceCard extends StatelessWidget {
       type: MaterialType.canvas,
       borderRadius: 5.br,
       child: Padding(
-        padding: EdgeInsets.symmetric(
-            horizontal: App.sidePadding, vertical: 0.018.h),
+        padding: EdgeInsets.symmetric(horizontal: App.sidePadding, vertical: 0.018.h),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,10 +53,9 @@ class WalletBalanceCard extends StatelessWidget {
               TextSpan(children: [
                 TextSpan(
                   text: '${Utils.currency} ',
-                  style:
-                      TextStyle(fontSize: 26.sp, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 26.sp, fontWeight: FontWeight.bold),
                 ),
-                TextSpan(text: '503000'.asCurrency(symbol: false)),
+                TextSpan(text: balance.asCurrency(symbol: false)),
               ]),
               maxLines: 1,
               fontSize: 25.sp,
@@ -82,11 +79,10 @@ class WalletBalanceCard extends StatelessWidget {
                         color: Palette.accentColor.shade200,
                         borderRadius: 5.br,
                         child: AdaptiveInkWell(
-                          onTap: () {},
+                          onTap: () => navigator.push(const WithdrawalRoute()),
                           borderRadius: 5.br,
                           child: Padding(
-                            padding: EdgeInsets.symmetric(
-                                vertical: 0.012.h, horizontal: 0.08.w),
+                            padding: EdgeInsets.symmetric(vertical: 0.012.h, horizontal: 0.08.w),
                             child: Center(
                               child: AdaptiveText(
                                 'Withdraw',
@@ -109,11 +105,10 @@ class WalletBalanceCard extends StatelessWidget {
                         color: Palette.accentColor.shade200,
                         borderRadius: 5.br,
                         child: AdaptiveInkWell(
-                          onTap: () {},
+                          onTap: () => navigator.push(const FundWalletRoute()),
                           borderRadius: 5.br,
                           child: Padding(
-                            padding: EdgeInsets.symmetric(
-                                vertical: 0.012.h, horizontal: 0.08.w),
+                            padding: EdgeInsets.symmetric(vertical: 0.012.h, horizontal: 0.08.w),
                             child: Center(
                               child: AdaptiveText(
                                 'Fund Wallet',

@@ -1,3 +1,5 @@
+library country.dart;
+
 import 'package:auctionvillage/core/domain/entities/entities.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -6,34 +8,32 @@ part 'country.freezed.dart';
 @freezed
 @immutable
 class Country with _$Country implements Comparable<Country> {
-  static const String turkeyISO = 'TR';
-  static const String turkeyISO3 = 'TUR';
-  static const String nigeriaISO = 'NG';
-  static const String nigeriaISO3 = 'NGA';
+  static const Country DEFAULT = Country(
+    iso: BasicTextField.DEFAULT_STRING,
+    name: BasicTextField.DEFAULT_STRING,
+    flag: BasicTextField.DEFAULT_STRING,
+    dialCode: BasicTextField.DEFAULT_STRING,
+    currencyIcon: BasicTextField.DEFAULT_STRING,
+  );
 
-  const Country._();
+  static const String defaultISO = 'NG';
 
   const factory Country({
     UniqueId<String?>? id,
-    BasicTextField<String?>? name,
-    BasicTextField<String?>? iso,
-    BasicTextField<String?>? iso3,
-    BasicTextField<String?>? dialCode,
+    required BasicTextField<String?> name,
+    required BasicTextField<String?> iso,
+    required BasicTextField<String?> dialCode,
+    required BasicTextField<String?> flag,
+    required BasicTextField<String?> currencyIcon,
     @Default('en') String locale,
-    Currency? currency,
-    int? digitsCount,
+    CurrencyType? type,
   }) = _Country;
 
-  static const Country DEFAULT = Country(
-    iso: BasicTextField.DEFAULT_STRING,
-    iso3: BasicTextField.DEFAULT_STRING,
-    name: BasicTextField.DEFAULT_STRING,
-    dialCode: BasicTextField.DEFAULT_STRING,
-  );
+  const Country._();
 
   @override
   int compareTo(Country other) {
-    if (name == null || !name!.isValid) return -1;
-    return name!.getOrEmpty!.compareTo(other.name!.getOrEmpty!);
+    if (!name.isValid) return -1;
+    return name.getOrEmpty!.compareTo(other.name.getOrEmpty!);
   }
 }

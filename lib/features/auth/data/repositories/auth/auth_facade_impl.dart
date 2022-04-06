@@ -10,6 +10,8 @@ import 'package:auctionvillage/features/auth/data/repositories/auth/social_auth_
 import 'package:auctionvillage/features/auth/data/sources/local/auth_local_source.dart';
 import 'package:auctionvillage/features/auth/data/sources/remote/auth_remote_source.dart';
 import 'package:auctionvillage/features/auth/domain/index.dart';
+import 'package:auctionvillage/features/dashboard/data/models/models.dart';
+import 'package:auctionvillage/features/dashboard/domain/index.dart';
 import 'package:auctionvillage/manager/settings/external/preference_repository.dart';
 import 'package:auctionvillage/utils/utils.dart';
 import 'package:dartz/dartz.dart';
@@ -46,13 +48,10 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
         __userChagesController = StreamController.broadcast();
 
   @override
-  Future<Option<User?>> get user async =>
-      (await retrieveAndCacheUpdatedUser(forceGetLocalCache: true))
-          .getOrElse(() => none());
+  Future<Option<User?>> get user async => (await retrieveAndCacheUpdatedUser(forceGetLocalCache: true)).getOrElse(() => none());
 
   @override
-  Future<Either<AppHttpResponse, Option<User?>>> get currentUser async =>
-      retrieveAndCacheUpdatedUser(forceGetLocalCache: false);
+  Future<Either<AppHttpResponse, Option<User?>>> get currentUser async => retrieveAndCacheUpdatedUser(forceGetLocalCache: false);
 
   @override
   Future<AppHttpResponse> confirmPasswordReset({
@@ -79,10 +78,10 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
       );
 
       return AppHttpResponse.fromJson(_response.data as Map<String, dynamic>);
-    } on AppHttpResponse catch (ex, trace) {
-      return handleFailure(e: ex, trace: trace);
-    } on AppNetworkException catch (ex, trace) {
-      return handleFailure(e: ex.asResponse(), trace: trace);
+    } on AppHttpResponse catch (ex, tr) {
+      return handleFailure(e: ex, trace: tr, notify: false);
+    } on AppNetworkException catch (ex, tr) {
+      return handleFailure(e: ex.asResponse(), trace: tr, notify: false);
     }
   }
 
@@ -114,25 +113,20 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
       );
 
       // Get Data Access Object
-      final _registered = RegisteredUserDTO.fromJson(
-        _response.data as Map<String, dynamic>,
-      );
+      final _registered = RegisteredUserDTO.fromJson(_response.data as Map<String, dynamic>);
 
-      await phone.getOrEmpty?.let((it) async => await preferences.setString(
-          key: Const.kPhoneNumberPrefKey, value: it));
+      await phone.getOrEmpty?.let((it) async => await preferences.setString(key: Const.kPhoneNumberPrefKey, value: it));
 
       // Automatically Login new User
       return await login(
         email: emailAddress,
         password: password,
-        registered: _registered.data?.copyWith(
-          password: password.getOrNull,
-        ),
+        registered: _registered.data?.copyWith(password: password.getOrNull),
       );
-    } on AppHttpResponse catch (ex, trace) {
-      return handleFailure(e: ex, trace: trace);
-    } on AppNetworkException catch (ex, trace) {
-      return handleFailure(e: ex.asResponse(), trace: trace);
+    } on AppHttpResponse catch (ex, tr) {
+      return handleFailure(e: ex, trace: tr, notify: false);
+    } on AppNetworkException catch (ex, tr) {
+      return handleFailure(e: ex.asResponse(), trace: tr, notify: false);
     }
   }
 
@@ -151,15 +145,13 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
 
           await signOut(notify: true);
 
-          return AppHttpResponse.fromJson(
-              _response.data as Map<String, dynamic>);
+          return AppHttpResponse.fromJson(_response.data as Map<String, dynamic>);
         },
       );
-    } on AppHttpResponse catch (ex, trace) {
-      return await handleFailure(e: ex, trace: trace, notify: true);
-    } on AppNetworkException catch (ex, trace) {
-      return await handleFailure(
-          e: ex.asResponse(), trace: trace, notify: true);
+    } on AppHttpResponse catch (ex, tr) {
+      return await handleFailure(e: ex, trace: tr, notify: true);
+    } on AppNetworkException catch (ex, tr) {
+      return await handleFailure(e: ex.asResponse(), trace: tr, notify: true);
     }
   }
 
@@ -174,13 +166,8 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
       final _conn = await checkInternetConnectivity();
 
       final _response = await _conn.fold(
-        // Re-Throw Exception
         (f) => throw f,
-        // Attempt Authentication
-        (r) async => remote.login(
-          email: email.getOrNull,
-          password: password.getOrNull,
-        ),
+        (r) async => remote.login(email: email.getOrNull, password: password.getOrNull),
       );
 
       //// Cache Access token
@@ -188,8 +175,7 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
 
       // If login was successful, fetch updated User creds
       // Else we'll pass in the initial registration response for caching
-      var temp =
-          UserDTO.fromDomain(User.blank(email: email, password: password));
+      var temp = UserDTO.fromDomain(User.blank(email: email, password: password));
 
       final cached = await retrieveAndCacheUpdatedUser(
         shouldThrow: true,
@@ -199,8 +185,7 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
       // Log Firebase Analytics Login event
       await analytics.logLogin(loginMethod: 'email');
 
-      final _res =
-          AppHttpResponse.fromJson(_response.data as Map<String, dynamic>);
+      final _res = AppHttpResponse.fromJson(_response.data as Map<String, dynamic>);
 
       return await cached.fold(
         (failure) async {
@@ -213,16 +198,15 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
           return AppHttpResponse(_res.response);
         },
       );
-    } on AppHttpResponse catch (ex, trace) {
-      return handleFailure(e: ex, trace: trace);
-    } on AppNetworkException catch (ex, trace) {
-      return handleFailure(e: ex.asResponse(), trace: trace);
+    } on AppHttpResponse catch (ex, tr) {
+      return handleFailure(e: ex, trace: tr, notify: false);
+    } on AppNetworkException catch (ex, tr) {
+      return handleFailure(e: ex.asResponse(), trace: tr, notify: false);
     }
   }
 
   @override
-  Stream<Either<AppHttpResponse, Option<User?>>> get onAuthStateChanges =>
-      __controller.stream;
+  Stream<Either<AppHttpResponse, Option<User?>>> get onAuthStateChanges => __controller.stream;
 
   @override
   Stream<Option<User?>> get onUserChanges => __userChagesController.stream;
@@ -233,11 +217,8 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
     bool shouldThrow = false,
     bool forceGetLocalCache = false,
   }) async {
-    Future<Either<AppHttpResponse, Option<User?>>> _local(
-        AppHttpResponse failure) async {
-      if (forceGetLocalCache)
-        return right((await local.getUser())
-            .fold(() => none(), (dto) => some(dto?.domain)));
+    Future<Either<AppHttpResponse, Option<User?>>> _local(AppHttpResponse failure) async {
+      if (forceGetLocalCache) return right((await local.getUser()).fold(() => none(), (dto) => some(dto?.domain)));
 
       return failure.fold(
         // if reason for failure was 401,
@@ -304,14 +285,14 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
         // Re-Throw Exception
         (f) => throw f,
         // Attempt Authentication
-        (r) async => remote.sendPasswordResetMessage(phone.getOrEmpty),
+        (r) async => remote.sendPasswordResetMessage(phone.getOrEmpty?.trim().trimWhiteSpaces().removeNewLines()),
       );
 
       return AppHttpResponse.fromJson(_response.data as Map<String, dynamic>);
-    } on AppHttpResponse catch (ex, trace) {
-      return handleFailure(e: ex, trace: trace);
-    } on AppNetworkException catch (ex, trace) {
-      return handleFailure(e: ex.asResponse(), trace: trace);
+    } on AppHttpResponse catch (ex, tr) {
+      return handleFailure(e: ex, trace: tr, notify: false);
+    } on AppNetworkException catch (ex, tr) {
+      return handleFailure(e: ex.asResponse(), trace: tr, notify: false);
     }
   }
 
@@ -326,10 +307,11 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
       if (regular) await preferences.remove(Const.kPhoneNumberPrefKey);
 
       await Future.wait([
-        if (regular) remote.getUser(),
         if (google) googleSignIn.signOut(),
         if (regular) local.signOut(),
       ]);
+
+      if (regular) await remote.getUser();
 
       // Notify listeners about sign-out
       // if (notify) await sink(right(none()));
@@ -346,8 +328,7 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
   }
 
   @override
-  Future<void> sink(
-          [Either<AppHttpResponse, Option<User?>>? userOrFailure]) async =>
+  Future<void> sink([Either<AppHttpResponse, Option<User?>>? userOrFailure]) async =>
       __controller.sink.add(userOrFailure ?? await currentUser);
 
   @override
@@ -362,8 +343,7 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
   }
 
   @override
-  Future<void> update(Option<User?> user) async =>
-      __userChagesController.sink.add(user);
+  Future<void> update(Option<User?> user) async => __userChagesController.sink.add(user);
 
   @override
   Future<AppHttpResponse> updatePassword({
@@ -386,9 +366,7 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
         ),
       );
 
-      final _return = AppHttpResponse.fromJson(
-        _response.data as Map<String, dynamic>,
-      );
+      final _return = AppHttpResponse.fromJson(_response.data as Map<String, dynamic>);
 
       await _return.response.mapOrNull(
         success: (_) async {
@@ -398,10 +376,10 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
       );
 
       return _return;
-    } on AppHttpResponse catch (ex, trace) {
-      return handleFailure(e: ex, trace: trace, notify: false);
-    } on AppNetworkException catch (ex, trace) {
-      return handleFailure(e: ex.asResponse(), trace: trace, notify: false);
+    } on AppHttpResponse catch (ex, tr) {
+      return handleFailure(e: ex, trace: tr, notify: false);
+    } on AppNetworkException catch (ex, tr) {
+      return handleFailure(e: ex.asResponse(), trace: tr, notify: false);
     }
   }
 
@@ -412,34 +390,29 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
       final _conn = await checkInternetConnectivity();
 
       final _result = await _conn.fold(
-        // Re-Throw Exception
         (f) => throw f,
-        // Update user profile
-        (_) => remote.updatePhoneNumber(phone?.getOrEmpty),
+        (_) => remote.updatePhoneNumber(phone?.getOrNull?.trim().trimWhiteSpaces().removeNewLines()),
       );
 
-      final _response =
-          AppHttpResponse.fromJson(_result.data as Map<String, dynamic>);
+      final _response = AppHttpResponse.fromJson(_result.data as Map<String, dynamic>);
 
       await _response.response.mapOrNull(
         success: (_) => phone?.getOrEmpty?.let(
-          (it) => preferences.setString(
-            key: Const.kPhoneNumberPrefKey,
-            value: it,
-          ),
+          (it) => preferences.setString(key: Const.kPhoneNumberPrefKey, value: it),
         ),
       );
 
       return _response;
-    } on AppHttpResponse catch (ex, trace) {
-      return handleFailure(e: ex, trace: trace, notify: false);
-    } on AppNetworkException catch (ex, trace) {
-      return handleFailure(e: ex.asResponse(), trace: trace, notify: false);
+    } on AppHttpResponse catch (ex, tr) {
+      return handleFailure(e: ex, trace: tr, notify: false);
+    } on AppNetworkException catch (ex, tr) {
+      return handleFailure(e: ex.asResponse(), trace: tr, notify: false);
     }
   }
 
   @override
-  Future<AppHttpResponse> updateProfile({
+  Future<AppHttpResponse> updateProfile(
+    User authUser, {
     DisplayName? firstName,
     DisplayName? lastName,
     EmailAddress? email,
@@ -459,27 +432,23 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
             firstName: firstName,
             lastName: lastName,
             email: email,
-          )),
+          )).copyWith(id: authUser.id.value),
         ),
       );
 
-      final user =
-          RegisteredUserDTO.fromJson(_response.data as Map<String, dynamic>);
+      final user = RegisteredUserDTO.fromJson(_response.data as Map<String, dynamic>);
 
-      final _return =
-          AppHttpResponse.fromJson(_response.data as Map<String, dynamic>);
+      final _return = AppHttpResponse.fromJson(_response.data as Map<String, dynamic>);
 
-      await _return.response.mapOrNull(
-          success: (_) async =>
-              await user.dto?.let((it) => local.cacheAuthenticatedUser(it)));
+      await _return.response.mapOrNull(success: (_) async => await user.dto?.let((it) => local.cacheAuthenticatedUser(it)));
 
       if (user.domain != null) await update(some(user.domain));
 
       return _return;
-    } on AppHttpResponse catch (ex, trace) {
-      return handleFailure(e: ex, trace: trace, notify: false);
-    } on AppNetworkException catch (ex, trace) {
-      return handleFailure(e: ex.asResponse(), trace: trace, notify: false);
+    } on AppHttpResponse catch (ex, tr) {
+      return handleFailure(e: ex, trace: tr, notify: false);
+    } on AppNetworkException catch (ex, tr) {
+      return handleFailure(e: ex.asResponse(), trace: tr, notify: false);
     }
   }
 
@@ -508,8 +477,7 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
         ),
       );
 
-      final _return =
-          AppHttpResponse.fromJson(_response.data as Map<String, dynamic>);
+      final _return = AppHttpResponse.fromJson(_response.data as Map<String, dynamic>);
 
       return await _return.response.map(
         info: (_) => none(),
@@ -517,8 +485,7 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
         success: (_) async {
           final _userOrFailure = await currentUser;
           // await sink(_userOrFailure);
-          return _userOrFailure.fold(
-              (failure) => optionOf(failure), (_) => none());
+          return _userOrFailure.fold((failure) => optionOf(failure), (_) => none());
         },
       );
     } on AppHttpResponse catch (ex, trace) {
@@ -529,21 +496,18 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
   }
 
   @override
-  Future<AppHttpResponse> verifyPhoneNumber(
-      {required Phone phone, required OTPCode token}) async {
+  Future<AppHttpResponse> verifyPhoneNumber({required Phone phone, required OTPCode token}) async {
     try {
       // Check if device has good connection
       final _conn = await checkInternetConnectivity();
 
       final _response = await _conn.fold(
         (f) => throw f,
-        (_) => remote.verifyPhoneNumber(
-            phone: phone.getOrNull, token: token.getOrNull),
+        (_) => remote.verifyPhoneNumber(phone: phone.getOrNull, token: token.getOrNull),
       );
 
       // verification successful, fetch & cache fresh user data
-      final _return =
-          AppHttpResponse.fromJson(_response.data as Map<String, dynamic>);
+      final _return = AppHttpResponse.fromJson(_response.data as Map<String, dynamic>);
 
       await _return.response.mapOrNull(
         success: (_) async {
@@ -560,10 +524,31 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
       );
 
       return _return;
-    } on AppHttpResponse catch (ex, trace) {
-      return handleFailure(e: ex, trace: trace, notify: false);
-    } on AppNetworkException catch (ex, trace) {
-      return handleFailure(e: ex.asResponse(), trace: trace, notify: false);
+    } on AppHttpResponse catch (ex, tr) {
+      return handleFailure(e: ex, trace: tr, notify: false);
+    } on AppNetworkException catch (ex, tr) {
+      return handleFailure(e: ex.asResponse(), trace: tr, notify: false);
+    }
+  }
+
+  @override
+  Future<Either<AppHttpResponse, UserWallet>> wallet() async {
+    try {
+      // Check if device has good connection
+      final _conn = await checkInternetConnectivity();
+
+      final result = await _conn.fold(
+        (f) => throw f,
+        (_) => remote.userWallet(),
+      );
+
+      final dto = UserWalletDTO.fromJson(result.data as Map<String, dynamic>);
+
+      return right(dto.domain);
+    } on AppHttpResponse catch (ex) {
+      return left(ex);
+    } on AppNetworkException catch (ex) {
+      return left(ex.asResponse());
     }
   }
 }

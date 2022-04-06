@@ -225,19 +225,29 @@ class _$ProductDTODataTearOff {
       {BrandInformationDTO? brandInformation,
       ShippingInformationDTO? shippingInformation,
       TermsInformationDTO? termsInformation,
-      CategoryDTO? category,
+      CategoryDTOData? category,
       UserDTO? user,
       UserDTO? vendor,
+      @BooleanSerializer()
+          bool? isFavorite,
       List<String> photos = const [],
-      @BooleanSerializer() bool? active,
-      @JsonKey(name: '_id') String? id,
-      String? status,
+      @BooleanSerializer()
+          bool? active,
+      @JsonKey(name: '_id')
+          String? id,
+      String? description,
+      @JsonKey(toJson: DealStatusSerializer.toJsonString)
+      @DealStatusSerializer()
+          DealStatus? status,
       DealDTOData? deal,
       String? lga,
       String? name,
       String? state,
-      @TimestampConverter() DateTime? createdAt,
-      @TimestampConverter() DateTime? updatedAt}) {
+      String? country,
+      @TimestampConverter()
+          DateTime? createdAt,
+      @TimestampConverter()
+          DateTime? updatedAt}) {
     return _ProductDTOData(
       brandInformation: brandInformation,
       shippingInformation: shippingInformation,
@@ -245,14 +255,17 @@ class _$ProductDTODataTearOff {
       category: category,
       user: user,
       vendor: vendor,
+      isFavorite: isFavorite,
       photos: photos,
       active: active,
       id: id,
+      description: description,
       status: status,
       deal: deal,
       lga: lga,
       name: name,
       state: state,
+      country: country,
       createdAt: createdAt,
       updatedAt: updatedAt,
     );
@@ -274,19 +287,25 @@ mixin _$ProductDTOData {
       throw _privateConstructorUsedError;
   TermsInformationDTO? get termsInformation =>
       throw _privateConstructorUsedError;
-  CategoryDTO? get category => throw _privateConstructorUsedError;
+  CategoryDTOData? get category => throw _privateConstructorUsedError;
   UserDTO? get user => throw _privateConstructorUsedError;
   UserDTO? get vendor => throw _privateConstructorUsedError;
+  @BooleanSerializer()
+  bool? get isFavorite => throw _privateConstructorUsedError;
   List<String> get photos => throw _privateConstructorUsedError;
   @BooleanSerializer()
   bool? get active => throw _privateConstructorUsedError;
   @JsonKey(name: '_id')
   String? get id => throw _privateConstructorUsedError;
-  String? get status => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+  @JsonKey(toJson: DealStatusSerializer.toJsonString)
+  @DealStatusSerializer()
+  DealStatus? get status => throw _privateConstructorUsedError;
   DealDTOData? get deal => throw _privateConstructorUsedError;
   String? get lga => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   String? get state => throw _privateConstructorUsedError;
+  String? get country => throw _privateConstructorUsedError;
   @TimestampConverter()
   DateTime? get createdAt => throw _privateConstructorUsedError;
   @TimestampConverter()
@@ -307,24 +326,34 @@ abstract class $ProductDTODataCopyWith<$Res> {
       {BrandInformationDTO? brandInformation,
       ShippingInformationDTO? shippingInformation,
       TermsInformationDTO? termsInformation,
-      CategoryDTO? category,
+      CategoryDTOData? category,
       UserDTO? user,
       UserDTO? vendor,
+      @BooleanSerializer()
+          bool? isFavorite,
       List<String> photos,
-      @BooleanSerializer() bool? active,
-      @JsonKey(name: '_id') String? id,
-      String? status,
+      @BooleanSerializer()
+          bool? active,
+      @JsonKey(name: '_id')
+          String? id,
+      String? description,
+      @JsonKey(toJson: DealStatusSerializer.toJsonString)
+      @DealStatusSerializer()
+          DealStatus? status,
       DealDTOData? deal,
       String? lga,
       String? name,
       String? state,
-      @TimestampConverter() DateTime? createdAt,
-      @TimestampConverter() DateTime? updatedAt});
+      String? country,
+      @TimestampConverter()
+          DateTime? createdAt,
+      @TimestampConverter()
+          DateTime? updatedAt});
 
   $BrandInformationDTOCopyWith<$Res>? get brandInformation;
   $ShippingInformationDTOCopyWith<$Res>? get shippingInformation;
   $TermsInformationDTOCopyWith<$Res>? get termsInformation;
-  $CategoryDTOCopyWith<$Res>? get category;
+  $CategoryDTODataCopyWith<$Res>? get category;
   $UserDTOCopyWith<$Res>? get user;
   $UserDTOCopyWith<$Res>? get vendor;
   $DealDTODataCopyWith<$Res>? get deal;
@@ -347,14 +376,17 @@ class _$ProductDTODataCopyWithImpl<$Res>
     Object? category = freezed,
     Object? user = freezed,
     Object? vendor = freezed,
+    Object? isFavorite = freezed,
     Object? photos = freezed,
     Object? active = freezed,
     Object? id = freezed,
+    Object? description = freezed,
     Object? status = freezed,
     Object? deal = freezed,
     Object? lga = freezed,
     Object? name = freezed,
     Object? state = freezed,
+    Object? country = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -374,7 +406,7 @@ class _$ProductDTODataCopyWithImpl<$Res>
       category: category == freezed
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as CategoryDTO?,
+              as CategoryDTOData?,
       user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -383,6 +415,10 @@ class _$ProductDTODataCopyWithImpl<$Res>
           ? _value.vendor
           : vendor // ignore: cast_nullable_to_non_nullable
               as UserDTO?,
+      isFavorite: isFavorite == freezed
+          ? _value.isFavorite
+          : isFavorite // ignore: cast_nullable_to_non_nullable
+              as bool?,
       photos: photos == freezed
           ? _value.photos
           : photos // ignore: cast_nullable_to_non_nullable
@@ -395,10 +431,14 @@ class _$ProductDTODataCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DealStatus?,
       deal: deal == freezed
           ? _value.deal
           : deal // ignore: cast_nullable_to_non_nullable
@@ -414,6 +454,10 @@ class _$ProductDTODataCopyWithImpl<$Res>
       state: state == freezed
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
+              as String?,
+      country: country == freezed
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
               as String?,
       createdAt: createdAt == freezed
           ? _value.createdAt
@@ -463,12 +507,12 @@ class _$ProductDTODataCopyWithImpl<$Res>
   }
 
   @override
-  $CategoryDTOCopyWith<$Res>? get category {
+  $CategoryDTODataCopyWith<$Res>? get category {
     if (_value.category == null) {
       return null;
     }
 
-    return $CategoryDTOCopyWith<$Res>(_value.category!, (value) {
+    return $CategoryDTODataCopyWith<$Res>(_value.category!, (value) {
       return _then(_value.copyWith(category: value));
     });
   }
@@ -518,19 +562,29 @@ abstract class _$ProductDTODataCopyWith<$Res>
       {BrandInformationDTO? brandInformation,
       ShippingInformationDTO? shippingInformation,
       TermsInformationDTO? termsInformation,
-      CategoryDTO? category,
+      CategoryDTOData? category,
       UserDTO? user,
       UserDTO? vendor,
+      @BooleanSerializer()
+          bool? isFavorite,
       List<String> photos,
-      @BooleanSerializer() bool? active,
-      @JsonKey(name: '_id') String? id,
-      String? status,
+      @BooleanSerializer()
+          bool? active,
+      @JsonKey(name: '_id')
+          String? id,
+      String? description,
+      @JsonKey(toJson: DealStatusSerializer.toJsonString)
+      @DealStatusSerializer()
+          DealStatus? status,
       DealDTOData? deal,
       String? lga,
       String? name,
       String? state,
-      @TimestampConverter() DateTime? createdAt,
-      @TimestampConverter() DateTime? updatedAt});
+      String? country,
+      @TimestampConverter()
+          DateTime? createdAt,
+      @TimestampConverter()
+          DateTime? updatedAt});
 
   @override
   $BrandInformationDTOCopyWith<$Res>? get brandInformation;
@@ -539,7 +593,7 @@ abstract class _$ProductDTODataCopyWith<$Res>
   @override
   $TermsInformationDTOCopyWith<$Res>? get termsInformation;
   @override
-  $CategoryDTOCopyWith<$Res>? get category;
+  $CategoryDTODataCopyWith<$Res>? get category;
   @override
   $UserDTOCopyWith<$Res>? get user;
   @override
@@ -567,14 +621,17 @@ class __$ProductDTODataCopyWithImpl<$Res>
     Object? category = freezed,
     Object? user = freezed,
     Object? vendor = freezed,
+    Object? isFavorite = freezed,
     Object? photos = freezed,
     Object? active = freezed,
     Object? id = freezed,
+    Object? description = freezed,
     Object? status = freezed,
     Object? deal = freezed,
     Object? lga = freezed,
     Object? name = freezed,
     Object? state = freezed,
+    Object? country = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -594,7 +651,7 @@ class __$ProductDTODataCopyWithImpl<$Res>
       category: category == freezed
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as CategoryDTO?,
+              as CategoryDTOData?,
       user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -603,6 +660,10 @@ class __$ProductDTODataCopyWithImpl<$Res>
           ? _value.vendor
           : vendor // ignore: cast_nullable_to_non_nullable
               as UserDTO?,
+      isFavorite: isFavorite == freezed
+          ? _value.isFavorite
+          : isFavorite // ignore: cast_nullable_to_non_nullable
+              as bool?,
       photos: photos == freezed
           ? _value.photos
           : photos // ignore: cast_nullable_to_non_nullable
@@ -615,10 +676,14 @@ class __$ProductDTODataCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DealStatus?,
       deal: deal == freezed
           ? _value.deal
           : deal // ignore: cast_nullable_to_non_nullable
@@ -634,6 +699,10 @@ class __$ProductDTODataCopyWithImpl<$Res>
       state: state == freezed
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
+              as String?,
+      country: country == freezed
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
               as String?,
       createdAt: createdAt == freezed
           ? _value.createdAt
@@ -657,16 +726,26 @@ class _$_ProductDTOData extends _ProductDTOData {
       this.category,
       this.user,
       this.vendor,
+      @BooleanSerializer()
+          this.isFavorite,
       this.photos = const [],
-      @BooleanSerializer() this.active,
-      @JsonKey(name: '_id') this.id,
-      this.status,
+      @BooleanSerializer()
+          this.active,
+      @JsonKey(name: '_id')
+          this.id,
+      this.description,
+      @JsonKey(toJson: DealStatusSerializer.toJsonString)
+      @DealStatusSerializer()
+          this.status,
       this.deal,
       this.lga,
       this.name,
       this.state,
-      @TimestampConverter() this.createdAt,
-      @TimestampConverter() this.updatedAt})
+      this.country,
+      @TimestampConverter()
+          this.createdAt,
+      @TimestampConverter()
+          this.updatedAt})
       : super._();
 
   factory _$_ProductDTOData.fromJson(Map<String, dynamic> json) =>
@@ -679,11 +758,14 @@ class _$_ProductDTOData extends _ProductDTOData {
   @override
   final TermsInformationDTO? termsInformation;
   @override
-  final CategoryDTO? category;
+  final CategoryDTOData? category;
   @override
   final UserDTO? user;
   @override
   final UserDTO? vendor;
+  @override
+  @BooleanSerializer()
+  final bool? isFavorite;
   @JsonKey()
   @override
   final List<String> photos;
@@ -694,7 +776,11 @@ class _$_ProductDTOData extends _ProductDTOData {
   @JsonKey(name: '_id')
   final String? id;
   @override
-  final String? status;
+  final String? description;
+  @override
+  @JsonKey(toJson: DealStatusSerializer.toJsonString)
+  @DealStatusSerializer()
+  final DealStatus? status;
   @override
   final DealDTOData? deal;
   @override
@@ -704,6 +790,8 @@ class _$_ProductDTOData extends _ProductDTOData {
   @override
   final String? state;
   @override
+  final String? country;
+  @override
   @TimestampConverter()
   final DateTime? createdAt;
   @override
@@ -712,7 +800,7 @@ class _$_ProductDTOData extends _ProductDTOData {
 
   @override
   String toString() {
-    return 'ProductDTOData(brandInformation: $brandInformation, shippingInformation: $shippingInformation, termsInformation: $termsInformation, category: $category, user: $user, vendor: $vendor, photos: $photos, active: $active, id: $id, status: $status, deal: $deal, lga: $lga, name: $name, state: $state, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'ProductDTOData(brandInformation: $brandInformation, shippingInformation: $shippingInformation, termsInformation: $termsInformation, category: $category, user: $user, vendor: $vendor, isFavorite: $isFavorite, photos: $photos, active: $active, id: $id, description: $description, status: $status, deal: $deal, lga: $lga, name: $name, state: $state, country: $country, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -729,37 +817,46 @@ class _$_ProductDTOData extends _ProductDTOData {
             const DeepCollectionEquality().equals(other.category, category) &&
             const DeepCollectionEquality().equals(other.user, user) &&
             const DeepCollectionEquality().equals(other.vendor, vendor) &&
+            const DeepCollectionEquality()
+                .equals(other.isFavorite, isFavorite) &&
             const DeepCollectionEquality().equals(other.photos, photos) &&
             const DeepCollectionEquality().equals(other.active, active) &&
             const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality().equals(other.deal, deal) &&
             const DeepCollectionEquality().equals(other.lga, lga) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.state, state) &&
+            const DeepCollectionEquality().equals(other.country, country) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(brandInformation),
-      const DeepCollectionEquality().hash(shippingInformation),
-      const DeepCollectionEquality().hash(termsInformation),
-      const DeepCollectionEquality().hash(category),
-      const DeepCollectionEquality().hash(user),
-      const DeepCollectionEquality().hash(vendor),
-      const DeepCollectionEquality().hash(photos),
-      const DeepCollectionEquality().hash(active),
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(deal),
-      const DeepCollectionEquality().hash(lga),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(state),
-      const DeepCollectionEquality().hash(createdAt),
-      const DeepCollectionEquality().hash(updatedAt));
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(brandInformation),
+        const DeepCollectionEquality().hash(shippingInformation),
+        const DeepCollectionEquality().hash(termsInformation),
+        const DeepCollectionEquality().hash(category),
+        const DeepCollectionEquality().hash(user),
+        const DeepCollectionEquality().hash(vendor),
+        const DeepCollectionEquality().hash(isFavorite),
+        const DeepCollectionEquality().hash(photos),
+        const DeepCollectionEquality().hash(active),
+        const DeepCollectionEquality().hash(id),
+        const DeepCollectionEquality().hash(description),
+        const DeepCollectionEquality().hash(status),
+        const DeepCollectionEquality().hash(deal),
+        const DeepCollectionEquality().hash(lga),
+        const DeepCollectionEquality().hash(name),
+        const DeepCollectionEquality().hash(state),
+        const DeepCollectionEquality().hash(country),
+        const DeepCollectionEquality().hash(createdAt),
+        const DeepCollectionEquality().hash(updatedAt)
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -777,19 +874,29 @@ abstract class _ProductDTOData extends ProductDTOData {
       {BrandInformationDTO? brandInformation,
       ShippingInformationDTO? shippingInformation,
       TermsInformationDTO? termsInformation,
-      CategoryDTO? category,
+      CategoryDTOData? category,
       UserDTO? user,
       UserDTO? vendor,
+      @BooleanSerializer()
+          bool? isFavorite,
       List<String> photos,
-      @BooleanSerializer() bool? active,
-      @JsonKey(name: '_id') String? id,
-      String? status,
+      @BooleanSerializer()
+          bool? active,
+      @JsonKey(name: '_id')
+          String? id,
+      String? description,
+      @JsonKey(toJson: DealStatusSerializer.toJsonString)
+      @DealStatusSerializer()
+          DealStatus? status,
       DealDTOData? deal,
       String? lga,
       String? name,
       String? state,
-      @TimestampConverter() DateTime? createdAt,
-      @TimestampConverter() DateTime? updatedAt}) = _$_ProductDTOData;
+      String? country,
+      @TimestampConverter()
+          DateTime? createdAt,
+      @TimestampConverter()
+          DateTime? updatedAt}) = _$_ProductDTOData;
   _ProductDTOData._() : super._();
 
   factory _ProductDTOData.fromJson(Map<String, dynamic> json) =
@@ -802,11 +909,14 @@ abstract class _ProductDTOData extends ProductDTOData {
   @override
   TermsInformationDTO? get termsInformation;
   @override
-  CategoryDTO? get category;
+  CategoryDTOData? get category;
   @override
   UserDTO? get user;
   @override
   UserDTO? get vendor;
+  @override
+  @BooleanSerializer()
+  bool? get isFavorite;
   @override
   List<String> get photos;
   @override
@@ -816,7 +926,11 @@ abstract class _ProductDTOData extends ProductDTOData {
   @JsonKey(name: '_id')
   String? get id;
   @override
-  String? get status;
+  String? get description;
+  @override
+  @JsonKey(toJson: DealStatusSerializer.toJsonString)
+  @DealStatusSerializer()
+  DealStatus? get status;
   @override
   DealDTOData? get deal;
   @override
@@ -825,6 +939,8 @@ abstract class _ProductDTOData extends ProductDTOData {
   String? get name;
   @override
   String? get state;
+  @override
+  String? get country;
   @override
   @TimestampConverter()
   DateTime? get createdAt;

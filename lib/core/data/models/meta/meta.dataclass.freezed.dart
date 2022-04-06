@@ -22,10 +22,15 @@ MetaDTO _$MetaDTOFromJson(Map<String, dynamic> json) {
 class _$MetaDTOTearOff {
   const _$MetaDTOTearOff();
 
-  _MetaDTO call({int? statusCode, bool? status, PaginationDTO? pagination}) {
+  _MetaDTO call(
+      {int? statusCode,
+      bool? status,
+      String? message,
+      PaginationDTO? pagination}) {
     return _MetaDTO(
       statusCode: statusCode,
       status: status,
+      message: message,
       pagination: pagination,
     );
   }
@@ -42,6 +47,7 @@ const $MetaDTO = _$MetaDTOTearOff();
 mixin _$MetaDTO {
   int? get statusCode => throw _privateConstructorUsedError;
   bool? get status => throw _privateConstructorUsedError;
+  String? get message => throw _privateConstructorUsedError;
   PaginationDTO? get pagination => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -53,7 +59,11 @@ mixin _$MetaDTO {
 abstract class $MetaDTOCopyWith<$Res> {
   factory $MetaDTOCopyWith(MetaDTO value, $Res Function(MetaDTO) then) =
       _$MetaDTOCopyWithImpl<$Res>;
-  $Res call({int? statusCode, bool? status, PaginationDTO? pagination});
+  $Res call(
+      {int? statusCode,
+      bool? status,
+      String? message,
+      PaginationDTO? pagination});
 
   $PaginationDTOCopyWith<$Res>? get pagination;
 }
@@ -70,6 +80,7 @@ class _$MetaDTOCopyWithImpl<$Res> implements $MetaDTOCopyWith<$Res> {
   $Res call({
     Object? statusCode = freezed,
     Object? status = freezed,
+    Object? message = freezed,
     Object? pagination = freezed,
   }) {
     return _then(_value.copyWith(
@@ -81,6 +92,10 @@ class _$MetaDTOCopyWithImpl<$Res> implements $MetaDTOCopyWith<$Res> {
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as bool?,
+      message: message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
       pagination: pagination == freezed
           ? _value.pagination
           : pagination // ignore: cast_nullable_to_non_nullable
@@ -105,7 +120,11 @@ abstract class _$MetaDTOCopyWith<$Res> implements $MetaDTOCopyWith<$Res> {
   factory _$MetaDTOCopyWith(_MetaDTO value, $Res Function(_MetaDTO) then) =
       __$MetaDTOCopyWithImpl<$Res>;
   @override
-  $Res call({int? statusCode, bool? status, PaginationDTO? pagination});
+  $Res call(
+      {int? statusCode,
+      bool? status,
+      String? message,
+      PaginationDTO? pagination});
 
   @override
   $PaginationDTOCopyWith<$Res>? get pagination;
@@ -124,6 +143,7 @@ class __$MetaDTOCopyWithImpl<$Res> extends _$MetaDTOCopyWithImpl<$Res>
   $Res call({
     Object? statusCode = freezed,
     Object? status = freezed,
+    Object? message = freezed,
     Object? pagination = freezed,
   }) {
     return _then(_MetaDTO(
@@ -135,6 +155,10 @@ class __$MetaDTOCopyWithImpl<$Res> extends _$MetaDTOCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as bool?,
+      message: message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
       pagination: pagination == freezed
           ? _value.pagination
           : pagination // ignore: cast_nullable_to_non_nullable
@@ -146,7 +170,9 @@ class __$MetaDTOCopyWithImpl<$Res> extends _$MetaDTOCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_MetaDTO extends _MetaDTO {
-  const _$_MetaDTO({this.statusCode, this.status, this.pagination}) : super._();
+  const _$_MetaDTO(
+      {this.statusCode, this.status, this.message, this.pagination})
+      : super._();
 
   factory _$_MetaDTO.fromJson(Map<String, dynamic> json) =>
       _$$_MetaDTOFromJson(json);
@@ -156,11 +182,13 @@ class _$_MetaDTO extends _MetaDTO {
   @override
   final bool? status;
   @override
+  final String? message;
+  @override
   final PaginationDTO? pagination;
 
   @override
   String toString() {
-    return 'MetaDTO(statusCode: $statusCode, status: $status, pagination: $pagination)';
+    return 'MetaDTO(statusCode: $statusCode, status: $status, message: $message, pagination: $pagination)';
   }
 
   @override
@@ -171,6 +199,7 @@ class _$_MetaDTO extends _MetaDTO {
             const DeepCollectionEquality()
                 .equals(other.statusCode, statusCode) &&
             const DeepCollectionEquality().equals(other.status, status) &&
+            const DeepCollectionEquality().equals(other.message, message) &&
             const DeepCollectionEquality()
                 .equals(other.pagination, pagination));
   }
@@ -180,6 +209,7 @@ class _$_MetaDTO extends _MetaDTO {
       runtimeType,
       const DeepCollectionEquality().hash(statusCode),
       const DeepCollectionEquality().hash(status),
+      const DeepCollectionEquality().hash(message),
       const DeepCollectionEquality().hash(pagination));
 
   @JsonKey(ignore: true)
@@ -195,7 +225,10 @@ class _$_MetaDTO extends _MetaDTO {
 
 abstract class _MetaDTO extends MetaDTO {
   const factory _MetaDTO(
-      {int? statusCode, bool? status, PaginationDTO? pagination}) = _$_MetaDTO;
+      {int? statusCode,
+      bool? status,
+      String? message,
+      PaginationDTO? pagination}) = _$_MetaDTO;
   const _MetaDTO._() : super._();
 
   factory _MetaDTO.fromJson(Map<String, dynamic> json) = _$_MetaDTO.fromJson;
@@ -204,6 +237,8 @@ abstract class _MetaDTO extends MetaDTO {
   int? get statusCode;
   @override
   bool? get status;
+  @override
+  String? get message;
   @override
   PaginationDTO? get pagination;
   @override

@@ -19,13 +19,12 @@ class _PasswordUpdateBottomSheet extends StatelessWidget {
         listener: (c, s) => s.status.fold(
           () => null,
           (th) => th?.response.map(
-            info: (i) => PopupDialog.info(message: i.message).render(c),
-            error: (f) => PopupDialog.error(message: f.message).render(c),
+            info: (i) => PopupDialog.info(message: i.message, show: i.message.isNotEmpty).render(c),
+            error: (f) => PopupDialog.error(message: f.message, show: f.show && f.message.isNotEmpty).render(c),
             success: (s) => PopupDialog.success(
               message: s.message,
               listener: (_) => _?.fold(
-                dismissed: () =>
-                    s.pop ? navigator.popUntil((r) => r.isFirst) : null,
+                dismissed: () => s.pop ? navigator.popUntil((r) => r.isFirst) : null,
               ),
             ).render(c),
           ),
@@ -143,8 +142,7 @@ class _FormLayout extends StatelessWidget {
             visible: s.confirmPassword.isValid && s.isPasswordHidden,
             child: Icon(
               s.passwordMatches ? Icons.check_circle : Icons.cancel_rounded,
-              color:
-                  s.passwordMatches ? Palette.successGreen : Palette.errorRed,
+              color: s.passwordMatches ? Palette.successGreen : Palette.errorRed,
               size: 25,
             ),
           ),

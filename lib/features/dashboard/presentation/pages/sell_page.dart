@@ -23,36 +23,86 @@ class _SellPageState extends State<SellPage> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => getIt<ProductBloc>()..add(const ProductPageControllerEvent.attachListener())),
         BlocProvider(create: (_) => getIt<TabNavigationCubit>()),
-      ],
-      child: AdaptiveScaffold(
-        backgroundColor: Palette.accentColor,
-        adaptiveToolbar: AdaptiveToolbar(
-          title: 'Sell an item',
-          titleStyle: App.titleStyle,
-          elevation: 0,
-          showCustomLeading: false,
-          implyLeading: false,
-          centerTitle: true,
-          cupertinoImplyLeading: false,
-          actions: [
-            ...Utils.platform_(
-              cupertino: [Center(child: AdaptiveText('Sell an item', maxLines: 1, style: App.titleStyle))],
-              material: [Utils.nothing],
-            )!,
-          ],
+        BlocProvider(
+          create: (_) => getIt<ProductBloc>()
+            ..add(const ProductPageControllerEvent.attachListener())
+            ..add(const ProductGetEvent.categories()),
         ),
-        body: AdaptiveScaffoldBody(
-          color: App.resolveColor(Palette.cardColorLight, dark: Palette.secondaryColor),
-          materialWrapper: true,
-          builder: (c) => PageView.builder(
-            pageSnapping: true,
-            // allowImplicitScrolling: true,
-            itemCount: _ProductPager.items.length,
-            controller: c.read<ProductBloc>().state.controller,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (_, i) => _PageBuilder(_ProductPager.items[i], currentIndex: i),
+      ],
+      child: BlocListener<ProductBloc, ProductState>(
+        listenWhen: (p, c) =>
+            p.status.getOrElse(() => null) != c.status.getOrElse(() => null) ||
+            (c.status.getOrElse(() => null) != null && (c.status.getOrElse(() => null)!.response.maybeMap(orElse: () => false))),
+        listener: (c, s) => s.status.fold(
+          () => null,
+          (it) => it?.response.map(
+            info: (i) => PopupDialog.info(message: i.message, show: i.message.isNotEmpty).render(c),
+            error: (f) => PopupDialog.error(message: f.message, show: f.show && f.message.isNotEmpty).render(c),
+            success: (s) => PopupDialog.success(message: s.message, show: s.message.isNotEmpty).render(c),
+          ),
+        ),
+        child: AdaptiveScaffold(
+          backgroundColor: Palette.accentColor,
+          adaptiveToolbar: AdaptiveToolbar(
+            title: 'Sell an item',
+            titleStyle: App.titleStyle,
+            elevation: 0,
+            showCustomLeading: false,
+            implyLeading: false,
+            centerTitle: true,
+            cupertinoImplyLeading: false,
+            overlayStyle: App.customSystemOverlay(ctx: context, android: Brightness.light, ios: Brightness.light),
+            actions: [
+              ...Utils.platform_(
+                cupertino: [Center(child: AdaptiveText('Sell an item', maxLines: 1, style: App.titleStyle))],
+                material: [Utils.nothing],
+              )!,
+              //
+              BlocBuilder<ProductBloc, ProductState>(
+                builder: (c, s) => Center(
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 8.0),
+                    child: LimitedBox(
+                      maxHeight: 0.05.sw,
+                      child: AnimatedVisibility(
+                        visible: !s.product.isBlank,
+                        child: Material(
+                          type: MaterialType.transparency,
+                          borderRadius: BorderRadius.circular(Utils.buttonRadius),
+                          child: AdaptiveInkWell(
+                            onTap: () => c.read<ProductBloc>().add(const ProductSyncEvent.clearForm()),
+                            borderRadius: BorderRadius.circular(Utils.buttonRadius),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: AdaptiveText(
+                                'Clear all',
+                                textColor: Colors.white,
+                                fontSize: 16.0.sp,
+                                letterSpacing: Utils.letterSpacing,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          body: AdaptiveScaffoldBody(
+            color: App.resolveColor(Palette.cardColorLight, dark: Palette.secondaryColor),
+            materialWrapper: true,
+            builder: (c) => PageView.builder(
+              pageSnapping: true,
+              // allowImplicitScrolling: true,
+              itemCount: _ProductPager.items.length,
+              controller: c.read<ProductBloc>().state.controller,
+              scrollDirection: Axis.horizontal,
+              onPageChanged: (index) => c.read<ProductBloc>().add(ProductPageControllerEvent.indexChanged(index)),
+              itemBuilder: (_, i) => _PageBuilder(_ProductPager.items[i], currentIndex: i),
+            ),
           ),
         ),
       ),
@@ -60,11 +110,24 @@ class _SellPageState extends State<SellPage> {
   }
 }
 
-class _PageBuilder extends StatelessWidget {
+class _PageBuilder extends StatefulWidget {
   final int currentIndex;
   final _ProductPager item;
 
   const _PageBuilder(this.item, {Key? key, required this.currentIndex}) : super(key: key);
+
+  @override
+  State<_PageBuilder> createState() => _PageBuilderState();
+}
+
+class _PageBuilderState extends State<_PageBuilder> {
+  late ProductBloc _bloc;
+
+  @override
+  void initState() {
+    _bloc = context.read<ProductBloc>();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,28 +141,83 @@ class _PageBuilder extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: App.sidePadding),
           sliver: SliverList(
             delegate: SliverChildListDelegate.fixed([
-              0.01.verticalh,
-              //
-              AdaptiveText(
-                'Step ${item.index} of ${_ProductPager.items.length}',
-                maxLines: 1,
-                minFontSize: 14,
-                maxFontSize: 17,
-                fontSize: 15.sp,
-                fontWeight: FontWeight.normal,
-                letterSpacing: Utils.labelLetterSpacing,
-              ),
-              //
-              0.008.verticalh,
-              //
-              AdaptiveText(
-                '${item.title}',
-                maxLines: 1,
-                minFontSize: 16,
-                maxFontSize: 24,
-                fontSize: 20.sp,
-                fontWeight: FontWeight.w600,
-                letterSpacing: Utils.letterSpacing,
+              Row(
+                // crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      0.01.verticalh,
+                      //
+                      AdaptiveText(
+                        'Step ${widget.item.index} of ${_ProductPager.items.length}',
+                        maxLines: 1,
+                        minFontSize: 14,
+                        maxFontSize: 17,
+                        fontSize: 15.sp,
+                        fontWeight: FontWeight.normal,
+                        letterSpacing: Utils.labelLetterSpacing,
+                      ),
+                      //
+                      0.008.verticalh,
+                      //
+                      AdaptiveText(
+                        '${widget.item.title}',
+                        maxLines: 1,
+                        minFontSize: 16,
+                        maxFontSize: 24,
+                        fontSize: 20.sp,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: Utils.letterSpacing,
+                      ),
+                    ],
+                  ),
+                  //
+                  const Spacer(),
+                  //
+                  AnimatedVisibility(
+                    visible: widget.currentIndex == 2,
+                    child: Row(
+                      children: [
+                        Material(
+                          color: Palette.accentColor,
+                          borderRadius: 100.br,
+                          child: AdaptiveInkWell(
+                            onTap: () => _bloc.add(const ProductPageControllerEvent.prev()),
+                            borderRadius: 100.br,
+                            child: const Center(
+                              child: Padding(
+                                padding: EdgeInsets.fromLTRB(5, 6, 9, 6),
+                                child: Icon(Icons.arrow_back_ios_new_rounded, size: 20, color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        ),
+                        //
+                        0.04.horizontalw,
+                        //
+                        Material(
+                          color: Palette.accentColor,
+                          borderRadius: 100.br,
+                          child: AdaptiveInkWell(
+                            onTap: () => _bloc.add(ProductPageControllerEvent.next(_ProductPager.items, widget.currentIndex)),
+                            borderRadius: 100.br,
+                            child: const Center(
+                              child: Padding(
+                                padding: EdgeInsets.fromLTRB(9, 6, 5, 6),
+                                child: RotatedBox(
+                                  quarterTurns: 2,
+                                  child: Icon(Icons.arrow_back_ios_new_rounded, size: 20, color: Colors.white),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
               //
               0.01.verticalh,
@@ -107,7 +225,7 @@ class _PageBuilder extends StatelessWidget {
               ClipRRect(
                 borderRadius: 100.br,
                 child: LinearProgressIndicator(
-                  value: item.progress,
+                  value: widget.item.progress,
                   backgroundColor: const Color(0xffD8D8D8),
                   color: const Color(0xffD8D8D8),
                   valueColor: const AlwaysStoppedAnimation(Color(0xff00AB06)),
@@ -126,45 +244,48 @@ class _PageBuilder extends StatelessWidget {
           // mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            item.page,
+            widget.item.page,
             //
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: App.sidePadding),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  0.04.verticalh,
-                  //
-                  AnimatedVisibility(
-                    visible: !context.read<ProductBloc>().isLast(_ProductPager.items, currentIndex),
-                    replacement: AppButton(
-                      text: 'Finish'.toUpperCase(),
-                      onPressed: () {},
-                    ),
-                    child: AppButton(
-                      text: 'Next'.toUpperCase(),
-                      onPressed: () {
-                        context.read<ProductBloc>().add(ProductPageControllerEvent.next(_ProductPager.items, currentIndex));
-                      },
-                    ),
-                  ),
-                  //
-                  0.02.verticalh,
-                  //
-                  if (!context.read<ProductBloc>().isFirst(currentIndex)) ...[
-                    AppButton(
-                      text: 'Previous'.toUpperCase(),
-                      backgroundColor: Colors.transparent,
-                      textColor: Palette.accentColor,
-                      splashColor: App.resolveColor(Colors.black12, dark: Colors.grey.shade800),
-                      onPressed: () => context.read<ProductBloc>().add(const ProductPageControllerEvent.prev()),
+            if (widget.currentIndex != 2)
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: App.sidePadding),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    0.04.verticalh,
+                    //
+                    AnimatedVisibility(
+                      visible: !_bloc.isLast(_ProductPager.items, widget.currentIndex),
+                      replacement: AppButton(
+                        text: 'Finish'.toUpperCase(),
+                        onPressed: () {
+                          _bloc.add(const ProductSyncEvent.validate(true));
+                          final canFinish = _bloc.state.product.failure.isNone() && !_bloc.state.product.photos.isEmpty();
+                          if (canFinish) navigator.navigate(PricingPlanRoute(product: _bloc.state.product));
+                        },
+                      ),
+                      child: AppButton(
+                        text: 'Next'.toUpperCase(),
+                        onPressed: () => _bloc.add(ProductPageControllerEvent.next(_ProductPager.items, widget.currentIndex)),
+                      ),
                     ),
                     //
                     0.02.verticalh,
+                    //
+                    if (!_bloc.isFirst(widget.currentIndex)) ...[
+                      AppButton(
+                        text: 'Previous'.toUpperCase(),
+                        backgroundColor: Colors.transparent,
+                        textColor: App.resolveColor(Palette.accentColor, dark: Colors.white),
+                        splashColor: App.resolveColor(Colors.black12, dark: Colors.grey.shade800),
+                        onPressed: () => _bloc.add(const ProductPageControllerEvent.prev()),
+                      ),
+                      //
+                      0.02.verticalh,
+                    ],
                   ],
-                ],
+                ),
               ),
-            ),
           ],
         ),
       ),

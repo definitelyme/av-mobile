@@ -14,10 +14,13 @@ class DragToRefresh extends StatefulWidget {
   final Axis direction;
   final bool enablePullDown;
   final bool enablePullUp;
-  final bool initialRefresh;
-  final bool? primary;
-  final Widget? headerLoader;
   final Widget? footerLoader;
+  final Widget? headerLoader;
+  final bool initialRefresh;
+  final ScrollPhysics? physics;
+  final bool? primary;
+  final bool? reversed;
+  final ScrollController? scrollController;
 
   const DragToRefresh({
     Key? key,
@@ -29,7 +32,10 @@ class DragToRefresh extends StatefulWidget {
     this.onLoading,
     this.direction = Axis.vertical,
     this.completeDuration = const Duration(seconds: 15),
+    this.scrollController,
     this.primary,
+    this.physics,
+    this.reversed,
     this.headerLoader,
     this.footerLoader,
   }) : super(key: key);
@@ -38,23 +44,17 @@ class DragToRefresh extends StatefulWidget {
   State<DragToRefresh> createState() => DragToRefreshState();
 
   static DragToRefreshState? maybeOf(BuildContext context) {
-    return context
-        .dependOnInheritedWidgetOfExactType<RefreshState>()!
-        .refresher;
+    return context.dependOnInheritedWidgetOfExactType<RefreshState>()!.refresher;
   }
 
   static DragToRefreshState of(BuildContext context, {bool build = true}) {
     assert(RefreshState.debugCheckHasRefreshState(context));
-    return build
-        ? RefreshState.of(context)!.refresher
-        : context.findAncestorWidgetOfExactType<RefreshState>()!.refresher;
+    return build ? RefreshState.of(context)!.refresher : context.findAncestorWidgetOfExactType<RefreshState>()!.refresher;
   }
 }
 
 class DragToRefreshState extends State<DragToRefresh>
-    with
-        TickerProviderStateMixin<DragToRefresh>,
-        AutomaticKeepAliveClientMixin<DragToRefresh> {
+    with TickerProviderStateMixin<DragToRefresh>, AutomaticKeepAliveClientMixin<DragToRefresh> {
   late AnimationController _footerController, _footerScaleController;
   bool _isInitialRefresh = false;
   bool _isLoading = false;
@@ -81,17 +81,13 @@ class DragToRefreshState extends State<DragToRefresh>
 
     controller = RefreshController(initialRefresh: widget.initialRefresh);
 
-    _animationcontroller = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 1000));
+    _animationcontroller = AnimationController(vsync: this, duration: const Duration(milliseconds: 1000));
 
-    _scaleController =
-        AnimationController(value: 0.0, vsync: this, upperBound: 1.0);
+    _scaleController = AnimationController(value: 0.0, vsync: this, upperBound: 1.0);
 
-    _footerScaleController =
-        AnimationController(value: 0.0, vsync: this, upperBound: 1.0);
+    _footerScaleController = AnimationController(value: 0.0, vsync: this, upperBound: 1.0);
 
-    _footerController = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 1000));
+    _footerController = AnimationController(vsync: this, duration: const Duration(milliseconds: 1000));
 
     controller.headerMode?.addListener(() {
       if (controller.headerStatus == RefreshStatus.idle) {
@@ -117,6 +113,7 @@ class DragToRefreshState extends State<DragToRefresh>
   @override
   bool get wantKeepAlive => true;
 
+  ScrollPhysics get _physics => widget.physics ?? Utils.physics;
   bool get isInitialRefresh => _isInitialRefresh;
   bool get isLoading => _isLoading;
   bool get isRefreshing => _isRefreshing;
@@ -131,12 +128,15 @@ class DragToRefreshState extends State<DragToRefresh>
     if (mounted) setState(() => _isRefreshing = false);
   }
 
+  void loadNoData() => controller.loadNoData();
+
+  void resetNoData() => controller.resetNoData();
+
   void requestLoading() => controller.requestLoading();
 
   void requestRefresh() => controller.requestRefresh();
 
-  void updateController(RefreshController controller) =>
-      setState(() => controller = controller);
+  void updateController(RefreshController controller) => setState(() => controller = controller);
 
   @override
   Widget build(BuildContext context) {
@@ -152,6 +152,9 @@ class DragToRefreshState extends State<DragToRefresh>
           enablePullUp: widget.enablePullUp,
           scrollDirection: widget.direction,
           primary: widget.primary,
+          scrollController: widget.scrollController,
+          reverse: widget.reversed,
+          physics: _physics,
           onRefresh: () {
             setState(() {
               _isRefreshing = true;
@@ -173,12 +176,10 @@ class DragToRefreshState extends State<DragToRefresh>
               if (isLoading) loadComplete();
             });
           },
-          physics: Utils.physics,
           header: CustomHeader(
             refreshStyle: RefreshStyle.Follow,
             onOffsetChange: (offset) {
-              if (controller.headerMode?.value != RefreshStatus.refreshing)
-                _scaleController.value = offset / 80.0;
+              if (controller.headerMode?.value != RefreshStatus.refreshing) _scaleController.value = offset / 80.0;
             },
             builder: (c, m) =>
                 widget.headerLoader ??
@@ -211,8 +212,7 @@ class DragToRefreshState extends State<DragToRefresh>
               }
             },
             onOffsetChange: (offset) {
-              if (controller.footerMode?.value != LoadStatus.loading)
-                _footerScaleController.value = offset * 80.0;
+              if (controller.footerMode?.value != LoadStatus.loading) _footerScaleController.value = offset * 80.0;
             },
             builder: (context, mode) {
               Widget child;
@@ -221,7 +221,7 @@ class DragToRefreshState extends State<DragToRefresh>
                   child = const Text('Failed! Try again.');
                   break;
                 case LoadStatus.noMore:
-                  child = const Text('End of list');
+                  child = Utils.nothing;
                   break;
                 case LoadStatus.loading:
                 case LoadStatus.canLoading:
@@ -239,9 +239,7 @@ class DragToRefreshState extends State<DragToRefresh>
                                 shouldDispose: false,
                                 builder: (_, int index) => DecoratedBox(
                                   decoration: BoxDecoration(
-                                    color: index.isEven
-                                        ? Palette.accent20
-                                        : Palette.accentColor,
+                                    color: index.isEven ? Palette.accent20 : Palette.accentColor,
                                   ),
                                 ),
                               ),
@@ -276,13 +274,7 @@ class RefreshState extends InheritedWidget {
   }) : super(key: key, child: child);
 
   @override
-  bool updateShouldNotify(RefreshState oldWidget) =>
-      controller != oldWidget.controller;
-
-  static RefreshState? of(BuildContext context) {
-    assert(debugCheckHasRefreshState(context));
-    return context.dependOnInheritedWidgetOfExactType<RefreshState>();
-  }
+  bool updateShouldNotify(RefreshState oldWidget) => controller != oldWidget.controller;
 
   /// Asserts that the given context has a [RefreshState] ancestor.
   ///
@@ -299,17 +291,12 @@ class RefreshState extends InheritedWidget {
   /// Does nothing if asserts are disabled. Always returns true.
   static bool debugCheckHasRefreshState(BuildContext context) {
     assert(() {
-      if (context.widget is! RefreshState &&
-          context.getElementForInheritedWidgetOfExactType<RefreshState>() ==
-              null) {
+      if (context.widget is! RefreshState && context.getElementForInheritedWidgetOfExactType<RefreshState>() == null) {
         throw FlutterError.fromParts(<DiagnosticsNode>[
           ErrorSummary('No RefreshState widget ancestor found.'),
-          ErrorDescription(
-              '${context.widget.runtimeType} widgets require a RefreshState widget ancestor.'),
-          context.describeWidget(
-              'The specific widget that could not find a RefreshState ancestor was'),
-          context.describeOwnershipChain(
-              'The ownership chain for the affected widget is'),
+          ErrorDescription('${context.widget.runtimeType} widgets require a RefreshState widget ancestor.'),
+          context.describeWidget('The specific widget that could not find a RefreshState ancestor was'),
+          context.describeOwnershipChain('The ownership chain for the affected widget is'),
           ErrorHint(
             'No RefreshState ancestor could be found starting from the context '
             'that was passed to RefreshState.of(). This can happen because you '
@@ -321,5 +308,10 @@ class RefreshState extends InheritedWidget {
       return true;
     }());
     return true;
+  }
+
+  static RefreshState? of(BuildContext context) {
+    assert(debugCheckHasRefreshState(context));
+    return context.dependOnInheritedWidgetOfExactType<RefreshState>();
   }
 }

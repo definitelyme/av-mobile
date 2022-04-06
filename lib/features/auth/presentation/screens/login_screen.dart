@@ -21,17 +21,13 @@ class LoginScreen extends StatelessWidget with AutoRouteWrapper {
       child: BlocListener<AuthCubit, AuthState>(
         listenWhen: (p, c) =>
             p.status.getOrElse(() => null) != c.status.getOrElse(() => null) ||
-            (c.status.getOrElse(() => null) != null &&
-                (c.status
-                    .getOrElse(() => null)!
-                    .response
-                    .maybeMap(orElse: () => false))),
+            (c.status.getOrElse(() => null) != null && (c.status.getOrElse(() => null)!.response.maybeMap(orElse: () => false))),
         listener: (c, s) => s.status.fold(
           () => null,
-          (it) => it?.response.map(
-            info: (i) => PopupDialog.info(message: i.message).render(c),
-            error: (f) => PopupDialog.error(message: f.message).render(c),
-            success: (s) => PopupDialog.success(message: s.message).render(c),
+          (it) => it?.response.mapOrNull(
+            info: (i) => PopupDialog.info(message: i.message, show: i.message.isNotEmpty).render(c),
+            error: (f) => PopupDialog.error(message: f.message, show: f.show && f.message.isNotEmpty).render(c),
+            success: (s) => PopupDialog.success(message: s.message, show: s.message.isNotEmpty).render(c),
           ),
         ),
         child: this,
@@ -45,10 +41,13 @@ class LoginScreen extends StatelessWidget with AutoRouteWrapper {
       backgroundColor: Palette.accentColor,
       body: SingleChildScrollView(
         physics: Utils.physics,
+        controller: ScrollController(),
+        scrollDirection: Axis.vertical,
         child: SizedBox(
           height: 1.h,
           child: Stack(
             clipBehavior: Clip.none,
+            fit: StackFit.expand,
             children: [
               Positioned(
                 top: 0.14.h,
@@ -76,27 +75,29 @@ class LoginScreen extends StatelessWidget with AutoRouteWrapper {
                       //
                       0.01.verticalh,
                       //
-                      GestureDetector(
-                        onTap: () => navigator.navigate(const SignupRoute()),
-                        child: AdaptiveText.rich(
-                          const TextSpan(children: [
-                            TextSpan(
-                                text:
-                                    'Please fill in your E-mail & Password to login'),
-                            TextSpan(
-                                text: ' OR ',
-                                style: TextStyle(fontWeight: FontWeight.bold)),
-                            TextSpan(
-                              text: 'Sign Up',
-                              style: TextStyle(
-                                color: Palette.accentYellow,
-                                decoration: TextDecoration.underline,
-                              ),
+                      BlocSelector<AuthCubit, AuthState, bool>(
+                        selector: (s) => s.isLoading || s.isAppleAuthLoading || s.isGoogleAuthLoading,
+                        builder: (c, isLoading) => Disabled(
+                          disabled: isLoading,
+                          child: GestureDetector(
+                            onTap: () => navigator.navigate(const SignupRoute()),
+                            child: AdaptiveText.rich(
+                              const TextSpan(children: [
+                                TextSpan(text: 'Please fill in your E-mail & Password to login'),
+                                TextSpan(text: ' OR ', style: TextStyle(fontWeight: FontWeight.bold)),
+                                TextSpan(
+                                  text: 'Sign Up',
+                                  style: TextStyle(
+                                    color: Palette.accentYellow,
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                ),
+                              ]),
+                              fontSize: 18.sp,
+                              textColor: Colors.white,
+                              fontWeight: FontWeight.w400,
                             ),
-                          ]),
-                          fontSize: 18.sp,
-                          textColor: Colors.white,
-                          fontWeight: FontWeight.w400,
+                          ),
                         ),
                       ),
                     ],
@@ -110,8 +111,7 @@ class LoginScreen extends StatelessWidget with AutoRouteWrapper {
                 right: 0,
                 bottom: 0,
                 child: Material(
-                  color: App.resolveColor(Palette.cardColorLight,
-                      dark: Palette.cardColorDark),
+                  color: App.resolveColor(Palette.cardColorLight, dark: Palette.cardColorDark),
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(32),
                     topRight: Radius.circular(32),
@@ -187,10 +187,8 @@ class _FormLayout extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: 0.02.h),
               child: TextFormInputLabel(
                 text: 'Forgot Password?',
-                textColor: App.resolveColor(Palette.accentColor.shade600,
-                    dark: Palette.accentColor),
-                onPressed: () =>
-                    navigator.navigate(const ForgotPasswordRoute()),
+                textColor: App.resolveColor(Palette.accentColor.shade600, dark: Palette.accentColor),
+                onPressed: () => navigator.navigate(const ForgotPasswordRoute()),
               ),
             ),
           ),
@@ -204,7 +202,7 @@ class _FormLayout extends StatelessWidget {
               child: AppButton(
                 text: 'Login',
                 isLoading: isLoading,
-                disabled: !c.watch<AuthCubit>().isDirty || isLoading,
+                disabled: (!c.watch<AuthCubit>().isDirty || isLoading) && env.flavor != const BuildFlavor(BuildFlavor.dev),
                 onPressed: () {
                   TextInput.finishAutofillContext();
                   c.read<AuthCubit>().login();

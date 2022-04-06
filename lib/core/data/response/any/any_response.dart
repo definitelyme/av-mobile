@@ -9,12 +9,9 @@ part 'any_response.g.dart';
 part 'any_response.freezed.dart';
 
 @immutable
-@Freezed(
-    unionKey: 'status',
-    unionValueCase: FreezedUnionCase.snake,
-    fallbackUnion: 'error')
+@Freezed(unionKey: 'status', unionValueCase: FreezedUnionCase.snake, fallbackUnion: 'error')
 class AnyResponse extends Response with _$AnyResponse {
-  static const String _kdefaultMsg = 'Oops Bad request! No Response.';
+  static const String _kdefaultMsg = '';
 
   const AnyResponse._();
 
@@ -26,6 +23,7 @@ class AnyResponse extends Response with _$AnyResponse {
     @JsonKey(ignore: true) String? details,
     ServerFieldErrors? errors,
     @JsonKey(ignore: true) @Default(false) bool pop,
+    @JsonKey(ignore: true) @Default(true) bool show,
     @JsonKey(ignore: true) Exception? exception,
   }) = ErrorResponse;
 
@@ -50,8 +48,7 @@ class AnyResponse extends Response with _$AnyResponse {
   }
 
   /// Maps the incoming Json to a Data Transfer Object (DTO).
-  factory AnyResponse.fromJson(Map<String, dynamic> json) =>
-      _$AnyResponseFromJson(json);
+  factory AnyResponse.fromJson(Map<String, dynamic> json) => _$AnyResponseFromJson(json);
 
   @With<Info>()
   const factory AnyResponse.info({
@@ -70,6 +67,5 @@ class AnyResponse extends Response with _$AnyResponse {
   }) = SuccessfulResponse;
 
   @override
-  String get message =>
-      messageTxt?.let((m) => m.isNotEmpty ? m : _kdefaultMsg) ?? _kdefaultMsg;
+  String get message => messageTxt?.let((m) => m.isNotEmpty ? m : _kdefaultMsg) ?? _kdefaultMsg;
 }

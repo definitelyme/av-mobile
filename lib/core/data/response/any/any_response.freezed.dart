@@ -37,6 +37,7 @@ class _$AnyResponseTearOff {
       @JsonKey(ignore: true) String? details,
       ServerFieldErrors? errors,
       @JsonKey(ignore: true) bool pop = false,
+      @JsonKey(ignore: true) bool show = true,
       @JsonKey(ignore: true) Exception? exception}) {
     return ErrorResponse(
       code: code,
@@ -45,6 +46,7 @@ class _$AnyResponseTearOff {
       details: details,
       errors: errors,
       pop: pop,
+      show: show,
       exception: exception,
     );
   }
@@ -102,6 +104,7 @@ mixin _$AnyResponse {
             @JsonKey(ignore: true) String? details,
             ServerFieldErrors? errors,
             @JsonKey(ignore: true) bool pop,
+            @JsonKey(ignore: true) bool show,
             @JsonKey(ignore: true) Exception? exception)
         error,
     required TResult Function(
@@ -127,6 +130,7 @@ mixin _$AnyResponse {
             @JsonKey(ignore: true) String? details,
             ServerFieldErrors? errors,
             @JsonKey(ignore: true) bool pop,
+            @JsonKey(ignore: true) bool show,
             @JsonKey(ignore: true) Exception? exception)?
         error,
     TResult Function(
@@ -234,6 +238,7 @@ abstract class $ErrorResponseCopyWith<$Res>
       @JsonKey(ignore: true) String? details,
       ServerFieldErrors? errors,
       @JsonKey(ignore: true) bool pop,
+      @JsonKey(ignore: true) bool show,
       @JsonKey(ignore: true) Exception? exception});
 
   $ServerFieldErrorsCopyWith<$Res>? get errors;
@@ -257,6 +262,7 @@ class _$ErrorResponseCopyWithImpl<$Res> extends _$AnyResponseCopyWithImpl<$Res>
     Object? details = freezed,
     Object? errors = freezed,
     Object? pop = freezed,
+    Object? show = freezed,
     Object? exception = freezed,
   }) {
     return _then(ErrorResponse(
@@ -283,6 +289,10 @@ class _$ErrorResponseCopyWithImpl<$Res> extends _$AnyResponseCopyWithImpl<$Res>
       pop: pop == freezed
           ? _value.pop
           : pop // ignore: cast_nullable_to_non_nullable
+              as bool,
+      show: show == freezed
+          ? _value.show
+          : show // ignore: cast_nullable_to_non_nullable
               as bool,
       exception: exception == freezed
           ? _value.exception
@@ -314,6 +324,7 @@ class _$ErrorResponse extends ErrorResponse with Failure {
       @JsonKey(ignore: true) this.details,
       this.errors,
       @JsonKey(ignore: true) this.pop = false,
+      @JsonKey(ignore: true) this.show = true,
       @JsonKey(ignore: true) this.exception})
       : super._();
 
@@ -338,11 +349,14 @@ class _$ErrorResponse extends ErrorResponse with Failure {
   final bool pop;
   @override
   @JsonKey(ignore: true)
+  final bool show;
+  @override
+  @JsonKey(ignore: true)
   final Exception? exception;
 
   @override
   String toString() {
-    return 'AnyResponse.error(code: $code, status: $status, messageTxt: $messageTxt, details: $details, errors: $errors, pop: $pop, exception: $exception)';
+    return 'AnyResponse.error(code: $code, status: $status, messageTxt: $messageTxt, details: $details, errors: $errors, pop: $pop, show: $show, exception: $exception)';
   }
 
   @override
@@ -357,6 +371,7 @@ class _$ErrorResponse extends ErrorResponse with Failure {
             const DeepCollectionEquality().equals(other.details, details) &&
             const DeepCollectionEquality().equals(other.errors, errors) &&
             const DeepCollectionEquality().equals(other.pop, pop) &&
+            const DeepCollectionEquality().equals(other.show, show) &&
             const DeepCollectionEquality().equals(other.exception, exception));
   }
 
@@ -369,6 +384,7 @@ class _$ErrorResponse extends ErrorResponse with Failure {
       const DeepCollectionEquality().hash(details),
       const DeepCollectionEquality().hash(errors),
       const DeepCollectionEquality().hash(pop),
+      const DeepCollectionEquality().hash(show),
       const DeepCollectionEquality().hash(exception));
 
   @JsonKey(ignore: true)
@@ -386,6 +402,7 @@ class _$ErrorResponse extends ErrorResponse with Failure {
             @JsonKey(ignore: true) String? details,
             ServerFieldErrors? errors,
             @JsonKey(ignore: true) bool pop,
+            @JsonKey(ignore: true) bool show,
             @JsonKey(ignore: true) Exception? exception)
         error,
     required TResult Function(
@@ -401,7 +418,8 @@ class _$ErrorResponse extends ErrorResponse with Failure {
             @JsonKey(ignore: true) bool pop)
         success,
   }) {
-    return error(code, status, messageTxt, details, errors, pop, exception);
+    return error(
+        code, status, messageTxt, details, errors, pop, show, exception);
   }
 
   @override
@@ -414,6 +432,7 @@ class _$ErrorResponse extends ErrorResponse with Failure {
             @JsonKey(ignore: true) String? details,
             ServerFieldErrors? errors,
             @JsonKey(ignore: true) bool pop,
+            @JsonKey(ignore: true) bool show,
             @JsonKey(ignore: true) Exception? exception)?
         error,
     TResult Function(
@@ -430,7 +449,7 @@ class _$ErrorResponse extends ErrorResponse with Failure {
         success,
   }) {
     return error?.call(
-        code, status, messageTxt, details, errors, pop, exception);
+        code, status, messageTxt, details, errors, pop, show, exception);
   }
 
   @override
@@ -481,6 +500,7 @@ abstract class ErrorResponse extends AnyResponse implements Failure {
       @JsonKey(ignore: true) String? details,
       ServerFieldErrors? errors,
       @JsonKey(ignore: true) bool pop,
+      @JsonKey(ignore: true) bool show,
       @JsonKey(ignore: true) Exception? exception}) = _$ErrorResponse;
   const ErrorResponse._() : super._();
 
@@ -501,6 +521,8 @@ abstract class ErrorResponse extends AnyResponse implements Failure {
   @override
   @JsonKey(ignore: true)
   bool get pop;
+  @JsonKey(ignore: true)
+  bool get show;
   @JsonKey(ignore: true)
   Exception? get exception;
   @override
@@ -628,6 +650,7 @@ class _$InfoResponseType extends InfoResponseType with Info {
             @JsonKey(ignore: true) String? details,
             ServerFieldErrors? errors,
             @JsonKey(ignore: true) bool pop,
+            @JsonKey(ignore: true) bool show,
             @JsonKey(ignore: true) Exception? exception)
         error,
     required TResult Function(
@@ -656,6 +679,7 @@ class _$InfoResponseType extends InfoResponseType with Info {
             @JsonKey(ignore: true) String? details,
             ServerFieldErrors? errors,
             @JsonKey(ignore: true) bool pop,
+            @JsonKey(ignore: true) bool show,
             @JsonKey(ignore: true) Exception? exception)?
         error,
     TResult Function(
@@ -861,6 +885,7 @@ class _$SuccessfulResponse extends SuccessfulResponse with Success {
             @JsonKey(ignore: true) String? details,
             ServerFieldErrors? errors,
             @JsonKey(ignore: true) bool pop,
+            @JsonKey(ignore: true) bool show,
             @JsonKey(ignore: true) Exception? exception)
         error,
     required TResult Function(
@@ -889,6 +914,7 @@ class _$SuccessfulResponse extends SuccessfulResponse with Success {
             @JsonKey(ignore: true) String? details,
             ServerFieldErrors? errors,
             @JsonKey(ignore: true) bool pop,
+            @JsonKey(ignore: true) bool show,
             @JsonKey(ignore: true) Exception? exception)?
         error,
     TResult Function(

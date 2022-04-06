@@ -19,15 +19,17 @@ class _$TermsInformationTearOff {
   const _$TermsInformationTearOff();
 
   _TermsInformation call(
-      {required DateTime? yearOfPurchase,
+      {required BasicTextField<String?> yearOfPurchase,
       bool hasRepairHistory = false,
       bool hasRefundPolicy = false,
-      bool hasWarranty = false}) {
+      required BasicTextField<String?> warranty,
+      required BasicTextField<String?> otherInformation}) {
     return _TermsInformation(
       yearOfPurchase: yearOfPurchase,
       hasRepairHistory: hasRepairHistory,
       hasRefundPolicy: hasRefundPolicy,
-      hasWarranty: hasWarranty,
+      warranty: warranty,
+      otherInformation: otherInformation,
     );
   }
 }
@@ -37,10 +39,13 @@ const $TermsInformation = _$TermsInformationTearOff();
 
 /// @nodoc
 mixin _$TermsInformation {
-  DateTime? get yearOfPurchase => throw _privateConstructorUsedError;
+  BasicTextField<String?> get yearOfPurchase =>
+      throw _privateConstructorUsedError;
   bool get hasRepairHistory => throw _privateConstructorUsedError;
   bool get hasRefundPolicy => throw _privateConstructorUsedError;
-  bool get hasWarranty => throw _privateConstructorUsedError;
+  BasicTextField<String?> get warranty => throw _privateConstructorUsedError;
+  BasicTextField<String?> get otherInformation =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TermsInformationCopyWith<TermsInformation> get copyWith =>
@@ -53,10 +58,11 @@ abstract class $TermsInformationCopyWith<$Res> {
           TermsInformation value, $Res Function(TermsInformation) then) =
       _$TermsInformationCopyWithImpl<$Res>;
   $Res call(
-      {DateTime? yearOfPurchase,
+      {BasicTextField<String?> yearOfPurchase,
       bool hasRepairHistory,
       bool hasRefundPolicy,
-      bool hasWarranty});
+      BasicTextField<String?> warranty,
+      BasicTextField<String?> otherInformation});
 }
 
 /// @nodoc
@@ -73,13 +79,14 @@ class _$TermsInformationCopyWithImpl<$Res>
     Object? yearOfPurchase = freezed,
     Object? hasRepairHistory = freezed,
     Object? hasRefundPolicy = freezed,
-    Object? hasWarranty = freezed,
+    Object? warranty = freezed,
+    Object? otherInformation = freezed,
   }) {
     return _then(_value.copyWith(
       yearOfPurchase: yearOfPurchase == freezed
           ? _value.yearOfPurchase
           : yearOfPurchase // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as BasicTextField<String?>,
       hasRepairHistory: hasRepairHistory == freezed
           ? _value.hasRepairHistory
           : hasRepairHistory // ignore: cast_nullable_to_non_nullable
@@ -88,10 +95,14 @@ class _$TermsInformationCopyWithImpl<$Res>
           ? _value.hasRefundPolicy
           : hasRefundPolicy // ignore: cast_nullable_to_non_nullable
               as bool,
-      hasWarranty: hasWarranty == freezed
-          ? _value.hasWarranty
-          : hasWarranty // ignore: cast_nullable_to_non_nullable
-              as bool,
+      warranty: warranty == freezed
+          ? _value.warranty
+          : warranty // ignore: cast_nullable_to_non_nullable
+              as BasicTextField<String?>,
+      otherInformation: otherInformation == freezed
+          ? _value.otherInformation
+          : otherInformation // ignore: cast_nullable_to_non_nullable
+              as BasicTextField<String?>,
     ));
   }
 }
@@ -104,10 +115,11 @@ abstract class _$TermsInformationCopyWith<$Res>
       __$TermsInformationCopyWithImpl<$Res>;
   @override
   $Res call(
-      {DateTime? yearOfPurchase,
+      {BasicTextField<String?> yearOfPurchase,
       bool hasRepairHistory,
       bool hasRefundPolicy,
-      bool hasWarranty});
+      BasicTextField<String?> warranty,
+      BasicTextField<String?> otherInformation});
 }
 
 /// @nodoc
@@ -126,13 +138,14 @@ class __$TermsInformationCopyWithImpl<$Res>
     Object? yearOfPurchase = freezed,
     Object? hasRepairHistory = freezed,
     Object? hasRefundPolicy = freezed,
-    Object? hasWarranty = freezed,
+    Object? warranty = freezed,
+    Object? otherInformation = freezed,
   }) {
     return _then(_TermsInformation(
       yearOfPurchase: yearOfPurchase == freezed
           ? _value.yearOfPurchase
           : yearOfPurchase // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as BasicTextField<String?>,
       hasRepairHistory: hasRepairHistory == freezed
           ? _value.hasRepairHistory
           : hasRepairHistory // ignore: cast_nullable_to_non_nullable
@@ -141,10 +154,14 @@ class __$TermsInformationCopyWithImpl<$Res>
           ? _value.hasRefundPolicy
           : hasRefundPolicy // ignore: cast_nullable_to_non_nullable
               as bool,
-      hasWarranty: hasWarranty == freezed
-          ? _value.hasWarranty
-          : hasWarranty // ignore: cast_nullable_to_non_nullable
-              as bool,
+      warranty: warranty == freezed
+          ? _value.warranty
+          : warranty // ignore: cast_nullable_to_non_nullable
+              as BasicTextField<String?>,
+      otherInformation: otherInformation == freezed
+          ? _value.otherInformation
+          : otherInformation // ignore: cast_nullable_to_non_nullable
+              as BasicTextField<String?>,
     ));
   }
 }
@@ -156,24 +173,26 @@ class _$_TermsInformation extends _TermsInformation {
       {required this.yearOfPurchase,
       this.hasRepairHistory = false,
       this.hasRefundPolicy = false,
-      this.hasWarranty = false})
+      required this.warranty,
+      required this.otherInformation})
       : super._();
 
   @override
-  final DateTime? yearOfPurchase;
+  final BasicTextField<String?> yearOfPurchase;
   @JsonKey()
   @override
   final bool hasRepairHistory;
   @JsonKey()
   @override
   final bool hasRefundPolicy;
-  @JsonKey()
   @override
-  final bool hasWarranty;
+  final BasicTextField<String?> warranty;
+  @override
+  final BasicTextField<String?> otherInformation;
 
   @override
   String toString() {
-    return 'TermsInformation(yearOfPurchase: $yearOfPurchase, hasRepairHistory: $hasRepairHistory, hasRefundPolicy: $hasRefundPolicy, hasWarranty: $hasWarranty)';
+    return 'TermsInformation(yearOfPurchase: $yearOfPurchase, hasRepairHistory: $hasRepairHistory, hasRefundPolicy: $hasRefundPolicy, warranty: $warranty, otherInformation: $otherInformation)';
   }
 
   @override
@@ -187,8 +206,9 @@ class _$_TermsInformation extends _TermsInformation {
                 .equals(other.hasRepairHistory, hasRepairHistory) &&
             const DeepCollectionEquality()
                 .equals(other.hasRefundPolicy, hasRefundPolicy) &&
+            const DeepCollectionEquality().equals(other.warranty, warranty) &&
             const DeepCollectionEquality()
-                .equals(other.hasWarranty, hasWarranty));
+                .equals(other.otherInformation, otherInformation));
   }
 
   @override
@@ -197,7 +217,8 @@ class _$_TermsInformation extends _TermsInformation {
       const DeepCollectionEquality().hash(yearOfPurchase),
       const DeepCollectionEquality().hash(hasRepairHistory),
       const DeepCollectionEquality().hash(hasRefundPolicy),
-      const DeepCollectionEquality().hash(hasWarranty));
+      const DeepCollectionEquality().hash(warranty),
+      const DeepCollectionEquality().hash(otherInformation));
 
   @JsonKey(ignore: true)
   @override
@@ -207,20 +228,23 @@ class _$_TermsInformation extends _TermsInformation {
 
 abstract class _TermsInformation extends TermsInformation {
   const factory _TermsInformation(
-      {required DateTime? yearOfPurchase,
+      {required BasicTextField<String?> yearOfPurchase,
       bool hasRepairHistory,
       bool hasRefundPolicy,
-      bool hasWarranty}) = _$_TermsInformation;
+      required BasicTextField<String?> warranty,
+      required BasicTextField<String?> otherInformation}) = _$_TermsInformation;
   const _TermsInformation._() : super._();
 
   @override
-  DateTime? get yearOfPurchase;
+  BasicTextField<String?> get yearOfPurchase;
   @override
   bool get hasRepairHistory;
   @override
   bool get hasRefundPolicy;
   @override
-  bool get hasWarranty;
+  BasicTextField<String?> get warranty;
+  @override
+  BasicTextField<String?> get otherInformation;
   @override
   @JsonKey(ignore: true)
   _$TermsInformationCopyWith<_TermsInformation> get copyWith =>

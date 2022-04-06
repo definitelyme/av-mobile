@@ -1,10 +1,13 @@
 library deal_status.entity.dart;
 
+import 'package:auctionvillage/utils/utils.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'deal_status.entity.g.dart';
+
+const DealStatus defaultDealStatus = DealStatus.pending;
 
 class DealStatus extends EnumClass {
   static const DealStatus approved = _$approved;
@@ -19,17 +22,19 @@ class DealStatus extends EnumClass {
   static DealStatus valueOf(String name) => _$valueOf(name);
 
   @override
-  String toString() => '$name';
+  String toString() => '$name'.replaceAll('_', ' ').titleCase();
 }
 
 class DealStatusSerializer implements JsonConverter<DealStatus?, String?> {
   const DealStatusSerializer();
 
   @override
-  DealStatus fromJson(String? value) => DealStatus.valueOf('$value'.toUpperCase());
+  DealStatus fromJson(String? value) => DealStatus.valueOf('$value'.toLowerCase());
+
+  static String? toJsonString(DealStatus? instance) => instance?.name.toUpperCase();
 
   @override
-  String? toJson(DealStatus? instance) => '${instance?.name}';
+  String? toJson(DealStatus? instance) => toJsonString(instance);
 }
 
 extension DealStatusX on DealStatus {

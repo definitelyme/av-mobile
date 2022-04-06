@@ -1,20 +1,20 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of deal_plan.entity.dart;
+part of deal_plan.type.entity.dart;
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-const DealPlan _$basic = const DealPlan._('basic');
-const DealPlan _$professional = const DealPlan._('professional');
-const DealPlan _$enterprise = const DealPlan._('enterprise');
-const DealPlan _$free = const DealPlan._('free');
+const DealPlanType _$business = const DealPlanType._('business');
+const DealPlanType _$professional = const DealPlanType._('professional');
+const DealPlanType _$enterprise = const DealPlanType._('enterprise');
+const DealPlanType _$free = const DealPlanType._('free');
 
-DealPlan _$valueOf(String name) {
+DealPlanType _$valueOf(String name) {
   switch (name) {
-    case 'basic':
-      return _$basic;
+    case 'business':
+      return _$business;
     case 'professional':
       return _$professional;
     case 'enterprise':
@@ -26,8 +26,9 @@ DealPlan _$valueOf(String name) {
   }
 }
 
-final BuiltSet<DealPlan> _$values = new BuiltSet<DealPlan>(const <DealPlan>[
-  _$basic,
+final BuiltSet<DealPlanType> _$values =
+    new BuiltSet<DealPlanType>(const <DealPlanType>[
+  _$business,
   _$professional,
   _$enterprise,
   _$free,

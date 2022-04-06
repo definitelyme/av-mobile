@@ -19,15 +19,13 @@ class WalletHistoryScreen extends StatelessWidget with AutoRouteWrapper {
   @override
   Widget build(BuildContext context) {
     return AdaptiveScaffold(
-      adaptiveToolbar: const AdaptiveToolbar(
-          title: 'Wallet Activities', implyMiddle: false, centerTitle: false),
+      adaptiveToolbar: const AdaptiveToolbar(title: 'Wallet Activities', implyMiddle: false, centerTitle: false),
       body: CustomScrollView(
         slivers: [
           SliverPadding(
-            padding: EdgeInsets.symmetric(
-                horizontal: App.sidePadding, vertical: App.sidePadding * 0.5),
+            padding: EdgeInsets.symmetric(horizontal: App.sidePadding, vertical: App.sidePadding * 0.5),
             sliver: const SliverToBoxAdapter(
-              child: WalletBalanceCard(),
+              child: WalletBalanceCard(balance: '56778799'),
             ),
           ),
           //
@@ -57,8 +55,7 @@ class WalletHistoryScreen extends StatelessWidget with AutoRouteWrapper {
           ),
           //
           SliverPadding(
-            padding: EdgeInsets.symmetric(horizontal: App.sidePadding)
-                .copyWith(top: App.sidePadding),
+            padding: EdgeInsets.symmetric(horizontal: App.sidePadding).copyWith(top: App.sidePadding),
             sliver: SliverToBoxAdapter(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -72,8 +69,7 @@ class WalletHistoryScreen extends StatelessWidget with AutoRouteWrapper {
                   ),
                   //
                   AppIconButton(
-                    backgroundColor:
-                        Palette.accentColor.shade100.withOpacity(0.1),
+                    backgroundColor: Palette.accentColor.shade100.withOpacity(0.1),
                     borderRadius: 5.br,
                     type: MaterialType.button,
                     elevation: 0,
@@ -112,11 +108,9 @@ class WalletHistoryScreen extends StatelessWidget with AutoRouteWrapper {
                     ),
                     //
                     TransactionTile.up(
-                      title: '-18400000'
-                          .asCurrency(currency: ' ${Utils.currency}'),
+                      title: '-18400000'.asCurrency(currency: ' ${Utils.currency}'),
                       subtitle: '8974-8743',
-                      createdAt:
-                          DateTime.now().subtract(const Duration(days: 3)),
+                      createdAt: DateTime.now().subtract(const Duration(days: 3)),
                       status: TransactionStatus.pending,
                       onPressed: () {},
                     ),
@@ -124,8 +118,7 @@ class WalletHistoryScreen extends StatelessWidget with AutoRouteWrapper {
                     TransactionTile.down(
                       title: '2400000'.asCurrency(),
                       subtitle: '8974-8743',
-                      createdAt:
-                          DateTime.now().subtract(const Duration(days: 10)),
+                      createdAt: DateTime.now().subtract(const Duration(days: 10)),
                       status: TransactionStatus.failed,
                       onPressed: () {},
                     ),

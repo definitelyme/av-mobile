@@ -9,14 +9,14 @@ part of shipping_information_dto.dart;
 _$_ShippingInformationDTO _$$_ShippingInformationDTOFromJson(
         Map<String, dynamic> json) =>
     _$_ShippingInformationDTO(
-      width: const DoubleSerializer().fromJson(json['Width']),
-      weight: const DoubleSerializer().fromJson(json['Weight']),
-      height: const DoubleSerializer().fromJson(json['Height']),
-      length: const DoubleSerializer().fromJson(json['Length']),
-      deliveryPeriod: json['DeliveryPeriod'] as String?,
+      width: const DoubleSerializer().fromJson(json['width']),
+      weight: const DoubleSerializer().fromJson(json['weight']),
+      height: const DoubleSerializer().fromJson(json['height']),
+      length: const DoubleSerializer().fromJson(json['length']),
+      deliveryPeriod: json['deliveryPeriod'] as String?,
       pickUpAvailable:
-          const BooleanSerializer().fromJson(json['PickUpAvailable']),
-      description: json['Description'] as String?,
+          const BooleanSerializer().fromJson(json['pickUpAvailable']),
+      description: json['description'] as String?,
     );
 
 Map<String, dynamic> _$$_ShippingInformationDTOToJson(
@@ -29,13 +29,13 @@ Map<String, dynamic> _$$_ShippingInformationDTOToJson(
     }
   }
 
-  writeNotNull('Width', const DoubleSerializer().toJson(instance.width));
-  writeNotNull('Weight', const DoubleSerializer().toJson(instance.weight));
-  writeNotNull('Height', const DoubleSerializer().toJson(instance.height));
-  writeNotNull('Length', const DoubleSerializer().toJson(instance.length));
-  writeNotNull('DeliveryPeriod', instance.deliveryPeriod);
-  writeNotNull('PickUpAvailable',
-      const BooleanSerializer().toJson(instance.pickUpAvailable));
-  writeNotNull('Description', instance.description);
+  writeNotNull('width', const DoubleSerializer().toJson(instance.width));
+  writeNotNull('weight', const DoubleSerializer().toJson(instance.weight));
+  writeNotNull('height', const DoubleSerializer().toJson(instance.height));
+  writeNotNull('length', const DoubleSerializer().toJson(instance.length));
+  writeNotNull('deliveryPeriod', instance.deliveryPeriod);
+  writeNotNull('pickUpAvailable',
+      BooleanSerializer.toJsonString(instance.pickUpAvailable));
+  writeNotNull('description', instance.description);
   return val;
 }

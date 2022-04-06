@@ -20,15 +20,18 @@ class _$ProductTearOff {
 
   _Product call(
       {required UniqueId<String?> id,
-      required DealCategory category,
       required BasicTextField<String?> name,
-      KtList<MediaField> photos = const KtList.empty(),
+      required BasicTextField<String?> description,
+      KtList<_MediaField> photos = const KtList.empty(),
       bool isActive = false,
+      bool isFavorite = false,
       DealStatus dealStatus = DealStatus.pending,
       required BasicTextField<String?> lga,
       required BasicTextField<String?> state,
       User? vendor,
       Deal? deal,
+      Country? country,
+      DealCategory? category,
       BrandInformation? brandInformation,
       ShippingInformation? shippingInformation,
       TermsInformation? termsInformation,
@@ -36,15 +39,18 @@ class _$ProductTearOff {
       DateTime? updatedAt}) {
     return _Product(
       id: id,
-      category: category,
       name: name,
+      description: description,
       photos: photos,
       isActive: isActive,
+      isFavorite: isFavorite,
       dealStatus: dealStatus,
       lga: lga,
       state: state,
       vendor: vendor,
       deal: deal,
+      country: country,
+      category: category,
       brandInformation: brandInformation,
       shippingInformation: shippingInformation,
       termsInformation: termsInformation,
@@ -60,15 +66,18 @@ const $Product = _$ProductTearOff();
 /// @nodoc
 mixin _$Product {
   UniqueId<String?> get id => throw _privateConstructorUsedError;
-  DealCategory get category => throw _privateConstructorUsedError;
   BasicTextField<String?> get name => throw _privateConstructorUsedError;
-  KtList<MediaField> get photos => throw _privateConstructorUsedError;
+  BasicTextField<String?> get description => throw _privateConstructorUsedError;
+  KtList<_MediaField> get photos => throw _privateConstructorUsedError;
   bool get isActive => throw _privateConstructorUsedError;
+  bool get isFavorite => throw _privateConstructorUsedError;
   DealStatus get dealStatus => throw _privateConstructorUsedError;
   BasicTextField<String?> get lga => throw _privateConstructorUsedError;
   BasicTextField<String?> get state => throw _privateConstructorUsedError;
   User? get vendor => throw _privateConstructorUsedError;
   Deal? get deal => throw _privateConstructorUsedError;
+  Country? get country => throw _privateConstructorUsedError;
+  DealCategory? get category => throw _privateConstructorUsedError;
   BrandInformation? get brandInformation => throw _privateConstructorUsedError;
   ShippingInformation? get shippingInformation =>
       throw _privateConstructorUsedError;
@@ -86,24 +95,28 @@ abstract class $ProductCopyWith<$Res> {
       _$ProductCopyWithImpl<$Res>;
   $Res call(
       {UniqueId<String?> id,
-      DealCategory category,
       BasicTextField<String?> name,
-      KtList<MediaField> photos,
+      BasicTextField<String?> description,
+      KtList<_MediaField> photos,
       bool isActive,
+      bool isFavorite,
       DealStatus dealStatus,
       BasicTextField<String?> lga,
       BasicTextField<String?> state,
       User? vendor,
       Deal? deal,
+      Country? country,
+      DealCategory? category,
       BrandInformation? brandInformation,
       ShippingInformation? shippingInformation,
       TermsInformation? termsInformation,
       DateTime? createdAt,
       DateTime? updatedAt});
 
-  $DealCategoryCopyWith<$Res> get category;
   $UserCopyWith<$Res>? get vendor;
   $DealCopyWith<$Res>? get deal;
+  $CountryCopyWith<$Res>? get country;
+  $DealCategoryCopyWith<$Res>? get category;
   $BrandInformationCopyWith<$Res>? get brandInformation;
   $ShippingInformationCopyWith<$Res>? get shippingInformation;
   $TermsInformationCopyWith<$Res>? get termsInformation;
@@ -120,15 +133,18 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
   @override
   $Res call({
     Object? id = freezed,
-    Object? category = freezed,
     Object? name = freezed,
+    Object? description = freezed,
     Object? photos = freezed,
     Object? isActive = freezed,
+    Object? isFavorite = freezed,
     Object? dealStatus = freezed,
     Object? lga = freezed,
     Object? state = freezed,
     Object? vendor = freezed,
     Object? deal = freezed,
+    Object? country = freezed,
+    Object? category = freezed,
     Object? brandInformation = freezed,
     Object? shippingInformation = freezed,
     Object? termsInformation = freezed,
@@ -140,21 +156,25 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as UniqueId<String?>,
-      category: category == freezed
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as DealCategory,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as BasicTextField<String?>,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as BasicTextField<String?>,
       photos: photos == freezed
           ? _value.photos
           : photos // ignore: cast_nullable_to_non_nullable
-              as KtList<MediaField>,
+              as KtList<_MediaField>,
       isActive: isActive == freezed
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isFavorite: isFavorite == freezed
+          ? _value.isFavorite
+          : isFavorite // ignore: cast_nullable_to_non_nullable
               as bool,
       dealStatus: dealStatus == freezed
           ? _value.dealStatus
@@ -176,6 +196,14 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
           ? _value.deal
           : deal // ignore: cast_nullable_to_non_nullable
               as Deal?,
+      country: country == freezed
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
+              as Country?,
+      category: category == freezed
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as DealCategory?,
       brandInformation: brandInformation == freezed
           ? _value.brandInformation
           : brandInformation // ignore: cast_nullable_to_non_nullable
@@ -200,13 +228,6 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
   }
 
   @override
-  $DealCategoryCopyWith<$Res> get category {
-    return $DealCategoryCopyWith<$Res>(_value.category, (value) {
-      return _then(_value.copyWith(category: value));
-    });
-  }
-
-  @override
   $UserCopyWith<$Res>? get vendor {
     if (_value.vendor == null) {
       return null;
@@ -225,6 +246,28 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
 
     return $DealCopyWith<$Res>(_value.deal!, (value) {
       return _then(_value.copyWith(deal: value));
+    });
+  }
+
+  @override
+  $CountryCopyWith<$Res>? get country {
+    if (_value.country == null) {
+      return null;
+    }
+
+    return $CountryCopyWith<$Res>(_value.country!, (value) {
+      return _then(_value.copyWith(country: value));
+    });
+  }
+
+  @override
+  $DealCategoryCopyWith<$Res>? get category {
+    if (_value.category == null) {
+      return null;
+    }
+
+    return $DealCategoryCopyWith<$Res>(_value.category!, (value) {
+      return _then(_value.copyWith(category: value));
     });
   }
 
@@ -270,15 +313,18 @@ abstract class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
   @override
   $Res call(
       {UniqueId<String?> id,
-      DealCategory category,
       BasicTextField<String?> name,
-      KtList<MediaField> photos,
+      BasicTextField<String?> description,
+      KtList<_MediaField> photos,
       bool isActive,
+      bool isFavorite,
       DealStatus dealStatus,
       BasicTextField<String?> lga,
       BasicTextField<String?> state,
       User? vendor,
       Deal? deal,
+      Country? country,
+      DealCategory? category,
       BrandInformation? brandInformation,
       ShippingInformation? shippingInformation,
       TermsInformation? termsInformation,
@@ -286,11 +332,13 @@ abstract class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
       DateTime? updatedAt});
 
   @override
-  $DealCategoryCopyWith<$Res> get category;
-  @override
   $UserCopyWith<$Res>? get vendor;
   @override
   $DealCopyWith<$Res>? get deal;
+  @override
+  $CountryCopyWith<$Res>? get country;
+  @override
+  $DealCategoryCopyWith<$Res>? get category;
   @override
   $BrandInformationCopyWith<$Res>? get brandInformation;
   @override
@@ -311,15 +359,18 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? category = freezed,
     Object? name = freezed,
+    Object? description = freezed,
     Object? photos = freezed,
     Object? isActive = freezed,
+    Object? isFavorite = freezed,
     Object? dealStatus = freezed,
     Object? lga = freezed,
     Object? state = freezed,
     Object? vendor = freezed,
     Object? deal = freezed,
+    Object? country = freezed,
+    Object? category = freezed,
     Object? brandInformation = freezed,
     Object? shippingInformation = freezed,
     Object? termsInformation = freezed,
@@ -331,21 +382,25 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as UniqueId<String?>,
-      category: category == freezed
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as DealCategory,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as BasicTextField<String?>,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as BasicTextField<String?>,
       photos: photos == freezed
           ? _value.photos
           : photos // ignore: cast_nullable_to_non_nullable
-              as KtList<MediaField>,
+              as KtList<_MediaField>,
       isActive: isActive == freezed
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isFavorite: isFavorite == freezed
+          ? _value.isFavorite
+          : isFavorite // ignore: cast_nullable_to_non_nullable
               as bool,
       dealStatus: dealStatus == freezed
           ? _value.dealStatus
@@ -367,6 +422,14 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
           ? _value.deal
           : deal // ignore: cast_nullable_to_non_nullable
               as Deal?,
+      country: country == freezed
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
+              as Country?,
+      category: category == freezed
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as DealCategory?,
       brandInformation: brandInformation == freezed
           ? _value.brandInformation
           : brandInformation // ignore: cast_nullable_to_non_nullable
@@ -396,15 +459,18 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
 class _$_Product extends _Product {
   const _$_Product(
       {required this.id,
-      required this.category,
       required this.name,
+      required this.description,
       this.photos = const KtList.empty(),
       this.isActive = false,
+      this.isFavorite = false,
       this.dealStatus = DealStatus.pending,
       required this.lga,
       required this.state,
       this.vendor,
       this.deal,
+      this.country,
+      this.category,
       this.brandInformation,
       this.shippingInformation,
       this.termsInformation,
@@ -415,15 +481,18 @@ class _$_Product extends _Product {
   @override
   final UniqueId<String?> id;
   @override
-  final DealCategory category;
-  @override
   final BasicTextField<String?> name;
+  @override
+  final BasicTextField<String?> description;
   @JsonKey()
   @override
-  final KtList<MediaField> photos;
+  final KtList<_MediaField> photos;
   @JsonKey()
   @override
   final bool isActive;
+  @JsonKey()
+  @override
+  final bool isFavorite;
   @JsonKey()
   @override
   final DealStatus dealStatus;
@@ -435,6 +504,10 @@ class _$_Product extends _Product {
   final User? vendor;
   @override
   final Deal? deal;
+  @override
+  final Country? country;
+  @override
+  final DealCategory? category;
   @override
   final BrandInformation? brandInformation;
   @override
@@ -448,7 +521,7 @@ class _$_Product extends _Product {
 
   @override
   String toString() {
-    return 'Product(id: $id, category: $category, name: $name, photos: $photos, isActive: $isActive, dealStatus: $dealStatus, lga: $lga, state: $state, vendor: $vendor, deal: $deal, brandInformation: $brandInformation, shippingInformation: $shippingInformation, termsInformation: $termsInformation, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'Product(id: $id, name: $name, description: $description, photos: $photos, isActive: $isActive, isFavorite: $isFavorite, dealStatus: $dealStatus, lga: $lga, state: $state, vendor: $vendor, deal: $deal, country: $country, category: $category, brandInformation: $brandInformation, shippingInformation: $shippingInformation, termsInformation: $termsInformation, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -457,16 +530,21 @@ class _$_Product extends _Product {
         (other.runtimeType == runtimeType &&
             other is _Product &&
             const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.category, category) &&
             const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.photos, photos) &&
             const DeepCollectionEquality().equals(other.isActive, isActive) &&
+            const DeepCollectionEquality()
+                .equals(other.isFavorite, isFavorite) &&
             const DeepCollectionEquality()
                 .equals(other.dealStatus, dealStatus) &&
             const DeepCollectionEquality().equals(other.lga, lga) &&
             const DeepCollectionEquality().equals(other.state, state) &&
             const DeepCollectionEquality().equals(other.vendor, vendor) &&
             const DeepCollectionEquality().equals(other.deal, deal) &&
+            const DeepCollectionEquality().equals(other.country, country) &&
+            const DeepCollectionEquality().equals(other.category, category) &&
             const DeepCollectionEquality()
                 .equals(other.brandInformation, brandInformation) &&
             const DeepCollectionEquality()
@@ -481,15 +559,18 @@ class _$_Product extends _Product {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(category),
       const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(photos),
       const DeepCollectionEquality().hash(isActive),
+      const DeepCollectionEquality().hash(isFavorite),
       const DeepCollectionEquality().hash(dealStatus),
       const DeepCollectionEquality().hash(lga),
       const DeepCollectionEquality().hash(state),
       const DeepCollectionEquality().hash(vendor),
       const DeepCollectionEquality().hash(deal),
+      const DeepCollectionEquality().hash(country),
+      const DeepCollectionEquality().hash(category),
       const DeepCollectionEquality().hash(brandInformation),
       const DeepCollectionEquality().hash(shippingInformation),
       const DeepCollectionEquality().hash(termsInformation),
@@ -505,15 +586,18 @@ class _$_Product extends _Product {
 abstract class _Product extends Product {
   const factory _Product(
       {required UniqueId<String?> id,
-      required DealCategory category,
       required BasicTextField<String?> name,
-      KtList<MediaField> photos,
+      required BasicTextField<String?> description,
+      KtList<_MediaField> photos,
       bool isActive,
+      bool isFavorite,
       DealStatus dealStatus,
       required BasicTextField<String?> lga,
       required BasicTextField<String?> state,
       User? vendor,
       Deal? deal,
+      Country? country,
+      DealCategory? category,
       BrandInformation? brandInformation,
       ShippingInformation? shippingInformation,
       TermsInformation? termsInformation,
@@ -524,13 +608,15 @@ abstract class _Product extends Product {
   @override
   UniqueId<String?> get id;
   @override
-  DealCategory get category;
-  @override
   BasicTextField<String?> get name;
   @override
-  KtList<MediaField> get photos;
+  BasicTextField<String?> get description;
+  @override
+  KtList<_MediaField> get photos;
   @override
   bool get isActive;
+  @override
+  bool get isFavorite;
   @override
   DealStatus get dealStatus;
   @override
@@ -541,6 +627,10 @@ abstract class _Product extends Product {
   User? get vendor;
   @override
   Deal? get deal;
+  @override
+  Country? get country;
+  @override
+  DealCategory? get category;
   @override
   BrandInformation? get brandInformation;
   @override

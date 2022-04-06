@@ -1,7 +1,10 @@
 library product.entity.dart;
 
+import 'package:auctionvillage/core/data/models/index.dart';
 import 'package:auctionvillage/core/domain/entities/entities.dart';
+import 'package:auctionvillage/core/domain/response/index.dart';
 import 'package:auctionvillage/features/dashboard/domain/index.dart';
+import 'package:dartz/dartz.dart' hide id;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kt_dart/collection.dart';
 
@@ -10,19 +13,25 @@ part 'product.entity.freezed.dart';
 @freezed
 @immutable
 class Product extends BaseEntity with _$Product {
+  static DateTime startDate = DateTime.now();
+  static DateTime endDate = DateTime(DateTime.now().year + 1000);
+
   const Product._();
 
   const factory Product({
     required UniqueId<String?> id,
-    required DealCategory category,
     required BasicTextField<String?> name,
-    @Default(KtList.empty()) KtList<MediaField> photos,
+    required BasicTextField<String?> description,
+    @Default(KtList.empty()) KtList<_MediaField> photos,
     @Default(false) bool isActive,
+    @Default(false) bool isFavorite,
     @Default(DealStatus.pending) DealStatus dealStatus,
     required BasicTextField<String?> lga,
     required BasicTextField<String?> state,
     User? vendor,
     Deal? deal,
+    Country? country,
+    DealCategory? category,
     BrandInformation? brandInformation,
     ShippingInformation? shippingInformation,
     TermsInformation? termsInformation,
@@ -32,15 +41,17 @@ class Product extends BaseEntity with _$Product {
 
   factory Product.blank({
     String? id,
-    DealCategory? category,
     String? name,
     String? lga,
     String? state,
+    String? description,
     bool? active,
+    bool? isFavorite,
     DealStatus? dealStatus,
     List<String> photos = const [],
     User? vendor,
     Deal? deal,
+    DealCategory? category,
     BrandInformation? brand,
     ShippingInformation? shipping,
     TermsInformation? terms,
@@ -49,15 +60,17 @@ class Product extends BaseEntity with _$Product {
   }) =>
       Product(
         id: UniqueId.fromExternal(id),
-        category: category ?? DealCategory.blank(),
+        category: category,
         deal: deal,
         isActive: active ?? false,
+        isFavorite: isFavorite ?? false,
         dealStatus: dealStatus ?? DealStatus.pending,
         vendor: vendor,
-        photos: photos.map((e) => MediaField(e)).toImmutableList(),
+        photos: photos.map((e) => _MediaField(MediaField(e), id: null)).toImmutableList(),
         name: BasicTextField(name),
         lga: BasicTextField(lga),
         state: BasicTextField(state),
+        description: BasicTextField(description),
         brandInformation: brand,
         shippingInformation: shipping,
         termsInformation: terms,
@@ -65,204 +78,68 @@ class Product extends BaseEntity with _$Product {
         updatedAt: updatedAt,
       );
 
-  // factory Product.blank() => Product(
-  //       id: UniqueId.fromExternal(null),
-  //       itemCategory: BasicTextField(null),
-  //       itemSubCategory: BasicTextField(null),
-  //       itemDescription: BasicTextField(null),
-  //       state: BasicTextField(null),
-  //       town: BasicTextField(null),
-  //       brand: BasicTextField(null),
-  //       model: BasicTextField(null),
-  //       yearOfManufacture: DateTimeField(null),
-  //       color: BasicTextField(null),
-  //       itemPrice: AmountField(0),
-  //       basePrice: AmountField(0),
-  //       quantity: BasicTextField(0),
-  //       startDate: DateTimeField(null),
-  //       endDate: DateTimeField(null),
-  //       startTime: DateTimeField(null),
-  //       endTime: DateTimeField(null),
-  //       weight: BasicTextField(null),
-  //       length: BasicTextField(null),
-  //       width: BasicTextField(null),
-  //       height: BasicTextField(null),
-  //       shippingDescription: BasicTextField(null),
-  //       yearOfPurchase: DateTimeField(null),
-  //       otherInformation: BasicTextField(null),
-  //     );
+  bool get isBlank => this == Product.blank();
 
-  // static List<Product> get dummy => [
-  //       Product(
-  //         id: UniqueId.v4(),
-  //         itemCategory: BasicTextField('Electronics'),
-  //         itemSubCategory: BasicTextField('Mobile'),
-  //         itemDescription: BasicTextField('Samsung Galaxy S10'),
-  //         state: BasicTextField('Karnataka'),
-  //         town: BasicTextField('Bangalore'),
-  //         brand: BasicTextField('Samsung'),
-  //         model: BasicTextField('S10'),
-  //         yearOfManufacture: DateTimeField(DateTime.now()),
-  //         color: BasicTextField('Black'),
-  //         itemPrice: AmountField(10000),
-  //         basePrice: AmountField(10000),
-  //         quantity: BasicTextField(1),
-  //         startDate: DateTimeField(DateTime.now()),
-  //         endDate: DateTimeField(DateTime.now()),
-  //         startTime: DateTimeField(DateTime.now()),
-  //         endTime: DateTimeField(DateTime.now()),
-  //         weight: BasicTextField(4.8),
-  //         length: BasicTextField(60.8),
-  //         width: BasicTextField(30.8),
-  //         height: BasicTextField(60.8),
-  //         shippingDescription: BasicTextField('Delivered in 2 days'),
-  //         yearOfPurchase: DateTimeField(DateTime.now()),
-  //         otherInformation: BasicTextField('No other information'),
-  //         biddingType: BiddingType.online,
-  //         condition: ItemCondition.good,
-  //         deliveryPeriod: DeliveryPeriod.later,
-  //         isPickup: false,
-  //       ),
-  //       Product(
-  //         id: UniqueId.v4(),
-  //         itemCategory: BasicTextField('Electronics'),
-  //         itemSubCategory: BasicTextField('Automobile'),
-  //         itemDescription: BasicTextField('Audi A8'),
-  //         state: BasicTextField('Karnataka'),
-  //         town: BasicTextField('Bangalore'),
-  //         brand: BasicTextField('Audi'),
-  //         model: BasicTextField('A8'),
-  //         yearOfManufacture: DateTimeField(DateTime.now()),
-  //         color: BasicTextField('Green'),
-  //         itemPrice: AmountField(27300000),
-  //         basePrice: AmountField(27300000),
-  //         quantity: BasicTextField(8),
-  //         startDate: DateTimeField(DateTime.now()),
-  //         endDate: DateTimeField(DateTime.now()),
-  //         startTime: DateTimeField(DateTime.now()),
-  //         endTime: DateTimeField(DateTime.now()),
-  //         weight: BasicTextField(4.8),
-  //         length: BasicTextField(60.8),
-  //         width: BasicTextField(30.8),
-  //         height: BasicTextField(60.8),
-  //         shippingDescription: BasicTextField('Delivered in 19 days'),
-  //         yearOfPurchase: DateTimeField(DateTime.now()),
-  //         otherInformation: BasicTextField('No other information'),
-  //         condition: ItemCondition.poor,
-  //       ),
-  //       Product(
-  //         id: UniqueId.v4(),
-  //         itemCategory: BasicTextField('Electronics'),
-  //         itemSubCategory: BasicTextField('Mobile'),
-  //         itemDescription: BasicTextField('Samsung Galaxy S10'),
-  //         state: BasicTextField('Karnataka'),
-  //         town: BasicTextField('Bangalore'),
-  //         brand: BasicTextField('Samsung'),
-  //         model: BasicTextField('S10'),
-  //         yearOfManufacture: DateTimeField(DateTime.now()),
-  //         color: BasicTextField('Black'),
-  //         itemPrice: AmountField(10000),
-  //         basePrice: AmountField(10000),
-  //         quantity: BasicTextField(1),
-  //         startDate: DateTimeField(DateTime.now()),
-  //         endDate: DateTimeField(DateTime.now()),
-  //         startTime: DateTimeField(DateTime.now()),
-  //         endTime: DateTimeField(DateTime.now()),
-  //         weight: BasicTextField(4.8),
-  //         length: BasicTextField(60.8),
-  //         width: BasicTextField(30.8),
-  //         height: BasicTextField(60.8),
-  //         shippingDescription: BasicTextField('Delivered in 2 days'),
-  //         yearOfPurchase: DateTimeField(DateTime.now()),
-  //         otherInformation: BasicTextField('No other information'),
-  //         biddingType: BiddingType.online,
-  //         condition: ItemCondition.good,
-  //         deliveryPeriod: DeliveryPeriod.later,
-  //         isPickup: false,
-  //       ),
-  //       Product(
-  //         id: UniqueId.v4(),
-  //         itemCategory: BasicTextField('Electronics'),
-  //         itemSubCategory: BasicTextField('Automobile'),
-  //         itemDescription: BasicTextField('Audi A8'),
-  //         state: BasicTextField('Karnataka'),
-  //         town: BasicTextField('Bangalore'),
-  //         brand: BasicTextField('Audi'),
-  //         model: BasicTextField('A8'),
-  //         yearOfManufacture: DateTimeField(DateTime.now()),
-  //         color: BasicTextField('Green'),
-  //         itemPrice: AmountField(27300000),
-  //         basePrice: AmountField(27300000),
-  //         quantity: BasicTextField(8),
-  //         startDate: DateTimeField(DateTime.now()),
-  //         endDate: DateTimeField(DateTime.now()),
-  //         startTime: DateTimeField(DateTime.now()),
-  //         endTime: DateTimeField(DateTime.now()),
-  //         weight: BasicTextField(4.8),
-  //         length: BasicTextField(60.8),
-  //         width: BasicTextField(30.8),
-  //         height: BasicTextField(60.8),
-  //         shippingDescription: BasicTextField('Delivered in 19 days'),
-  //         yearOfPurchase: DateTimeField(DateTime.now()),
-  //         otherInformation: BasicTextField('No other information'),
-  //         condition: ItemCondition.poor,
-  //       ),
-  //       Product(
-  //         id: UniqueId.v4(),
-  //         itemCategory: BasicTextField('Electronics'),
-  //         itemSubCategory: BasicTextField('Mobile'),
-  //         itemDescription: BasicTextField('Samsung Galaxy S10'),
-  //         state: BasicTextField('Karnataka'),
-  //         town: BasicTextField('Bangalore'),
-  //         brand: BasicTextField('Samsung'),
-  //         model: BasicTextField('S10'),
-  //         yearOfManufacture: DateTimeField(DateTime.now()),
-  //         color: BasicTextField('Black'),
-  //         itemPrice: AmountField(10000),
-  //         basePrice: AmountField(10000),
-  //         quantity: BasicTextField(1),
-  //         startDate: DateTimeField(DateTime.now()),
-  //         endDate: DateTimeField(DateTime.now()),
-  //         startTime: DateTimeField(DateTime.now()),
-  //         endTime: DateTimeField(DateTime.now()),
-  //         weight: BasicTextField(4.8),
-  //         length: BasicTextField(60.8),
-  //         width: BasicTextField(30.8),
-  //         height: BasicTextField(60.8),
-  //         shippingDescription: BasicTextField('Delivered in 2 days'),
-  //         yearOfPurchase: DateTimeField(DateTime.now()),
-  //         otherInformation: BasicTextField('No other information'),
-  //         biddingType: BiddingType.online,
-  //         condition: ItemCondition.good,
-  //         deliveryPeriod: DeliveryPeriod.later,
-  //         isPickup: false,
-  //       ),
-  //       Product(
-  //         id: UniqueId.v4(),
-  //         itemCategory: BasicTextField('Electronics'),
-  //         itemSubCategory: BasicTextField('Automobile'),
-  //         itemDescription: BasicTextField('Audi A8'),
-  //         state: BasicTextField('Karnataka'),
-  //         town: BasicTextField('Bangalore'),
-  //         brand: BasicTextField('Audi'),
-  //         model: BasicTextField('A8'),
-  //         yearOfManufacture: DateTimeField(DateTime.now()),
-  //         color: BasicTextField('Green'),
-  //         itemPrice: AmountField(27300000),
-  //         basePrice: AmountField(27300000),
-  //         quantity: BasicTextField(8),
-  //         startDate: DateTimeField(DateTime.now()),
-  //         endDate: DateTimeField(DateTime.now()),
-  //         startTime: DateTimeField(DateTime.now()),
-  //         endTime: DateTimeField(DateTime.now()),
-  //         weight: BasicTextField(4.8),
-  //         length: BasicTextField(60.8),
-  //         width: BasicTextField(30.8),
-  //         height: BasicTextField(60.8),
-  //         shippingDescription: BasicTextField('Delivered in 19 days'),
-  //         yearOfPurchase: DateTimeField(DateTime.now()),
-  //         otherInformation: BasicTextField('No other information'),
-  //         condition: ItemCondition.poor,
-  //       ),
-  //     ];
+  Product merge(Product? other) => copyWith(
+        id: other?.id.value != null ? other!.id : id,
+        deal: deal?.merge(other?.deal),
+        category: category?.merge(other?.category),
+        isActive: other?.isActive ?? isActive,
+        isFavorite: other?.isFavorite ?? isFavorite,
+        dealStatus: other?.dealStatus ?? dealStatus,
+        vendor: other?.vendor ?? vendor,
+        photos: other?.photos != null ? other!.photos : photos,
+        name: other?.name.isNotNull((it) => it as BasicTextField<String?>, orElse: (_) => name) ?? name,
+        lga: other?.lga.isNotNull((it) => it as BasicTextField<String?>, orElse: (_) => lga) ?? lga,
+        state: other?.state.isNotNull((it) => it as BasicTextField<String?>, orElse: (_) => state) ?? state,
+        description: other?.description.isNotNull((it) => it as BasicTextField<String?>, orElse: (_) => description) ?? description,
+        brandInformation: brandInformation?.merge(other?.brandInformation),
+        shippingInformation: shippingInformation?.merge(other?.shippingInformation),
+        termsInformation: termsInformation?.merge(other?.termsInformation),
+        createdAt: other?.createdAt ?? createdAt,
+        updatedAt: other?.updatedAt ?? updatedAt,
+      );
+
+  Option<FieldObjectException<dynamic>> get failure => name.mapped.andThen(lga.mapped).andThen(state.mapped).fold(
+        (f) => some(f),
+        (_) {
+          return brandInformation?.failure
+                  .andThen(shippingInformation?.failure ?? none())
+                  .andThen(termsInformation?.failure ?? none())
+                  .andThen(deal?.failure ?? none()) ??
+              none();
+        },
+      );
+}
+
+class _MediaField {
+  final String? id;
+  final MediaField image;
+  final SendProgressCallback? progress;
+
+  const _MediaField(this.image, {required this.id, this.progress});
+
+  _MediaField merge(_MediaField? other) => _MediaField(other?.image ?? image, id: other?.id ?? id, progress: other?.progress ?? progress);
+
+  _MediaField copyWith({MediaField? image, String? id, SendProgressCallback? progress}) =>
+      _MediaField(image ?? this.image, id: id ?? this.id, progress: progress ?? this.progress);
+
+  @override
+  bool operator ==(other) {
+    if (identical(this, other)) return true;
+    return other is _MediaField && other.image.getOrNull == image.getOrNull;
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(id), const DeepCollectionEquality().hash(image));
+
+  @override
+  String toString() => '_MediaField(url: ${image.getOrNull})';
+}
+
+extension MediaFieldX on KtList<_MediaField> {
+  KtList<_MediaField> addMedia(MediaField media, {String? id}) => plusElement(_MediaField(media, id: id));
+
+  KtList<_MediaField> replaceMedia(MediaField image, {String? id, SendProgressCallback? progress, int? index}) =>
+      mapIndexedNotNull((i, val) => i == index ? val?.copyWith(id: id, image: image, progress: progress) : val);
 }

@@ -16,8 +16,7 @@ class ShippingDetailsPage extends StatefulWidget {
   _ShippingDetailsPageState createState() => _ShippingDetailsPageState();
 }
 
-class _ShippingDetailsPageState extends State<ShippingDetailsPage>
-    with AutomaticKeepAliveClientMixin<ShippingDetailsPage> {
+class _ShippingDetailsPageState extends State<ShippingDetailsPage> with AutomaticKeepAliveClientMixin<ShippingDetailsPage> {
   @override
   bool get wantKeepAlive => true;
 
@@ -42,14 +41,18 @@ class _ShippingDetailsPageState extends State<ShippingDetailsPage>
                     //
                     ReactiveTextFormField<ProductBloc, ProductState>(
                       hintText: (s) => '00.0',
-                      disabled: (s) => s.isLoading,
-                      validate: (s) => s.validate,
-                      field: (s) => s.product.weight,
-                      keyboardType: TextInputType.number,
+                      disabled: (s) => s.isLoading || s.isSavingState || s.isCreatingProduct,
+                      // validate: (s) => s.validate,
+                      response: (s) => s.status,
+                      field: (s) => s.product.shippingInformation?.weight,
+                      controller: (s) => s.weightTextController,
+                      autoDisposeController: false,
+                      focus: ProductState.weightFocus,
+                      next: ProductState.lengthFocus,
+                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
                       capitalization: TextCapitalization.none,
-                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                      // response: (s) => s.status,
-                      // onChanged: (cubit, it) => cubit.ridertipChanged(it),
+                      inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'^\d+((\.\d{1,5})|(\.))?$'))],
+                      onChanged: (bloc, it) => bloc.add(const ProductSyncEvent.weightChanged()),
                     ),
                   ],
                 ),
@@ -66,14 +69,18 @@ class _ShippingDetailsPageState extends State<ShippingDetailsPage>
                     //
                     ReactiveTextFormField<ProductBloc, ProductState>(
                       hintText: (s) => '00.0',
-                      disabled: (s) => s.isLoading,
-                      validate: (s) => s.validate,
-                      field: (s) => s.product.length,
-                      keyboardType: TextInputType.number,
+                      disabled: (s) => s.isLoading || s.isSavingState || s.isCreatingProduct,
+                      // validate: (s) => s.validate,
+                      response: (s) => s.status,
+                      field: (s) => s.product.shippingInformation?.length,
+                      controller: (s) => s.lengthTextController,
+                      autoDisposeController: false,
+                      focus: ProductState.lengthFocus,
+                      next: ProductState.widthFocus,
+                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
                       capitalization: TextCapitalization.none,
-                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                      // response: (s) => s.status,
-                      // onChanged: (cubit, it) => cubit.ridertipChanged(it),
+                      inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'^\d+((\.\d{1,5})|(\.))?$'))],
+                      onChanged: (bloc, it) => bloc.add(const ProductSyncEvent.lengthChanged()),
                     ),
                   ],
                 ),
@@ -94,14 +101,18 @@ class _ShippingDetailsPageState extends State<ShippingDetailsPage>
                     //
                     ReactiveTextFormField<ProductBloc, ProductState>(
                       hintText: (s) => '00.0',
-                      disabled: (s) => s.isLoading,
-                      validate: (s) => s.validate,
-                      field: (s) => s.product.width,
-                      keyboardType: TextInputType.number,
+                      disabled: (s) => s.isLoading || s.isSavingState || s.isCreatingProduct,
+                      // validate: (s) => s.validate,
+                      response: (s) => s.status,
+                      field: (s) => s.product.shippingInformation?.width,
+                      controller: (s) => s.widthTextController,
+                      autoDisposeController: false,
+                      focus: ProductState.widthFocus,
+                      next: ProductState.heightFocus,
+                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
                       capitalization: TextCapitalization.none,
-                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                      // response: (s) => s.status,
-                      // onChanged: (cubit, it) => cubit.ridertipChanged(it),
+                      inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'^\d+((\.\d{1,5})|(\.))?$'))],
+                      onChanged: (bloc, it) => bloc.add(const ProductSyncEvent.widthChanged()),
                     ),
                   ],
                 ),
@@ -118,14 +129,18 @@ class _ShippingDetailsPageState extends State<ShippingDetailsPage>
                     //
                     ReactiveTextFormField<ProductBloc, ProductState>(
                       hintText: (s) => '00.0',
-                      disabled: (s) => s.isLoading,
-                      validate: (s) => s.validate,
-                      field: (s) => s.product.height,
-                      keyboardType: TextInputType.number,
+                      disabled: (s) => s.isLoading || s.isSavingState || s.isCreatingProduct,
+                      // validate: (s) => s.validate,
+                      response: (s) => s.status,
+                      field: (s) => s.product.shippingInformation?.height,
+                      controller: (s) => s.heightTextController,
+                      autoDisposeController: false,
+                      focus: ProductState.heightFocus,
+                      next: ProductState.shippingDescFocus,
+                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
                       capitalization: TextCapitalization.none,
-                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                      // response: (s) => s.status,
-                      // onChanged: (cubit, it) => cubit.ridertipChanged(it),
+                      inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'^\d+((\.\d{1,5})|(\.))?$'))],
+                      onChanged: (bloc, it) => bloc.add(const ProductSyncEvent.heightChanged()),
                     ),
                   ],
                 ),
@@ -135,16 +150,32 @@ class _ShippingDetailsPageState extends State<ShippingDetailsPage>
           //
           0.008.verticalh,
           //
+          const TextFormInputLabel(text: 'Delivery Period'),
+          //
+          BlocSelector<ProductBloc, ProductState, String?>(
+            selector: (s) => s.product.shippingInformation?.deliveryPeriod.value.fold((_) => null, (r) => r),
+            builder: (c, value) => AdaptiveDropdown<String?>(
+              hint: '-- Select --',
+              items: ProductState.periods,
+              text: (it) => it,
+              selected: value,
+              errorText: (value) => value == null || value.isEmpty ? 'Select a Delivery Period' : null,
+              onChanged: (it) => c.read<ProductBloc>().add(ProductSyncEvent.deliveryPeriodChanged(it)),
+            ),
+          ),
+          //
+          0.008.verticalh,
+          //
           const TextFormInputLabel(text: 'Pickup Available'),
           //
-          BlocSelector<ProductBloc, ProductState, bool>(
-            selector: (s) => s.product.isPickup,
-            builder: (c, type) => AdaptiveDropdown<bool>(
+          BlocSelector<ProductBloc, ProductState, bool?>(
+            selector: (s) => s.product.shippingInformation?.isPickup,
+            builder: (c, value) => AdaptiveDropdown<bool?>(
               hint: '-- Select --',
               items: [true, false],
-              text: (s) => '${s! ? 'YES' : 'NO'}'.toUpperCase(),
-              selected: type,
-              onChanged: (it) {},
+              text: (s) => '${s! ? 'Yes' : 'No'}',
+              selected: value,
+              onChanged: (it) => c.read<ProductBloc>().add(ProductSyncEvent.deliveryModeChanged(it)),
             ),
           ),
           //
@@ -153,18 +184,19 @@ class _ShippingDetailsPageState extends State<ShippingDetailsPage>
           const TextFormInputLabel(text: 'Shipping Description'),
           //
           ReactiveTextFormField<ProductBloc, ProductState>(
-            minLines: 5,
-            hintText: (s) => 'Enter Description',
-            disabled: (s) => s.isLoading,
+            minLines: 4,
+            hintText: (s) => 'Brief shipping description..',
+            disabled: (s) => s.isLoading || s.isSavingState || s.isCreatingProduct,
             validate: (s) => s.validate,
+            response: (s) => s.status,
+            field: (s) => s.product.shippingInformation?.description,
+            controller: (s) => s.shippingDescTextController,
+            autoDisposeController: false,
             keyboardType: TextInputType.multiline,
             action: TextInputAction.newline,
             capitalization: TextCapitalization.none,
-            // focus: GlobalPreferenceState.supportMsgFocus,
-            field: (s) => s.product.itemDescription,
-            // response: (s) => s.status,
-            // errorField: (s) => s.errors?.supportMessage,
-            // onChanged: (cubit, it) => cubit.supportMessageChanged(it),
+            focus: ProductState.shippingDescFocus,
+            onChanged: (bloc, it) => bloc.add(const ProductSyncEvent.shippingDescChanged()),
           )
         ],
       ),

@@ -8,15 +8,15 @@ part of social_user_dto.dart;
 
 _$_SocialUserDTO _$$_SocialUserDTOFromJson(Map<String, dynamic> json) =>
     _$_SocialUserDTO(
-      status: json['Status'] as String?,
-      code: const IntegerSerializer().fromJson(json['Code']),
-      message: json['Message'] as String?,
-      data: json['Data'] == null
+      status: json['status'] as String?,
+      code: const IntegerSerializer().fromJson(json['code']),
+      message: json['message'] as String?,
+      data: json['data'] == null
           ? null
-          : UserDTO.fromJson(json['Data'] as Map<String, dynamic>),
-      user: json['User'] == null
+          : UserDTO.fromJson(json['data'] as Map<String, dynamic>),
+      user: json['user'] == null
           ? null
-          : UserDTO.fromJson(json['User'] as Map<String, dynamic>),
+          : UserDTO.fromJson(json['user'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_SocialUserDTOToJson(_$_SocialUserDTO instance) {
@@ -28,10 +28,10 @@ Map<String, dynamic> _$$_SocialUserDTOToJson(_$_SocialUserDTO instance) {
     }
   }
 
-  writeNotNull('Status', instance.status);
-  writeNotNull('Code', const IntegerSerializer().toJson(instance.code));
-  writeNotNull('Message', instance.message);
-  writeNotNull('Data', instance.data?.toJson());
-  writeNotNull('User', instance.user?.toJson());
+  writeNotNull('status', instance.status);
+  writeNotNull('code', const IntegerSerializer().toJson(instance.code));
+  writeNotNull('message', instance.message);
+  writeNotNull('data', instance.data?.toJson());
+  writeNotNull('user', instance.user?.toJson());
   return val;
 }

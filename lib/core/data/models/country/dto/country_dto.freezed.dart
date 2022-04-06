@@ -23,17 +23,21 @@ class _$CountryDTOTearOff {
   const _$CountryDTOTearOff();
 
   _CountryDTO call(
-      {@JsonKey(includeIfNull: false) String? id,
-      @JsonKey(includeIfNull: false) String? name,
-      @JsonKey(includeIfNull: false) String? iso2,
-      @JsonKey(includeIfNull: false) String? iso3,
-      @JsonKey(includeIfNull: false, name: 'phone_code') String? dialCode}) {
+      {String? id,
+      String? name,
+      @JsonKey(name: 'isoCode') String? iso,
+      @JsonKey(name: 'dialCode') String? dialCode,
+      @JsonKey(name: 'flag') String? flagUrl,
+      @CurrencyTypeSerializer() CurrencyType? currency,
+      @JsonKey(name: 'currency_icon') String? currencyIcon}) {
     return _CountryDTO(
       id: id,
       name: name,
-      iso2: iso2,
-      iso3: iso3,
+      iso: iso,
       dialCode: dialCode,
+      flagUrl: flagUrl,
+      currency: currency,
+      currencyIcon: currencyIcon,
     );
   }
 
@@ -47,16 +51,18 @@ const $CountryDTO = _$CountryDTOTearOff();
 
 /// @nodoc
 mixin _$CountryDTO {
-  @JsonKey(includeIfNull: false)
   String? get id => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: false)
   String? get name => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: false)
-  String? get iso2 => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: false)
-  String? get iso3 => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: false, name: 'phone_code')
+  @JsonKey(name: 'isoCode')
+  String? get iso => throw _privateConstructorUsedError;
+  @JsonKey(name: 'dialCode')
   String? get dialCode => throw _privateConstructorUsedError;
+  @JsonKey(name: 'flag')
+  String? get flagUrl => throw _privateConstructorUsedError;
+  @CurrencyTypeSerializer()
+  CurrencyType? get currency => throw _privateConstructorUsedError;
+  @JsonKey(name: 'currency_icon')
+  String? get currencyIcon => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -70,11 +76,13 @@ abstract class $CountryDTOCopyWith<$Res> {
           CountryDTO value, $Res Function(CountryDTO) then) =
       _$CountryDTOCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(includeIfNull: false) String? id,
-      @JsonKey(includeIfNull: false) String? name,
-      @JsonKey(includeIfNull: false) String? iso2,
-      @JsonKey(includeIfNull: false) String? iso3,
-      @JsonKey(includeIfNull: false, name: 'phone_code') String? dialCode});
+      {String? id,
+      String? name,
+      @JsonKey(name: 'isoCode') String? iso,
+      @JsonKey(name: 'dialCode') String? dialCode,
+      @JsonKey(name: 'flag') String? flagUrl,
+      @CurrencyTypeSerializer() CurrencyType? currency,
+      @JsonKey(name: 'currency_icon') String? currencyIcon});
 }
 
 /// @nodoc
@@ -89,9 +97,11 @@ class _$CountryDTOCopyWithImpl<$Res> implements $CountryDTOCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
-    Object? iso2 = freezed,
-    Object? iso3 = freezed,
+    Object? iso = freezed,
     Object? dialCode = freezed,
+    Object? flagUrl = freezed,
+    Object? currency = freezed,
+    Object? currencyIcon = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -102,17 +112,25 @@ class _$CountryDTOCopyWithImpl<$Res> implements $CountryDTOCopyWith<$Res> {
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      iso2: iso2 == freezed
-          ? _value.iso2
-          : iso2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      iso3: iso3 == freezed
-          ? _value.iso3
-          : iso3 // ignore: cast_nullable_to_non_nullable
+      iso: iso == freezed
+          ? _value.iso
+          : iso // ignore: cast_nullable_to_non_nullable
               as String?,
       dialCode: dialCode == freezed
           ? _value.dialCode
           : dialCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      flagUrl: flagUrl == freezed
+          ? _value.flagUrl
+          : flagUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      currency: currency == freezed
+          ? _value.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as CurrencyType?,
+      currencyIcon: currencyIcon == freezed
+          ? _value.currencyIcon
+          : currencyIcon // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -125,11 +143,13 @@ abstract class _$CountryDTOCopyWith<$Res> implements $CountryDTOCopyWith<$Res> {
       __$CountryDTOCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(includeIfNull: false) String? id,
-      @JsonKey(includeIfNull: false) String? name,
-      @JsonKey(includeIfNull: false) String? iso2,
-      @JsonKey(includeIfNull: false) String? iso3,
-      @JsonKey(includeIfNull: false, name: 'phone_code') String? dialCode});
+      {String? id,
+      String? name,
+      @JsonKey(name: 'isoCode') String? iso,
+      @JsonKey(name: 'dialCode') String? dialCode,
+      @JsonKey(name: 'flag') String? flagUrl,
+      @CurrencyTypeSerializer() CurrencyType? currency,
+      @JsonKey(name: 'currency_icon') String? currencyIcon});
 }
 
 /// @nodoc
@@ -146,9 +166,11 @@ class __$CountryDTOCopyWithImpl<$Res> extends _$CountryDTOCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
-    Object? iso2 = freezed,
-    Object? iso3 = freezed,
+    Object? iso = freezed,
     Object? dialCode = freezed,
+    Object? flagUrl = freezed,
+    Object? currency = freezed,
+    Object? currencyIcon = freezed,
   }) {
     return _then(_CountryDTO(
       id: id == freezed
@@ -159,17 +181,25 @@ class __$CountryDTOCopyWithImpl<$Res> extends _$CountryDTOCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      iso2: iso2 == freezed
-          ? _value.iso2
-          : iso2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      iso3: iso3 == freezed
-          ? _value.iso3
-          : iso3 // ignore: cast_nullable_to_non_nullable
+      iso: iso == freezed
+          ? _value.iso
+          : iso // ignore: cast_nullable_to_non_nullable
               as String?,
       dialCode: dialCode == freezed
           ? _value.dialCode
           : dialCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      flagUrl: flagUrl == freezed
+          ? _value.flagUrl
+          : flagUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      currency: currency == freezed
+          ? _value.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as CurrencyType?,
+      currencyIcon: currencyIcon == freezed
+          ? _value.currencyIcon
+          : currencyIcon // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -179,35 +209,41 @@ class __$CountryDTOCopyWithImpl<$Res> extends _$CountryDTOCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_CountryDTO extends _CountryDTO {
   const _$_CountryDTO(
-      {@JsonKey(includeIfNull: false) this.id,
-      @JsonKey(includeIfNull: false) this.name,
-      @JsonKey(includeIfNull: false) this.iso2,
-      @JsonKey(includeIfNull: false) this.iso3,
-      @JsonKey(includeIfNull: false, name: 'phone_code') this.dialCode})
+      {this.id,
+      this.name,
+      @JsonKey(name: 'isoCode') this.iso,
+      @JsonKey(name: 'dialCode') this.dialCode,
+      @JsonKey(name: 'flag') this.flagUrl,
+      @CurrencyTypeSerializer() this.currency,
+      @JsonKey(name: 'currency_icon') this.currencyIcon})
       : super._();
 
   factory _$_CountryDTO.fromJson(Map<String, dynamic> json) =>
       _$$_CountryDTOFromJson(json);
 
   @override
-  @JsonKey(includeIfNull: false)
   final String? id;
   @override
-  @JsonKey(includeIfNull: false)
   final String? name;
   @override
-  @JsonKey(includeIfNull: false)
-  final String? iso2;
+  @JsonKey(name: 'isoCode')
+  final String? iso;
   @override
-  @JsonKey(includeIfNull: false)
-  final String? iso3;
-  @override
-  @JsonKey(includeIfNull: false, name: 'phone_code')
+  @JsonKey(name: 'dialCode')
   final String? dialCode;
+  @override
+  @JsonKey(name: 'flag')
+  final String? flagUrl;
+  @override
+  @CurrencyTypeSerializer()
+  final CurrencyType? currency;
+  @override
+  @JsonKey(name: 'currency_icon')
+  final String? currencyIcon;
 
   @override
   String toString() {
-    return 'CountryDTO(id: $id, name: $name, iso2: $iso2, iso3: $iso3, dialCode: $dialCode)';
+    return 'CountryDTO(id: $id, name: $name, iso: $iso, dialCode: $dialCode, flagUrl: $flagUrl, currency: $currency, currencyIcon: $currencyIcon)';
   }
 
   @override
@@ -217,9 +253,12 @@ class _$_CountryDTO extends _CountryDTO {
             other is _CountryDTO &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.iso2, iso2) &&
-            const DeepCollectionEquality().equals(other.iso3, iso3) &&
-            const DeepCollectionEquality().equals(other.dialCode, dialCode));
+            const DeepCollectionEquality().equals(other.iso, iso) &&
+            const DeepCollectionEquality().equals(other.dialCode, dialCode) &&
+            const DeepCollectionEquality().equals(other.flagUrl, flagUrl) &&
+            const DeepCollectionEquality().equals(other.currency, currency) &&
+            const DeepCollectionEquality()
+                .equals(other.currencyIcon, currencyIcon));
   }
 
   @override
@@ -227,9 +266,11 @@ class _$_CountryDTO extends _CountryDTO {
       runtimeType,
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(iso2),
-      const DeepCollectionEquality().hash(iso3),
-      const DeepCollectionEquality().hash(dialCode));
+      const DeepCollectionEquality().hash(iso),
+      const DeepCollectionEquality().hash(dialCode),
+      const DeepCollectionEquality().hash(flagUrl),
+      const DeepCollectionEquality().hash(currency),
+      const DeepCollectionEquality().hash(currencyIcon));
 
   @JsonKey(ignore: true)
   @override
@@ -244,36 +285,37 @@ class _$_CountryDTO extends _CountryDTO {
 
 abstract class _CountryDTO extends CountryDTO {
   const factory _CountryDTO(
-      {@JsonKey(includeIfNull: false)
-          String? id,
-      @JsonKey(includeIfNull: false)
-          String? name,
-      @JsonKey(includeIfNull: false)
-          String? iso2,
-      @JsonKey(includeIfNull: false)
-          String? iso3,
-      @JsonKey(includeIfNull: false, name: 'phone_code')
-          String? dialCode}) = _$_CountryDTO;
+      {String? id,
+      String? name,
+      @JsonKey(name: 'isoCode') String? iso,
+      @JsonKey(name: 'dialCode') String? dialCode,
+      @JsonKey(name: 'flag') String? flagUrl,
+      @CurrencyTypeSerializer() CurrencyType? currency,
+      @JsonKey(name: 'currency_icon') String? currencyIcon}) = _$_CountryDTO;
   const _CountryDTO._() : super._();
 
   factory _CountryDTO.fromJson(Map<String, dynamic> json) =
       _$_CountryDTO.fromJson;
 
   @override
-  @JsonKey(includeIfNull: false)
   String? get id;
   @override
-  @JsonKey(includeIfNull: false)
   String? get name;
   @override
-  @JsonKey(includeIfNull: false)
-  String? get iso2;
+  @JsonKey(name: 'isoCode')
+  String? get iso;
   @override
-  @JsonKey(includeIfNull: false)
-  String? get iso3;
-  @override
-  @JsonKey(includeIfNull: false, name: 'phone_code')
+  @JsonKey(name: 'dialCode')
   String? get dialCode;
+  @override
+  @JsonKey(name: 'flag')
+  String? get flagUrl;
+  @override
+  @CurrencyTypeSerializer()
+  CurrencyType? get currency;
+  @override
+  @JsonKey(name: 'currency_icon')
+  String? get currencyIcon;
   @override
   @JsonKey(ignore: true)
   _$CountryDTOCopyWith<_CountryDTO> get copyWith =>

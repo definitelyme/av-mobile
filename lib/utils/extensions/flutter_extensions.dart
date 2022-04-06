@@ -2,6 +2,8 @@ import 'package:auctionvillage/utils/extensions/num_extension.dart';
 import 'package:auctionvillage/widgets/widgets.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 
 extension InputDecorationX on InputDecoration {
   InputDecoration merge(InputDecoration? other) {
@@ -28,11 +30,8 @@ extension EdgeInsetsGeometryX on EdgeInsets {
   EdgeInsetsGeometry merge(EdgeInsets? insets) {
     return copyWith(
       left: insets?.left != null && insets?.left != 0.0 ? insets?.left : left,
-      right:
-          insets?.right != null && insets?.right != 0.0 ? insets?.right : right,
-      bottom: insets?.bottom != null && insets?.bottom != 0.0
-          ? insets?.bottom
-          : bottom,
+      right: insets?.right != null && insets?.right != 0.0 ? insets?.right : right,
+      bottom: insets?.bottom != null && insets?.bottom != 0.0 ? insets?.bottom : bottom,
       top: insets?.top != null && insets?.top != 0.0 ? insets?.top : top,
     );
   }
@@ -92,14 +91,49 @@ extension TargetPlatformX on TargetPlatform {
 
   bool get isFuchsia => this == TargetPlatform.fuchsia;
 
-  bool get isDesktop =>
-      this == TargetPlatform.windows ||
-      this == TargetPlatform.linux ||
-      this == TargetPlatform.macOS;
+  bool get isDesktop => this == TargetPlatform.windows || this == TargetPlatform.linux || this == TargetPlatform.macOS;
 
   bool get isWeb => kIsWeb;
 
   bool get isLinux => this == TargetPlatform.linux;
 
   bool get isMacOS => this == TargetPlatform.macOS;
+}
+
+/// Method that allows widgets to access a [Bloc] or [Cubit] instance
+/// as long as their `BuildContext` contains a [BlocProvider] instance.
+///
+/// If we want to access an instance of `BlocA` which was provided higher up
+/// in the widget tree we can do so via:
+///
+/// ```dart
+/// blocMaybeOf<BlocA>(context);
+/// ```
+T blocMaybeOf<T extends StateStreamableSource<Object?>>(
+  BuildContext context, {
+  bool listen = false,
+  required T Function() orElse,
+}) {
+  try {
+    return Provider.of<T>(context, listen: listen);
+  } on ProviderNotFoundException catch (_) {
+    return orElse();
+  }
+}
+
+extension MapX on Map<dynamic, dynamic> {
+  Map<String, dynamic> _convertMap(Map<dynamic, dynamic> map) {
+    for (var key in map.keys) {
+      if (map[key] is Map) {
+        map[key] = _convertMap(map[key] as Map<dynamic, dynamic>);
+      } else if (map[key] is List<dynamic> || map[key] is List<Object?>) {
+        map[key] = map[key]
+            .map((e) => Map.fromEntries((e as Map<dynamic, dynamic>).entries.map((entry) => MapEntry('${entry.key}', entry.value))))
+            .toList();
+      }
+    }
+    return Map.fromEntries(map.entries.map((entry) => MapEntry(entry.key.toString(), entry.value)));
+  }
+
+  Map<String, dynamic> get mapToStringDynamic => _convertMap(this);
 }

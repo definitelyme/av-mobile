@@ -52,40 +52,13 @@ void throwIfNot(bool condition, Object error) {
   if (!condition) throw error;
 }
 
-// const List<String> _guestAuthRoutes = [
-//   LoginRoute.name,
-//   SignupRoute.name,
-//   GetStartedRoute.name,
-//   SignupRoute.name,
-//   OTPVerificationRoute.name,
-//   ForgotPasswordRoute.name,
-//   SocialsAuthRoute.name,
-// ];
-
-// void navigateToLogin() {
-//   if (_guestAuthRoutes.any((el) => el != navigator.current.name)) navigator.navigate(const LoginRoute());
-// }
-
-// void navigateToOTPVerification() {
-//   if (navigator.current.name != OTPVerificationRoute.name && navigator.topRoute.name != DashboardRoute.name)
-//     navigator.pushAndPopUntil(const OTPVerificationRoute(), predicate: (route) => false);
-// }
-
-// void navigateToSocials() {
-//   if (navigator.current.name == SocialsAuthRoute.name) navigator.popAndPush(const SocialsAuthRoute());
-
-//   if (navigator.current.name != OTPVerificationRoute.name && navigator.current.name != DashboardRoute.name)
-//     navigator.pushAndPopUntil(const SocialsAuthRoute(), predicate: (route) => false);
-// }
-
 class Utils {
   /// Create Singleton start ///
   static final Utils _singleton = Utils._();
 
   static const Duration autoRetrievalTimeout = Duration(seconds: 40);
   static const double buttonRadius = 8.0;
-  static const BorderRadius cardBorderRadius =
-      BorderRadius.all(Radius.circular(cardRadius));
+  static const BorderRadius cardBorderRadius = BorderRadius.all(Radius.circular(cardRadius));
   static const double cardRadius = 12.0;
   static const Duration crossFadeDuration = Duration(milliseconds: 400);
   static const String currency = '₦';
@@ -102,9 +75,7 @@ class Utils {
   static const double labelLetterSpacing = 0.60;
   static const double letterSpacing = 0.8;
   static Logger logger = Logger(
-    filter: env.flavor == const BuildFlavor(BuildFlavor.dev)
-        ? DevelopmentFilter()
-        : ProductionFilter(),
+    filter: env.flavor == const BuildFlavor(BuildFlavor.dev) ? DevelopmentFilter() : ProductionFilter(),
     printer: HybridPrinter(PrettyPrinter(
       methodCount: 3, // number of method calls to be displayed
       errorMethodCount: 10, // number of method calls if stacktrace is provided
@@ -116,11 +87,10 @@ class Utils {
   );
 
   static const Widget nothing = SizedBox.shrink();
-  static ScrollPhysics physics =
-      Theme.of(navigator.navigatorKey.currentContext!).platform.fold(
-            material: () => const ClampingScrollPhysics(),
-            cupertino: () => const BouncingScrollPhysics(),
-          );
+  static ScrollPhysics physics = Theme.of(navigator.navigatorKey.currentContext!).platform.fold(
+        material: () => const ClampingScrollPhysics(),
+        cupertino: () => const BouncingScrollPhysics(),
+      );
 
   static const Duration willPopTimeout = Duration(seconds: 3);
 
@@ -133,13 +103,9 @@ class Utils {
 
   Utils._();
 
-  static Future<Directory?> get rootDir async =>
-      await getExternalStorageDirectory();
-  static Future<Directory> get cacheDir async => kIsWeb
-      ? HydratedStorage.webStorageDirectory
-      : await getTemporaryDirectory();
-  static Future<Directory> get documentsDir async =>
-      await getApplicationDocumentsDirectory();
+  static Future<Directory?> get rootDir async => await getExternalStorageDirectory();
+  static Future<Directory> get cacheDir async => kIsWeb ? HydratedStorage.webStorageDirectory : await getTemporaryDirectory();
+  static Future<Directory> get documentsDir async => await getApplicationDocumentsDirectory();
   // End ////
 
   Color? get backgroundOverlayColor => App.theme.primaryColor.withOpacity(0.91);
@@ -179,8 +145,23 @@ class Utils {
   Color? get iconColor => theme.iconTheme.color;
 
   /// Check if dark mode theme is enable on platform on android Q+
-  bool get isPlatformDarkMode =>
-      (mediaQuery!.platformBrightness == Brightness.dark);
+  bool get isPlatformDarkMode => (mediaQuery!.platformBrightness == Brightness.dark);
+
+  SystemUiOverlayStyle customSystemOverlay({
+    BuildContext? ctx,
+    Brightness? android,
+    Brightness? ios,
+  }) =>
+      SystemUiOverlayStyle(
+        // For Android.
+        // Use [light] for white status bar and [dark] for black status bar.
+        statusBarIconBrightness: android ?? Brightness.dark,
+        // For iOS.
+        // Use [dark] for white status bar and [light] for black status bar.
+        statusBarBrightness: ios ?? (App.isDarkMode(ctx) ? Brightness.dark : Brightness.light),
+      );
+
+  SystemUiOverlayStyle systemUIOverlayStyle([BuildContext? c]) => customSystemOverlay(ctx: c);
 
   GlobalKey<NavigatorState> get key => router.navigatorKey;
   Widget get loadingHourGlass => SpinKitPouringHourGlass(
@@ -193,8 +174,7 @@ class Utils {
       );
 
   Widget loadingSpinningLines([Color? color]) => SpinKitLoader(
-        color: App.resolveColor(Palette.accentColor,
-            dark: color ?? Colors.white70)!,
+        color: App.resolveColor(Palette.accentColor, dark: color ?? Colors.white70)!,
         duration: const Duration(milliseconds: 900),
       );
 
@@ -224,8 +204,7 @@ class Utils {
   /// give access to Immutable MediaQuery.of(context).size.shortestSide
   double get shortest => MediaQuery.of(context).size.shortestSide;
 
-  double get sidePadding =>
-      platform_(cupertino: shortest * 0.035, material: shortest * 0.05)!;
+  double get sidePadding => platform_(cupertino: shortest * 0.035, material: shortest * 0.05)!;
 
   /// give access to TextTheme.of(context)
   TextTheme? get textTheme => theme.textTheme;
@@ -276,21 +255,23 @@ class Utils {
     Color? dark,
     _PlatformDynamicColor? material,
     _PlatformDynamicColor? cupertino,
+    BuildContext? context,
   }) =>
       platform.fold(
         material: () => foldTheme(
-            light: () => material?.call()?.value1 ?? light,
-            dark: () => material?.call()?.value2 ?? dark ?? light),
+          context: context,
+          light: () => material?.call()?.value1 ?? light,
+          dark: () => material?.call()?.value2 ?? dark ?? light,
+        ),
         cupertino: () => CupertinoDynamicColor.resolve(
           CupertinoDynamicColor.withBrightness(
             color: foldTheme(
-                    light: () => cupertino?.call()?.value1 ?? light,
-                    dark: () => cupertino?.call()?.value2 ?? dark ?? light) ??
+                  context: context,
+                  light: () => cupertino?.call()?.value1 ?? light,
+                  dark: () => cupertino?.call()?.value2 ?? dark ?? light,
+                ) ??
                 Utils.computeLuminance(Palette.primaryColor),
-            darkColor: cupertino?.call()?.value2 ??
-                dark ??
-                light ??
-                Utils.computeLuminance(Palette.secondaryColor),
+            darkColor: cupertino?.call()?.value2 ?? dark ?? light ?? Utils.computeLuminance(Palette.secondaryColor),
           ),
           App.context,
         ),
@@ -324,8 +305,7 @@ class Utils {
   }
 
   Widget loadingOverlay([Widget? child, Color? color]) => Container(
-        color: color ??
-            App.resolveColor(Palette.primaryColor.shade300.withOpacity(0.65)),
+        color: color ?? App.resolveColor(Palette.primaryColor.shade300.withOpacity(0.65)),
         child: Center(child: child ?? chasingDots),
       );
 
@@ -365,13 +345,11 @@ class Utils {
     return '';
   }
 
-  static DateTime getDate(DateTime d) =>
-      DateTime(d.year, d.month, d.day, d.hour, d.minute, d.second);
+  static DateTime getDate(DateTime d) => DateTime(d.year, d.month, d.day, d.hour, d.minute, d.second);
 
   bool isDarkMode([BuildContext? context]) {
     final _context = context ?? App.context;
-    return BlocProvider.of<ThemeCubit>(_context).isDarkMode ||
-        (MediaQuery.of(_context).platformBrightness == Brightness.dark);
+    return BlocProvider.of<ThemeCubit>(_context).isDarkMode || (MediaQuery.of(_context).platformBrightness == Brightness.dark);
   }
 
   static T foldTheme<T>({
@@ -388,8 +366,7 @@ class Utils {
       return light.call();
   }
 
-  static Color computeLuminance(Color color) =>
-      color.computeLuminance() > 0.5 ? Colors.black : Colors.white;
+  static Color computeLuminance(Color color) => color.computeLuminance() > 0.5 ? Colors.black : Colors.white;
 
   static Future<Color> computeFromImage(
     ImageProvider provider, {
@@ -486,8 +463,7 @@ class Utils {
   }
 
   static Future<void> platformPop({bool animated = true}) async {
-    await SystemChannels.platform
-        .invokeMethod<void>('SystemNavigator.pop', animated);
+    await SystemChannels.platform.invokeMethod<void>('SystemNavigator.pop', animated);
   }
 
   Widget positionedLoader(
@@ -508,8 +484,7 @@ class Utils {
         padding: EdgeInsets.symmetric(vertical: _topHeight ?? kToolbarHeight),
         child: Column(
           mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment:
-              _keyboardClosed ? MainAxisAlignment.end : MainAxisAlignment.start,
+          mainAxisAlignment: _keyboardClosed ? MainAxisAlignment.end : MainAxisAlignment.start,
           children: [loader ?? circularLoader()],
         ),
       ),
@@ -687,8 +662,7 @@ class Utils {
     bool bounce = false,
     Duration? duration,
   }) async {
-    final shape = RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: radius));
+    final shape = RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: radius));
 
     return await Theme.of(context).platform.fold(
           material: () async => await showMaterialModalBottomSheet(

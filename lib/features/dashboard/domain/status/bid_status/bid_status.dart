@@ -9,6 +9,8 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'bid_status.g.dart';
 
+const BidStatus defaultBidStatus = BidStatus.closed;
+
 class BidStatus extends EnumClass implements ActivityStatus {
   static const BidStatus live = _$live;
   static const BidStatus sold = _$sold;
@@ -36,7 +38,7 @@ class BidStatus extends EnumClass implements ActivityStatus {
       case BidStatus.sold:
         return Palette.accentGreen;
       case BidStatus.live:
-        return Palette.failedRed;
+        return Palette.pastelYellow;
       case BidStatus.closed:
       default:
         return Palette.failedRed;
@@ -58,10 +60,12 @@ class BidStatusSerializer implements JsonConverter<BidStatus?, String?> {
   const BidStatusSerializer();
 
   @override
-  BidStatus fromJson(String? value) => BidStatus.valueOf('$value'.toUpperCase());
+  BidStatus fromJson(String? value) => BidStatus.valueOf('$value'.toLowerCase());
+
+  static String? toJsonString(BidStatus? instance) => instance?.name.toUpperCase();
 
   @override
-  String? toJson(BidStatus? instance) => '${instance?.name}';
+  String? toJson(BidStatus? instance) => toJsonString(instance);
 }
 
 extension BidStatusX on BidStatus {

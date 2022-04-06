@@ -26,6 +26,15 @@ mixin AppAssets {
   static const String logo = '$IMAGES_DIR/logo/logo.png';
   static const String _logoSVG = '$SVG_DIR/logo/logo.svg';
 
+  // Lottie Json
+  static const String checkAnimation = '$RAW_DIR/check_anim.json';
+  static const String hoorayAnimation = '$RAW_DIR/hooray_lottie_anim.json';
+  static const String bidHammer = '$RAW_DIR/bid-hammer.json';
+  static const String hammerCoins = '$RAW_DIR/hammer-coins.json';
+  static const String hammerPurple = '$RAW_DIR/hammer-purple.json';
+  static const String hammerWhite = '$RAW_DIR/hammer-white.json';
+  static const String countries = '$RAW_DIR/countries.json';
+
   /// USER
   static const String user = '$IMAGES_DIR/user.png';
   static const String unnamed = '$IMAGES_DIR/unnamed.png';
@@ -35,15 +44,11 @@ mixin AppAssets {
   /// DASHBOARD SVGS
   static const String hammerSVG = '$DASHBOARD_SVG_DIR/hammer.svg';
   static const String _hammerBig = '$DASHBOARD_SVG_DIR/hammer-big.svg';
-  static const String categoryArtefact =
-      '$DASHBOARD_SVG_DIR/category-artefact.svg';
-  static const String categoryAutoMobile =
-      '$DASHBOARD_SVG_DIR/category-automobile.svg';
-  static const String categoryGeneral =
-      '$DASHBOARD_SVG_DIR/category-general.svg';
+  static const String categoryArtefact = '$DASHBOARD_SVG_DIR/category-artefact.svg';
+  static const String categoryAutoMobile = '$DASHBOARD_SVG_DIR/category-automobile.svg';
+  static const String categoryGeneral = '$DASHBOARD_SVG_DIR/category-general.svg';
   static const String categoryLuxury = '$DASHBOARD_SVG_DIR/category-luxury.svg';
-  static const String categoryProperty =
-      '$DASHBOARD_SVG_DIR/category-property.svg';
+  static const String categoryProperty = '$DASHBOARD_SVG_DIR/category-property.svg';
   static const String _creditCard = '$DASHBOARD_SVG_DIR/credit-card.svg';
   static const String _search = '$DASHBOARD_SVG_DIR/search.svg';
   static const String _sendMessage = '$DASHBOARD_SVG_DIR/send-message.svg';
@@ -53,9 +58,15 @@ mixin AppAssets {
   static const String _filter = '$DASHBOARD_SVG_DIR/filter.svg';
   static const String _featherSearch = '$DASHBOARD_SVG_DIR/feather_search.svg';
 
-  /// DASHBOARD SVGS
-  static const String homeCarousel =
-      '$DASHBOARD_IMAGES_DIR/home-carousel-bitmap.png';
+  /// DASHBOARD IMAGES
+  static const String homeCarousel = '$DASHBOARD_IMAGES_DIR/home-carousel-bitmap.png';
+  static const String cardAmericanExpress = '$DASHBOARD_IMAGES_DIR/card_logos/american_express.png';
+  static const String cardMasterCard = '$DASHBOARD_IMAGES_DIR/card_logos/mastercard.png';
+  static const String cardVisa = '$DASHBOARD_IMAGES_DIR/card_logos/visa.png';
+  static const String cardVerve = '$DASHBOARD_IMAGES_DIR/card_logos/verve.png';
+  static const String cardDiscover = '$DASHBOARD_IMAGES_DIR/card_logos/discover.png';
+  static const String cardJCB = '$DASHBOARD_IMAGES_DIR/card_logos/jcb.png';
+  static const String cardDinersClub = '$DASHBOARD_IMAGES_DIR/card_logos/diners_club.png';
 
   /////////////////////////////////////////////////////
   /////////////////////////////////////////////////////
@@ -147,8 +158,7 @@ mixin AppAssets {
     fit: BoxFit.contain,
   );
 
-  static SvgPicture featherSearch([Size size = const Size(40, 40)]) =>
-      SvgPicture.asset(
+  static SvgPicture featherSearch([Size size = const Size(40, 40)]) => SvgPicture.asset(
         _featherSearch,
         height: size.height,
         width: size.width,

@@ -8,7 +8,7 @@ part of server_field_errors.dart;
 
 _$_ServerFieldErrors _$$_ServerFieldErrorsFromJson(Map<String, dynamic> json) =>
     _$_ServerFieldErrors(
-      name: (json['Name'] as List<dynamic>?)?.map((e) => e as String?).toList(),
+      name: (json['name'] as List<dynamic>?)?.map((e) => e as String?).toList(),
       firstName: (json['first_name'] as List<dynamic>?)
           ?.map((e) => e as String?)
           .toList(),
@@ -16,40 +16,40 @@ _$_ServerFieldErrors _$$_ServerFieldErrorsFromJson(Map<String, dynamic> json) =>
           ?.map((e) => e as String?)
           .toList(),
       token:
-          (json['Token'] as List<dynamic>?)?.map((e) => e as String?).toList(),
+          (json['token'] as List<dynamic>?)?.map((e) => e as String?).toList(),
       email:
-          (json['Email'] as List<dynamic>?)?.map((e) => e as String?).toList(),
+          (json['email'] as List<dynamic>?)?.map((e) => e as String?).toList(),
       gender:
-          (json['Gender'] as List<dynamic>?)?.map((e) => e as String?).toList(),
-      age: (json['Age'] as List<dynamic>?)?.map((e) => e as String?).toList(),
+          (json['gender'] as List<dynamic>?)?.map((e) => e as String?).toList(),
+      age: (json['age'] as List<dynamic>?)?.map((e) => e as String?).toList(),
       phone:
-          (json['Phone'] as List<dynamic>?)?.map((e) => e as String?).toList(),
-      password: (json['Password'] as List<dynamic>?)
+          (json['phone'] as List<dynamic>?)?.map((e) => e as String?).toList(),
+      password: (json['password'] as List<dynamic>?)
           ?.map((e) => e as String?)
           .toList(),
       oldPassword: (json['current_password'] as List<dynamic>?)
           ?.map((e) => e as String?)
           .toList(),
-      code: (json['Code'] as List<dynamic>?)?.map((e) => e as String?).toList(),
-      type: (json['Type'] as List<dynamic>?)?.map((e) => e as String?).toList(),
-      description: (json['Description'] as List<dynamic>?)
+      code: (json['code'] as List<dynamic>?)?.map((e) => e as String?).toList(),
+      type: (json['type'] as List<dynamic>?)?.map((e) => e as String?).toList(),
+      description: (json['description'] as List<dynamic>?)
           ?.map((e) => e as String?)
           .toList(),
-      document: (json['Document'] as List<dynamic>?)
+      document: (json['document'] as List<dynamic>?)
           ?.map((e) => e as String?)
           .toList(),
-      duration: (json['Duration'] as List<dynamic>?)
+      duration: (json['duration'] as List<dynamic>?)
           ?.map((e) => e as String?)
           .toList(),
       amount:
-          (json['Amount'] as List<dynamic>?)?.map((e) => e as String?).toList(),
+          (json['amount'] as List<dynamic>?)?.map((e) => e as String?).toList(),
       currencyId: (json['currency_id'] as List<dynamic>?)
           ?.map((e) => e as String?)
           .toList(),
-      country: (json['Country'] as List<dynamic>?)
+      country: (json['country'] as List<dynamic>?)
           ?.map((e) => e as String?)
           .toList(),
-      comment: (json['Comment'] as List<dynamic>?)
+      comment: (json['comment'] as List<dynamic>?)
           ?.map((e) => e as String?)
           .toList(),
       accountNumber: (json['account_number'] as List<dynamic>?)
@@ -58,37 +58,37 @@ _$_ServerFieldErrors _$$_ServerFieldErrorsFromJson(Map<String, dynamic> json) =>
       bankId: (json['bank_id'] as List<dynamic>?)
           ?.map((e) => e as String?)
           .toList(),
-      recipient: (json['Recipient'] as List<dynamic>?)
+      recipient: (json['recipient'] as List<dynamic>?)
           ?.map((e) => e as String?)
           .toList(),
-      plan: (json['Plan'] as List<dynamic>?)?.map((e) => e as String?).toList(),
+      plan: (json['plan'] as List<dynamic>?)?.map((e) => e as String?).toList(),
       paymentMethod: (json['payment_method'] as List<dynamic>?)
           ?.map((e) => e as String?)
           .toList(),
-      lat: (json['Lat'] as List<dynamic>?)?.map((e) => e as String?).toList(),
-      long: (json['Long'] as List<dynamic>?)?.map((e) => e as String?).toList(),
-      zip: (json['Zip'] as List<dynamic>?)?.map((e) => e as String?).toList(),
-      instructions: (json['Instructions'] as List<dynamic>?)
+      lat: (json['lat'] as List<dynamic>?)?.map((e) => e as String?).toList(),
+      long: (json['long'] as List<dynamic>?)?.map((e) => e as String?).toList(),
+      zip: (json['zip'] as List<dynamic>?)?.map((e) => e as String?).toList(),
+      instructions: (json['instructions'] as List<dynamic>?)
           ?.map((e) => e as String?)
           .toList(),
       countryId: (json['country_id'] as List<dynamic>?)
           ?.map((e) => e as String?)
           .toList(),
       alias:
-          (json['Alias'] as List<dynamic>?)?.map((e) => e as String?).toList(),
-      apartment: (json['Apartment'] as List<dynamic>?)
+          (json['alias'] as List<dynamic>?)?.map((e) => e as String?).toList(),
+      apartment: (json['apartment'] as List<dynamic>?)
           ?.map((e) => e as String?)
           .toList(),
       street:
-          (json['Street'] as List<dynamic>?)?.map((e) => e as String?).toList(),
-      town: (json['Town'] as List<dynamic>?)?.map((e) => e as String?).toList(),
-      city: (json['City'] as List<dynamic>?)?.map((e) => e as String?).toList(),
+          (json['street'] as List<dynamic>?)?.map((e) => e as String?).toList(),
+      town: (json['town'] as List<dynamic>?)?.map((e) => e as String?).toList(),
+      city: (json['city'] as List<dynamic>?)?.map((e) => e as String?).toList(),
       stateId: (json['state_id'] as List<dynamic>?)
           ?.map((e) => e as String?)
           .toList(),
       state:
-          (json['State'] as List<dynamic>?)?.map((e) => e as String?).toList(),
-      landmark: (json['Landmark'] as List<dynamic>?)
+          (json['state'] as List<dynamic>?)?.map((e) => e as String?).toList(),
+      landmark: (json['landmark'] as List<dynamic>?)
           ?.map((e) => e as String?)
           .toList(),
       cardId: (json['card_id'] as List<dynamic>?)
@@ -115,11 +115,11 @@ _$_ServerFieldErrors _$$_ServerFieldErrorsFromJson(Map<String, dynamic> json) =>
       itemName: (json['item_name'] as List<dynamic>?)
           ?.map((e) => e as String?)
           .toList(),
-      quantity: (json['Quantity'] as List<dynamic>?)
+      quantity: (json['quantity'] as List<dynamic>?)
           ?.map((e) => e as String?)
           .toList(),
       images:
-          (json['Images'] as List<dynamic>?)?.map((e) => e as String?).toList(),
+          (json['images'] as List<dynamic>?)?.map((e) => e as String?).toList(),
       unitPrice: (json['unit_price'] as List<dynamic>?)
           ?.map((e) => e as String?)
           .toList(),
@@ -141,43 +141,43 @@ Map<String, dynamic> _$$_ServerFieldErrorsToJson(
     }
   }
 
-  writeNotNull('Name', instance.name);
+  writeNotNull('name', instance.name);
   writeNotNull('first_name', instance.firstName);
   writeNotNull('last_name', instance.lastName);
-  writeNotNull('Token', instance.token);
-  writeNotNull('Email', instance.email);
-  writeNotNull('Gender', instance.gender);
-  writeNotNull('Age', instance.age);
-  writeNotNull('Phone', instance.phone);
-  writeNotNull('Password', instance.password);
+  writeNotNull('token', instance.token);
+  writeNotNull('email', instance.email);
+  writeNotNull('gender', instance.gender);
+  writeNotNull('age', instance.age);
+  writeNotNull('phone', instance.phone);
+  writeNotNull('password', instance.password);
   writeNotNull('current_password', instance.oldPassword);
-  writeNotNull('Code', instance.code);
-  writeNotNull('Type', instance.type);
-  writeNotNull('Description', instance.description);
-  writeNotNull('Document', instance.document);
-  writeNotNull('Duration', instance.duration);
-  writeNotNull('Amount', instance.amount);
+  writeNotNull('code', instance.code);
+  writeNotNull('type', instance.type);
+  writeNotNull('description', instance.description);
+  writeNotNull('document', instance.document);
+  writeNotNull('duration', instance.duration);
+  writeNotNull('amount', instance.amount);
   writeNotNull('currency_id', instance.currencyId);
-  writeNotNull('Country', instance.country);
-  writeNotNull('Comment', instance.comment);
+  writeNotNull('country', instance.country);
+  writeNotNull('comment', instance.comment);
   writeNotNull('account_number', instance.accountNumber);
   writeNotNull('bank_id', instance.bankId);
-  writeNotNull('Recipient', instance.recipient);
-  writeNotNull('Plan', instance.plan);
+  writeNotNull('recipient', instance.recipient);
+  writeNotNull('plan', instance.plan);
   writeNotNull('payment_method', instance.paymentMethod);
-  writeNotNull('Lat', instance.lat);
-  writeNotNull('Long', instance.long);
-  writeNotNull('Zip', instance.zip);
-  writeNotNull('Instructions', instance.instructions);
+  writeNotNull('lat', instance.lat);
+  writeNotNull('long', instance.long);
+  writeNotNull('zip', instance.zip);
+  writeNotNull('instructions', instance.instructions);
   writeNotNull('country_id', instance.countryId);
-  writeNotNull('Alias', instance.alias);
-  writeNotNull('Apartment', instance.apartment);
-  writeNotNull('Street', instance.street);
-  writeNotNull('Town', instance.town);
-  writeNotNull('City', instance.city);
+  writeNotNull('alias', instance.alias);
+  writeNotNull('apartment', instance.apartment);
+  writeNotNull('street', instance.street);
+  writeNotNull('town', instance.town);
+  writeNotNull('city', instance.city);
   writeNotNull('state_id', instance.stateId);
-  writeNotNull('State', instance.state);
-  writeNotNull('Landmark', instance.landmark);
+  writeNotNull('state', instance.state);
+  writeNotNull('landmark', instance.landmark);
   writeNotNull('card_id', instance.cardId);
   writeNotNull('card_number', instance.cardNumber);
   writeNotNull('card_name', instance.cardName);
@@ -186,8 +186,8 @@ Map<String, dynamic> _$$_ServerFieldErrorsToJson(
   writeNotNull('receiver_full_name', instance.receiverName);
   writeNotNull('receiver_phone_number', instance.receiverPhone);
   writeNotNull('item_name', instance.itemName);
-  writeNotNull('Quantity', instance.quantity);
-  writeNotNull('Images', instance.images);
+  writeNotNull('quantity', instance.quantity);
+  writeNotNull('images', instance.images);
   writeNotNull('unit_price', instance.unitPrice);
   writeNotNull('required_date', instance.requiredDate);
   writeNotNull('message', instance.supportMessage);

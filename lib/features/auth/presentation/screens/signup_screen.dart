@@ -21,17 +21,13 @@ class SignupScreen extends StatelessWidget with AutoRouteWrapper {
       child: BlocListener<AuthCubit, AuthState>(
         listenWhen: (p, c) =>
             p.status.getOrElse(() => null) != c.status.getOrElse(() => null) ||
-            (c.status.getOrElse(() => null) != null &&
-                (c.status
-                    .getOrElse(() => null)!
-                    .response
-                    .maybeMap(orElse: () => false))),
+            (c.status.getOrElse(() => null) != null && (c.status.getOrElse(() => null)!.response.maybeMap(orElse: () => false))),
         listener: (c, s) => s.status.fold(
           () => null,
           (it) => it?.response.map(
-            info: (i) => PopupDialog.info(message: i.message).render(c),
-            error: (f) => PopupDialog.error(message: f.message).render(c),
-            success: (s) => PopupDialog.success(message: s.message).render(c),
+            info: (i) => PopupDialog.info(message: i.message, show: i.message.isNotEmpty).render(c),
+            error: (f) => PopupDialog.error(message: f.message, show: f.show && f.message.isNotEmpty).render(c),
+            success: (s) => PopupDialog.success(message: s.message, show: s.message.isNotEmpty).render(c),
           ),
         ),
         child: this,
@@ -82,21 +78,25 @@ class SignupScreen extends StatelessWidget with AutoRouteWrapper {
                       //
                       0.01.verticalh,
                       //
-                      GestureDetector(
-                        onTap: () => navigator.navigate(const LoginRoute()),
-                        child: AdaptiveText.rich(
-                          const TextSpan(children: [
-                            TextSpan(text: 'Already have an account? '),
-                            TextSpan(
-                              text: 'Log In',
-                              style: TextStyle(
-                                  color: Palette.accentYellow,
-                                  decoration: TextDecoration.underline),
+                      BlocSelector<AuthCubit, AuthState, bool>(
+                        selector: (s) => s.isLoading || s.isAppleAuthLoading || s.isGoogleAuthLoading,
+                        builder: (c, isLoading) => Disabled(
+                          disabled: isLoading,
+                          child: GestureDetector(
+                            onTap: () => navigator.navigate(const LoginRoute()),
+                            child: AdaptiveText.rich(
+                              const TextSpan(children: [
+                                TextSpan(text: 'Already have an account? '),
+                                TextSpan(
+                                  text: 'Log In',
+                                  style: TextStyle(color: Palette.accentYellow, decoration: TextDecoration.underline),
+                                ),
+                              ]),
+                              fontSize: 18.sp,
+                              textColor: Colors.white,
+                              fontWeight: FontWeight.w400,
                             ),
-                          ]),
-                          fontSize: 18.sp,
-                          textColor: Colors.white,
-                          fontWeight: FontWeight.w400,
+                          ),
                         ),
                       ),
                     ],
@@ -110,8 +110,7 @@ class SignupScreen extends StatelessWidget with AutoRouteWrapper {
                 right: 0,
                 bottom: 0,
                 child: Material(
-                  color: App.resolveColor(Palette.cardColorLight,
-                      dark: Palette.cardColorDark),
+                  color: App.resolveColor(Palette.cardColorLight, dark: Palette.cardColorDark),
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(32),
                     topRight: Radius.circular(32),
@@ -218,10 +217,14 @@ class _FormLayout extends StatelessWidget {
             validate: (s) => s.validate,
             field: (s) => s.user.phone,
             response: (s) => s.status,
+            controller: (s) => s.phoneTextController,
+            autoDisposeController: false,
             focus: AuthState.newPhoneFocus,
             next: AuthState.newPasswordFocus,
             hintText: (s) => 'Your Phone Number',
-            onChanged: (fn, str) => fn.phoneNumberChanged(str),
+            selectedCountry: (s) => s.user.country,
+            onCountryChanged: (cubit, country) => cubit.countryChanged(country),
+            onChanged: (cubit, str) => cubit.phoneNumberChanged(str),
           ),
           //
           0.014.verticalh,

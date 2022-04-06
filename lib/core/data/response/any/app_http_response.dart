@@ -15,16 +15,12 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'app_http_response.freezed.dart';
 part 'app_http_response.gen.dart';
 
-AppHttpResponse deserializeAppHttpResponse(Map<String, dynamic> json) =>
-    AppHttpResponse.fromJson(json);
-Map<String, dynamic> serializeAppHttpResponse(AppHttpResponse object) =>
-    object.toJson();
+AppHttpResponse deserializeAppHttpResponse(Map<String, dynamic> json) => AppHttpResponse.fromJson(json);
+Map<String, dynamic> serializeAppHttpResponse(AppHttpResponse object) => object.toJson();
 
 @Freezed()
 @immutable
-class AppHttpResponse extends AppNetworkResponseException<DioError, dynamic>
-    with _$AppHttpResponse
-    implements Failure, Response {
+class AppHttpResponse extends AppNetworkResponseException<DioError, dynamic> with _$AppHttpResponse implements Failure, Response {
   const factory AppHttpResponse(
     @AnyResponseSerializer() AnyResponse response, {
     @JsonKey(ignore: true) dynamic data,
@@ -35,22 +31,19 @@ class AppHttpResponse extends AppNetworkResponseException<DioError, dynamic>
   const AppHttpResponse._();
 
   /// Maps the incoming Json to a Data Transfer Object (DTO).
-  factory AppHttpResponse.fromJson(Map<String, dynamic> json) =>
-      _$AppHttpResponseFromJson(json);
+  factory AppHttpResponse.fromJson(Map<String, dynamic> json) => _$AppHttpResponseFromJson(json);
 
   factory AppHttpResponse.successful(String? message, {bool pop = true}) =>
-      AppHttpResponse(
-          AnyResponse.success(pop: pop, messageTxt: message ?? 'Successful!'));
+      AppHttpResponse(AnyResponse.success(pop: pop, messageTxt: message ?? 'Successful!'));
 
-  factory AppHttpResponse.info(String? message, [bool pop = false]) =>
-      AppHttpResponse(AnyResponse.info(messageTxt: message));
+  factory AppHttpResponse.info(String? message, [bool pop = false]) => AppHttpResponse(AnyResponse.info(messageTxt: message));
 
   factory AppHttpResponse.failure(String? message, {int? code}) =>
-      AppHttpResponse(AnyResponse.error(
-          code: code, messageTxt: message ?? 'Whoops! An error occurred.'));
+      AppHttpResponse(AnyResponse.error(code: code, messageTxt: message ?? 'Whoops! An error occurred.'));
 
-  static AppHttpResponse get endOfList =>
-      AppHttpResponse(AnyResponse.fromInfo(InfoResponse.endOfList()));
+  static AppHttpResponse get endOfList => AppHttpResponse(AnyResponse.fromInfo(InfoResponse.endOfList()));
+
+  bool get isEndOfList => this == endOfList;
 
   @override
   int? get code => response.maybeMap(error: (e) => e.code, orElse: () => null);
@@ -62,15 +55,16 @@ class AppHttpResponse extends AppNetworkResponseException<DioError, dynamic>
   bool get hasData => data != null;
 
   @override
-  String? get details =>
-      response.maybeMap(orElse: () => null, success: (s) => s.details);
+  String? get details => response.maybeMap(orElse: () => null, success: (s) => s.details);
 
   @override
-  ServerFieldErrors? get errors =>
-      response.maybeMap(error: (e) => e.errors, orElse: () => null);
+  ServerFieldErrors? get errors => response.maybeMap(error: (e) => e.errors, orElse: () => null);
 
   @override
   String get message => response.message;
+
+  @override
+  bool get show => response.maybeMap(orElse: () => message.isNotEmpty, error: (e) => e.show);
 
   @override
   bool? get status => response.status;
@@ -79,7 +73,7 @@ class AppHttpResponse extends AppNetworkResponseException<DioError, dynamic>
     final data = response?.data;
     if (data != null && data is Map<String, dynamic>) {
       final _value =
-          AppHttpResponse.fromJson(data['_meta'] as Map<String, dynamic>);
+          data.containsKey('_meta') ? AppHttpResponse.fromJson(data['_meta'] as Map<String, dynamic>) : AppHttpResponse.fromJson(data);
 
       final _return = _value.copyWith(
         data: data,
@@ -92,6 +86,7 @@ class AppHttpResponse extends AppNetworkResponseException<DioError, dynamic>
             status: e.status,
             exception: e.exception,
             pop: e.pop,
+            show: e.show,
           ),
           orElse: () => _value.response,
         ),

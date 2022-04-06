@@ -24,8 +24,7 @@ class VendorReviewsExpandable extends StatelessWidget {
           tapBodyToCollapse: false,
           useInkWell: Utils.platform_(material: true, cupertino: false),
           headerAlignment: ExpandablePanelHeaderAlignment.center,
-          iconColor: App.platform
-              .cupertino(App.resolveColor(null, dark: Colors.white)),
+          iconColor: App.platform.cupertino(App.resolveColor(null, dark: Colors.white)),
         ),
         child: ExpandableNotifier(
           // initialExpanded: true,
@@ -35,8 +34,7 @@ class VendorReviewsExpandable extends StatelessWidget {
                 dense: true,
                 material: true,
                 enabled: true,
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: App.sidePadding),
+                contentPadding: EdgeInsets.symmetric(horizontal: App.sidePadding),
                 title: AdaptiveText(
                   'Vendor Reviews',
                   maxLines: 1,
@@ -47,17 +45,15 @@ class VendorReviewsExpandable extends StatelessWidget {
               ),
               collapsed: Utils.nothing,
               expanded: Material(
-                color: App.resolveColor(Palette.cardColorLight,
-                    dark: Palette.secondaryColor),
+                color: App.resolveColor(Palette.cardColorLight, dark: Palette.secondaryColor),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     0.01.verticalh,
                     //
                     Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: App.sidePadding),
+                      padding: EdgeInsets.symmetric(horizontal: App.sidePadding),
                       child: Row(
                         children: [
                           AdaptiveText(
@@ -85,15 +81,11 @@ class VendorReviewsExpandable extends StatelessWidget {
                                   maxRating: 5,
                                   itemSize: 0.05.sw,
                                   direction: Axis.horizontal,
-                                  itemPadding: EdgeInsets.symmetric(
-                                      horizontal: 0.005.sw),
+                                  itemPadding: EdgeInsets.symmetric(horizontal: 0.005.sw),
                                   ratingWidget: RatingWidget(
-                                    full: const Icon(Icons.star_sharp,
-                                        color: Colors.amber),
-                                    half: const Icon(Icons.star_half_sharp,
-                                        color: Colors.amber),
-                                    empty: const Icon(Icons.star_border_sharp,
-                                        color: Colors.amber),
+                                    full: const Icon(Icons.star_sharp, color: Colors.amber),
+                                    half: const Icon(Icons.star_half_sharp, color: Colors.amber),
+                                    empty: const Icon(Icons.star_border_sharp, color: Colors.amber),
                                   ),
                                   onRatingUpdate: (_) {},
                                 ),
@@ -116,46 +108,35 @@ class VendorReviewsExpandable extends StatelessWidget {
                     0.01.verticalh,
                     //
                     Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: App.sidePadding),
-                      child:
-                          const GroupedRating(title: 'Delivery', rating: 5.0),
+                      padding: EdgeInsets.symmetric(horizontal: App.sidePadding),
+                      child: const GroupedRating(title: 'Delivery', rating: 5.0),
                     ),
                     //
                     0.02.verticalh,
                     //
                     Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: App.sidePadding),
-                      child:
-                          const GroupedRating(title: 'Responsive', rating: 4.0),
+                      padding: EdgeInsets.symmetric(horizontal: App.sidePadding),
+                      child: const GroupedRating(title: 'Responsive', rating: 4.0),
                     ),
                     //
                     0.02.verticalh,
                     //
                     Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: App.sidePadding),
+                      padding: EdgeInsets.symmetric(horizontal: App.sidePadding),
                       child: const GroupedRating(title: 'Reliable', rating: 2),
                     ),
                     //
                     0.02.verticalh,
                     //
                     Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: App.sidePadding),
+                      padding: EdgeInsets.symmetric(horizontal: App.sidePadding),
                       child: const GroupedRating(title: 'Quality', rating: 5.0),
                     ),
                     //
-                    Divider(
-                        thickness: 1.5,
-                        height: 35,
-                        indent: App.sidePadding * 0.5,
-                        endIndent: App.sidePadding * 0.5),
+                    Divider(thickness: 1.5, height: 35, indent: App.sidePadding * 0.5, endIndent: App.sidePadding * 0.5),
                     //
                     Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: App.sidePadding),
+                      padding: EdgeInsets.symmetric(horizontal: App.sidePadding),
                       child: MyHero(
                         tag: null,
                         child: Column(
@@ -172,15 +153,11 @@ class VendorReviewsExpandable extends StatelessWidget {
                                 maxRating: 5,
                                 itemSize: 0.05.sw,
                                 direction: Axis.horizontal,
-                                itemPadding:
-                                    EdgeInsets.symmetric(horizontal: 0.005.sw),
+                                itemPadding: EdgeInsets.symmetric(horizontal: 0.005.sw),
                                 ratingWidget: RatingWidget(
-                                  full: const Icon(Icons.star_sharp,
-                                      color: Colors.amber),
-                                  half: const Icon(Icons.star_half_sharp,
-                                      color: Colors.amber),
-                                  empty: const Icon(Icons.star_border_sharp,
-                                      color: Colors.amber),
+                                  full: const Icon(Icons.star_sharp, color: Colors.amber),
+                                  half: const Icon(Icons.star_half_sharp, color: Colors.amber),
+                                  empty: const Icon(Icons.star_border_sharp, color: Colors.amber),
                                 ),
                                 onRatingUpdate: (_) {},
                               ),
@@ -202,15 +179,13 @@ class VendorReviewsExpandable extends StatelessWidget {
                                 const TextSpan(text: 'by David '),
                                 TextSpan(
                                   text: '23-11-2021',
-                                  style: TextStyle(
-                                      fontSize: 14.sp, color: Colors.grey),
+                                  style: TextStyle(fontSize: 14.sp, color: Colors.grey),
                                 ),
                               ]),
                               fontSize: 16.sp,
                               fontWeight: FontWeight.w400,
                               letterSpacing: Utils.letterSpacing,
-                              style:
-                                  const TextStyle(fontStyle: FontStyle.italic),
+                              style: const TextStyle(fontStyle: FontStyle.italic),
                             ),
                           ],
                         ),
@@ -219,17 +194,12 @@ class VendorReviewsExpandable extends StatelessWidget {
                     //
                     const SizedBox(height: 14),
                     //
-                    Divider(
-                        thickness: 1.5,
-                        height: 0,
-                        indent: App.sidePadding * 0.5,
-                        endIndent: App.sidePadding * 0.5),
+                    Divider(thickness: 1.5, height: 0, indent: App.sidePadding * 0.5, endIndent: App.sidePadding * 0.5),
                     //
                     const SizedBox(height: 8),
                     //
                     Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: App.sidePadding),
+                      padding: EdgeInsets.symmetric(horizontal: App.sidePadding),
                       child: AppButton(
                         text: 'See All',
                         backgroundColor: Colors.transparent,
@@ -255,8 +225,7 @@ class GroupedRating extends StatelessWidget {
   final String title;
   final double rating;
 
-  const GroupedRating({Key? key, required this.title, required this.rating})
-      : super(key: key);
+  const GroupedRating({Key? key, required this.title, required this.rating}) : super(key: key);
 
   int get _rating => rating.round();
 
@@ -294,9 +263,7 @@ class GroupedRating extends StatelessWidget {
           space: 0.02.w,
           dashColor: (i) {
             final r = i + 1;
-            return r <= _rating
-                ? const Color(0xffFF7A0D)
-                : const Color(0xffC5C5C5);
+            return r <= _rating ? const Color(0xffFF7A0D) : const Color(0xffC5C5C5);
           },
         ),
       ],
@@ -335,9 +302,7 @@ class DotWidget extends StatelessWidget {
             child: DecoratedBox(
               decoration: BoxDecoration(color: dashColor?.call(i)),
               child: SizedBox(
-                width: i == length - 1
-                    ? max - (length - 1) * (dashWidth + space)
-                    : dashWidth,
+                width: i == length - 1 ? max - (length - 1) * (dashWidth + space) : dashWidth,
                 height: dashHeight,
               ),
             ),
