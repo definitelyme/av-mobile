@@ -68,7 +68,7 @@ class ProductState extends BaseBlocState with _$ProductState {
   }) = _ProductState;
 
   factory ProductState.initial([Product? cache, KtList<DealCategory>? categories]) => ProductState(
-        product: cache ?? Product.blank(),
+        product: cache ?? Product.sell(),
         selectedPlan: DealPlan.blank(),
         categories: categories ?? const KtList.empty(),
         controller: PageController(initialPage: ProductState.kInitialPage, keepPage: true),

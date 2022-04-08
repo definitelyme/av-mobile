@@ -3,10 +3,12 @@
 library sell_history_dto.dart;
 
 import 'package:auctionvillage/core/data/models/index.dart';
+import 'package:auctionvillage/core/domain/entities/entities.dart';
 import 'package:auctionvillage/features/dashboard/data/models/models.dart';
 import 'package:auctionvillage/features/dashboard/domain/index.dart';
 import 'package:auctionvillage/manager/serializer/serializers.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:kt_dart/collection.dart';
 
 part 'sell_history_dto.g.dart';
 part 'sell_history_dto.freezed.dart';
@@ -28,7 +30,7 @@ class SellHistoryDTO with _$SellHistoryDTO {
   factory SellHistoryDTO.fromJson(Map<String, dynamic> json) => _$SellHistoryDTOFromJson(json);
 
   /// Maps the Data Transfer Object to a SellHistory Object.
-  SellHistory get domain => data.domain;
+  SellHistory domain([KtList<Country>? countries]) => data.domain(countries);
 }
 
 @immutable
@@ -47,10 +49,10 @@ class _SellHistoryDTOData with _$_SellHistoryDTOData {
   factory _SellHistoryDTOData.fromJson(Map<String, dynamic> json) => _$_SellHistoryDTODataFromJson(json);
 
   /// Maps the Data Transfer Object to a SellHistory Object.
-  SellHistory get domain => SellHistory.blank(
+  SellHistory domain([KtList<Country>? countries]) => SellHistory.blank(
         revenue: revenue,
         totalSold: totalSold,
         totalProducts: totalProducts,
-        history: deals,
+        history: KtList.from(deals.map((e) => e.domain(countries))),
       );
 }

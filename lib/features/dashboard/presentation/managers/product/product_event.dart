@@ -8,6 +8,7 @@ class _ProductEmiiterEvent extends ProductEvent {
   final ProductState state;
   final AwaitCallback? callback;
 
+  // ignore: unused_element
   const _ProductEmiiterEvent(this.state, {this.callback});
 }
 

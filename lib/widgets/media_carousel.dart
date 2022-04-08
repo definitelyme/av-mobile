@@ -39,12 +39,12 @@ class MediaCarousel<U> extends StatefulWidget {
   /// The fraction of the viewport that each page should occupy.
   ///
   /// Defaults to 0.8, which means each page fills 80% of the carousel.
-  final double viewportFraction;
+  final double Function(U)? viewportFraction;
 
   /// Determines if carousel should loop infinitely or be limited to item length.
   ///
   /// Defaults to true, i.e. infinite loop.
-  final bool enableInfiniteScroll;
+  final bool Function(U)? enableInfiniteScroll;
 
   /// If true, the auto play function will be paused when user is interacting with the carousel,
   /// and will be resumed when user finish interacting. Default to true.
@@ -60,15 +60,14 @@ class MediaCarousel<U> extends StatefulWidget {
   /// Determines if current page should be larger then the side images, creating a feeling of depth in the carousel.
   ///
   /// Defaults to false.
-  final bool enlargeCenterPage;
+  final bool Function(U)? enlargeCenterPage;
 
   /// The widget item builder that will be used to build item on demand.
   ///
   /// The third argument is the PageView's real index, can be used to cooperate with Hero.
   ///
   /// The forth argument is the Media object at the current index.
-  final Widget Function(
-      BuildContext c, int itemIndex, int pageViewIndex, U media) builder;
+  final Widget Function(BuildContext c, int itemIndex, int pageViewIndex, U media) builder;
 
   final void Function(int, CarouselPageChangedReason)? onPageChanged;
 
@@ -112,9 +111,9 @@ class MediaCarousel<U> extends StatefulWidget {
     required this.height,
     this.aspectRatio = 16 / 9,
     this.autoPlayCurve = Curves.fastOutSlowIn,
-    this.viewportFraction = 0.6,
-    this.enlargeCenterPage = true,
-    this.enableInfiniteScroll = true,
+    this.viewportFraction,
+    this.enlargeCenterPage,
+    this.enableInfiniteScroll,
     this.pauseAutoPlayOnTouch = true,
     this.pauseAutoPlayOnManualNavigate = true,
     this.pauseAutoPlayInFiniteScroll = false,
@@ -137,6 +136,12 @@ class _MediaCarouselState<U> extends State<MediaCarousel<U>> {
 
   bool get hasItems => widget.items.isNotEmpty;
 
+  double get _viewportFraction => widget.viewportFraction?.call(widget.items[currentIndex]) ?? 0.6;
+
+  bool get _enableInfiniteScroll => widget.enableInfiniteScroll?.call(widget.items[currentIndex]) ?? true;
+
+  bool get _enlargeCenterPage => widget.enlargeCenterPage?.call(widget.items[currentIndex]) ?? true;
+
   @override
   void initState() {
     super.initState();
@@ -156,9 +161,9 @@ class _MediaCarouselState<U> extends State<MediaCarousel<U>> {
   CarouselOptions get _options => CarouselOptions(
         height: widget.height,
         aspectRatio: widget.aspectRatio,
-        viewportFraction: widget.viewportFraction,
+        viewportFraction: _viewportFraction,
         initialPage: widget.initialPage,
-        enableInfiniteScroll: widget.enableInfiniteScroll,
+        enableInfiniteScroll: _enableInfiniteScroll,
         reverse: widget.reverse,
         autoPlay: widget.autoPlay,
         disableCenter: widget.disableCenter,
@@ -168,7 +173,7 @@ class _MediaCarouselState<U> extends State<MediaCarousel<U>> {
         autoPlayInterval: widget.autoPlayInterval,
         autoPlayAnimationDuration: widget.autoPlayAnimationDuration,
         autoPlayCurve: widget.autoPlayCurve,
-        enlargeCenterPage: widget.enlargeCenterPage,
+        enlargeCenterPage: _enlargeCenterPage,
         scrollDirection: widget.scrollDirection,
         onPageChanged: onPageChanged,
       );
@@ -178,21 +183,18 @@ class _MediaCarouselState<U> extends State<MediaCarousel<U>> {
     return !hasItems
         ? Utils.nothing
         : SizedBox(
-            height: widget.position
-                .fold(bottom: widget.height, outside: widget.height + 0.09.h),
+            height: widget.position.fold(bottom: widget.height, outside: widget.height + 0.09.h),
             child: Stack(
               alignment: Alignment.topCenter,
               fit: StackFit.expand,
               children: [
                 Positioned.fill(
-                  bottom: widget.position
-                      .fold(bottom: 0, outside: widget.height * 0.3),
+                  bottom: widget.position.fold(bottom: 0, outside: widget.height * 0.3),
                   child: CarouselSlider.builder(
                     options: _options,
                     carouselController: _controller,
                     itemCount: widget.items.length,
-                    itemBuilder: (context, itemIndex, pageViewIndex) =>
-                        widget.builder(
+                    itemBuilder: (context, itemIndex, pageViewIndex) => widget.builder(
                       context,
                       itemIndex,
                       pageViewIndex,
@@ -211,8 +213,7 @@ class _MediaCarouselState<U> extends State<MediaCarousel<U>> {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 8.0, horizontal: 12.0),
+                          padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
                           child: AnimatedSmoothIndicator(
                             activeIndex: currentIndex,
                             count: widget.items.length,

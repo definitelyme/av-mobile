@@ -6,9 +6,11 @@ import 'package:auctionvillage/core/data/models/index.dart';
 import 'package:auctionvillage/core/data/response/index.dart';
 import 'package:auctionvillage/core/domain/entities/entities.dart';
 import 'package:auctionvillage/core/presentation/index.dart';
+import 'package:auctionvillage/features/auth/presentation/managers/watcher/auth_watcher_cubit.dart';
 import 'package:auctionvillage/features/dashboard/data/models/models.dart';
 import 'package:auctionvillage/features/dashboard/data/remote/search/search.remote.dart';
 import 'package:auctionvillage/features/dashboard/domain/index.dart';
+import 'package:auctionvillage/manager/locator/locator.dart';
 import 'package:auctionvillage/utils/utils.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
@@ -45,6 +47,8 @@ class SearchBloc extends Bloc<_SearchEvent, SearchState> with BaseSearchBloc {
 
   PaginationDTO? _usersMeta;
   PaginationDTO? _productsMeta;
+
+  KtList<Country> get _countries => getIt<AuthWatcherCubit>().state.countries;
 
   void _onRefreshEvent(_RefreshModelHistoryEvent evt, Emitter<SearchState> emit) async {
     emit(state.copyWith(model: evt.model));
@@ -165,7 +169,11 @@ class SearchBloc extends Bloc<_SearchEvent, SearchState> with BaseSearchBloc {
                     perPage: _perPage,
                   );
 
-                  emit(state.copyWith(products: state.products.plusIfAbsent(listDTO.domain), isSearching: false, searchQuery: query));
+                  emit(state.copyWith(
+                    products: state.products.plusIfAbsent(listDTO.domain(_countries)),
+                    isSearching: false,
+                    searchQuery: query,
+                  ));
                 } else
                   emit(state.copyWith(status: some(AppHttpResponse.endOfList)));
               } else {
@@ -174,7 +182,7 @@ class SearchBloc extends Bloc<_SearchEvent, SearchState> with BaseSearchBloc {
                 listDTO = await _remote.products(param: query, perPage: _perPageValue);
 
                 emit(state.copyWith(
-                  products: listDTO.data.isEmpty ? const KtList.empty() : listDTO.domain,
+                  products: listDTO.data.isEmpty ? const KtList.empty() : listDTO.domain(_countries),
                   isSearching: false,
                   searchQuery: query,
                 ));

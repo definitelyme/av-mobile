@@ -13,10 +13,18 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 /// A stateless widget to render TransactionPinSetupScreen.
-class TransactionPinSetupScreen extends StatelessWidget with AutoRouteWrapper {
-  final String? intendedRoute;
+class TransactionPinSetupScreen extends StatefulWidget with AutoRouteWrapper {
+  final Duration duration;
+  final bool requestedOTP;
 
-  const TransactionPinSetupScreen({Key? key, this.intendedRoute}) : super(key: key);
+  const TransactionPinSetupScreen({
+    Key? key,
+    this.requestedOTP = false,
+    this.duration = const Duration(minutes: 2),
+  }) : super(key: key);
+
+  @override
+  State<TransactionPinSetupScreen> createState() => _TransactionPinSetupScreenState();
 
   @override
   Widget wrappedRoute(BuildContext context) {
@@ -31,12 +39,30 @@ class TransactionPinSetupScreen extends StatelessWidget with AutoRouteWrapper {
           (it) => it?.response.map(
             info: (i) => PopupDialog.info(message: i.message, show: i.message.isNotEmpty).render(c),
             error: (f) => PopupDialog.error(message: f.message, show: f.show && f.message.isNotEmpty).render(c),
-            success: (s) => PopupDialog.success(message: s.message, show: s.message.isNotEmpty).render(c),
+            success: (s) => PopupDialog.success(
+              message: s.message,
+              show: s.message.isNotEmpty,
+              listener: (status) => status?.fold(
+                dismissed: () {
+                  navigator.pushAndPopUntil(const WithdrawalRoute(), predicate: (r) => r.isFirst);
+                },
+              ),
+            ).render(c),
           ),
         ),
         child: this,
       ),
     );
+  }
+}
+
+class _TransactionPinSetupScreenState extends State<TransactionPinSetupScreen> {
+  bool countDown = false;
+
+  @override
+  void initState() {
+    countDown = widget.duration.inSeconds > 0;
+    super.initState();
   }
 
   @override
@@ -49,7 +75,7 @@ class TransactionPinSetupScreen extends StatelessWidget with AutoRouteWrapper {
       keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.manual,
       subtitleWidget: AdaptiveText.rich(
         const TextSpan(children: [
-          TextSpan(text: 'Setup your transactino PIN below to withdraw'),
+          TextSpan(text: 'Setup your transaction PIN below to withdraw'),
         ]),
         maxLines: 1,
         maxFontSize: 18,
@@ -63,6 +89,82 @@ class TransactionPinSetupScreen extends StatelessWidget with AutoRouteWrapper {
           sliver: SliverList(
             delegate: SliverChildListDelegate.fixed([
               0.01.verticalh,
+              //
+              if (widget.requestedOTP) ...[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const TextFormInputLabel(text: 'OTP'),
+                    //
+                    CountdownWidget(
+                      autostart: countDown,
+                      duration: widget.duration,
+                      showHourRemainder: false,
+                      ticker: (tick) => AdaptiveText(
+                        '$tick',
+                        maxLines: 1,
+                        fontSize: 16.sp,
+                        maxFontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        textAlign: TextAlign.end,
+                      ),
+                      child: (startCountDown) => BlocSelector<WalletCubit, WalletState, bool>(
+                        selector: (s) => s.isLoading,
+                        builder: (c, isLoading) => Disabled(
+                          disabled: isLoading,
+                          child: GestureDetector(
+                            onTap: () async {
+                              await context.read<WalletCubit>().forgotSecurityAnswer(false);
+                              startCountDown();
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(8, 8, 0, 5),
+                              child: AdaptiveText.rich(
+                                TextSpan(children: [
+                                  TextSpan(
+                                    text: 'Resend',
+                                    style: TextStyle(
+                                      color: Utils.foldTheme(
+                                        context: context,
+                                        light: () => Palette.accentColor,
+                                        dark: () => Palette.accentColor.shade100,
+                                      ),
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ]),
+                                fontSize: 17.sp,
+                                fontWeight: FontWeight.w400,
+                                letterSpacing: Utils.labelLetterSpacing,
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                //
+                ReactiveTextFormField<WalletCubit, WalletState>(
+                  hintText: (s) => 'Your Reset Token',
+                  disabled: (s) => s.isLoading,
+                  validate: (s) => s.validate,
+                  field: (s) => s.otpCode,
+                  response: (s) => s.status,
+                  errorField: (f) => f.errors?.token,
+                  focus: WalletState.focusToken,
+                  next: WalletState.focusPin,
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly,
+                    FilteringTextInputFormatter.singleLineFormatter,
+                  ],
+                  onChanged: (cubit, it) => cubit.otpCodeChanged(it),
+                ),
+                //
+                0.01.verticalh,
+              ],
               //
               const TextFormInputLabel(text: 'Pin'),
               //
@@ -145,12 +247,10 @@ class TransactionPinSetupScreen extends StatelessWidget with AutoRouteWrapper {
                 right: false,
                 child: BlocBuilder<WalletCubit, WalletState>(
                   builder: (c, s) => AppButton(
-                    text: 'Finish',
+                    text: widget.requestedOTP ? 'Reset PIN' : 'Finish',
                     isLoading: s.isConfiguringPin,
-                    disabled: !c.read<WalletCubit>().canFinishPinSetup,
-                    onPressed: () => c.read<WalletCubit>().setupPin((successful) {
-                      if (successful) navigator.pushAndPopUntil(const WithdrawalRoute(), predicate: (r) => r.isFirst);
-                    }),
+                    disabled: !c.read<WalletCubit>().canFinishPinSetup(widget.requestedOTP),
+                    onPressed: () => c.read<WalletCubit>().setupPin(requiresOTP: widget.requestedOTP),
                   ),
                 ),
               ),

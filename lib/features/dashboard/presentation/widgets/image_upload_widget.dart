@@ -15,6 +15,7 @@ class ImageUploadWidget<Reactive extends BlocBase<ReactiveState>, ReactiveState>
   final double radius;
   final BoxFit networkFit;
   final bool Function(ReactiveState) isLoading;
+  final bool showLoading;
   final double Function(ReactiveState)? height;
   final double Function(ReactiveState)? width;
   final Widget? Function(ReactiveState)? onSelected;
@@ -29,6 +30,7 @@ class ImageUploadWidget<Reactive extends BlocBase<ReactiveState>, ReactiveState>
   const ImageUploadWidget({
     Key? key,
     required this.isLoading,
+    this.showLoading = true,
     this.radius = Utils.cardRadius,
     this.padding,
     this.height,
@@ -55,7 +57,7 @@ class ImageUploadWidget<Reactive extends BlocBase<ReactiveState>, ReactiveState>
           future: url?.call(s)?.let((it) => App.getImageDimensions(CachedNetworkImageProvider(it)).future) ??
               App.getImageDimensions(const AssetImage(AppAssets.unnamed)).future,
           builder: (_, snapshot) {
-            if (!snapshot.hasData && !isLoading.call(s)) return const Center(child: CircularProgressBar.adaptive());
+            if (showLoading) if (!snapshot.hasData && !isLoading.call(s)) return const Center(child: CircularProgressBar.adaptive());
 
             final _height = height?.call(s) ?? width?.call(s) ?? snapshot.data?.height.toDouble();
 
@@ -101,13 +103,10 @@ class ImageUploadWidget<Reactive extends BlocBase<ReactiveState>, ReactiveState>
                           child: Center(
                             child: Material(
                               elevation: 0,
-                              color: App.resolveColor(
-                                Palette.cardColorLight,
-                                dark: Palette.cardColorDark,
-                              )?.withOpacity(0.8),
+                              color: App.resolveColor(Palette.cardColorLight, dark: Palette.cardColorDark)?.withOpacity(0.8),
                               borderRadius: BorderRadius.circular(300),
                               child: Padding(
-                                padding: EdgeInsets.all((_height ?? 0) * 0.08),
+                                padding: EdgeInsets.all((_height ?? 0) * 0.06),
                                 child: Icon(
                                   centerIcon ??
                                       Utils.platform_(
@@ -115,6 +114,7 @@ class ImageUploadWidget<Reactive extends BlocBase<ReactiveState>, ReactiveState>
                                         cupertino: CupertinoIcons.plus_app,
                                       ),
                                   color: Palette.accentColor,
+                                  size: 20,
                                 ),
                               ),
                             ),
@@ -140,6 +140,7 @@ class ImageUploadWidget<Reactive extends BlocBase<ReactiveState>, ReactiveState>
                                         asset: Utils.foldTheme(
                                           light: () => AppAssets.cameraColored,
                                           dark: () => AppAssets.cameraOutlined,
+                                          context: c,
                                         ),
                                         onPressed: () => onCameraClicked?.call(c.read<Reactive>(), ImageSource.camera)),
                                     DocumentPicker(
@@ -147,6 +148,7 @@ class ImageUploadWidget<Reactive extends BlocBase<ReactiveState>, ReactiveState>
                                         asset: Utils.foldTheme(
                                           light: () => AppAssets.galleryColored,
                                           dark: () => AppAssets.galleryOutlined,
+                                          context: c,
                                         ),
                                         onPressed: () => onGalleryClicked?.call(c.read<Reactive>(), ImageSource.gallery)),
                                   ],

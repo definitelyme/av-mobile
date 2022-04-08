@@ -66,7 +66,7 @@ class _SellPageState extends State<SellPage> {
                     child: LimitedBox(
                       maxHeight: 0.05.sw,
                       child: AnimatedVisibility(
-                        visible: !s.product.isBlank,
+                        visible: !s.product.isSellBlank,
                         child: Material(
                           type: MaterialType.transparency,
                           borderRadius: BorderRadius.circular(Utils.buttonRadius),

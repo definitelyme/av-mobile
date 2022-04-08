@@ -26,7 +26,7 @@ class DealPlanType extends EnumClass {
     switch (value) {
       case 'BUSINESS':
         return DealPlanType.business;
-      case 'PRO':
+      case 'PROFESSIONAL':
         return DealPlanType.professional;
       case 'ENTERPRISE':
         return DealPlanType.enterprise;

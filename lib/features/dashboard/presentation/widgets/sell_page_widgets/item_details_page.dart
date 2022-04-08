@@ -7,6 +7,7 @@ import 'package:auctionvillage/utils/utils.dart';
 import 'package:auctionvillage/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
 /// A stateful widget to render ItemDetailsPage.
 class ItemDetailsPage extends StatefulWidget {
@@ -19,6 +20,35 @@ class ItemDetailsPage extends StatefulWidget {
 class _ItemDetailsPageState extends State<ItemDetailsPage> with AutomaticKeepAliveClientMixin<ItemDetailsPage> {
   @override
   bool get wantKeepAlive => true;
+
+  void showColorPicker() {
+    Utils.showAlertDialog(
+      context: context,
+      builder: (_) => ReactiveAdaptiveAlertdialog<ProductBloc, ProductState>.value(
+        bloc: context.read<ProductBloc>(),
+        dialog: (c, s) => AdaptiveAlertdialog(
+          title: 'Select color',
+          titleHeight: 0.035.h,
+          material: true,
+          titleAlignment: Alignment.centerLeft,
+          width: 0.8.w,
+          contentCrossAxisAlignment: CrossAxisAlignment.start,
+          body: [
+            ColorPicker(
+              pickerColor: s.product.brandInformation!.color!.getOrNull!,
+              onColorChanged: (value) => c.read<ProductBloc>().add(ProductSyncEvent.colorChanged(value)),
+            ),
+          ],
+          hideSecondButton: true,
+          firstButtonText: 'Done',
+          isSecondDestructive: false,
+          isFirstDestructive: false,
+          isSecondDefaultAction: false,
+          isFirstDefaultAction: false,
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -81,22 +111,26 @@ class _ItemDetailsPageState extends State<ItemDetailsPage> with AutomaticKeepAli
             ),
           ),
           //
-          // 0.008.verticalh,
-          // //
-          // const TextFormInputLabel(text: 'Color'),
-          // //
-          // BlocSelector<ProductBloc, ProductState, BasicTextField<String?>>(
-          //   selector: (s) => s.product.color,
-          //   builder: (c, color) => AdaptiveDropdown<String?>(
-          //     hint: '-- Select Color --',
-          //     items: ['First Color', 'Second Color', 'Third Color'],
-          //     text: (s) => '$s',
-          //     selected: null,
-          //     onChanged: (it) {},
-          //   ),
-          // ),
-          // //
-          // 0.008.verticalh,
+          0.008.verticalh,
+          //
+          const TextFormInputLabel(text: 'Select a Color'),
+          //
+          BlocSelector<ProductBloc, ProductState, Color?>(
+            selector: (s) => s.product.brandInformation?.color?.getOrNull,
+            builder: (c, color) => SizedBox(
+              height: 0.05.h,
+              width: 0.4.w,
+              child: Material(
+                color: color,
+                child: AdaptiveInkWell(
+                  onTap: showColorPicker,
+                  child: const SizedBox.expand(),
+                ),
+              ),
+            ),
+          ),
+          //
+          0.008.verticalh,
           //
           const TextFormInputLabel(text: 'Transmission'),
           //

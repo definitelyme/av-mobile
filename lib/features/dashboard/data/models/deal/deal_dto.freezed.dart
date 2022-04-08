@@ -223,6 +223,8 @@ class _$DealDTODataTearOff {
           String? basePrice,
       @StringSerializer()
           String? amount,
+      @StringSerializer()
+          String? country,
       @BooleanSerializer()
           bool? isPrivate,
       @JsonKey(name: 'isFavorite')
@@ -280,6 +282,7 @@ class _$DealDTODataTearOff {
       id: id,
       basePrice: basePrice,
       amount: amount,
+      country: country,
       isPrivate: isPrivate,
       isFavorite: isFavorite,
       dealStatus: dealStatus,
@@ -323,6 +326,8 @@ mixin _$DealDTOData {
   String? get basePrice => throw _privateConstructorUsedError;
   @StringSerializer()
   String? get amount => throw _privateConstructorUsedError;
+  @StringSerializer()
+  String? get country => throw _privateConstructorUsedError;
   @BooleanSerializer()
   bool? get isPrivate => throw _privateConstructorUsedError;
   @JsonKey(name: 'isFavorite')
@@ -397,6 +402,8 @@ abstract class $DealDTODataCopyWith<$Res> {
           String? basePrice,
       @StringSerializer()
           String? amount,
+      @StringSerializer()
+          String? country,
       @BooleanSerializer()
           bool? isPrivate,
       @JsonKey(name: 'isFavorite')
@@ -469,6 +476,7 @@ class _$DealDTODataCopyWithImpl<$Res> implements $DealDTODataCopyWith<$Res> {
     Object? id = freezed,
     Object? basePrice = freezed,
     Object? amount = freezed,
+    Object? country = freezed,
     Object? isPrivate = freezed,
     Object? isFavorite = freezed,
     Object? dealStatus = freezed,
@@ -506,6 +514,10 @@ class _$DealDTODataCopyWithImpl<$Res> implements $DealDTODataCopyWith<$Res> {
       amount: amount == freezed
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
+              as String?,
+      country: country == freezed
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
               as String?,
       isPrivate: isPrivate == freezed
           ? _value.isPrivate
@@ -654,6 +666,8 @@ abstract class _$DealDTODataCopyWith<$Res>
           String? basePrice,
       @StringSerializer()
           String? amount,
+      @StringSerializer()
+          String? country,
       @BooleanSerializer()
           bool? isPrivate,
       @JsonKey(name: 'isFavorite')
@@ -731,6 +745,7 @@ class __$DealDTODataCopyWithImpl<$Res> extends _$DealDTODataCopyWithImpl<$Res>
     Object? id = freezed,
     Object? basePrice = freezed,
     Object? amount = freezed,
+    Object? country = freezed,
     Object? isPrivate = freezed,
     Object? isFavorite = freezed,
     Object? dealStatus = freezed,
@@ -768,6 +783,10 @@ class __$DealDTODataCopyWithImpl<$Res> extends _$DealDTODataCopyWithImpl<$Res>
       amount: amount == freezed
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
+              as String?,
+      country: country == freezed
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
               as String?,
       isPrivate: isPrivate == freezed
           ? _value.isPrivate
@@ -879,6 +898,8 @@ class _$_DealDTOData extends _DealDTOData {
           this.basePrice,
       @StringSerializer()
           this.amount,
+      @StringSerializer()
+          this.country,
       @BooleanSerializer()
           this.isPrivate,
       @JsonKey(name: 'isFavorite')
@@ -946,6 +967,9 @@ class _$_DealDTOData extends _DealDTOData {
   @override
   @StringSerializer()
   final String? amount;
+  @override
+  @StringSerializer()
+  final String? country;
   @override
   @BooleanSerializer()
   final bool? isPrivate;
@@ -1026,7 +1050,7 @@ class _$_DealDTOData extends _DealDTOData {
 
   @override
   String toString() {
-    return 'DealDTOData(id: $id, basePrice: $basePrice, amount: $amount, isPrivate: $isPrivate, isFavorite: $isFavorite, dealStatus: $dealStatus, sponsored: $sponsored, dealPlan: $dealPlan, admittanceFee: $admittanceFee, address: $address, clicks: $clicks, dealPriority: $dealPriority, bidStatus: $bidStatus, isClosing: $isClosing, active: $active, lastPriceOffered: $lastPriceOffered, offerType: $offerType, startDate: $startDate, endDate: $endDate, type: $type, quantity: $quantity, biddingType: $biddingType, user: $user, vendor: $vendor, product: $product, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'DealDTOData(id: $id, basePrice: $basePrice, amount: $amount, country: $country, isPrivate: $isPrivate, isFavorite: $isFavorite, dealStatus: $dealStatus, sponsored: $sponsored, dealPlan: $dealPlan, admittanceFee: $admittanceFee, address: $address, clicks: $clicks, dealPriority: $dealPriority, bidStatus: $bidStatus, isClosing: $isClosing, active: $active, lastPriceOffered: $lastPriceOffered, offerType: $offerType, startDate: $startDate, endDate: $endDate, type: $type, quantity: $quantity, biddingType: $biddingType, user: $user, vendor: $vendor, product: $product, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -1037,6 +1061,7 @@ class _$_DealDTOData extends _DealDTOData {
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.basePrice, basePrice) &&
             const DeepCollectionEquality().equals(other.amount, amount) &&
+            const DeepCollectionEquality().equals(other.country, country) &&
             const DeepCollectionEquality().equals(other.isPrivate, isPrivate) &&
             const DeepCollectionEquality()
                 .equals(other.isFavorite, isFavorite) &&
@@ -1075,6 +1100,7 @@ class _$_DealDTOData extends _DealDTOData {
         const DeepCollectionEquality().hash(id),
         const DeepCollectionEquality().hash(basePrice),
         const DeepCollectionEquality().hash(amount),
+        const DeepCollectionEquality().hash(country),
         const DeepCollectionEquality().hash(isPrivate),
         const DeepCollectionEquality().hash(isFavorite),
         const DeepCollectionEquality().hash(dealStatus),
@@ -1120,6 +1146,8 @@ abstract class _DealDTOData extends DealDTOData {
           String? basePrice,
       @StringSerializer()
           String? amount,
+      @StringSerializer()
+          String? country,
       @BooleanSerializer()
           bool? isPrivate,
       @JsonKey(name: 'isFavorite')
@@ -1187,6 +1215,9 @@ abstract class _DealDTOData extends DealDTOData {
   @override
   @StringSerializer()
   String? get amount;
+  @override
+  @StringSerializer()
+  String? get country;
   @override
   @BooleanSerializer()
   bool? get isPrivate;

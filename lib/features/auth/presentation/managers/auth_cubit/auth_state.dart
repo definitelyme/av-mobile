@@ -21,6 +21,7 @@ class AuthState extends BaseState with _$AuthState {
 
   const factory AuthState({
     @Default(false) bool isLoading,
+    @Default(false) bool isUploadingImage,
     @Default(false) bool validate,
     @Default(true) bool isPasswordHidden,
     @Default(true) bool isOldPasswordHidden,
@@ -32,7 +33,6 @@ class AuthState extends BaseState with _$AuthState {
     required OTPCode code,
     required User user,
     required TextEditingController phoneTextController,
-    File? selectedPhoto,
     @Default(false) bool acceptedTerms,
     @Default(None()) Option<AppHttpResponse?> status,
   }) = _AuthState;

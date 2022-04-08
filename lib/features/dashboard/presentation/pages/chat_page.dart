@@ -29,7 +29,7 @@ class _ChatPageState extends State<ChatPage> {
         overlayStyle: App.customSystemOverlay(ctx: context, android: Brightness.light, ios: Brightness.light),
         actions: [
           ...Utils.platform_(
-            cupertino: [Center(child: AdaptiveText('Live Action', maxLines: 1, style: App.titleStyle))],
+            cupertino: [Center(child: AdaptiveText('Chats', maxLines: 1, style: App.titleStyle))],
             material: [Utils.nothing],
           )!,
         ],
@@ -58,7 +58,28 @@ class _ChatPageState extends State<ChatPage> {
                     primary: false,
                     physics: Utils.physics,
                     keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-                    slivers: [],
+                    slivers: [
+                      SliverList(
+                        delegate: SliverChildListDelegate.fixed([
+                          0.1.verticalh,
+                          //
+                          Center(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                AppAssets.comingSoon,
+                                //
+                                AdaptiveText(
+                                  'Coming soon!',
+                                  fontSize: 20.sp,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ]),
+                      ),
+                    ],
                   ),
                 ),
               ),

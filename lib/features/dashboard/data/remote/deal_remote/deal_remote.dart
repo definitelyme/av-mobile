@@ -43,7 +43,9 @@ abstract class DealRemote {
     @Query('bidStatus') String? bidStatus,
     @Query('status') String? dealStatus,
     @Query('type') String? bidType,
+    @Query('sort') String? sortBy,
     @Query('isPrivate') bool? isPrivate,
+    @Query('sponsored') bool? sponsored,
     @Query('page') int? page,
     @Query('per_page') int? perPage,
   });
@@ -59,6 +61,20 @@ abstract class DealRemote {
 
   @GET(EndPoints.GET_SINGLE_CATEGORY)
   Future<CategoryDTO> getCategory(@Path() String id);
+
+  @GET(EndPoints.FILTER_BY_CATEGORY)
+  Future<DealListDTO> filterDealsByCategory(
+    @Path() String id, {
+    @Query('population') String population = _defaultPopulation,
+    @Query('bidStatus') String? bidStatus,
+    @Query('status') String? dealStatus,
+    @Query('type') String? bidType,
+    @Query('sort') String? sortBy,
+    @Query('isPrivate') bool? isPrivate,
+    @Query('sponsored') bool? sponsored,
+    @Query('page') int? page,
+    @Query('per_page') int? perPage,
+  });
 
   @PUT(EndPoints.PLACE_A_BID)
   Future<DealDTO> bid(

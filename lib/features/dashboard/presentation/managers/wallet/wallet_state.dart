@@ -1,7 +1,5 @@
 part of 'wallet_cubit.dart';
 
-enum SecurityQuestion { favPlace, favAthlete, locality }
-
 @immutable
 @Freezed(maybeMap: false)
 class WalletState extends BaseState with _$WalletState {
@@ -14,6 +12,7 @@ class WalletState extends BaseState with _$WalletState {
   static final FocusNode focusPinConfirmation = FocusNode();
   static final FocusNode focusAccountNumber = FocusNode();
   static final FocusNode focusSecurityAnswer = FocusNode();
+  static final FocusNode focusToken = FocusNode();
 
   const factory WalletState({
     @Default(false) bool isLoading,
@@ -23,12 +22,14 @@ class WalletState extends BaseState with _$WalletState {
     @Default(false) bool isConfiguringPin,
     @Default(false) bool isWithdrawing,
     @Default(false) bool isResolvingAccount,
+    @Default(false) bool requestedPINReset,
     DebitCard? card,
     @Default(SecurityQuestion.locality) SecurityQuestion securityQuestion,
     @Default(KtList.empty()) KtList<DebitCard> debitCards,
     required MoneyMaskedTextController amountTextController,
     required AmountField<double> amount,
     required BasicTextField<String?> securityAnswer,
+    required BasicTextField<String?> otpCode,
     BankAccount? bankAccount,
     required TextEditingController accountNameController,
     required OTPCode cardPin,
@@ -44,6 +45,7 @@ class WalletState extends BaseState with _$WalletState {
         withdrawalPin: OTPCode(null),
         confirmWithdrawalPin: OTPCode(null),
         securityAnswer: BasicTextField(null),
+        otpCode: BasicTextField(null),
         accountNameController: TextEditingController(),
         amountTextController: MoneyMaskedTextController(
           initialValue: 0,
@@ -53,35 +55,4 @@ class WalletState extends BaseState with _$WalletState {
           // leftSymbol: '${Utils.currency} ',
         ),
       );
-}
-
-extension SecurityQuestionX on SecurityQuestion {
-  String get question {
-    switch (this) {
-      case SecurityQuestion.favPlace:
-        return 'What is your favorite place?';
-      case SecurityQuestion.favAthlete:
-        return 'Who is your favorite athlete?';
-      case SecurityQuestion.locality:
-        return 'What is your locality?';
-      default:
-        return 'What is your favorite place?';
-    }
-  }
-
-  T when<T>({
-    required T Function() favPlace,
-    required T Function() favAthlete,
-    required T Function() locality,
-  }) {
-    switch (this) {
-      case SecurityQuestion.favAthlete:
-        return favAthlete();
-      case SecurityQuestion.favPlace:
-        return favPlace();
-      case SecurityQuestion.locality:
-      default:
-        return locality();
-    }
-  }
 }

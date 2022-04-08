@@ -24,6 +24,11 @@ class UserDTO with _$UserDTO {
     @JsonKey(name: 'country') String? countryName,
     String? platform,
     String? avatar,
+    //
+    @ignore @BooleanSerializer() bool? favAthlete,
+    @ignore @BooleanSerializer() bool? favPlace,
+    @ignore @BooleanSerializer() bool? locality,
+    //
     @BooleanSerializer() bool? active,
     @BooleanSerializer() bool? accountVerified,
     @AuthProviderSerializer() AuthProvider? provider,
@@ -38,16 +43,29 @@ class UserDTO with _$UserDTO {
   const UserDTO._();
 
   factory UserDTO.fromDomain(User? instance) => UserDTO(
-        firstName: instance?.firstName.getOrNull,
-        lastName: instance?.lastName.getOrNull,
-        email: instance?.email.getOrNull,
-        password: instance?.password.getOrNull,
-        phone: instance?.phone.getOrNull?.trim().removeNewLines().trimWhiteSpaces(),
-        countryName: (instance?.country?.name.getOrNull ?? instance?.phone.country?.name.getOrNull)?.toUpperCase(),
+        firstName: instance?.firstName.valueOrNull,
+        lastName: instance?.lastName.valueOrNull,
+        email: instance?.email.valueOrNull,
+        password: instance?.password.valueOrNull,
+        phone: instance?.phone.valueOrNull?.trim().removeNewLines().trimWhiteSpaces(),
+        countryName: (instance?.country?.name.valueOrNull ?? instance?.phone.country?.name.valueOrNull)?.toUpperCase(),
         platform: 'MOBILE',
+        avatar: instance?.photo.image.valueOrNull,
       );
 
   factory UserDTO.fromJson(Map<String, dynamic> json) => _$UserDTOFromJson(json);
+
+  SecurityQuestion? get _question {
+    if (locality == true) {
+      return SecurityQuestion.locality;
+    } else if (favPlace == true) {
+      return SecurityQuestion.favPlace;
+    } else if (favAthlete == true) {
+      return SecurityQuestion.favAthlete;
+    }
+
+    return null;
+  }
 
   User get domain => User(
         id: UniqueId.fromExternal(id),
@@ -57,7 +75,8 @@ class UserDTO with _$UserDTO {
         email: EmailAddress(email),
         phone: Phone(phone),
         password: Password(password),
-        photo: MediaField(avatar),
+        photo: UploadableMedia(MediaField(avatar), id: id),
+        securityQuestion: _question,
         isPrivate: isPrivate ?? false,
         provider: provider ?? AuthProvider.regular,
         active: active ?? false,

@@ -10,8 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 /// A stateless widget to render Form Field for Passwords.
 // ignore: must_be_immutable
-class PasswordFormField<Reactive extends BlocBase<ReactiveState>, ReactiveState>
-    extends StatelessWidget {
+class PasswordFormField<Reactive extends BlocBase<ReactiveState>, ReactiveState> extends StatelessWidget {
   late ReactiveState _state;
 
   final bool Function(ReactiveState)? validate;
@@ -27,6 +26,7 @@ class PasswordFormField<Reactive extends BlocBase<ReactiveState>, ReactiveState>
   final List<String?>? Function(ErrorResponse)? errorField;
   final String? Function(ReactiveState)? hintText;
   final CupertinoFormType? cupertinoFormType;
+  final void Function(Reactive, ReactiveState)? onFieldSubmitted;
   final FocusNode? focus;
   final String? heroTag;
   final bool isNew;
@@ -59,9 +59,8 @@ class PasswordFormField<Reactive extends BlocBase<ReactiveState>, ReactiveState>
     this.cupertinoPadding,
     this.suffixMode,
     this.onEditingComplete,
-  })  : assert((useHero == false && heroTag != null) ||
-            (useHero == false && heroTag == null) ||
-            (useHero == true && heroTag != null)),
+    this.onFieldSubmitted,
+  })  : assert((useHero == false && heroTag != null) || (useHero == false && heroTag == null) || (useHero == true && heroTag != null)),
         super(key: key);
 
   ReactiveState get state => _state;
@@ -118,17 +117,14 @@ class PasswordFormField<Reactive extends BlocBase<ReactiveState>, ReactiveState>
                       ),
                     ),
               ),
-          decoration: suffixIcon?.call(s) == null
-              ? InputDecoration(suffixIcon: _passwordToggle(c, s))
-              : null,
+          decoration: suffixIcon?.call(s) == null ? InputDecoration(suffixIcon: _passwordToggle(c, s)) : null,
           suffix: suffixIcon?.call(s) ?? _passwordToggle(c, s),
           suffixMode: suffixMode?.call(s) ?? OverlayVisibilityMode.always,
           onEditingComplete: () => onEditingComplete?.call(s),
+          onFieldSubmitted: () => onFieldSubmitted?.call(c.read<Reactive>(), s),
         );
 
-        return useHero && !heroTag.isBlank
-            ? Hero(tag: heroTag!, child: _input)
-            : _input;
+        return useHero && !heroTag.isBlank ? Hero(tag: heroTag!, child: _input) : _input;
       },
     );
   }

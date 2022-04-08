@@ -41,6 +41,8 @@ class WalletCubit extends Cubit<WalletState> with BaseCubit {
 
   void cardCVVChanged(String value) => emit(state.copyWith(card: state.card?.copyWith(cardCVV: DebitCardCVV(value.trimWhiteSpaces()))));
 
+  void otpCodeChanged(String value) => emit(state.copyWith(otpCode: BasicTextField(value)));
+
   void amountChanged() {
     final value = state.amountTextController.numberValue;
     emit(state.copyWith(amount: AmountField((value ?? 0).toDouble())));
@@ -107,7 +109,11 @@ class WalletCubit extends Cubit<WalletState> with BaseCubit {
         state.withdrawalPin.isValid;
   }
 
-  bool get canFinishPinSetup => state.withdrawalPin.isValid && state.confirmWithdrawalPin.isValid && state.securityAnswer.isValid;
+  bool canFinishPinSetup([bool requestedOTP = false]) =>
+      state.withdrawalPin.isValid &&
+      state.confirmWithdrawalPin.isValid &&
+      state.securityAnswer.isValid &&
+      ((requestedOTP && state.otpCode.isValid) || !requestedOTP);
 
   Future<void> getCard({DebitCard? card, bool? local}) async {
     toggleLoading(true, none());
@@ -122,7 +128,7 @@ class WalletCubit extends Cubit<WalletState> with BaseCubit {
     toggleLoading(false);
   }
 
-  void validateAndSaveCard(void Function(bool) onDone) async {
+  void validateAndSaveCard() async {
     emit(state.copyWith(isAddingCard: true, validate: true, status: none()));
 
     // if (state.card != null && state.card!.failure.isNone()) {
@@ -130,10 +136,7 @@ class WalletCubit extends Cubit<WalletState> with BaseCubit {
 
     emit(state.copyWith(status: optionOf(response), isAddingCard: false));
 
-    response.response.maybeMap(orElse: () => onDone(true), error: (_) => onDone(false));
     // }
-
-    onDone(false);
 
     emit(state.copyWith(isAddingCard: false));
   }
@@ -183,28 +186,38 @@ class WalletCubit extends Cubit<WalletState> with BaseCubit {
     emit(state.copyWith(isFundingWallet: false));
   }
 
-  void setupPin(void Function(bool) onDone) async {
+  void setupPin({bool requiresOTP = false}) async {
     emit(state.copyWith(isConfiguringPin: true, validate: true, status: none()));
 
     if (!state.withdrawalPin.compare(state.confirmWithdrawalPin.getOrNull)) {
       emit(state.copyWith(isConfiguringPin: false, status: some(AppHttpResponse.failure('PINs do not match'))));
-      onDone(false);
       return;
     }
 
-    if (state.withdrawalPin.isValid && state.securityAnswer.isValid) {
-      final response = await _repository.setupPin(
-        '${state.withdrawalPin.getOrEmpty}',
-        state.securityQuestion,
-        answer: state.securityAnswer.getOrNull,
-      );
+    if (canFinishPinSetup(requiresOTP)) {
+      if (requiresOTP) {
+        AppHttpResponse? response;
 
-      emit(state.copyWith(status: optionOf(response), isConfiguringPin: false, validate: false));
+        response = await _repository.resetWithdrawalPin('${state.otpCode.getOrEmpty}');
 
-      response.response.maybeMap(orElse: () => onDone(true), error: (_) => onDone(false));
+        await response.response.mapOrNull(success: (_) async {
+          response = await _repository.setupPin(
+            '${state.withdrawalPin.getOrEmpty}',
+            state.securityQuestion,
+            answer: state.securityAnswer.getOrNull,
+          );
+        });
+
+        emit(state.copyWith(status: optionOf(response), isConfiguringPin: false, validate: false));
+      } else {
+        final response = await _repository.setupPin(
+          '${state.withdrawalPin.getOrEmpty}',
+          state.securityQuestion,
+          answer: state.securityAnswer.getOrNull,
+        );
+        emit(state.copyWith(status: optionOf(response), isConfiguringPin: false, validate: false));
+      }
     }
-
-    onDone(false);
 
     emit(state.copyWith(isConfiguringPin: false));
   }
@@ -277,5 +290,33 @@ class WalletCubit extends Cubit<WalletState> with BaseCubit {
     }
 
     emit(state.copyWith(isResolvingAccount: false));
+  }
+
+  Future<void> forgotSecurityAnswer([bool? pop]) async {
+    emit(state.copyWith(status: none(), isLoading: true));
+
+    final response = await _repository.forgotSecurityAnswer(pop);
+
+    emit(state.copyWith(
+      requestedPINReset: response.response.maybeMap(orElse: () => false, info: (_) => true),
+      status: optionOf(response),
+      isLoading: false,
+    ));
+  }
+
+  void confirmSecurityAnswer() async {
+    emit(state.copyWith(status: none(), validate: true, isConfiguringPin: true));
+
+    if (state.securityAnswer.isValid) {
+      final response = await _repository.confirmSecurityAnswer(
+        // state.securityQuestion,
+        SecurityQuestion.favAthlete,
+        answer: state.securityAnswer.getOrNull,
+      );
+
+      emit(state.copyWith(status: optionOf(response), isConfiguringPin: false, validate: false));
+    }
+
+    emit(state.copyWith(isConfiguringPin: false));
   }
 }

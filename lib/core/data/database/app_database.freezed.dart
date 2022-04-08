@@ -37,6 +37,9 @@ class _$UserDTOTearOff {
       @JsonKey(name: 'country') String? countryName,
       String? platform,
       String? avatar,
+      @ignore @BooleanSerializer() bool? favAthlete,
+      @ignore @BooleanSerializer() bool? favPlace,
+      @ignore @BooleanSerializer() bool? locality,
       @BooleanSerializer() bool? active,
       @BooleanSerializer() bool? accountVerified,
       @AuthProviderSerializer() AuthProvider? provider,
@@ -61,6 +64,9 @@ class _$UserDTOTearOff {
       countryName: countryName,
       platform: platform,
       avatar: avatar,
+      favAthlete: favAthlete,
+      favPlace: favPlace,
+      locality: locality,
       active: active,
       accountVerified: accountVerified,
       provider: provider,
@@ -103,7 +109,16 @@ mixin _$UserDTO {
   @JsonKey(name: 'country')
   String? get countryName => throw _privateConstructorUsedError;
   String? get platform => throw _privateConstructorUsedError;
-  String? get avatar => throw _privateConstructorUsedError;
+  String? get avatar => throw _privateConstructorUsedError; //
+  @ignore
+  @BooleanSerializer()
+  bool? get favAthlete => throw _privateConstructorUsedError;
+  @ignore
+  @BooleanSerializer()
+  bool? get favPlace => throw _privateConstructorUsedError;
+  @ignore
+  @BooleanSerializer()
+  bool? get locality => throw _privateConstructorUsedError; //
   @BooleanSerializer()
   bool? get active => throw _privateConstructorUsedError;
   @BooleanSerializer()
@@ -147,6 +162,9 @@ abstract class $UserDTOCopyWith<$Res> {
       @JsonKey(name: 'country') String? countryName,
       String? platform,
       String? avatar,
+      @ignore @BooleanSerializer() bool? favAthlete,
+      @ignore @BooleanSerializer() bool? favPlace,
+      @ignore @BooleanSerializer() bool? locality,
       @BooleanSerializer() bool? active,
       @BooleanSerializer() bool? accountVerified,
       @AuthProviderSerializer() AuthProvider? provider,
@@ -182,6 +200,9 @@ class _$UserDTOCopyWithImpl<$Res> implements $UserDTOCopyWith<$Res> {
     Object? countryName = freezed,
     Object? platform = freezed,
     Object? avatar = freezed,
+    Object? favAthlete = freezed,
+    Object? favPlace = freezed,
+    Object? locality = freezed,
     Object? active = freezed,
     Object? accountVerified = freezed,
     Object? provider = freezed,
@@ -249,6 +270,18 @@ class _$UserDTOCopyWithImpl<$Res> implements $UserDTOCopyWith<$Res> {
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
               as String?,
+      favAthlete: favAthlete == freezed
+          ? _value.favAthlete
+          : favAthlete // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      favPlace: favPlace == freezed
+          ? _value.favPlace
+          : favPlace // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      locality: locality == freezed
+          ? _value.locality
+          : locality // ignore: cast_nullable_to_non_nullable
+              as bool?,
       active: active == freezed
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
@@ -309,6 +342,9 @@ abstract class _$UserDTOCopyWith<$Res> implements $UserDTOCopyWith<$Res> {
       @JsonKey(name: 'country') String? countryName,
       String? platform,
       String? avatar,
+      @ignore @BooleanSerializer() bool? favAthlete,
+      @ignore @BooleanSerializer() bool? favPlace,
+      @ignore @BooleanSerializer() bool? locality,
       @BooleanSerializer() bool? active,
       @BooleanSerializer() bool? accountVerified,
       @AuthProviderSerializer() AuthProvider? provider,
@@ -345,6 +381,9 @@ class __$UserDTOCopyWithImpl<$Res> extends _$UserDTOCopyWithImpl<$Res>
     Object? countryName = freezed,
     Object? platform = freezed,
     Object? avatar = freezed,
+    Object? favAthlete = freezed,
+    Object? favPlace = freezed,
+    Object? locality = freezed,
     Object? active = freezed,
     Object? accountVerified = freezed,
     Object? provider = freezed,
@@ -412,6 +451,18 @@ class __$UserDTOCopyWithImpl<$Res> extends _$UserDTOCopyWithImpl<$Res>
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
               as String?,
+      favAthlete: favAthlete == freezed
+          ? _value.favAthlete
+          : favAthlete // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      favPlace: favPlace == freezed
+          ? _value.favPlace
+          : favPlace // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      locality: locality == freezed
+          ? _value.locality
+          : locality // ignore: cast_nullable_to_non_nullable
+              as bool?,
       active: active == freezed
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
@@ -471,6 +522,9 @@ class _$_UserDTO extends _UserDTO {
       @JsonKey(name: 'country') this.countryName,
       this.platform,
       this.avatar,
+      @ignore @BooleanSerializer() this.favAthlete,
+      @ignore @BooleanSerializer() this.favPlace,
+      @ignore @BooleanSerializer() this.locality,
       @BooleanSerializer() this.active,
       @BooleanSerializer() this.accountVerified,
       @AuthProviderSerializer() this.provider,
@@ -520,7 +574,19 @@ class _$_UserDTO extends _UserDTO {
   final String? platform;
   @override
   final String? avatar;
+  @override //
+  @ignore
+  @BooleanSerializer()
+  final bool? favAthlete;
   @override
+  @ignore
+  @BooleanSerializer()
+  final bool? favPlace;
+  @override
+  @ignore
+  @BooleanSerializer()
+  final bool? locality;
+  @override //
   @BooleanSerializer()
   final bool? active;
   @override
@@ -550,7 +616,7 @@ class _$_UserDTO extends _UserDTO {
 
   @override
   String toString() {
-    return 'UserDTO(id: $id, token: $token, firstName: $firstName, lastName: $lastName, fullName: $fullName, isPrivate: $isPrivate, email: $email, phone: $phone, password: $password, oldPassword: $oldPassword, confirmation: $confirmation, countryName: $countryName, platform: $platform, avatar: $avatar, active: $active, accountVerified: $accountVerified, provider: $provider, createdBy: $createdBy, updatedBy: $updatedBy, deletedBy: $deletedBy, createdAt: $createdAt, updatedAt: $updatedAt, deletedAt: $deletedAt)';
+    return 'UserDTO(id: $id, token: $token, firstName: $firstName, lastName: $lastName, fullName: $fullName, isPrivate: $isPrivate, email: $email, phone: $phone, password: $password, oldPassword: $oldPassword, confirmation: $confirmation, countryName: $countryName, platform: $platform, avatar: $avatar, favAthlete: $favAthlete, favPlace: $favPlace, locality: $locality, active: $active, accountVerified: $accountVerified, provider: $provider, createdBy: $createdBy, updatedBy: $updatedBy, deletedBy: $deletedBy, createdAt: $createdAt, updatedAt: $updatedAt, deletedAt: $deletedAt)';
   }
 
   @override
@@ -575,6 +641,10 @@ class _$_UserDTO extends _UserDTO {
                 .equals(other.countryName, countryName) &&
             const DeepCollectionEquality().equals(other.platform, platform) &&
             const DeepCollectionEquality().equals(other.avatar, avatar) &&
+            const DeepCollectionEquality()
+                .equals(other.favAthlete, favAthlete) &&
+            const DeepCollectionEquality().equals(other.favPlace, favPlace) &&
+            const DeepCollectionEquality().equals(other.locality, locality) &&
             const DeepCollectionEquality().equals(other.active, active) &&
             const DeepCollectionEquality()
                 .equals(other.accountVerified, accountVerified) &&
@@ -604,6 +674,9 @@ class _$_UserDTO extends _UserDTO {
         const DeepCollectionEquality().hash(countryName),
         const DeepCollectionEquality().hash(platform),
         const DeepCollectionEquality().hash(avatar),
+        const DeepCollectionEquality().hash(favAthlete),
+        const DeepCollectionEquality().hash(favPlace),
+        const DeepCollectionEquality().hash(locality),
         const DeepCollectionEquality().hash(active),
         const DeepCollectionEquality().hash(accountVerified),
         const DeepCollectionEquality().hash(provider),
@@ -642,6 +715,9 @@ abstract class _UserDTO extends UserDTO {
       @JsonKey(name: 'country') String? countryName,
       String? platform,
       String? avatar,
+      @ignore @BooleanSerializer() bool? favAthlete,
+      @ignore @BooleanSerializer() bool? favPlace,
+      @ignore @BooleanSerializer() bool? locality,
       @BooleanSerializer() bool? active,
       @BooleanSerializer() bool? accountVerified,
       @AuthProviderSerializer() AuthProvider? provider,
@@ -690,7 +766,19 @@ abstract class _UserDTO extends UserDTO {
   String? get platform;
   @override
   String? get avatar;
+  @override //
+  @ignore
+  @BooleanSerializer()
+  bool? get favAthlete;
   @override
+  @ignore
+  @BooleanSerializer()
+  bool? get favPlace;
+  @override
+  @ignore
+  @BooleanSerializer()
+  bool? get locality;
+  @override //
   @BooleanSerializer()
   bool? get active;
   @override

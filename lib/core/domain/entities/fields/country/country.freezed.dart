@@ -25,7 +25,7 @@ class _$CountryTearOff {
       required BasicTextField<String?> dialCode,
       required BasicTextField<String?> flag,
       required BasicTextField<String?> currencyIcon,
-      String locale = 'en',
+      String? locale = 'en',
       CurrencyType? type}) {
     return _Country(
       id: id,
@@ -52,7 +52,7 @@ mixin _$Country {
   BasicTextField<String?> get flag => throw _privateConstructorUsedError;
   BasicTextField<String?> get currencyIcon =>
       throw _privateConstructorUsedError;
-  String get locale => throw _privateConstructorUsedError;
+  String? get locale => throw _privateConstructorUsedError;
   CurrencyType? get type => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -70,7 +70,7 @@ abstract class $CountryCopyWith<$Res> {
       BasicTextField<String?> dialCode,
       BasicTextField<String?> flag,
       BasicTextField<String?> currencyIcon,
-      String locale,
+      String? locale,
       CurrencyType? type});
 }
 
@@ -121,7 +121,7 @@ class _$CountryCopyWithImpl<$Res> implements $CountryCopyWith<$Res> {
       locale: locale == freezed
           ? _value.locale
           : locale // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -142,7 +142,7 @@ abstract class _$CountryCopyWith<$Res> implements $CountryCopyWith<$Res> {
       BasicTextField<String?> dialCode,
       BasicTextField<String?> flag,
       BasicTextField<String?> currencyIcon,
-      String locale,
+      String? locale,
       CurrencyType? type});
 }
 
@@ -194,7 +194,7 @@ class __$CountryCopyWithImpl<$Res> extends _$CountryCopyWithImpl<$Res>
       locale: locale == freezed
           ? _value.locale
           : locale // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -231,7 +231,7 @@ class _$_Country extends _Country {
   final BasicTextField<String?> currencyIcon;
   @JsonKey()
   @override
-  final String locale;
+  final String? locale;
   @override
   final CurrencyType? type;
 
@@ -282,7 +282,7 @@ abstract class _Country extends Country {
       required BasicTextField<String?> dialCode,
       required BasicTextField<String?> flag,
       required BasicTextField<String?> currencyIcon,
-      String locale,
+      String? locale,
       CurrencyType? type}) = _$_Country;
   const _Country._() : super._();
 
@@ -299,7 +299,7 @@ abstract class _Country extends Country {
   @override
   BasicTextField<String?> get currencyIcon;
   @override
-  String get locale;
+  String? get locale;
   @override
   CurrencyType? get type;
   @override

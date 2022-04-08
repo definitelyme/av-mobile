@@ -32,6 +32,7 @@ _$_DealDTOData _$$_DealDTODataFromJson(Map<String, dynamic> json) =>
       id: json['_id'] as String?,
       basePrice: const StringSerializer().fromJson(json['basePrice']),
       amount: const StringSerializer().fromJson(json['amount']),
+      country: const StringSerializer().fromJson(json['country']),
       isPrivate: const BooleanSerializer().fromJson(json['isPrivate']),
       isFavorite: const BooleanSerializer().fromJson(json['isFavorite']),
       dealStatus:
@@ -87,6 +88,7 @@ Map<String, dynamic> _$$_DealDTODataToJson(_$_DealDTOData instance) {
   writeNotNull(
       'basePrice', const StringSerializer().toJson(instance.basePrice));
   writeNotNull('amount', const StringSerializer().toJson(instance.amount));
+  writeNotNull('country', const StringSerializer().toJson(instance.country));
   writeNotNull(
       'isPrivate', const BooleanSerializer().toJson(instance.isPrivate));
   writeNotNull(

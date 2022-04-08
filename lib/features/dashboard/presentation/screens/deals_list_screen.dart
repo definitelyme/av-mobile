@@ -13,10 +13,20 @@ import 'package:kt_dart/collection.dart';
 
 /// A stateless widget to render DealsListScreen.
 class DealsListScreen extends StatelessWidget with AutoRouteWrapper {
+  final String title;
   final bool? isPrivate;
   final DealType? type;
+  final BidStatus? bidStatus;
+  final DealCategory? category;
 
-  const DealsListScreen({Key? key, this.isPrivate, this.type}) : super(key: key);
+  const DealsListScreen(
+    this.title, {
+    Key? key,
+    this.isPrivate,
+    this.type,
+    this.bidStatus,
+    this.category,
+  }) : super(key: key);
 
   @override
   Widget wrappedRoute(BuildContext context) {
@@ -40,12 +50,18 @@ class DealsListScreen extends StatelessWidget with AutoRouteWrapper {
   }
 
   void onLoadMore(BuildContext c, DragToRefreshState refresh) async {
-    await c.read<DealCubit>().filterDeals(isPrivate: isPrivate, dealType: type, nextPage: true);
+    await c.read<DealCubit>().filterDeals(
+          isPrivate: isPrivate,
+          dealType: type,
+          bidStatus: bidStatus,
+          category: category,
+          nextPage: true,
+        );
     refresh.loadComplete();
   }
 
   void onRefresh(BuildContext c, DragToRefreshState refresh) async {
-    await c.read<DealCubit>().filterDeals(isPrivate: isPrivate, dealType: type);
+    await c.read<DealCubit>().filterDeals(isPrivate: isPrivate, bidStatus: bidStatus, dealType: type, category: category);
     refresh.refreshCompleted(resetFooterState: true);
   }
 
@@ -55,7 +71,7 @@ class DealsListScreen extends StatelessWidget with AutoRouteWrapper {
       backgroundColor: Palette.accentColor,
       adaptiveToolbar: AdaptiveToolbar(
         implyMiddle: false,
-        title: isPrivate != null ? 'Private Deals' : '$type',
+        title: title,
         leadingIcon: const Icon(Icons.keyboard_backspace_rounded, color: Colors.white),
         overlayStyle: App.customSystemOverlay(ctx: context, android: Brightness.light, ios: Brightness.dark),
         titleStyle: TextStyle(

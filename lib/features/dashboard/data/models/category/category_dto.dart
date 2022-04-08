@@ -54,14 +54,14 @@ class CategoryDTOData with _$CategoryDTOData {
   /// Maps DealCategory to a Data Transfer Object.
   factory CategoryDTOData.fromDomain(DealCategory? instance) => CategoryDTOData(
         id: instance?.id.value,
-        name: instance?.name.getOrNull,
+        name: instance?.name.valueOrNull,
         active: instance?.isActive,
-        charge: instance?.charge.getOrNull,
-        slug: instance?.slug.getOrNull,
-        description: instance?.description.getOrNull,
-        image: instance?.asset.getOrNull,
-        percentageIncrease: instance?.percentageIncrease.getOrNull,
-        productsAssigned: instance?.productsAssigned.getOrNull,
+        charge: instance?.charge.valueOrNull,
+        slug: instance?.slug.valueOrNull,
+        description: instance?.description.valueOrNull,
+        image: instance?.asset.valueOrNull,
+        percentageIncrease: instance?.percentageIncrease.valueOrNull,
+        productsAssigned: instance?.productsAssigned.valueOrNull,
         createdAt: instance?.createdAt,
         updatedAt: instance?.updatedAt,
       );

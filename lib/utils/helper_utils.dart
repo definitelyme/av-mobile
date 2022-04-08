@@ -116,17 +116,28 @@ class Utils {
         duration: const Duration(milliseconds: 1400),
       );
 
-  Widget get circularLoadingOverlay => Container(
-        color: App.theme.primaryColor.withOpacity(0.65),
-        child: Center(
+  Widget circularLoadingOverlay([Color? background, Color? progressColor]) => background != null
+      ? DecoratedBox(
+          decoration: BoxDecoration(color: background.withOpacity(0.65)),
+          child: Center(
+            child: CircularProgressBar.adaptive(
+              width: width * 0.08,
+              height: width * 0.08,
+              strokeWidth: 3.5,
+              radius: 14,
+              color: progressColor,
+            ),
+          ),
+        )
+      : Center(
           child: CircularProgressBar.adaptive(
             width: width * 0.08,
             height: width * 0.08,
             strokeWidth: 3.5,
             radius: 14,
+            color: progressColor,
           ),
-        ),
-      );
+        );
 
   /// Returns the current route path
   // String? get currentRoute => navObserver.top?.settings.name;

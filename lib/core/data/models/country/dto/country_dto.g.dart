@@ -16,6 +16,7 @@ _$_CountryDTO _$$_CountryDTOFromJson(Map<String, dynamic> json) =>
       currency:
           const CurrencyTypeSerializer().fromJson(json['currency'] as String?),
       currencyIcon: json['currency_icon'] as String?,
+      locale: json['locale'] as String?,
     );
 
 Map<String, dynamic> _$$_CountryDTOToJson(_$_CountryDTO instance) {
@@ -35,5 +36,6 @@ Map<String, dynamic> _$$_CountryDTOToJson(_$_CountryDTO instance) {
   writeNotNull(
       'currency', const CurrencyTypeSerializer().toJson(instance.currency));
   writeNotNull('currency_icon', instance.currencyIcon);
+  writeNotNull('locale', instance.locale);
   return val;
 }

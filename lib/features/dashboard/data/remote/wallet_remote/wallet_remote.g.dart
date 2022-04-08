@@ -34,7 +34,8 @@ class _WalletRemote implements WalletRemote {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = card;
+    final _data = <String, dynamic>{};
+    _data.addAll(await compute(serializeDebitCardDTOData, card));
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<AppHttpResponse>(
             Options(method: 'PUT', headers: _headers, extra: _extra)
@@ -103,6 +104,61 @@ class _WalletRemote implements WalletRemote {
         _setStreamType<AppHttpResponse>(
             Options(method: 'PUT', headers: _headers, extra: _extra)
                 .compose(_dio.options, '/user/add-pin',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = await compute(deserializeAppHttpResponse, _result.data!);
+    return value;
+  }
+
+  @override
+  Future<AppHttpResponse> forgotSecurityAnswer() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<AppHttpResponse>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/user/sessions/get-otp',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = await compute(deserializeAppHttpResponse, _result.data!);
+    return value;
+  }
+
+  @override
+  Future<AppHttpResponse> confirmSecurityAnswer(
+      {favAthlete, favPlace, locality}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = {
+      'favAthlete': favAthlete,
+      'favPlace': favPlace,
+      'locality': locality
+    };
+    _data.removeWhere((k, v) => v == null);
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<AppHttpResponse>(
+            Options(method: 'POST', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/check-user-answers',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = await compute(deserializeAppHttpResponse, _result.data!);
+    return value;
+  }
+
+  @override
+  Future<AppHttpResponse> resetWithdrawalPin(pin) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = {'otp': pin};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<AppHttpResponse>(
+            Options(method: 'POST', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/user/sessions/verify-otp',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = await compute(deserializeAppHttpResponse, _result.data!);

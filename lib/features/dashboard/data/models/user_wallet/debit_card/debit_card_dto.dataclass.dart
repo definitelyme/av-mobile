@@ -32,6 +32,9 @@ class DebitCardDTO with _$DebitCardDTO {
   DebitCard get domain => data.domain;
 }
 
+DebitCardDTOData deserializeDebitCardDTOData(Map<String, dynamic> json) => DebitCardDTOData.fromJson(json);
+Map<String, dynamic> serializeDebitCardDTOData(DebitCardDTOData object) => object.toJson();
+
 @immutable
 @Freezed(maybeMap: false, maybeWhen: false)
 class DebitCardDTOData with _$DebitCardDTOData {

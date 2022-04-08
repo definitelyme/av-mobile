@@ -1,7 +1,5 @@
 library auth_remote_source.dart;
 
-import 'dart:io';
-
 import 'package:auctionvillage/core/data/index.dart';
 import 'package:auctionvillage/features/auth/data/models/index.dart';
 import 'package:auctionvillage/manager/locator/locator.dart';
@@ -75,25 +73,10 @@ class AuthRemoteDatasource {
     return _dio.post(EndPoints.CONFIRM_PASSWORD_RESET, data: data);
   }
 
-  Future<Response<dynamic>> updateProfile({
-    UserDTO? dto,
-    File? image,
-  }) async {
-    final part = image?.let(
-      (it) => MultipartFile.fromFileSync(
-        '${it.path}',
-        filename: it.path.split(Platform.pathSeparator).last,
-      ),
-    );
-
-    // Generate Form Data for request
-    final _data = dto?.let((it) => FormData.fromMap(it.toJson())) ?? FormData();
-
-    part?.let((it) => _data.files.add(MapEntry('$profileImgKey', it)));
-
+  Future<Response<dynamic>> updateProfile(UserDTO? dto) async {
+    final _dto = dto?.copyWith(countryName: null, id: null);
     // Perform PUT request to update user's profile
-    return _dio.post('${EndPoints.UPDATE_USER_PROFILE}/${dto?.id}', data: _data);
-    // return _dio.get(EndPoints.SLEEP);
+    return _dio.put('${EndPoints.UPDATE_USER_PROFILE}/${dto?.id}', data: _dto?.toJson());
   }
 
   Future<Response<dynamic>> updatePhoneNumber(String? phone) {

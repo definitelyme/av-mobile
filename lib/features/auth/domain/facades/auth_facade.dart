@@ -1,7 +1,5 @@
 library auth_facade.dart;
 
-import 'dart:io';
-
 import 'package:auctionvillage/core/data/index.dart';
 import 'package:auctionvillage/core/domain/entities/entities.dart';
 import 'package:auctionvillage/core/domain/response/index.dart';
@@ -36,12 +34,13 @@ abstract class AuthFacade {
     required Phone phone,
   });
 
-  Future<AppHttpResponse> updateProfile(
+  Future<AppHttpResponse?> updateProfile(
     User user, {
-    DisplayName firstName,
-    DisplayName lastName,
-    EmailAddress email,
-    File? image,
+    DisplayName? firstName,
+    DisplayName? lastName,
+    EmailAddress? email,
+    Phone? phone,
+    UploadableMedia? photo,
   });
 
   Future<AppHttpResponse> updatePassword({

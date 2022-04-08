@@ -24,6 +24,8 @@ class DealCategory extends BaseEntity with _$DealCategory {
     DateTime? updatedAt,
   }) = _DealCategory;
 
+  bool get isValid => name.valueOrNull != null && name.getOrNull != '' && id.isValid;
+
   factory DealCategory.blank({
     String? id,
     String? photo,

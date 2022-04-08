@@ -60,6 +60,10 @@ class BuildEnvironment implements Secrets {
         // prod: () => '${EndPoints.APP_PROD_DOMAIN}',
       );
 
+  int get connectTimeout => 16000;
+
+  int get receiveTimeout => 16000;
+
   String get packageName => env.flavor.fold(dev: () => '${Const.packageNameDev}', prod: () => '${Const.packageName}');
 
   Duration get greetingDuration => const Duration(milliseconds: 1200);

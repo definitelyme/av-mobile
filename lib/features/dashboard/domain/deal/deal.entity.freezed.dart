@@ -42,6 +42,7 @@ class _$DealTearOff {
       User? vendor,
       User? lastBidder,
       Product? product,
+      Country? country,
       required DateTimeField startDate,
       required DateTimeField endDate,
       DateTime? createdAt,
@@ -70,6 +71,7 @@ class _$DealTearOff {
       vendor: vendor,
       lastBidder: lastBidder,
       product: product,
+      country: country,
       startDate: startDate,
       endDate: endDate,
       createdAt: createdAt,
@@ -106,7 +108,8 @@ mixin _$Deal {
   User? get user => throw _privateConstructorUsedError;
   User? get vendor => throw _privateConstructorUsedError;
   User? get lastBidder => throw _privateConstructorUsedError;
-  Product? get product =>
+  Product? get product => throw _privateConstructorUsedError;
+  Country? get country =>
       throw _privateConstructorUsedError; // DealCategory? category,
   DateTimeField get startDate => throw _privateConstructorUsedError;
   DateTimeField get endDate => throw _privateConstructorUsedError;
@@ -145,6 +148,7 @@ abstract class $DealCopyWith<$Res> {
       User? vendor,
       User? lastBidder,
       Product? product,
+      Country? country,
       DateTimeField startDate,
       DateTimeField endDate,
       DateTime? createdAt,
@@ -154,6 +158,7 @@ abstract class $DealCopyWith<$Res> {
   $UserCopyWith<$Res>? get vendor;
   $UserCopyWith<$Res>? get lastBidder;
   $ProductCopyWith<$Res>? get product;
+  $CountryCopyWith<$Res>? get country;
 }
 
 /// @nodoc
@@ -189,6 +194,7 @@ class _$DealCopyWithImpl<$Res> implements $DealCopyWith<$Res> {
     Object? vendor = freezed,
     Object? lastBidder = freezed,
     Object? product = freezed,
+    Object? country = freezed,
     Object? startDate = freezed,
     Object? endDate = freezed,
     Object? createdAt = freezed,
@@ -287,6 +293,10 @@ class _$DealCopyWithImpl<$Res> implements $DealCopyWith<$Res> {
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
               as Product?,
+      country: country == freezed
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
+              as Country?,
       startDate: startDate == freezed
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
@@ -349,6 +359,17 @@ class _$DealCopyWithImpl<$Res> implements $DealCopyWith<$Res> {
       return _then(_value.copyWith(product: value));
     });
   }
+
+  @override
+  $CountryCopyWith<$Res>? get country {
+    if (_value.country == null) {
+      return null;
+    }
+
+    return $CountryCopyWith<$Res>(_value.country!, (value) {
+      return _then(_value.copyWith(country: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -380,6 +401,7 @@ abstract class _$DealCopyWith<$Res> implements $DealCopyWith<$Res> {
       User? vendor,
       User? lastBidder,
       Product? product,
+      Country? country,
       DateTimeField startDate,
       DateTimeField endDate,
       DateTime? createdAt,
@@ -393,6 +415,8 @@ abstract class _$DealCopyWith<$Res> implements $DealCopyWith<$Res> {
   $UserCopyWith<$Res>? get lastBidder;
   @override
   $ProductCopyWith<$Res>? get product;
+  @override
+  $CountryCopyWith<$Res>? get country;
 }
 
 /// @nodoc
@@ -429,6 +453,7 @@ class __$DealCopyWithImpl<$Res> extends _$DealCopyWithImpl<$Res>
     Object? vendor = freezed,
     Object? lastBidder = freezed,
     Object? product = freezed,
+    Object? country = freezed,
     Object? startDate = freezed,
     Object? endDate = freezed,
     Object? createdAt = freezed,
@@ -527,6 +552,10 @@ class __$DealCopyWithImpl<$Res> extends _$DealCopyWithImpl<$Res>
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
               as Product?,
+      country: country == freezed
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
+              as Country?,
       startDate: startDate == freezed
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
@@ -574,6 +603,7 @@ class _$_Deal extends _Deal {
       this.vendor,
       this.lastBidder,
       this.product,
+      this.country,
       required this.startDate,
       required this.endDate,
       this.createdAt,
@@ -638,6 +668,8 @@ class _$_Deal extends _Deal {
   final User? lastBidder;
   @override
   final Product? product;
+  @override
+  final Country? country;
   @override // DealCategory? category,
   final DateTimeField startDate;
   @override
@@ -649,7 +681,7 @@ class _$_Deal extends _Deal {
 
   @override
   String toString() {
-    return 'Deal(id: $id, basePrice: $basePrice, lastPriceOffered: $lastPriceOffered, isPrivate: $isPrivate, isSponsored: $isSponsored, hasWish: $hasWish, admittanceFee: $admittanceFee, dealPriority: $dealPriority, address: $address, clicks: $clicks, bidStatus: $bidStatus, isClosing: $isClosing, isActive: $isActive, status: $status, type: $type, offerType: $offerType, dealPlan: $dealPlan, quantity: $quantity, biddingType: $biddingType, user: $user, vendor: $vendor, lastBidder: $lastBidder, product: $product, startDate: $startDate, endDate: $endDate, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'Deal(id: $id, basePrice: $basePrice, lastPriceOffered: $lastPriceOffered, isPrivate: $isPrivate, isSponsored: $isSponsored, hasWish: $hasWish, admittanceFee: $admittanceFee, dealPriority: $dealPriority, address: $address, clicks: $clicks, bidStatus: $bidStatus, isClosing: $isClosing, isActive: $isActive, status: $status, type: $type, offerType: $offerType, dealPlan: $dealPlan, quantity: $quantity, biddingType: $biddingType, user: $user, vendor: $vendor, lastBidder: $lastBidder, product: $product, country: $country, startDate: $startDate, endDate: $endDate, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -686,6 +718,7 @@ class _$_Deal extends _Deal {
             const DeepCollectionEquality()
                 .equals(other.lastBidder, lastBidder) &&
             const DeepCollectionEquality().equals(other.product, product) &&
+            const DeepCollectionEquality().equals(other.country, country) &&
             const DeepCollectionEquality().equals(other.startDate, startDate) &&
             const DeepCollectionEquality().equals(other.endDate, endDate) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
@@ -718,6 +751,7 @@ class _$_Deal extends _Deal {
         const DeepCollectionEquality().hash(vendor),
         const DeepCollectionEquality().hash(lastBidder),
         const DeepCollectionEquality().hash(product),
+        const DeepCollectionEquality().hash(country),
         const DeepCollectionEquality().hash(startDate),
         const DeepCollectionEquality().hash(endDate),
         const DeepCollectionEquality().hash(createdAt),
@@ -755,6 +789,7 @@ abstract class _Deal extends Deal {
       User? vendor,
       User? lastBidder,
       Product? product,
+      Country? country,
       required DateTimeField startDate,
       required DateTimeField endDate,
       DateTime? createdAt,
@@ -807,6 +842,8 @@ abstract class _Deal extends Deal {
   User? get lastBidder;
   @override
   Product? get product;
+  @override
+  Country? get country;
   @override // DealCategory? category,
   DateTimeField get startDate;
   @override

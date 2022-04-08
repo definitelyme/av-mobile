@@ -45,6 +45,19 @@ abstract class WalletRemote {
     @Field('locality') String? locality,
   });
 
+  @GET(EndPoints.FORGOT_SECURITY_ANSWER)
+  Future<AppHttpResponse> forgotSecurityAnswer();
+
+  @POST(EndPoints.CONFIRM_SECURITY_ANSWER)
+  Future<AppHttpResponse> confirmSecurityAnswer({
+    @Field('favAthlete') String? favAthlete,
+    @Field('favPlace') String? favPlace,
+    @Field('locality') String? locality,
+  });
+
+  @POST(EndPoints.RESET_WITHDRAWAL_PIN)
+  Future<AppHttpResponse> resetWithdrawalPin(@Field('otp') String pin);
+
   @Headers({'Authorization': 'Bearer FLWSECK-8a8dd5afa211ae139db6fcb0039a6984-X'})
   @GET(EndPoints.GET_NG_BANKS_LIST)
   Future<BankDTO> banks();

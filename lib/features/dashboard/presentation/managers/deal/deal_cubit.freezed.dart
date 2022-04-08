@@ -20,6 +20,7 @@ class _$DealStateTearOff {
 
   _DealState call(
       {bool isLoading = false,
+      bool isLoadingSponsored = false,
       bool isBidding = false,
       bool validate = false,
       required Deal currentDeal,
@@ -33,12 +34,14 @@ class _$DealStateTearOff {
       KtList<DealCategory> categories = const KtList.empty(),
       KtList<Deal> homeDeals = const KtList.empty(),
       KtList<Deal> liveDeals = const KtList.empty(),
+      KtList<Deal> homeSponsoredDeals = const KtList.empty(),
       KtList<Deal> deals = const KtList.empty(),
       KtList<MyWish> wishlist = const KtList.empty(),
       KtList<DealPlan> dealPlans = const KtList.empty(),
       Option<AppHttpResponse?> status = const None()}) {
     return _DealState(
       isLoading: isLoading,
+      isLoadingSponsored: isLoadingSponsored,
       isBidding: isBidding,
       validate: validate,
       currentDeal: currentDeal,
@@ -52,6 +55,7 @@ class _$DealStateTearOff {
       categories: categories,
       homeDeals: homeDeals,
       liveDeals: liveDeals,
+      homeSponsoredDeals: homeSponsoredDeals,
       deals: deals,
       wishlist: wishlist,
       dealPlans: dealPlans,
@@ -66,6 +70,7 @@ const $DealState = _$DealStateTearOff();
 /// @nodoc
 mixin _$DealState {
   bool get isLoading => throw _privateConstructorUsedError;
+  bool get isLoadingSponsored => throw _privateConstructorUsedError;
   bool get isBidding => throw _privateConstructorUsedError;
   bool get validate => throw _privateConstructorUsedError;
   Deal get currentDeal => throw _privateConstructorUsedError;
@@ -79,6 +84,7 @@ mixin _$DealState {
   KtList<DealCategory> get categories => throw _privateConstructorUsedError;
   KtList<Deal> get homeDeals => throw _privateConstructorUsedError;
   KtList<Deal> get liveDeals => throw _privateConstructorUsedError;
+  KtList<Deal> get homeSponsoredDeals => throw _privateConstructorUsedError;
   KtList<Deal> get deals => throw _privateConstructorUsedError;
   KtList<MyWish> get wishlist => throw _privateConstructorUsedError;
   KtList<DealPlan> get dealPlans => throw _privateConstructorUsedError;
@@ -95,6 +101,7 @@ abstract class $DealStateCopyWith<$Res> {
       _$DealStateCopyWithImpl<$Res>;
   $Res call(
       {bool isLoading,
+      bool isLoadingSponsored,
       bool isBidding,
       bool validate,
       Deal currentDeal,
@@ -108,6 +115,7 @@ abstract class $DealStateCopyWith<$Res> {
       KtList<DealCategory> categories,
       KtList<Deal> homeDeals,
       KtList<Deal> liveDeals,
+      KtList<Deal> homeSponsoredDeals,
       KtList<Deal> deals,
       KtList<MyWish> wishlist,
       KtList<DealPlan> dealPlans,
@@ -133,6 +141,7 @@ class _$DealStateCopyWithImpl<$Res> implements $DealStateCopyWith<$Res> {
   @override
   $Res call({
     Object? isLoading = freezed,
+    Object? isLoadingSponsored = freezed,
     Object? isBidding = freezed,
     Object? validate = freezed,
     Object? currentDeal = freezed,
@@ -146,6 +155,7 @@ class _$DealStateCopyWithImpl<$Res> implements $DealStateCopyWith<$Res> {
     Object? categories = freezed,
     Object? homeDeals = freezed,
     Object? liveDeals = freezed,
+    Object? homeSponsoredDeals = freezed,
     Object? deals = freezed,
     Object? wishlist = freezed,
     Object? dealPlans = freezed,
@@ -155,6 +165,10 @@ class _$DealStateCopyWithImpl<$Res> implements $DealStateCopyWith<$Res> {
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoadingSponsored: isLoadingSponsored == freezed
+          ? _value.isLoadingSponsored
+          : isLoadingSponsored // ignore: cast_nullable_to_non_nullable
               as bool,
       isBidding: isBidding == freezed
           ? _value.isBidding
@@ -207,6 +221,10 @@ class _$DealStateCopyWithImpl<$Res> implements $DealStateCopyWith<$Res> {
       liveDeals: liveDeals == freezed
           ? _value.liveDeals
           : liveDeals // ignore: cast_nullable_to_non_nullable
+              as KtList<Deal>,
+      homeSponsoredDeals: homeSponsoredDeals == freezed
+          ? _value.homeSponsoredDeals
+          : homeSponsoredDeals // ignore: cast_nullable_to_non_nullable
               as KtList<Deal>,
       deals: deals == freezed
           ? _value.deals
@@ -301,6 +319,7 @@ abstract class _$DealStateCopyWith<$Res> implements $DealStateCopyWith<$Res> {
   @override
   $Res call(
       {bool isLoading,
+      bool isLoadingSponsored,
       bool isBidding,
       bool validate,
       Deal currentDeal,
@@ -314,6 +333,7 @@ abstract class _$DealStateCopyWith<$Res> implements $DealStateCopyWith<$Res> {
       KtList<DealCategory> categories,
       KtList<Deal> homeDeals,
       KtList<Deal> liveDeals,
+      KtList<Deal> homeSponsoredDeals,
       KtList<Deal> deals,
       KtList<MyWish> wishlist,
       KtList<DealPlan> dealPlans,
@@ -347,6 +367,7 @@ class __$DealStateCopyWithImpl<$Res> extends _$DealStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = freezed,
+    Object? isLoadingSponsored = freezed,
     Object? isBidding = freezed,
     Object? validate = freezed,
     Object? currentDeal = freezed,
@@ -360,6 +381,7 @@ class __$DealStateCopyWithImpl<$Res> extends _$DealStateCopyWithImpl<$Res>
     Object? categories = freezed,
     Object? homeDeals = freezed,
     Object? liveDeals = freezed,
+    Object? homeSponsoredDeals = freezed,
     Object? deals = freezed,
     Object? wishlist = freezed,
     Object? dealPlans = freezed,
@@ -369,6 +391,10 @@ class __$DealStateCopyWithImpl<$Res> extends _$DealStateCopyWithImpl<$Res>
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoadingSponsored: isLoadingSponsored == freezed
+          ? _value.isLoadingSponsored
+          : isLoadingSponsored // ignore: cast_nullable_to_non_nullable
               as bool,
       isBidding: isBidding == freezed
           ? _value.isBidding
@@ -422,6 +448,10 @@ class __$DealStateCopyWithImpl<$Res> extends _$DealStateCopyWithImpl<$Res>
           ? _value.liveDeals
           : liveDeals // ignore: cast_nullable_to_non_nullable
               as KtList<Deal>,
+      homeSponsoredDeals: homeSponsoredDeals == freezed
+          ? _value.homeSponsoredDeals
+          : homeSponsoredDeals // ignore: cast_nullable_to_non_nullable
+              as KtList<Deal>,
       deals: deals == freezed
           ? _value.deals
           : deals // ignore: cast_nullable_to_non_nullable
@@ -447,6 +477,7 @@ class __$DealStateCopyWithImpl<$Res> extends _$DealStateCopyWithImpl<$Res>
 class _$_DealState implements _DealState {
   const _$_DealState(
       {this.isLoading = false,
+      this.isLoadingSponsored = false,
       this.isBidding = false,
       this.validate = false,
       required this.currentDeal,
@@ -460,6 +491,7 @@ class _$_DealState implements _DealState {
       this.categories = const KtList.empty(),
       this.homeDeals = const KtList.empty(),
       this.liveDeals = const KtList.empty(),
+      this.homeSponsoredDeals = const KtList.empty(),
       this.deals = const KtList.empty(),
       this.wishlist = const KtList.empty(),
       this.dealPlans = const KtList.empty(),
@@ -468,6 +500,9 @@ class _$_DealState implements _DealState {
   @JsonKey()
   @override
   final bool isLoading;
+  @JsonKey()
+  @override
+  final bool isLoadingSponsored;
   @JsonKey()
   @override
   final bool isBidding;
@@ -501,6 +536,9 @@ class _$_DealState implements _DealState {
   final KtList<Deal> liveDeals;
   @JsonKey()
   @override
+  final KtList<Deal> homeSponsoredDeals;
+  @JsonKey()
+  @override
   final KtList<Deal> deals;
   @JsonKey()
   @override
@@ -514,7 +552,7 @@ class _$_DealState implements _DealState {
 
   @override
   String toString() {
-    return 'DealState(isLoading: $isLoading, isBidding: $isBidding, validate: $validate, currentDeal: $currentDeal, currentCategory: $currentCategory, sellHistory: $sellHistory, bidHistory: $bidHistory, rating: $rating, selectedPlan: $selectedPlan, currentProduct: $currentProduct, bidAmount: $bidAmount, categories: $categories, homeDeals: $homeDeals, liveDeals: $liveDeals, deals: $deals, wishlist: $wishlist, dealPlans: $dealPlans, status: $status)';
+    return 'DealState(isLoading: $isLoading, isLoadingSponsored: $isLoadingSponsored, isBidding: $isBidding, validate: $validate, currentDeal: $currentDeal, currentCategory: $currentCategory, sellHistory: $sellHistory, bidHistory: $bidHistory, rating: $rating, selectedPlan: $selectedPlan, currentProduct: $currentProduct, bidAmount: $bidAmount, categories: $categories, homeDeals: $homeDeals, liveDeals: $liveDeals, homeSponsoredDeals: $homeSponsoredDeals, deals: $deals, wishlist: $wishlist, dealPlans: $dealPlans, status: $status)';
   }
 
   @override
@@ -523,6 +561,8 @@ class _$_DealState implements _DealState {
         (other.runtimeType == runtimeType &&
             other is _DealState &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
+            const DeepCollectionEquality()
+                .equals(other.isLoadingSponsored, isLoadingSponsored) &&
             const DeepCollectionEquality().equals(other.isBidding, isBidding) &&
             const DeepCollectionEquality().equals(other.validate, validate) &&
             const DeepCollectionEquality()
@@ -543,6 +583,8 @@ class _$_DealState implements _DealState {
                 .equals(other.categories, categories) &&
             const DeepCollectionEquality().equals(other.homeDeals, homeDeals) &&
             const DeepCollectionEquality().equals(other.liveDeals, liveDeals) &&
+            const DeepCollectionEquality()
+                .equals(other.homeSponsoredDeals, homeSponsoredDeals) &&
             const DeepCollectionEquality().equals(other.deals, deals) &&
             const DeepCollectionEquality().equals(other.wishlist, wishlist) &&
             const DeepCollectionEquality().equals(other.dealPlans, dealPlans) &&
@@ -550,26 +592,29 @@ class _$_DealState implements _DealState {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(isLoading),
-      const DeepCollectionEquality().hash(isBidding),
-      const DeepCollectionEquality().hash(validate),
-      const DeepCollectionEquality().hash(currentDeal),
-      const DeepCollectionEquality().hash(currentCategory),
-      const DeepCollectionEquality().hash(sellHistory),
-      const DeepCollectionEquality().hash(bidHistory),
-      const DeepCollectionEquality().hash(rating),
-      const DeepCollectionEquality().hash(selectedPlan),
-      const DeepCollectionEquality().hash(currentProduct),
-      const DeepCollectionEquality().hash(bidAmount),
-      const DeepCollectionEquality().hash(categories),
-      const DeepCollectionEquality().hash(homeDeals),
-      const DeepCollectionEquality().hash(liveDeals),
-      const DeepCollectionEquality().hash(deals),
-      const DeepCollectionEquality().hash(wishlist),
-      const DeepCollectionEquality().hash(dealPlans),
-      const DeepCollectionEquality().hash(status));
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(isLoading),
+        const DeepCollectionEquality().hash(isLoadingSponsored),
+        const DeepCollectionEquality().hash(isBidding),
+        const DeepCollectionEquality().hash(validate),
+        const DeepCollectionEquality().hash(currentDeal),
+        const DeepCollectionEquality().hash(currentCategory),
+        const DeepCollectionEquality().hash(sellHistory),
+        const DeepCollectionEquality().hash(bidHistory),
+        const DeepCollectionEquality().hash(rating),
+        const DeepCollectionEquality().hash(selectedPlan),
+        const DeepCollectionEquality().hash(currentProduct),
+        const DeepCollectionEquality().hash(bidAmount),
+        const DeepCollectionEquality().hash(categories),
+        const DeepCollectionEquality().hash(homeDeals),
+        const DeepCollectionEquality().hash(liveDeals),
+        const DeepCollectionEquality().hash(homeSponsoredDeals),
+        const DeepCollectionEquality().hash(deals),
+        const DeepCollectionEquality().hash(wishlist),
+        const DeepCollectionEquality().hash(dealPlans),
+        const DeepCollectionEquality().hash(status)
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -580,6 +625,7 @@ class _$_DealState implements _DealState {
 abstract class _DealState implements DealState {
   const factory _DealState(
       {bool isLoading,
+      bool isLoadingSponsored,
       bool isBidding,
       bool validate,
       required Deal currentDeal,
@@ -593,6 +639,7 @@ abstract class _DealState implements DealState {
       KtList<DealCategory> categories,
       KtList<Deal> homeDeals,
       KtList<Deal> liveDeals,
+      KtList<Deal> homeSponsoredDeals,
       KtList<Deal> deals,
       KtList<MyWish> wishlist,
       KtList<DealPlan> dealPlans,
@@ -600,6 +647,8 @@ abstract class _DealState implements DealState {
 
   @override
   bool get isLoading;
+  @override
+  bool get isLoadingSponsored;
   @override
   bool get isBidding;
   @override
@@ -626,6 +675,8 @@ abstract class _DealState implements DealState {
   KtList<Deal> get homeDeals;
   @override
   KtList<Deal> get liveDeals;
+  @override
+  KtList<Deal> get homeSponsoredDeals;
   @override
   KtList<Deal> get deals;
   @override

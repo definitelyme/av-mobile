@@ -10,10 +10,10 @@
 //
 // ignore_for_file: type=lint
 
-import 'package:auctionvillage/core/domain/entities/entities.dart' as _i12;
+import 'package:auctionvillage/core/domain/entities/entities.dart' as _i11;
 import 'package:auctionvillage/core/presentation/index.dart' as _i4;
 import 'package:auctionvillage/features/auth/presentation/index.dart' as _i2;
-import 'package:auctionvillage/features/dashboard/domain/index.dart' as _i11;
+import 'package:auctionvillage/features/dashboard/domain/index.dart' as _i10;
 import 'package:auctionvillage/features/dashboard/presentation/pages/index.dart'
     as _i7;
 import 'package:auctionvillage/features/dashboard/presentation/screens/index.dart'
@@ -22,7 +22,6 @@ import 'package:auctionvillage/features/onboarding/index.dart' as _i1;
 import 'package:auctionvillage/manager/router/guards/guards.dart' as _i9;
 import 'package:auto_route/auto_route.dart' as _i6;
 import 'package:flutter/material.dart' as _i8;
-import 'package:flutter/widgets.dart' as _i10;
 import 'package:kt_dart/collection.dart' as _i5;
 
 class AppRouter extends _i6.RootStackRouter {
@@ -87,12 +86,15 @@ class AppRouter extends _i6.RootStackRouter {
           title: 'Product');
     },
     DealsListRoute.name: (routeData) {
-      final args = routeData.argsAs<DealsListRouteArgs>(
-          orElse: () => const DealsListRouteArgs());
+      final args = routeData.argsAs<DealsListRouteArgs>();
       return _i6.AdaptivePage<dynamic>(
           routeData: routeData,
-          child: _i3.DealsListScreen(
-              key: args.key, isPrivate: args.isPrivate, type: args.type));
+          child: _i3.DealsListScreen(args.title,
+              key: args.key,
+              isPrivate: args.isPrivate,
+              type: args.type,
+              bidStatus: args.bidStatus,
+              category: args.category));
     },
     ProductListRoute.name: (routeData) {
       return _i6.AdaptivePage<dynamic>(
@@ -125,8 +127,16 @@ class AppRouter extends _i6.RootStackRouter {
       return _i6.AdaptivePage<dynamic>(
           routeData: routeData,
           child: _i3.TransactionPinSetupScreen(
-              key: args.key, intendedRoute: args.intendedRoute),
+              key: args.key,
+              requestedOTP: args.requestedOTP,
+              duration: args.duration),
           title: 'Withdraw PIN Setup');
+    },
+    ForgotTransactionPinRoute.name: (routeData) {
+      return _i6.AdaptivePage<dynamic>(
+          routeData: routeData,
+          child: const _i3.ForgotTransactionPinScreen(),
+          title: 'Forgot Transaction PIN');
     },
     WalletHistoryRoute.name: (routeData) {
       return _i6.AdaptivePage<dynamic>(
@@ -159,9 +169,10 @@ class AppRouter extends _i6.RootStackRouter {
           title: 'My Reviews');
     },
     EditProfileRoute.name: (routeData) {
+      final args = routeData.argsAs<EditProfileRouteArgs>();
       return _i6.AdaptivePage<dynamic>(
           routeData: routeData,
-          child: const _i3.EditProfileScreen(),
+          child: _i3.EditProfileScreen(args.user, key: args.key),
           title: 'Edit Profile');
     },
     PricingPlanRoute.name: (routeData) {
@@ -354,6 +365,10 @@ class AppRouter extends _i6.RootStackRouter {
             path: '/transaction-pin-setup-screen',
             fullMatch: true,
             usesPathAsKey: true),
+        _i6.RouteConfig(ForgotTransactionPinRoute.name,
+            path: '/forgot-transaction-pin-screen',
+            fullMatch: true,
+            usesPathAsKey: true),
         _i6.RouteConfig(WalletHistoryRoute.name,
             path: '/wallet-history-screen',
             fullMatch: true,
@@ -382,7 +397,7 @@ class AppRouter extends _i6.RootStackRouter {
 /// generated route for
 /// [_i1.SplashScreen]
 class SplashRoute extends _i6.PageRouteInfo<SplashRouteArgs> {
-  SplashRoute({_i10.Key? key})
+  SplashRoute({_i8.Key? key})
       : super(SplashRoute.name, path: '/', args: SplashRouteArgs(key: key));
 
   static const String name = 'SplashRoute';
@@ -391,7 +406,7 @@ class SplashRoute extends _i6.PageRouteInfo<SplashRouteArgs> {
 class SplashRouteArgs {
   const SplashRouteArgs({this.key});
 
-  final _i10.Key? key;
+  final _i8.Key? key;
 
   @override
   String toString() {
@@ -455,7 +470,7 @@ class DashboardRoute extends _i6.PageRouteInfo<void> {
 /// generated route for
 /// [_i3.DealDetailScreen]
 class DealDetailRoute extends _i6.PageRouteInfo<DealDetailRouteArgs> {
-  DealDetailRoute({required _i11.Deal deal, _i10.Key? key})
+  DealDetailRoute({required _i10.Deal deal, _i8.Key? key})
       : super(DealDetailRoute.name,
             path: '/deal-detail-screen',
             args: DealDetailRouteArgs(deal: deal, key: key));
@@ -466,9 +481,9 @@ class DealDetailRoute extends _i6.PageRouteInfo<DealDetailRouteArgs> {
 class DealDetailRouteArgs {
   const DealDetailRouteArgs({required this.deal, this.key});
 
-  final _i11.Deal deal;
+  final _i10.Deal deal;
 
-  final _i10.Key? key;
+  final _i8.Key? key;
 
   @override
   String toString() {
@@ -479,27 +494,50 @@ class DealDetailRouteArgs {
 /// generated route for
 /// [_i3.DealsListScreen]
 class DealsListRoute extends _i6.PageRouteInfo<DealsListRouteArgs> {
-  DealsListRoute({_i10.Key? key, bool? isPrivate, _i11.DealType? type})
+  DealsListRoute(
+      {required String title,
+      _i8.Key? key,
+      bool? isPrivate,
+      _i10.DealType? type,
+      _i10.BidStatus? bidStatus,
+      _i10.DealCategory? category})
       : super(DealsListRoute.name,
             path: '/deals-list-screen',
-            args:
-                DealsListRouteArgs(key: key, isPrivate: isPrivate, type: type));
+            args: DealsListRouteArgs(
+                title: title,
+                key: key,
+                isPrivate: isPrivate,
+                type: type,
+                bidStatus: bidStatus,
+                category: category));
 
   static const String name = 'DealsListRoute';
 }
 
 class DealsListRouteArgs {
-  const DealsListRouteArgs({this.key, this.isPrivate, this.type});
+  const DealsListRouteArgs(
+      {required this.title,
+      this.key,
+      this.isPrivate,
+      this.type,
+      this.bidStatus,
+      this.category});
 
-  final _i10.Key? key;
+  final String title;
+
+  final _i8.Key? key;
 
   final bool? isPrivate;
 
-  final _i11.DealType? type;
+  final _i10.DealType? type;
+
+  final _i10.BidStatus? bidStatus;
+
+  final _i10.DealCategory? category;
 
   @override
   String toString() {
-    return 'DealsListRouteArgs{key: $key, isPrivate: $isPrivate, type: $type}';
+    return 'DealsListRouteArgs{title: $title, key: $key, isPrivate: $isPrivate, type: $type, bidStatus: $bidStatus, category: $category}';
   }
 }
 
@@ -524,7 +562,7 @@ class FundWalletRoute extends _i6.PageRouteInfo<void> {
 /// generated route for
 /// [_i3.AddCardScreen]
 class AddCardRoute extends _i6.PageRouteInfo<AddCardRouteArgs> {
-  AddCardRoute({_i10.Key? key, String? intendedRoute})
+  AddCardRoute({_i8.Key? key, String? intendedRoute})
       : super(AddCardRoute.name,
             path: '/add-card-screen',
             args: AddCardRouteArgs(key: key, intendedRoute: intendedRoute));
@@ -535,7 +573,7 @@ class AddCardRoute extends _i6.PageRouteInfo<AddCardRouteArgs> {
 class AddCardRouteArgs {
   const AddCardRouteArgs({this.key, this.intendedRoute});
 
-  final _i10.Key? key;
+  final _i8.Key? key;
 
   final String? intendedRoute;
 
@@ -558,26 +596,44 @@ class WithdrawalRoute extends _i6.PageRouteInfo<void> {
 /// [_i3.TransactionPinSetupScreen]
 class TransactionPinSetupRoute
     extends _i6.PageRouteInfo<TransactionPinSetupRouteArgs> {
-  TransactionPinSetupRoute({_i10.Key? key, String? intendedRoute})
+  TransactionPinSetupRoute(
+      {_i8.Key? key,
+      bool requestedOTP = false,
+      Duration duration = const Duration(minutes: 2)})
       : super(TransactionPinSetupRoute.name,
             path: '/transaction-pin-setup-screen',
             args: TransactionPinSetupRouteArgs(
-                key: key, intendedRoute: intendedRoute));
+                key: key, requestedOTP: requestedOTP, duration: duration));
 
   static const String name = 'TransactionPinSetupRoute';
 }
 
 class TransactionPinSetupRouteArgs {
-  const TransactionPinSetupRouteArgs({this.key, this.intendedRoute});
+  const TransactionPinSetupRouteArgs(
+      {this.key,
+      this.requestedOTP = false,
+      this.duration = const Duration(minutes: 2)});
 
-  final _i10.Key? key;
+  final _i8.Key? key;
 
-  final String? intendedRoute;
+  final bool requestedOTP;
+
+  final Duration duration;
 
   @override
   String toString() {
-    return 'TransactionPinSetupRouteArgs{key: $key, intendedRoute: $intendedRoute}';
+    return 'TransactionPinSetupRouteArgs{key: $key, requestedOTP: $requestedOTP, duration: $duration}';
   }
+}
+
+/// generated route for
+/// [_i3.ForgotTransactionPinScreen]
+class ForgotTransactionPinRoute extends _i6.PageRouteInfo<void> {
+  const ForgotTransactionPinRoute()
+      : super(ForgotTransactionPinRoute.name,
+            path: '/forgot-transaction-pin-screen');
+
+  static const String name = 'ForgotTransactionPinRoute';
 }
 
 /// generated route for
@@ -626,17 +682,32 @@ class MyReviewsRoute extends _i6.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.EditProfileScreen]
-class EditProfileRoute extends _i6.PageRouteInfo<void> {
-  const EditProfileRoute()
-      : super(EditProfileRoute.name, path: '/edit-profile-screen');
+class EditProfileRoute extends _i6.PageRouteInfo<EditProfileRouteArgs> {
+  EditProfileRoute({required _i11.User? user, _i8.Key? key})
+      : super(EditProfileRoute.name,
+            path: '/edit-profile-screen',
+            args: EditProfileRouteArgs(user: user, key: key));
 
   static const String name = 'EditProfileRoute';
+}
+
+class EditProfileRouteArgs {
+  const EditProfileRouteArgs({required this.user, this.key});
+
+  final _i11.User? user;
+
+  final _i8.Key? key;
+
+  @override
+  String toString() {
+    return 'EditProfileRouteArgs{user: $user, key: $key}';
+  }
 }
 
 /// generated route for
 /// [_i3.PricingPlanScreen]
 class PricingPlanRoute extends _i6.PageRouteInfo<PricingPlanRouteArgs> {
-  PricingPlanRoute({required _i11.Product product, _i10.Key? key})
+  PricingPlanRoute({required _i10.Product product, _i8.Key? key})
       : super(PricingPlanRoute.name,
             path: '/pricing-plan-screen',
             args: PricingPlanRouteArgs(product: product, key: key));
@@ -647,9 +718,9 @@ class PricingPlanRoute extends _i6.PageRouteInfo<PricingPlanRouteArgs> {
 class PricingPlanRouteArgs {
   const PricingPlanRouteArgs({required this.product, this.key});
 
-  final _i11.Product product;
+  final _i10.Product product;
 
-  final _i10.Key? key;
+  final _i8.Key? key;
 
   @override
   String toString() {
@@ -661,14 +732,14 @@ class PricingPlanRouteArgs {
 /// [_i4.SuccessScreen]
 class SuccessRoute extends _i6.PageRouteInfo<SuccessRouteArgs> {
   SuccessRoute(
-      {_i10.Key? key,
-      _i10.Widget? svg,
-      _i10.Widget? image,
+      {_i8.Key? key,
+      _i8.Widget? svg,
+      _i8.Widget? image,
       required String title,
       String? description,
       String? buttonText,
       Duration animationDuration = const Duration(milliseconds: 1600),
-      _i10.BoxFit fit = _i10.BoxFit.cover,
+      _i8.BoxFit fit = _i8.BoxFit.cover,
       double? width,
       double? height,
       void Function()? onButtonPressed,
@@ -703,18 +774,18 @@ class SuccessRouteArgs {
       this.description,
       this.buttonText,
       this.animationDuration = const Duration(milliseconds: 1600),
-      this.fit = _i10.BoxFit.cover,
+      this.fit = _i8.BoxFit.cover,
       this.width,
       this.height,
       this.onButtonPressed,
       this.onBackPressed,
       this.hasAppBar = false});
 
-  final _i10.Key? key;
+  final _i8.Key? key;
 
-  final _i10.Widget? svg;
+  final _i8.Widget? svg;
 
-  final _i10.Widget? image;
+  final _i8.Widget? image;
 
   final String title;
 
@@ -724,7 +795,7 @@ class SuccessRouteArgs {
 
   final Duration animationDuration;
 
-  final _i10.BoxFit fit;
+  final _i8.BoxFit fit;
 
   final double? width;
 
@@ -746,9 +817,9 @@ class SuccessRouteArgs {
 /// [_i4.CountryPickerScreen]
 class CountryPickerRoute extends _i6.PageRouteInfo<CountryPickerRouteArgs> {
   CountryPickerRoute(
-      {required _i12.Country? initial,
-      _i10.Key? key,
-      _i5.KtList<_i12.Country> countries = const _i5.KtList.empty()})
+      {required _i11.Country? initial,
+      _i8.Key? key,
+      _i5.KtList<_i11.Country> countries = const _i5.KtList.empty()})
       : super(CountryPickerRoute.name,
             path: '/country-picker-screen',
             args: CountryPickerRouteArgs(
@@ -763,11 +834,11 @@ class CountryPickerRouteArgs {
       this.key,
       this.countries = const _i5.KtList.empty()});
 
-  final _i12.Country? initial;
+  final _i11.Country? initial;
 
-  final _i10.Key? key;
+  final _i8.Key? key;
 
-  final _i5.KtList<_i12.Country> countries;
+  final _i5.KtList<_i11.Country> countries;
 
   @override
   String toString() {

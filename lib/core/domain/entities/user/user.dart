@@ -9,6 +9,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user.freezed.dart';
 
+enum SecurityQuestion { favPlace, favAthlete, locality }
+
 @freezed
 @immutable
 class User extends BaseEntity with _$User {
@@ -22,12 +24,13 @@ class User extends BaseEntity with _$User {
     required EmailAddress email,
     required Phone phone,
     required Password password,
-    required MediaField photo,
+    required UploadableMedia photo,
     Country? country,
     @Default(false) bool isPrivate,
     @Default(AuthProvider.regular) AuthProvider provider,
     @Default(false) bool? active,
     @Default(false) bool? accountVerified,
+    SecurityQuestion? securityQuestion,
     DateTime? createdAt,
     DateTime? updatedAt,
     DateTime? deletedAt,
@@ -50,6 +53,7 @@ class User extends BaseEntity with _$User {
     Phone? phone,
     Password? password,
     Password? confirmation,
+    UploadableMedia? photo,
   }) =>
       User(
         id: UniqueId.fromExternal(null),
@@ -57,7 +61,7 @@ class User extends BaseEntity with _$User {
         lastName: lastName ?? DisplayName(null),
         email: email ?? EmailAddress(null),
         phone: phone ?? Phone(null),
-        photo: MediaField(null),
+        photo: photo ?? UploadableMedia(MediaField(null), id: null),
         password: password ?? Password(null),
       );
 
@@ -77,4 +81,35 @@ class User extends BaseEntity with _$User {
 
   Option<FieldObjectException<dynamic>> get socials =>
       firstName.mapped.andThen(lastName.mapped).andThen(phone.mapped).fold((f) => some(f), (_) => none());
+}
+
+extension SecurityQuestionX on SecurityQuestion {
+  String get question {
+    switch (this) {
+      case SecurityQuestion.favPlace:
+        return 'What is your favorite place?';
+      case SecurityQuestion.favAthlete:
+        return 'Who is your favorite athlete?';
+      case SecurityQuestion.locality:
+        return 'What is your locality?';
+      default:
+        return 'What is your favorite place?';
+    }
+  }
+
+  T when<T>({
+    required T Function() favPlace,
+    required T Function() favAthlete,
+    required T Function() locality,
+  }) {
+    switch (this) {
+      case SecurityQuestion.favAthlete:
+        return favAthlete();
+      case SecurityQuestion.favPlace:
+        return favPlace();
+      case SecurityQuestion.locality:
+      default:
+        return locality();
+    }
+  }
 }

@@ -248,6 +248,10 @@ class _FormLayout extends StatelessWidget {
             hintText: (s) => 'Enter a Password',
             onChanged: (fn, str) => fn.passwordChanged(str),
             onToggle: (it) => it.togglePasswordVisibility(),
+            onFieldSubmitted: (cubit, _) {
+              TextInput.finishAutofillContext();
+              cubit.createAccount();
+            },
           ),
           //
           0.01.verticalh,

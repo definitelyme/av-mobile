@@ -15,6 +15,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
+import 'features/dashboard/presentation/managers/index.dart';
+
 class AuctionVillageApp extends StatelessWidget {
   /// This is the entry point for AuctionVillageApp App
   const AuctionVillageApp({Key? key}) : super(key: key);
@@ -28,6 +30,7 @@ class AuctionVillageApp extends StatelessWidget {
         BlocProvider(create: (_) => getIt<ThemeCubit>()),
         BlocProvider(create: (_) => getIt<AuthWatcherCubit>()),
         BlocProvider(create: (_) => getIt<TabNavigationCubit>()),
+        BlocProvider(create: (_) => getIt<DealCubit>()),
       ],
       child: BlocBuilder<ThemeCubit, AppTheme>(
         builder: (_, app) => PlatformApp.router(

@@ -35,6 +35,9 @@ mixin EndPoints {
   static const String FUND_WALLET = '/wallets/fund';
   static const String WITHDRAW_WALLET = '/wallets/withdraw';
   static const String SETUP_WITHDRAWAL_PIN = '/user/add-pin';
+  static const String CONFIRM_SECURITY_ANSWER = '/check-user-answers';
+  static const String FORGOT_SECURITY_ANSWER = '/user/sessions/get-otp';
+  static const String RESET_WITHDRAWAL_PIN = '/user/sessions/verify-otp';
   static const String GET_NG_BANKS_LIST = 'https://api.flutterwave.com/v3/banks/NG';
   static const String RESOLVE_BANK_ACCOUNT = 'https://api.flutterwave.com/v3/accounts/resolve';
 
@@ -45,6 +48,7 @@ mixin EndPoints {
   static const String PLACE_A_BID = '/deals/{id}/bid';
   static const String FIND_CATEGORIES = '/categories';
   static const String GET_SINGLE_CATEGORY = '/categories/{id}';
+  static const String FILTER_BY_CATEGORY = '/categories/{id}/deals';
   static const String BID_HISTORY = '/data/deals-histories/{id}/user/stats';
   static const String SELL_HISTORY = '/data/deals/{id}/user/stats';
   static const String WISHLIST = '/deals/me/wishlist';

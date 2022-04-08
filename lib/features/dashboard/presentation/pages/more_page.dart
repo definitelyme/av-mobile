@@ -34,19 +34,22 @@ class _MorePageState extends State<MorePage> {
               padding: EdgeInsets.all(App.sidePadding),
               sliver: SliverToBoxAdapter(
                 child: GestureDetector(
-                  onTap: () => navigator.navigate(const EditProfileRoute()),
+                  onTap: () => navigator.navigate(EditProfileRoute(user: context.read<AuthWatcherCubit>().state.user)),
                   child: Row(
                     children: [
-                      ImageBox.asset(
-                        heroTag: Const.profilePhotoHeroTag,
-                        photo: AppAssets.avatarImg,
-                        width: 50,
-                        height: 50,
-                        fit: BoxFit.cover,
-                        borderRadius: 100.br,
-                        expandsFullscreen: true,
-                        border: Border.all(color: Colors.white, width: 0.5),
-                        replacement: Image.asset('${AppAssets.avatarImg}', fit: BoxFit.cover),
+                      BlocSelector<AuthWatcherCubit, AuthWatcherState, User?>(
+                        selector: (s) => s.user,
+                        builder: (c, user) => ImageBox.network(
+                          heroTag: Const.profilePhotoHeroTag,
+                          photo: user?.photo.image.valueOrNull,
+                          width: 50,
+                          height: 50,
+                          fit: BoxFit.cover,
+                          borderRadius: 100.br,
+                          expandsFullscreen: true,
+                          border: Border.all(color: Colors.white, width: 0.5),
+                          replacement: Image.asset(AppAssets.unnamed, fit: BoxFit.cover, width: 50, height: 50),
+                        ),
                       ),
                       //
                       0.03.horizontalw,
@@ -213,7 +216,7 @@ class _Action {
           onPressed: () => navigator.navigate(const MyBidsRoute()),
         ),
         _Action(
-          title: 'My Sellings',
+          title: 'My Sales',
           asset: AppAssets.shoppingBag(Palette.accentColor, Size(0.035.w, 0.035.h)),
           onPressed: () => navigator.navigate(const MySellingsRoute()),
         ),

@@ -47,7 +47,6 @@ class DealDetailScreen extends StatefulWidget with AutoRouteWrapper {
 
 class _DealDetailScreenState extends State<DealDetailScreen> {
   late DealCubit _cubit;
-  final _list = [Promotion.dummy()];
 
   @override
   void initState() {
@@ -58,8 +57,8 @@ class _DealDetailScreenState extends State<DealDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return AdaptiveScaffold(
-      adaptiveToolbar: const AdaptiveToolbar(
-        title: 'Live Auction',
+      adaptiveToolbar: AdaptiveToolbar(
+        title: widget.deal.type.when(auction: () => 'Live Auction', buy_Now: () => 'For Sale'),
         centerTitle: false,
         cupertinoTitleAlignment: Alignment.centerLeft,
       ),
@@ -81,8 +80,8 @@ class _DealDetailScreenState extends State<DealDetailScreen> {
                       child: MediaCarousel<MediaField>(
                         items: deal.product!.photos.map((e) => e.image).asList(),
                         height: 0.27.h,
-                        viewportFraction: _list.length > 1 ? 0.8 : 0.95,
-                        enableInfiniteScroll: _list.length > 1,
+                        viewportFraction: (it) => deal.product!.photos.map((e) => e.image).size > 1 ? 0.8 : 0.95,
+                        enableInfiniteScroll: (it) => deal.product!.photos.map((e) => e.image).size > 1,
                         position: CarouselIndicatorPosition.bottom,
                         autoPlay: true,
                         autoPlayInterval: const Duration(seconds: 7),
@@ -146,6 +145,8 @@ class _DealDetailScreenState extends State<DealDetailScreen> {
                                 child: CountdownWidget(
                                   autostart: DateTime.now().millisecondsSinceEpoch < deal.endDate.getOrNull!.millisecondsSinceEpoch,
                                   duration: deal.endDate.getOrNull!.difference(DateTime.now()),
+                                  // showMinuteRemainder: false,
+                                  showHourRemainder: false,
                                   ticker: (tick) => Material(
                                     color: Palette.accentGreen,
                                     borderRadius: const BorderRadius.only(
@@ -224,7 +225,7 @@ class _DealDetailScreenState extends State<DealDetailScreen> {
                           child: Padding(
                             padding: const EdgeInsets.symmetric(vertical: 13, horizontal: 20),
                             child: AdaptiveText(
-                              'Auction Information',
+                              deal.type == DealType.auction ? 'Auction Information' : 'Basic Information',
                               maxLines: 1,
                               softWrap: true,
                               fontSize: 17.sp,
@@ -355,7 +356,7 @@ class _DealDetailScreenState extends State<DealDetailScreen> {
                             ),
                             //
                             AdaptiveText(
-                              'Current Bid',
+                              deal.type == DealType.auction ? 'Current Bid' : 'Sale Price',
                               maxLines: 1,
                               softWrap: true,
                               fontSize: 16.sp,
@@ -365,133 +366,146 @@ class _DealDetailScreenState extends State<DealDetailScreen> {
                           ],
                         ),
                         //
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            AdaptiveText(
-                              '34 Bids',
-                              maxLines: 1,
-                              softWrap: true,
-                              fontSize: 18.sp,
-                              textColor: Palette.accentColor,
-                              fontWeight: FontWeight.w600,
-                            ),
-                            //
-                            AdaptiveText(
-                              'Bid History',
-                              maxLines: 1,
-                              softWrap: true,
-                              fontSize: 16.sp,
-                              textColor: const Color(0xff989DB3),
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ],
-                        ),
+                        if (deal.type == DealType.auction)
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              AdaptiveText(
+                                '34 Bids',
+                                maxLines: 1,
+                                softWrap: true,
+                                fontSize: 18.sp,
+                                textColor: Palette.accentColor,
+                                fontWeight: FontWeight.w600,
+                              ),
+                              //
+                              AdaptiveText(
+                                'Bid History',
+                                maxLines: 1,
+                                softWrap: true,
+                                fontSize: 16.sp,
+                                textColor: const Color(0xff989DB3),
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ],
+                          ),
                       ],
                     ),
                     //
-                    const Divider(thickness: 1.5, height: 35),
+                    if (deal.type != DealType.auction) 0.02.verticalh,
                     //
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Flexible(
-                          child: Material(
-                            color: App.resolveColor(Palette.neutralF4, dark: Palette.secondaryColor.shade800),
-                            borderRadius: const BorderRadius.all(Radius.circular(4.0)),
-                            child: Disabled(
-                              disabled: s.bidAmount.getOrNull <= s.currentDeal.lastPriceOffered.getOrNull || s.isLoading || s.isBidding,
-                              child: AdaptiveInkWell(
-                                onTap: _cubit.decreaseBid,
-                                splashColor: App.resolveColor(Colors.grey.shade300, dark: Colors.grey.shade800),
-                                borderRadius: const BorderRadius.all(Radius.circular(4.0)),
-                                child: Padding(
-                                  padding: EdgeInsets.all(0.02.sw),
-                                  child: Icon(
-                                    Utils.platform_(material: Icons.remove, cupertino: CupertinoIcons.minus),
-                                    size: 22,
-                                    color: App.resolveColor(Colors.black87.withOpacity(0.7), dark: Colors.grey),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        //
-                        Flexible(
-                          flex: 2,
-                          child: AdaptiveText.rich(
-                            TextSpan(children: [
-                              const TextSpan(text: '${Utils.currency} '),
-                              TextSpan(text: '${s.bidAmount.getOrNull.roundToIntOrDouble}'.asCurrency(symbol: false)),
-                            ]),
-                            maxLines: 1,
-                            fontSize: 26.sp,
-                            fontWeight: FontWeight.bold,
-                            textColor: Palette.accentColor,
-                            softWrap: false,
-                            letterSpacing: Utils.letterSpacing,
-                          ),
-                        ),
-                        //
-                        Flexible(
-                          child: Material(
-                            color: App.resolveColor(Palette.neutralF4, dark: Palette.secondaryColor.shade800),
-                            borderRadius: const BorderRadius.all(Radius.circular(4.0)),
-                            child: Disabled(
-                              disabled: s.isLoading || s.isBidding,
-                              child: AdaptiveInkWell(
-                                onTap: _cubit.increaseBid,
-                                splashColor: App.resolveColor(Colors.grey.shade300, dark: Colors.grey.shade800),
-                                borderRadius: const BorderRadius.all(Radius.circular(4.0)),
-                                child: Padding(
-                                  padding: EdgeInsets.all(0.02.sw),
-                                  child: Icon(
-                                    Utils.platform_(material: Icons.add, cupertino: CupertinoIcons.add),
-                                    size: 22,
-                                    color: App.resolveColor(Colors.black87.withOpacity(0.7), dark: Colors.grey),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    //
-                    0.01.verticalh,
-                    //
-                    AnimatedVisibility(
-                      visible: s.currentDeal.product?.category?.percentageIncrease.getOrNull != null &&
-                          s.currentDeal.product!.category!.percentageIncrease.isValid,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
+                    if (deal.type == DealType.auction) ...[
+                      const Divider(thickness: 1.5, height: 35),
+                      //
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Center(
-                            child: AdaptiveText.rich(
-                              TextSpan(children: [
-                                const TextSpan(text: 'Must be in '),
-                                TextSpan(text: '${s.currentDeal.product?.category?.percentageIncrease.getOrNull?.roundToIntOrDouble}%'),
-                                const TextSpan(text: ' increment'),
-                              ]),
-                              maxLines: 1,
-                              softWrap: true,
-                              fontSize: 16.sp,
-                              textColor: const Color(0xff989DB3),
-                              fontWeight: FontWeight.w400,
+                          Flexible(
+                            child: Material(
+                              color: App.resolveColor(Palette.neutralF4, dark: Palette.secondaryColor.shade800),
+                              borderRadius: const BorderRadius.all(Radius.circular(4.0)),
+                              child: Disabled(
+                                disabled: s.bidAmount.getOrNull <= s.currentDeal.lastPriceOffered.getOrNull || s.isLoading || s.isBidding,
+                                child: AdaptiveInkWell(
+                                  onTap: _cubit.decreaseBid,
+                                  splashColor: App.resolveColor(Colors.grey.shade300, dark: Colors.grey.shade800),
+                                  borderRadius: const BorderRadius.all(Radius.circular(4.0)),
+                                  child: Padding(
+                                    padding: EdgeInsets.all(0.02.sw),
+                                    child: Icon(
+                                      Utils.platform_(material: Icons.remove, cupertino: CupertinoIcons.minus),
+                                      size: 22,
+                                      color: App.resolveColor(Colors.black87.withOpacity(0.7), dark: Colors.grey),
+                                    ),
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
                           //
-                          0.025.verticalh,
+                          Flexible(
+                            flex: 2,
+                            child: AdaptiveText.rich(
+                              TextSpan(children: [
+                                const TextSpan(text: '${Utils.currency} '),
+                                TextSpan(text: '${s.bidAmount.getOrNull.roundToIntOrDouble}'.asCurrency(symbol: false)),
+                              ]),
+                              maxLines: 1,
+                              fontSize: 26.sp,
+                              fontWeight: FontWeight.bold,
+                              textColor: Palette.accentColor,
+                              softWrap: false,
+                              letterSpacing: Utils.letterSpacing,
+                            ),
+                          ),
+                          //
+                          Flexible(
+                            child: Material(
+                              color: App.resolveColor(Palette.neutralF4, dark: Palette.secondaryColor.shade800),
+                              borderRadius: const BorderRadius.all(Radius.circular(4.0)),
+                              child: Disabled(
+                                disabled: s.isLoading || s.isBidding,
+                                child: AdaptiveInkWell(
+                                  onTap: _cubit.increaseBid,
+                                  splashColor: App.resolveColor(Colors.grey.shade300, dark: Colors.grey.shade800),
+                                  borderRadius: const BorderRadius.all(Radius.circular(4.0)),
+                                  child: Padding(
+                                    padding: EdgeInsets.all(0.02.sw),
+                                    child: Icon(
+                                      Utils.platform_(material: Icons.add, cupertino: CupertinoIcons.add),
+                                      size: 22,
+                                      color: App.resolveColor(Colors.black87.withOpacity(0.7), dark: Colors.grey),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
                         ],
                       ),
-                    ),
+                      //
+                      0.01.verticalh,
+                      //
+                      AnimatedVisibility(
+                        visible: s.currentDeal.product?.category?.percentageIncrease.getOrNull != null &&
+                            s.currentDeal.product!.category!.percentageIncrease.isValid,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Center(
+                              child: AdaptiveText.rich(
+                                TextSpan(children: [
+                                  const TextSpan(text: 'Must be in '),
+                                  TextSpan(text: '${s.currentDeal.product?.category?.percentageIncrease.getOrNull?.roundToIntOrDouble}%'),
+                                  const TextSpan(text: ' increment'),
+                                ]),
+                                maxLines: 1,
+                                softWrap: true,
+                                fontSize: 16.sp,
+                                textColor: const Color(0xff989DB3),
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            //
+                            0.025.verticalh,
+                          ],
+                        ),
+                      ),
+                    ],
                     //
-                    AppButton(
-                      text: 'BID NOW',
-                      isLoading: s.isBidding,
-                      disabled: s.isLoading || s.isBidding || s.bidAmount.getOrNull <= s.currentDeal.lastPriceOffered.getOrNull,
-                      onPressed: c.read<DealCubit>().sendBid,
+                    deal.type.when(
+                      auction: () => AppButton(
+                        text: 'BID NOW',
+                        isLoading: s.isBidding,
+                        disabled: s.isLoading || s.isBidding || s.bidAmount.getOrNull <= s.currentDeal.lastPriceOffered.getOrNull,
+                        onPressed: c.read<DealCubit>().sendBid,
+                      ),
+                      buy_Now: () => AppButton(
+                        text: 'BUY NOW',
+                        isLoading: s.isBidding,
+                        disabled: s.isLoading || s.isBidding,
+                        onPressed: c.read<DealCubit>().sendBid,
+                      ),
                     ),
                     //
                     0.02.verticalh,

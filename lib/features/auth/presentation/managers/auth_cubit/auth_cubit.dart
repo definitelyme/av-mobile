@@ -1,8 +1,9 @@
 library auth_cubit.dart;
 
+import 'dart:async';
 import 'dart:io';
 
-import 'package:auctionvillage/core/data/response/index.dart';
+import 'package:auctionvillage/core/data/index.dart';
 import 'package:auctionvillage/core/domain/entities/entities.dart';
 import 'package:auctionvillage/core/presentation/managers/managers.dart';
 import 'package:auctionvillage/features/auth/domain/index.dart';
@@ -11,6 +12,7 @@ import 'package:auctionvillage/manager/locator/locator.dart';
 import 'package:auctionvillage/manager/settings/external/preference_repository.dart';
 import 'package:auctionvillage/utils/utils.dart';
 import 'package:bloc/bloc.dart';
+import 'package:cloudinary_public/cloudinary_public.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -23,14 +25,17 @@ part 'auth_cubit.freezed.dart';
 part 'auth_state.dart';
 
 @injectable
-class AuthCubit extends Cubit<AuthState> with BaseCubit<AuthState>, _ImagePickerMixin {
+class AuthCubit extends Cubit<AuthState> with BaseCubit<AuthState> {
   final AuthFacade _auth;
   final PreferenceRepository _preferences;
+  final CloudinaryPublic _cloudinary;
+  final _picker = ImagePicker();
   User? _temp = User.blank();
 
   AuthCubit(
     this._auth,
     this._preferences,
+    this._cloudinary,
   ) : super(AuthState.initial());
 
   @override
@@ -59,9 +64,7 @@ class AuthCubit extends Cubit<AuthState> with BaseCubit<AuthState>, _ImagePicker
   }
 
   void init({bool loader = false}) async {
-    if (loader) toggleLoading(true, none());
-
-    Future.delayed(const Duration(milliseconds: 8), () => toggleLoading(false));
+    toggleLoading(loader, none());
 
     // Retrieve stored / cached user data
     final _cached = await _preferences.getString(Const.kPhoneNumberPrefKey);
@@ -71,6 +74,8 @@ class AuthCubit extends Cubit<AuthState> with BaseCubit<AuthState>, _ImagePicker
     Phone? _phoneNumber;
 
     _phoneNumber = await _parsePhoneNumber(_cached);
+
+    Future.delayed(Duration(milliseconds: env.connectTimeout), () => toggleLoading(false));
 
     _user = (await _auth.user).getOrElse(() => state.user);
 
@@ -90,7 +95,7 @@ class AuthCubit extends Cubit<AuthState> with BaseCubit<AuthState>, _ImagePicker
       phoneTextController: state.phoneTextController..text = _phoneNumber?.noDialCode?.getOrNull ?? '',
     ));
 
-    if (loader) toggleLoading(false);
+    toggleLoading(false);
   }
 
   void initSocials() async {
@@ -240,7 +245,7 @@ class AuthCubit extends Cubit<AuthState> with BaseCubit<AuthState>, _ImagePicker
     env.flavor.fold(
       dev: () {
         if (state.user.login.isSome()) {
-          emailChanged('brianna@forx.anonaddy.com');
+          emailChanged('brendan.uk@forx.anonaddy.com');
           passwordChanged('password');
         }
       },
@@ -385,7 +390,7 @@ class AuthCubit extends Cubit<AuthState> with BaseCubit<AuthState>, _ImagePicker
   void updateProfile() async {
     toggleLoading(true, none());
 
-    AppHttpResponse result;
+    AppHttpResponse? result;
 
     // Enable form validation
     emit(state.copyWith(validate: true, status: none()));
@@ -396,19 +401,11 @@ class AuthCubit extends Cubit<AuthState> with BaseCubit<AuthState>, _ImagePicker
         firstName: state.user.firstName,
         lastName: state.user.lastName,
         email: state.user.email,
-        image: state.selectedPhoto,
+        photo: state.user.photo,
+        phone: state.user.phone,
       );
 
-      emit(state.copyWith(
-        status: optionOf(
-          result.copyWith(
-            response: result.response.maybeMap(
-              success: (s) => s.copyWith(pop: true),
-              orElse: () => result.response,
-            ),
-          ),
-        ),
-      ));
+      emit(state.copyWith(status: optionOf(result)));
     }
 
     toggleLoading(false);
@@ -533,24 +530,35 @@ class AuthCubit extends Cubit<AuthState> with BaseCubit<AuthState>, _ImagePicker
   }
 }
 
-mixin _ImagePickerMixin on Cubit<AuthState> {
-  final ImagePicker _picker = ImagePicker();
+extension AuthCubitX on AuthCubit {
+  void pickCamera() async {
+    emit(state.copyWith(isUploadingImage: true));
 
-  void pickImage(ImageSource source) async {
+    var _result = await _picker.pickImage(source: ImageSource.camera);
+    _uploadImage(_result);
+  }
+
+  void pickGallery() async {
+    emit(state.copyWith(isUploadingImage: true));
+
+    var _result = await _picker.pickImage(source: ImageSource.gallery);
+    _uploadImage(_result);
+  }
+
+  void _uploadImage(XFile? xfile) async {
     File? file;
     var fileSize = 0;
 
-    var _result = await _picker.pickImage(source: source);
-
-    if (_result == null)
+    if (xfile == null)
       file = await _attemptFileRetrieval(_picker);
     else {
-      file = File(_result.path);
+      file = File(xfile.path);
       fileSize = file.lengthSync();
     }
 
     if (fileSize > Const.maxImageUploadSize) {
       emit(state.copyWith(
+        isUploadingImage: false,
         status: some(AppHttpResponse.failure(
           'Max. image upload size is ${(Const.maxImageUploadSize / 1e+6).ceil()}MB',
         )),
@@ -558,7 +566,36 @@ mixin _ImagePickerMixin on Cubit<AuthState> {
       return;
     }
 
-    if (file != null) emit(state.copyWith(selectedPhoto: file));
+    if (file != null) {
+      try {
+        final conn = await connection();
+
+        await conn.fold(
+          () async {
+            final uploadableMedia = UploadableMedia(MediaField(null), id: state.user.id.value);
+
+            final response = await _cloudinary.uploadFile(
+              CloudinaryFile.fromFile(file!.path, resourceType: CloudinaryResourceType.Image),
+              uploadPreset: env.uploadPreset,
+              onProgress: (count, total) => emit(state.copyWith.user(
+                photo: uploadableMedia.copyWith(progress: SendProgressCallback(count, total)),
+              )),
+            );
+
+            final _uploaded = uploadableMedia.copyWith(image: MediaField(response.secureUrl));
+
+            emit(state.copyWith(user: state.user.copyWith(photo: _uploaded), isUploadingImage: false));
+          },
+          (f) async => emit(state.copyWith(status: optionOf(f), isUploadingImage: false)),
+        );
+      } on CloudinaryException catch (e, tr) {
+        emit(state.copyWith(
+          isUploadingImage: false,
+          status: optionOf(AppHttpResponse.failure('Error ${e.statusCode}: ${e.message ?? e.responseString}')),
+        ));
+        unawaited(App.report(exception: e, stack: tr));
+      }
+    }
   }
 
   Future<File?> _attemptFileRetrieval(ImagePicker? picker) async {

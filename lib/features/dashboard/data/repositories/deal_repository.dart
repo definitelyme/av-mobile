@@ -24,6 +24,7 @@ class DealRepository extends BaseRepository {
   final Connectivity connectivity;
 
   PaginationDTO? _dealsMeta;
+  PaginationDTO? _categoryDealsMeta;
   PaginationDTO? _bidsHistoryMeta;
   PaginationDTO? _sellHistoryMeta;
   PaginationDTO? _wishlistMeta;
@@ -38,9 +39,12 @@ class DealRepository extends BaseRepository {
     BidStatus? bidStatus,
     DealType? type,
     DealStatus dealStatus = DealStatus.approved,
+    String? sortBy,
     bool? isPrivate,
+    bool? sponsored,
     int? perPage,
     bool nextPage = false,
+    KtList<Country>? countries,
   }) async {
     final _perPage = perPage ?? Const.kPerPage;
     final _conn = await checkConnectivity();
@@ -60,6 +64,8 @@ class DealRepository extends BaseRepository {
                 bidType: type?.name.toUpperCase(),
                 dealStatus: dealStatus.name.toUpperCase(),
                 isPrivate: isPrivate,
+                sponsored: sponsored,
+                sortBy: sortBy,
                 page: _dealsMeta!.next,
                 perPage: perPage ?? _dealsMeta?.perPage,
               );
@@ -72,13 +78,15 @@ class DealRepository extends BaseRepository {
               bidType: type?.name.toUpperCase(),
               dealStatus: dealStatus.name.toUpperCase(),
               isPrivate: isPrivate,
+              sponsored: sponsored,
+              sortBy: sortBy,
               perPage: _perPageValue,
             );
           }
 
           // Save new meta data
           _dealsMeta = _list.meta?.pagination;
-          return right(_list.domain);
+          return right(_list.domain(countries));
         } on AppHttpResponse catch (e) {
           return left(e);
         } on AppNetworkException catch (e) {
@@ -88,7 +96,73 @@ class DealRepository extends BaseRepository {
     );
   }
 
-  Future<Either<AppHttpResponse, Deal>> getDeal(Deal deal) async {
+  Future<Either<AppHttpResponse, KtList<Deal>>> filterDealsByCategory(
+    DealCategory? category, {
+    BidStatus? bidStatus,
+    DealType? type,
+    DealStatus dealStatus = DealStatus.approved,
+    String? sortBy,
+    bool? isPrivate,
+    bool? sponsored,
+    int? perPage,
+    bool nextPage = false,
+    KtList<Country>? countries,
+  }) async {
+    final _perPage = perPage ?? Const.kPerPage;
+    final _conn = await checkConnectivity();
+
+    return _conn.fold(
+      (f) => left(f),
+      (_) async {
+        final DealListDTO _list;
+
+        assert(category != null);
+
+        try {
+          if (nextPage) {
+            assert(_categoryDealsMeta != null);
+
+            if (_categoryDealsMeta?.next != null)
+              _list = await remote.filterDealsByCategory(
+                '${category!.id.value}',
+                bidStatus: bidStatus?.name.toUpperCase(),
+                bidType: type?.name.toUpperCase(),
+                dealStatus: dealStatus.name.toUpperCase(),
+                isPrivate: isPrivate,
+                sponsored: sponsored,
+                sortBy: sortBy,
+                page: _categoryDealsMeta!.next,
+                perPage: perPage ?? _categoryDealsMeta?.perPage,
+              );
+            else
+              return left(AppHttpResponse.endOfList);
+          } else {
+            final _perPageValue = _categoryDealsMeta?.currentPage != null ? _categoryDealsMeta!.currentPage! * _perPage : _perPage;
+            _list = await remote.filterDealsByCategory(
+              '${category!.id.value}',
+              bidStatus: bidStatus?.name.toUpperCase(),
+              bidType: type?.name.toUpperCase(),
+              dealStatus: dealStatus.name.toUpperCase(),
+              isPrivate: isPrivate,
+              sponsored: sponsored,
+              sortBy: sortBy,
+              perPage: _perPageValue,
+            );
+          }
+
+          // Save new meta data
+          _categoryDealsMeta = _list.meta?.pagination;
+          return right(_list.domain(countries));
+        } on AppHttpResponse catch (e) {
+          return left(e);
+        } on AppNetworkException catch (e) {
+          return left(e.asResponse());
+        }
+      },
+    );
+  }
+
+  Future<Either<AppHttpResponse, Deal>> getDeal(Deal deal, {KtList<Country>? countries}) async {
     final _conn = await checkConnectivity();
 
     return _conn.fold(
@@ -96,7 +170,7 @@ class DealRepository extends BaseRepository {
       (_) async {
         try {
           final _result = await remote.getDeal('${deal.id.value}');
-          return right(_result.domain);
+          return right(_result.domain(countries));
         } on AppHttpResponse catch (e) {
           return left(e);
         } on AppNetworkException catch (e) {
@@ -176,7 +250,8 @@ class DealRepository extends BaseRepository {
     );
   }
 
-  Future<Either<AppHttpResponse, BidHistory>> bidHistory(User? user, {int? perPage, bool nextPage = false}) async {
+  Future<Either<AppHttpResponse, BidHistory>> bidHistory(User? user,
+      {int? perPage, bool nextPage = false, KtList<Country>? countries}) async {
     final _perPage = perPage ?? Const.kPerPage;
     final _conn = await checkConnectivity();
 
@@ -204,7 +279,7 @@ class DealRepository extends BaseRepository {
 
           // Save new meta data
           _bidsHistoryMeta = dto.meta?.pagination;
-          return right(dto.domain);
+          return right(dto.domain(countries));
         } on AppHttpResponse catch (e) {
           return left(e);
         } on AppNetworkException catch (e) {
@@ -214,7 +289,8 @@ class DealRepository extends BaseRepository {
     );
   }
 
-  Future<Either<AppHttpResponse, SellHistory>> sellHistory(User? user, {int? perPage, bool nextPage = false}) async {
+  Future<Either<AppHttpResponse, SellHistory>> sellHistory(User? user,
+      {int? perPage, bool nextPage = false, KtList<Country>? countries}) async {
     final _perPage = perPage ?? Const.kPerPage;
     final _conn = await checkConnectivity();
 
@@ -242,7 +318,7 @@ class DealRepository extends BaseRepository {
 
           // Save new meta data
           _sellHistoryMeta = dto.meta?.pagination;
-          return right(dto.domain);
+          return right(dto.domain(countries));
         } on AppHttpResponse catch (e) {
           return left(e);
         } on AppNetworkException catch (e) {
@@ -252,7 +328,8 @@ class DealRepository extends BaseRepository {
     );
   }
 
-  Future<Either<AppHttpResponse, KtList<MyWish>>> wishlist(User? user, {int? perPage, bool nextPage = false}) async {
+  Future<Either<AppHttpResponse, KtList<MyWish>>> wishlist(User? user,
+      {int? perPage, bool nextPage = false, KtList<Country>? countries}) async {
     final _perPage = perPage ?? Const.kPerPage;
     final _conn = await checkConnectivity();
 
@@ -276,7 +353,7 @@ class DealRepository extends BaseRepository {
 
           // Save new meta data
           _wishlistMeta = _list.meta?.pagination;
-          return right(_list.domain);
+          return right(_list.domain(countries));
         } on AppHttpResponse catch (e) {
           return left(e);
         } on AppNetworkException catch (e) {
@@ -387,7 +464,7 @@ class DealRepository extends BaseRepository {
     );
   }
 
-  Future<Tuple2<AppHttpResponse?, Deal?>> sendBid(Deal deal, double amount) async {
+  Future<Tuple2<AppHttpResponse?, Deal?>> sendBid(Deal deal, double amount, {KtList<Country>? countries}) async {
     final _conn = await checkConnectivity();
 
     return _conn.fold(
@@ -398,7 +475,7 @@ class DealRepository extends BaseRepository {
           final domain = result.data.domain;
           final response = AppHttpResponse.successful(result.meta?.message);
 
-          return Tuple2(response, domain);
+          return Tuple2(response, domain(countries));
         } on AppHttpResponse catch (e) {
           return Tuple2(e, null);
         } on AppNetworkException catch (e) {

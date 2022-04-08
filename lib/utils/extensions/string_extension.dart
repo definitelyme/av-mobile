@@ -147,7 +147,7 @@ extension StringX on String {
     bool includeSymbol = false,
     bool decimal = false,
     String? currency,
-    String locale = "en_NG",
+    String? locale,
   }) =>
       NumberFormat.currency(
         name: currency,
@@ -185,15 +185,18 @@ extension StringX on String {
   String asCurrency({
     bool mask = false,
     bool symbol = true,
-    String? currency = '${Utils.currency} ',
-    String locale = "en_NG",
+    String? currency,
+    String? locale,
   }) {
+    final _currency = currency ?? '${Utils.currency} ';
+    final _locale = locale ?? 'en_NG';
+
     if (this == 'null' || isEmpty) return '';
 
     final _this = num.tryParse(this);
 
     return asCurrencyFormat(
-            mask: mask, includeSymbol: symbol, currency: currency, decimal: _this != null && !_this.isInteger, locale: locale)
+            mask: mask, includeSymbol: symbol, currency: _currency, decimal: _this != null && !_this.isInteger, locale: _locale)
         .format(_this);
   }
 

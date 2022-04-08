@@ -1,7 +1,6 @@
 library bid_history.dart;
 
 import 'package:auctionvillage/core/domain/entities/entities.dart';
-import 'package:auctionvillage/features/dashboard/data/models/models.dart';
 import 'package:auctionvillage/features/dashboard/domain/index.dart';
 import 'package:auctionvillage/utils/utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -35,13 +34,13 @@ class BidHistory with _$BidHistory {
     double? totalAuctionsParticipated,
     double? totalWinningBid,
     double? totalAmountSpent,
-    List<DealDTOData> history = const [],
+    KtList<Deal> history = const KtList.empty(),
   }) =>
       BidHistory(
         totalAmountSpent: AmountField(totalAmountSpent ?? 0),
         totalAuctionsParticipated: AmountField(totalAuctionsParticipated ?? 0),
         totalWinningBid: AmountField(totalWinningBid ?? 0),
-        deals: KtList.from(history.map((e) => e.domain)),
+        deals: history,
       );
 
   BidHistory merge(BidHistory? other, {bool nextPage = false}) => copyWith(

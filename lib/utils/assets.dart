@@ -57,6 +57,7 @@ mixin AppAssets {
   static const String bookmarkSVG = '$DASHBOARD_SVG_DIR/bookmark.svg';
   static const String _filter = '$DASHBOARD_SVG_DIR/filter.svg';
   static const String _featherSearch = '$DASHBOARD_SVG_DIR/feather_search.svg';
+  static const String _comingSoon = '$DASHBOARD_SVG_DIR/coming_soon_chat.svg';
 
   /// DASHBOARD IMAGES
   static const String homeCarousel = '$DASHBOARD_IMAGES_DIR/home-carousel-bitmap.png';
@@ -98,6 +99,7 @@ mixin AppAssets {
     thumbsSVG,
     _filter,
     _featherSearch,
+    _comingSoon,
   ];
 
   static SvgPicture logoSVG = SvgPicture.asset(
@@ -195,6 +197,11 @@ mixin AppAssets {
 
   static SvgPicture sendMessage = SvgPicture.asset(
     _sendMessage,
+    fit: BoxFit.contain,
+  );
+
+  static SvgPicture comingSoon = SvgPicture.asset(
+    _comingSoon,
     fit: BoxFit.contain,
   );
 

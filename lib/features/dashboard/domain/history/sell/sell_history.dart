@@ -1,7 +1,6 @@
 library sell_history.dart;
 
 import 'package:auctionvillage/core/domain/entities/entities.dart';
-import 'package:auctionvillage/features/dashboard/data/models/models.dart';
 import 'package:auctionvillage/features/dashboard/domain/index.dart';
 import 'package:auctionvillage/utils/utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -35,13 +34,13 @@ class SellHistory with _$SellHistory {
     double? totalProducts,
     double? totalSold,
     double? revenue,
-    List<DealDTOData> history = const [],
+    KtList<Deal> history = const KtList.empty(),
   }) =>
       SellHistory(
         revenue: AmountField(revenue ?? 0),
         totalProducts: AmountField(totalProducts ?? 0),
         totalSold: AmountField(totalSold ?? 0),
-        deals: KtList.from(history.map((e) => e.domain)),
+        deals: history,
       );
 
   SellHistory merge(SellHistory? other, {bool nextPage = false}) => SellHistory(

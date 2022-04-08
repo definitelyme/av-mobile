@@ -4,8 +4,10 @@ import 'package:auctionvillage/core/data/models/index.dart';
 import 'package:auctionvillage/core/data/response/index.dart';
 import 'package:auctionvillage/core/domain/entities/entities.dart';
 import 'package:auctionvillage/core/presentation/index.dart';
+import 'package:auctionvillage/features/auth/presentation/managers/watcher/auth_watcher_cubit.dart';
 import 'package:auctionvillage/features/dashboard/data/repositories/deal_repository.dart';
 import 'package:auctionvillage/features/dashboard/domain/index.dart';
+import 'package:auctionvillage/manager/locator/locator.dart';
 import 'package:auctionvillage/utils/utils.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
@@ -25,30 +27,82 @@ class DealCubit extends Cubit<DealState> with BaseCubit {
   void toggleLoading([bool? isLoading, Option<AppHttpResponse?>? status]) =>
       emit(state.copyWith(isLoading: isLoading ?? !state.isLoading, status: status ?? state.status));
 
+  KtList<Country> get _countries => getIt<AuthWatcherCubit>().state.countries;
+
   Future<void> fetchLiveDeals({
     int? perPage,
     bool nextPage = false,
+    bool? sponsored,
+    bool? isPrivate,
+    String? sortBy,
     EndOfListCallback? endOfList,
     AwaitCallback? callback,
     bool? isHomePage,
   }) async {
     if (state.status.getOrNull == AppHttpResponse.endOfList && nextPage) return endOfList?.call();
 
-    toggleLoading(true, none());
+    emit(state.copyWith(isLoading: true, status: none(), isLoadingSponsored: true));
 
-    final response = await _repository.deals(bidStatus: BidStatus.live, perPage: perPage, nextPage: nextPage);
+    final response = await _repository.deals(
+      bidStatus: BidStatus.live,
+      perPage: perPage,
+      nextPage: nextPage,
+      sponsored: sponsored,
+      isPrivate: isPrivate,
+      sortBy: sortBy,
+      countries: _countries,
+    );
 
     emit(response.fold(
       (e) => state.copyWith(status: some(e), isLoading: false),
       (deals) {
-        if (isHomePage == null) return state.copyWith(deals: !nextPage ? deals : state.deals.plusIfAbsent(deals), isLoading: false);
+        if (isHomePage == null) return state.copyWith(deals: !nextPage ? deals : state.deals.plusIfAbsent(deals));
 
         if (isHomePage)
-          return state.copyWith(homeDeals: !nextPage ? deals : state.homeDeals.plusIfAbsent(deals), isLoading: false);
+          return state.copyWith(homeDeals: !nextPage ? deals : state.homeDeals.plusIfAbsent(deals));
         else
-          return state.copyWith(liveDeals: !nextPage ? deals : state.liveDeals.plusIfAbsent(deals), isLoading: false);
+          return state.copyWith(liveDeals: !nextPage ? deals : state.liveDeals.plusIfAbsent(deals));
       },
     ));
+
+    emit(state.copyWith(isLoading: false, isLoadingSponsored: false));
+
+    callback?.call(true);
+  }
+
+  Future<void> sponsoredDeals({
+    bool? isPrivate,
+    DealType? dealType,
+    bool? sponsored,
+    String? sortBy,
+    int? perPage,
+    bool nextPage = false,
+    EndOfListCallback? endOfList,
+    AwaitCallback? callback,
+  }) async {
+    if (state.status.getOrNull == AppHttpResponse.endOfList && nextPage) return endOfList?.call();
+
+    emit(state.copyWith(status: none(), isLoadingSponsored: true));
+
+    final response = await _repository.deals(
+      type: dealType,
+      isPrivate: isPrivate,
+      sponsored: sponsored,
+      sortBy: sortBy,
+      perPage: perPage,
+      nextPage: nextPage,
+      countries: _countries,
+    );
+
+    emit(response.fold(
+      (e) => state.copyWith(status: some(e)),
+      (deals) {
+        final filtered = deals.filter((it) => it.product != null && it.product!.photos.isNotEmpty());
+        return state.copyWith(homeSponsoredDeals: !nextPage ? filtered : state.homeSponsoredDeals.plusIfAbsent(filtered));
+      },
+    ));
+
+    emit(state.copyWith(isLoadingSponsored: false));
 
     callback?.call(true);
   }
@@ -56,8 +110,12 @@ class DealCubit extends Cubit<DealState> with BaseCubit {
   Future<void> filterDeals({
     bool? isPrivate,
     DealType? dealType,
+    BidStatus? bidStatus,
+    bool? sponsored,
+    String? sortBy,
     int? perPage,
     bool nextPage = false,
+    DealCategory? category,
     EndOfListCallback? endOfList,
     AwaitCallback? callback,
   }) async {
@@ -65,7 +123,31 @@ class DealCubit extends Cubit<DealState> with BaseCubit {
 
     toggleLoading(true, none());
 
-    final response = await _repository.deals(type: dealType, isPrivate: isPrivate, perPage: perPage, nextPage: nextPage);
+    final Either<AppHttpResponse, KtList<Deal>> response;
+
+    if (category == null)
+      response = await _repository.deals(
+        type: dealType,
+        isPrivate: isPrivate,
+        sponsored: sponsored,
+        bidStatus: bidStatus,
+        sortBy: sortBy,
+        perPage: perPage,
+        nextPage: nextPage,
+        countries: _countries,
+      );
+    else
+      response = await _repository.filterDealsByCategory(
+        category,
+        type: dealType,
+        isPrivate: isPrivate,
+        sponsored: sponsored,
+        bidStatus: bidStatus,
+        sortBy: sortBy,
+        perPage: perPage,
+        nextPage: nextPage,
+        countries: _countries,
+      );
 
     emit(response.fold(
       (e) => state.copyWith(status: some(e), isLoading: false),
@@ -95,7 +177,7 @@ class DealCubit extends Cubit<DealState> with BaseCubit {
   Future<void> showDeal(Deal deal) async {
     emit(state.copyWith(currentDeal: deal, isLoading: true, status: none(), bidAmount: deal.lastPriceOffered));
 
-    final response = await _repository.getDeal(deal);
+    final response = await _repository.getDeal(deal, countries: _countries);
 
     emit(response.fold(
       (e) => state.copyWith(status: some(e), isLoading: false),
@@ -128,7 +210,7 @@ class DealCubit extends Cubit<DealState> with BaseCubit {
   void sendBid() async {
     emit(state.copyWith(isBidding: true, status: none()));
 
-    final response = await _repository.sendBid(state.currentDeal, state.bidAmount.getOrNull);
+    final response = await _repository.sendBid(state.currentDeal, state.bidAmount.getOrNull, countries: _countries);
 
     emit(state.copyWith(
       isBidding: false,
@@ -148,7 +230,7 @@ class DealCubit extends Cubit<DealState> with BaseCubit {
 
     toggleLoading(true, none());
 
-    final response = await _repository.bidHistory(user, perPage: perPage, nextPage: nextPage);
+    final response = await _repository.bidHistory(user, perPage: perPage, nextPage: nextPage, countries: _countries);
 
     emit(response.fold(
       (e) => state.copyWith(status: some(e), isLoading: false),
@@ -172,7 +254,7 @@ class DealCubit extends Cubit<DealState> with BaseCubit {
 
     toggleLoading(true, none());
 
-    final response = await _repository.sellHistory(user, perPage: perPage, nextPage: nextPage);
+    final response = await _repository.sellHistory(user, perPage: perPage, nextPage: nextPage, countries: _countries);
 
     emit(response.fold(
       (e) => state.copyWith(status: some(e), isLoading: false),
@@ -216,7 +298,7 @@ class DealCubit extends Cubit<DealState> with BaseCubit {
 
     toggleLoading(true, none());
 
-    final response = await _repository.wishlist(user, perPage: perPage, nextPage: nextPage);
+    final response = await _repository.wishlist(user, perPage: perPage, nextPage: nextPage, countries: _countries);
 
     emit(response.fold(
       (e) => state.copyWith(status: some(e), isLoading: false),

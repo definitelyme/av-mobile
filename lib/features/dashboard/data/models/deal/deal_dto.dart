@@ -1,6 +1,7 @@
 library deal_dto.dart;
 
 import 'package:auctionvillage/core/data/index.dart';
+import 'package:auctionvillage/core/domain/entities/entities.dart';
 import 'package:auctionvillage/features/dashboard/data/models/models.dart';
 import 'package:auctionvillage/features/dashboard/domain/index.dart';
 import 'package:auctionvillage/manager/serializer/serializers.dart';
@@ -28,7 +29,7 @@ class DealDTO with _$DealDTO {
   factory DealDTO.fromJson(Map<String, dynamic> json) => _$DealDTOFromJson(json);
 
   /// Maps the Data Transfer Object to a Deal Object.
-  Deal get domain => data.domain;
+  Deal domain([KtList<Country>? countries]) => data.domain(countries);
 }
 
 DealDTOData deserializeDealDTOData(Map<String, dynamic> json) => DealDTOData.fromJson(json);
@@ -43,6 +44,7 @@ class DealDTOData with _$DealDTOData {
     @JsonKey(name: '_id') String? id,
     @StringSerializer() String? basePrice,
     @StringSerializer() String? amount,
+    @StringSerializer() String? country,
     @BooleanSerializer() bool? isPrivate,
     @JsonKey(name: 'isFavorite') @BooleanSerializer() bool? isFavorite,
     @JsonKey(name: 'status', toJson: DealStatusSerializer.toJsonString) @DealStatusSerializer() DealStatus? dealStatus,
@@ -74,26 +76,26 @@ class DealDTOData with _$DealDTOData {
   /// Maps Deal to a Data Transfer Object.
   factory DealDTOData.fromDomain(Deal? instance) => DealDTOData(
         // id: instance?.id.value,
-        basePrice: '${instance?.basePrice.getOrNull.roundToIntOrDouble ?? ''}',
-        amount: '${instance?.basePrice.getOrNull.roundToIntOrDouble ?? ''}',
+        basePrice: '${instance?.basePrice.valueOrNull?.roundToIntOrDouble ?? ''}',
+        amount: '${instance?.basePrice.valueOrNull?.roundToIntOrDouble ?? ''}',
         // isPrivate: instance?.isPrivate,
         // isFavorite: instance?.hasWish,
         // dealStatus: instance?.status,
         // sponsored: instance?.isSponsored,
         dealPlan: instance?.dealPlan,
-        // admittanceFee: instance?.admittanceFee.getOrNull,
-        address: instance?.address.getOrNull,
-        // clicks: instance?.clicks.getOrNull,
-        // dealPriority: instance?.dealPriority.getOrNull,
+        // admittanceFee: instance?.admittanceFee.valueOrNull?,
+        address: instance?.address.valueOrNull,
+        // clicks: instance?.clicks.valueOrNull?,
+        // dealPriority: instance?.dealPriority.valueOrNull?,
         // bidStatus: instance?.bidStatus,
         // isClosing: instance?.isClosing,
         // active: instance?.isActive,
-        // lastPriceOffered: instance?.lastPriceOffered.getOrNull,
+        // lastPriceOffered: instance?.lastPriceOffered.valueOrNull?,
         type: instance?.type,
         quantity: instance?.quantity,
         biddingType: instance?.biddingType,
-        startDate: instance?.startDate.getOrNull,
-        endDate: instance?.endDate.getOrNull,
+        startDate: instance?.startDate.valueOrNull,
+        endDate: instance?.endDate.valueOrNull,
         // product: ProductDTOData.fromDomain(instance?.product),
         offerType: instance?.offerType,
       );
@@ -101,7 +103,7 @@ class DealDTOData with _$DealDTOData {
   factory DealDTOData.fromJson(Map<String, dynamic> json) => _$DealDTODataFromJson(json);
 
   /// Maps the Data Transfer Object to a Deal Object.
-  Deal get domain => Deal.blank(
+  Deal domain([KtList<Country>? countries]) => Deal.blank(
         id: id,
         basePrice: const DoubleSerializer().fromJson(basePrice),
         isPrivate: isPrivate,
@@ -125,8 +127,9 @@ class DealDTOData with _$DealDTOData {
         type: type,
         user: user?.domain,
         vendor: vendor?.domain,
+        country: countries?.firstOrNull((e) => e.name.valueOrNull?.toLowerCase() == country?.toLowerCase()),
         // lastBidder: lastBidder?.domain,
-        product: product?.domain,
+        product: product?.domain(countries),
         // category: category?.domain,
         createdAt: createdAt,
         updatedAt: updatedAt,
@@ -150,5 +153,5 @@ class DealListDTO with _$DealListDTO {
   factory DealListDTO.fromJson(Map<String, dynamic> json) => _$DealListDTOFromJson(json);
 
   /// Maps the Data Transfer Object to a KtList<Deal> Object.
-  KtList<Deal> get domain => KtList.from(data.map((e) => e.domain));
+  KtList<Deal> domain([KtList<Country>? countries]) => KtList.from(data.map((e) => e.domain(countries)));
 }

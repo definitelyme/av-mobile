@@ -13,8 +13,8 @@ import 'package:auctionvillage/features/dashboard/data/repositories/deal_reposit
 import 'package:auctionvillage/features/dashboard/domain/index.dart';
 import 'package:auctionvillage/manager/locator/locator.dart';
 import 'package:auctionvillage/utils/utils.dart';
-import 'package:cloudinary_public/cloudinary_public.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
+import 'package:cloudinary_public/cloudinary_public.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -175,7 +175,7 @@ class ProductBloc extends HydratedBloc<ProductEvent, ProductState> with BaseBloc
         store: (evt) async => _asyncHandler(
           evt,
           emit,
-          before: (e) => e.copyWith(isLoading: false, isCreatingProduct: true),
+          before: (e) => e.copyWith(isLoading: false, isCreatingProduct: true, status: none()),
           after: (e) => e.copyWith(isLoading: false, isCreatingProduct: false),
           beforeRun: (_StoreNewProductEvent e, emit) {
             emit(state.copyWith(validate: true));
@@ -335,7 +335,7 @@ class ProductBloc extends HydratedBloc<ProductEvent, ProductState> with BaseBloc
     add(const ProductPageControllerEvent.animateTo(0));
     add(const ProductPageControllerEvent.indexChanged(0));
     add(_ProductEmiiterEvent(state.copyWith(
-      product: Product.blank(),
+      product: Product.sell(),
       selectedPlan: DealPlan.blank(),
       isLoading: false,
       isCreatingProduct: false,
@@ -359,32 +359,39 @@ class ProductBloc extends HydratedBloc<ProductEvent, ProductState> with BaseBloc
     emit(state.copyWith(status: none()));
 
     try {
-      final media = MediaField(null);
-      final _id = UniqueId<String>.v4().value;
+      final conn = await connection();
 
-      if (evt.index == null) {
-        // Append to list
-        emit(state.copyWith.product(photos: state.product.photos.addMedia(media, id: _id)));
-      } else {
-        // Replace at index
-        emit(state.copyWith.product(photos: state.product.photos.replaceMedia(media, id: _id, index: evt.index)));
-      }
+      await conn.fold(
+        () async {
+          final media = MediaField(null);
+          final _id = UniqueId<String>.v4().value;
 
-      final index = state.product.photos.indexOf(state.product.photos.first((e) => e.id == _id));
+          if (evt.index == null) {
+            // Append to list
+            emit(state.copyWith.product(photos: state.product.photos.addMedia(media, id: _id)));
+          } else {
+            // Replace at index
+            emit(state.copyWith.product(photos: state.product.photos.replaceMedia(media, id: _id, index: evt.index)));
+          }
 
-      final response = await _cloudinary.uploadFile(
-        CloudinaryFile.fromFile(evt.file.path, resourceType: CloudinaryResourceType.Image),
-        uploadPreset: env.uploadPreset,
-        onProgress: (count, total) {
-          add(_ProductEmiiterEvent(state.copyWith.product(
-            photos: state.product.photos.replaceMedia(media, index: index, progress: SendProgressCallback(count, total)),
-          )));
+          final index = state.product.photos.indexOf(state.product.photos.first((e) => e.id == _id));
+
+          final response = await _cloudinary.uploadFile(
+            CloudinaryFile.fromFile(evt.file.path, resourceType: CloudinaryResourceType.Image),
+            uploadPreset: env.uploadPreset,
+            onProgress: (count, total) {
+              add(_ProductEmiiterEvent(state.copyWith.product(
+                photos: state.product.photos.replaceMedia(media, index: index, progress: SendProgressCallback(count, total)),
+              )));
+            },
+          );
+
+          final _uploaded = media.copyWith(response.secureUrl);
+
+          emit(state.copyWith.product(photos: state.product.photos.replaceMedia(_uploaded, index: index)));
         },
+        (f) async => emit(state.copyWith(status: optionOf(f))),
       );
-
-      final _uploaded = media.copyWith(response.secureUrl);
-
-      emit(state.copyWith.product(photos: state.product.photos.replaceMedia(_uploaded, index: index)));
     } on CloudinaryException catch (e, tr) {
       emit(state.copyWith(status: optionOf(AppHttpResponse.failure('Error ${e.statusCode}: ${e.message ?? e.responseString}'))));
       unawaited(App.report(exception: e, stack: tr));
@@ -413,9 +420,10 @@ class ProductBloc extends HydratedBloc<ProductEvent, ProductState> with BaseBloc
     _localstore.collection(collection).doc(document).get().then((json) {
       final productJson = json != null && json.containsKey(_productKey) ? json[_productKey] as Map<String, dynamic>? : null;
       final pageIndex = json != null && json.containsKey(_indexKey) ? json[_indexKey] as int? : null;
+      final countries = getIt<AuthWatcherCubit>().state.countries;
 
       if (productJson != null) {
-        final product = ProductDTOData.fromJson(productJson).domain;
+        final product = ProductDTOData.fromJson(productJson).domain(countries);
 
         final startDate = product.deal?.startDate.getOrNull;
         final endDate = product.deal?.endDate.getOrNull;
@@ -498,7 +506,7 @@ class ProductBloc extends HydratedBloc<ProductEvent, ProductState> with BaseBloc
   Map<String, dynamic>? toJson(ProductState state) {
     var json = <String, dynamic>{};
 
-    if (state.product != Product.blank()) {
+    if (!state.product.isSellBlank) {
       json[_productKey] = ProductDTOData.fromDomain(state.product).toJson();
       json[_indexKey] = state.currentIndex;
       _localstore.collection(collection).doc(document).set(json);

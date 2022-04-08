@@ -10,9 +10,7 @@ class Palette {
     return Color(int.parse(hex.substring(1, 7), radix: 16) + 0xFF000000);
   }
 
-  static Color get random =>
-      Color((math.Random().nextDouble() * 0xFFFFFF).toInt() << 0)
-          .withOpacity(1.0);
+  static Color get random => Color((math.Random().nextDouble() * 0xFFFFFF).toInt() << 0).withOpacity(1.0);
 
   static String stringHex(
     Color color, {
@@ -21,14 +19,12 @@ class Palette {
   }) {
     var value = color.toString().split('(0x')[1].split(')')[0];
 
-    if (!withAlpha)
-      value = value.length > 6 ? value.replaceRange(0, 2, '') : value;
+    if (!withAlpha) value = value.length > 6 ? value.replaceRange(0, 2, '') : value;
     if (appendHash) value = '#$value';
     return value;
   }
 
-  static MaterialColor material(Color color) =>
-      MaterialColor(color.value, swatch(color));
+  static MaterialColor material(Color color) => MaterialColor(color.value, swatch(color));
 
   static Map<int, Color> swatch(Color color) {
     var _color = color;
@@ -105,8 +101,7 @@ class Palette {
     },
   );
 
-  static const MaterialColor paletteAccent =
-      MaterialColor(0xFFFFD3D1, <int, Color>{
+  static const MaterialColor paletteAccent = MaterialColor(0xFFFFD3D1, <int, Color>{
     50: Color(0xFFFFFFFF),
     100: Color(0xFFFFFBFB),
     200: Color(0xFFFFD3D1),
@@ -121,6 +116,7 @@ class Palette {
   static const Color accentYellow2 = Color(0xFFFFA500);
   static const Color accentGreen = Color(0xFF00AB06);
   static const Color accentGreen2 = Color(0xFF6FCF97);
+  static const Color accentRed = Color(0xFFE35959);
   static const Color accentBlue = Color(0xFF2FA9D0);
   static const Color accentPurple = Color(0xFFBB6BD9);
   static const Color failedRed = Color(0xFFE71E67);

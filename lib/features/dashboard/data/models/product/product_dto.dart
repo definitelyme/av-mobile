@@ -1,6 +1,7 @@
 library product_dto.dart;
 
 import 'package:auctionvillage/core/data/index.dart';
+import 'package:auctionvillage/core/domain/entities/entities.dart';
 import 'package:auctionvillage/features/dashboard/data/models/models.dart';
 import 'package:auctionvillage/features/dashboard/domain/index.dart';
 import 'package:auctionvillage/manager/serializer/serializers.dart';
@@ -31,7 +32,7 @@ class ProductDTO with _$ProductDTO {
   factory ProductDTO.fromJson(Map<String, dynamic> json) => _$ProductDTOFromJson(json);
 
   /// Maps the Data Transfer Object to a Product Object.
-  Product get domain => data.domain;
+  Product domain([KtList<Country>? countries]) => data.domain(countries);
 }
 
 ProductDTOData deserializeProductDTOData(Map<String, dynamic> json) => ProductDTOData.fromJson(json);
@@ -88,11 +89,11 @@ class ProductDTOData with _$ProductDTOData {
 
   /// Maps Product to a Data Transfer Object.
   factory ProductDTOData.fromDomain(Product? instance) => ProductDTOData(
-        name: instance?.name.getOrNull,
-        state: instance?.state.getOrNull,
-        lga: instance?.lga.getOrNull,
-        description: instance?.description.getOrNull,
-        country: instance?.country?.name.getOrNull?.toUpperCase(),
+        name: instance?.name.valueOrNull,
+        state: instance?.state.valueOrNull,
+        lga: instance?.lga.valueOrNull,
+        description: instance?.description.valueOrNull,
+        country: instance?.country?.name.valueOrNull?.toUpperCase(),
         // active: instance?.isActive,
         // isFavorite: instance?.isFavorite,
         // status: instance?.dealStatus,
@@ -102,8 +103,8 @@ class ProductDTOData with _$ProductDTOData {
         category: CategoryDTOData.fromDomain(instance?.category),
         deal: DealDTOData.fromDomain(instance?.deal),
         photos: instance?.photos
-                .filter((i) => i.image.getOrNull != null && i.image.getOrNull!.isNotEmpty)
-                .map((p0) => p0.image.getOrNull!)
+                .filter((i) => i.image.valueOrNull != null && i.image.valueOrNull!.isNotEmpty)
+                .map((p0) => p0.image.valueOrNull!)
                 .asList() ??
             [],
         // createdAt: instance?.createdAt,
@@ -113,7 +114,7 @@ class ProductDTOData with _$ProductDTOData {
   factory ProductDTOData.fromJson(Map<String, dynamic> json) => _$ProductDTODataFromJson(json);
 
   /// Maps the Data Transfer Object to a Product Object.
-  Product get domain => Product.blank(
+  Product domain([KtList<Country>? countries]) => Product.blank(
         id: id,
         category: category?.domain,
         name: name,
@@ -125,7 +126,7 @@ class ProductDTOData with _$ProductDTOData {
         dealStatus: status,
         active: active,
         vendor: vendor?.domain,
-        deal: deal?.domain,
+        deal: deal?.domain(countries),
         shipping: shippingInformation?.domain,
         brand: brandInformation?.domain,
         terms: termsInformation?.domain,
@@ -151,5 +152,5 @@ class ProductListDTO with _$ProductListDTO {
   factory ProductListDTO.fromJson(Map<String, dynamic> json) => _$ProductListDTOFromJson(json);
 
   /// Maps the Data Transfer Object to a KtList<Product> Object.
-  KtList<Product> get domain => KtList.from(data.map((e) => e.domain));
+  KtList<Product> domain([KtList<Country>? countries]) => KtList.from(data.map((e) => e.domain(countries)));
 }

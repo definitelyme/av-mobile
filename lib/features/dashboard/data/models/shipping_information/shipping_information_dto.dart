@@ -23,13 +23,13 @@ class ShippingInformationDTO with _$ShippingInformationDTO {
 
   /// Maps ShippingInformation to a Data Transfer Object.
   factory ShippingInformationDTO.fromDomain(ShippingInformation? instance) => ShippingInformationDTO(
-        width: instance?.width.getOrNull,
-        weight: instance?.weight.getOrNull,
-        height: instance?.height.getOrNull,
-        length: instance?.length.getOrNull,
+        width: instance?.width.valueOrNull,
+        weight: instance?.weight.valueOrNull,
+        height: instance?.height.valueOrNull,
+        length: instance?.length.valueOrNull,
         pickUpAvailable: instance?.isPickup,
-        deliveryPeriod: instance?.deliveryPeriod.getOrNull,
-        description: instance?.description.getOrNull,
+        deliveryPeriod: instance?.deliveryPeriod.valueOrNull,
+        description: instance?.description.valueOrNull,
       );
 
   factory ShippingInformationDTO.fromJson(Map<String, dynamic> json) => _$ShippingInformationDTOFromJson(json);

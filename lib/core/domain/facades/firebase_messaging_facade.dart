@@ -18,8 +18,7 @@ abstract class MessagingFacade {
         pushNotificationChannel,
       ];
 
-  static NotificationChannel get defaultNotificationChannel =>
-      NotificationChannel(
+  static NotificationChannel get defaultNotificationChannel => NotificationChannel(
         channelKey: 'default_channel',
         channelName: 'Default',
         channelDescription: 'Receives notifications from the app',
@@ -59,32 +58,26 @@ abstract class MessagingFacade {
     // if (!await requestBasicPermissionToSendNotifications(context)) return [];
 
     // Check which of the permissions you need are allowed at this time
-    var permissionsAllowed = await AwesomeNotifications().checkPermissionList(
-        channelKey: channelKey, permissions: permissionList);
+    var permissionsAllowed = await AwesomeNotifications().checkPermissionList(channelKey: channelKey, permissions: permissionList);
 
     // If all permissions are allowed, there is nothing to do
-    if (permissionsAllowed.length == permissionList.length)
-      return permissionsAllowed;
+    if (permissionsAllowed.length == permissionList.length) return permissionsAllowed;
 
     // Refresh the permission list with only the disallowed permissions
-    var permissionsNeeded =
-        permissionList.toSet().difference(permissionsAllowed.toSet()).toList();
+    var permissionsNeeded = permissionList.toSet().difference(permissionsAllowed.toSet()).toList();
 
     // Check if some of the permissions need to request user's intervention to be enabled
-    var lockedPermissions = await AwesomeNotifications()
-        .shouldShowRationaleToRequest(
-            channelKey: channelKey, permissions: permissionsNeeded);
+    var lockedPermissions =
+        await AwesomeNotifications().shouldShowRationaleToRequest(channelKey: channelKey, permissions: permissionsNeeded);
 
     if (!(await AwesomeNotifications().isNotificationAllowed())) {
       // If none, request directly
       if (lockedPermissions.isEmpty) {
         // Request the permission through native resources.
-        await AwesomeNotifications().requestPermissionToSendNotifications(
-            channelKey: channelKey, permissions: permissionsNeeded);
+        await AwesomeNotifications().requestPermissionToSendNotifications(channelKey: channelKey, permissions: permissionsNeeded);
 
         // After the user comes back, check if the permissions has successfully enabled
-        permissionsAllowed = await AwesomeNotifications().checkPermissionList(
-            channelKey: channelKey, permissions: permissionsNeeded);
+        permissionsAllowed = await AwesomeNotifications().checkPermissionList(channelKey: channelKey, permissions: permissionsNeeded);
       } else {
         // If you need to show a rationale to educate the user to conceived the permission, show it
         await Utils.showAlertDialog<bool>(
@@ -95,7 +88,6 @@ abstract class MessagingFacade {
                   title: 'Get Notified!',
                   defaultValue: false,
                   material: true,
-                  useMaterialActions: true,
                   body: [
                     Column(
                       mainAxisSize: MainAxisSize.min,
@@ -113,9 +105,7 @@ abstract class MessagingFacade {
                         0.01.verticalh,
                         //
                         AdaptiveText(
-                          lockedPermissions
-                              .join(', ')
-                              .replaceAll('NotificationPermission.', ''),
+                          lockedPermissions.join(', ').replaceAll('NotificationPermission.', ''),
                           maxLines: 2,
                           textAlign: TextAlign.center,
                           fontSize: 14,
@@ -125,7 +115,7 @@ abstract class MessagingFacade {
                       ],
                     )
                   ],
-                  disableSecondButton: true,
+                  hideSecondButton: true,
                   firstButtonText: 'Later',
                   onFirstPressed: () {
                     navigator.pop();
@@ -134,8 +124,7 @@ abstract class MessagingFacade {
                   secondTextStyle: const TextStyle(color: Palette.accentColor),
                   secondButtonText: 'Sure',
                   onSecondPressedFuture: () async {
-                    final result = getIt<AwesomeNotifications>()
-                        .requestPermissionToSendNotifications(
+                    final result = getIt<AwesomeNotifications>().requestPermissionToSendNotifications(
                       channelKey: channelKey,
                       permissions: lockedPermissions,
                     );
@@ -151,8 +140,7 @@ abstract class MessagingFacade {
                     );
 
                     // After the user come back, check if the permissions has successfully enabled
-                    permissionsAllowed =
-                        await AwesomeNotifications().checkPermissionList(
+                    permissionsAllowed = await AwesomeNotifications().checkPermissionList(
                       channelKey: channelKey,
                       permissions: lockedPermissions,
                     );

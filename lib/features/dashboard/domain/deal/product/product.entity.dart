@@ -1,9 +1,9 @@
 library product.entity.dart;
 
-import 'package:auctionvillage/core/data/models/index.dart';
 import 'package:auctionvillage/core/domain/entities/entities.dart';
 import 'package:auctionvillage/core/domain/response/index.dart';
 import 'package:auctionvillage/features/dashboard/domain/index.dart';
+import 'package:auctionvillage/utils/utils.dart';
 import 'package:dartz/dartz.dart' hide id;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kt_dart/collection.dart';
@@ -22,7 +22,7 @@ class Product extends BaseEntity with _$Product {
     required UniqueId<String?> id,
     required BasicTextField<String?> name,
     required BasicTextField<String?> description,
-    @Default(KtList.empty()) KtList<_MediaField> photos,
+    @Default(KtList.empty()) KtList<UploadableMedia> photos,
     @Default(false) bool isActive,
     @Default(false) bool isFavorite,
     @Default(DealStatus.pending) DealStatus dealStatus,
@@ -66,7 +66,7 @@ class Product extends BaseEntity with _$Product {
         isFavorite: isFavorite ?? false,
         dealStatus: dealStatus ?? DealStatus.pending,
         vendor: vendor,
-        photos: photos.map((e) => _MediaField(MediaField(e), id: null)).toImmutableList(),
+        photos: photos.map((e) => UploadableMedia(MediaField(e), id: null)).toImmutableList(),
         name: BasicTextField(name),
         lga: BasicTextField(lga),
         state: BasicTextField(state),
@@ -78,7 +78,21 @@ class Product extends BaseEntity with _$Product {
         updatedAt: updatedAt,
       );
 
+  factory Product.sell() => Product(
+        id: UniqueId.fromExternal(null),
+        deal: Deal.blank(),
+        name: BasicTextField(null),
+        lga: BasicTextField(null),
+        state: BasicTextField(null),
+        description: BasicTextField(null),
+        brandInformation: BrandInformation.blank(color: Palette.accentRed),
+        shippingInformation: ShippingInformation.blank(),
+        termsInformation: TermsInformation.blank(),
+      );
+
   bool get isBlank => this == Product.blank();
+
+  bool get isSellBlank => this == Product.sell();
 
   Product merge(Product? other) => copyWith(
         id: other?.id.value != null ? other!.id : id,
@@ -110,36 +124,4 @@ class Product extends BaseEntity with _$Product {
               none();
         },
       );
-}
-
-class _MediaField {
-  final String? id;
-  final MediaField image;
-  final SendProgressCallback? progress;
-
-  const _MediaField(this.image, {required this.id, this.progress});
-
-  _MediaField merge(_MediaField? other) => _MediaField(other?.image ?? image, id: other?.id ?? id, progress: other?.progress ?? progress);
-
-  _MediaField copyWith({MediaField? image, String? id, SendProgressCallback? progress}) =>
-      _MediaField(image ?? this.image, id: id ?? this.id, progress: progress ?? this.progress);
-
-  @override
-  bool operator ==(other) {
-    if (identical(this, other)) return true;
-    return other is _MediaField && other.image.getOrNull == image.getOrNull;
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(id), const DeepCollectionEquality().hash(image));
-
-  @override
-  String toString() => '_MediaField(url: ${image.getOrNull})';
-}
-
-extension MediaFieldX on KtList<_MediaField> {
-  KtList<_MediaField> addMedia(MediaField media, {String? id}) => plusElement(_MediaField(media, id: id));
-
-  KtList<_MediaField> replaceMedia(MediaField image, {String? id, SendProgressCallback? progress, int? index}) =>
-      mapIndexedNotNull((i, val) => i == index ? val?.copyWith(id: id, image: image, progress: progress) : val);
 }

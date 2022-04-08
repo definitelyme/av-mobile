@@ -3,11 +3,11 @@ library wallet_repository.dart;
 import 'dart:async';
 
 import 'package:auctionvillage/core/data/index.dart';
+import 'package:auctionvillage/core/domain/entities/entities.dart';
+import 'package:auctionvillage/features/dashboard/data/local/wallet/wallet_local.dart';
 import 'package:auctionvillage/features/dashboard/data/models/user_wallet/debit_card/debit_card_dto.dataclass.dart';
 import 'package:auctionvillage/features/dashboard/data/remote/wallet_remote/wallet_remote.dart';
-import 'package:auctionvillage/features/dashboard/data/local/wallet/wallet_local.dart';
 import 'package:auctionvillage/features/dashboard/domain/index.dart';
-import 'package:auctionvillage/features/dashboard/presentation/managers/index.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
@@ -39,17 +39,11 @@ class WalletRepository extends BaseRepository {
       (_) async {
         try {
           final dto = DebitCardDTO.fromDomain(card).data;
-          await _remote.addCard('${card.id.value}', dto.copyWith(uid: null));
-
-          // return await response.response.maybeMap(
-          //   orElse: () => response,
-          //   success: (_) async {
-
-          //   },
-          // );
-
+          final response = await _remote.addCard('${card.id.value}', dto.copyWith(uid: null));
+          // Store card locally
           await _local.addCard(card.id.value!, dto);
-          return AppHttpResponse.successful('Card added successfully!');
+
+          return AppHttpResponse.successful(response.message, pop: true);
         } on AppHttpResponse catch (e) {
           return e;
         } on AppNetworkException catch (e) {
@@ -67,7 +61,7 @@ class WalletRepository extends BaseRepository {
       (_) async {
         try {
           await _remote.fundWallet('$amount', cardPin: '$cardPin');
-          return AppHttpResponse.successful('You have successfully funded your wallet');
+          return AppHttpResponse.successful('You have successfully funded your wallet', pop: true);
         } on AppHttpResponse catch (e) {
           return e;
         } on AppNetworkException catch (e) {
@@ -90,7 +84,7 @@ class WalletRepository extends BaseRepository {
       (_) async {
         try {
           await _remote.withdraw('$amount', accountNumber: account, bank: bank, withdrawalPin: pin);
-          return AppHttpResponse.successful('You have successfully withdrawn');
+          return AppHttpResponse.successful('You have successfully withdrawn', pop: true);
         } on AppHttpResponse catch (e) {
           return e;
         } on AppNetworkException catch (e) {
@@ -141,6 +135,64 @@ class WalletRepository extends BaseRepository {
             locality: () async => await _remote.setupPin(pin, locality: answer),
           );
           return AppHttpResponse.successful('Pin setup successfully!');
+        } on AppHttpResponse catch (e) {
+          return e;
+        } on AppNetworkException catch (e) {
+          return e.asResponse();
+        }
+      },
+    );
+  }
+
+  Future<AppHttpResponse> forgotSecurityAnswer([bool? pop]) async {
+    final _conn = await checkConnectivity();
+
+    return _conn.fold(
+      (f) => f,
+      (_) async {
+        try {
+          final result = await _remote.forgotSecurityAnswer();
+          return AppHttpResponse.successful(result.message, pop: pop ?? true);
+        } on AppHttpResponse catch (e) {
+          return e;
+        } on AppNetworkException catch (e) {
+          return e.asResponse();
+        }
+      },
+    );
+  }
+
+  Future<AppHttpResponse> confirmSecurityAnswer(SecurityQuestion question, {String? answer}) async {
+    final _conn = await checkConnectivity();
+
+    return _conn.fold(
+      (f) => f,
+      (_) async {
+        try {
+          final result = await question.when(
+            favPlace: () async => await _remote.confirmSecurityAnswer(favPlace: answer),
+            favAthlete: () async => await _remote.confirmSecurityAnswer(favAthlete: answer),
+            locality: () async => await _remote.confirmSecurityAnswer(locality: answer),
+          );
+          return AppHttpResponse.info(result.message, true);
+        } on AppHttpResponse catch (e) {
+          return e;
+        } on AppNetworkException catch (e) {
+          return e.asResponse();
+        }
+      },
+    );
+  }
+
+  Future<AppHttpResponse> resetWithdrawalPin(String pin) async {
+    final _conn = await checkConnectivity();
+
+    return _conn.fold(
+      (f) => f,
+      (_) async {
+        try {
+          final result = await _remote.resetWithdrawalPin(pin);
+          return AppHttpResponse.successful(result.message, pop: true);
         } on AppHttpResponse catch (e) {
           return e;
         } on AppNetworkException catch (e) {

@@ -83,6 +83,7 @@ class AdaptiveTextFormInput extends StatefulWidget {
   final TextDirection? textDirection;
   final bool autoDisposeController;
   final Brightness? keyboardAppearance;
+  final VoidCallback? onFieldSubmitted;
 
   AdaptiveTextFormInput({
     Key? key,
@@ -151,6 +152,7 @@ class AdaptiveTextFormInput extends StatefulWidget {
     this.textDirection,
     this.onEditingComplete,
     this.autoDisposeController = true,
+    this.onFieldSubmitted,
     Color? cupertinoBorderColorLight,
     Color? cupertinoBorderColorDark,
     Brightness? keyboardAppearance,
@@ -236,6 +238,7 @@ class AdaptiveTextFormInput extends StatefulWidget {
     this.textDirection,
     this.onEditingComplete,
     this.autoDisposeController = true,
+    this.onFieldSubmitted,
     Color? cupertinoBorderColorLight,
     Color? cupertinoBorderColorDark,
     Brightness? keyboardAppearance,
@@ -321,6 +324,7 @@ class AdaptiveTextFormInput extends StatefulWidget {
     this.textDirection,
     this.onEditingComplete,
     this.autoDisposeController = true,
+    this.onFieldSubmitted,
     Color? cupertinoBorderColorLight,
     Color? cupertinoBorderColorDark,
     Brightness? keyboardAppearance,
@@ -346,7 +350,7 @@ class AdaptiveTextFormInput extends StatefulWidget {
 
 class _AdaptiveTextFormInputState extends State<AdaptiveTextFormInput> with AutomaticKeepAliveClientMixin<AdaptiveTextFormInput> {
   late TextEditingController _textEditingController;
-  bool didUpdateInitial = false;
+  bool didUpdateController = false;
 
   @override
   void dispose() {
@@ -356,18 +360,23 @@ class _AdaptiveTextFormInputState extends State<AdaptiveTextFormInput> with Auto
 
   @override
   void initState() {
-    _textEditingController = widget.controller ?? TextEditingController(text: widget.initial);
+    _textEditingController = widget.controller ??
+        (widget.initial != null && widget.initial!.isNotEmpty ? TextEditingController(text: widget.initial) : TextEditingController());
 
     super.initState();
   }
 
   @override
   void didUpdateWidget(covariant AdaptiveTextFormInput oldWidget) {
-    if (widget.controller == null) if (widget.initial != _textEditingController.text && !didUpdateInitial)
-      setState(() {
-        _textEditingController = TextEditingController(text: widget.initial);
-        didUpdateInitial = true;
-      });
+    // Only run if controller was initialized within this widget && initial is! null
+    if (widget.controller == null && widget.initial != null) {
+      // Ensure "initial" !- controller's text && controller hasn't been updated
+      if (widget.initial != _textEditingController.text && !didUpdateController)
+        setState(() {
+          _textEditingController = _textEditingController..text = widget.initial!;
+          didUpdateController = true;
+        });
+    }
     super.didUpdateWidget(oldWidget);
   }
 
@@ -451,7 +460,9 @@ class _AdaptiveTextFormInputState extends State<AdaptiveTextFormInput> with Auto
         onChanged: widget.onChanged,
         validator: (value) => widget.cupertinoUseValidator ? widget.errorText : null,
         autovalidateMode: widget.validate ? AutovalidateMode.always : AutovalidateMode.disabled,
-        onFieldSubmitted: (_) => widget.next == null ? FocusScope.of(c).unfocus() : FocusScope.of(c).requestFocus(widget.next),
+        onFieldSubmitted: (_) => widget.onFieldSubmitted != null
+            ? widget.onFieldSubmitted!()
+            : (widget.next == null ? FocusScope.of(c).unfocus() : FocusScope.of(c).requestFocus(widget.next)),
         onEditingComplete: widget.onEditingComplete,
       );
 
@@ -528,7 +539,9 @@ class _AdaptiveTextFormInputState extends State<AdaptiveTextFormInput> with Auto
             textAlignVertical: widget.textAlignVertical,
             textDirection: widget.textDirection,
             onChanged: widget.onChanged,
-            onSubmitted: (_) => widget.next == null ? FocusScope.of(c).unfocus() : FocusScope.of(c).requestFocus(widget.next),
+            onSubmitted: (_) => widget.onFieldSubmitted != null
+                ? widget.onFieldSubmitted!()
+                : (widget.next == null ? FocusScope.of(c).unfocus() : FocusScope.of(c).requestFocus(widget.next)),
             onEditingComplete: widget.onEditingComplete,
           ),
         ),
@@ -602,7 +615,9 @@ class _AdaptiveTextFormInputState extends State<AdaptiveTextFormInput> with Auto
               autovalidateMode: widget.validate ? AutovalidateMode.always : AutovalidateMode.disabled,
               onChanged: widget.onChanged,
               validator: (value) => widget.errorText,
-              onFieldSubmitted: (_) => widget.next == null ? FocusScope.of(c).unfocus() : FocusScope.of(c).requestFocus(widget.next),
+              onFieldSubmitted: (_) => widget.onFieldSubmitted != null
+                  ? widget.onFieldSubmitted!()
+                  : (widget.next == null ? FocusScope.of(c).unfocus() : FocusScope.of(c).requestFocus(widget.next)),
               onEditingComplete: widget.onEditingComplete,
             ),
           ),

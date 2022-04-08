@@ -153,8 +153,8 @@ extension GetItInjectableX on _i1.GetIt {
         get<_i29.PreferenceRepository>()));
     gh.singleton<_i37.AuthWatcherCubit>(_i37.AuthWatcherCubit(
         get<_i35.AuthFacade>(), get<_i24.UtilitiesRepository>()));
-    gh.factory<_i38.AuthCubit>(() => _i38.AuthCubit(
-        get<_i35.AuthFacade>(), get<_i29.PreferenceRepository>()));
+    gh.factory<_i38.AuthCubit>(() => _i38.AuthCubit(get<_i35.AuthFacade>(),
+        get<_i29.PreferenceRepository>(), get<_i8.CloudinaryPublic>()));
     return this;
   }
 }

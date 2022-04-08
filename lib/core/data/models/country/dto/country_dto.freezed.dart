@@ -29,7 +29,8 @@ class _$CountryDTOTearOff {
       @JsonKey(name: 'dialCode') String? dialCode,
       @JsonKey(name: 'flag') String? flagUrl,
       @CurrencyTypeSerializer() CurrencyType? currency,
-      @JsonKey(name: 'currency_icon') String? currencyIcon}) {
+      @JsonKey(name: 'currency_icon') String? currencyIcon,
+      String? locale}) {
     return _CountryDTO(
       id: id,
       name: name,
@@ -38,6 +39,7 @@ class _$CountryDTOTearOff {
       flagUrl: flagUrl,
       currency: currency,
       currencyIcon: currencyIcon,
+      locale: locale,
     );
   }
 
@@ -63,6 +65,7 @@ mixin _$CountryDTO {
   CurrencyType? get currency => throw _privateConstructorUsedError;
   @JsonKey(name: 'currency_icon')
   String? get currencyIcon => throw _privateConstructorUsedError;
+  String? get locale => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -82,7 +85,8 @@ abstract class $CountryDTOCopyWith<$Res> {
       @JsonKey(name: 'dialCode') String? dialCode,
       @JsonKey(name: 'flag') String? flagUrl,
       @CurrencyTypeSerializer() CurrencyType? currency,
-      @JsonKey(name: 'currency_icon') String? currencyIcon});
+      @JsonKey(name: 'currency_icon') String? currencyIcon,
+      String? locale});
 }
 
 /// @nodoc
@@ -102,6 +106,7 @@ class _$CountryDTOCopyWithImpl<$Res> implements $CountryDTOCopyWith<$Res> {
     Object? flagUrl = freezed,
     Object? currency = freezed,
     Object? currencyIcon = freezed,
+    Object? locale = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -132,6 +137,10 @@ class _$CountryDTOCopyWithImpl<$Res> implements $CountryDTOCopyWith<$Res> {
           ? _value.currencyIcon
           : currencyIcon // ignore: cast_nullable_to_non_nullable
               as String?,
+      locale: locale == freezed
+          ? _value.locale
+          : locale // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -149,7 +158,8 @@ abstract class _$CountryDTOCopyWith<$Res> implements $CountryDTOCopyWith<$Res> {
       @JsonKey(name: 'dialCode') String? dialCode,
       @JsonKey(name: 'flag') String? flagUrl,
       @CurrencyTypeSerializer() CurrencyType? currency,
-      @JsonKey(name: 'currency_icon') String? currencyIcon});
+      @JsonKey(name: 'currency_icon') String? currencyIcon,
+      String? locale});
 }
 
 /// @nodoc
@@ -171,6 +181,7 @@ class __$CountryDTOCopyWithImpl<$Res> extends _$CountryDTOCopyWithImpl<$Res>
     Object? flagUrl = freezed,
     Object? currency = freezed,
     Object? currencyIcon = freezed,
+    Object? locale = freezed,
   }) {
     return _then(_CountryDTO(
       id: id == freezed
@@ -201,6 +212,10 @@ class __$CountryDTOCopyWithImpl<$Res> extends _$CountryDTOCopyWithImpl<$Res>
           ? _value.currencyIcon
           : currencyIcon // ignore: cast_nullable_to_non_nullable
               as String?,
+      locale: locale == freezed
+          ? _value.locale
+          : locale // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -215,7 +230,8 @@ class _$_CountryDTO extends _CountryDTO {
       @JsonKey(name: 'dialCode') this.dialCode,
       @JsonKey(name: 'flag') this.flagUrl,
       @CurrencyTypeSerializer() this.currency,
-      @JsonKey(name: 'currency_icon') this.currencyIcon})
+      @JsonKey(name: 'currency_icon') this.currencyIcon,
+      this.locale})
       : super._();
 
   factory _$_CountryDTO.fromJson(Map<String, dynamic> json) =>
@@ -240,10 +256,12 @@ class _$_CountryDTO extends _CountryDTO {
   @override
   @JsonKey(name: 'currency_icon')
   final String? currencyIcon;
+  @override
+  final String? locale;
 
   @override
   String toString() {
-    return 'CountryDTO(id: $id, name: $name, iso: $iso, dialCode: $dialCode, flagUrl: $flagUrl, currency: $currency, currencyIcon: $currencyIcon)';
+    return 'CountryDTO(id: $id, name: $name, iso: $iso, dialCode: $dialCode, flagUrl: $flagUrl, currency: $currency, currencyIcon: $currencyIcon, locale: $locale)';
   }
 
   @override
@@ -258,7 +276,8 @@ class _$_CountryDTO extends _CountryDTO {
             const DeepCollectionEquality().equals(other.flagUrl, flagUrl) &&
             const DeepCollectionEquality().equals(other.currency, currency) &&
             const DeepCollectionEquality()
-                .equals(other.currencyIcon, currencyIcon));
+                .equals(other.currencyIcon, currencyIcon) &&
+            const DeepCollectionEquality().equals(other.locale, locale));
   }
 
   @override
@@ -270,7 +289,8 @@ class _$_CountryDTO extends _CountryDTO {
       const DeepCollectionEquality().hash(dialCode),
       const DeepCollectionEquality().hash(flagUrl),
       const DeepCollectionEquality().hash(currency),
-      const DeepCollectionEquality().hash(currencyIcon));
+      const DeepCollectionEquality().hash(currencyIcon),
+      const DeepCollectionEquality().hash(locale));
 
   @JsonKey(ignore: true)
   @override
@@ -291,7 +311,8 @@ abstract class _CountryDTO extends CountryDTO {
       @JsonKey(name: 'dialCode') String? dialCode,
       @JsonKey(name: 'flag') String? flagUrl,
       @CurrencyTypeSerializer() CurrencyType? currency,
-      @JsonKey(name: 'currency_icon') String? currencyIcon}) = _$_CountryDTO;
+      @JsonKey(name: 'currency_icon') String? currencyIcon,
+      String? locale}) = _$_CountryDTO;
   const _CountryDTO._() : super._();
 
   factory _CountryDTO.fromJson(Map<String, dynamic> json) =
@@ -316,6 +337,8 @@ abstract class _CountryDTO extends CountryDTO {
   @override
   @JsonKey(name: 'currency_icon')
   String? get currencyIcon;
+  @override
+  String? get locale;
   @override
   @JsonKey(ignore: true)
   _$CountryDTOCopyWith<_CountryDTO> get copyWith =>

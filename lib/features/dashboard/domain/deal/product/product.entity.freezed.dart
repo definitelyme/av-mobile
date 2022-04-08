@@ -22,7 +22,7 @@ class _$ProductTearOff {
       {required UniqueId<String?> id,
       required BasicTextField<String?> name,
       required BasicTextField<String?> description,
-      KtList<_MediaField> photos = const KtList.empty(),
+      KtList<UploadableMedia> photos = const KtList.empty(),
       bool isActive = false,
       bool isFavorite = false,
       DealStatus dealStatus = DealStatus.pending,
@@ -68,7 +68,7 @@ mixin _$Product {
   UniqueId<String?> get id => throw _privateConstructorUsedError;
   BasicTextField<String?> get name => throw _privateConstructorUsedError;
   BasicTextField<String?> get description => throw _privateConstructorUsedError;
-  KtList<_MediaField> get photos => throw _privateConstructorUsedError;
+  KtList<UploadableMedia> get photos => throw _privateConstructorUsedError;
   bool get isActive => throw _privateConstructorUsedError;
   bool get isFavorite => throw _privateConstructorUsedError;
   DealStatus get dealStatus => throw _privateConstructorUsedError;
@@ -97,7 +97,7 @@ abstract class $ProductCopyWith<$Res> {
       {UniqueId<String?> id,
       BasicTextField<String?> name,
       BasicTextField<String?> description,
-      KtList<_MediaField> photos,
+      KtList<UploadableMedia> photos,
       bool isActive,
       bool isFavorite,
       DealStatus dealStatus,
@@ -167,7 +167,7 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
       photos: photos == freezed
           ? _value.photos
           : photos // ignore: cast_nullable_to_non_nullable
-              as KtList<_MediaField>,
+              as KtList<UploadableMedia>,
       isActive: isActive == freezed
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
@@ -315,7 +315,7 @@ abstract class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
       {UniqueId<String?> id,
       BasicTextField<String?> name,
       BasicTextField<String?> description,
-      KtList<_MediaField> photos,
+      KtList<UploadableMedia> photos,
       bool isActive,
       bool isFavorite,
       DealStatus dealStatus,
@@ -393,7 +393,7 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
       photos: photos == freezed
           ? _value.photos
           : photos // ignore: cast_nullable_to_non_nullable
-              as KtList<_MediaField>,
+              as KtList<UploadableMedia>,
       isActive: isActive == freezed
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
@@ -486,7 +486,7 @@ class _$_Product extends _Product {
   final BasicTextField<String?> description;
   @JsonKey()
   @override
-  final KtList<_MediaField> photos;
+  final KtList<UploadableMedia> photos;
   @JsonKey()
   @override
   final bool isActive;
@@ -588,7 +588,7 @@ abstract class _Product extends Product {
       {required UniqueId<String?> id,
       required BasicTextField<String?> name,
       required BasicTextField<String?> description,
-      KtList<_MediaField> photos,
+      KtList<UploadableMedia> photos,
       bool isActive,
       bool isFavorite,
       DealStatus dealStatus,
@@ -612,7 +612,7 @@ abstract class _Product extends Product {
   @override
   BasicTextField<String?> get description;
   @override
-  KtList<_MediaField> get photos;
+  KtList<UploadableMedia> get photos;
   @override
   bool get isActive;
   @override

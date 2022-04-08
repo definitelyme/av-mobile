@@ -45,12 +45,15 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
 
   void onRefresh(DragToRefreshState refresh) async {
     if (!_cubit.state.isLoading) {
-      unawaited(_cubit.getCategories());
+      if (_cubit.state.categories.isEmpty()) unawaited(_cubit.getCategories());
+
       await _cubit.fetchLiveDeals(
         isHomePage: true,
         endOfList: () => refresh.loadNoData(),
         callback: (_) => refresh.refreshCompleted(resetFooterState: true),
       );
+
+      unawaited(_cubit.sponsoredDeals(sponsored: true, sortBy: '-dealPriority', perPage: 20));
     }
   }
 
@@ -81,11 +84,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
           child: AdaptiveScaffoldBody(
             body: Stack(
               children: [
-                Positioned(
-                  top: 0.08.h,
-                  right: 0,
-                  child: AppAssets.hammerBig,
-                ),
+                Positioned(top: 0.08.h, right: 0, child: AppAssets.hammerBig),
                 //
                 Positioned.fill(
                   child: ExtendedNestedScrollView(
@@ -104,83 +103,243 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
                       //
                       SliverPadding(
                         padding: EdgeInsets.symmetric(horizontal: App.sidePadding * 0.5, vertical: 0.025.h),
-                        sliver: SliverToBoxAdapter(
-                          child: Material(
-                            borderRadius: const BorderRadius.all(Radius.circular(Utils.buttonRadius)),
-                            type: MaterialType.transparency,
-                            child: MediaCarousel<Promotion>(
-                              items: _list,
-                              height: 0.23.h,
-                              viewportFraction: _list.length > 1 ? 0.8 : 0.95,
-                              // enableInfiniteScroll: _list.length > 1,
-                              position: CarouselIndicatorPosition.bottom,
-                              autoPlay: true,
-                              autoPlayInterval: const Duration(seconds: 7),
-                              disableCenter: false,
-                              builder: (_, i, pv, item) => ImageBox.asset(
-                                heroTag: 'promotion-${item.id.value}-$i-$pv',
-                                photo: item.url.getOrNull,
-                                fit: BoxFit.cover,
-                                borderRadius: 8.br,
-                                expandsFullscreen: true,
-                                replacement: Image.asset('${item.url.getOrEmpty}', fit: BoxFit.cover),
-                                stackChildren: (image) => [
-                                  image,
-                                  //
-                                  const Positioned.fill(
-                                    child: DecoratedBox(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.all(Radius.circular(Utils.buttonRadius)),
-                                        gradient: LinearGradient(
-                                          begin: Alignment(0.0, -1.8),
-                                          end: Alignment.bottomCenter,
-                                          colors: [
-                                            Colors.transparent,
-                                            Colors.black12,
-                                            Colors.black12,
-                                            Colors.black12,
-                                            Colors.black38,
-                                            Colors.black45,
-                                            Colors.black54,
-                                            Colors.black87,
-                                          ],
-                                        ),
+                        sliver: BlocBuilder<DealCubit, DealState>(
+                          builder: (c, s) {
+                            return SliverToBoxAdapter(
+                              child: Material(
+                                borderRadius: const BorderRadius.all(Radius.circular(Utils.buttonRadius)),
+                                type: MaterialType.transparency,
+                                child: MediaCarousel<Deal>(
+                                  items: s.homeSponsoredDeals.asList(),
+                                  height: 0.23.h,
+                                  viewportFraction: (it) => s.homeSponsoredDeals.size > 1 ? 0.8 : 0.95,
+                                  enableInfiniteScroll: (it) => s.homeSponsoredDeals.size > 2,
+                                  position: CarouselIndicatorPosition.bottom,
+                                  autoPlay: false,
+                                  autoPlayInterval: const Duration(seconds: 7),
+                                  disableCenter: false,
+                                  builder: (_, i, pv, item) {
+                                    final hasValidEndDate = item.endDate.getOrNull != null &&
+                                        DateTime.now().millisecondsSinceEpoch < item.endDate.getOrNull!.millisecondsSinceEpoch;
+                                    return ImageBox.network(
+                                      heroTag: 'promotion-${item.id.value}--$i-$pv-${item.product!.photos.get(0).image.getOrNull}',
+                                      photo: item.product!.photos.get(0).image.getOrNull,
+                                      fit: BoxFit.cover,
+                                      borderRadius: 8.br,
+                                      expandsFullscreen: true,
+                                      replacement: Image.network(
+                                        '${item.product!.photos.get(0).image.getOrNull}',
+                                        fit: BoxFit.cover,
                                       ),
-                                    ),
-                                  ),
-                                  //
-                                  if (item.description.getOrNull != null)
-                                    Positioned.fill(
-                                      child: Material(
-                                        type: MaterialType.transparency,
-                                        borderRadius: const BorderRadius.only(
-                                          bottomLeft: Radius.circular(Utils.inputBorderRadius),
-                                          bottomRight: Radius.circular(Utils.inputBorderRadius),
-                                        ),
-                                        child: Padding(
-                                          padding: EdgeInsets.symmetric(horizontal: 0.04.w, vertical: 0.005.h),
-                                          child: Center(
-                                            child: AdaptiveText(
-                                              '${item.description.getOrEmpty}',
-                                              maxLines: 3,
-                                              fontSize: 17.sp,
-                                              minFontSize: 13,
-                                              maxFontSize: 18,
-                                              softWrap: false,
-                                              wrapWords: false,
-                                              textColor: App.resolveColor(Colors.white, dark: Colors.black, context: context),
-                                              textAlign: TextAlign.left,
-                                              fontWeight: FontWeight.w600,
-                                              overflow: TextOverflow.ellipsis,
+                                      stackChildren: (image) => [
+                                        image,
+                                        //
+                                        const Positioned.fill(
+                                          child: DecoratedBox(
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.all(Radius.circular(Utils.buttonRadius)),
+                                              gradient: LinearGradient(
+                                                begin: Alignment(0.0, -1.8),
+                                                end: Alignment.bottomCenter,
+                                                colors: [
+                                                  Colors.transparent,
+                                                  Colors.black12,
+                                                  Colors.black12,
+                                                  Colors.black12,
+                                                  Colors.black38,
+                                                  Colors.black45,
+                                                  Colors.black54,
+                                                  Colors.black87,
+                                                ],
+                                              ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                    ),
-                                ],
+                                        //
+                                        if (item.product?.name.valueOrNull != null)
+                                          Positioned.fill(
+                                            child: Padding(
+                                              padding: EdgeInsets.fromLTRB(0.035.w, 0.015.h, 0.035.w, 0.03.h),
+                                              child: Center(
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      hasValidEndDate ? MainAxisAlignment.spaceBetween : MainAxisAlignment.end,
+                                                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                                                  children: [
+                                                    if (hasValidEndDate)
+                                                      CountdownWidget(
+                                                        autostart: DateTime.now().millisecondsSinceEpoch <
+                                                            item.endDate.getOrNull!.millisecondsSinceEpoch,
+                                                        duration: item.endDate.getOrNull!.difference(DateTime.now()),
+                                                        // showHourRemainder: false,
+                                                        // daysBuilder: (days) => '$days days',
+                                                        ticker: (tick) => Align(
+                                                          alignment: Alignment.centerLeft,
+                                                          child: Material(
+                                                            color: const Color(0xffEDB300),
+                                                            borderRadius: const BorderRadius.all(Radius.circular(8)),
+                                                            child: Padding(
+                                                              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                                                              child: Row(
+                                                                mainAxisSize: MainAxisSize.min,
+                                                                children: [
+                                                                  Icon(AVIcons.clock, size: 13.sp, color: Colors.black),
+                                                                  //
+                                                                  Padding(
+                                                                    padding: EdgeInsets.only(left: 0.015.w),
+                                                                    child: AdaptiveText(
+                                                                      'Ends In: $tick',
+                                                                      maxLines: 1,
+                                                                      fontSize: 13.sp,
+                                                                      maxFontSize: 14,
+                                                                      fontWeight: FontWeight.w600,
+                                                                      textColor: Colors.black,
+                                                                      textColorDark: Colors.black,
+                                                                      isDefault: true,
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        child: (fn) => Utils.nothing,
+                                                      ),
+                                                    //
+                                                    Expanded(
+                                                      flex: 3,
+                                                      child: Column(
+                                                        // mainAxisSize: MainAxisSize.min,
+                                                        mainAxisAlignment: MainAxisAlignment.end,
+                                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                                        children: [
+                                                          Expanded(
+                                                            child: Align(
+                                                              alignment: Alignment.centerLeft,
+                                                              child: AdaptiveText.rich(
+                                                                TextSpan(children: [
+                                                                  TextSpan(text: '${item.product!.name.getOrNull}'),
+                                                                  TextSpan(text: '\n${item.product!.description.getOrNull}'),
+                                                                ]),
+                                                                maxLines: 3,
+                                                                fontSize: 17.sp,
+                                                                minFontSize: 13,
+                                                                maxFontSize: 17,
+                                                                softWrap: true,
+                                                                wrapWords: true,
+                                                                textColor: Colors.white,
+                                                                textAlign: TextAlign.left,
+                                                                fontWeight: FontWeight.w600,
+                                                                overflow: TextOverflow.ellipsis,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          //
+                                                          Flexible(
+                                                            child: Row(
+                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                              children: [
+                                                                Flexible(
+                                                                  child: IntrinsicHeight(
+                                                                    child: Row(
+                                                                      mainAxisSize: MainAxisSize.min,
+                                                                      children: [
+                                                                        if (item.basePrice.getOrNull.roundToIntOrDouble.toString().length <=
+                                                                            5) ...[
+                                                                          Flexible(
+                                                                            flex: 2,
+                                                                            child: AdaptiveText.rich(
+                                                                              TextSpan(children: [
+                                                                                if (item.country != null)
+                                                                                  TextSpan(
+                                                                                    text: '${item.country?.symbol}',
+                                                                                    style: TextStyle(
+                                                                                      color: Palette.accentGreen,
+                                                                                      fontSize: 18.sp,
+                                                                                    ),
+                                                                                  ),
+                                                                                TextSpan(
+                                                                                  text: '${item.basePrice.getOrNull}'.asCurrency(
+                                                                                    symbol: item.country == null,
+                                                                                    currency: item.country?.symbolPadded,
+                                                                                    locale: item.country?.locale,
+                                                                                  ),
+                                                                                ),
+                                                                              ]),
+                                                                              maxLines: 1,
+                                                                              fontSize: 17.sp,
+                                                                              maxFontSize: 17,
+                                                                              textColor: Colors.white,
+                                                                              isDefault: true,
+                                                                              letterSpacing: Utils.letterSpacing,
+                                                                            ),
+                                                                          ),
+                                                                          //
+                                                                          VerticalDivider(
+                                                                            width: 0.08.w,
+                                                                            thickness: 1.5,
+                                                                            indent: 1,
+                                                                            endIndent: 1,
+                                                                            color: Colors.white.withOpacity(0.7),
+                                                                          ),
+                                                                        ],
+                                                                        //
+                                                                        Flexible(
+                                                                          flex: 2,
+                                                                          child: AdaptiveText(
+                                                                            '54 Bids',
+                                                                            maxLines: 1,
+                                                                            minFontSize: 10,
+                                                                            fontSize: 16.sp,
+                                                                            maxFontSize: 16,
+                                                                            textColor: Colors.white.withOpacity(0.7),
+                                                                            isDefault: true,
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                //
+                                                                AppButton(
+                                                                  text: item.type.when(
+                                                                    auction: () => 'BID NOW',
+                                                                    buy_Now: () => 'BUY NOW',
+                                                                  ),
+                                                                  width: 0.25.w,
+                                                                  height: 0.045.h,
+                                                                  backgroundColor: item.type.when(
+                                                                    auction: () => null,
+                                                                    buy_Now: () => Colors.white,
+                                                                  ),
+                                                                  textColor: item.type.when(
+                                                                    auction: () => null,
+                                                                    buy_Now: () => Palette.accentColor,
+                                                                  ),
+                                                                  textColorDark: item.type.when(
+                                                                    auction: () => null,
+                                                                    buy_Now: () => Palette.accentColor,
+                                                                  ),
+                                                                  onPressed: () => navigator.navigate(DealDetailRoute(deal: item)),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                      ],
+                                    );
+                                  },
+                                ),
                               ),
-                            ),
-                          ),
+                            );
+                          },
                         ),
                       ),
                     ],
@@ -202,11 +361,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
                                   SliverPadding(
                                     padding: EdgeInsets.symmetric(horizontal: App.sidePadding, vertical: 0.01.h).copyWith(top: 0.03.h),
                                     sliver: SliverToBoxAdapter(
-                                      child: AdaptiveText(
-                                        'By Categories',
-                                        fontSize: 20.sp,
-                                        fontWeight: FontWeight.w600,
-                                      ),
+                                      child: AdaptiveText('By Categories', fontSize: 20.sp, fontWeight: FontWeight.w600),
                                     ),
                                   ),
                                   //
@@ -298,9 +453,11 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
                                           //
                                           AdaptiveInkWell(
                                             borderRadius: 8.br,
-                                            onTap: () {
-                                              print('hello joseph');
-                                            },
+                                            onTap: () => navigator.navigate(DealsListRoute(
+                                              title: 'Live Auctions',
+                                              type: DealType.auction,
+                                              bidStatus: BidStatus.live,
+                                            )),
                                             child: Padding(
                                               padding: EdgeInsets.symmetric(horizontal: 0.02.w, vertical: 0.005.h),
                                               child: AdaptiveText(
@@ -380,7 +537,7 @@ class _CategoryBuilder extends StatelessWidget {
             color: App.resolveColor(const Color(0xffF0F3FB), dark: Palette.cardColorDark, context: context),
             borderRadius: 8.br,
             child: AdaptiveInkWell(
-              onTap: () {},
+              onTap: () => navigator.navigate(DealsListRoute(title: '${category.name.getOrNull}', category: category)),
               borderRadius: 8.br,
               child: Center(
                 child: Padding(
@@ -452,12 +609,12 @@ class _Action {
         _Action(
           title: 'Private Deals',
           padding: EdgeInsets.only(right: 0.02.w),
-          onPressed: () => navigator.navigate(DealsListRoute(isPrivate: true)),
+          onPressed: () => navigator.navigate(DealsListRoute(title: 'Private Deals', isPrivate: true)),
         ),
         _Action(
           title: 'Buy Now',
           padding: EdgeInsets.only(left: 0.02.w),
-          onPressed: () => navigator.navigate(DealsListRoute(type: DealType.buy_Now)),
+          onPressed: () => navigator.navigate(DealsListRoute(title: 'Buy Now', type: DealType.buy_Now)),
         ),
       ];
 }

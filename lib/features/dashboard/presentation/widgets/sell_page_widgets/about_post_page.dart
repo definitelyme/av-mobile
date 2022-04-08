@@ -86,13 +86,33 @@ class _AboutPostPageState extends State<AboutPostPage> with AutomaticKeepAliveCl
                   disabledHint: 'Retrieving categories...Please wait',
                   disabled: s.isLoading || s.isFetchingCategories || s.isSavingState || s.isCreatingProduct,
                   items: categories.asList(),
-                  selected: s.product.category,
+                  selected: s.product.category == null || !s.product.category!.isValid ? null : s.product.category,
                   text: (category) => category?.name.getOrNull,
                   errorText: (category) => category == null ? 'Please select a Category' : null,
                   onChanged: (it) => c.read<ProductBloc>().add(ProductSyncEvent.categoryChanged(it)),
                 ),
               ),
             ],
+            AnimatedVisibility(
+              visible: s.isFetchingCategories && s.categories.isEmpty(),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  0.02.verticalh,
+                  //
+                  AdaptiveText('Retrieving categories...Please wait', fontSize: 16.sp),
+                  //
+                  ClipRRect(
+                    borderRadius: 100.br,
+                    child: const LinearProgressIndicator(
+                      color: Palette.accentColor,
+                      semanticsLabel: 'Fetching Categories',
+                    ),
+                  ),
+                ],
+              ),
+            ),
             //
             // 0.008.verticalh,
             // //
@@ -181,6 +201,8 @@ class _AboutPostPageState extends State<AboutPostPage> with AutomaticKeepAliveCl
                             child: ImageUploadWidget<ProductBloc, ProductState>(
                               state: s,
                               isLoading: (s) => s.isLoading,
+                              showLoading: false,
+                              showCenterIcon: true,
                               width: (s) => 0.3.sw,
                               onCameraClicked: (bloc, source) => bloc.add(ProductMediaEvents.pickCamera(i)),
                               onGalleryClicked: (bloc, source) => bloc.add(ProductMediaEvents.pickGallery(i)),

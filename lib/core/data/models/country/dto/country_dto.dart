@@ -28,15 +28,16 @@ class CountryDTO with _$CountryDTO {
     @JsonKey(name: 'flag') String? flagUrl,
     @CurrencyTypeSerializer() CurrencyType? currency,
     @JsonKey(name: 'currency_icon') String? currencyIcon,
+    String? locale,
   }) = _CountryDTO;
 
   factory CountryDTO.fromJson(Map<String, dynamic> json) => _$CountryDTOFromJson(json);
 
   factory CountryDTO.fromDomain(Country? instance) => CountryDTO(
         id: instance?.id?.value,
-        iso: instance?.iso.getOrNull,
-        name: instance?.name.getOrNull,
-        dialCode: instance?.dialCode.getOrNull,
+        iso: instance?.iso.valueOrNull,
+        name: instance?.name.valueOrNull,
+        dialCode: instance?.dialCode.valueOrNull,
       );
 
   Country get domain => Country(
@@ -46,6 +47,7 @@ class CountryDTO with _$CountryDTO {
         dialCode: BasicTextField(dialCode),
         flag: BasicTextField(flagUrl),
         currencyIcon: BasicTextField(currencyIcon),
+        locale: locale,
         type: currency,
       );
 

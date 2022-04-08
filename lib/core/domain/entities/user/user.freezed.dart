@@ -26,12 +26,13 @@ class _$UserTearOff {
       required EmailAddress email,
       required Phone phone,
       required Password password,
-      required MediaField photo,
+      required UploadableMedia photo,
       Country? country,
       bool isPrivate = false,
       AuthProvider provider = AuthProvider.regular,
       bool? active = false,
       bool? accountVerified = false,
+      SecurityQuestion? securityQuestion,
       DateTime? createdAt,
       DateTime? updatedAt,
       DateTime? deletedAt}) {
@@ -49,6 +50,7 @@ class _$UserTearOff {
       provider: provider,
       active: active,
       accountVerified: accountVerified,
+      securityQuestion: securityQuestion,
       createdAt: createdAt,
       updatedAt: updatedAt,
       deletedAt: deletedAt,
@@ -68,12 +70,13 @@ mixin _$User {
   EmailAddress get email => throw _privateConstructorUsedError;
   Phone get phone => throw _privateConstructorUsedError;
   Password get password => throw _privateConstructorUsedError;
-  MediaField get photo => throw _privateConstructorUsedError;
+  UploadableMedia get photo => throw _privateConstructorUsedError;
   Country? get country => throw _privateConstructorUsedError;
   bool get isPrivate => throw _privateConstructorUsedError;
   AuthProvider get provider => throw _privateConstructorUsedError;
   bool? get active => throw _privateConstructorUsedError;
   bool? get accountVerified => throw _privateConstructorUsedError;
+  SecurityQuestion? get securityQuestion => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
   DateTime? get updatedAt => throw _privateConstructorUsedError;
   DateTime? get deletedAt => throw _privateConstructorUsedError;
@@ -94,12 +97,13 @@ abstract class $UserCopyWith<$Res> {
       EmailAddress email,
       Phone phone,
       Password password,
-      MediaField photo,
+      UploadableMedia photo,
       Country? country,
       bool isPrivate,
       AuthProvider provider,
       bool? active,
       bool? accountVerified,
+      SecurityQuestion? securityQuestion,
       DateTime? createdAt,
       DateTime? updatedAt,
       DateTime? deletedAt});
@@ -130,6 +134,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
     Object? provider = freezed,
     Object? active = freezed,
     Object? accountVerified = freezed,
+    Object? securityQuestion = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? deletedAt = freezed,
@@ -166,7 +171,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
       photo: photo == freezed
           ? _value.photo
           : photo // ignore: cast_nullable_to_non_nullable
-              as MediaField,
+              as UploadableMedia,
       country: country == freezed
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
@@ -187,6 +192,10 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
           ? _value.accountVerified
           : accountVerified // ignore: cast_nullable_to_non_nullable
               as bool?,
+      securityQuestion: securityQuestion == freezed
+          ? _value.securityQuestion
+          : securityQuestion // ignore: cast_nullable_to_non_nullable
+              as SecurityQuestion?,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -227,12 +236,13 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       EmailAddress email,
       Phone phone,
       Password password,
-      MediaField photo,
+      UploadableMedia photo,
       Country? country,
       bool isPrivate,
       AuthProvider provider,
       bool? active,
       bool? accountVerified,
+      SecurityQuestion? securityQuestion,
       DateTime? createdAt,
       DateTime? updatedAt,
       DateTime? deletedAt});
@@ -265,6 +275,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object? provider = freezed,
     Object? active = freezed,
     Object? accountVerified = freezed,
+    Object? securityQuestion = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? deletedAt = freezed,
@@ -301,7 +312,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
       photo: photo == freezed
           ? _value.photo
           : photo // ignore: cast_nullable_to_non_nullable
-              as MediaField,
+              as UploadableMedia,
       country: country == freezed
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
@@ -322,6 +333,10 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           ? _value.accountVerified
           : accountVerified // ignore: cast_nullable_to_non_nullable
               as bool?,
+      securityQuestion: securityQuestion == freezed
+          ? _value.securityQuestion
+          : securityQuestion // ignore: cast_nullable_to_non_nullable
+              as SecurityQuestion?,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -355,6 +370,7 @@ class _$_User extends _User with DiagnosticableTreeMixin {
       this.provider = AuthProvider.regular,
       this.active = false,
       this.accountVerified = false,
+      this.securityQuestion,
       this.createdAt,
       this.updatedAt,
       this.deletedAt})
@@ -375,7 +391,7 @@ class _$_User extends _User with DiagnosticableTreeMixin {
   @override
   final Password password;
   @override
-  final MediaField photo;
+  final UploadableMedia photo;
   @override
   final Country? country;
   @JsonKey()
@@ -391,6 +407,8 @@ class _$_User extends _User with DiagnosticableTreeMixin {
   @override
   final bool? accountVerified;
   @override
+  final SecurityQuestion? securityQuestion;
+  @override
   final DateTime? createdAt;
   @override
   final DateTime? updatedAt;
@@ -399,7 +417,7 @@ class _$_User extends _User with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'User(id: $id, firstName: $firstName, lastName: $lastName, name: $name, email: $email, phone: $phone, password: $password, photo: $photo, country: $country, isPrivate: $isPrivate, provider: $provider, active: $active, accountVerified: $accountVerified, createdAt: $createdAt, updatedAt: $updatedAt, deletedAt: $deletedAt)';
+    return 'User(id: $id, firstName: $firstName, lastName: $lastName, name: $name, email: $email, phone: $phone, password: $password, photo: $photo, country: $country, isPrivate: $isPrivate, provider: $provider, active: $active, accountVerified: $accountVerified, securityQuestion: $securityQuestion, createdAt: $createdAt, updatedAt: $updatedAt, deletedAt: $deletedAt)';
   }
 
   @override
@@ -420,6 +438,7 @@ class _$_User extends _User with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('provider', provider))
       ..add(DiagnosticsProperty('active', active))
       ..add(DiagnosticsProperty('accountVerified', accountVerified))
+      ..add(DiagnosticsProperty('securityQuestion', securityQuestion))
       ..add(DiagnosticsProperty('createdAt', createdAt))
       ..add(DiagnosticsProperty('updatedAt', updatedAt))
       ..add(DiagnosticsProperty('deletedAt', deletedAt));
@@ -444,6 +463,8 @@ class _$_User extends _User with DiagnosticableTreeMixin {
             const DeepCollectionEquality().equals(other.active, active) &&
             const DeepCollectionEquality()
                 .equals(other.accountVerified, accountVerified) &&
+            const DeepCollectionEquality()
+                .equals(other.securityQuestion, securityQuestion) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt) &&
             const DeepCollectionEquality().equals(other.deletedAt, deletedAt));
@@ -465,6 +486,7 @@ class _$_User extends _User with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(provider),
       const DeepCollectionEquality().hash(active),
       const DeepCollectionEquality().hash(accountVerified),
+      const DeepCollectionEquality().hash(securityQuestion),
       const DeepCollectionEquality().hash(createdAt),
       const DeepCollectionEquality().hash(updatedAt),
       const DeepCollectionEquality().hash(deletedAt));
@@ -484,12 +506,13 @@ abstract class _User extends User {
       required EmailAddress email,
       required Phone phone,
       required Password password,
-      required MediaField photo,
+      required UploadableMedia photo,
       Country? country,
       bool isPrivate,
       AuthProvider provider,
       bool? active,
       bool? accountVerified,
+      SecurityQuestion? securityQuestion,
       DateTime? createdAt,
       DateTime? updatedAt,
       DateTime? deletedAt}) = _$_User;
@@ -510,7 +533,7 @@ abstract class _User extends User {
   @override
   Password get password;
   @override
-  MediaField get photo;
+  UploadableMedia get photo;
   @override
   Country? get country;
   @override
@@ -521,6 +544,8 @@ abstract class _User extends User {
   bool? get active;
   @override
   bool? get accountVerified;
+  @override
+  SecurityQuestion? get securityQuestion;
   @override
   DateTime? get createdAt;
   @override

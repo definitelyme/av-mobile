@@ -19,7 +19,9 @@ class _DealRemote implements DealRemote {
       bidStatus,
       dealStatus,
       bidType,
+      sortBy,
       isPrivate,
+      sponsored,
       page,
       perPage}) async {
     const _extra = <String, dynamic>{};
@@ -28,7 +30,9 @@ class _DealRemote implements DealRemote {
       r'bidStatus': bidStatus,
       r'status': dealStatus,
       r'type': bidType,
+      r'sort': sortBy,
       r'isPrivate': isPrivate,
+      r'sponsored': sponsored,
       r'page': page,
       r'per_page': perPage
     };
@@ -90,6 +94,42 @@ class _DealRemote implements DealRemote {
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = await compute(deserializeCategoryDTO, _result.data!);
+    return value;
+  }
+
+  @override
+  Future<DealListDTO> filterDealsByCategory(id,
+      {population = _defaultPopulation,
+      bidStatus,
+      dealStatus,
+      bidType,
+      sortBy,
+      isPrivate,
+      sponsored,
+      page,
+      perPage}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'population': population,
+      r'bidStatus': bidStatus,
+      r'status': dealStatus,
+      r'type': bidType,
+      r'sort': sortBy,
+      r'isPrivate': isPrivate,
+      r'sponsored': sponsored,
+      r'page': page,
+      r'per_page': perPage
+    };
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<DealListDTO>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/categories/${id}/deals',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = await compute(deserializeDealListDTO, _result.data!);
     return value;
   }
 

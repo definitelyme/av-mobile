@@ -62,7 +62,7 @@ class _WithdrawalScreenState extends State<WithdrawalScreen> {
     final hasSetupPin = await context.read<WalletCubit>().hasSetupPin();
     if (hasSetupPin == null || !hasSetupPin) {
       unawaited(WidgetsBinding.instance!.endOfFrame.then((_) {
-        navigator.popAndPush(TransactionPinSetupRoute(intendedRoute: WithdrawalRoute.name));
+        navigator.popAndPush(TransactionPinSetupRoute());
       }));
     }
   }
@@ -204,19 +204,24 @@ class _WithdrawalScreenState extends State<WithdrawalScreen> {
               //
               0.02.verticalh,
               //
-              GestureDetector(
-                onTap: () {
-                  print('Hello world');
+              BlocBuilder<WalletCubit, WalletState>(
+                builder: (c, s) {
+                  return Disabled(
+                    disabled: s.isLoading || s.isWithdrawing || s.isResolvingAccount,
+                    child: GestureDetector(
+                      onTap: () => navigator.push(const ForgotTransactionPinRoute()),
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 4, 4, 4),
+                        child: AdaptiveText(
+                          'Forgot PIN?',
+                          fontSize: 17.sp,
+                          fontWeight: FontWeight.w600,
+                          textColor: Palette.accentColor,
+                        ),
+                      ),
+                    ),
+                  );
                 },
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 4, 4, 4),
-                  child: AdaptiveText(
-                    'Forgot PIN?',
-                    fontSize: 17.sp,
-                    fontWeight: FontWeight.w600,
-                    textColor: Palette.accentColor,
-                  ),
-                ),
               ),
               //
               0.04.verticalh,

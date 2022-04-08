@@ -30,7 +30,15 @@ class AddCardScreen extends StatelessWidget with AutoRouteWrapper {
           (it) => it?.response.map(
             info: (i) => PopupDialog.info(message: i.message, show: i.message.isNotEmpty).render(c),
             error: (f) => PopupDialog.error(message: f.message, show: f.show && f.message.isNotEmpty).render(c),
-            success: (s) => PopupDialog.success(message: s.message, show: s.message.isNotEmpty).render(c),
+            success: (s) => PopupDialog.success(
+              message: s.message,
+              show: s.message.isNotEmpty,
+              listener: (status) => status?.fold(
+                dismissed: () {
+                  navigator.pushAndPopUntil(const FundWalletRoute(), predicate: (r) => r.isFirst);
+                },
+              ),
+            ).render(c),
           ),
         ),
         child: this,
@@ -178,9 +186,7 @@ class AddCardScreen extends StatelessWidget with AutoRouteWrapper {
                       isLoading: s.isAddingCard,
                       // disabled: s.isLoading || s.isAddingCard || (s.card != null && s.card!.failure.isNone()),
                       disabled: s.isLoading || s.isAddingCard,
-                      onPressed: () => c.read<WalletCubit>().validateAndSaveCard((successful) {
-                        if (successful) navigator.pushAndPopUntil(const FundWalletRoute(), predicate: (r) => r.isFirst);
-                      }),
+                      onPressed: c.read<WalletCubit>().validateAndSaveCard,
                     ),
                   ),
                 ),

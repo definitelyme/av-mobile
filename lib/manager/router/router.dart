@@ -127,6 +127,14 @@ import 'package:auto_route/auto_route.dart';
       fullMatch: true,
       maintainState: true,
       usesPathAsKey: true,
+      page: ForgotTransactionPinScreen,
+      cupertinoPageTitle: 'Forgot Transaction PIN',
+    ),
+    //
+    AdaptiveRoute(
+      fullMatch: true,
+      maintainState: true,
+      usesPathAsKey: true,
       cupertinoPageTitle: 'Wallet Activities',
       page: WalletHistoryScreen,
     ),

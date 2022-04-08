@@ -44,8 +44,8 @@ class DealPlanDTOData with _$DealPlanDTOData {
 
   /// Maps DealPlan to a Data Transfer Object.
   factory DealPlanDTOData.fromDomain(DealPlan? instance) => DealPlanDTOData(
-        amount: instance?.amount.getOrNull,
-        priority: instance?.priority.getOrNull,
+        amount: instance?.amount.valueOrNull,
+        priority: instance?.priority.valueOrNull,
         features: instance?.features.map((e) => e.toString()).asList() ?? [],
         name: instance?.name,
       );

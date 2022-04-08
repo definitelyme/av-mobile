@@ -5,6 +5,7 @@ part of deal_cubit.dart;
 class DealState extends BaseState with _$DealState {
   const factory DealState({
     @Default(false) bool isLoading,
+    @Default(false) bool isLoadingSponsored,
     @Default(false) bool isBidding,
     @Default(false) bool validate,
     required Deal currentDeal,
@@ -18,6 +19,7 @@ class DealState extends BaseState with _$DealState {
     @Default(KtList.empty()) KtList<DealCategory> categories,
     @Default(KtList.empty()) KtList<Deal> homeDeals,
     @Default(KtList.empty()) KtList<Deal> liveDeals,
+    @Default(KtList.empty()) KtList<Deal> homeSponsoredDeals,
     @Default(KtList.empty()) KtList<Deal> deals,
     @Default(KtList.empty()) KtList<MyWish> wishlist,
     @Default(KtList.empty()) KtList<DealPlan> dealPlans,

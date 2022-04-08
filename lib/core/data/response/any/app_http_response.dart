@@ -15,7 +15,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'app_http_response.freezed.dart';
 part 'app_http_response.gen.dart';
 
-AppHttpResponse deserializeAppHttpResponse(Map<String, dynamic> json) => AppHttpResponse.fromJson(json);
+AppHttpResponse deserializeAppHttpResponse(Map<String, dynamic> json) => AppHttpResponse.fromMap(json) ?? AppHttpResponse.fromJson(json);
 Map<String, dynamic> serializeAppHttpResponse(AppHttpResponse object) => object.toJson();
 
 @Freezed()
@@ -69,35 +69,38 @@ class AppHttpResponse extends AppNetworkResponseException<DioError, dynamic> wit
   @override
   bool? get status => response.status;
 
+  static AppHttpResponse? fromMap<T>(Map<String, dynamic> json) {
+    final _value =
+        json.containsKey('_meta') ? AppHttpResponse.fromJson(json['_meta'] as Map<String, dynamic>) : AppHttpResponse.fromJson(json);
+
+    final _return = _value.copyWith(
+      data: json,
+      response: _value.response.maybeMap(
+        error: (e) => AnyResponse.error(
+          code: e.code,
+          messageTxt: e.message,
+          errors: e.errors,
+          status: e.status,
+          exception: e.exception,
+          pop: e.pop,
+          show: e.show,
+        ),
+        orElse: () => _value.response,
+      ),
+    );
+
+    _return.fold(
+      is401: () => getIt<AuthFacade>().sink(left(_return)),
+      orElse: () => null,
+    );
+
+    return _return;
+  }
+
   static AppHttpResponse? fromDioResponse<T>(_d.Response<T>? response) {
     final data = response?.data;
     if (data != null && data is Map<String, dynamic>) {
-      final _value =
-          data.containsKey('_meta') ? AppHttpResponse.fromJson(data['_meta'] as Map<String, dynamic>) : AppHttpResponse.fromJson(data);
-
-      final _return = _value.copyWith(
-        data: data,
-        response: _value.response.maybeMap(
-          error: (e) => AnyResponse.error(
-            code: e.code ?? response?.statusCode,
-            messageTxt: e.message,
-            errors: e.errors,
-            details: response?.data?.toString(),
-            status: e.status,
-            exception: e.exception,
-            pop: e.pop,
-            show: e.show,
-          ),
-          orElse: () => _value.response,
-        ),
-      );
-
-      _return.fold(
-        is401: () => getIt<AuthFacade>().sink(left(_return)),
-        orElse: () => null,
-      );
-
-      return _return;
+      return AppHttpResponse.fromMap(data);
     }
     return null;
   }

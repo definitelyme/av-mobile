@@ -1,7 +1,6 @@
 library auth_facade_impl.dart;
 
 import 'dart:async';
-import 'dart:io';
 
 import 'package:auctionvillage/core/data/index.dart';
 import 'package:auctionvillage/core/domain/entities/entities.dart';
@@ -411,12 +410,13 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
   }
 
   @override
-  Future<AppHttpResponse> updateProfile(
+  Future<AppHttpResponse?> updateProfile(
     User authUser, {
     DisplayName? firstName,
     DisplayName? lastName,
     EmailAddress? email,
-    File? image,
+    UploadableMedia? photo,
+    Phone? phone,
   }) async {
     try {
       // Check if device has good connection
@@ -427,20 +427,21 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
         (f) => throw f,
         // Update user profile
         (_) => remote.updateProfile(
-          image: image,
-          dto: UserDTO.fromDomain(User.blank(
+          UserDTO.fromDomain(User.blank(
             firstName: firstName,
             lastName: lastName,
-            email: email,
+            // email: email,
+            photo: photo,
+            phone: phone,
           )).copyWith(id: authUser.id.value),
         ),
       );
 
       final user = RegisteredUserDTO.fromJson(_response.data as Map<String, dynamic>);
 
-      final _return = AppHttpResponse.fromJson(_response.data as Map<String, dynamic>);
+      final _return = AppHttpResponse.fromDioResponse(_response);
 
-      await _return.response.mapOrNull(success: (_) async => await user.dto?.let((it) => local.cacheAuthenticatedUser(it)));
+      await _return?.response.mapOrNull(success: (_) async => await user.dto?.let((it) => local.cacheAuthenticatedUser(it)));
 
       if (user.domain != null) await update(some(user.domain));
 

@@ -12,6 +12,9 @@ class CountdownWidget extends StatefulWidget {
   final Future<void>? Function()? onTap;
   final VoidCallback? onPressed;
   final bool autostart;
+  final bool showHourRemainder;
+  final bool showMinuteRemainder;
+  final String Function(String)? daysBuilder;
 
   const CountdownWidget({
     Key? key,
@@ -21,6 +24,9 @@ class CountdownWidget extends StatefulWidget {
     this.onTap,
     this.onPressed,
     this.autostart = false,
+    this.showHourRemainder = true,
+    this.showMinuteRemainder = true,
+    this.daysBuilder,
   }) : super(key: key);
 
   @override
@@ -52,10 +58,21 @@ class _CountdownWidgetState extends State<CountdownWidget> with AutomaticKeepAli
 
   String _twoDigits(int n) => n.toString().padLeft(2, '0');
 
-  String get tick => '${duration.inDays > 0 ? '${duration.inDays} days ' : ''}'
-      '${duration.inHours > 0 ? ' ${_twoDigits(duration.inHours.remainder(60))} :' : ''}'
-      '${duration.inMinutes > 0 ? ' ${_twoDigits(duration.inMinutes.remainder(60))} :' : ''}'
-      ' ${_twoDigits(duration.inSeconds.remainder(60))}';
+  String get _hours => widget.showHourRemainder
+      ? ' ${_twoDigits(duration.inHours.remainder(60))} :'
+      : '${duration.inHours > 0 ? ' ${_twoDigits(duration.inHours.remainder(60))} :' : ''}';
+
+  String get _minutes => widget.showMinuteRemainder
+      ? ' ${_twoDigits(duration.inMinutes.remainder(60))} :'
+      : '${duration.inMinutes > 0 ? ' ${_twoDigits(duration.inMinutes.remainder(60))} :' : ''}';
+
+  String get _seconds => ' ${_twoDigits(duration.inSeconds.remainder(60))}';
+
+  String get __tickString => '${duration.inDays > 0 ? '${duration.inDays} days ' : ''}' + _hours + _minutes + _seconds;
+
+  String get tick => hasDays && widget.daysBuilder != null ? widget.daysBuilder!('${duration.inDays}') : __tickString;
+
+  bool get hasDays => duration.inDays > 0;
 
   Widget get _ticker => widget.ticker?.call(tick) ?? AdaptiveText(tick, fontSize: 15.0);
 

@@ -1,6 +1,7 @@
 library country.dart;
 
 import 'package:auctionvillage/core/domain/entities/entities.dart';
+import 'package:auctionvillage/utils/utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'country.freezed.dart';
@@ -25,9 +26,15 @@ class Country with _$Country implements Comparable<Country> {
     required BasicTextField<String?> dialCode,
     required BasicTextField<String?> flag,
     required BasicTextField<String?> currencyIcon,
-    @Default('en') String locale,
+    @Default('en') String? locale,
     CurrencyType? type,
   }) = _Country;
+
+  String get symbol =>
+      currencyIcon.valueOrNull != null && currencyIcon.valueOrNull!.isNotEmpty ? '${currencyIcon.getOrNull}' : Utils.currency;
+
+  String get symbolPadded =>
+      currencyIcon.valueOrNull != null && currencyIcon.valueOrNull!.isNotEmpty ? '${currencyIcon.getOrNull} ' : '${Utils.currency} ';
 
   const Country._();
 

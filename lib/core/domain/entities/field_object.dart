@@ -61,8 +61,7 @@ abstract class FieldObject<T> {
 
   @override
   bool operator ==(o) {
-    if (identical(this, o)) return true;
-    return o is FieldObject<T> && o.value == value;
+    return identical(this, o) && (o is FieldObject<T> && o.valueOrNull == valueOrNull);
   }
 
   @override
