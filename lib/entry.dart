@@ -72,7 +72,8 @@ class _EntryState extends State<Entry> {
         widget.router,
         ScreenUtilInit(
           designSize: const Size(375, 812),
-          builder: () => widget.child,
+          minTextAdapt: true,
+          builder: (_) => widget.child,
         ),
       ),
     );

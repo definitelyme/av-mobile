@@ -142,7 +142,7 @@ dependencies:
   showcaseview: ^1.1.5
   # A flutter plugin for adapting screen and font size.Let your UI
   # display a reasonable layout on different screen sizes!
-  flutter_screenutil: ^5.2.0
+  flutter_screenutil: ^5.4.0
   # A Flutter plugin for iOS and Android for picking images from the image library,
   # and taking new pictures with the camera.
   image_picker: ^0.8.4+10
