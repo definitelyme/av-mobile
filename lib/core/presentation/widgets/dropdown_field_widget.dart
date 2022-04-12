@@ -288,7 +288,7 @@ class AdaptiveDropdown<Model> extends StatelessWidget {
               ),
             ),
             //
-            if (errorText != null && validate)
+            if (errorText?.call(selected) != null && validate)
               AdaptiveText(
                 '${errorText?.call(selected)}',
                 maxLines: 1,
@@ -359,7 +359,7 @@ class _CupertinoPickerState<Model> extends State<_CupertinoPicker<Model>> {
 
   late FixedExtentScrollController scrollController;
 
-  double get _height => widget.height ?? 0.3.h;
+  double get _height => widget.height ?? 0.4.h;
 
   @override
   void initState() {

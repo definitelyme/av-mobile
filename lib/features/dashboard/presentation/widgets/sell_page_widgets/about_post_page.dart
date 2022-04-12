@@ -81,15 +81,18 @@ class _AboutPostPageState extends State<AboutPostPage> with AutomaticKeepAliveCl
               //
               BlocSelector<ProductBloc, ProductState, KtList<DealCategory>>(
                 selector: (s) => s.categories,
-                builder: (c, categories) => AdaptiveDropdown<DealCategory?>(
+                builder: (c, categories) => AdaptiveDropdown<String?>(
                   hint: '-- Select Category --',
                   disabledHint: 'Retrieving categories...Please wait',
                   disabled: s.isLoading || s.isFetchingCategories || s.isSavingState || s.isCreatingProduct,
-                  items: categories.asList(),
-                  selected: s.product.category == null || !s.product.category!.isValid ? null : s.product.category,
-                  text: (category) => category?.name.getOrNull,
+                  items: categories.map((p0) => p0.name.valueOrNull).asList(),
+                  selected: s.product.category?.name.valueOrNull,
+                  text: (category) => category,
                   errorText: (category) => category == null ? 'Please select a Category' : null,
-                  onChanged: (it) => c.read<ProductBloc>().add(ProductSyncEvent.categoryChanged(it)),
+                  onChanged: (it) {
+                    final _category = categories.find((e) => e.name.valueOrNull == it);
+                    c.read<ProductBloc>().add(ProductSyncEvent.categoryChanged(_category));
+                  },
                 ),
               ),
             ],

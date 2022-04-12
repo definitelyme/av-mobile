@@ -7,6 +7,7 @@ import 'package:auctionvillage/core/presentation/widgets/dropdown_field_widget.d
 import 'package:auctionvillage/features/auth/presentation/managers/managers.dart';
 import 'package:auctionvillage/features/dashboard/domain/index.dart';
 import 'package:auctionvillage/features/dashboard/presentation/managers/index.dart';
+import 'package:auctionvillage/features/dashboard/presentation/widgets/index.dart';
 import 'package:auctionvillage/manager/locator/locator.dart';
 import 'package:auctionvillage/utils/utils.dart';
 import 'package:auto_route/auto_route.dart';
@@ -107,36 +108,7 @@ class _FundWalletScreenState extends State<FundWalletScreen> {
                 validate: (s) => s.validate,
                 response: (s) => s.status,
                 onChanged: (cubit, _) => cubit.amountChanged(),
-                prefixIcon: (s) => Padding(
-                  padding: const EdgeInsets.fromLTRB(1, 1, 4, 1),
-                  child: SizedBox(
-                    width: 35,
-                    child: Material(
-                      color: App.resolveColor(Colors.white, dark: Palette.cardColorDark),
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(Utils.inputBorderRadius),
-                        bottomLeft: Radius.circular(Utils.inputBorderRadius),
-                      ),
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(
-                          border: Border(right: BorderSide(color: Theme.of(context).dividerColor, width: 1.2)),
-                        ),
-                        child: Center(
-                          child: AdaptiveText(
-                            Utils.currency,
-                            isDefault: true,
-                            maxLines: 1,
-                            wrapWords: false,
-                            softWrap: false,
-                            fontSize: 20.sp,
-                            maxFontSize: 16,
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                prefixIcon: (s) => const CurrencyPrefixWidget(Utils.currency),
                 prefixMode: (s) => OverlayVisibilityMode.always,
                 inputFormatters: [
                   FilteringTextInputFormatter.digitsOnly,
@@ -193,19 +165,21 @@ class _FundWalletScreenState extends State<FundWalletScreen> {
                                   isDefault: true,
                                 ),
                                 //
-                                AdaptiveText.rich(
-                                  TextSpan(children: [
-                                    const TextSpan(text: 'Expires'),
-                                    const TextSpan(text: ' - '),
-                                    TextSpan(text: '${card?.cardExpiryDate.getOrNull}'),
-                                  ]),
-                                  maxLines: 1,
-                                  fontSize: 16.sp,
-                                  maxFontSize: 16,
-                                  softWrap: false,
-                                  wrapWords: false,
-                                  textAlign: TextAlign.left,
-                                  isDefault: true,
+                                Flexible(
+                                  child: AdaptiveText.rich(
+                                    TextSpan(children: [
+                                      const TextSpan(text: 'Expires'),
+                                      const TextSpan(text: ' - '),
+                                      TextSpan(text: '${card?.cardExpiryDate.getOrNull}'),
+                                    ]),
+                                    maxLines: 1,
+                                    fontSize: 16.sp,
+                                    maxFontSize: 16,
+                                    softWrap: false,
+                                    wrapWords: false,
+                                    textAlign: TextAlign.left,
+                                    isDefault: true,
+                                  ),
                                 ),
                               ],
                             ),

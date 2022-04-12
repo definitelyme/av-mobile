@@ -20,7 +20,7 @@ class DealState extends BaseState with _$DealState {
     @Default(KtList.empty()) KtList<Deal> homeDeals,
     @Default(KtList.empty()) KtList<Deal> liveDeals,
     @Default(KtList.empty()) KtList<Deal> homeSponsoredDeals,
-    @Default(KtList.empty()) KtList<Deal> deals,
+    @Default(KtList.empty()) KtList<Deal> dealsList,
     @Default(KtList.empty()) KtList<MyWish> wishlist,
     @Default(KtList.empty()) KtList<DealPlan> dealPlans,
     @Default(None()) Option<AppHttpResponse?> status,

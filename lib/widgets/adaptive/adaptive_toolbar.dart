@@ -33,7 +33,10 @@ class AdaptiveToolbar {
   // final Widget? cupertinoLeadingIcon;
   final bool cupertinoImplyLeading;
   final bool implyMiddle;
+  final AlignmentGeometry cupertinoLeadingAlignment;
   final Alignment? cupertinoTitleAlignment;
+  final Widget? cupertinoLeadingWidget;
+  final Color? cupertinoLeadingBackgroundColor;
   final String cupertinoLeading;
   final TextStyle? cupertinoLeadingStyle;
   final String? previousPageTitle;
@@ -68,8 +71,11 @@ class AdaptiveToolbar {
     this.implyMiddle = false,
     this.overlayStyle,
     // this.cupertinoLeadingIcon,
+    this.cupertinoLeadingWidget,
     this.cupertinoLeading = 'Close',
     this.cupertinoLeadingStyle,
+    this.cupertinoLeadingAlignment = Alignment.center,
+    this.cupertinoLeadingBackgroundColor,
     this.cupertinoTitleAlignment,
     this.padding,
     this.previousPageTitle,
@@ -138,11 +144,18 @@ class AdaptiveToolbar {
           child: leadingIcon ??
               GestureDetector(
                 onTap: leadingAction ?? navigator.pop,
-                child: AdaptiveText(
-                  cupertinoLeading,
-                  style: cupertinoLeadingStyle ??
-                      TextStyle(
-                        color: Utils.computeLuminance(_cupertinoBackgroundColor),
+                child: CupertinoButton(
+                  onPressed: leadingAction ?? navigator.pop,
+                  padding: EdgeInsets.zero,
+                  alignment: cupertinoLeadingAlignment,
+                  color: cupertinoLeadingBackgroundColor,
+                  child: cupertinoLeadingWidget ??
+                      AdaptiveText(
+                        cupertinoLeading,
+                        style: cupertinoLeadingStyle ??
+                            TextStyle(
+                              color: Utils.computeLuminance(_cupertinoBackgroundColor),
+                            ),
                       ),
                 ),
               ),

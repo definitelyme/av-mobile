@@ -98,10 +98,6 @@ class DealRepository extends BaseRepository {
 
   Future<Either<AppHttpResponse, KtList<Deal>>> filterDealsByCategory(
     DealCategory? category, {
-    BidStatus? bidStatus,
-    DealType? type,
-    DealStatus dealStatus = DealStatus.approved,
-    String? sortBy,
     bool? isPrivate,
     bool? sponsored,
     int? perPage,
@@ -114,7 +110,7 @@ class DealRepository extends BaseRepository {
     return _conn.fold(
       (f) => left(f),
       (_) async {
-        final DealListDTO _list;
+        final CategoryListDTO _list;
 
         assert(category != null);
 
@@ -125,12 +121,8 @@ class DealRepository extends BaseRepository {
             if (_categoryDealsMeta?.next != null)
               _list = await remote.filterDealsByCategory(
                 '${category!.id.value}',
-                bidStatus: bidStatus?.name.toUpperCase(),
-                bidType: type?.name.toUpperCase(),
-                dealStatus: dealStatus.name.toUpperCase(),
                 isPrivate: isPrivate,
                 sponsored: sponsored,
-                sortBy: sortBy,
                 page: _categoryDealsMeta!.next,
                 perPage: perPage ?? _categoryDealsMeta?.perPage,
               );
@@ -138,21 +130,13 @@ class DealRepository extends BaseRepository {
               return left(AppHttpResponse.endOfList);
           } else {
             final _perPageValue = _categoryDealsMeta?.currentPage != null ? _categoryDealsMeta!.currentPage! * _perPage : _perPage;
-            _list = await remote.filterDealsByCategory(
-              '${category!.id.value}',
-              bidStatus: bidStatus?.name.toUpperCase(),
-              bidType: type?.name.toUpperCase(),
-              dealStatus: dealStatus.name.toUpperCase(),
-              isPrivate: isPrivate,
-              sponsored: sponsored,
-              sortBy: sortBy,
-              perPage: _perPageValue,
-            );
+            _list = await remote.filterDealsByCategory('${category!.id.value}',
+                isPrivate: isPrivate, sponsored: sponsored, perPage: _perPageValue);
           }
 
           // Save new meta data
           _categoryDealsMeta = _list.meta?.pagination;
-          return right(_list.domain(countries));
+          return right(_list.data.toImmutableList().filter((e) => e.deal != null).map((i) => i.deal!.domain(countries)));
         } on AppHttpResponse catch (e) {
           return left(e);
         } on AppNetworkException catch (e) {

@@ -112,6 +112,9 @@ class Deal extends BaseEntity with _$Deal {
 
   Deal toggleFavorite([bool? value]) => copyWith(hasWish: value ?? !hasWish);
 
+  Deal bid({AmountField<double>? amount, AmountField<double>? lastPrice}) =>
+      copyWith(basePrice: amount ?? basePrice, lastPriceOffered: lastPrice ?? lastPriceOffered);
+
   Deal merge(Deal? other) => copyWith(
         id: other?.id.value != null ? other!.id : id,
         basePrice: other?.basePrice.isNotNull((it) => it as AmountField<double>, orElse: (_) => basePrice) ?? basePrice,
@@ -121,8 +124,8 @@ class Deal extends BaseEntity with _$Deal {
         isSponsored: other?.isSponsored ?? isSponsored,
         hasWish: other?.hasWish ?? hasWish,
         admittanceFee: other?.admittanceFee.isNotNull((it) => it as AmountField<double?>, orElse: (_) => admittanceFee) ?? admittanceFee,
-        dealPriority: other?.dealPriority.isNotNull((it) => it as BasicTextField<int>, orElse: (_) => dealPriority) ?? dealPriority,
-        clicks: other?.clicks.isNotNull((it) => it as BasicTextField<int>, orElse: (_) => clicks) ?? clicks,
+        dealPriority: other?.dealPriority.isNotNull((it) => it as BasicTextField<int?>, orElse: (_) => dealPriority) ?? dealPriority,
+        clicks: other?.clicks.isNotNull((it) => it as BasicTextField<int?>, orElse: (_) => clicks) ?? clicks,
         address: other?.address.isNotNull((it) => it as BasicTextField<String?>, orElse: (_) => address) ?? address,
         bidStatus: other?.bidStatus ?? bidStatus,
         isClosing: other?.isClosing ?? isClosing,

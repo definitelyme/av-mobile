@@ -39,89 +39,102 @@ class SignupScreen extends StatelessWidget with AutoRouteWrapper {
   Widget build(BuildContext context) {
     return AdaptiveScaffold(
       backgroundColor: Palette.accentColor,
-      adaptiveToolbar: const AdaptiveToolbar(
+      adaptiveToolbar: AdaptiveToolbar(
         implyMiddle: false,
         implyLeading: false,
         cupertinoImplyLeading: false,
+        backgroundColor: Palette.accentColor,
         showCustomLeading: false,
+        overlayStyle: App.customSystemOverlay(
+          ctx: context,
+          ios: Brightness.dark,
+          android: Brightness.light,
+        ),
       ),
       body: SingleChildScrollView(
         physics: Utils.physics,
         child: SizedBox(
           height: 1.h,
-          child: Stack(
-            clipBehavior: Clip.none,
-            children: [
-              Positioned(
-                top: 0.08.h,
-                right: 0,
-                child: AppAssets.hammerBig,
-              ),
-              //
-              Positioned(
-                top: 0.02.h,
-                left: 0,
-                right: 0.2.w,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: App.sidePadding),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      AdaptiveText(
-                        'Create your account',
-                        maxLines: 1,
-                        textColor: Colors.white,
-                        fontSize: 26.sp,
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: Utils.letterSpacing,
-                      ),
-                      //
-                      0.01.verticalh,
-                      //
-                      BlocSelector<AuthCubit, AuthState, bool>(
-                        selector: (s) => s.isLoading || s.isAppleAuthLoading || s.isGoogleAuthLoading,
-                        builder: (c, isLoading) => Disabled(
-                          disabled: isLoading,
-                          child: GestureDetector(
-                            onTap: () => navigator.navigate(const LoginRoute()),
-                            child: AdaptiveText.rich(
-                              const TextSpan(children: [
-                                TextSpan(text: 'Already have an account? '),
-                                TextSpan(
-                                  text: 'Log In',
-                                  style: TextStyle(color: Palette.accentYellow, decoration: TextDecoration.underline),
-                                ),
-                              ]),
-                              fontSize: 18.sp,
-                              textColor: Colors.white,
-                              fontWeight: FontWeight.w400,
+          child: SafeArea(
+            left: false,
+            right: false,
+            bottom: false,
+            child: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                Positioned(
+                  top: 0.08.h,
+                  right: 0,
+                  child: AppAssets.hammerBig,
+                ),
+                //
+                Positioned(
+                  top: 0.02.h,
+                  left: 0,
+                  right: 0.2.w,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: App.sidePadding),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        AdaptiveText(
+                          'Create your account',
+                          maxLines: 1,
+                          textColor: Colors.white,
+                          fontSize: 26.sp,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: Utils.letterSpacing,
+                        ),
+                        //
+                        0.01.verticalh,
+                        //
+                        BlocSelector<AuthCubit, AuthState, bool>(
+                          selector: (s) => s.isLoading || s.isAppleAuthLoading || s.isGoogleAuthLoading,
+                          builder: (c, isLoading) => Disabled(
+                            disabled: isLoading,
+                            child: GestureDetector(
+                              onTap: () => navigator.navigate(const LoginRoute()),
+                              child: AdaptiveText.rich(
+                                const TextSpan(children: [
+                                  TextSpan(text: 'Already have an account? '),
+                                  TextSpan(
+                                    text: 'Log In',
+                                    style: TextStyle(color: Palette.accentYellow, decoration: TextDecoration.underline),
+                                  ),
+                                ]),
+                                fontSize: 18.sp,
+                                textColor: Colors.white,
+                                fontWeight: FontWeight.w400,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              //
-              Positioned(
-                top: App.longest * 0.13,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                child: Material(
-                  color: App.resolveColor(Palette.cardColorLight, dark: Palette.cardColorDark),
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(32),
-                    topRight: Radius.circular(32),
-                  ),
-                  child: const SafeArea(
-                    top: false,
-                    child: _FormLayout(),
+                //
+                Positioned(
+                  top: App.longest * 0.13,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  child: Material(
+                    color: App.resolveColor(Palette.cardColorLight, dark: Palette.cardColorDark),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(32),
+                      topRight: Radius.circular(32),
+                    ),
+                    child: const SafeArea(
+                      top: false,
+                      left: false,
+                      right: false,
+                      child: _FormLayout(),
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -157,7 +170,7 @@ class _FormLayout extends StatelessWidget {
                       field: (s) => s.user.firstName,
                       focus: AuthState.firstNameFocus,
                       next: AuthState.lastNameFocus,
-                      hintText: (s) => 'Enter First Name',
+                      hintText: (s) => 'Your Name',
                       onChanged: (it, str) => it.firstNameChanged(str),
                     ),
                   ],
@@ -276,12 +289,15 @@ class _FormLayout extends StatelessWidget {
             ),
           ),
           //
-          0.03.verticalh,
-          //
-          MyHero(
-            tag: Const.oauthBtnHeroTag,
-            child: OAuthWidgets(cubit: context.read<AuthCubit>()),
-          ),
+          if (1 != 1)
+            if (!App.platform.isIOS) ...[
+              0.03.verticalh,
+              //
+              MyHero(
+                tag: Const.oauthBtnHeroTag,
+                child: OAuthWidgets(cubit: context.read<AuthCubit>()),
+              ),
+            ],
         ],
       ),
     );

@@ -25,22 +25,9 @@ class DealDetailScreen extends StatefulWidget with AutoRouteWrapper {
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider(
-      create: (_) => getIt<DealCubit>()..showDeal(deal),
-      child: BlocListener<DealCubit, DealState>(
-        listenWhen: (p, c) =>
-            p.status.getOrElse(() => null) != c.status.getOrElse(() => null) ||
-            (c.status.getOrElse(() => null) != null && (c.status.getOrElse(() => null)!.response.maybeMap(orElse: () => false))),
-        listener: (c, s) => s.status.fold(
-          () => null,
-          (it) => it?.response.map(
-            info: (i) => PopupDialog.info(message: i.message, show: i.message.isNotEmpty).render(c),
-            error: (f) => PopupDialog.error(message: f.message, show: f.show && f.message.isNotEmpty).render(c),
-            success: (s) => PopupDialog.success(message: s.message, show: s.message.isNotEmpty).render(c),
-          ),
-        ),
-        child: this,
-      ),
+    return BlocProvider.value(
+      value: blocMaybeOf(context, orElse: () => getIt<DealCubit>())..showDeal(deal),
+      child: this,
     );
   }
 }
@@ -77,109 +64,117 @@ class _DealDetailScreenState extends State<DealDetailScreen> {
                     child: Material(
                       borderRadius: const BorderRadius.all(Radius.circular(Utils.buttonRadius)),
                       type: MaterialType.transparency,
-                      child: MediaCarousel<MediaField>(
-                        items: deal.product!.photos.map((e) => e.image).asList(),
-                        height: 0.27.h,
-                        viewportFraction: (it) => deal.product!.photos.map((e) => e.image).size > 1 ? 0.8 : 0.95,
-                        enableInfiniteScroll: (it) => deal.product!.photos.map((e) => e.image).size > 1,
-                        position: CarouselIndicatorPosition.bottom,
-                        autoPlay: true,
-                        autoPlayInterval: const Duration(seconds: 7),
-                        disableCenter: false,
-                        builder: (_, i, pv, item) => ImageBox.network(
-                          photo: item.getOrNull,
-                          fit: BoxFit.cover,
-                          borderRadius: 8.br,
-                          expandsFullscreen: true,
-                          heroTag: '${deal.product!.id}_${i}_${item.getOrNull}',
-                          replacement: Image.asset('${item.getOrEmpty}', fit: BoxFit.cover),
-                          stackChildren: (image) => [
-                            image,
-                            //
-                            const Positioned.fill(
-                              child: DecoratedBox(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.all(Radius.circular(Utils.buttonRadius)),
-                                  gradient: LinearGradient(
-                                    begin: Alignment(0.0, -1.8),
-                                    end: Alignment.bottomCenter,
-                                    colors: [
-                                      Colors.transparent,
-                                      Colors.transparent,
-                                      Colors.transparent,
-                                      Colors.transparent,
-                                      Colors.black12,
-                                      Colors.black26,
-                                      Colors.black38,
-                                      Colors.black45,
-                                    ],
+                      child: SafeArea(
+                        left: false,
+                        right: false,
+                        bottom: false,
+                        child: MediaCarousel<MediaField>(
+                          items: deal.product!.photos.map((e) => e.image).asList(),
+                          height: 0.27.h,
+                          viewportFraction: (it) => deal.product!.photos.map((e) => e.image).size > 1 ? 0.8 : 0.95,
+                          enableInfiniteScroll: (it) => deal.product!.photos.map((e) => e.image).size > 1,
+                          position: CarouselIndicatorPosition.bottom,
+                          autoPlay: true,
+                          autoPlayInterval: const Duration(seconds: 7),
+                          disableCenter: false,
+                          builder: (_, i, pv, item) => ImageBox.network(
+                            photo: item.getOrNull,
+                            fit: BoxFit.cover,
+                            borderRadius: 8.br,
+                            expandsFullscreen: true,
+                            heroTag: '${deal.product!.id}_${i}_${item.getOrNull}',
+                            replacement: Image.asset('${item.getOrEmpty}', fit: BoxFit.cover),
+                            stackChildren: (image) => [
+                              image,
+                              //
+                              const Positioned.fill(
+                                child: DecoratedBox(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.all(Radius.circular(Utils.buttonRadius)),
+                                    gradient: LinearGradient(
+                                      begin: Alignment(0.0, -1.8),
+                                      end: Alignment.bottomCenter,
+                                      colors: [
+                                        Colors.transparent,
+                                        Colors.transparent,
+                                        Colors.transparent,
+                                        Colors.transparent,
+                                        Colors.black12,
+                                        Colors.black26,
+                                        Colors.black38,
+                                        Colors.black45,
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                            //
-                            Positioned(
-                              top: 8,
-                              right: 8,
-                              child: AppIconButton(
-                                backgroundColor: App.resolveColor(Palette.cardColorLight, dark: Palette.cardColorDark)!,
-                                borderRadius: 5.br,
-                                type: MaterialType.button,
-                                elevation: 0,
-                                height: 40,
-                                width: 40,
-                                disabled: s.isLoading || s.isBidding,
-                                padding: EdgeInsets.zero,
-                                onPressed: c.read<DealCubit>().toggleFavorite,
-                                child: s.currentDeal.hasWish
-                                    ? Icon(Utils.platform_(material: Icons.favorite, cupertino: CupertinoIcons.heart_fill))
-                                    : Icon(Utils.platform_(material: Icons.favorite_border, cupertino: CupertinoIcons.heart)),
-                              ),
-                            ),
-                            //
-                            if (deal.endDate.getOrNull != null &&
-                                DateTime.now().millisecondsSinceEpoch < deal.endDate.getOrNull!.millisecondsSinceEpoch)
+                              //
                               Positioned(
-                                top: 20,
-                                left: 0,
-                                child: CountdownWidget(
-                                  autostart: DateTime.now().millisecondsSinceEpoch < deal.endDate.getOrNull!.millisecondsSinceEpoch,
-                                  duration: deal.endDate.getOrNull!.difference(DateTime.now()),
-                                  // showMinuteRemainder: false,
-                                  showHourRemainder: false,
-                                  ticker: (tick) => Material(
-                                    color: Palette.accentGreen,
-                                    borderRadius: const BorderRadius.only(
-                                      topRight: Radius.circular(8),
-                                      bottomRight: Radius.circular(8),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                                      child: Row(
-                                        children: [
-                                          Icon(AVIcons.clock, size: 16.sp, color: Colors.white),
-                                          //
-                                          Padding(
-                                            padding: EdgeInsets.only(left: 0.015.w),
-                                            child: AdaptiveText(
-                                              '$tick',
-                                              maxLines: 1,
-                                              fontSize: 16.sp,
-                                              maxFontSize: 16,
-                                              fontWeight: FontWeight.w600,
-                                              textColor: Colors.white,
-                                              textColorDark: Colors.white,
-                                              isDefault: true,
+                                top: 8,
+                                right: 8,
+                                child: AnimatedVisibility(
+                                  visible: !s.isLoading,
+                                  child: AppIconButton(
+                                    backgroundColor: App.resolveColor(Palette.cardColorLight, dark: Palette.cardColorDark)!,
+                                    borderRadius: 5.br,
+                                    type: MaterialType.button,
+                                    elevation: 0,
+                                    height: 40,
+                                    width: 40,
+                                    disabled: s.isLoading || s.isBidding,
+                                    padding: EdgeInsets.zero,
+                                    onPressed: c.read<DealCubit>().toggleFavorite,
+                                    child: s.currentDeal.hasWish
+                                        ? Icon(Utils.platform_(material: Icons.favorite, cupertino: CupertinoIcons.heart_fill))
+                                        : Icon(Utils.platform_(material: Icons.favorite_border, cupertino: CupertinoIcons.heart)),
+                                  ),
+                                ),
+                              ),
+                              //
+                              if (deal.endDate.getOrNull != null &&
+                                  DateTime.now().millisecondsSinceEpoch < deal.endDate.getOrNull!.millisecondsSinceEpoch)
+                                Positioned(
+                                  top: 20,
+                                  left: 0,
+                                  child: CountdownWidget(
+                                    autostart: DateTime.now().millisecondsSinceEpoch < deal.endDate.getOrNull!.millisecondsSinceEpoch,
+                                    duration: deal.endDate.getOrNull!.difference(DateTime.now()),
+                                    // showMinuteRemainder: false,
+                                    showHourRemainder: false,
+                                    ticker: (tick) => Material(
+                                      color: Palette.accentGreen,
+                                      borderRadius: const BorderRadius.only(
+                                        topRight: Radius.circular(8),
+                                        bottomRight: Radius.circular(8),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                                        child: Row(
+                                          children: [
+                                            Icon(AVIcons.clock, size: 16.sp, color: Colors.white),
+                                            //
+                                            Padding(
+                                              padding: EdgeInsets.only(left: 0.015.w),
+                                              child: AdaptiveText(
+                                                '$tick',
+                                                maxLines: 1,
+                                                fontSize: 16.sp,
+                                                maxFontSize: 16,
+                                                fontWeight: FontWeight.w600,
+                                                textColor: Colors.white,
+                                                textColorDark: Colors.white,
+                                                isDefault: true,
+                                              ),
                                             ),
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
                                     ),
+                                    child: (fn) => Utils.nothing,
                                   ),
-                                  child: (fn) => Utils.nothing,
                                 ),
-                              ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -366,29 +361,30 @@ class _DealDetailScreenState extends State<DealDetailScreen> {
                           ],
                         ),
                         //
-                        if (deal.type == DealType.auction)
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              AdaptiveText(
-                                '34 Bids',
-                                maxLines: 1,
-                                softWrap: true,
-                                fontSize: 18.sp,
-                                textColor: Palette.accentColor,
-                                fontWeight: FontWeight.w600,
-                              ),
-                              //
-                              AdaptiveText(
-                                'Bid History',
-                                maxLines: 1,
-                                softWrap: true,
-                                fontSize: 16.sp,
-                                textColor: const Color(0xff989DB3),
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ],
-                          ),
+                        if (1 != 1)
+                          if (deal.type == DealType.auction)
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                AdaptiveText(
+                                  '34 Bids',
+                                  maxLines: 1,
+                                  softWrap: true,
+                                  fontSize: 18.sp,
+                                  textColor: Palette.accentColor,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                                //
+                                AdaptiveText(
+                                  'Bid History',
+                                  maxLines: 1,
+                                  softWrap: true,
+                                  fontSize: 16.sp,
+                                  textColor: const Color(0xff989DB3),
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ],
+                            ),
                       ],
                     ),
                     //

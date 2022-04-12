@@ -73,8 +73,7 @@ class _SearchWidgetState extends State<SearchWidget> with TabbedSearchMixin {
             readOnly: true,
             showCursor: false,
             hintText: 'Find Auctions..',
-            hintStyle: const TextStyle(
-                fontStyle: FontStyle.italic, color: Colors.white70),
+            hintStyle: const TextStyle(fontStyle: FontStyle.italic, color: Colors.white70),
             capitalization: TextCapitalization.none,
             prefixMode: OverlayVisibilityMode.always,
             cursorColor: Colors.white70,
@@ -90,15 +89,12 @@ class _SearchWidgetState extends State<SearchWidget> with TabbedSearchMixin {
             prefixIcon: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 5),
               child: Icon(
-                Utils.platform_(
-                    material: Icons.search, cupertino: CupertinoIcons.search),
+                Utils.platform_(material: Icons.search, cupertino: CupertinoIcons.search),
                 size: 24,
-                color:
-                    App.resolveColor(Palette.iconLight, dark: Palette.iconDark),
+                color: App.resolveColor(Palette.iconLight, dark: Palette.iconDark),
               ),
             ),
-            cupertinoPadding: const EdgeInsets.symmetric(horizontal: 0)
-                .copyWith(top: 10, bottom: 10),
+            cupertinoPadding: const EdgeInsets.symmetric(horizontal: 0).copyWith(top: 10, bottom: 10),
             keyboardType: TextInputType.text,
             action: TextInputAction.done,
             onTap: showFullSearch,
@@ -108,11 +104,11 @@ class _SearchWidgetState extends State<SearchWidget> with TabbedSearchMixin {
         0.02.horizontalw,
         //
         AppIconButton(
-          backgroundColor: App.resolveColor(Palette.cardColorLight,
-              dark: Palette.cardColorDark)!,
+          backgroundColor: App.resolveColor(Palette.cardColorLight, dark: Palette.cardColorDark)!,
           borderRadius: 5.br,
           type: MaterialType.button,
           elevation: 0,
+          cupertinoBackgroundColor: CupertinoColors.systemGrey4,
           child: AppAssets.filter,
           onPressed: () => App.showAdaptiveBottomSheet(
             context,
@@ -174,8 +170,7 @@ class _FilterBottomSheet extends StatelessWidget {
                           onPressed: navigator.pop,
                           tooltip: 'Back',
                           elevation: 0.0,
-                          backgroundColor:
-                              Theme.of(context).scaffoldBackgroundColor,
+                          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                           child: const Icon(Icons.close),
                         ),
                         cupertino: () => AdaptiveButton(

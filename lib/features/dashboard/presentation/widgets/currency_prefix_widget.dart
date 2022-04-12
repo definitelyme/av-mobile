@@ -16,12 +16,13 @@ class CurrencyPrefixWidget extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(1, 1, 4, 1),
       child: SizedBox(
         width: 35,
+        height: 40,
         child: Material(
           color: App.resolveColor(Colors.white, dark: Palette.cardColorDark),
-          borderRadius: const BorderRadius.only(
+          borderRadius: App.platform.material(const BorderRadius.only(
             topLeft: Radius.circular(Utils.inputBorderRadius),
             bottomLeft: Radius.circular(Utils.inputBorderRadius),
-          ),
+          )),
           child: DecoratedBox(
             decoration: BoxDecoration(
               border: Border(right: BorderSide(color: Theme.of(context).dividerColor, width: 1.2)),

@@ -25,13 +25,14 @@ class _ChatPageState extends State<ChatPage> {
         showCustomLeading: false,
         implyLeading: false,
         centerTitle: true,
+        backgroundColor: App.platform.cupertino(Palette.accentColor),
         cupertinoImplyLeading: false,
         overlayStyle: App.customSystemOverlay(ctx: context, android: Brightness.light, ios: Brightness.light),
         actions: [
-          ...Utils.platform_(
-            cupertino: [Center(child: AdaptiveText('Chats', maxLines: 1, style: App.titleStyle))],
-            material: [Utils.nothing],
-          )!,
+          // ...Utils.platform_(
+          //   cupertino: [Center(child: AdaptiveText('Chats', maxLines: 1, style: App.titleStyle))],
+          //   material: [Utils.nothing],
+          // )!,
         ],
       ),
       body: SafeArea(

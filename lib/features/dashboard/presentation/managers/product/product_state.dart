@@ -39,6 +39,7 @@ class ProductState extends BaseBlocState with _$ProductState {
     @Default(false) bool isFetchingCategories,
     @Default(false) bool isSavingState,
     @Default(false) bool isCreatingProduct,
+    @Default(false) bool productCreated,
     //
     required MoneyMaskedTextController basePriceController,
     required TextEditingController itemNameTextController,

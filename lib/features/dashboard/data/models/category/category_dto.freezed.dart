@@ -232,6 +232,7 @@ class _$CategoryDTODataTearOff {
       String? name,
       String? description,
       String? slug,
+      DealDTOData? deal,
       @TimestampConverter() DateTime? createdAt,
       @TimestampConverter() DateTime? updatedAt}) {
     return _CategoryDTOData(
@@ -244,6 +245,7 @@ class _$CategoryDTODataTearOff {
       name: name,
       description: description,
       slug: slug,
+      deal: deal,
       createdAt: createdAt,
       updatedAt: updatedAt,
     );
@@ -273,6 +275,7 @@ mixin _$CategoryDTOData {
   String? get name => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   String? get slug => throw _privateConstructorUsedError;
+  DealDTOData? get deal => throw _privateConstructorUsedError;
   @TimestampConverter()
   DateTime? get createdAt => throw _privateConstructorUsedError;
   @TimestampConverter()
@@ -299,8 +302,11 @@ abstract class $CategoryDTODataCopyWith<$Res> {
       String? name,
       String? description,
       String? slug,
+      DealDTOData? deal,
       @TimestampConverter() DateTime? createdAt,
       @TimestampConverter() DateTime? updatedAt});
+
+  $DealDTODataCopyWith<$Res>? get deal;
 }
 
 /// @nodoc
@@ -323,6 +329,7 @@ class _$CategoryDTODataCopyWithImpl<$Res>
     Object? name = freezed,
     Object? description = freezed,
     Object? slug = freezed,
+    Object? deal = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -363,6 +370,10 @@ class _$CategoryDTODataCopyWithImpl<$Res>
           ? _value.slug
           : slug // ignore: cast_nullable_to_non_nullable
               as String?,
+      deal: deal == freezed
+          ? _value.deal
+          : deal // ignore: cast_nullable_to_non_nullable
+              as DealDTOData?,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -372,6 +383,17 @@ class _$CategoryDTODataCopyWithImpl<$Res>
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
     ));
+  }
+
+  @override
+  $DealDTODataCopyWith<$Res>? get deal {
+    if (_value.deal == null) {
+      return null;
+    }
+
+    return $DealDTODataCopyWith<$Res>(_value.deal!, (value) {
+      return _then(_value.copyWith(deal: value));
+    });
   }
 }
 
@@ -392,8 +414,12 @@ abstract class _$CategoryDTODataCopyWith<$Res>
       String? name,
       String? description,
       String? slug,
+      DealDTOData? deal,
       @TimestampConverter() DateTime? createdAt,
       @TimestampConverter() DateTime? updatedAt});
+
+  @override
+  $DealDTODataCopyWith<$Res>? get deal;
 }
 
 /// @nodoc
@@ -418,6 +444,7 @@ class __$CategoryDTODataCopyWithImpl<$Res>
     Object? name = freezed,
     Object? description = freezed,
     Object? slug = freezed,
+    Object? deal = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -458,6 +485,10 @@ class __$CategoryDTODataCopyWithImpl<$Res>
           ? _value.slug
           : slug // ignore: cast_nullable_to_non_nullable
               as String?,
+      deal: deal == freezed
+          ? _value.deal
+          : deal // ignore: cast_nullable_to_non_nullable
+              as DealDTOData?,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -483,6 +514,7 @@ class _$_CategoryDTOData extends _CategoryDTOData {
       this.name,
       this.description,
       this.slug,
+      this.deal,
       @TimestampConverter() this.createdAt,
       @TimestampConverter() this.updatedAt})
       : super._();
@@ -514,6 +546,8 @@ class _$_CategoryDTOData extends _CategoryDTOData {
   @override
   final String? slug;
   @override
+  final DealDTOData? deal;
+  @override
   @TimestampConverter()
   final DateTime? createdAt;
   @override
@@ -522,7 +556,7 @@ class _$_CategoryDTOData extends _CategoryDTOData {
 
   @override
   String toString() {
-    return 'CategoryDTOData(productsAssigned: $productsAssigned, percentageIncrease: $percentageIncrease, charge: $charge, active: $active, id: $id, image: $image, name: $name, description: $description, slug: $slug, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'CategoryDTOData(productsAssigned: $productsAssigned, percentageIncrease: $percentageIncrease, charge: $charge, active: $active, id: $id, image: $image, name: $name, description: $description, slug: $slug, deal: $deal, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -542,6 +576,7 @@ class _$_CategoryDTOData extends _CategoryDTOData {
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.slug, slug) &&
+            const DeepCollectionEquality().equals(other.deal, deal) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
@@ -558,6 +593,7 @@ class _$_CategoryDTOData extends _CategoryDTOData {
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(slug),
+      const DeepCollectionEquality().hash(deal),
       const DeepCollectionEquality().hash(createdAt),
       const DeepCollectionEquality().hash(updatedAt));
 
@@ -583,6 +619,7 @@ abstract class _CategoryDTOData extends CategoryDTOData {
       String? name,
       String? description,
       String? slug,
+      DealDTOData? deal,
       @TimestampConverter() DateTime? createdAt,
       @TimestampConverter() DateTime? updatedAt}) = _$_CategoryDTOData;
   const _CategoryDTOData._() : super._();
@@ -613,6 +650,8 @@ abstract class _CategoryDTOData extends CategoryDTOData {
   String? get description;
   @override
   String? get slug;
+  @override
+  DealDTOData? get deal;
   @override
   @TimestampConverter()
   DateTime? get createdAt;

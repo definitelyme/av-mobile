@@ -159,10 +159,12 @@ class _CountryPickerScreenState extends State<CountryPickerScreen> {
   void _scrollListener() {
     var scrollPosition = (_scrollController!.position.pixels / _itemSizeHeight).round();
     if (scrollPosition < _countries.length) {
-      var countryName = _countries.elementAt(scrollPosition).name.getOrNull;
-      setState(() {
-        posSelected = countryName![0].toUpperCase().codeUnitAt(0) - 'A'.codeUnitAt(0);
-      });
+      try {
+        var countryName = _countries.elementAt(scrollPosition).name.getOrNull;
+        setState(() {
+          posSelected = countryName![0].toUpperCase().codeUnitAt(0) - 'A'.codeUnitAt(0);
+        });
+      } catch (_) {}
     }
 
     if ((_scrollController!.offset) >= (_scrollController!.position.maxScrollExtent)) {}

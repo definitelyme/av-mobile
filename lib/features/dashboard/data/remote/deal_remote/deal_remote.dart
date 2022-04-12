@@ -10,26 +10,16 @@ import 'package:retrofit/retrofit.dart';
 
 part 'deal_remote.g.dart';
 
-// '['
-//       '{"path": "vendor"},'
-//       '{"path" : "user" , "select" : "firstName lastName"},'
-//       '{"path": "product", "populate" :'
-//         '["brandInformation.brand", "brandInformation.brandModel", "category", "user"],'
-//         '"select": "-deal -user -vendor"'
-//       '},'
-//       '"select": "-category"'
-//     ']';
-
 const String _defaultPopulation =
     '[{"path": "vendor"}, {"path" : "user" , "select" : "firstName lastName"}, {"path": "product", "populate" : ["category", "user"], "select": "-category -deal -user -vendor"}]';
 
 const String _singleDealPopulation =
     '[{"path": "vendor"}, {"path" : "user" , "select" : "firstName lastName"}, {"path": "product", "populate" : ["category", "user", "vendor"], "select": "-deal"}]';
 
-const String _wishlistPopulation = '["user", {"path" : "deal", "select" : "-category -product -user -vendor"}]';
+const String _wishlistPopulation =
+    '[{"path": "user", "select": "firstName lastName"},{"path": "deal", "select": "-category -deal -user -vendor", "populate": {"path": "product", "select": "-category -deal -user -vendor"}}]';
 
 const String _ratingPopulation = '["user", {"path" : "user" , "select" : "firstName lastName"}]';
-// const String _wishlistPopulation = '["user", {"path" : "deal", "populate": ["product"], "select" : "-category -user -vendor"}]';
 
 @lazySingleton
 @RestApi(parser: Parser.FlutterCompute)
@@ -63,14 +53,10 @@ abstract class DealRemote {
   Future<CategoryDTO> getCategory(@Path() String id);
 
   @GET(EndPoints.FILTER_BY_CATEGORY)
-  Future<DealListDTO> filterDealsByCategory(
+  Future<CategoryListDTO> filterDealsByCategory(
     @Path() String id, {
-    @Query('population') String population = _defaultPopulation,
-    @Query('bidStatus') String? bidStatus,
-    @Query('status') String? dealStatus,
-    @Query('type') String? bidType,
-    @Query('sort') String? sortBy,
     @Query('isPrivate') bool? isPrivate,
+    @Query('isMobile') bool isMobile = true,
     @Query('sponsored') bool? sponsored,
     @Query('page') int? page,
     @Query('per_page') int? perPage,

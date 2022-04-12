@@ -7,6 +7,7 @@ import 'package:auctionvillage/manager/locator/locator.dart';
 import 'package:auctionvillage/utils/utils.dart';
 import 'package:auctionvillage/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kt_dart/collection.dart';
@@ -30,22 +31,9 @@ class DealsListScreen extends StatelessWidget with AutoRouteWrapper {
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider(
-      create: (_) => getIt<DealCubit>(),
-      child: BlocListener<DealCubit, DealState>(
-        listenWhen: (p, c) =>
-            p.status.getOrElse(() => null) != c.status.getOrElse(() => null) ||
-            (c.status.getOrElse(() => null) != null && (c.status.getOrElse(() => null)!.response.maybeMap(orElse: () => false))),
-        listener: (c, s) => s.status.fold(
-          () => null,
-          (it) => it?.response.map(
-            info: (i) => PopupDialog.info(message: i.message, show: i.message.isNotEmpty).render(c),
-            error: (f) => PopupDialog.error(message: f.message, show: f.show && f.message.isNotEmpty).render(c),
-            success: (s) => PopupDialog.success(message: s.message, show: s.message.isNotEmpty).render(c),
-          ),
-        ),
-        child: this,
-      ),
+    return BlocProvider.value(
+      value: blocMaybeOf(context, orElse: () => getIt<DealCubit>())..clearDealsList(),
+      child: this,
     );
   }
 
@@ -72,8 +60,12 @@ class DealsListScreen extends StatelessWidget with AutoRouteWrapper {
       adaptiveToolbar: AdaptiveToolbar(
         implyMiddle: false,
         title: title,
-        leadingIcon: const Icon(Icons.keyboard_backspace_rounded, color: Colors.white),
+        leadingIcon: App.platform.material(const Icon(Icons.keyboard_backspace_rounded, color: Colors.white)),
         overlayStyle: App.customSystemOverlay(ctx: context, android: Brightness.light, ios: Brightness.dark),
+        backgroundColor: App.platform.cupertino(Palette.accentColor),
+        cupertinoImplyLeading: false,
+        cupertinoLeadingWidget: const Icon(CupertinoIcons.back, color: Colors.white),
+        cupertinoLeadingAlignment: Alignment.centerLeft,
         titleStyle: TextStyle(
           color: Colors.white,
           fontSize: 22.sp,
@@ -117,14 +109,14 @@ class DealsListScreen extends StatelessWidget with AutoRouteWrapper {
                                 (_, i) => Column(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    if (s.deals.isNotEmpty()) ...[
-                                      ProductCard(s.deals.get(i), index: i),
+                                    if (s.dealsList.isNotEmpty()) ...[
+                                      ProductCard(s.dealsList.get(i), index: i),
                                       //
-                                      if (i < s.deals.size - 1) 0.01.verticalh,
+                                      if (i < s.dealsList.size - 1) 0.01.verticalh,
                                     ],
                                   ],
                                 ),
-                                childCount: s.deals.size,
+                                childCount: s.dealsList.size,
                               ),
                             ),
                           ),

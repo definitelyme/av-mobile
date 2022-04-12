@@ -159,7 +159,9 @@ class _ImageBoxState extends State<ImageBox> with AutomaticKeepAliveClientMixin<
                       minScale: 0.1,
                       imageProvider: provider,
                     ))
-                : () => widget.onPressed?.call(provider),
+                : widget.onPressed != null
+                    ? () => widget.onPressed?.call(provider)
+                    : null,
             child: widget.stackChildren != null
                 ? Stack(
                     alignment: widget.stackAlignment,

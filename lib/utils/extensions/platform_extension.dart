@@ -29,6 +29,26 @@ extension PlatformX on TargetPlatform {
     }
   }
 
+  T when<T>({T? cupertino, T? android, T? fuchsia, T? linux, T? windows, T? macos, required T material}) {
+    switch (this) {
+      case TargetPlatform.iOS:
+        return cupertino ?? android ?? material;
+      case TargetPlatform.macOS:
+        return macos ?? cupertino ?? material;
+      case TargetPlatform.android:
+        // return android ?? cupertino ?? material;
+        return android ?? material;
+      case TargetPlatform.fuchsia:
+        return fuchsia ?? material;
+      case TargetPlatform.linux:
+        return linux ?? material;
+      case TargetPlatform.windows:
+        return windows ?? material;
+      default:
+        return material;
+    }
+  }
+
   T? cupertino<T>(T? value) {
     switch (this) {
       case TargetPlatform.iOS:

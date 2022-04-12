@@ -5,8 +5,6 @@ import 'dart:async';
 import 'package:auctionvillage/core/presentation/index.dart';
 import 'package:auctionvillage/features/auth/presentation/managers/managers.dart';
 import 'package:auctionvillage/features/dashboard/domain/index.dart';
-import 'package:auctionvillage/features/dashboard/presentation/managers/index.dart';
-import 'package:auctionvillage/manager/locator/locator.dart';
 import 'package:auctionvillage/utils/utils.dart' hide HomePage;
 import 'package:auctionvillage/widgets/widgets.dart';
 import 'package:async/async.dart';
@@ -26,10 +24,7 @@ class DashboardScreen extends StatefulWidget with AutoRouteWrapper {
   @override
   Widget wrappedRoute(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
-        BlocProvider.value(value: BlocProvider.of<TabNavigationCubit>(context)),
-        BlocProvider(create: (_) => getIt<DealCubit>()),
-      ],
+      providers: [BlocProvider.value(value: BlocProvider.of<TabNavigationCubit>(context))],
       child: this,
     );
   }

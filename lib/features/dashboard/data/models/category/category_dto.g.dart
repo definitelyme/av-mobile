@@ -41,6 +41,9 @@ _$_CategoryDTOData _$$_CategoryDTODataFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String?,
       description: json['description'] as String?,
       slug: json['slug'] as String?,
+      deal: json['deal'] == null
+          ? null
+          : DealDTOData.fromJson(json['deal'] as Map<String, dynamic>),
       createdAt:
           const TimestampConverter().fromJson(json['createdAt'] as String?),
       updatedAt:
@@ -67,6 +70,7 @@ Map<String, dynamic> _$$_CategoryDTODataToJson(_$_CategoryDTOData instance) {
   writeNotNull('name', instance.name);
   writeNotNull('description', instance.description);
   writeNotNull('slug', instance.slug);
+  writeNotNull('deal', instance.deal?.toJson());
   writeNotNull(
       'createdAt', const TimestampConverter().toJson(instance.createdAt));
   writeNotNull(

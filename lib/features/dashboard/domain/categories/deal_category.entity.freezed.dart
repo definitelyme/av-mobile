@@ -28,6 +28,7 @@ class _$DealCategoryTearOff {
       required BasicTextField<double?> charge,
       required BasicTextField<double?> percentageIncrease,
       required BasicTextField<int> productsAssigned,
+      Deal? deal,
       DateTime? createdAt,
       DateTime? updatedAt}) {
     return _DealCategory(
@@ -40,6 +41,7 @@ class _$DealCategoryTearOff {
       charge: charge,
       percentageIncrease: percentageIncrease,
       productsAssigned: productsAssigned,
+      deal: deal,
       createdAt: createdAt,
       updatedAt: updatedAt,
     );
@@ -62,6 +64,7 @@ mixin _$DealCategory {
       throw _privateConstructorUsedError;
   BasicTextField<int> get productsAssigned =>
       throw _privateConstructorUsedError;
+  Deal? get deal => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
   DateTime? get updatedAt => throw _privateConstructorUsedError;
 
@@ -85,8 +88,11 @@ abstract class $DealCategoryCopyWith<$Res> {
       BasicTextField<double?> charge,
       BasicTextField<double?> percentageIncrease,
       BasicTextField<int> productsAssigned,
+      Deal? deal,
       DateTime? createdAt,
       DateTime? updatedAt});
+
+  $DealCopyWith<$Res>? get deal;
 }
 
 /// @nodoc
@@ -108,6 +114,7 @@ class _$DealCategoryCopyWithImpl<$Res> implements $DealCategoryCopyWith<$Res> {
     Object? charge = freezed,
     Object? percentageIncrease = freezed,
     Object? productsAssigned = freezed,
+    Object? deal = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -148,6 +155,10 @@ class _$DealCategoryCopyWithImpl<$Res> implements $DealCategoryCopyWith<$Res> {
           ? _value.productsAssigned
           : productsAssigned // ignore: cast_nullable_to_non_nullable
               as BasicTextField<int>,
+      deal: deal == freezed
+          ? _value.deal
+          : deal // ignore: cast_nullable_to_non_nullable
+              as Deal?,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -157,6 +168,17 @@ class _$DealCategoryCopyWithImpl<$Res> implements $DealCategoryCopyWith<$Res> {
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
     ));
+  }
+
+  @override
+  $DealCopyWith<$Res>? get deal {
+    if (_value.deal == null) {
+      return null;
+    }
+
+    return $DealCopyWith<$Res>(_value.deal!, (value) {
+      return _then(_value.copyWith(deal: value));
+    });
   }
 }
 
@@ -177,8 +199,12 @@ abstract class _$DealCategoryCopyWith<$Res>
       BasicTextField<double?> charge,
       BasicTextField<double?> percentageIncrease,
       BasicTextField<int> productsAssigned,
+      Deal? deal,
       DateTime? createdAt,
       DateTime? updatedAt});
+
+  @override
+  $DealCopyWith<$Res>? get deal;
 }
 
 /// @nodoc
@@ -202,6 +228,7 @@ class __$DealCategoryCopyWithImpl<$Res> extends _$DealCategoryCopyWithImpl<$Res>
     Object? charge = freezed,
     Object? percentageIncrease = freezed,
     Object? productsAssigned = freezed,
+    Object? deal = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -242,6 +269,10 @@ class __$DealCategoryCopyWithImpl<$Res> extends _$DealCategoryCopyWithImpl<$Res>
           ? _value.productsAssigned
           : productsAssigned // ignore: cast_nullable_to_non_nullable
               as BasicTextField<int>,
+      deal: deal == freezed
+          ? _value.deal
+          : deal // ignore: cast_nullable_to_non_nullable
+              as Deal?,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -267,6 +298,7 @@ class _$_DealCategory extends _DealCategory {
       required this.charge,
       required this.percentageIncrease,
       required this.productsAssigned,
+      this.deal,
       this.createdAt,
       this.updatedAt})
       : super._();
@@ -291,13 +323,15 @@ class _$_DealCategory extends _DealCategory {
   @override
   final BasicTextField<int> productsAssigned;
   @override
+  final Deal? deal;
+  @override
   final DateTime? createdAt;
   @override
   final DateTime? updatedAt;
 
   @override
   String toString() {
-    return 'DealCategory(id: $id, asset: $asset, isActive: $isActive, name: $name, slug: $slug, description: $description, charge: $charge, percentageIncrease: $percentageIncrease, productsAssigned: $productsAssigned, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'DealCategory(id: $id, asset: $asset, isActive: $isActive, name: $name, slug: $slug, description: $description, charge: $charge, percentageIncrease: $percentageIncrease, productsAssigned: $productsAssigned, deal: $deal, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -317,6 +351,7 @@ class _$_DealCategory extends _DealCategory {
                 .equals(other.percentageIncrease, percentageIncrease) &&
             const DeepCollectionEquality()
                 .equals(other.productsAssigned, productsAssigned) &&
+            const DeepCollectionEquality().equals(other.deal, deal) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
@@ -333,6 +368,7 @@ class _$_DealCategory extends _DealCategory {
       const DeepCollectionEquality().hash(charge),
       const DeepCollectionEquality().hash(percentageIncrease),
       const DeepCollectionEquality().hash(productsAssigned),
+      const DeepCollectionEquality().hash(deal),
       const DeepCollectionEquality().hash(createdAt),
       const DeepCollectionEquality().hash(updatedAt));
 
@@ -353,6 +389,7 @@ abstract class _DealCategory extends DealCategory {
       required BasicTextField<double?> charge,
       required BasicTextField<double?> percentageIncrease,
       required BasicTextField<int> productsAssigned,
+      Deal? deal,
       DateTime? createdAt,
       DateTime? updatedAt}) = _$_DealCategory;
   const _DealCategory._() : super._();
@@ -375,6 +412,8 @@ abstract class _DealCategory extends DealCategory {
   BasicTextField<double?> get percentageIncrease;
   @override
   BasicTextField<int> get productsAssigned;
+  @override
+  Deal? get deal;
   @override
   DateTime? get createdAt;
   @override

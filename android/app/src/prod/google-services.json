@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "873003622591-4hc45c7le8dht1gf7b184a32rjl5t8mp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mobile.app.auctionvillage",
+            "certificate_hash": "f9b9930b05439607e146f1cdb6cd6af2aefc7a5d"
+          }
+        },
+        {
           "client_id": "873003622591-hbt0uqi7ujvr0kvn76fvulcb3s3t73pg.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -37,6 +45,13 @@
             {
               "client_id": "873003622591-murghio3q6ehsp03g9omslc64pu2kuhv.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "873003622591-cqahgo5mgn96b0h30ei1so8kculhpvng.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mobile.app.auctionvillage.dev"
+              }
             }
           ]
         }
@@ -59,6 +74,22 @@
           }
         },
         {
+          "client_id": "873003622591-grh6pmhlblh1gas1d4m57758tk0k9nsr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mobile.app.auctionvillage.dev",
+            "certificate_hash": "fd4f1de380f98733d5df47316ba8ec06930d6bff"
+          }
+        },
+        {
+          "client_id": "873003622591-qg565p5p1m8s9riimcniocchu6g4hro2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mobile.app.auctionvillage.dev",
+            "certificate_hash": "f9b9930b05439607e146f1cdb6cd6af2aefc7a5d"
+          }
+        },
+        {
           "client_id": "873003622591-murghio3q6ehsp03g9omslc64pu2kuhv.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -74,6 +105,13 @@
             {
               "client_id": "873003622591-murghio3q6ehsp03g9omslc64pu2kuhv.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "873003622591-cqahgo5mgn96b0h30ei1so8kculhpvng.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mobile.app.auctionvillage.dev"
+              }
             }
           ]
         }

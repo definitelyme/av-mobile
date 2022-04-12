@@ -1,6 +1,7 @@
 library entry.dart;
 
 import 'package:auctionvillage/features/auth/presentation/managers/managers.dart';
+import 'package:auctionvillage/features/dashboard/presentation/managers/index.dart';
 import 'package:auctionvillage/utils/utils.dart';
 import 'package:auctionvillage/widgets/widgets.dart';
 import 'package:flutter/cupertino.dart' hide Router;
@@ -40,6 +41,26 @@ class _EntryState extends State<Entry> {
                 widget.router.navigatorKey.currentContext ?? context,
               ),
               error: (f) => PopupDialog.error(message: f.message, show: f.show && f.message.isNotEmpty).render(
+                widget.router.navigatorKey.currentContext ?? context,
+              ),
+            ),
+          ),
+        ),
+        //
+        BlocListener<DealCubit, DealState>(
+          listenWhen: (p, c) =>
+              p.status.getOrElse(() => null) != c.status.getOrElse(() => null) ||
+              (c.status.getOrElse(() => null) != null && (c.status.getOrElse(() => null)!.response.maybeMap(orElse: () => false))),
+          listener: (c, s) => s.status.fold(
+            () => null,
+            (it) => it?.response.map(
+              info: (i) => PopupDialog.info(message: i.message, show: i.message.isNotEmpty).render(
+                widget.router.navigatorKey.currentContext ?? context,
+              ),
+              error: (f) => PopupDialog.error(message: f.message, show: f.show && f.message.isNotEmpty).render(
+                widget.router.navigatorKey.currentContext ?? context,
+              ),
+              success: (s) => PopupDialog.success(message: s.message, show: s.message.isNotEmpty).render(
                 widget.router.navigatorKey.currentContext ?? context,
               ),
             ),

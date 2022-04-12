@@ -50,7 +50,7 @@ class ProductBloc extends HydratedBloc<ProductEvent, ProductState> with BaseBloc
     }, transformer: sequential());
     //
     on<ProductSyncEvent>((event, emit) async {
-      await event.map(
+      await event.mapOrNull(
         init: (e) async => emit(state.copyWith(product: e.product ?? state.product)),
         categoryChanged: (e) async => emit(state.copyWith.product(category: e.category)),
         countryChanged: (e) async => emit(state.copyWith.product(country: e.country)),
@@ -159,9 +159,10 @@ class ProductBloc extends HydratedBloc<ProductEvent, ProductState> with BaseBloc
           brandInformation: state.product.brandInformation?.copyWith(color: ColorField(e.value)),
         )),
         validate: (e) async => _validateFormInputs(e, emit),
-        clearForm: (e) async => _resetForm(emit),
       );
     }, transformer: concurrent());
+    //
+    on<_ClearFormFieldsEvent>((_, __) async => _resetForm(), transformer: sequential());
     //
     on<ProductGetEvent>((event, emit) async {
       await event.map(
@@ -312,7 +313,7 @@ class ProductBloc extends HydratedBloc<ProductEvent, ProductState> with BaseBloc
     emit(state.copyWith(controller: state.controller, currentIndex: evt.page));
   }
 
-  void _resetForm(Emitter<ProductState> emit) async {
+  void _resetForm() async {
     state.itemNameTextController.clear();
     state.stateTextController.clear();
     state.townTextController.clear();
@@ -339,6 +340,7 @@ class ProductBloc extends HydratedBloc<ProductEvent, ProductState> with BaseBloc
       selectedPlan: DealPlan.blank(),
       isLoading: false,
       isCreatingProduct: false,
+      productCreated: false,
       isFetchingCategories: false,
       isSavingState: false,
       validate: false,
@@ -349,9 +351,22 @@ class ProductBloc extends HydratedBloc<ProductEvent, ProductState> with BaseBloc
 
   void _storeProduct(_StoreNewProductEvent evt, Emitter<ProductState> emit) async {
     final response = await _repository.createProduct(state.product);
+
     response.response.maybeMap(
       error: (_) => emit(state.copyWith(status: optionOf(response), validate: false)),
-      orElse: () => _resetForm(emit),
+      orElse: () {
+        evt.callback?.call(true);
+
+        emit(state.copyWith(
+          productCreated: true,
+          status: some(AppHttpResponse.successful('Product created successfully!')),
+        ));
+
+        Future.delayed(const Duration(seconds: 2), () {
+          _resetForm();
+          add(const ProductSyncEvent.clearForm());
+        });
+      },
     );
   }
 

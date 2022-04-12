@@ -142,6 +142,8 @@ class _$PopupDialog {
         dismissDirection = dismissDirection ?? PopupDialogDismissDirection.horizontal;
 
   Future<dynamic> render(BuildContext context) async {
+    // log.w('Is Showing ===> ${ModalRoute.of(context)?.overlayEntries.length}');
+
     if (show)
       return await _type?.fold(
         flushbar: () async {

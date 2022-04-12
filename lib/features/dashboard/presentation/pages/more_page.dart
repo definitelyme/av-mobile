@@ -160,7 +160,7 @@ class _MorePageState extends State<MorePage> {
                                 AdaptiveText(
                                   '${_Action.list.elementAt(i).title}',
                                   fontSize: 17.sp,
-                                  textColor: Palette.accentColor,
+                                  textColor: App.resolveColor(Palette.accentColor, dark: Colors.white70),
                                   fontWeight: FontWeight.w600,
                                 ),
                               ],
@@ -212,22 +212,46 @@ class _Action {
   static List<_Action> get list => [
         _Action(
           title: 'My Bids',
-          asset: AppAssets.hammer(Palette.accentColor, Size(0.04.w, 0.04.h)),
+          asset: AppAssets.hammer(
+            App.resolveColor(
+              Palette.accentColor,
+              dark: App.platform.when(material: Colors.white70, cupertino: CupertinoColors.systemGrey6),
+            ),
+            Size(0.04.w, 0.04.h),
+          ),
           onPressed: () => navigator.navigate(const MyBidsRoute()),
         ),
         _Action(
           title: 'My Sales',
-          asset: AppAssets.shoppingBag(Palette.accentColor, Size(0.035.w, 0.035.h)),
+          asset: AppAssets.shoppingBag(
+            App.resolveColor(
+              Palette.accentColor,
+              dark: App.platform.when(material: Colors.white70, cupertino: CupertinoColors.systemGrey6),
+            ),
+            Size(0.035.w, 0.035.h),
+          ),
           onPressed: () => navigator.navigate(const MySellingsRoute()),
         ),
         _Action(
           title: 'My Wishlist',
-          asset: AppAssets.bookmark(Palette.accentColor, Size(0.035.w, 0.035.h)),
+          asset: AppAssets.bookmark(
+            App.resolveColor(
+              Palette.accentColor,
+              dark: App.platform.when(material: Colors.white70, cupertino: CupertinoColors.systemGrey6),
+            ),
+            Size(0.035.w, 0.035.h),
+          ),
           onPressed: () => navigator.navigate(const MyWishlistRoute()),
         ),
         _Action(
           title: 'My Reviews',
-          asset: AppAssets.thumbs(Palette.accentColor, Size(0.035.w, 0.035.h)),
+          asset: AppAssets.thumbs(
+            App.resolveColor(
+              Palette.accentColor,
+              dark: App.platform.when(material: Colors.white70, cupertino: CupertinoColors.systemGrey6),
+            ),
+            Size(0.035.w, 0.035.h),
+          ),
           onPressed: () => navigator.navigate(const MyReviewsRoute()),
         ),
       ];

@@ -107,7 +107,7 @@ class _ItemDetailsPageState extends State<ItemDetailsPage> with AutomaticKeepAli
               disabled: s.isLoading || s.isSavingState || s.isCreatingProduct,
               selected: s.product.brandInformation?.yearOfManufacture.value.fold((l) => null, (r) => r),
               errorText: (value) => value == null || value.isEmpty ? 'Please select Year of Manufacture' : null,
-              onChanged: (it) => c.read<ProductBloc>().add(ProductSyncEvent.yearOfPurchaseChanged(it)),
+              onChanged: (it) => c.read<ProductBloc>().add(ProductSyncEvent.yearOfManufactureChanged(it)),
             ),
           ),
           //

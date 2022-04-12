@@ -54,7 +54,12 @@ class CountryDTO with _$CountryDTO {
   static Future<List<CountryDTO>> countries(BuildContext context) async {
     final data = await DefaultAssetBundle.of(context).loadString(AppAssets.countries);
     final json = jsonDecode(data) as List<dynamic>;
-    return json.map((e) => CountryDTO.fromJson((e as Map).mapToStringDynamic)).toList();
+    final countries = json.map((e) => CountryDTO.fromJson((e as Map).mapToStringDynamic)).toList();
+    await Utils.precacheNetworkSVGs(
+      context,
+      countries.where((e) => e.flagUrl != null && e.flagUrl!.isNotEmpty).map((e) => e.flagUrl!).toList(),
+    );
+    return countries;
   }
 }
 

@@ -1,6 +1,7 @@
 library deal_category.entity.dart;
 
 import 'package:auctionvillage/core/domain/entities/entities.dart';
+import 'package:auctionvillage/features/dashboard/domain/index.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'deal_category.entity.freezed.dart';
@@ -20,6 +21,7 @@ class DealCategory extends BaseEntity with _$DealCategory {
     required BasicTextField<double?> charge,
     required BasicTextField<double?> percentageIncrease,
     required BasicTextField<int> productsAssigned,
+    Deal? deal,
     DateTime? createdAt,
     DateTime? updatedAt,
   }) = _DealCategory;
@@ -36,6 +38,7 @@ class DealCategory extends BaseEntity with _$DealCategory {
     double? charge,
     double? percentageIncrease,
     int? productsAssigned,
+    Deal? deal,
     DateTime? createdAt,
     DateTime? updatedAt,
   }) =>
@@ -49,6 +52,7 @@ class DealCategory extends BaseEntity with _$DealCategory {
         charge: BasicTextField(charge),
         percentageIncrease: BasicTextField(percentageIncrease),
         productsAssigned: BasicTextField(productsAssigned ?? 0),
+        deal: deal,
         createdAt: createdAt,
         updatedAt: updatedAt,
       );
@@ -65,6 +69,7 @@ class DealCategory extends BaseEntity with _$DealCategory {
             percentageIncrease,
         productsAssigned:
             other?.productsAssigned.isNotNull((it) => it as BasicTextField<int>, orElse: (_) => productsAssigned) ?? productsAssigned,
+        deal: deal,
         createdAt: other?.createdAt ?? createdAt,
         updatedAt: other?.updatedAt ?? updatedAt,
       );

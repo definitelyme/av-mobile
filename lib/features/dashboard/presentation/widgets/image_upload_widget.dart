@@ -110,10 +110,10 @@ class ImageUploadWidget<Reactive extends BlocBase<ReactiveState>, ReactiveState>
                                 child: Icon(
                                   centerIcon ??
                                       Utils.platform_(
-                                        material: Icons.add_photo_alternate_outlined,
-                                        cupertino: CupertinoIcons.plus_app,
+                                        material: Icons.edit_outlined,
+                                        cupertino: CupertinoIcons.pencil,
                                       ),
-                                  color: Palette.accentColor,
+                                  color: Colors.white70,
                                   size: 20,
                                 ),
                               ),

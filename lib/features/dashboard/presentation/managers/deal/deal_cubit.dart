@@ -56,9 +56,9 @@ class DealCubit extends Cubit<DealState> with BaseCubit {
     emit(response.fold(
       (e) => state.copyWith(status: some(e), isLoading: false),
       (deals) {
-        if (isHomePage == null) return state.copyWith(deals: !nextPage ? deals : state.deals.plusIfAbsent(deals));
+        // if (isHomePage == null) return state.copyWith(deals: !nextPage ? deals : state.deals.plusIfAbsent(deals));
 
-        if (isHomePage)
+        if (isHomePage != null && isHomePage)
           return state.copyWith(homeDeals: !nextPage ? deals : state.homeDeals.plusIfAbsent(deals));
         else
           return state.copyWith(liveDeals: !nextPage ? deals : state.liveDeals.plusIfAbsent(deals));
@@ -107,6 +107,8 @@ class DealCubit extends Cubit<DealState> with BaseCubit {
     callback?.call(true);
   }
 
+  void clearDealsList() => emit(state.copyWith(status: none(), dealsList: emptyList()));
+
   Future<void> filterDeals({
     bool? isPrivate,
     DealType? dealType,
@@ -139,11 +141,8 @@ class DealCubit extends Cubit<DealState> with BaseCubit {
     else
       response = await _repository.filterDealsByCategory(
         category,
-        type: dealType,
         isPrivate: isPrivate,
         sponsored: sponsored,
-        bidStatus: bidStatus,
-        sortBy: sortBy,
         perPage: perPage,
         nextPage: nextPage,
         countries: _countries,
@@ -151,7 +150,7 @@ class DealCubit extends Cubit<DealState> with BaseCubit {
 
     emit(response.fold(
       (e) => state.copyWith(status: some(e), isLoading: false),
-      (deals) => state.copyWith(deals: !nextPage ? deals : state.deals.plusIfAbsent(deals), isLoading: false),
+      (deals) => state.copyWith(dealsList: !nextPage ? deals : state.dealsList.plusIfAbsent(deals), isLoading: false),
     ));
 
     callback?.call(true);
@@ -164,14 +163,36 @@ class DealCubit extends Cubit<DealState> with BaseCubit {
 
   void increaseBid() {
     final percentage = state.currentDeal.product?.category?.percentageIncrease.getOrNull ?? 100;
-    final factor = (percentage / 100) * state.currentDeal.lastPriceOffered.getOrNull;
+    final factor = ((percentage / 100) * state.currentDeal.lastPriceOffered.getOrNull).ceil();
+
+    // Add the factor to the current bid price
+    // var bidAmount = state.bidAmount + factor;
+
+    // Round to the nearest double
+    // bidAmount = bidAmount.ceil();
+
+    // if (bidAmount <= state.currentDeal.lastPriceOffered.getOrNull) {
+    //   // If the bid is less than the last price offered, increament by 1
+    //   bidAmount = bidAmount + 1;
+    // }
+
     emit(state.copyWith(bidAmount: state.bidAmount + factor));
   }
 
   void decreaseBid() {
     final percentage = state.currentDeal.product?.category?.percentageIncrease.getOrNull ?? 100;
-    final factor = (percentage / 100) * state.currentDeal.lastPriceOffered.getOrNull;
-    emit(state.copyWith(bidAmount: state.bidAmount - factor));
+    final factor = ((percentage / 100) * state.currentDeal.lastPriceOffered.getOrNull).ceilToDouble();
+    // Subtract the factor from the current bid price
+    var bidAmount = state.bidAmount - factor;
+    // Round to the nearest double
+    // bidAmount = bidAmount.ceilToDouble();
+
+    if (bidAmount.getOrNull < state.currentDeal.lastPriceOffered.getOrNull) {
+      // If the bid is greater than the last price offered, decrement by 1
+      bidAmount = state.currentDeal.lastPriceOffered;
+    }
+
+    emit(state.copyWith(bidAmount: bidAmount));
   }
 
   Future<void> showDeal(Deal deal) async {
@@ -211,11 +232,21 @@ class DealCubit extends Cubit<DealState> with BaseCubit {
     emit(state.copyWith(isBidding: true, status: none()));
 
     final response = await _repository.sendBid(state.currentDeal, state.bidAmount.getOrNull, countries: _countries);
+    final newBidAmount = response.value2?.basePrice;
+    final newLastPriceOffered = response.value2?.lastPriceOffered;
 
     emit(state.copyWith(
       isBidding: false,
       status: optionOf(response.value1),
-      currentDeal: state.currentDeal.merge(response.value2),
+      currentDeal: state.currentDeal.bid(amount: newBidAmount, lastPrice: newLastPriceOffered),
+      dealsList: state.dealsList
+          .map((it) => it.id.value == state.currentDeal.id.value ? it.bid(amount: newBidAmount, lastPrice: newLastPriceOffered) : it),
+      homeDeals: state.homeDeals
+          .map((it) => it.id.value == state.currentDeal.id.value ? it.bid(amount: newBidAmount, lastPrice: newLastPriceOffered) : it),
+      liveDeals: state.liveDeals
+          .map((it) => it.id.value == state.currentDeal.id.value ? it.bid(amount: newBidAmount, lastPrice: newLastPriceOffered) : it),
+      homeSponsoredDeals: state.homeSponsoredDeals
+          .map((it) => it.id.value == state.currentDeal.id.value ? it.bid(amount: newBidAmount, lastPrice: newLastPriceOffered) : it),
     ));
   }
 
@@ -271,8 +302,9 @@ class DealCubit extends Cubit<DealState> with BaseCubit {
     final deal = _deal ?? state.currentDeal;
 
     emit(state.copyWith(
-      deals: state.deals.map((a) => deal.id == a.id ? a.toggleFavorite() : a),
+      dealsList: state.dealsList.map((a) => deal.id == a.id ? a.toggleFavorite() : a),
       homeDeals: state.homeDeals.map((a) => deal.id == a.id ? a.toggleFavorite() : a),
+      homeSponsoredDeals: state.homeSponsoredDeals.map((a) => deal.id == a.id ? a.toggleFavorite() : a),
       liveDeals: state.liveDeals.map((a) => deal.id == a.id ? a.toggleFavorite() : a),
       currentDeal: deal.id == state.currentDeal.id ? state.currentDeal.toggleFavorite() : state.currentDeal,
     ));

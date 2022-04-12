@@ -3,6 +3,7 @@ library product_card.dart;
 import 'package:auctionvillage/features/dashboard/domain/index.dart';
 import 'package:auctionvillage/utils/utils.dart';
 import 'package:auctionvillage/widgets/widgets.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kt_dart/collection.dart';
 
@@ -21,7 +22,10 @@ class ProductCard extends StatelessWidget {
         tag: null,
         type: MaterialType.transparency,
         shape: RoundedRectangleBorder(
-          side: BorderSide(color: App.resolveColor(const Color(0xffD8DFFF), dark: Palette.cardColorDark)!, width: 1),
+          side: BorderSide(
+            color: App.resolveColor(const Color(0xffD8DFFF), dark: CupertinoColors.inactiveGray)!,
+            width: 1,
+          ),
           borderRadius: 6.br,
         ),
         child: AdaptiveInkWell(
@@ -68,9 +72,9 @@ class ProductCard extends StatelessWidget {
                       Flexible(
                         child: AdaptiveText.rich(
                           TextSpan(children: [
-                            if (deal.basePrice.valueOrNull != null)
+                            if (deal.lastPriceOffered.valueOrNull != null)
                               TextSpan(
-                                text: '${deal.basePrice.getOrNull}'.asCurrency(),
+                                text: '${deal.lastPriceOffered.getOrNull}'.asCurrency(),
                                 style: const TextStyle(fontWeight: FontWeight.bold),
                               ),
                             const TextSpan(text: '\n'),
@@ -85,27 +89,33 @@ class ProductCard extends StatelessWidget {
                       ),
                       //
                       if (deal.type == DealType.auction) ...[
-                        Divider(height: 0.006.h, thickness: 0.001.h),
+                        Divider(
+                          height: 0.006.h,
+                          thickness: 0.001.h,
+                          color: App.platform.cupertino(
+                            App.resolveColor(null, dark: CupertinoColors.inactiveGray)!,
+                          ),
+                        ),
                         //
                         IntrinsicHeight(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Flexible(
-                                flex: 2,
-                                child: AdaptiveText(
-                                  '54 Bids',
-                                  maxLines: 1,
-                                  fontSize: 15.sp,
-                                  maxFontSize: 16,
-                                  textColor: Palette.accentColor,
-                                  isDefault: true,
-                                ),
-                              ),
+                              // Flexible(
+                              //   flex: 2,
+                              //   child: AdaptiveText(
+                              //     '54 Bids',
+                              //     maxLines: 1,
+                              //     fontSize: 15.sp,
+                              //     maxFontSize: 16,
+                              //     textColor: Palette.accentColor,
+                              //     isDefault: true,
+                              //   ),
+                              // ),
                               //
                               if (deal.endDate.getOrNull != null &&
                                   DateTime.now().millisecondsSinceEpoch < deal.endDate.getOrNull!.millisecondsSinceEpoch) ...[
-                                VerticalDivider(width: 0.01.w, thickness: 1.5),
+                                // VerticalDivider(width: 0.01.w, thickness: 1.5),
                                 //
                                 Flexible(
                                   flex: 2,

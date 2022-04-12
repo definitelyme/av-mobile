@@ -462,7 +462,7 @@ class _AdaptiveTextFormInputState extends State<AdaptiveTextFormInput> with Auto
         autovalidateMode: widget.validate ? AutovalidateMode.always : AutovalidateMode.disabled,
         onFieldSubmitted: (_) => widget.onFieldSubmitted != null
             ? widget.onFieldSubmitted!()
-            : (widget.next == null ? FocusScope.of(c).unfocus() : FocusScope.of(c).requestFocus(widget.next)),
+            : (widget.next == null ? FocusManager.instance.primaryFocus?.unfocus() : FocusScope.of(c).requestFocus(widget.next)),
         onEditingComplete: widget.onEditingComplete,
       );
 
@@ -541,7 +541,7 @@ class _AdaptiveTextFormInputState extends State<AdaptiveTextFormInput> with Auto
             onChanged: widget.onChanged,
             onSubmitted: (_) => widget.onFieldSubmitted != null
                 ? widget.onFieldSubmitted!()
-                : (widget.next == null ? FocusScope.of(c).unfocus() : FocusScope.of(c).requestFocus(widget.next)),
+                : (widget.next == null ? FocusManager.instance.primaryFocus?.unfocus() : FocusScope.of(c).requestFocus(widget.next)),
             onEditingComplete: widget.onEditingComplete,
           ),
         ),
@@ -617,7 +617,7 @@ class _AdaptiveTextFormInputState extends State<AdaptiveTextFormInput> with Auto
               validator: (value) => widget.errorText,
               onFieldSubmitted: (_) => widget.onFieldSubmitted != null
                   ? widget.onFieldSubmitted!()
-                  : (widget.next == null ? FocusScope.of(c).unfocus() : FocusScope.of(c).requestFocus(widget.next)),
+                  : (widget.next == null ? FocusManager.instance.primaryFocus?.unfocus() : FocusScope.of(c).requestFocus(widget.next)),
               onEditingComplete: widget.onEditingComplete,
             ),
           ),

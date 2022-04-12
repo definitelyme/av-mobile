@@ -127,23 +127,24 @@ class EditProfileScreen extends StatelessWidget with AutoRouteWrapper {
                         ),
                       ),
                       //
-                      Positioned(
-                        right: 0,
-                        bottom: 0,
-                        child: GestureDetector(
-                          onTap: () => _pickImage(context),
-                          child: const DecoratedBox(
-                            decoration: BoxDecoration(
-                              color: Palette.accentGreen,
-                              borderRadius: BorderRadius.all(Radius.circular(100)),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.all(2),
-                              child: Icon(Icons.add, color: Colors.white, size: 17),
+                      if (1 != 1)
+                        Positioned(
+                          right: 0,
+                          bottom: 0,
+                          child: GestureDetector(
+                            onTap: () => _pickImage(context),
+                            child: const DecoratedBox(
+                              decoration: BoxDecoration(
+                                color: Palette.accentGreen,
+                                borderRadius: BorderRadius.all(Radius.circular(100)),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.all(2),
+                                child: Icon(Icons.add, color: Colors.white, size: 17),
+                              ),
                             ),
                           ),
                         ),
-                      ),
                     ],
                   ),
                 ),

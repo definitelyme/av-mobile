@@ -11819,6 +11819,7 @@ class _$ProductStateTearOff {
       bool isFetchingCategories = false,
       bool isSavingState = false,
       bool isCreatingProduct = false,
+      bool productCreated = false,
       required MoneyMaskedTextController basePriceController,
       required TextEditingController itemNameTextController,
       required TextEditingController stateTextController,
@@ -11849,6 +11850,7 @@ class _$ProductStateTearOff {
       isFetchingCategories: isFetchingCategories,
       isSavingState: isSavingState,
       isCreatingProduct: isCreatingProduct,
+      productCreated: productCreated,
       basePriceController: basePriceController,
       itemNameTextController: itemNameTextController,
       stateTextController: stateTextController,
@@ -11886,7 +11888,8 @@ mixin _$ProductState {
   bool get validate => throw _privateConstructorUsedError;
   bool get isFetchingCategories => throw _privateConstructorUsedError;
   bool get isSavingState => throw _privateConstructorUsedError;
-  bool get isCreatingProduct => throw _privateConstructorUsedError; //
+  bool get isCreatingProduct => throw _privateConstructorUsedError;
+  bool get productCreated => throw _privateConstructorUsedError; //
   MoneyMaskedTextController get basePriceController =>
       throw _privateConstructorUsedError;
   TextEditingController get itemNameTextController =>
@@ -11945,6 +11948,7 @@ abstract class $ProductStateCopyWith<$Res> {
       bool isFetchingCategories,
       bool isSavingState,
       bool isCreatingProduct,
+      bool productCreated,
       MoneyMaskedTextController basePriceController,
       TextEditingController itemNameTextController,
       TextEditingController stateTextController,
@@ -11989,6 +11993,7 @@ class _$ProductStateCopyWithImpl<$Res> implements $ProductStateCopyWith<$Res> {
     Object? isFetchingCategories = freezed,
     Object? isSavingState = freezed,
     Object? isCreatingProduct = freezed,
+    Object? productCreated = freezed,
     Object? basePriceController = freezed,
     Object? itemNameTextController = freezed,
     Object? stateTextController = freezed,
@@ -12034,6 +12039,10 @@ class _$ProductStateCopyWithImpl<$Res> implements $ProductStateCopyWith<$Res> {
       isCreatingProduct: isCreatingProduct == freezed
           ? _value.isCreatingProduct
           : isCreatingProduct // ignore: cast_nullable_to_non_nullable
+              as bool,
+      productCreated: productCreated == freezed
+          ? _value.productCreated
+          : productCreated // ignore: cast_nullable_to_non_nullable
               as bool,
       basePriceController: basePriceController == freezed
           ? _value.basePriceController
@@ -12162,6 +12171,7 @@ abstract class _$ProductStateCopyWith<$Res>
       bool isFetchingCategories,
       bool isSavingState,
       bool isCreatingProduct,
+      bool productCreated,
       MoneyMaskedTextController basePriceController,
       TextEditingController itemNameTextController,
       TextEditingController stateTextController,
@@ -12210,6 +12220,7 @@ class __$ProductStateCopyWithImpl<$Res> extends _$ProductStateCopyWithImpl<$Res>
     Object? isFetchingCategories = freezed,
     Object? isSavingState = freezed,
     Object? isCreatingProduct = freezed,
+    Object? productCreated = freezed,
     Object? basePriceController = freezed,
     Object? itemNameTextController = freezed,
     Object? stateTextController = freezed,
@@ -12255,6 +12266,10 @@ class __$ProductStateCopyWithImpl<$Res> extends _$ProductStateCopyWithImpl<$Res>
       isCreatingProduct: isCreatingProduct == freezed
           ? _value.isCreatingProduct
           : isCreatingProduct // ignore: cast_nullable_to_non_nullable
+              as bool,
+      productCreated: productCreated == freezed
+          ? _value.productCreated
+          : productCreated // ignore: cast_nullable_to_non_nullable
               as bool,
       basePriceController: basePriceController == freezed
           ? _value.basePriceController
@@ -12365,6 +12380,7 @@ class _$_ProductState implements _ProductState {
       this.isFetchingCategories = false,
       this.isSavingState = false,
       this.isCreatingProduct = false,
+      this.productCreated = false,
       required this.basePriceController,
       required this.itemNameTextController,
       required this.stateTextController,
@@ -12405,6 +12421,9 @@ class _$_ProductState implements _ProductState {
   @JsonKey()
   @override
   final bool isCreatingProduct;
+  @JsonKey()
+  @override
+  final bool productCreated;
   @override //
   final MoneyMaskedTextController basePriceController;
   @override
@@ -12460,7 +12479,7 @@ class _$_ProductState implements _ProductState {
 
   @override
   String toString() {
-    return 'ProductState(isLoading: $isLoading, validate: $validate, isFetchingCategories: $isFetchingCategories, isSavingState: $isSavingState, isCreatingProduct: $isCreatingProduct, basePriceController: $basePriceController, itemNameTextController: $itemNameTextController, stateTextController: $stateTextController, townTextController: $townTextController, descriptionTextController: $descriptionTextController, brandTextController: $brandTextController, brandModelTextController: $brandModelTextController, transmissionTextController: $transmissionTextController, shippingDescTextController: $shippingDescTextController, addressTextController: $addressTextController, weightTextController: $weightTextController, widthTextController: $widthTextController, heightTextController: $heightTextController, lengthTextController: $lengthTextController, termsInfoTextController: $termsInfoTextController, startDateTextController: $startDateTextController, endDateTextController: $endDateTextController, selectedPlan: $selectedPlan, product: $product, controller: $controller, currentIndex: $currentIndex, categories: $categories, dealPlans: $dealPlans, status: $status)';
+    return 'ProductState(isLoading: $isLoading, validate: $validate, isFetchingCategories: $isFetchingCategories, isSavingState: $isSavingState, isCreatingProduct: $isCreatingProduct, productCreated: $productCreated, basePriceController: $basePriceController, itemNameTextController: $itemNameTextController, stateTextController: $stateTextController, townTextController: $townTextController, descriptionTextController: $descriptionTextController, brandTextController: $brandTextController, brandModelTextController: $brandModelTextController, transmissionTextController: $transmissionTextController, shippingDescTextController: $shippingDescTextController, addressTextController: $addressTextController, weightTextController: $weightTextController, widthTextController: $widthTextController, heightTextController: $heightTextController, lengthTextController: $lengthTextController, termsInfoTextController: $termsInfoTextController, startDateTextController: $startDateTextController, endDateTextController: $endDateTextController, selectedPlan: $selectedPlan, product: $product, controller: $controller, currentIndex: $currentIndex, categories: $categories, dealPlans: $dealPlans, status: $status)';
   }
 
   @override
@@ -12476,6 +12495,8 @@ class _$_ProductState implements _ProductState {
                 .equals(other.isSavingState, isSavingState) &&
             const DeepCollectionEquality()
                 .equals(other.isCreatingProduct, isCreatingProduct) &&
+            const DeepCollectionEquality()
+                .equals(other.productCreated, productCreated) &&
             const DeepCollectionEquality()
                 .equals(other.basePriceController, basePriceController) &&
             const DeepCollectionEquality()
@@ -12531,6 +12552,7 @@ class _$_ProductState implements _ProductState {
         const DeepCollectionEquality().hash(isFetchingCategories),
         const DeepCollectionEquality().hash(isSavingState),
         const DeepCollectionEquality().hash(isCreatingProduct),
+        const DeepCollectionEquality().hash(productCreated),
         const DeepCollectionEquality().hash(basePriceController),
         const DeepCollectionEquality().hash(itemNameTextController),
         const DeepCollectionEquality().hash(stateTextController),
@@ -12570,6 +12592,7 @@ abstract class _ProductState implements ProductState {
       bool isFetchingCategories,
       bool isSavingState,
       bool isCreatingProduct,
+      bool productCreated,
       required MoneyMaskedTextController basePriceController,
       required TextEditingController itemNameTextController,
       required TextEditingController stateTextController,
@@ -12605,6 +12628,8 @@ abstract class _ProductState implements ProductState {
   bool get isSavingState;
   @override
   bool get isCreatingProduct;
+  @override
+  bool get productCreated;
   @override //
   MoneyMaskedTextController get basePriceController;
   @override

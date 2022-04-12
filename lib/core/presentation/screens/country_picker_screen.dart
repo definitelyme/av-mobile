@@ -186,10 +186,40 @@ class _CountryPickerState extends State<CountryPicker> {
         padding: widget._view.when(none: () => EdgeInsets.zero),
         minimumSize: widget._view.when(none: () => Size.zero),
         maximumSize: widget._view.when(
-          flagAndCode: () => const Size.fromWidth(90),
-          none: () => const Size.fromWidth(60),
+          flagAndCode: () => const Size(60, 0),
+          none: () => const Size(60, 0),
         ),
       ),
+      child: Center(
+        child: widget._view.when(
+          flag: () => _FlagView(selectedItem, flagWidth: widget.flagWidth),
+          flagAndCode: () => _FlagAndCodeView(selectedItem, flagWidth: widget.flagWidth),
+          none: () => widget.pickerBuilder!(context, selectedItem),
+          dialcode: () => _DialCodeView(
+            selectedItem,
+            fontSize: widget.fontSize,
+            maxFontSize: widget.maxFontSize,
+            minFontSize: widget.minFontSize,
+            maxLines: widget.maxLines,
+            softWrap: widget.softWrap,
+            wrapWords: widget.wrapWords,
+            fontWeight: widget.fontWeight,
+            style: widget.style,
+            textAlign: widget.textAlign,
+            textColor: widget.textColor,
+            textColorDark: widget.textColorDark,
+            strutStyle: widget.strutStyle,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget get _cupertino {
+    return CupertinoButton(
+      onPressed: showCountryPicker,
+      // minSize: ,
+      padding: widget._view.when(none: () => EdgeInsets.zero),
       child: Center(
         child: widget._view.when(
           flag: () => _FlagView(selectedItem, flagWidth: widget.flagWidth),
@@ -244,28 +274,30 @@ class _CountryPickerState extends State<CountryPicker> {
           ),
         ],
       ),
-      cupertino: () => CupertinoButton(
-        onPressed: showCountryPicker,
-        child: widget._view.when(
-          flag: () => _FlagView(selectedItem, flagWidth: widget.flagWidth),
-          flagAndCode: () => _FlagAndCodeView(selectedItem, flagWidth: widget.flagWidth),
-          none: () => widget.pickerBuilder!(context, selectedItem),
-          dialcode: () => _DialCodeView(
-            selectedItem,
-            fontSize: widget.fontSize,
-            maxFontSize: widget.maxFontSize,
-            minFontSize: widget.minFontSize,
-            maxLines: widget.maxLines,
-            softWrap: widget.softWrap,
-            wrapWords: widget.wrapWords,
-            fontWeight: widget.fontWeight,
-            style: widget.style,
-            textAlign: widget.textAlign,
-            textColor: widget.textColor,
-            textColorDark: widget.textColorDark,
-            strutStyle: widget.strutStyle,
+      cupertino: () => Row(
+        children: [
+          Flexible(
+            child: widget._view.when(
+              flagAndCode: () => Center(child: _cupertino),
+              none: () => _cupertino,
+            ),
           ),
-        ),
+          //
+          SizedBox(
+            height: 25,
+            child: Padding(
+              padding: const EdgeInsets.only(right: 10),
+              child: VerticalDivider(
+                thickness: 1,
+                width: 0,
+                color: App.resolveColor(
+                  Palette.inputLightBorderColor,
+                  dark: Palette.inputDarkBorderColor,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

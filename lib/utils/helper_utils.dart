@@ -414,6 +414,15 @@ class Utils {
     return completer;
   }
 
+  static Future<void> precacheNetworkSVGs(BuildContext context, List<String> svgs) async {
+    svgs.forEach(
+      (path) async => await precachePicture(
+        NetworkPicture(SvgPicture.svgByteDecoderBuilder, path),
+        context,
+      ),
+    );
+  }
+
   /// Precache Application Images..ensures faster image rendering.
   static Future<void> precache(BuildContext context) async {
     AppAssets.images.forEach(

@@ -1,6 +1,7 @@
 library category_dto.dart;
 
 import 'package:auctionvillage/core/data/index.dart';
+import 'package:auctionvillage/features/dashboard/data/models/models.dart';
 import 'package:auctionvillage/features/dashboard/domain/index.dart';
 import 'package:auctionvillage/manager/serializer/serializers.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -47,6 +48,7 @@ class CategoryDTOData with _$CategoryDTOData {
     String? name,
     String? description,
     String? slug,
+    DealDTOData? deal,
     @TimestampConverter() DateTime? createdAt,
     @TimestampConverter() DateTime? updatedAt,
   }) = _CategoryDTOData;
@@ -78,6 +80,7 @@ class CategoryDTOData with _$CategoryDTOData {
         charge: charge,
         productsAssigned: productsAssigned,
         percentageIncrease: percentageIncrease,
+        // deal: deal.domain(),
         createdAt: createdAt,
         updatedAt: updatedAt,
       );

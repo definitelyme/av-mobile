@@ -16,6 +16,7 @@ class TermsExpandable extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       color: App.resolveColor(Palette.neutralF4, dark: Palette.cardColorDark),
+      borderRadius: BorderRadius.circular(6),
       child: ExpandableTheme(
         data: ExpandableThemeData(
           hasIcon: true,
@@ -44,7 +45,7 @@ class TermsExpandable extends StatelessWidget {
               ),
               collapsed: Utils.nothing,
               expanded: Material(
-                color: App.resolveColor(Palette.cardColorLight, dark: Palette.secondaryColor),
+                color: App.resolveColor(Palette.cardColorLight, dark: Palette.secondaryColor.shade700),
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: App.sidePadding),
                   child: Column(

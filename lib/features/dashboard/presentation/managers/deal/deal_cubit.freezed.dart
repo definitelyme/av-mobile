@@ -35,7 +35,7 @@ class _$DealStateTearOff {
       KtList<Deal> homeDeals = const KtList.empty(),
       KtList<Deal> liveDeals = const KtList.empty(),
       KtList<Deal> homeSponsoredDeals = const KtList.empty(),
-      KtList<Deal> deals = const KtList.empty(),
+      KtList<Deal> dealsList = const KtList.empty(),
       KtList<MyWish> wishlist = const KtList.empty(),
       KtList<DealPlan> dealPlans = const KtList.empty(),
       Option<AppHttpResponse?> status = const None()}) {
@@ -56,7 +56,7 @@ class _$DealStateTearOff {
       homeDeals: homeDeals,
       liveDeals: liveDeals,
       homeSponsoredDeals: homeSponsoredDeals,
-      deals: deals,
+      dealsList: dealsList,
       wishlist: wishlist,
       dealPlans: dealPlans,
       status: status,
@@ -85,7 +85,7 @@ mixin _$DealState {
   KtList<Deal> get homeDeals => throw _privateConstructorUsedError;
   KtList<Deal> get liveDeals => throw _privateConstructorUsedError;
   KtList<Deal> get homeSponsoredDeals => throw _privateConstructorUsedError;
-  KtList<Deal> get deals => throw _privateConstructorUsedError;
+  KtList<Deal> get dealsList => throw _privateConstructorUsedError;
   KtList<MyWish> get wishlist => throw _privateConstructorUsedError;
   KtList<DealPlan> get dealPlans => throw _privateConstructorUsedError;
   Option<AppHttpResponse?> get status => throw _privateConstructorUsedError;
@@ -116,7 +116,7 @@ abstract class $DealStateCopyWith<$Res> {
       KtList<Deal> homeDeals,
       KtList<Deal> liveDeals,
       KtList<Deal> homeSponsoredDeals,
-      KtList<Deal> deals,
+      KtList<Deal> dealsList,
       KtList<MyWish> wishlist,
       KtList<DealPlan> dealPlans,
       Option<AppHttpResponse?> status});
@@ -156,7 +156,7 @@ class _$DealStateCopyWithImpl<$Res> implements $DealStateCopyWith<$Res> {
     Object? homeDeals = freezed,
     Object? liveDeals = freezed,
     Object? homeSponsoredDeals = freezed,
-    Object? deals = freezed,
+    Object? dealsList = freezed,
     Object? wishlist = freezed,
     Object? dealPlans = freezed,
     Object? status = freezed,
@@ -226,9 +226,9 @@ class _$DealStateCopyWithImpl<$Res> implements $DealStateCopyWith<$Res> {
           ? _value.homeSponsoredDeals
           : homeSponsoredDeals // ignore: cast_nullable_to_non_nullable
               as KtList<Deal>,
-      deals: deals == freezed
-          ? _value.deals
-          : deals // ignore: cast_nullable_to_non_nullable
+      dealsList: dealsList == freezed
+          ? _value.dealsList
+          : dealsList // ignore: cast_nullable_to_non_nullable
               as KtList<Deal>,
       wishlist: wishlist == freezed
           ? _value.wishlist
@@ -334,7 +334,7 @@ abstract class _$DealStateCopyWith<$Res> implements $DealStateCopyWith<$Res> {
       KtList<Deal> homeDeals,
       KtList<Deal> liveDeals,
       KtList<Deal> homeSponsoredDeals,
-      KtList<Deal> deals,
+      KtList<Deal> dealsList,
       KtList<MyWish> wishlist,
       KtList<DealPlan> dealPlans,
       Option<AppHttpResponse?> status});
@@ -382,7 +382,7 @@ class __$DealStateCopyWithImpl<$Res> extends _$DealStateCopyWithImpl<$Res>
     Object? homeDeals = freezed,
     Object? liveDeals = freezed,
     Object? homeSponsoredDeals = freezed,
-    Object? deals = freezed,
+    Object? dealsList = freezed,
     Object? wishlist = freezed,
     Object? dealPlans = freezed,
     Object? status = freezed,
@@ -452,9 +452,9 @@ class __$DealStateCopyWithImpl<$Res> extends _$DealStateCopyWithImpl<$Res>
           ? _value.homeSponsoredDeals
           : homeSponsoredDeals // ignore: cast_nullable_to_non_nullable
               as KtList<Deal>,
-      deals: deals == freezed
-          ? _value.deals
-          : deals // ignore: cast_nullable_to_non_nullable
+      dealsList: dealsList == freezed
+          ? _value.dealsList
+          : dealsList // ignore: cast_nullable_to_non_nullable
               as KtList<Deal>,
       wishlist: wishlist == freezed
           ? _value.wishlist
@@ -492,7 +492,7 @@ class _$_DealState implements _DealState {
       this.homeDeals = const KtList.empty(),
       this.liveDeals = const KtList.empty(),
       this.homeSponsoredDeals = const KtList.empty(),
-      this.deals = const KtList.empty(),
+      this.dealsList = const KtList.empty(),
       this.wishlist = const KtList.empty(),
       this.dealPlans = const KtList.empty(),
       this.status = const None()});
@@ -539,7 +539,7 @@ class _$_DealState implements _DealState {
   final KtList<Deal> homeSponsoredDeals;
   @JsonKey()
   @override
-  final KtList<Deal> deals;
+  final KtList<Deal> dealsList;
   @JsonKey()
   @override
   final KtList<MyWish> wishlist;
@@ -552,7 +552,7 @@ class _$_DealState implements _DealState {
 
   @override
   String toString() {
-    return 'DealState(isLoading: $isLoading, isLoadingSponsored: $isLoadingSponsored, isBidding: $isBidding, validate: $validate, currentDeal: $currentDeal, currentCategory: $currentCategory, sellHistory: $sellHistory, bidHistory: $bidHistory, rating: $rating, selectedPlan: $selectedPlan, currentProduct: $currentProduct, bidAmount: $bidAmount, categories: $categories, homeDeals: $homeDeals, liveDeals: $liveDeals, homeSponsoredDeals: $homeSponsoredDeals, deals: $deals, wishlist: $wishlist, dealPlans: $dealPlans, status: $status)';
+    return 'DealState(isLoading: $isLoading, isLoadingSponsored: $isLoadingSponsored, isBidding: $isBidding, validate: $validate, currentDeal: $currentDeal, currentCategory: $currentCategory, sellHistory: $sellHistory, bidHistory: $bidHistory, rating: $rating, selectedPlan: $selectedPlan, currentProduct: $currentProduct, bidAmount: $bidAmount, categories: $categories, homeDeals: $homeDeals, liveDeals: $liveDeals, homeSponsoredDeals: $homeSponsoredDeals, dealsList: $dealsList, wishlist: $wishlist, dealPlans: $dealPlans, status: $status)';
   }
 
   @override
@@ -585,7 +585,7 @@ class _$_DealState implements _DealState {
             const DeepCollectionEquality().equals(other.liveDeals, liveDeals) &&
             const DeepCollectionEquality()
                 .equals(other.homeSponsoredDeals, homeSponsoredDeals) &&
-            const DeepCollectionEquality().equals(other.deals, deals) &&
+            const DeepCollectionEquality().equals(other.dealsList, dealsList) &&
             const DeepCollectionEquality().equals(other.wishlist, wishlist) &&
             const DeepCollectionEquality().equals(other.dealPlans, dealPlans) &&
             const DeepCollectionEquality().equals(other.status, status));
@@ -610,7 +610,7 @@ class _$_DealState implements _DealState {
         const DeepCollectionEquality().hash(homeDeals),
         const DeepCollectionEquality().hash(liveDeals),
         const DeepCollectionEquality().hash(homeSponsoredDeals),
-        const DeepCollectionEquality().hash(deals),
+        const DeepCollectionEquality().hash(dealsList),
         const DeepCollectionEquality().hash(wishlist),
         const DeepCollectionEquality().hash(dealPlans),
         const DeepCollectionEquality().hash(status)
@@ -640,7 +640,7 @@ abstract class _DealState implements DealState {
       KtList<Deal> homeDeals,
       KtList<Deal> liveDeals,
       KtList<Deal> homeSponsoredDeals,
-      KtList<Deal> deals,
+      KtList<Deal> dealsList,
       KtList<MyWish> wishlist,
       KtList<DealPlan> dealPlans,
       Option<AppHttpResponse?> status}) = _$_DealState;
@@ -678,7 +678,7 @@ abstract class _DealState implements DealState {
   @override
   KtList<Deal> get homeSponsoredDeals;
   @override
-  KtList<Deal> get deals;
+  KtList<Deal> get dealsList;
   @override
   KtList<MyWish> get wishlist;
   @override

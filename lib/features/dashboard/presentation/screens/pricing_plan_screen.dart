@@ -256,7 +256,18 @@ class _PricingPlanScreenState extends State<PricingPlanScreen> {
                   text: 'Submit'.toUpperCase(),
                   disabled: s.isLoading || s.isSavingState || s.isCreatingProduct,
                   isLoading: s.isCreatingProduct,
-                  onPressed: () => c.read<ProductBloc>().add(ProductStructEvent.store(_autheticatedUser)),
+                  onPressed: () => c.read<ProductBloc>().add(
+                        ProductStructEvent.store(
+                          _autheticatedUser,
+                          callback: (v) {
+                            if (v) {
+                              c.read<ProductBloc>().add(const ProductSyncEvent.clearForm());
+                              navigator.popUntilRoot();
+                              c.read<ProductBloc>().add(const ProductSyncEvent.clearForm());
+                            }
+                          },
+                        ),
+                      ),
                 ),
               ]),
             ),
