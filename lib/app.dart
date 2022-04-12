@@ -32,35 +32,40 @@ class AuctionVillageApp extends StatelessWidget {
         BlocProvider(create: (_) => getIt<TabNavigationCubit>()),
         BlocProvider(create: (_) => getIt<DealCubit>()),
       ],
-      child: BlocBuilder<ThemeCubit, AppTheme>(
-        builder: (_, app) => PlatformApp.router(
-          title: Const.appName.capitalizeFirst(),
-          debugShowCheckedModeBanner: false,
-          material: (_, __) => MaterialAppRouterData(
-            theme: app.themeData(),
-            darkTheme: AppTheme.dark().themeData(),
-            themeMode: ThemeMode.system,
-          ),
-          cupertino: (_, __) => CupertinoAppRouterData(
-            theme: app.cupertinoThemeData(_),
-            color: Palette.accentColor,
-          ),
-          localizationsDelegates: [
-            RefreshLocalizations.delegate,
-            DefaultMaterialLocalizations.delegate,
-            DefaultWidgetsLocalizations.delegate,
-            DefaultCupertinoLocalizations.delegate,
-          ],
-          routeInformationParser: _router.defaultRouteParser(),
-          useInheritedMediaQuery: true,
-          routerDelegate: AutoRouterDelegate(
-            _router,
-            navigatorObservers: () => <NavigatorObserver>[
-              // Register the Firebase Analytics observer
-              if (env.flavor.name == BuildFlavor.prod) FirebaseAnalyticsObserver(analytics: getIt<FirebaseAnalytics>()),
+      child: ScreenUtilInit(
+        designSize: const Size(375, 812),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (_) => BlocBuilder<ThemeCubit, AppTheme>(
+          builder: (_, app) => PlatformApp.router(
+            title: Const.appName.capitalizeFirst(),
+            debugShowCheckedModeBanner: false,
+            material: (_, __) => MaterialAppRouterData(
+              theme: app.themeData(),
+              darkTheme: AppTheme.dark().themeData(),
+              themeMode: ThemeMode.system,
+            ),
+            cupertino: (_, __) => CupertinoAppRouterData(
+              theme: app.cupertinoThemeData(_),
+              color: Palette.accentColor,
+            ),
+            localizationsDelegates: [
+              RefreshLocalizations.delegate,
+              DefaultMaterialLocalizations.delegate,
+              DefaultWidgetsLocalizations.delegate,
+              DefaultCupertinoLocalizations.delegate,
             ],
+            routeInformationParser: _router.defaultRouteParser(),
+            useInheritedMediaQuery: true,
+            routerDelegate: AutoRouterDelegate(
+              _router,
+              navigatorObservers: () => <NavigatorObserver>[
+                // Register the Firebase Analytics observer
+                if (env.flavor.name == BuildFlavor.prod) FirebaseAnalyticsObserver(analytics: getIt<FirebaseAnalytics>()),
+              ],
+            ),
+            builder: (_, child) => Entry(_router, child: child!),
           ),
-          builder: (_, child) => Entry(_router, child: child!),
         ),
       ),
     );

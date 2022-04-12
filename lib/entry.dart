@@ -67,15 +67,7 @@ class _EntryState extends State<Entry> {
           ),
         ),
       ],
-      child: Utils.setup(
-        context,
-        widget.router,
-        ScreenUtilInit(
-          designSize: const Size(375, 812),
-          minTextAdapt: true,
-          builder: (_) => widget.child,
-        ),
-      ),
+      child: Utils.setup(context, widget.router, widget.child),
     );
   }
 }
