@@ -30,6 +30,7 @@ class DocumentPickerSheet extends StatelessWidget {
                   p.onPressed.call();
                   if (pop) navigator.pop();
                 },
+                trailing: Utils.nothing,
                 title: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 0.05.sw),
                   child: Row(

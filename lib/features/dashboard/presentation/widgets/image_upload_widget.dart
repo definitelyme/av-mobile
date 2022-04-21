@@ -113,7 +113,7 @@ class ImageUploadWidget<Reactive extends BlocBase<ReactiveState>, ReactiveState>
                                         material: Icons.edit_outlined,
                                         cupertino: CupertinoIcons.pencil,
                                       ),
-                                  color: Colors.white70,
+                                  color: App.resolveColor(Palette.accentColor, dark: Colors.white70),
                                   size: 20,
                                 ),
                               ),
@@ -136,21 +136,23 @@ class ImageUploadWidget<Reactive extends BlocBase<ReactiveState>, ReactiveState>
                                 builder: (_) => DocumentPickerSheet(
                                   pickers: [
                                     DocumentPicker(
-                                        name: 'Camera',
-                                        asset: Utils.foldTheme(
-                                          light: () => AppAssets.cameraColored,
-                                          dark: () => AppAssets.cameraOutlined,
-                                          context: c,
-                                        ),
-                                        onPressed: () => onCameraClicked?.call(c.read<Reactive>(), ImageSource.camera)),
+                                      name: 'Camera',
+                                      asset: Utils.foldTheme(
+                                        light: () => AppAssets.cameraColored,
+                                        dark: () => AppAssets.cameraOutlined,
+                                        context: c,
+                                      ),
+                                      onPressed: () => onCameraClicked?.call(c.read<Reactive>(), ImageSource.camera),
+                                    ),
                                     DocumentPicker(
-                                        name: 'Gallery',
-                                        asset: Utils.foldTheme(
-                                          light: () => AppAssets.galleryColored,
-                                          dark: () => AppAssets.galleryOutlined,
-                                          context: c,
-                                        ),
-                                        onPressed: () => onGalleryClicked?.call(c.read<Reactive>(), ImageSource.gallery)),
+                                      name: 'Gallery',
+                                      asset: Utils.foldTheme(
+                                        light: () => AppAssets.galleryColored,
+                                        dark: () => AppAssets.galleryOutlined,
+                                        context: c,
+                                      ),
+                                      onPressed: () => onGalleryClicked?.call(c.read<Reactive>(), ImageSource.gallery),
+                                    ),
                                   ],
                                 ),
                               );

@@ -3,7 +3,7 @@ description: An application for foodies
 
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.0+10
+version: 1.0.0+11
 
 environment:
   sdk: ">=2.17.0-69.2.beta <3.0.0"
