@@ -5,14 +5,15 @@ import 'package:auctionvillage/features/auth/data/repositories/repos.dart';
 import 'package:auctionvillage/manager/locator/locator.dart';
 import 'package:auctionvillage/utils/utils.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:cloudinary_public/cloudinary_public.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter_paystack/flutter_paystack.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -84,4 +85,7 @@ abstract class ServiceModules {
 
   @preResolve
   Future<SharedPreferences> get preferences => SharedPreferences.getInstance();
+
+  @lazySingleton
+  PaystackPlugin get paystackInit => PaystackPlugin()..initialize(publicKey: env.paystackKey);
 }

@@ -24,6 +24,7 @@ mixin AppAssets {
   /////////////////////////////////////////////////////
   /// LOGO
   static const String logo = '$IMAGES_DIR/logo/logo.png';
+  static const String launchIcon = '$IMAGES_DIR/logo/launch_icon.png';
   static const String _logoSVG = '$SVG_DIR/logo/logo.svg';
 
   // Lottie Json

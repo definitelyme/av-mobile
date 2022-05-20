@@ -24,7 +24,7 @@ mixin TabbedSearchMixin {
           return searchNavCubit!;
         },
         onQueryUpdate: (query) async {
-          WidgetsBinding.instance!.addPostFrameCallback((_) => searchFieldController.text = query);
+          WidgetsBinding.instance?.addPostFrameCallback((_) => searchFieldController.text = query);
 
           if (query.isEmpty)
             searchBloc.add(SearchEvent.clear(searchBloc.state.model));

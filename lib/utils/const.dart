@@ -28,4 +28,5 @@ mixin Const {
 
   //
   static const String kDebitCardsCollection = 'debit_cards';
+  static const String logoPng = 'https://res.cloudinary.com/auctionvillage/image/upload/v1652334118/mobile/Misc/launch_icon_b9oauw.png';
 }

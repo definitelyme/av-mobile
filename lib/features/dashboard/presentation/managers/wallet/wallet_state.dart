@@ -32,7 +32,8 @@ class WalletState extends BaseState with _$WalletState {
     required BasicTextField<String?> otpCode,
     BankAccount? bankAccount,
     required TextEditingController accountNameController,
-    required OTPCode cardPin,
+    @Default(PaymentStatus.pending) PaymentStatus paymentStatus,
+    @Default(PaymentMethod.FLUTTERWAVE) PaymentMethod paymentMethod,
     required OTPCode withdrawalPin,
     required OTPCode confirmWithdrawalPin,
     @Default(KtList.empty()) KtList<Bank> banks,
@@ -41,7 +42,6 @@ class WalletState extends BaseState with _$WalletState {
 
   factory WalletState.initial() => WalletState(
         amount: AmountField(0),
-        cardPin: OTPCode(null),
         withdrawalPin: OTPCode(null),
         confirmWithdrawalPin: OTPCode(null),
         securityAnswer: BasicTextField(null),

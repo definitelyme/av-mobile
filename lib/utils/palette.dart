@@ -164,6 +164,9 @@ class Palette {
   static const Color paystack = Color(0xFF00C3F7);
   static const Color addressDefaultBlue = pastelBlue;
 
+  static const Color subTextLight = Color(0xFFA7A7A7);
+  static const Color subTextDark = Color(0xFFA7A7A7);
+
   // Dark Mode Colors
   static const Color accentDark = Color(0xFFD27D7D);
   static const Color text100Dark = Color(0xFFBFBFBF);

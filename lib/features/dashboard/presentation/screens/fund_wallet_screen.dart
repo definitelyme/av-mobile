@@ -1,22 +1,17 @@
 library fund_wallet_screen.dart;
 
-import 'dart:async';
-
-import 'package:auctionvillage/core/domain/entities/entities.dart';
-import 'package:auctionvillage/core/presentation/widgets/dropdown_field_widget.dart';
 import 'package:auctionvillage/features/auth/presentation/managers/managers.dart';
 import 'package:auctionvillage/features/dashboard/domain/index.dart';
 import 'package:auctionvillage/features/dashboard/presentation/managers/index.dart';
 import 'package:auctionvillage/features/dashboard/presentation/widgets/index.dart';
 import 'package:auctionvillage/manager/locator/locator.dart';
 import 'package:auctionvillage/utils/utils.dart';
+import 'package:auctionvillage/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:auctionvillage/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kt_dart/collection.dart';
 
 /// A stateless widget to render FundWalletScreen.
 class FundWalletScreen extends StatefulWidget with AutoRouteWrapper {
@@ -29,7 +24,7 @@ class FundWalletScreen extends StatefulWidget with AutoRouteWrapper {
   Widget wrappedRoute(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => getIt<WalletCubit>()..watchCards()),
+        BlocProvider(create: (_) => getIt<WalletCubit>()),
       ],
       child: BlocListener<WalletCubit, WalletState>(
         listenWhen: (p, c) =>
@@ -40,7 +35,16 @@ class FundWalletScreen extends StatefulWidget with AutoRouteWrapper {
           (it) => it?.response.map(
             info: (i) => PopupDialog.info(message: i.message, show: i.message.isNotEmpty).render(c),
             error: (f) => PopupDialog.error(message: f.message, show: f.show && f.message.isNotEmpty).render(c),
-            success: (s) => PopupDialog.success(message: s.message, show: s.message.isNotEmpty).render(c),
+            success: (suc) => PopupDialog.success(
+              message: suc.message,
+              show: suc.message.isNotEmpty,
+              listener: (status) => status?.fold(
+                dismissed: () => s.paymentStatus.maybeWhen(
+                  confirmed: navigator.popUntilRoot,
+                  orElse: () => null,
+                ),
+              ),
+            ).render(c),
           ),
         ),
         child: this,
@@ -50,22 +54,6 @@ class FundWalletScreen extends StatefulWidget with AutoRouteWrapper {
 }
 
 class _FundWalletScreenState extends State<FundWalletScreen> {
-  @override
-  void initState() {
-    ensureHasExistingCard();
-    super.initState();
-  }
-
-  void ensureHasExistingCard() async {
-    final hasAddedCard = await context.read<WalletCubit>().hasAddedCard();
-    // log.w('Has added card ==> $hasAddedCard');
-    if (hasAddedCard == null || !hasAddedCard) {
-      unawaited(WidgetsBinding.instance!.endOfFrame.then((_) {
-        navigator.popAndPush(AddCardRoute(intendedRoute: FundWalletRoute.name));
-      }));
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return AppSliverScrollView.scaffold(
@@ -115,137 +103,75 @@ class _FundWalletScreenState extends State<FundWalletScreen> {
                   FilteringTextInputFormatter.singleLineFormatter,
                 ],
               ),
+              0.02.verticalh,
               //
-              BlocBuilder<WalletCubit, WalletState>(
-                builder: (c, s) => AnimatedVisibility(
-                  visible: s.debitCards.isNotEmpty() && s.card != null,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      0.02.verticalh,
-                      //
-                      const TextFormInputLabel(text: 'Select Payment Card'),
-                      //
-                      AdaptiveDropdown<DebitCard?>(
-                        items: s.debitCards.asList(),
-                        selected: s.card,
-                        height: 60,
-                        child: (card) => Row(
-                          children: [
-                            ImageBox.asset(
-                              photo: card?.image,
-                              height: 40,
-                              width: 40,
-                              fit: BoxFit.contain,
-                              useDefaultRadius: false,
-                              borderRadius: 0.br,
-                            ),
-                            //
-                            0.03.horizontalw,
-                            //
-                            Column(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                AdaptiveText.rich(
-                                  TextSpan(children: [
-                                    TextSpan(text: '${card?.brand.formatted}'),
-                                    const TextSpan(text: ' / '),
-                                    TextSpan(text: '${card?.masked.getOrNull}'),
-                                  ]),
-                                  maxLines: 1,
-                                  fontSize: 16.sp,
-                                  maxFontSize: 16,
-                                  softWrap: false,
-                                  wrapWords: false,
-                                  textAlign: TextAlign.left,
-                                  fontWeight: FontWeight.w600,
-                                  isDefault: true,
-                                ),
-                                //
-                                Flexible(
-                                  child: AdaptiveText.rich(
-                                    TextSpan(children: [
-                                      const TextSpan(text: 'Expires'),
-                                      const TextSpan(text: ' - '),
-                                      TextSpan(text: '${card?.cardExpiryDate.getOrNull}'),
-                                    ]),
-                                    maxLines: 1,
-                                    fontSize: 16.sp,
-                                    maxFontSize: 16,
-                                    softWrap: false,
-                                    wrapWords: false,
-                                    textAlign: TextAlign.left,
-                                    isDefault: true,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        onChanged: (card) {},
-                      ),
-                    ],
-                  ),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: TextFormInputLabel(text: 'Payment Method'),
+              ),
+              //
+              const _PaymentMethodSelector(),
+              //
+              0.02.verticalh,
+              //
+              Center(
+                child: AdaptiveText.rich(
+                  const TextSpan(children: [
+                    TextSpan(text: 'NOTE:', style: TextStyle(fontWeight: FontWeight.w600)),
+                    TextSpan(text: ' All payments will be charged in Nigerian Naira.'),
+                  ]),
+                  maxLines: 2,
+                  fontSize: 17.sp,
+                  maxFontSize: 18,
+                  style: const TextStyle(fontStyle: FontStyle.italic),
                 ),
               ),
               //
               0.02.verticalh,
-              //
-              GestureDetector(
-                onTap: () {
-                  print('Hello world');
-                },
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 4, 4, 4),
-                  child: AdaptiveText(
-                    'Add a New Card',
-                    fontSize: 17.sp,
-                    fontWeight: FontWeight.w600,
-                    textColor: Palette.accentColor,
-                  ),
-                ),
-              ),
-              //
-              0.01.verticalh,
-              //
-              const TextFormInputLabel(text: 'Card Pin'),
-              //
-              ReactiveTextFormField<WalletCubit, WalletState>(
-                disabled: (s) => s.isLoading || s.isFundingWallet,
-                focus: WalletState.focusPin,
-                keyboardType: TextInputType.number,
-                capitalization: TextCapitalization.none,
-                field: (s) => s.cardPin,
-                validate: (s) => s.validate,
-                response: (s) => s.status,
-                onChanged: (cubit, it) => cubit.pinChanged(it),
-                inputFormatters: [
-                  FilteringTextInputFormatter.digitsOnly,
-                  FilteringTextInputFormatter.singleLineFormatter,
-                  LengthLimitingTextInputFormatter(OTPCode.CODE_LENGTH),
-                ],
-              ),
-              //
-              0.04.verticalh,
               //
               SafeArea(
                 top: false,
                 left: false,
                 right: false,
                 child: BlocBuilder<WalletCubit, WalletState>(
-                  builder: (c, s) => AppButton(
-                    text: 'Fund Wallet',
-                    isLoading: s.isFundingWallet,
-                    disabled: s.isLoading || s.isFundingWallet || (s.amountTextController.numberValue! < 100) || !s.cardPin.isValid,
-                    onPressed: () => c.read<WalletCubit>().fundWallet((successful) {
-                      if (successful) {
-                        navigator.popUntilRoot();
-                        c.read<AuthWatcherCubit>().getWallet();
-                      }
-                    }),
+                  builder: (c, s) => Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      AppButton(
+                        text: 'Continue',
+                        isLoading: s.isFundingWallet,
+                        disabled: s.isLoading || s.isFundingWallet || (s.amountTextController.numberValue! < 100),
+                        onPressed: () {
+                          final user = c.read<AuthWatcherCubit>().state.user;
+                          c.read<WalletCubit>().fundWallet(c, user);
+                        },
+                      ),
+                      //
+                      0.025.verticalh,
+                      //
+                      Center(
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              Icons.lock_outline_rounded,
+                              size: 20,
+                              color: App.resolveColor(Palette.iconLight, dark: Palette.iconDark, context: c),
+                            ),
+                            //
+                            0.03.horizontalw,
+                            //
+                            AdaptiveText(
+                              'Secured Payment',
+                              fontWeight: FontWeight.w500,
+                              fontSize: 15.0.sp,
+                              textColor: Palette.subTextLight,
+                              textColorDark: Palette.subTextDark,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -253,6 +179,90 @@ class _FundWalletScreenState extends State<FundWalletScreen> {
           ),
         ),
       ],
+    );
+  }
+}
+
+class _PaymentMethodSelector extends StatelessWidget {
+  const _PaymentMethodSelector({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<WalletCubit, WalletState>(
+      builder: (c, s) => Row(
+        mainAxisSize: MainAxisSize.min,
+        children: PaymentMethod.methods
+            .map(
+              (e) => SizedBox(
+                width: 0.31.w,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Flexible(
+                      child: Material(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(Utils.inputBorderRadius),
+                          side: BorderSide(
+                            color: App.resolveColor(
+                              s.paymentMethod == e ? Palette.accentColor : Colors.transparent,
+                              context: c,
+                            )!,
+                          ),
+                        ),
+                        color: App.resolveColor(Palette.cardColorLight, dark: Palette.cardColorDark, context: c),
+                        child: AdaptiveInkWell(
+                          onTap: () => c.read<WalletCubit>().paymentMethodChanged(e),
+                          borderRadius: BorderRadius.circular(Utils.inputBorderRadius),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 0.05.sw, vertical: 0.03.sw),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Flexible(
+                                  flex: 2,
+                                  child: DecoratedBox(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5.0),
+                                      color: e.when(flutterwave: () => const Color(0xffFFF0D9), paystack: () => null),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(9.0),
+                                      child: e.when(
+                                        flutterwave: () => const Icon(AVIcons.flutterwave, color: Palette.flutterwave),
+                                        paystack: () => const Icon(AVIcons.paystack, color: Palette.paystack),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                //
+                                VerticalSpace(height: 0.03.w),
+                                //
+                                Flexible(
+                                  child: AdaptiveText(
+                                    '${e.name}'.titleCase(),
+                                    maxLines: 1,
+                                    fontSize: 17.sp,
+                                    minFontSize: 14,
+                                    maxFontSize: 19,
+                                    fontWeight: FontWeight.w500,
+                                    textColor: s.paymentMethod == e ? Palette.accentColor : null,
+                                    textColorDark: s.paymentMethod == e ? Palette.accentColor : null,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    //
+                    // HorizontalSpace(width: 0.01.w),
+                  ],
+                ),
+              ),
+            )
+            .toList(),
+      ),
     );
   }
 }

@@ -6,6 +6,8 @@ part of deal_remote.dart;
 // RetrofitGenerator
 // **************************************************************************
 
+// ignore_for_file: unnecessary_brace_in_string_interps
+
 class _DealRemote implements DealRemote {
   _DealRemote(this._dio, {this.baseUrl});
 

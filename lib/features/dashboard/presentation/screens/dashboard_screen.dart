@@ -107,7 +107,7 @@ class _DashboardScreenState extends State<DashboardScreen> with AutomaticKeepAli
         duration: const Duration(milliseconds: 300),
         navigatorObservers: () => <NavigatorObserver>[AutoRouteObserver()],
         builder: (context, child, animation) {
-          WidgetsBinding.instance!.addPostFrameCallback((_) {
+          WidgetsBinding.instance?.addPostFrameCallback((_) {
             if (_navCubit.state.isInit) {
               _navCubit.updateTabsRouter(context.tabsRouter);
               _navCubit.init(context);

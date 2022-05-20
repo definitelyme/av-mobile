@@ -36,7 +36,8 @@ class _$WalletStateTearOff {
       required BasicTextField<String?> otpCode,
       BankAccount? bankAccount,
       required TextEditingController accountNameController,
-      required OTPCode cardPin,
+      PaymentStatus paymentStatus = PaymentStatus.pending,
+      PaymentMethod paymentMethod = PaymentMethod.FLUTTERWAVE,
       required OTPCode withdrawalPin,
       required OTPCode confirmWithdrawalPin,
       KtList<Bank> banks = const KtList.empty(),
@@ -59,7 +60,8 @@ class _$WalletStateTearOff {
       otpCode: otpCode,
       bankAccount: bankAccount,
       accountNameController: accountNameController,
-      cardPin: cardPin,
+      paymentStatus: paymentStatus,
+      paymentMethod: paymentMethod,
       withdrawalPin: withdrawalPin,
       confirmWithdrawalPin: confirmWithdrawalPin,
       banks: banks,
@@ -93,7 +95,8 @@ mixin _$WalletState {
   BankAccount? get bankAccount => throw _privateConstructorUsedError;
   TextEditingController get accountNameController =>
       throw _privateConstructorUsedError;
-  OTPCode get cardPin => throw _privateConstructorUsedError;
+  PaymentStatus get paymentStatus => throw _privateConstructorUsedError;
+  PaymentMethod get paymentMethod => throw _privateConstructorUsedError;
   OTPCode get withdrawalPin => throw _privateConstructorUsedError;
   OTPCode get confirmWithdrawalPin => throw _privateConstructorUsedError;
   KtList<Bank> get banks => throw _privateConstructorUsedError;
@@ -127,7 +130,8 @@ abstract class $WalletStateCopyWith<$Res> {
       BasicTextField<String?> otpCode,
       BankAccount? bankAccount,
       TextEditingController accountNameController,
-      OTPCode cardPin,
+      PaymentStatus paymentStatus,
+      PaymentMethod paymentMethod,
       OTPCode withdrawalPin,
       OTPCode confirmWithdrawalPin,
       KtList<Bank> banks,
@@ -164,7 +168,8 @@ class _$WalletStateCopyWithImpl<$Res> implements $WalletStateCopyWith<$Res> {
     Object? otpCode = freezed,
     Object? bankAccount = freezed,
     Object? accountNameController = freezed,
-    Object? cardPin = freezed,
+    Object? paymentStatus = freezed,
+    Object? paymentMethod = freezed,
     Object? withdrawalPin = freezed,
     Object? confirmWithdrawalPin = freezed,
     Object? banks = freezed,
@@ -239,10 +244,14 @@ class _$WalletStateCopyWithImpl<$Res> implements $WalletStateCopyWith<$Res> {
           ? _value.accountNameController
           : accountNameController // ignore: cast_nullable_to_non_nullable
               as TextEditingController,
-      cardPin: cardPin == freezed
-          ? _value.cardPin
-          : cardPin // ignore: cast_nullable_to_non_nullable
-              as OTPCode,
+      paymentStatus: paymentStatus == freezed
+          ? _value.paymentStatus
+          : paymentStatus // ignore: cast_nullable_to_non_nullable
+              as PaymentStatus,
+      paymentMethod: paymentMethod == freezed
+          ? _value.paymentMethod
+          : paymentMethod // ignore: cast_nullable_to_non_nullable
+              as PaymentMethod,
       withdrawalPin: withdrawalPin == freezed
           ? _value.withdrawalPin
           : withdrawalPin // ignore: cast_nullable_to_non_nullable
@@ -310,7 +319,8 @@ abstract class _$WalletStateCopyWith<$Res>
       BasicTextField<String?> otpCode,
       BankAccount? bankAccount,
       TextEditingController accountNameController,
-      OTPCode cardPin,
+      PaymentStatus paymentStatus,
+      PaymentMethod paymentMethod,
       OTPCode withdrawalPin,
       OTPCode confirmWithdrawalPin,
       KtList<Bank> banks,
@@ -351,7 +361,8 @@ class __$WalletStateCopyWithImpl<$Res> extends _$WalletStateCopyWithImpl<$Res>
     Object? otpCode = freezed,
     Object? bankAccount = freezed,
     Object? accountNameController = freezed,
-    Object? cardPin = freezed,
+    Object? paymentStatus = freezed,
+    Object? paymentMethod = freezed,
     Object? withdrawalPin = freezed,
     Object? confirmWithdrawalPin = freezed,
     Object? banks = freezed,
@@ -426,10 +437,14 @@ class __$WalletStateCopyWithImpl<$Res> extends _$WalletStateCopyWithImpl<$Res>
           ? _value.accountNameController
           : accountNameController // ignore: cast_nullable_to_non_nullable
               as TextEditingController,
-      cardPin: cardPin == freezed
-          ? _value.cardPin
-          : cardPin // ignore: cast_nullable_to_non_nullable
-              as OTPCode,
+      paymentStatus: paymentStatus == freezed
+          ? _value.paymentStatus
+          : paymentStatus // ignore: cast_nullable_to_non_nullable
+              as PaymentStatus,
+      paymentMethod: paymentMethod == freezed
+          ? _value.paymentMethod
+          : paymentMethod // ignore: cast_nullable_to_non_nullable
+              as PaymentMethod,
       withdrawalPin: withdrawalPin == freezed
           ? _value.withdrawalPin
           : withdrawalPin // ignore: cast_nullable_to_non_nullable
@@ -471,7 +486,8 @@ class _$_WalletState implements _WalletState {
       required this.otpCode,
       this.bankAccount,
       required this.accountNameController,
-      required this.cardPin,
+      this.paymentStatus = PaymentStatus.pending,
+      this.paymentMethod = PaymentMethod.FLUTTERWAVE,
       required this.withdrawalPin,
       required this.confirmWithdrawalPin,
       this.banks = const KtList.empty(),
@@ -521,8 +537,12 @@ class _$_WalletState implements _WalletState {
   final BankAccount? bankAccount;
   @override
   final TextEditingController accountNameController;
+  @JsonKey()
   @override
-  final OTPCode cardPin;
+  final PaymentStatus paymentStatus;
+  @JsonKey()
+  @override
+  final PaymentMethod paymentMethod;
   @override
   final OTPCode withdrawalPin;
   @override
@@ -536,7 +556,7 @@ class _$_WalletState implements _WalletState {
 
   @override
   String toString() {
-    return 'WalletState(isLoading: $isLoading, isFundingWallet: $isFundingWallet, validate: $validate, isAddingCard: $isAddingCard, isConfiguringPin: $isConfiguringPin, isWithdrawing: $isWithdrawing, isResolvingAccount: $isResolvingAccount, requestedPINReset: $requestedPINReset, card: $card, securityQuestion: $securityQuestion, debitCards: $debitCards, amountTextController: $amountTextController, amount: $amount, securityAnswer: $securityAnswer, otpCode: $otpCode, bankAccount: $bankAccount, accountNameController: $accountNameController, cardPin: $cardPin, withdrawalPin: $withdrawalPin, confirmWithdrawalPin: $confirmWithdrawalPin, banks: $banks, status: $status)';
+    return 'WalletState(isLoading: $isLoading, isFundingWallet: $isFundingWallet, validate: $validate, isAddingCard: $isAddingCard, isConfiguringPin: $isConfiguringPin, isWithdrawing: $isWithdrawing, isResolvingAccount: $isResolvingAccount, requestedPINReset: $requestedPINReset, card: $card, securityQuestion: $securityQuestion, debitCards: $debitCards, amountTextController: $amountTextController, amount: $amount, securityAnswer: $securityAnswer, otpCode: $otpCode, bankAccount: $bankAccount, accountNameController: $accountNameController, paymentStatus: $paymentStatus, paymentMethod: $paymentMethod, withdrawalPin: $withdrawalPin, confirmWithdrawalPin: $confirmWithdrawalPin, banks: $banks, status: $status)';
   }
 
   @override
@@ -573,7 +593,10 @@ class _$_WalletState implements _WalletState {
                 .equals(other.bankAccount, bankAccount) &&
             const DeepCollectionEquality()
                 .equals(other.accountNameController, accountNameController) &&
-            const DeepCollectionEquality().equals(other.cardPin, cardPin) &&
+            const DeepCollectionEquality()
+                .equals(other.paymentStatus, paymentStatus) &&
+            const DeepCollectionEquality()
+                .equals(other.paymentMethod, paymentMethod) &&
             const DeepCollectionEquality()
                 .equals(other.withdrawalPin, withdrawalPin) &&
             const DeepCollectionEquality()
@@ -602,7 +625,8 @@ class _$_WalletState implements _WalletState {
         const DeepCollectionEquality().hash(otpCode),
         const DeepCollectionEquality().hash(bankAccount),
         const DeepCollectionEquality().hash(accountNameController),
-        const DeepCollectionEquality().hash(cardPin),
+        const DeepCollectionEquality().hash(paymentStatus),
+        const DeepCollectionEquality().hash(paymentMethod),
         const DeepCollectionEquality().hash(withdrawalPin),
         const DeepCollectionEquality().hash(confirmWithdrawalPin),
         const DeepCollectionEquality().hash(banks),
@@ -634,7 +658,8 @@ abstract class _WalletState implements WalletState {
       required BasicTextField<String?> otpCode,
       BankAccount? bankAccount,
       required TextEditingController accountNameController,
-      required OTPCode cardPin,
+      PaymentStatus paymentStatus,
+      PaymentMethod paymentMethod,
       required OTPCode withdrawalPin,
       required OTPCode confirmWithdrawalPin,
       KtList<Bank> banks,
@@ -675,7 +700,9 @@ abstract class _WalletState implements WalletState {
   @override
   TextEditingController get accountNameController;
   @override
-  OTPCode get cardPin;
+  PaymentStatus get paymentStatus;
+  @override
+  PaymentMethod get paymentMethod;
   @override
   OTPCode get withdrawalPin;
   @override

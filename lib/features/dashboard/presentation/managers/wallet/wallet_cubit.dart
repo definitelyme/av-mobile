@@ -10,8 +10,11 @@ import 'package:auctionvillage/features/dashboard/domain/index.dart';
 import 'package:auctionvillage/utils/utils.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
-import 'package:flutter/widgets.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
+import 'package:flutter_paystack/flutter_paystack.dart';
+import 'package:flutterwave_standard/flutterwave.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kt_dart/collection.dart';
@@ -22,11 +25,13 @@ part 'wallet_state.dart';
 @injectable
 class WalletCubit extends Cubit<WalletState> with BaseCubit {
   final WalletRepository _repository;
+  final FirebaseAnalytics _firebaseAnalytics;
+  final PaystackPlugin _paystack;
   StreamSubscription<DebitCard?>? _cardsSubscription;
   static const int MINIMUM_WITHDRAWAL_AMOUNT = 100;
   static const int ACCOUNT_NUMBER_LENGTH = 10;
 
-  WalletCubit(this._repository) : super(WalletState.initial());
+  WalletCubit(this._repository, this._paystack, this._firebaseAnalytics) : super(WalletState.initial());
 
   void toggleLoading([bool? isLoading, Option<AppHttpResponse?>? status]) =>
       emit(state.copyWith(isLoading: isLoading ?? !state.isLoading, status: status ?? state.status));
@@ -43,6 +48,8 @@ class WalletCubit extends Cubit<WalletState> with BaseCubit {
 
   void otpCodeChanged(String value) => emit(state.copyWith(otpCode: BasicTextField(value)));
 
+  void paymentMethodChanged(PaymentMethod value) => emit(state.copyWith(paymentMethod: value));
+
   void amountChanged() {
     final value = state.amountTextController.numberValue;
     emit(state.copyWith(amount: AmountField((value ?? 0).toDouble())));
@@ -54,7 +61,7 @@ class WalletCubit extends Cubit<WalletState> with BaseCubit {
     return super.close();
   }
 
-  void pinChanged(String? value) => emit(state.copyWith(cardPin: OTPCode(value), withdrawalPin: OTPCode(value)));
+  void pinChanged(String? value) => emit(state.copyWith(withdrawalPin: OTPCode(value)));
 
   void pinConfirmationChanged(String? value) => emit(state.copyWith(confirmWithdrawalPin: OTPCode(value)));
 
@@ -165,25 +172,142 @@ class WalletCubit extends Cubit<WalletState> with BaseCubit {
     resolveBankAccount(state.bankAccount?.accountNumber.getOrNull);
   }
 
-  void fundWallet(void Function(bool) onDone) async {
+  void fundWallet(BuildContext c, User? user) async {
     emit(state.copyWith(isFundingWallet: true, validate: true, status: none()));
 
-    if (state.amount.isValid && state.cardPin.isValid) {
-      final response = await _repository.fundWallet(
-        amount: state.amount.getOrNull,
-        cardPin: state.cardPin.getOrNull!,
-      );
+    final _conn = await connection();
 
-      log.w(response.response);
+    await _conn.fold(
+      () async {
+        await state.paymentMethod.when(
+          flutterwave: () => _flutterwavePayment(c, user),
+          paystack: () => _paystackPay(c, user),
+        );
 
-      emit(state.copyWith(status: optionOf(response), isFundingWallet: false, validate: false));
-
-      response.response.maybeMap(orElse: () => onDone(true), error: (_) => onDone(false));
-    }
-
-    onDone(false);
+        state.amountTextController.clear();
+        emit(state.copyWith(amount: AmountField(0)));
+      },
+      (f) async => emit(state.copyWith(status: optionOf(f))),
+    );
 
     emit(state.copyWith(isFundingWallet: false));
+  }
+
+  Future<void> _flutterwavePayment(BuildContext ctx, User? user) async {
+    final name = user?.fullName.getOrEmpty;
+    final email = user?.email.getOrEmpty;
+    final phone = user?.phone.getOrNull;
+    final _amount = env.flavor.fold(prod: () => state.amount.getOrNull, dev: () => 5);
+    final _currency = user?.phone.country?.type?.name ?? 'NGN';
+
+    final _style = FlutterwaveStyle(
+      appBarText: state.paymentMethod.formatted,
+      appBarTitleTextStyle: Utils.foldTheme(
+        light: () => TextStyle(color: Palette.text100, fontSize: 20.sp),
+        dark: () => TextStyle(color: Palette.text100Dark, fontSize: 20.sp),
+      ),
+      buttonColor: Palette.accentColor,
+      appBarIcon: Icon(
+        Icons.keyboard_backspace_rounded,
+        color: App.resolveColor(Colors.black87, dark: Palette.iconDark, context: ctx),
+      ),
+      buttonTextStyle: TextStyle(
+        color: Palette.cardColorLight,
+        fontSize: 18.sp,
+      ),
+      appBarColor: App.resolveColor(Palette.primaryColor, dark: Palette.secondaryColor.shade400, context: ctx),
+      dialogCancelTextStyle: TextStyle(
+        color: App.resolveColor(Palette.text100, dark: Palette.text100Dark, context: ctx),
+        fontSize: 18.sp,
+      ),
+      dialogContinueTextStyle: TextStyle(
+        color: App.resolveColor(Palette.accentColor, context: ctx),
+        fontSize: 18.sp,
+      ),
+    );
+
+    final _flutterwave = Flutterwave(
+      context: ctx,
+      style: _style,
+      publicKey: env.flutterwaveKey,
+      currency: _currency,
+      txRef: reference,
+      amount: '$_amount',
+      isTestMode: env.flavor.fold(prod: () => false, dev: () => false),
+      customer: Customer(name: '$name', email: '$email', phoneNumber: '$phone'),
+      // meta: {'donation': state.donation.id.value},
+      paymentOptions: 'card',
+      customization: Customization(
+        title: '${Const.appName} - Fund Wallet',
+        description: '$name wants to fund their wallet with $_amount, pls honor if valid.',
+        logo: Const.logoPng,
+      ),
+    );
+
+    ChargeResponse? _flwResponse;
+
+    try {
+      _flwResponse = await _flutterwave.charge();
+
+      if (_flwResponse != null) {
+        if (_flwResponse.success!) {
+          emit(state.copyWith(
+            paymentStatus: PaymentStatus.confirmed,
+            status: some(AppHttpResponse.successful('Success! Please wait while we process your payment.')),
+          ));
+          _logPaymentSuccessful(_amount.toDouble(), user, currency: _currency);
+        } else {
+          final msg = '${_flwResponse.status}\n Something went wrong, please try again after sometime.';
+          emit(state.copyWith(paymentStatus: PaymentStatus.failed, status: some(AppHttpResponse.failure(msg))));
+          _logPaymentFailed(_amount.toDouble(), user, _flwResponse.status, currency: _currency);
+        }
+      } else
+        emit(state.copyWith(paymentStatus: PaymentStatus.failed));
+    } catch (e) {
+      emit(state.copyWith(status: some(AppHttpResponse.failure('$e'))));
+    }
+  }
+
+  Future<void> _paystackPay(BuildContext ctx, User? user) async {
+    final name = user?.fullName.getOrEmpty;
+    final email = user?.email.getOrEmpty;
+    final phone = user?.phone.getOrNull;
+    final _amount = env.flavor.fold(prod: () => state.amount.getOrNull * 100, dev: () => 500);
+    final _currency = user?.phone.country?.type?.name ?? 'NGN';
+
+    var _charge = Charge()
+      ..amount = _amount.floor()
+      ..email = email
+      ..reference = reference
+      ..currency = _currency
+      // ..putMetaData('donation', '${state.donation.id.value}')
+      ..putCustomField("User's Name", '$name')
+      ..putCustomField("User's Phone", '$phone')
+      ..putCustomField('Payment Reference', reference);
+
+    try {
+      final _response = await _paystack.checkout(
+        ctx,
+        charge: _charge,
+        fullscreen: true,
+        hideAmount: false,
+        hideEmail: false,
+        logo: Image.asset(AppAssets.launchIcon, width: 0.25.w, height: 0.15.w),
+        method: CheckoutMethod.card,
+      );
+
+      if (!isClosed) {
+        if (_response.status) {
+          emit(state.copyWith(paymentStatus: PaymentStatus.confirmed));
+          _logPaymentSuccessful(_amount.toDouble(), user, currency: _currency);
+        } else {
+          emit(state.copyWith(paymentStatus: PaymentStatus.failed));
+          _logPaymentFailed(_amount.toDouble(), user, _response.message, currency: _currency);
+        }
+      }
+    } on PaystackException catch (e) {
+      if (!isClosed) emit(state.copyWith(status: some(AppHttpResponse.failure('${e.message}'))));
+    }
   }
 
   void setupPin({bool requiresOTP = false}) async {
@@ -318,5 +442,50 @@ class WalletCubit extends Cubit<WalletState> with BaseCubit {
     }
 
     emit(state.copyWith(isConfiguringPin: false));
+  }
+
+  void _logPaymentSuccessful(double? amount, User? user, {required String currency}) async {
+    await _firebaseAnalytics.logAddPaymentInfo(
+      value: amount,
+      currency: currency,
+      callOptions: AnalyticsCallOptions(global: false),
+      paymentType: 'CARD',
+      coupon: 'NO_COUPON',
+      items: [
+        AnalyticsEventItem(
+          // itemId: '${donation.id.value}',
+          itemName: '${Const.appName} - Fund Wallet with CARD',
+          price: amount,
+          quantity: 1,
+          currency: currency,
+        ),
+      ],
+    );
+
+    await _firebaseAnalytics.logEvent(
+      name: 'payment_successful',
+      parameters: {
+        // 'donation': donation.id.value,
+        'payment_status': 'Successful',
+        'payment_type': 'CARD',
+        'payment_reference': reference,
+        'amount': amount,
+        'currency': currency,
+      },
+    );
+  }
+
+  void _logPaymentFailed(double? amount, User? user, Object? message, {required String currency}) async {
+    await _firebaseAnalytics.logEvent(
+      name: 'payment_failed',
+      parameters: <String, dynamic>{
+        'reason_message': '$message',
+        'payment_type': 'CARD',
+        'payment_status': 'Failed',
+        'payment_reference': reference,
+        'payment_amount': amount,
+        'payment_currency': currency,
+      },
+    );
   }
 }

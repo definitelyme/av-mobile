@@ -10,15 +10,13 @@ class AuthGuard extends AutoRouteGuard {
     final context = router.navigatorKey.currentContext;
 
     if (context != null) {
-      final authenticated =
-          BlocProvider.of<AuthWatcherCubit>(context).state.isAuthenticated;
+      final authenticated = BlocProvider.of<AuthWatcherCubit>(context).state.isAuthenticated;
 
       if (authenticated)
         resolver.next();
       else {
-        WidgetsBinding.instance!.endOfFrame.then((_) {
-          if (App.currentRoute != LoginRoute.name)
-            router.replaceAll([const LoginRoute()]);
+        WidgetsBinding.instance?.endOfFrame.then((_) {
+          if (App.currentRoute != LoginRoute.name) router.replaceAll([const LoginRoute()]);
         });
       }
     } else

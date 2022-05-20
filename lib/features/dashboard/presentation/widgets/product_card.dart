@@ -93,7 +93,11 @@ class ProductCard extends StatelessWidget {
                           height: 0.006.h,
                           thickness: 0.001.h,
                           color: App.platform.cupertino(
-                            App.resolveColor(null, dark: CupertinoColors.inactiveGray)!,
+                            Utils.foldTheme(
+                              light: () => null,
+                              dark: () => CupertinoColors.inactiveGray,
+                              context: context,
+                            ),
                           ),
                         ),
                         //

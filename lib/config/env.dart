@@ -72,7 +72,7 @@ class BuildEnvironment implements Secrets {
 
   String get paystackKey => flavor.fold(dev: () => Secrets.paystackKeyDev, prod: () => Secrets.paystackKeyProd);
 
-  String get flwPublicKey => flavor.fold(dev: () => Secrets.flutterwaveKeyDev, prod: () => Secrets.flutterwaveKeyProd);
+  String get flutterwaveKey => flavor.fold(dev: () => Secrets.flutterwaveKeyDev, prod: () => Secrets.flutterwaveKeyProd);
 
   String get flwEncryptionKey => Secrets.flutterwaveEncrptionKey;
 

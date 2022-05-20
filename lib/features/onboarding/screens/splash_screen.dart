@@ -52,7 +52,7 @@ class SplashScreen extends StatelessWidget {
                   (either) => either.fold(
                     (_) => SplashScreen.navigateIfNotAuthenticated(),
                     (option) {
-                      WidgetsBinding.instance!.addPostFrameCallback(
+                      WidgetsBinding.instance?.addPostFrameCallback(
                         (_) async => await Future.delayed(
                           env.greetingDuration,
                           () {

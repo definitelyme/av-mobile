@@ -19,3 +19,5 @@ export 'history/bid/bid_history.dart';
 export 'history/sell/sell_history.dart';
 export 'rating/rating.entity.dart';
 export 'wallet/debit_card/index.dart';
+export 'payment/payment_status/payment_status.dart';
+export 'payment/payment_method/payment_method.dart';
