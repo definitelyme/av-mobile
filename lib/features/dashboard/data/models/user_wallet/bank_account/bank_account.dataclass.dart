@@ -12,7 +12,7 @@ BankAccountDTO deserializeBankAccountDTO(Map<String, dynamic> json) => BankAccou
 Map<String, dynamic> serializeBankAccountDTO(BankAccountDTO object) => object.toJson();
 
 @immutable
-@Freezed(maybeMap: false, maybeWhen: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class BankAccountDTO with _$BankAccountDTO {
   const BankAccountDTO._();
 
@@ -30,7 +30,7 @@ class BankAccountDTO with _$BankAccountDTO {
 }
 
 @immutable
-@Freezed(maybeMap: false, maybeWhen: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class _BankAccountData with _$_BankAccountData {
   const _BankAccountData._();
 

@@ -17,7 +17,7 @@ WishDTO deserializeWishDTO(Map<String, dynamic> json) => WishDTO.fromJson(json);
 Map<String, dynamic> serializeWishDTO(WishDTO object) => object.toJson();
 
 @immutable
-@Freezed(maybeMap: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class WishDTO with _$WishDTO {
   const WishDTO._();
 
@@ -31,7 +31,7 @@ class WishDTO with _$WishDTO {
 }
 
 @immutable
-@Freezed(maybeMap: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class _WishDTOData with _$_WishDTOData {
   const _WishDTOData._();
 
@@ -62,7 +62,7 @@ WishListDTO deserializeWishListDTO(Map<String, dynamic> json) => WishListDTO.fro
 Map<String, dynamic> serializeWishListDTO(WishListDTO object) => object.toJson();
 
 @immutable
-@Freezed(maybeMap: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class WishListDTO with _$WishListDTO {
   const WishListDTO._();
 

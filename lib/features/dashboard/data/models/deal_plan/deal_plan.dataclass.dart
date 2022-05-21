@@ -13,7 +13,7 @@ DealPlanDTO deserializeDealPlanDTO(Map<String, dynamic> json) => DealPlanDTO.fro
 Map<String, dynamic> serializeDealPlanDTO(DealPlanDTO object) => object.toJson();
 
 @immutable
-@Freezed(maybeMap: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class DealPlanDTO with _$DealPlanDTO {
   const factory DealPlanDTO({
     @JsonKey(name: '_meta') MetaDTO? meta,
@@ -30,7 +30,7 @@ class DealPlanDTO with _$DealPlanDTO {
 }
 
 @immutable
-@Freezed(maybeMap: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class DealPlanDTOData with _$DealPlanDTOData {
   const factory DealPlanDTOData({
     @JsonKey(name: '_id') String? id,
@@ -71,7 +71,7 @@ DealPlanListDTO deserializeDealPlanListDTO(Map<String, dynamic> json) => DealPla
 Map<String, dynamic> serializeDealPlanListDTO(DealPlanListDTO object) => object.toJson();
 
 @immutable
-@Freezed(maybeMap: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class DealPlanListDTO with _$DealPlanListDTO {
   const factory DealPlanListDTO({
     @JsonKey(name: '_meta') MetaDTO? meta,

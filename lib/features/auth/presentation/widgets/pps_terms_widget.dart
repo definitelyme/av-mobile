@@ -1,13 +1,12 @@
 library pps_terms_widget.dart;
 
+import 'package:auctionvillage/features/auth/presentation/managers/managers.dart';
+import 'package:auctionvillage/utils/utils.dart';
+import 'package:auctionvillage/widgets/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:auctionvillage/features/auth/presentation/managers/managers.dart';
-import 'package:auctionvillage/utils/utils.dart';
-import 'package:auctionvillage/widgets/widgets.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class PPsTermsWidget extends StatelessWidget {
   const PPsTermsWidget({Key? key}) : super(key: key);
@@ -22,10 +21,7 @@ class PPsTermsWidget extends StatelessWidget {
             type: MaterialType.transparency,
             child: Checkbox(
               value: accepted,
-              side: Utils.platform_(
-                  cupertino: BorderSide(
-                      color: CupertinoColors.systemGrey.resolveFrom(context),
-                      width: 1)),
+              side: Utils.platform_(cupertino: BorderSide(color: CupertinoColors.systemGrey.resolveFrom(context), width: 1)),
               onChanged: c.read<AuthCubit>().toggleAcceptTerms,
               activeColor: Palette.accentColor,
             ),
@@ -46,12 +42,7 @@ class PPsTermsWidget extends StatelessWidget {
                   decoration: TextDecoration.underline,
                   color: Palette.accentColor,
                 ),
-                recognizer: TapGestureRecognizer()
-                  ..onTap = () async {
-                    final link = 'https://auctionvillage.com/terms';
-                    final launchable = await canLaunch('$link');
-                    if (launchable) await launch('$link');
-                  },
+                recognizer: TapGestureRecognizer()..onTap = () => UrlLauncher.url('https://auctionvillage.com/terms'),
               ),
               //
               const TextSpan(
@@ -65,12 +56,7 @@ class PPsTermsWidget extends StatelessWidget {
                   decoration: TextDecoration.underline,
                   color: Palette.accentColor,
                 ),
-                recognizer: TapGestureRecognizer()
-                  ..onTap = () async {
-                    final link = 'https://auctionvillage.com/privacy-policy';
-                    final launchable = await canLaunch('$link');
-                    if (launchable) await launch('$link');
-                  },
+                recognizer: TapGestureRecognizer()..onTap = () => UrlLauncher.url('https://auctionvillage.com/privacy-policy'),
               ),
             ]),
             fontSize: 16.sp,

@@ -1,7 +1,7 @@
 part of 'wallet_cubit.dart';
 
 @immutable
-@Freezed(maybeMap: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class WalletState extends BaseState with _$WalletState {
   static final FocusNode cardName = FocusNode();
   static final FocusNode cardNumber = FocusNode();

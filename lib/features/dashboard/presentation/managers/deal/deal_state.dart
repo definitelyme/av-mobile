@@ -1,7 +1,7 @@
 part of deal_cubit.dart;
 
 @immutable
-@Freezed(maybeMap: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class DealState extends BaseState with _$DealState {
   const factory DealState({
     @Default(false) bool isLoading,

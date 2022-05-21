@@ -9,7 +9,7 @@ import 'package:kt_dart/collection.dart';
 part 'rating.entity.freezed.dart';
 
 @immutable
-@Freezed(maybeMap: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class Rating with _$Rating {
   const Rating._();
 
@@ -51,7 +51,7 @@ class Rating with _$Rating {
 }
 
 @immutable
-@Freezed(maybeMap: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class Review extends BaseEntity with _$Review {
   const Review._();
 

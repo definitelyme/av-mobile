@@ -13,7 +13,7 @@ DebitCardDTO deserializeDebitCardDTO(Map<String, dynamic> json) => DebitCardDTO.
 Map<String, dynamic> serializeDebitCardDTO(DebitCardDTO object) => object.toJson();
 
 @immutable
-@Freezed(maybeMap: false, maybeWhen: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class DebitCardDTO with _$DebitCardDTO {
   const DebitCardDTO._();
 
@@ -36,7 +36,7 @@ DebitCardDTOData deserializeDebitCardDTOData(Map<String, dynamic> json) => Debit
 Map<String, dynamic> serializeDebitCardDTOData(DebitCardDTOData object) => object.toJson();
 
 @immutable
-@Freezed(maybeMap: false, maybeWhen: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class DebitCardDTOData with _$DebitCardDTOData {
   const DebitCardDTOData._();
 
@@ -90,7 +90,7 @@ class DebitCardDTOData with _$DebitCardDTOData {
 }
 
 @immutable
-@Freezed(maybeMap: false, maybeWhen: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class DebitCardListDTO with _$DebitCardListDTO {
   const DebitCardListDTO._();
 

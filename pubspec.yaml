@@ -3,7 +3,7 @@ description: An application for foodies
 
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.0+12
+version: 1.0.0+13
 
 environment:
   sdk: ">=2.17.0-69.2.beta <3.0.0"
@@ -42,12 +42,12 @@ dependencies:
   google_sign_in: ^5.2.4
   # Flutter bridge to initiate Sign in with Apple (on iOS, macOS, and Android).
   # Includes support for keychain entries as well as signing in with an Apple ID.
-  sign_in_with_apple: ^3.3.0
+  sign_in_with_apple: ^4.0.0
   # Customize App font
-  google_fonts: ^2.3.1
+  google_fonts: ^3.0.0
   # Permission plugin for Flutter.
   # This plugin provides a cross-platform (iOS, Android) API to request and check permissions.
-  permission_handler: ^8.2.5
+  permission_handler: ^9.2.0
   # This plugin allows Flutter apps to discover network connectivity
   # and configure themselves accordingly.
   connectivity_plus: ^2.2.0
@@ -56,7 +56,7 @@ dependencies:
   # Service locator
   get_it: ^7.2.0
   # Useful platform aware widgets to bring a Material app to Cupertino.
-  enough_platform_widgets: ^0.3.0
+  enough_platform_widgets: ^0.4.0
   # A powerful Http client for Dart, which supports Interceptors,
   # Global configuration, FormData, Request Cancellation, File downloading, Timeout etc.
   dio: ^4.0.4
@@ -83,7 +83,7 @@ dependencies:
   # Functional Programming
   dartz: ^0.10.1
   # For regular Unions
-  freezed_annotation: ^1.1.0
+  freezed_annotation: ^2.0.3
   # For generating unique UUIDs
   uuid: ^3.0.6
   # Dart library for validating and sanitizing strings, especially those from user input.
@@ -96,7 +96,7 @@ dependencies:
   # and localization facilities
   intl: ^0.17.0
   # A declarative routing solution
-  auto_route: ^3.2.2
+  auto_route: ^4.0.1
   # A collection of loading indicators animated with flutter.
   flutter_spinkit: ^5.1.0
   # Shimmer Skeleton Library.
@@ -165,7 +165,7 @@ dependencies:
       ref: hotfix-0.9.1
   # Flutter plugin for sharing content via the platform share UI,6
   # using the ACTION_SEND intent on Android and UIActivityViewController on iOS.
-  share_plus: ^3.0.4
+  share_plus: ^4.0.4
   # A simple yet fully customizable ratingbar for
   # flutter which also include a rating bar indicator,
   # supporting any fraction of rating.
@@ -236,10 +236,10 @@ dev_dependencies:
   pedantic: ^1.11.1
   # Code Generators
   build_runner: ^2.1.7
-  freezed: ^1.1.0
+  freezed: ^2.0.3+1
   injectable_generator: ^1.5.3
   built_value_generator: ^8.1.4
-  auto_route_generator: ^3.2.3
+  auto_route_generator: ^4.0.0
   retrofit_generator:
     git:
       url: https://github.com/Flutter-Fox/retrofit.dart.git

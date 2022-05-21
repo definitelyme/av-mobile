@@ -1,7 +1,7 @@
 part of search_bloc.dart;
 
 @immutable
-@Freezed(maybeMap: false, maybeWhen: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class SearchState extends BaseSearchState with _$SearchState {
   const factory SearchState({
     @Default(false) bool isSearching,

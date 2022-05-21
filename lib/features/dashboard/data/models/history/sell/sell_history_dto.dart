@@ -17,7 +17,7 @@ SellHistoryDTO deserializeSellHistoryDTO(Map<String, dynamic> json) => SellHisto
 Map<String, dynamic> serializeSellHistoryDTO(SellHistoryDTO object) => object.toJson();
 
 @immutable
-@Freezed(maybeMap: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class SellHistoryDTO with _$SellHistoryDTO {
   const SellHistoryDTO._();
 
@@ -34,7 +34,7 @@ class SellHistoryDTO with _$SellHistoryDTO {
 }
 
 @immutable
-@Freezed(maybeMap: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class _SellHistoryDTOData with _$_SellHistoryDTOData {
   const _SellHistoryDTOData._();
 

@@ -36,7 +36,7 @@ class AuctionVillageApp extends StatelessWidget {
         designSize: const Size(375, 812),
         minTextAdapt: true,
         splitScreenMode: true,
-        builder: (_) => BlocBuilder<ThemeCubit, AppTheme>(
+        builder: (_, __) => BlocBuilder<ThemeCubit, AppTheme>(
           builder: (_, app) => PlatformApp.router(
             title: Const.appName.capitalizeFirst(),
             debugShowCheckedModeBanner: false,

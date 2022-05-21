@@ -15,7 +15,7 @@ UserWalletDTO deserializeUserWalletDTO(Map<String, dynamic> json) => UserWalletD
 Map<String, dynamic> serializeUserWalletDTO(UserWalletDTO object) => object.toJson();
 
 @immutable
-@Freezed(maybeMap: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class UserWalletDTO with _$UserWalletDTO {
   const UserWalletDTO._();
 
@@ -31,7 +31,7 @@ class UserWalletDTO with _$UserWalletDTO {
   UserWallet get domain => data.domain;
 }
 
-@Freezed(maybeMap: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 @immutable
 class _UserWalletDTOData with _$_UserWalletDTOData {
   const _UserWalletDTOData._();
@@ -66,7 +66,7 @@ UserWalletListDTO deserializeUserWalletListDTO(Map<String, dynamic> json) => Use
 Map<String, dynamic> serializeUserWalletListDTO(UserWalletListDTO object) => object.toJson();
 
 @immutable
-@Freezed(maybeMap: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class UserWalletListDTO with _$UserWalletListDTO {
   const UserWalletListDTO._();
 

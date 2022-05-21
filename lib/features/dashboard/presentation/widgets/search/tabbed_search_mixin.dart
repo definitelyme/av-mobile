@@ -51,7 +51,7 @@ mixin TabbedSearchMixin {
                     callback: (_) => p0.controller.loadComplete(),
                   ));
                 },
-                builder: (c, it) => AdaptiveText('some text here'),
+                builder: (c, it) => const AdaptiveText('some text here'),
               ),
             ),
           ),

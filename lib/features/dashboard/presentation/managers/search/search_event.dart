@@ -12,7 +12,7 @@ class SearchEmitterEvent extends _SearchEvent {
 }
 
 @immutable
-@Freezed(maybeMap: false, maybeWhen: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class SearchEvent extends _SearchEvent with _$SearchEvent {
   const factory SearchEvent.refresh(
     SearchModel model, {

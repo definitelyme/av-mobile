@@ -14,7 +14,7 @@ RatingDTO deserializeRatingDTO(Map<String, dynamic> json) => RatingDTO.fromJson(
 Map<String, dynamic> serializeRatingDTO(RatingDTO object) => object.toJson();
 
 @immutable
-@Freezed(maybeMap: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class RatingDTO with _$RatingDTO {
   const RatingDTO._();
 
@@ -31,7 +31,7 @@ class RatingDTO with _$RatingDTO {
 }
 
 @immutable
-@Freezed(maybeMap: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class _RatingDTOData with _$_RatingDTOData {
   const _RatingDTOData._();
 

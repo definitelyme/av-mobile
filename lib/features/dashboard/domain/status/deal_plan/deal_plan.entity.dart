@@ -8,7 +8,7 @@ import 'package:kt_dart/collection.dart';
 part 'deal_plan.entity.freezed.dart';
 
 @immutable
-@Freezed(maybeMap: false, maybeWhen: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class DealPlan extends BaseEntity with _$DealPlan {
   const DealPlan._();
 

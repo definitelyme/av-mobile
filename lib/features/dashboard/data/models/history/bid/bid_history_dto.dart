@@ -17,7 +17,7 @@ BidHistoryDTO deserializeBidHistoryDTO(Map<String, dynamic> json) => BidHistoryD
 Map<String, dynamic> serializeBidHistoryDTO(BidHistoryDTO object) => object.toJson();
 
 @immutable
-@Freezed(maybeMap: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class BidHistoryDTO with _$BidHistoryDTO {
   const BidHistoryDTO._();
 
@@ -34,7 +34,7 @@ class BidHistoryDTO with _$BidHistoryDTO {
 }
 
 @immutable
-@Freezed(maybeMap: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class _BidHistoryDTOData with _$_BidHistoryDTOData {
   const _BidHistoryDTOData._();
 

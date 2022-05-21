@@ -16,7 +16,7 @@ DealDTO deserializeDealDTO(Map<String, dynamic> json) => DealDTO.fromJson(json);
 Map<String, dynamic> serializeDealDTO(DealDTO object) => object.toJson();
 
 @immutable
-@Freezed(maybeMap: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class DealDTO with _$DealDTO {
   const DealDTO._();
 
@@ -36,7 +36,7 @@ DealDTOData deserializeDealDTOData(Map<String, dynamic> json) => DealDTOData.fro
 Map<String, dynamic> serializeDealDTOData(DealDTOData object) => object.toJson();
 
 @immutable
-@Freezed(maybeMap: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class DealDTOData with _$DealDTOData {
   const DealDTOData._();
 
@@ -140,7 +140,7 @@ DealListDTO deserializeDealListDTO(Map<String, dynamic> json) => DealListDTO.fro
 Map<String, dynamic> serializeDealListDTO(DealListDTO object) => object.toJson();
 
 @immutable
-@Freezed(maybeMap: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class DealListDTO with _$DealListDTO {
   const DealListDTO._();
 

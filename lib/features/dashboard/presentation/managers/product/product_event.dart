@@ -13,7 +13,7 @@ class _ProductEmiiterEvent extends ProductEvent {
 }
 
 @immutable
-@Freezed(maybeMap: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class ProductSyncEvent extends ProductEvent with _$ProductSyncEvent {
   const factory ProductSyncEvent.init({Product? product}) = _InitializeProductBlocEvent;
   const factory ProductSyncEvent.categoryChanged(DealCategory? category) = _CategoryChangedEvent;
@@ -54,20 +54,20 @@ class ProductSyncEvent extends ProductEvent with _$ProductSyncEvent {
 }
 
 @immutable
-@Freezed(maybeMap: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class ProductStructEvent extends ProductEvent with _$ProductStructEvent {
   const factory ProductStructEvent.store(User? user, {AwaitCallback? callback}) = _StoreNewProductEvent;
 }
 
 @immutable
-@Freezed(maybeMap: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class ProductGetEvent extends ProductEvent with _$ProductGetEvent {
   const factory ProductGetEvent.categories() = _GetCategoriesEvent;
   const factory ProductGetEvent.getDealPlans({int? perPage, @Default(false) bool nextPage}) = _GetDealPlansEvent;
 }
 
 @immutable
-@Freezed(maybeMap: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class ProductPageControllerEvent extends ProductEvent with _$ProductPageControllerEvent {
   const factory ProductPageControllerEvent.attachListener() = _AttachPageControllerListener;
 
@@ -81,7 +81,7 @@ class ProductPageControllerEvent extends ProductEvent with _$ProductPageControll
 }
 
 @immutable
-@Freezed(maybeWhen: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class ProductMediaEvents extends ProductEvent with _$ProductMediaEvents {
   @protected
   const factory ProductMediaEvents.uploadMedia(File file, [int? index]) = _UploadMediaEvent;

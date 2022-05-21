@@ -19,7 +19,7 @@ ProductDTO deserializeProductDTO(Map<String, dynamic> json) => ProductDTO.fromJs
 Map<String, dynamic> serializeProductDTO(ProductDTO object) => object.toJson();
 
 @immutable
-@Freezed(maybeMap: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class ProductDTO with _$ProductDTO {
   const ProductDTO._();
 
@@ -61,7 +61,7 @@ Map<String, dynamic> serializeProductDTOData(ProductDTOData object) {
 }
 
 @immutable
-@Freezed(maybeMap: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class ProductDTOData with _$ProductDTOData {
   const ProductDTOData._();
 
@@ -139,7 +139,7 @@ ProductListDTO deserializeProductListDTO(Map<String, dynamic> json) => ProductLi
 Map<String, dynamic> serializeProductListDTO(ProductListDTO object) => object.toJson();
 
 @immutable
-@Freezed(maybeMap: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class ProductListDTO with _$ProductListDTO {
   const ProductListDTO._();
 

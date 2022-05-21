@@ -1,7 +1,7 @@
 part of product_bloc.dart;
 
 @immutable
-@Freezed(maybeMap: false, maybeWhen: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class ProductState extends BaseBlocState with _$ProductState {
   static FocusNode itemNameFocus = FocusNode();
   static FocusNode stateFocus = FocusNode();

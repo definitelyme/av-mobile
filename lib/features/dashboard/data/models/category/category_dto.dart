@@ -14,7 +14,7 @@ CategoryDTO deserializeCategoryDTO(Map<String, dynamic> json) => CategoryDTO.fro
 Map<String, dynamic> serializeCategoryDTO(CategoryDTO object) => object.toJson();
 
 @immutable
-@Freezed(maybeMap: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class CategoryDTO with _$CategoryDTO {
   const CategoryDTO._();
 
@@ -34,7 +34,7 @@ CategoryDTOData deserializeCategoryDTOData(Map<String, dynamic> json) => Categor
 Map<String, dynamic> serializeCategoryDTOData(CategoryDTOData object) => object.toJson();
 
 @immutable
-@Freezed(maybeMap: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class CategoryDTOData with _$CategoryDTOData {
   const CategoryDTOData._();
 
@@ -90,7 +90,7 @@ CategoryListDTO deserializeCategoryListDTO(Map<String, dynamic> json) => Categor
 Map<String, dynamic> serializeCategoryListDTO(CategoryListDTO object) => object.toJson();
 
 @immutable
-@Freezed(maybeMap: false)
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class CategoryListDTO with _$CategoryListDTO {
   const CategoryListDTO._();
 
