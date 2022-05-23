@@ -95,13 +95,7 @@ class _DashboardScreenState extends State<DashboardScreen> with AutomaticKeepAli
     return WillPopScope(
       onWillPop: maybePop,
       child: AutoTabsRouter(
-        routes: [
-          const HomeRouter(),
-          const LiveRouter(),
-          const SellRouter(),
-          const ChatRouter(),
-          const MoreRouter(),
-        ],
+        routes: BottomNav.list.map((e) => e.router).toList(),
         inheritNavigatorObservers: true,
         curve: Curves.easeInOutCubic,
         duration: const Duration(milliseconds: 300),

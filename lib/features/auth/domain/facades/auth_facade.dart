@@ -3,7 +3,6 @@ library auth_facade.dart;
 import 'package:auctionvillage/core/data/index.dart';
 import 'package:auctionvillage/core/domain/entities/entities.dart';
 import 'package:auctionvillage/core/domain/response/index.dart';
-import 'package:auctionvillage/features/dashboard/domain/index.dart';
 import 'package:auctionvillage/manager/locator/locator.dart';
 import 'package:auctionvillage/utils/utils.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -84,8 +83,6 @@ abstract class AuthFacade {
   });
 
   Future<AppHttpResponse> deleteAccount();
-
-  Future<Either<AppHttpResponse, UserWallet>> wallet();
 
   Future<void> sleep();
 

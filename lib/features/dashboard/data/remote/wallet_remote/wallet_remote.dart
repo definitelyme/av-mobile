@@ -59,6 +59,9 @@ abstract class WalletRemote {
   @GET(EndPoints.GET_NG_BANKS_LIST)
   Future<BankDTO> banks();
 
+  @GET(EndPoints.USER_WALLET)
+  Future<UserWalletDTO> userWallet();
+
   @Headers({'Authorization': 'Bearer FLWSECK-8a8dd5afa211ae139db6fcb0039a6984-X', 'Content-Type': 'application/json'})
   @POST(EndPoints.RESOLVE_BANK_ACCOUNT)
   Future<BankAccountDTO> resolveBankAccount(

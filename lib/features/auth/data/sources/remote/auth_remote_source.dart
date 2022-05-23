@@ -119,11 +119,6 @@ class AuthRemoteDatasource {
     return _dio.delete('EndPoints.DELETE_USER_ACCOUNT');
   }
 
-  Future<Response<dynamic>> userWallet() async {
-    // Perform request to reset user's password
-    return _dio.get(EndPoints.USER_WALLET);
-  }
-
   Future<Either<AppHttpResponse, UserDTO?>> getUser([
     VoidCallback? callback,
   ]) async {

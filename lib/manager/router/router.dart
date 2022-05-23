@@ -103,14 +103,6 @@ import 'package:auto_route/auto_route.dart';
       fullMatch: true,
       maintainState: true,
       usesPathAsKey: true,
-      page: AddCardScreen,
-      cupertinoPageTitle: 'Add Card',
-    ),
-    //
-    AdaptiveRoute(
-      fullMatch: true,
-      maintainState: true,
-      usesPathAsKey: true,
       page: WithdrawalScreen,
       cupertinoPageTitle: 'Withdraw to Account',
     ),

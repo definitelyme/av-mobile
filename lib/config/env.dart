@@ -69,11 +69,11 @@ class BuildEnvironment implements Secrets {
 
   String get googleMapsAPI => Utils.platform_(material: Secrets.androidAPIKey, cupertino: Secrets.iOSAPIKey)!;
 
-  String get paystackKey => flavor.fold(dev: () => Secrets.paystackKeyDev, prod: () => Secrets.paystackKeyProd);
+  String get paystackKey =>
+      flavor.fold(dev: () => Secrets.paystackKeyDev, prod: () => kDebugMode ? Secrets.paystackKeyDev : Secrets.paystackKeyProd);
 
-  String get flutterwaveKey => flavor.fold(dev: () => Secrets.flutterwaveKeyDev, prod: () => Secrets.flutterwaveKeyProd);
-
-  String get flwEncryptionKey => Secrets.flutterwaveEncrptionKey;
+  String get flutterwaveKey =>
+      flavor.fold(dev: () => Secrets.flutterwaveKeyDev, prod: () => kDebugMode ? Secrets.flutterwaveKeyDev : Secrets.flutterwaveKeyProd);
 
   Duration get splashDuration => flavor.fold(dev: () => const Duration(milliseconds: 1200), prod: () => const Duration(milliseconds: 1700));
 

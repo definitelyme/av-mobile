@@ -112,16 +112,6 @@ class AppRouter extends _i6.RootStackRouter {
           child: _i6.WrappedRoute(child: const _i3.FundWalletScreen()),
           title: 'Fund Wallet');
     },
-    AddCardRoute.name: (routeData) {
-      final args = routeData.argsAs<AddCardRouteArgs>(
-          orElse: () => const AddCardRouteArgs());
-      return _i6.AdaptivePage<dynamic>(
-          routeData: routeData,
-          child: _i6.WrappedRoute(
-              child: _i3.AddCardScreen(
-                  key: args.key, intendedRoute: args.intendedRoute)),
-          title: 'Add Card');
-    },
     WithdrawalRoute.name: (routeData) {
       return _i6.AdaptivePage<dynamic>(
           routeData: routeData,
@@ -349,8 +339,6 @@ class AppRouter extends _i6.RootStackRouter {
             path: '/product-list-screen', fullMatch: true, usesPathAsKey: true),
         _i6.RouteConfig(FundWalletRoute.name,
             path: '/fund-wallet-screen', fullMatch: true, usesPathAsKey: true),
-        _i6.RouteConfig(AddCardRoute.name,
-            path: '/add-card-screen', fullMatch: true, usesPathAsKey: true),
         _i6.RouteConfig(WithdrawalRoute.name,
             path: '/withdrawal-screen', fullMatch: true, usesPathAsKey: true),
         _i6.RouteConfig(TransactionPinSetupRoute.name,
@@ -549,30 +537,6 @@ class FundWalletRoute extends _i6.PageRouteInfo<void> {
       : super(FundWalletRoute.name, path: '/fund-wallet-screen');
 
   static const String name = 'FundWalletRoute';
-}
-
-/// generated route for
-/// [_i3.AddCardScreen]
-class AddCardRoute extends _i6.PageRouteInfo<AddCardRouteArgs> {
-  AddCardRoute({_i8.Key? key, String? intendedRoute})
-      : super(AddCardRoute.name,
-            path: '/add-card-screen',
-            args: AddCardRouteArgs(key: key, intendedRoute: intendedRoute));
-
-  static const String name = 'AddCardRoute';
-}
-
-class AddCardRouteArgs {
-  const AddCardRouteArgs({this.key, this.intendedRoute});
-
-  final _i8.Key? key;
-
-  final String? intendedRoute;
-
-  @override
-  String toString() {
-    return 'AddCardRouteArgs{key: $key, intendedRoute: $intendedRoute}';
-  }
 }
 
 /// generated route for

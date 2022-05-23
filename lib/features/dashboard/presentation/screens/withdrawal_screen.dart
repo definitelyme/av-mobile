@@ -4,7 +4,6 @@ import 'dart:async';
 
 import 'package:auctionvillage/core/domain/entities/entities.dart';
 import 'package:auctionvillage/core/presentation/index.dart';
-import 'package:auctionvillage/features/auth/presentation/managers/managers.dart';
 import 'package:auctionvillage/features/dashboard/domain/index.dart';
 import 'package:auctionvillage/features/dashboard/presentation/managers/index.dart';
 import 'package:auctionvillage/features/dashboard/presentation/widgets/index.dart';
@@ -27,11 +26,7 @@ class WithdrawalScreen extends StatefulWidget with AutoRouteWrapper {
   Widget wrappedRoute(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (_) => getIt<WalletCubit>()
-            ..watchCards()
-            ..fetchBanks(),
-        ),
+        BlocProvider(create: (_) => blocMaybeOf(context, orElse: () => getIt<WalletCubit>())),
       ],
       child: BlocListener<WalletCubit, WalletState>(
         listenWhen: (p, c) =>
@@ -52,19 +47,23 @@ class WithdrawalScreen extends StatefulWidget with AutoRouteWrapper {
 }
 
 class _WithdrawalScreenState extends State<WithdrawalScreen> {
+  late WalletCubit _cubit;
   @override
   void initState() {
+    _cubit = blocMaybeOf(context, orElse: () => getIt<WalletCubit>());
+    if (_cubit.state.banks.isEmpty()) _cubit.fetchBanks();
+
     ensureHasSetupPin();
     super.initState();
   }
 
   void ensureHasSetupPin() async {
-    final hasSetupPin = await context.read<WalletCubit>().hasSetupPin();
-    if (hasSetupPin == null || !hasSetupPin) {
-      unawaited(WidgetsBinding.instance.endOfFrame.then((_) {
-        navigator.popAndPush(TransactionPinSetupRoute());
-      }));
-    }
+    // final hasSetupPin = await context.read<WalletCubit>().hasSetupPin();
+    // if (hasSetupPin == null || !hasSetupPin) {
+    //   unawaited(WidgetsBinding.instance.endOfFrame.then((_) {
+    //     navigator.popAndPush(TransactionPinSetupRoute());
+    //   }));
+    // }
   }
 
   @override
@@ -238,7 +237,7 @@ class _WithdrawalScreenState extends State<WithdrawalScreen> {
                     onPressed: () => c.read<WalletCubit>().withdraw((successful) {
                       if (successful) {
                         navigator.popUntilRoot();
-                        c.read<AuthWatcherCubit>().getWallet();
+                        c.read<WalletCubit>().getWallet();
                       }
                     }),
                   ),

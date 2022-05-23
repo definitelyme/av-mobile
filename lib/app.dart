@@ -31,6 +31,7 @@ class AuctionVillageApp extends StatelessWidget {
         BlocProvider(create: (_) => getIt<AuthWatcherCubit>()),
         BlocProvider(create: (_) => getIt<TabNavigationCubit>()),
         BlocProvider(create: (_) => getIt<DealCubit>()),
+        BlocProvider(create: (_) => getIt<WalletCubit>()),
       ],
       child: ScreenUtilInit(
         designSize: const Size(375, 812),

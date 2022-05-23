@@ -3,7 +3,10 @@ library more_page.dart;
 import 'package:auctionvillage/core/domain/entities/entities.dart';
 import 'package:auctionvillage/core/presentation/index.dart';
 import 'package:auctionvillage/features/auth/presentation/managers/managers.dart';
+import 'package:auctionvillage/features/dashboard/domain/index.dart';
+import 'package:auctionvillage/features/dashboard/presentation/managers/index.dart';
 import 'package:auctionvillage/features/dashboard/presentation/widgets/index.dart';
+import 'package:auctionvillage/manager/locator/locator.dart';
 import 'package:auctionvillage/utils/utils.dart';
 import 'package:auctionvillage/widgets/widgets.dart';
 import 'package:flutter/cupertino.dart';
@@ -19,6 +22,14 @@ class MorePage extends StatefulWidget {
 }
 
 class _MorePageState extends State<MorePage> {
+  late WalletCubit _walletCubit;
+
+  @override
+  void initState() {
+    _walletCubit = blocMaybeOf(context, orElse: () => getIt<WalletCubit>())..getWallet();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return AdaptiveScaffold(
@@ -105,8 +116,9 @@ class _MorePageState extends State<MorePage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    BlocBuilder<AuthWatcherCubit, AuthWatcherState>(
-                      builder: (c, s) => s.wallet != null ? WalletBalanceCard(balance: '${s.wallet?.balance.getOrEmpty}') : Utils.nothing,
+                    BlocSelector<WalletCubit, WalletState, UserWallet?>(
+                      selector: (s) => s.wallet,
+                      builder: (c, wallet) => WalletBalanceCard(balance: '${wallet?.balance.getOrNull ?? 0}'),
                     ),
                     //
                     // 0.018.verticalh,

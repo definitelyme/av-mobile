@@ -9,7 +9,6 @@ export 'edit_profile_screen.dart';
 export 'product_list_screen.dart';
 export 'deals_list_screen.dart';
 export 'fund_wallet_screen.dart';
-export 'add_card_screen.dart';
 export 'withdrawal_screen.dart';
 export 'transaction_pin_setup_screen.dart';
 export 'forgot_transaction_pin_screen.dart';

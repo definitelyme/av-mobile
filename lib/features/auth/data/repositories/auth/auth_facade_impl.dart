@@ -9,8 +9,6 @@ import 'package:auctionvillage/features/auth/data/repositories/auth/social_auth_
 import 'package:auctionvillage/features/auth/data/sources/local/auth_local_source.dart';
 import 'package:auctionvillage/features/auth/data/sources/remote/auth_remote_source.dart';
 import 'package:auctionvillage/features/auth/domain/index.dart';
-import 'package:auctionvillage/features/dashboard/data/models/models.dart';
-import 'package:auctionvillage/features/dashboard/domain/index.dart';
 import 'package:auctionvillage/manager/settings/external/preference_repository.dart';
 import 'package:auctionvillage/utils/utils.dart';
 import 'package:dartz/dartz.dart';
@@ -529,27 +527,6 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
       return handleFailure(e: ex, trace: tr, notify: false);
     } on AppNetworkException catch (ex, tr) {
       return handleFailure(e: ex.asResponse(), trace: tr, notify: false);
-    }
-  }
-
-  @override
-  Future<Either<AppHttpResponse, UserWallet>> wallet() async {
-    try {
-      // Check if device has good connection
-      final _conn = await checkInternetConnectivity();
-
-      final result = await _conn.fold(
-        (f) => throw f,
-        (_) => remote.userWallet(),
-      );
-
-      final dto = UserWalletDTO.fromJson(result.data as Map<String, dynamic>);
-
-      return right(dto.domain);
-    } on AppHttpResponse catch (ex) {
-      return left(ex);
-    } on AppNetworkException catch (ex) {
-      return left(ex.asResponse());
     }
   }
 }

@@ -188,6 +188,22 @@ class _WalletRemote implements WalletRemote {
   }
 
   @override
+  Future<UserWalletDTO> userWallet() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<UserWalletDTO>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/wallets/me',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = await compute(deserializeUserWalletDTO, _result.data!);
+    return value;
+  }
+
+  @override
   Future<BankAccountDTO> resolveBankAccount(accountNumber, bankCode) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

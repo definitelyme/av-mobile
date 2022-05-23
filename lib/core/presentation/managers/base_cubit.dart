@@ -14,8 +14,7 @@ import 'package:kt_dart/kt.dart' hide StandardKt;
 import 'package:rxdart/rxdart.dart';
 
 Future<Option<AppHttpResponse?>> _connection() async {
-  final isConnected = (await getIt<Connectivity>().checkConnectivity()) !=
-      ConnectivityResult.none;
+  final isConnected = (await getIt<Connectivity>().checkConnectivity()) != ConnectivityResult.none;
 
   if (!isConnected)
     return some(AppHttpResponse(AnyResponse.fromFailure(
@@ -42,8 +41,7 @@ abstract class BaseState {
 mixin BaseCubit<State extends BaseState> on Cubit<State> {
   Future<Option<AppHttpResponse?>> connection() => _connection();
 
-  String get reference => '${DateTime.now().toIso8601String()}'
-      '-_-${UniqueId<String>.v4().value}';
+  String get reference => '${DateTime.now().toIso8601String()}-_key_-${UniqueId<String>.v4().value}';
 
   @override
   void emit(State state) {
@@ -67,25 +65,13 @@ mixin BaseAddressCubit<State extends BaseAddressState> on Cubit<State> {
 
   late StreamSubscription<Map<String, dynamic>> _searchSubscription;
 
-  void autocomplete(String query,
-      {required BuildContext ctx,
-      bool nextPage = false,
-      VoidCallback? callback});
+  void autocomplete(String query, {required BuildContext ctx, bool nextPage = false, VoidCallback? callback});
 
-  void sink(String query,
-          {required BuildContext ctx,
-          bool nextPage = false,
-          VoidCallback? callback}) =>
-      _search$.add({
-        'query': query,
-        'ctx': ctx,
-        'next_page': nextPage,
-        'callback': callback
-      });
+  void sink(String query, {required BuildContext ctx, bool nextPage = false, VoidCallback? callback}) =>
+      _search$.add({'query': query, 'ctx': ctx, 'next_page': nextPage, 'callback': callback});
 
-  void createDebounce() => _searchSubscription = _search$.stream
-      .debounceTime(const Duration(milliseconds: 500))
-      .listen((data) => autocomplete(
+  void createDebounce() =>
+      _searchSubscription = _search$.stream.debounceTime(const Duration(milliseconds: 500)).listen((data) => autocomplete(
             '${data['query']}',
             ctx: data['ctx'] as BuildContext,
             nextPage: data['next_page'] as bool,

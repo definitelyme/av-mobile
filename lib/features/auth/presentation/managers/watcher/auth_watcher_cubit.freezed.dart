@@ -22,7 +22,6 @@ mixin _$AuthWatcherState {
   bool get isListeningForAuthChanges => throw _privateConstructorUsedError;
   bool get isListeningForUserChanges => throw _privateConstructorUsedError;
   User? get user => throw _privateConstructorUsedError;
-  UserWallet? get wallet => throw _privateConstructorUsedError;
   KtList<Country> get countries => throw _privateConstructorUsedError;
   Option<User?> get option => throw _privateConstructorUsedError;
   Option<AppHttpResponse?> get status => throw _privateConstructorUsedError;
@@ -44,13 +43,11 @@ abstract class $AuthWatcherStateCopyWith<$Res> {
       bool isListeningForAuthChanges,
       bool isListeningForUserChanges,
       User? user,
-      UserWallet? wallet,
       KtList<Country> countries,
       Option<User?> option,
       Option<AppHttpResponse?> status});
 
   $UserCopyWith<$Res>? get user;
-  $UserWalletCopyWith<$Res>? get wallet;
 }
 
 /// @nodoc
@@ -70,7 +67,6 @@ class _$AuthWatcherStateCopyWithImpl<$Res>
     Object? isListeningForAuthChanges = freezed,
     Object? isListeningForUserChanges = freezed,
     Object? user = freezed,
-    Object? wallet = freezed,
     Object? countries = freezed,
     Object? option = freezed,
     Object? status = freezed,
@@ -100,10 +96,6 @@ class _$AuthWatcherStateCopyWithImpl<$Res>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User?,
-      wallet: wallet == freezed
-          ? _value.wallet
-          : wallet // ignore: cast_nullable_to_non_nullable
-              as UserWallet?,
       countries: countries == freezed
           ? _value.countries
           : countries // ignore: cast_nullable_to_non_nullable
@@ -129,17 +121,6 @@ class _$AuthWatcherStateCopyWithImpl<$Res>
       return _then(_value.copyWith(user: value));
     });
   }
-
-  @override
-  $UserWalletCopyWith<$Res>? get wallet {
-    if (_value.wallet == null) {
-      return null;
-    }
-
-    return $UserWalletCopyWith<$Res>(_value.wallet!, (value) {
-      return _then(_value.copyWith(wallet: value));
-    });
-  }
 }
 
 /// @nodoc
@@ -156,15 +137,12 @@ abstract class _$$_AuthWatcherStateCopyWith<$Res>
       bool isListeningForAuthChanges,
       bool isListeningForUserChanges,
       User? user,
-      UserWallet? wallet,
       KtList<Country> countries,
       Option<User?> option,
       Option<AppHttpResponse?> status});
 
   @override
   $UserCopyWith<$Res>? get user;
-  @override
-  $UserWalletCopyWith<$Res>? get wallet;
 }
 
 /// @nodoc
@@ -186,7 +164,6 @@ class __$$_AuthWatcherStateCopyWithImpl<$Res>
     Object? isListeningForAuthChanges = freezed,
     Object? isListeningForUserChanges = freezed,
     Object? user = freezed,
-    Object? wallet = freezed,
     Object? countries = freezed,
     Object? option = freezed,
     Object? status = freezed,
@@ -216,10 +193,6 @@ class __$$_AuthWatcherStateCopyWithImpl<$Res>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User?,
-      wallet: wallet == freezed
-          ? _value.wallet
-          : wallet // ignore: cast_nullable_to_non_nullable
-              as UserWallet?,
       countries: countries == freezed
           ? _value.countries
           : countries // ignore: cast_nullable_to_non_nullable
@@ -246,7 +219,6 @@ class _$_AuthWatcherState extends _AuthWatcherState {
       this.isListeningForAuthChanges = false,
       this.isListeningForUserChanges = false,
       this.user,
-      this.wallet,
       this.countries = const KtList.empty(),
       this.option = const None(),
       this.status = const None()})
@@ -270,8 +242,6 @@ class _$_AuthWatcherState extends _AuthWatcherState {
   @override
   final User? user;
   @override
-  final UserWallet? wallet;
-  @override
   @JsonKey()
   final KtList<Country> countries;
   @override
@@ -283,7 +253,7 @@ class _$_AuthWatcherState extends _AuthWatcherState {
 
   @override
   String toString() {
-    return 'AuthWatcherState(isLoading: $isLoading, isLoggingOut: $isLoggingOut, isAuthenticated: $isAuthenticated, isListeningForAuthChanges: $isListeningForAuthChanges, isListeningForUserChanges: $isListeningForUserChanges, user: $user, wallet: $wallet, countries: $countries, option: $option, status: $status)';
+    return 'AuthWatcherState(isLoading: $isLoading, isLoggingOut: $isLoggingOut, isAuthenticated: $isAuthenticated, isListeningForAuthChanges: $isListeningForAuthChanges, isListeningForUserChanges: $isListeningForUserChanges, user: $user, countries: $countries, option: $option, status: $status)';
   }
 
   @override
@@ -301,7 +271,6 @@ class _$_AuthWatcherState extends _AuthWatcherState {
             const DeepCollectionEquality().equals(
                 other.isListeningForUserChanges, isListeningForUserChanges) &&
             const DeepCollectionEquality().equals(other.user, user) &&
-            const DeepCollectionEquality().equals(other.wallet, wallet) &&
             const DeepCollectionEquality().equals(other.countries, countries) &&
             const DeepCollectionEquality().equals(other.option, option) &&
             const DeepCollectionEquality().equals(other.status, status));
@@ -316,7 +285,6 @@ class _$_AuthWatcherState extends _AuthWatcherState {
       const DeepCollectionEquality().hash(isListeningForAuthChanges),
       const DeepCollectionEquality().hash(isListeningForUserChanges),
       const DeepCollectionEquality().hash(user),
-      const DeepCollectionEquality().hash(wallet),
       const DeepCollectionEquality().hash(countries),
       const DeepCollectionEquality().hash(option),
       const DeepCollectionEquality().hash(status));
@@ -335,7 +303,6 @@ abstract class _AuthWatcherState extends AuthWatcherState {
       final bool isListeningForAuthChanges,
       final bool isListeningForUserChanges,
       final User? user,
-      final UserWallet? wallet,
       final KtList<Country> countries,
       final Option<User?> option,
       final Option<AppHttpResponse?> status}) = _$_AuthWatcherState;
@@ -353,8 +320,6 @@ abstract class _AuthWatcherState extends AuthWatcherState {
   bool get isListeningForUserChanges => throw _privateConstructorUsedError;
   @override
   User? get user => throw _privateConstructorUsedError;
-  @override
-  UserWallet? get wallet => throw _privateConstructorUsedError;
   @override
   KtList<Country> get countries => throw _privateConstructorUsedError;
   @override

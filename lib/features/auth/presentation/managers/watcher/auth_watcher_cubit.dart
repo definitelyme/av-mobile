@@ -116,15 +116,6 @@ class AuthWatcherCubit extends Cubit<AuthWatcherState> {
     ));
   }
 
-  Future<void> getWallet() async {
-    final result = await _facade.wallet();
-
-    emit(result.fold(
-      (e) => state.copyWith(status: optionOf(e)),
-      (wallet) => state.copyWith(wallet: wallet),
-    ));
-  }
-
   void getCountries(BuildContext context) async {
     final _countries = await _utilities.countries(context);
     emit(state.copyWith(countries: _countries));
@@ -157,8 +148,6 @@ class AuthWatcherCubit extends Cubit<AuthWatcherState> {
           option: option,
           status: none(),
         ));
-
-        if (_user != null) getWallet();
       },
     );
   }

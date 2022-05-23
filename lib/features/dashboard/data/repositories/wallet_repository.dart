@@ -239,4 +239,23 @@ class WalletRepository extends BaseRepository {
       },
     );
   }
+
+  Future<Either<AppHttpResponse, UserWallet>> getWallet() async {
+    final _conn = await checkConnectivity();
+
+    return _conn.fold(
+      (f) => left(f),
+      (_) async {
+        try {
+          final result = await _remote.userWallet();
+
+          return right(result.domain);
+        } on AppHttpResponse catch (e) {
+          return left(e);
+        } on AppNetworkException catch (e) {
+          return left(e.asResponse());
+        }
+      },
+    );
+  }
 }
