@@ -19,7 +19,7 @@ class TabNavigationState with _$TabNavigationState {
           {'${util.HomePage.name}': HomePage()},
           {'${util.LivePage.name}': LivePage()},
           {'${util.SellPage.name}': SellPage()},
-          {'${util.ChatPage.name}': ChatPage()},
+          // {'${util.ChatPage.name}': ChatPage()},
           {'${util.MorePage.name}': MorePage()},
         },
       );

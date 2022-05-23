@@ -241,14 +241,14 @@ const dashboardRouter = AutoRoute(
       ],
     ),
     //
-    AutoRoute(
-      name: 'ChatRouter',
-      page: EmptyRouterPage,
-      children: [
-        AutoRoute(path: '', page: ChatPage),
-        RedirectRoute(path: '*', redirectTo: ''),
-      ],
-    ),
+    // AutoRoute(
+    //   name: 'ChatRouter',
+    //   page: EmptyRouterPage,
+    //   children: [
+    //     AutoRoute(path: '', page: ChatPage),
+    //     RedirectRoute(path: '*', redirectTo: ''),
+    //   ],
+    // ),
     //
     AutoRoute(
       name: 'MoreRouter',

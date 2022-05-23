@@ -235,10 +235,6 @@ class AppRouter extends _i6.RootStackRouter {
       return _i6.AdaptivePage<dynamic>(
           routeData: routeData, child: const _i6.EmptyRouterPage());
     },
-    ChatRouter.name: (routeData) {
-      return _i6.AdaptivePage<dynamic>(
-          routeData: routeData, child: const _i6.EmptyRouterPage());
-    },
     MoreRouter.name: (routeData) {
       return _i6.AdaptivePage<dynamic>(
           routeData: routeData, child: const _i6.EmptyRouterPage());
@@ -254,10 +250,6 @@ class AppRouter extends _i6.RootStackRouter {
     SellPage.name: (routeData) {
       return _i6.AdaptivePage<dynamic>(
           routeData: routeData, child: const _i7.SellPage());
-    },
-    ChatPage.name: (routeData) {
-      return _i6.AdaptivePage<dynamic>(
-          routeData: routeData, child: const _i7.ChatPage());
     },
     MorePage.name: (routeData) {
       return _i6.AdaptivePage<dynamic>(
@@ -333,18 +325,6 @@ class AppRouter extends _i6.RootStackRouter {
                     _i6.RouteConfig('*#redirect',
                         path: '*',
                         parent: SellRouter.name,
-                        redirectTo: '',
-                        fullMatch: true)
-                  ]),
-              _i6.RouteConfig(ChatRouter.name,
-                  path: 'empty-router-page',
-                  parent: DashboardRoute.name,
-                  children: [
-                    _i6.RouteConfig(ChatPage.name,
-                        path: '', parent: ChatRouter.name),
-                    _i6.RouteConfig('*#redirect',
-                        path: '*',
-                        parent: ChatRouter.name,
                         redirectTo: '',
                         fullMatch: true)
                   ]),
@@ -890,16 +870,6 @@ class SellRouter extends _i6.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i6.EmptyRouterPage]
-class ChatRouter extends _i6.PageRouteInfo<void> {
-  const ChatRouter({List<_i6.PageRouteInfo>? children})
-      : super(ChatRouter.name,
-            path: 'empty-router-page', initialChildren: children);
-
-  static const String name = 'ChatRouter';
-}
-
-/// generated route for
-/// [_i6.EmptyRouterPage]
 class MoreRouter extends _i6.PageRouteInfo<void> {
   const MoreRouter({List<_i6.PageRouteInfo>? children})
       : super(MoreRouter.name,
@@ -930,14 +900,6 @@ class SellPage extends _i6.PageRouteInfo<void> {
   const SellPage() : super(SellPage.name, path: '');
 
   static const String name = 'SellPage';
-}
-
-/// generated route for
-/// [_i7.ChatPage]
-class ChatPage extends _i6.PageRouteInfo<void> {
-  const ChatPage() : super(ChatPage.name, path: '');
-
-  static const String name = 'ChatPage';
 }
 
 /// generated route for
