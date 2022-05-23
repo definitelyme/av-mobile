@@ -4,6 +4,5 @@ export 'integer_serializer.dart';
 export 'double_serializer.dart';
 export 'num_serializer.dart';
 export 'any_response_serializer.dart';
-export 'string_list_converter.dart';
 export 'string_serializer.dart';
 export 'bool_serializer.dart';

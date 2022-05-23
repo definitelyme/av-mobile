@@ -14,7 +14,7 @@ dependencies:
   equatable: any
   # Contains utility classes in the style of
   # dart:async to work with asynchronous computations.
-  # async: ^2.8.2
+  # async: ^2.9.0
   # Flutter package for generating palette colors from a source image.
   palette_generator: ^0.3.1
   # RxDart extends the capabilities of Dart Streams and StreamControllers.
@@ -52,7 +52,7 @@ dependencies:
   # and configure themselves accordingly.
   connectivity_plus: ^2.2.0
   # Check Internet connectivity
-  internet_connection_checker: ^0.0.1+3
+  internet_connection_checker: ^0.0.1+4
   # Service locator
   get_it: ^7.2.0
   # Useful platform aware widgets to bring a Material app to Cupertino.
@@ -72,7 +72,11 @@ dependencies:
   # Built to be used with the bloc state management package.
   bloc_concurrency: ^0.2.0
   # A lightweight and blazing fast key-value database written in pure Dart.
-  hive_flutter: ^1.1.0
+  hive_flutter:
+    git:
+      url: https://github.com/Flutter-Fox/hive.git
+      ref: master
+      path: hive_flutter/
   # Provides:
   # - Immutable value types
   # - EnumClass, classes that behave like enums
@@ -117,13 +121,10 @@ dependencies:
   smooth_page_indicator: ^1.0.0+2
   # Defines the annotations used by json_serializable
   # to create code for JSON serialization and deserialization.
-  json_annotation: ^4.4.0
+  json_annotation: ^4.5.0
   # retrofit.dart is a type conversion dio client generator
   # using source_gen and inspired by Chopper and Retrofit.
   retrofit: ^3.0.1+1
-  # Floor provides a neat SQLite abstraction for your Flutter applications
-  # inspired by the Room persistence library.
-  floor: ^1.2.0
   # A flutter package which will help you to
   # generate pin code fields with beautiful design and animations.
   pin_code_fields: ^7.3.0
@@ -135,7 +136,7 @@ dependencies:
   intl_phone_number_input: ^0.7.0+2
   # A flutter library to show images from the internet
   # and keep them in the cache directory.
-  cached_network_image: ^3.2.0
+  cached_network_image: ^3.2.1
   # Approximate how your app looks and performs on another device.
   # device_preview: ^1.0.0-alpha.15
   # A flutter package which provides a simple way to Showcase/Highlight your widgets step by step.
@@ -157,7 +158,7 @@ dependencies:
   search_page: ^2.0.0+1
   # Customize Flutter's default white native splash screen with background color and splash image.
   # Supports dark mode, full screen, and more.
-  flutter_native_splash: ^2.0.5
+  flutter_native_splash: ^2.2.0+1
   # Masked text input for flutter.
   flutter_masked_text2:
     git:
@@ -189,7 +190,7 @@ dependencies:
   # Badges can be used for an additional marker for any widget, e.g. show a number of items in a shopping cart.
   badges: ^2.0.2
   # extended nested scroll view to fix pinned header and inner scrollables sync issues.
-  extended_nested_scroll_view: ^5.0.0
+  extended_nested_scroll_view: ^5.1.0
   # Photo View provides a gesture sensitive zoomable widget.
   # Photo View is largely used to show interactive images and other stuff such as SVG.
   photo_view: ^0.13.0
@@ -218,12 +219,12 @@ dependencies:
       ref: fix-exception
   # Dartlang port of socket.io-client for web, flutter, dartvm to use
   socket_io_client: ^1.0.2
+  dismissible_page: ^0.7.2
 
 dependency_overrides:
-  async: ^2.8.2
-  provider: ^6.0.1
-  analyzer: "2.8.0"
-  dart_style: ">=2.1.1 <=2.2.0"
+  async: "2.9.0"
+  analyzer: ^4.0.0
+  dart_style: "2.2.3"
 
 dev_dependencies:
   flutter_test:
@@ -235,7 +236,7 @@ dev_dependencies:
   # Pedantic does a great job keeping the project with similar code styles
   pedantic: ^1.11.1
   # Code Generators
-  build_runner: ^2.1.7
+  build_runner: ^2.1.11
   freezed: ^2.0.3+1
   injectable_generator: ^1.5.3
   built_value_generator: ^8.1.4
@@ -251,6 +252,11 @@ dev_dependencies:
       url: https://github.com/Flutter-Fox/floor.git
       ref: ft/require-freezed
       path: floor_generator/
+  hive_generator:
+    git:
+      url: https://github.com/Flutter-Fox/hive.git
+      ref: master
+      path: hive_generator/
 
 flutter:
   uses-material-design: true

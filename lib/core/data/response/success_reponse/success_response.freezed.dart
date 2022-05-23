@@ -12,36 +12,11 @@ part of 'success_response.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 SuccessResponse _$SuccessResponseFromJson(Map<String, dynamic> json) {
   return _SuccessResponse.fromJson(json);
 }
-
-/// @nodoc
-class _$SuccessResponseTearOff {
-  const _$SuccessResponseTearOff();
-
-  _SuccessResponse call(
-      {@JsonKey(defaultValue: true) bool? status,
-      @JsonKey(defaultValue: '') required String message,
-      @JsonKey(ignore: true) String? details,
-      @JsonKey(ignore: true) bool pop = false}) {
-    return _SuccessResponse(
-      status: status,
-      message: message,
-      details: details,
-      pop: pop,
-    );
-  }
-
-  SuccessResponse fromJson(Map<String, Object?> json) {
-    return SuccessResponse.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $SuccessResponse = _$SuccessResponseTearOff();
 
 /// @nodoc
 mixin _$SuccessResponse {
@@ -110,11 +85,11 @@ class _$SuccessResponseCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$SuccessResponseCopyWith<$Res>
+abstract class _$$_SuccessResponseCopyWith<$Res>
     implements $SuccessResponseCopyWith<$Res> {
-  factory _$SuccessResponseCopyWith(
-          _SuccessResponse value, $Res Function(_SuccessResponse) then) =
-      __$SuccessResponseCopyWithImpl<$Res>;
+  factory _$$_SuccessResponseCopyWith(
+          _$_SuccessResponse value, $Res Function(_$_SuccessResponse) then) =
+      __$$_SuccessResponseCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(defaultValue: true) bool? status,
@@ -124,15 +99,15 @@ abstract class _$SuccessResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$SuccessResponseCopyWithImpl<$Res>
+class __$$_SuccessResponseCopyWithImpl<$Res>
     extends _$SuccessResponseCopyWithImpl<$Res>
-    implements _$SuccessResponseCopyWith<$Res> {
-  __$SuccessResponseCopyWithImpl(
-      _SuccessResponse _value, $Res Function(_SuccessResponse) _then)
-      : super(_value, (v) => _then(v as _SuccessResponse));
+    implements _$$_SuccessResponseCopyWith<$Res> {
+  __$$_SuccessResponseCopyWithImpl(
+      _$_SuccessResponse _value, $Res Function(_$_SuccessResponse) _then)
+      : super(_value, (v) => _then(v as _$_SuccessResponse));
 
   @override
-  _SuccessResponse get _value => super._value as _SuccessResponse;
+  _$_SuccessResponse get _value => super._value as _$_SuccessResponse;
 
   @override
   $Res call({
@@ -141,7 +116,7 @@ class __$SuccessResponseCopyWithImpl<$Res>
     Object? details = freezed,
     Object? pop = freezed,
   }) {
-    return _then(_SuccessResponse(
+    return _then(_$_SuccessResponse(
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -197,13 +172,14 @@ class _$_SuccessResponse extends _SuccessResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _SuccessResponse &&
+            other is _$_SuccessResponse &&
             const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality().equals(other.message, message) &&
             const DeepCollectionEquality().equals(other.details, details) &&
             const DeepCollectionEquality().equals(other.pop, pop));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -214,8 +190,8 @@ class _$_SuccessResponse extends _SuccessResponse {
 
   @JsonKey(ignore: true)
   @override
-  _$SuccessResponseCopyWith<_SuccessResponse> get copyWith =>
-      __$SuccessResponseCopyWithImpl<_SuccessResponse>(this, _$identity);
+  _$$_SuccessResponseCopyWith<_$_SuccessResponse> get copyWith =>
+      __$$_SuccessResponseCopyWithImpl<_$_SuccessResponse>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -225,10 +201,10 @@ class _$_SuccessResponse extends _SuccessResponse {
 
 abstract class _SuccessResponse extends SuccessResponse {
   const factory _SuccessResponse(
-      {@JsonKey(defaultValue: true) bool? status,
-      @JsonKey(defaultValue: '') required String message,
-      @JsonKey(ignore: true) String? details,
-      @JsonKey(ignore: true) bool pop}) = _$_SuccessResponse;
+      {@JsonKey(defaultValue: true) final bool? status,
+      @JsonKey(defaultValue: '') required final String message,
+      @JsonKey(ignore: true) final String? details,
+      @JsonKey(ignore: true) final bool pop}) = _$_SuccessResponse;
   const _SuccessResponse._() : super._();
 
   factory _SuccessResponse.fromJson(Map<String, dynamic> json) =
@@ -236,18 +212,18 @@ abstract class _SuccessResponse extends SuccessResponse {
 
   @override
   @JsonKey(defaultValue: true)
-  bool? get status;
+  bool? get status => throw _privateConstructorUsedError;
   @override
   @JsonKey(defaultValue: '')
-  String get message;
+  String get message => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  String? get details;
+  String? get details => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  bool get pop;
+  bool get pop => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$SuccessResponseCopyWith<_SuccessResponse> get copyWith =>
+  _$$_SuccessResponseCopyWith<_$_SuccessResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }

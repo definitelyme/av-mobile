@@ -12,46 +12,11 @@ part of brand_model_dto.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 BrandModelDTO _$BrandModelDTOFromJson(Map<String, dynamic> json) {
   return _BrandModelDTO.fromJson(json);
 }
-
-/// @nodoc
-class _$BrandModelDTOTearOff {
-  const _$BrandModelDTOTearOff();
-
-  _BrandModelDTO call(
-      {@BooleanSerializer() bool? active,
-      @JsonKey(name: '_id') String? id,
-      @TimestampConverter() DateTime? createdBy,
-      String? name,
-      String? description,
-      String? brand,
-      String? slug,
-      @TimestampConverter() DateTime? createdAt,
-      @TimestampConverter() DateTime? updatedAt}) {
-    return _BrandModelDTO(
-      active: active,
-      id: id,
-      createdBy: createdBy,
-      name: name,
-      description: description,
-      brand: brand,
-      slug: slug,
-      createdAt: createdAt,
-      updatedAt: updatedAt,
-    );
-  }
-
-  BrandModelDTO fromJson(Map<String, Object?> json) {
-    return BrandModelDTO.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $BrandModelDTO = _$BrandModelDTOTearOff();
 
 /// @nodoc
 mixin _$BrandModelDTO {
@@ -156,11 +121,11 @@ class _$BrandModelDTOCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$BrandModelDTOCopyWith<$Res>
+abstract class _$$_BrandModelDTOCopyWith<$Res>
     implements $BrandModelDTOCopyWith<$Res> {
-  factory _$BrandModelDTOCopyWith(
-          _BrandModelDTO value, $Res Function(_BrandModelDTO) then) =
-      __$BrandModelDTOCopyWithImpl<$Res>;
+  factory _$$_BrandModelDTOCopyWith(
+          _$_BrandModelDTO value, $Res Function(_$_BrandModelDTO) then) =
+      __$$_BrandModelDTOCopyWithImpl<$Res>;
   @override
   $Res call(
       {@BooleanSerializer() bool? active,
@@ -175,15 +140,15 @@ abstract class _$BrandModelDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$BrandModelDTOCopyWithImpl<$Res>
+class __$$_BrandModelDTOCopyWithImpl<$Res>
     extends _$BrandModelDTOCopyWithImpl<$Res>
-    implements _$BrandModelDTOCopyWith<$Res> {
-  __$BrandModelDTOCopyWithImpl(
-      _BrandModelDTO _value, $Res Function(_BrandModelDTO) _then)
-      : super(_value, (v) => _then(v as _BrandModelDTO));
+    implements _$$_BrandModelDTOCopyWith<$Res> {
+  __$$_BrandModelDTOCopyWithImpl(
+      _$_BrandModelDTO _value, $Res Function(_$_BrandModelDTO) _then)
+      : super(_value, (v) => _then(v as _$_BrandModelDTO));
 
   @override
-  _BrandModelDTO get _value => super._value as _BrandModelDTO;
+  _$_BrandModelDTO get _value => super._value as _$_BrandModelDTO;
 
   @override
   $Res call({
@@ -197,7 +162,7 @@ class __$BrandModelDTOCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(_BrandModelDTO(
+    return _then(_$_BrandModelDTO(
       active: active == freezed
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
@@ -289,7 +254,7 @@ class _$_BrandModelDTO extends _BrandModelDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _BrandModelDTO &&
+            other is _$_BrandModelDTO &&
             const DeepCollectionEquality().equals(other.active, active) &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.createdBy, createdBy) &&
@@ -302,6 +267,7 @@ class _$_BrandModelDTO extends _BrandModelDTO {
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -317,8 +283,8 @@ class _$_BrandModelDTO extends _BrandModelDTO {
 
   @JsonKey(ignore: true)
   @override
-  _$BrandModelDTOCopyWith<_BrandModelDTO> get copyWith =>
-      __$BrandModelDTOCopyWithImpl<_BrandModelDTO>(this, _$identity);
+  _$$_BrandModelDTOCopyWith<_$_BrandModelDTO> get copyWith =>
+      __$$_BrandModelDTOCopyWithImpl<_$_BrandModelDTO>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -328,15 +294,15 @@ class _$_BrandModelDTO extends _BrandModelDTO {
 
 abstract class _BrandModelDTO extends BrandModelDTO {
   factory _BrandModelDTO(
-      {@BooleanSerializer() bool? active,
-      @JsonKey(name: '_id') String? id,
-      @TimestampConverter() DateTime? createdBy,
-      String? name,
-      String? description,
-      String? brand,
-      String? slug,
-      @TimestampConverter() DateTime? createdAt,
-      @TimestampConverter() DateTime? updatedAt}) = _$_BrandModelDTO;
+      {@BooleanSerializer() final bool? active,
+      @JsonKey(name: '_id') final String? id,
+      @TimestampConverter() final DateTime? createdBy,
+      final String? name,
+      final String? description,
+      final String? brand,
+      final String? slug,
+      @TimestampConverter() final DateTime? createdAt,
+      @TimestampConverter() final DateTime? updatedAt}) = _$_BrandModelDTO;
   _BrandModelDTO._() : super._();
 
   factory _BrandModelDTO.fromJson(Map<String, dynamic> json) =
@@ -344,29 +310,29 @@ abstract class _BrandModelDTO extends BrandModelDTO {
 
   @override
   @BooleanSerializer()
-  bool? get active;
+  bool? get active => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: '_id')
-  String? get id;
+  String? get id => throw _privateConstructorUsedError;
   @override
   @TimestampConverter()
-  DateTime? get createdBy;
+  DateTime? get createdBy => throw _privateConstructorUsedError;
   @override
-  String? get name;
+  String? get name => throw _privateConstructorUsedError;
   @override
-  String? get description;
+  String? get description => throw _privateConstructorUsedError;
   @override
-  String? get brand;
+  String? get brand => throw _privateConstructorUsedError;
   @override
-  String? get slug;
-  @override
-  @TimestampConverter()
-  DateTime? get createdAt;
+  String? get slug => throw _privateConstructorUsedError;
   @override
   @TimestampConverter()
-  DateTime? get updatedAt;
+  DateTime? get createdAt => throw _privateConstructorUsedError;
+  @override
+  @TimestampConverter()
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$BrandModelDTOCopyWith<_BrandModelDTO> get copyWith =>
+  _$$_BrandModelDTOCopyWith<_$_BrandModelDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of app_database.dart;
+part of user_dto.dart;
 
 // **************************************************************************
 // FreezedGenerator
@@ -12,131 +12,156 @@ part of app_database.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 UserDTO _$UserDTOFromJson(Map<String, dynamic> json) {
   return _UserDTO.fromJson(json);
 }
 
 /// @nodoc
-class _$UserDTOTearOff {
-  const _$UserDTOTearOff();
-
-  _UserDTO call(
-      {@primaryKey @JsonKey(name: '_id') String? id,
-      String? token,
-      String? firstName,
-      String? lastName,
-      String? fullName,
-      @BooleanSerializer() bool? isPrivate,
-      String? email,
-      @JsonKey(name: 'mobile') String? phone,
-      String? password,
-      @JsonKey(name: 'current_password') String? oldPassword,
-      @JsonKey(name: 'password_confirmation') String? confirmation,
-      @JsonKey(name: 'country') String? countryName,
-      String? platform,
-      String? avatar,
-      @ignore @BooleanSerializer() bool? favAthlete,
-      @ignore @BooleanSerializer() bool? favPlace,
-      @ignore @BooleanSerializer() bool? locality,
-      @BooleanSerializer() bool? active,
-      @BooleanSerializer() bool? accountVerified,
-      @AuthProviderSerializer() AuthProvider? provider,
-      @TimestampConverter() DateTime? createdBy,
-      @TimestampConverter() DateTime? updatedBy,
-      @TimestampConverter() DateTime? deletedBy,
-      @TimestampConverter() DateTime? createdAt,
-      @TimestampConverter() DateTime? updatedAt,
-      @TimestampConverter() DateTime? deletedAt}) {
-    return _UserDTO(
-      id: id,
-      token: token,
-      firstName: firstName,
-      lastName: lastName,
-      fullName: fullName,
-      isPrivate: isPrivate,
-      email: email,
-      phone: phone,
-      password: password,
-      oldPassword: oldPassword,
-      confirmation: confirmation,
-      countryName: countryName,
-      platform: platform,
-      avatar: avatar,
-      favAthlete: favAthlete,
-      favPlace: favPlace,
-      locality: locality,
-      active: active,
-      accountVerified: accountVerified,
-      provider: provider,
-      createdBy: createdBy,
-      updatedBy: updatedBy,
-      deletedBy: deletedBy,
-      createdAt: createdAt,
-      updatedAt: updatedAt,
-      deletedAt: deletedAt,
-    );
-  }
-
-  UserDTO fromJson(Map<String, Object?> json) {
-    return UserDTO.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $UserDTO = _$UserDTOTearOff();
-
-/// @nodoc
 mixin _$UserDTO {
-  @primaryKey
+  @HiveField(1)
   @JsonKey(name: '_id')
+  @StringSerializer()
   String? get id => throw _privateConstructorUsedError;
+  @HiveField(1)
+  @JsonKey(name: '_id')
+  @StringSerializer()
+  set id(String? value) => throw _privateConstructorUsedError;
+  @HiveField(2)
   String? get token => throw _privateConstructorUsedError;
+  @HiveField(2)
+  set token(String? value) => throw _privateConstructorUsedError;
+  @HiveField(3)
   String? get firstName => throw _privateConstructorUsedError;
+  @HiveField(3)
+  set firstName(String? value) => throw _privateConstructorUsedError;
+  @HiveField(4)
   String? get lastName => throw _privateConstructorUsedError;
+  @HiveField(4)
+  set lastName(String? value) => throw _privateConstructorUsedError;
+  @HiveField(5)
   String? get fullName => throw _privateConstructorUsedError;
+  @HiveField(5)
+  set fullName(String? value) => throw _privateConstructorUsedError;
+  @HiveField(6)
   @BooleanSerializer()
   bool? get isPrivate => throw _privateConstructorUsedError;
+  @HiveField(6)
+  @BooleanSerializer()
+  set isPrivate(bool? value) => throw _privateConstructorUsedError;
+  @HiveField(7)
   String? get email => throw _privateConstructorUsedError;
+  @HiveField(7)
+  set email(String? value) => throw _privateConstructorUsedError;
+  @HiveField(8)
   @JsonKey(name: 'mobile')
   String? get phone => throw _privateConstructorUsedError;
+  @HiveField(8)
+  @JsonKey(name: 'mobile')
+  set phone(String? value) => throw _privateConstructorUsedError;
+  @HiveField(9)
   String? get password => throw _privateConstructorUsedError;
+  @HiveField(9)
+  set password(String? value) => throw _privateConstructorUsedError;
+  @HiveField(10)
   @JsonKey(name: 'current_password')
   String? get oldPassword => throw _privateConstructorUsedError;
+  @HiveField(10)
+  @JsonKey(name: 'current_password')
+  set oldPassword(String? value) => throw _privateConstructorUsedError;
+  @HiveField(11)
   @JsonKey(name: 'password_confirmation')
   String? get confirmation => throw _privateConstructorUsedError;
+  @HiveField(11)
+  @JsonKey(name: 'password_confirmation')
+  set confirmation(String? value) => throw _privateConstructorUsedError;
+  @HiveField(12)
   @JsonKey(name: 'country')
   String? get countryName => throw _privateConstructorUsedError;
+  @HiveField(12)
+  @JsonKey(name: 'country')
+  set countryName(String? value) => throw _privateConstructorUsedError;
+  @HiveField(13)
   String? get platform => throw _privateConstructorUsedError;
-  String? get avatar => throw _privateConstructorUsedError; //
-  @ignore
+  @HiveField(13)
+  set platform(String? value) => throw _privateConstructorUsedError;
+  @HiveField(14)
+  String? get avatar => throw _privateConstructorUsedError;
+  @HiveField(14)
+  set avatar(String? value) => throw _privateConstructorUsedError; //
+  @HiveField(15)
   @BooleanSerializer()
-  bool? get favAthlete => throw _privateConstructorUsedError;
-  @ignore
+  bool? get favAthlete => throw _privateConstructorUsedError; //
+  @HiveField(15)
+  @BooleanSerializer()
+  set favAthlete(bool? value) => throw _privateConstructorUsedError;
+  @HiveField(16)
   @BooleanSerializer()
   bool? get favPlace => throw _privateConstructorUsedError;
-  @ignore
+  @HiveField(16)
   @BooleanSerializer()
-  bool? get locality => throw _privateConstructorUsedError; //
+  set favPlace(bool? value) => throw _privateConstructorUsedError;
+  @HiveField(17)
   @BooleanSerializer()
-  bool? get active => throw _privateConstructorUsedError;
+  bool? get locality => throw _privateConstructorUsedError;
+  @HiveField(17)
+  @BooleanSerializer()
+  set locality(bool? value) => throw _privateConstructorUsedError; //
+  @HiveField(18)
+  @BooleanSerializer()
+  bool? get active => throw _privateConstructorUsedError; //
+  @HiveField(18)
+  @BooleanSerializer()
+  set active(bool? value) => throw _privateConstructorUsedError;
+  @HiveField(19)
   @BooleanSerializer()
   bool? get accountVerified => throw _privateConstructorUsedError;
+  @HiveField(19)
+  @BooleanSerializer()
+  set accountVerified(bool? value) => throw _privateConstructorUsedError;
+  @HiveField(20)
   @AuthProviderSerializer()
   AuthProvider? get provider => throw _privateConstructorUsedError;
+  @HiveField(20)
+  @AuthProviderSerializer()
+  set provider(AuthProvider? value) => throw _privateConstructorUsedError;
+  @HiveField(21)
   @TimestampConverter()
   DateTime? get createdBy => throw _privateConstructorUsedError;
+  @HiveField(21)
+  @TimestampConverter()
+  set createdBy(DateTime? value) => throw _privateConstructorUsedError;
+  @HiveField(22)
   @TimestampConverter()
   DateTime? get updatedBy => throw _privateConstructorUsedError;
+  @HiveField(22)
+  @TimestampConverter()
+  set updatedBy(DateTime? value) => throw _privateConstructorUsedError;
+  @HiveField(23)
   @TimestampConverter()
   DateTime? get deletedBy => throw _privateConstructorUsedError;
+  @HiveField(23)
+  @TimestampConverter()
+  set deletedBy(DateTime? value) => throw _privateConstructorUsedError;
+  @HiveField(24)
   @TimestampConverter()
   DateTime? get createdAt => throw _privateConstructorUsedError;
+  @HiveField(24)
+  @TimestampConverter()
+  set createdAt(DateTime? value) => throw _privateConstructorUsedError;
+  @HiveField(25)
   @TimestampConverter()
   DateTime? get updatedAt => throw _privateConstructorUsedError;
+  @HiveField(25)
+  @TimestampConverter()
+  set updatedAt(DateTime? value) => throw _privateConstructorUsedError;
+  @HiveField(26)
   @TimestampConverter()
   DateTime? get deletedAt => throw _privateConstructorUsedError;
+  @HiveField(26)
+  @TimestampConverter()
+  set deletedAt(DateTime? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -148,32 +173,77 @@ abstract class $UserDTOCopyWith<$Res> {
   factory $UserDTOCopyWith(UserDTO value, $Res Function(UserDTO) then) =
       _$UserDTOCopyWithImpl<$Res>;
   $Res call(
-      {@primaryKey @JsonKey(name: '_id') String? id,
-      String? token,
-      String? firstName,
-      String? lastName,
-      String? fullName,
-      @BooleanSerializer() bool? isPrivate,
-      String? email,
-      @JsonKey(name: 'mobile') String? phone,
-      String? password,
-      @JsonKey(name: 'current_password') String? oldPassword,
-      @JsonKey(name: 'password_confirmation') String? confirmation,
-      @JsonKey(name: 'country') String? countryName,
-      String? platform,
-      String? avatar,
-      @ignore @BooleanSerializer() bool? favAthlete,
-      @ignore @BooleanSerializer() bool? favPlace,
-      @ignore @BooleanSerializer() bool? locality,
-      @BooleanSerializer() bool? active,
-      @BooleanSerializer() bool? accountVerified,
-      @AuthProviderSerializer() AuthProvider? provider,
-      @TimestampConverter() DateTime? createdBy,
-      @TimestampConverter() DateTime? updatedBy,
-      @TimestampConverter() DateTime? deletedBy,
-      @TimestampConverter() DateTime? createdAt,
-      @TimestampConverter() DateTime? updatedAt,
-      @TimestampConverter() DateTime? deletedAt});
+      {@HiveField(1)
+      @JsonKey(name: '_id')
+      @StringSerializer()
+          String? id,
+      @HiveField(2)
+          String? token,
+      @HiveField(3)
+          String? firstName,
+      @HiveField(4)
+          String? lastName,
+      @HiveField(5)
+          String? fullName,
+      @HiveField(6)
+      @BooleanSerializer()
+          bool? isPrivate,
+      @HiveField(7)
+          String? email,
+      @HiveField(8)
+      @JsonKey(name: 'mobile')
+          String? phone,
+      @HiveField(9)
+          String? password,
+      @HiveField(10)
+      @JsonKey(name: 'current_password')
+          String? oldPassword,
+      @HiveField(11)
+      @JsonKey(name: 'password_confirmation')
+          String? confirmation,
+      @HiveField(12)
+      @JsonKey(name: 'country')
+          String? countryName,
+      @HiveField(13)
+          String? platform,
+      @HiveField(14)
+          String? avatar,
+      @HiveField(15)
+      @BooleanSerializer()
+          bool? favAthlete,
+      @HiveField(16)
+      @BooleanSerializer()
+          bool? favPlace,
+      @HiveField(17)
+      @BooleanSerializer()
+          bool? locality,
+      @HiveField(18)
+      @BooleanSerializer()
+          bool? active,
+      @HiveField(19)
+      @BooleanSerializer()
+          bool? accountVerified,
+      @HiveField(20)
+      @AuthProviderSerializer()
+          AuthProvider? provider,
+      @HiveField(21)
+      @TimestampConverter()
+          DateTime? createdBy,
+      @HiveField(22)
+      @TimestampConverter()
+          DateTime? updatedBy,
+      @HiveField(23)
+      @TimestampConverter()
+          DateTime? deletedBy,
+      @HiveField(24)
+      @TimestampConverter()
+          DateTime? createdAt,
+      @HiveField(25)
+      @TimestampConverter()
+          DateTime? updatedAt,
+      @HiveField(26)
+      @TimestampConverter()
+          DateTime? deletedAt});
 }
 
 /// @nodoc
@@ -323,47 +393,93 @@ class _$UserDTOCopyWithImpl<$Res> implements $UserDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$UserDTOCopyWith<$Res> implements $UserDTOCopyWith<$Res> {
-  factory _$UserDTOCopyWith(_UserDTO value, $Res Function(_UserDTO) then) =
-      __$UserDTOCopyWithImpl<$Res>;
+abstract class _$$_UserDTOCopyWith<$Res> implements $UserDTOCopyWith<$Res> {
+  factory _$$_UserDTOCopyWith(
+          _$_UserDTO value, $Res Function(_$_UserDTO) then) =
+      __$$_UserDTOCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@primaryKey @JsonKey(name: '_id') String? id,
-      String? token,
-      String? firstName,
-      String? lastName,
-      String? fullName,
-      @BooleanSerializer() bool? isPrivate,
-      String? email,
-      @JsonKey(name: 'mobile') String? phone,
-      String? password,
-      @JsonKey(name: 'current_password') String? oldPassword,
-      @JsonKey(name: 'password_confirmation') String? confirmation,
-      @JsonKey(name: 'country') String? countryName,
-      String? platform,
-      String? avatar,
-      @ignore @BooleanSerializer() bool? favAthlete,
-      @ignore @BooleanSerializer() bool? favPlace,
-      @ignore @BooleanSerializer() bool? locality,
-      @BooleanSerializer() bool? active,
-      @BooleanSerializer() bool? accountVerified,
-      @AuthProviderSerializer() AuthProvider? provider,
-      @TimestampConverter() DateTime? createdBy,
-      @TimestampConverter() DateTime? updatedBy,
-      @TimestampConverter() DateTime? deletedBy,
-      @TimestampConverter() DateTime? createdAt,
-      @TimestampConverter() DateTime? updatedAt,
-      @TimestampConverter() DateTime? deletedAt});
+      {@HiveField(1)
+      @JsonKey(name: '_id')
+      @StringSerializer()
+          String? id,
+      @HiveField(2)
+          String? token,
+      @HiveField(3)
+          String? firstName,
+      @HiveField(4)
+          String? lastName,
+      @HiveField(5)
+          String? fullName,
+      @HiveField(6)
+      @BooleanSerializer()
+          bool? isPrivate,
+      @HiveField(7)
+          String? email,
+      @HiveField(8)
+      @JsonKey(name: 'mobile')
+          String? phone,
+      @HiveField(9)
+          String? password,
+      @HiveField(10)
+      @JsonKey(name: 'current_password')
+          String? oldPassword,
+      @HiveField(11)
+      @JsonKey(name: 'password_confirmation')
+          String? confirmation,
+      @HiveField(12)
+      @JsonKey(name: 'country')
+          String? countryName,
+      @HiveField(13)
+          String? platform,
+      @HiveField(14)
+          String? avatar,
+      @HiveField(15)
+      @BooleanSerializer()
+          bool? favAthlete,
+      @HiveField(16)
+      @BooleanSerializer()
+          bool? favPlace,
+      @HiveField(17)
+      @BooleanSerializer()
+          bool? locality,
+      @HiveField(18)
+      @BooleanSerializer()
+          bool? active,
+      @HiveField(19)
+      @BooleanSerializer()
+          bool? accountVerified,
+      @HiveField(20)
+      @AuthProviderSerializer()
+          AuthProvider? provider,
+      @HiveField(21)
+      @TimestampConverter()
+          DateTime? createdBy,
+      @HiveField(22)
+      @TimestampConverter()
+          DateTime? updatedBy,
+      @HiveField(23)
+      @TimestampConverter()
+          DateTime? deletedBy,
+      @HiveField(24)
+      @TimestampConverter()
+          DateTime? createdAt,
+      @HiveField(25)
+      @TimestampConverter()
+          DateTime? updatedAt,
+      @HiveField(26)
+      @TimestampConverter()
+          DateTime? deletedAt});
 }
 
 /// @nodoc
-class __$UserDTOCopyWithImpl<$Res> extends _$UserDTOCopyWithImpl<$Res>
-    implements _$UserDTOCopyWith<$Res> {
-  __$UserDTOCopyWithImpl(_UserDTO _value, $Res Function(_UserDTO) _then)
-      : super(_value, (v) => _then(v as _UserDTO));
+class __$$_UserDTOCopyWithImpl<$Res> extends _$UserDTOCopyWithImpl<$Res>
+    implements _$$_UserDTOCopyWith<$Res> {
+  __$$_UserDTOCopyWithImpl(_$_UserDTO _value, $Res Function(_$_UserDTO) _then)
+      : super(_value, (v) => _then(v as _$_UserDTO));
 
   @override
-  _UserDTO get _value => super._value as _UserDTO;
+  _$_UserDTO get _value => super._value as _$_UserDTO;
 
   @override
   $Res call({
@@ -394,7 +510,7 @@ class __$UserDTOCopyWithImpl<$Res> extends _$UserDTOCopyWithImpl<$Res>
     Object? updatedAt = freezed,
     Object? deletedAt = freezed,
   }) {
-    return _then(_UserDTO(
+    return _then(_$_UserDTO(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -505,193 +621,149 @@ class __$UserDTOCopyWithImpl<$Res> extends _$UserDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-@Entity(tableName: UserDTO.tableName)
+@HiveType(typeId: 1, adapterName: 'UserDTOAdapter')
 class _$_UserDTO extends _UserDTO {
-  const _$_UserDTO(
-      {@primaryKey @JsonKey(name: '_id') this.id,
-      this.token,
-      this.firstName,
-      this.lastName,
-      this.fullName,
-      @BooleanSerializer() this.isPrivate,
-      this.email,
-      @JsonKey(name: 'mobile') this.phone,
-      this.password,
-      @JsonKey(name: 'current_password') this.oldPassword,
-      @JsonKey(name: 'password_confirmation') this.confirmation,
-      @JsonKey(name: 'country') this.countryName,
-      this.platform,
-      this.avatar,
-      @ignore @BooleanSerializer() this.favAthlete,
-      @ignore @BooleanSerializer() this.favPlace,
-      @ignore @BooleanSerializer() this.locality,
-      @BooleanSerializer() this.active,
-      @BooleanSerializer() this.accountVerified,
-      @AuthProviderSerializer() this.provider,
-      @TimestampConverter() this.createdBy,
-      @TimestampConverter() this.updatedBy,
-      @TimestampConverter() this.deletedBy,
-      @TimestampConverter() this.createdAt,
-      @TimestampConverter() this.updatedAt,
-      @TimestampConverter() this.deletedAt})
+  _$_UserDTO(
+      {@HiveField(1) @JsonKey(name: '_id') @StringSerializer() this.id,
+      @HiveField(2) this.token,
+      @HiveField(3) this.firstName,
+      @HiveField(4) this.lastName,
+      @HiveField(5) this.fullName,
+      @HiveField(6) @BooleanSerializer() this.isPrivate,
+      @HiveField(7) this.email,
+      @HiveField(8) @JsonKey(name: 'mobile') this.phone,
+      @HiveField(9) this.password,
+      @HiveField(10) @JsonKey(name: 'current_password') this.oldPassword,
+      @HiveField(11) @JsonKey(name: 'password_confirmation') this.confirmation,
+      @HiveField(12) @JsonKey(name: 'country') this.countryName,
+      @HiveField(13) this.platform,
+      @HiveField(14) this.avatar,
+      @HiveField(15) @BooleanSerializer() this.favAthlete,
+      @HiveField(16) @BooleanSerializer() this.favPlace,
+      @HiveField(17) @BooleanSerializer() this.locality,
+      @HiveField(18) @BooleanSerializer() this.active,
+      @HiveField(19) @BooleanSerializer() this.accountVerified,
+      @HiveField(20) @AuthProviderSerializer() this.provider,
+      @HiveField(21) @TimestampConverter() this.createdBy,
+      @HiveField(22) @TimestampConverter() this.updatedBy,
+      @HiveField(23) @TimestampConverter() this.deletedBy,
+      @HiveField(24) @TimestampConverter() this.createdAt,
+      @HiveField(25) @TimestampConverter() this.updatedAt,
+      @HiveField(26) @TimestampConverter() this.deletedAt})
       : super._();
 
   factory _$_UserDTO.fromJson(Map<String, dynamic> json) =>
       _$$_UserDTOFromJson(json);
 
   @override
-  @primaryKey
+  @HiveField(1)
   @JsonKey(name: '_id')
-  final String? id;
+  @StringSerializer()
+  String? id;
   @override
-  final String? token;
+  @HiveField(2)
+  String? token;
   @override
-  final String? firstName;
+  @HiveField(3)
+  String? firstName;
   @override
-  final String? lastName;
+  @HiveField(4)
+  String? lastName;
   @override
-  final String? fullName;
+  @HiveField(5)
+  String? fullName;
   @override
+  @HiveField(6)
   @BooleanSerializer()
-  final bool? isPrivate;
+  bool? isPrivate;
   @override
-  final String? email;
+  @HiveField(7)
+  String? email;
   @override
+  @HiveField(8)
   @JsonKey(name: 'mobile')
-  final String? phone;
+  String? phone;
   @override
-  final String? password;
+  @HiveField(9)
+  String? password;
   @override
+  @HiveField(10)
   @JsonKey(name: 'current_password')
-  final String? oldPassword;
+  String? oldPassword;
   @override
+  @HiveField(11)
   @JsonKey(name: 'password_confirmation')
-  final String? confirmation;
+  String? confirmation;
   @override
+  @HiveField(12)
   @JsonKey(name: 'country')
-  final String? countryName;
+  String? countryName;
   @override
-  final String? platform;
+  @HiveField(13)
+  String? platform;
   @override
-  final String? avatar;
-  @override //
-  @ignore
+  @HiveField(14)
+  String? avatar;
+//
+  @override
+  @HiveField(15)
   @BooleanSerializer()
-  final bool? favAthlete;
+  bool? favAthlete;
   @override
-  @ignore
+  @HiveField(16)
   @BooleanSerializer()
-  final bool? favPlace;
+  bool? favPlace;
   @override
-  @ignore
+  @HiveField(17)
   @BooleanSerializer()
-  final bool? locality;
-  @override //
-  @BooleanSerializer()
-  final bool? active;
+  bool? locality;
+//
   @override
+  @HiveField(18)
   @BooleanSerializer()
-  final bool? accountVerified;
+  bool? active;
   @override
+  @HiveField(19)
+  @BooleanSerializer()
+  bool? accountVerified;
+  @override
+  @HiveField(20)
   @AuthProviderSerializer()
-  final AuthProvider? provider;
+  AuthProvider? provider;
   @override
+  @HiveField(21)
   @TimestampConverter()
-  final DateTime? createdBy;
+  DateTime? createdBy;
   @override
+  @HiveField(22)
   @TimestampConverter()
-  final DateTime? updatedBy;
+  DateTime? updatedBy;
   @override
+  @HiveField(23)
   @TimestampConverter()
-  final DateTime? deletedBy;
+  DateTime? deletedBy;
   @override
+  @HiveField(24)
   @TimestampConverter()
-  final DateTime? createdAt;
+  DateTime? createdAt;
   @override
+  @HiveField(25)
   @TimestampConverter()
-  final DateTime? updatedAt;
+  DateTime? updatedAt;
   @override
+  @HiveField(26)
   @TimestampConverter()
-  final DateTime? deletedAt;
+  DateTime? deletedAt;
 
   @override
   String toString() {
     return 'UserDTO(id: $id, token: $token, firstName: $firstName, lastName: $lastName, fullName: $fullName, isPrivate: $isPrivate, email: $email, phone: $phone, password: $password, oldPassword: $oldPassword, confirmation: $confirmation, countryName: $countryName, platform: $platform, avatar: $avatar, favAthlete: $favAthlete, favPlace: $favPlace, locality: $locality, active: $active, accountVerified: $accountVerified, provider: $provider, createdBy: $createdBy, updatedBy: $updatedBy, deletedBy: $deletedBy, createdAt: $createdAt, updatedAt: $updatedAt, deletedAt: $deletedAt)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _UserDTO &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.token, token) &&
-            const DeepCollectionEquality().equals(other.firstName, firstName) &&
-            const DeepCollectionEquality().equals(other.lastName, lastName) &&
-            const DeepCollectionEquality().equals(other.fullName, fullName) &&
-            const DeepCollectionEquality().equals(other.isPrivate, isPrivate) &&
-            const DeepCollectionEquality().equals(other.email, email) &&
-            const DeepCollectionEquality().equals(other.phone, phone) &&
-            const DeepCollectionEquality().equals(other.password, password) &&
-            const DeepCollectionEquality()
-                .equals(other.oldPassword, oldPassword) &&
-            const DeepCollectionEquality()
-                .equals(other.confirmation, confirmation) &&
-            const DeepCollectionEquality()
-                .equals(other.countryName, countryName) &&
-            const DeepCollectionEquality().equals(other.platform, platform) &&
-            const DeepCollectionEquality().equals(other.avatar, avatar) &&
-            const DeepCollectionEquality()
-                .equals(other.favAthlete, favAthlete) &&
-            const DeepCollectionEquality().equals(other.favPlace, favPlace) &&
-            const DeepCollectionEquality().equals(other.locality, locality) &&
-            const DeepCollectionEquality().equals(other.active, active) &&
-            const DeepCollectionEquality()
-                .equals(other.accountVerified, accountVerified) &&
-            const DeepCollectionEquality().equals(other.provider, provider) &&
-            const DeepCollectionEquality().equals(other.createdBy, createdBy) &&
-            const DeepCollectionEquality().equals(other.updatedBy, updatedBy) &&
-            const DeepCollectionEquality().equals(other.deletedBy, deletedBy) &&
-            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
-            const DeepCollectionEquality().equals(other.updatedAt, updatedAt) &&
-            const DeepCollectionEquality().equals(other.deletedAt, deletedAt));
-  }
-
-  @override
-  int get hashCode => Object.hashAll([
-        runtimeType,
-        const DeepCollectionEquality().hash(id),
-        const DeepCollectionEquality().hash(token),
-        const DeepCollectionEquality().hash(firstName),
-        const DeepCollectionEquality().hash(lastName),
-        const DeepCollectionEquality().hash(fullName),
-        const DeepCollectionEquality().hash(isPrivate),
-        const DeepCollectionEquality().hash(email),
-        const DeepCollectionEquality().hash(phone),
-        const DeepCollectionEquality().hash(password),
-        const DeepCollectionEquality().hash(oldPassword),
-        const DeepCollectionEquality().hash(confirmation),
-        const DeepCollectionEquality().hash(countryName),
-        const DeepCollectionEquality().hash(platform),
-        const DeepCollectionEquality().hash(avatar),
-        const DeepCollectionEquality().hash(favAthlete),
-        const DeepCollectionEquality().hash(favPlace),
-        const DeepCollectionEquality().hash(locality),
-        const DeepCollectionEquality().hash(active),
-        const DeepCollectionEquality().hash(accountVerified),
-        const DeepCollectionEquality().hash(provider),
-        const DeepCollectionEquality().hash(createdBy),
-        const DeepCollectionEquality().hash(updatedBy),
-        const DeepCollectionEquality().hash(deletedBy),
-        const DeepCollectionEquality().hash(createdAt),
-        const DeepCollectionEquality().hash(updatedAt),
-        const DeepCollectionEquality().hash(deletedAt)
-      ]);
-
   @JsonKey(ignore: true)
   @override
-  _$UserDTOCopyWith<_UserDTO> get copyWith =>
-      __$UserDTOCopyWithImpl<_UserDTO>(this, _$identity);
+  _$$_UserDTOCopyWith<_$_UserDTO> get copyWith =>
+      __$$_UserDTOCopyWithImpl<_$_UserDTO>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -700,139 +772,188 @@ class _$_UserDTO extends _UserDTO {
 }
 
 abstract class _UserDTO extends UserDTO {
-  const factory _UserDTO(
-      {@primaryKey @JsonKey(name: '_id') String? id,
-      String? token,
-      String? firstName,
-      String? lastName,
-      String? fullName,
-      @BooleanSerializer() bool? isPrivate,
-      String? email,
-      @JsonKey(name: 'mobile') String? phone,
-      String? password,
-      @JsonKey(name: 'current_password') String? oldPassword,
-      @JsonKey(name: 'password_confirmation') String? confirmation,
-      @JsonKey(name: 'country') String? countryName,
-      String? platform,
-      String? avatar,
-      @ignore @BooleanSerializer() bool? favAthlete,
-      @ignore @BooleanSerializer() bool? favPlace,
-      @ignore @BooleanSerializer() bool? locality,
-      @BooleanSerializer() bool? active,
-      @BooleanSerializer() bool? accountVerified,
-      @AuthProviderSerializer() AuthProvider? provider,
-      @TimestampConverter() DateTime? createdBy,
-      @TimestampConverter() DateTime? updatedBy,
-      @TimestampConverter() DateTime? deletedBy,
-      @TimestampConverter() DateTime? createdAt,
-      @TimestampConverter() DateTime? updatedAt,
-      @TimestampConverter() DateTime? deletedAt}) = _$_UserDTO;
-  const _UserDTO._() : super._();
+  factory _UserDTO(
+      {@HiveField(1)
+      @JsonKey(name: '_id')
+      @StringSerializer()
+          String? id,
+      @HiveField(2)
+          String? token,
+      @HiveField(3)
+          String? firstName,
+      @HiveField(4)
+          String? lastName,
+      @HiveField(5)
+          String? fullName,
+      @HiveField(6)
+      @BooleanSerializer()
+          bool? isPrivate,
+      @HiveField(7)
+          String? email,
+      @HiveField(8)
+      @JsonKey(name: 'mobile')
+          String? phone,
+      @HiveField(9)
+          String? password,
+      @HiveField(10)
+      @JsonKey(name: 'current_password')
+          String? oldPassword,
+      @HiveField(11)
+      @JsonKey(name: 'password_confirmation')
+          String? confirmation,
+      @HiveField(12)
+      @JsonKey(name: 'country')
+          String? countryName,
+      @HiveField(13)
+          String? platform,
+      @HiveField(14)
+          String? avatar,
+      @HiveField(15)
+      @BooleanSerializer()
+          bool? favAthlete,
+      @HiveField(16)
+      @BooleanSerializer()
+          bool? favPlace,
+      @HiveField(17)
+      @BooleanSerializer()
+          bool? locality,
+      @HiveField(18)
+      @BooleanSerializer()
+          bool? active,
+      @HiveField(19)
+      @BooleanSerializer()
+          bool? accountVerified,
+      @HiveField(20)
+      @AuthProviderSerializer()
+          AuthProvider? provider,
+      @HiveField(21)
+      @TimestampConverter()
+          DateTime? createdBy,
+      @HiveField(22)
+      @TimestampConverter()
+          DateTime? updatedBy,
+      @HiveField(23)
+      @TimestampConverter()
+          DateTime? deletedBy,
+      @HiveField(24)
+      @TimestampConverter()
+          DateTime? createdAt,
+      @HiveField(25)
+      @TimestampConverter()
+          DateTime? updatedAt,
+      @HiveField(26)
+      @TimestampConverter()
+          DateTime? deletedAt}) = _$_UserDTO;
+  _UserDTO._() : super._();
 
   factory _UserDTO.fromJson(Map<String, dynamic> json) = _$_UserDTO.fromJson;
 
   @override
-  @primaryKey
+  @HiveField(1)
   @JsonKey(name: '_id')
-  String? get id;
+  @StringSerializer()
+  String? get id => throw _privateConstructorUsedError;
   @override
-  String? get token;
+  @HiveField(2)
+  String? get token => throw _privateConstructorUsedError;
   @override
-  String? get firstName;
+  @HiveField(3)
+  String? get firstName => throw _privateConstructorUsedError;
   @override
-  String? get lastName;
+  @HiveField(4)
+  String? get lastName => throw _privateConstructorUsedError;
   @override
-  String? get fullName;
+  @HiveField(5)
+  String? get fullName => throw _privateConstructorUsedError;
   @override
+  @HiveField(6)
   @BooleanSerializer()
-  bool? get isPrivate;
+  bool? get isPrivate => throw _privateConstructorUsedError;
   @override
-  String? get email;
+  @HiveField(7)
+  String? get email => throw _privateConstructorUsedError;
   @override
+  @HiveField(8)
   @JsonKey(name: 'mobile')
-  String? get phone;
+  String? get phone => throw _privateConstructorUsedError;
   @override
-  String? get password;
+  @HiveField(9)
+  String? get password => throw _privateConstructorUsedError;
   @override
+  @HiveField(10)
   @JsonKey(name: 'current_password')
-  String? get oldPassword;
+  String? get oldPassword => throw _privateConstructorUsedError;
   @override
+  @HiveField(11)
   @JsonKey(name: 'password_confirmation')
-  String? get confirmation;
+  String? get confirmation => throw _privateConstructorUsedError;
   @override
+  @HiveField(12)
   @JsonKey(name: 'country')
-  String? get countryName;
+  String? get countryName => throw _privateConstructorUsedError;
   @override
-  String? get platform;
+  @HiveField(13)
+  String? get platform => throw _privateConstructorUsedError;
   @override
-  String? get avatar;
+  @HiveField(14)
+  String? get avatar => throw _privateConstructorUsedError;
   @override //
-  @ignore
+  @HiveField(15)
   @BooleanSerializer()
-  bool? get favAthlete;
+  bool? get favAthlete => throw _privateConstructorUsedError;
   @override
-  @ignore
+  @HiveField(16)
   @BooleanSerializer()
-  bool? get favPlace;
+  bool? get favPlace => throw _privateConstructorUsedError;
   @override
-  @ignore
+  @HiveField(17)
   @BooleanSerializer()
-  bool? get locality;
+  bool? get locality => throw _privateConstructorUsedError;
   @override //
+  @HiveField(18)
   @BooleanSerializer()
-  bool? get active;
+  bool? get active => throw _privateConstructorUsedError;
   @override
+  @HiveField(19)
   @BooleanSerializer()
-  bool? get accountVerified;
+  bool? get accountVerified => throw _privateConstructorUsedError;
   @override
+  @HiveField(20)
   @AuthProviderSerializer()
-  AuthProvider? get provider;
+  AuthProvider? get provider => throw _privateConstructorUsedError;
   @override
+  @HiveField(21)
   @TimestampConverter()
-  DateTime? get createdBy;
+  DateTime? get createdBy => throw _privateConstructorUsedError;
   @override
+  @HiveField(22)
   @TimestampConverter()
-  DateTime? get updatedBy;
+  DateTime? get updatedBy => throw _privateConstructorUsedError;
   @override
+  @HiveField(23)
   @TimestampConverter()
-  DateTime? get deletedBy;
+  DateTime? get deletedBy => throw _privateConstructorUsedError;
   @override
+  @HiveField(24)
   @TimestampConverter()
-  DateTime? get createdAt;
+  DateTime? get createdAt => throw _privateConstructorUsedError;
   @override
+  @HiveField(25)
   @TimestampConverter()
-  DateTime? get updatedAt;
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
   @override
+  @HiveField(26)
   @TimestampConverter()
-  DateTime? get deletedAt;
+  DateTime? get deletedAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$UserDTOCopyWith<_UserDTO> get copyWith =>
+  _$$_UserDTOCopyWith<_$_UserDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 UserListDTO _$UserListDTOFromJson(Map<String, dynamic> json) {
   return _UserListDTO.fromJson(json);
 }
-
-/// @nodoc
-class _$UserListDTOTearOff {
-  const _$UserListDTOTearOff();
-
-  _UserListDTO call({List<UserDTO> data = const [], MetaDTO? meta}) {
-    return _UserListDTO(
-      data: data,
-      meta: meta,
-    );
-  }
-
-  UserListDTO fromJson(Map<String, Object?> json) {
-    return UserListDTO.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $UserListDTO = _$UserListDTOTearOff();
 
 /// @nodoc
 mixin _$UserListDTO {
@@ -893,11 +1014,11 @@ class _$UserListDTOCopyWithImpl<$Res> implements $UserListDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$UserListDTOCopyWith<$Res>
+abstract class _$$_UserListDTOCopyWith<$Res>
     implements $UserListDTOCopyWith<$Res> {
-  factory _$UserListDTOCopyWith(
-          _UserListDTO value, $Res Function(_UserListDTO) then) =
-      __$UserListDTOCopyWithImpl<$Res>;
+  factory _$$_UserListDTOCopyWith(
+          _$_UserListDTO value, $Res Function(_$_UserListDTO) then) =
+      __$$_UserListDTOCopyWithImpl<$Res>;
   @override
   $Res call({List<UserDTO> data, MetaDTO? meta});
 
@@ -906,23 +1027,23 @@ abstract class _$UserListDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$UserListDTOCopyWithImpl<$Res> extends _$UserListDTOCopyWithImpl<$Res>
-    implements _$UserListDTOCopyWith<$Res> {
-  __$UserListDTOCopyWithImpl(
-      _UserListDTO _value, $Res Function(_UserListDTO) _then)
-      : super(_value, (v) => _then(v as _UserListDTO));
+class __$$_UserListDTOCopyWithImpl<$Res> extends _$UserListDTOCopyWithImpl<$Res>
+    implements _$$_UserListDTOCopyWith<$Res> {
+  __$$_UserListDTOCopyWithImpl(
+      _$_UserListDTO _value, $Res Function(_$_UserListDTO) _then)
+      : super(_value, (v) => _then(v as _$_UserListDTO));
 
   @override
-  _UserListDTO get _value => super._value as _UserListDTO;
+  _$_UserListDTO get _value => super._value as _$_UserListDTO;
 
   @override
   $Res call({
     Object? data = freezed,
     Object? meta = freezed,
   }) {
-    return _then(_UserListDTO(
+    return _then(_$_UserListDTO(
       data: data == freezed
-          ? _value.data
+          ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
               as List<UserDTO>,
       meta: meta == freezed
@@ -936,14 +1057,21 @@ class __$UserListDTOCopyWithImpl<$Res> extends _$UserListDTOCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_UserListDTO extends _UserListDTO {
-  const _$_UserListDTO({this.data = const [], this.meta}) : super._();
+  const _$_UserListDTO({final List<UserDTO> data = const [], this.meta})
+      : _data = data,
+        super._();
 
   factory _$_UserListDTO.fromJson(Map<String, dynamic> json) =>
       _$$_UserListDTOFromJson(json);
 
-  @JsonKey()
+  final List<UserDTO> _data;
   @override
-  final List<UserDTO> data;
+  @JsonKey()
+  List<UserDTO> get data {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_data);
+  }
+
   @override
   final MetaDTO? meta;
 
@@ -956,21 +1084,22 @@ class _$_UserListDTO extends _UserListDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _UserListDTO &&
-            const DeepCollectionEquality().equals(other.data, data) &&
+            other is _$_UserListDTO &&
+            const DeepCollectionEquality().equals(other._data, _data) &&
             const DeepCollectionEquality().equals(other.meta, meta));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(data),
+      const DeepCollectionEquality().hash(_data),
       const DeepCollectionEquality().hash(meta));
 
   @JsonKey(ignore: true)
   @override
-  _$UserListDTOCopyWith<_UserListDTO> get copyWith =>
-      __$UserListDTOCopyWithImpl<_UserListDTO>(this, _$identity);
+  _$$_UserListDTOCopyWith<_$_UserListDTO> get copyWith =>
+      __$$_UserListDTOCopyWithImpl<_$_UserListDTO>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -979,7 +1108,7 @@ class _$_UserListDTO extends _UserListDTO {
 }
 
 abstract class _UserListDTO extends UserListDTO {
-  const factory _UserListDTO({List<UserDTO> data, MetaDTO? meta}) =
+  const factory _UserListDTO({final List<UserDTO> data, final MetaDTO? meta}) =
       _$_UserListDTO;
   const _UserListDTO._() : super._();
 
@@ -987,11 +1116,11 @@ abstract class _UserListDTO extends UserListDTO {
       _$_UserListDTO.fromJson;
 
   @override
-  List<UserDTO> get data;
+  List<UserDTO> get data => throw _privateConstructorUsedError;
   @override
-  MetaDTO? get meta;
+  MetaDTO? get meta => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$UserListDTOCopyWith<_UserListDTO> get copyWith =>
+  _$$_UserListDTOCopyWith<_$_UserListDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }

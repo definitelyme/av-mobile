@@ -111,7 +111,7 @@ class EditProfileScreen extends StatelessWidget with AutoRouteWrapper {
                           height: 0.3.w,
                           fit: BoxFit.cover,
                           borderRadius: 100.br,
-                          border: Border.all(color: Colors.white, width: 0.5),
+                          boxBorder: Border.all(color: Colors.white, width: 0.5),
                           replacement: AnimatedVisibility(
                             visible: s.user.photo.progress?.progress != null || s.isUploadingImage,
                             replacement: Image.asset(AppAssets.unnamed),

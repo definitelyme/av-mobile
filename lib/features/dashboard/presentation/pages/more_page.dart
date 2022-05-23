@@ -47,7 +47,7 @@ class _MorePageState extends State<MorePage> {
                           fit: BoxFit.cover,
                           borderRadius: 100.br,
                           expandsFullscreen: true,
-                          border: Border.all(color: Colors.white, width: 0.5),
+                          boxBorder: Border.all(color: Colors.white, width: 0.5),
                           replacement: Image.asset(AppAssets.unnamed, fit: BoxFit.cover, width: 50, height: 50),
                         ),
                       ),

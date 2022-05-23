@@ -46,8 +46,6 @@ class LoginScreen extends StatelessWidget with AutoRouteWrapper {
       ),
       body: SingleChildScrollView(
         physics: Utils.physics,
-        controller: ScrollController(),
-        scrollDirection: Axis.vertical,
         child: SizedBox(
           height: 1.h,
           child: SafeArea(

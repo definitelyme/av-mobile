@@ -105,3 +105,20 @@ class AppHttpResponse extends AppNetworkResponseException<DioError, dynamic> wit
     return null;
   }
 }
+
+extension AppHttpResponseX on AppHttpResponse? {
+  T when<T>({
+    T Function(SuccessfulResponse)? success,
+    T Function(ErrorResponse)? error,
+    T Function(InfoResponseType)? info,
+    required T Function() orElse,
+  }) {
+    return this?.response.maybeMap(
+              success: (s) => success != null ? success(this!.response.type()) : orElse(),
+              error: (e) => error != null ? error(this!.response.type()) : orElse(),
+              info: (i) => info != null ? info(this!.response.type()) : orElse(),
+              orElse: orElse,
+            ) ??
+        orElse();
+  }
+}

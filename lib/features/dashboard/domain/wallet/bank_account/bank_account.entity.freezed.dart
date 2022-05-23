@@ -12,26 +12,7 @@ part of bank_account.entity.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$BankAccountTearOff {
-  const _$BankAccountTearOff();
-
-  _BankAccount call(
-      {required BasicTextField<String?> accountName,
-      required BasicTextField<String?> accountNumber,
-      Bank? bank}) {
-    return _BankAccount(
-      accountName: accountName,
-      accountNumber: accountNumber,
-      bank: bank,
-    );
-  }
-}
-
-/// @nodoc
-const $BankAccount = _$BankAccountTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$BankAccount {
@@ -101,11 +82,11 @@ class _$BankAccountCopyWithImpl<$Res> implements $BankAccountCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$BankAccountCopyWith<$Res>
+abstract class _$$_BankAccountCopyWith<$Res>
     implements $BankAccountCopyWith<$Res> {
-  factory _$BankAccountCopyWith(
-          _BankAccount value, $Res Function(_BankAccount) then) =
-      __$BankAccountCopyWithImpl<$Res>;
+  factory _$$_BankAccountCopyWith(
+          _$_BankAccount value, $Res Function(_$_BankAccount) then) =
+      __$$_BankAccountCopyWithImpl<$Res>;
   @override
   $Res call(
       {BasicTextField<String?> accountName,
@@ -117,14 +98,14 @@ abstract class _$BankAccountCopyWith<$Res>
 }
 
 /// @nodoc
-class __$BankAccountCopyWithImpl<$Res> extends _$BankAccountCopyWithImpl<$Res>
-    implements _$BankAccountCopyWith<$Res> {
-  __$BankAccountCopyWithImpl(
-      _BankAccount _value, $Res Function(_BankAccount) _then)
-      : super(_value, (v) => _then(v as _BankAccount));
+class __$$_BankAccountCopyWithImpl<$Res> extends _$BankAccountCopyWithImpl<$Res>
+    implements _$$_BankAccountCopyWith<$Res> {
+  __$$_BankAccountCopyWithImpl(
+      _$_BankAccount _value, $Res Function(_$_BankAccount) _then)
+      : super(_value, (v) => _then(v as _$_BankAccount));
 
   @override
-  _BankAccount get _value => super._value as _BankAccount;
+  _$_BankAccount get _value => super._value as _$_BankAccount;
 
   @override
   $Res call({
@@ -132,7 +113,7 @@ class __$BankAccountCopyWithImpl<$Res> extends _$BankAccountCopyWithImpl<$Res>
     Object? accountNumber = freezed,
     Object? bank = freezed,
   }) {
-    return _then(_BankAccount(
+    return _then(_$_BankAccount(
       accountName: accountName == freezed
           ? _value.accountName
           : accountName // ignore: cast_nullable_to_non_nullable
@@ -172,7 +153,7 @@ class _$_BankAccount extends _BankAccount {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _BankAccount &&
+            other is _$_BankAccount &&
             const DeepCollectionEquality()
                 .equals(other.accountName, accountName) &&
             const DeepCollectionEquality()
@@ -189,25 +170,26 @@ class _$_BankAccount extends _BankAccount {
 
   @JsonKey(ignore: true)
   @override
-  _$BankAccountCopyWith<_BankAccount> get copyWith =>
-      __$BankAccountCopyWithImpl<_BankAccount>(this, _$identity);
+  _$$_BankAccountCopyWith<_$_BankAccount> get copyWith =>
+      __$$_BankAccountCopyWithImpl<_$_BankAccount>(this, _$identity);
 }
 
 abstract class _BankAccount extends BankAccount {
   const factory _BankAccount(
-      {required BasicTextField<String?> accountName,
-      required BasicTextField<String?> accountNumber,
-      Bank? bank}) = _$_BankAccount;
+      {required final BasicTextField<String?> accountName,
+      required final BasicTextField<String?> accountNumber,
+      final Bank? bank}) = _$_BankAccount;
   const _BankAccount._() : super._();
 
   @override
-  BasicTextField<String?> get accountName;
+  BasicTextField<String?> get accountName => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get accountNumber;
+  BasicTextField<String?> get accountNumber =>
+      throw _privateConstructorUsedError;
   @override
-  Bank? get bank;
+  Bank? get bank => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$BankAccountCopyWith<_BankAccount> get copyWith =>
+  _$$_BankAccountCopyWith<_$_BankAccount> get copyWith =>
       throw _privateConstructorUsedError;
 }

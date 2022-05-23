@@ -22,6 +22,8 @@ import 'package:kt_dart/collection.dart';
 part 'wallet_cubit.freezed.dart';
 part 'wallet_state.dart';
 
+enum _TransactionType { cr, dr }
+
 @injectable
 class WalletCubit extends Cubit<WalletState> with BaseCubit {
   final WalletRepository _repository;
@@ -234,8 +236,12 @@ class WalletCubit extends Cubit<WalletState> with BaseCubit {
       txRef: reference,
       amount: '$_amount',
       isTestMode: env.flavor.fold(prod: () => false, dev: () => false),
-      customer: Customer(name: '$name', email: '$email', phoneNumber: '$phone'),
-      // meta: {'donation': state.donation.id.value},
+      customer: Customer(
+        name: '${_TransactionType.cr.name}'.toUpperCase().trim().trimWhiteSpaces().removeNewLines(),
+        email: '$email',
+        phoneNumber: '$phone',
+      ),
+      meta: {'transactionType': '${_TransactionType.cr.name}'.toUpperCase().trim().trimWhiteSpaces().removeNewLines()},
       paymentOptions: 'card',
       customization: Customization(
         title: '${Const.appName} - Fund Wallet',
@@ -280,7 +286,7 @@ class WalletCubit extends Cubit<WalletState> with BaseCubit {
       ..email = email
       ..reference = reference
       ..currency = _currency
-      // ..putMetaData('donation', '${state.donation.id.value}')
+      ..putMetaData('transactionType', '${_TransactionType.cr.name}'.toUpperCase())
       ..putCustomField("User's Name", '$name')
       ..putCustomField("User's Phone", '$phone')
       ..putCustomField('Payment Reference', reference);
@@ -453,8 +459,15 @@ class WalletCubit extends Cubit<WalletState> with BaseCubit {
       coupon: 'NO_COUPON',
       items: [
         AnalyticsEventItem(
-          // itemId: '${donation.id.value}',
-          itemName: '${Const.appName} - Fund Wallet with CARD',
+          itemId: 'user-id---${user?.id.value}',
+          itemName: 'User ID',
+          price: amount,
+          quantity: 1,
+          currency: currency,
+        ),
+        AnalyticsEventItem(
+          itemId: 'transaction-type--${_TransactionType.cr.name.toUpperCase()}',
+          itemName: 'Transaction Type',
           price: amount,
           quantity: 1,
           currency: currency,
@@ -465,7 +478,7 @@ class WalletCubit extends Cubit<WalletState> with BaseCubit {
     await _firebaseAnalytics.logEvent(
       name: 'payment_successful',
       parameters: {
-        // 'donation': donation.id.value,
+        'transactionType': _TransactionType.cr.name.toUpperCase(),
         'payment_status': 'Successful',
         'payment_type': 'CARD',
         'payment_reference': reference,

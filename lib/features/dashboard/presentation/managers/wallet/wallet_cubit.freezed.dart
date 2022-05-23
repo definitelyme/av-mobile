@@ -12,66 +12,7 @@ part of wallet_cubit.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$WalletStateTearOff {
-  const _$WalletStateTearOff();
-
-  _WalletState call(
-      {bool isLoading = false,
-      bool isFundingWallet = false,
-      bool validate = false,
-      bool isAddingCard = false,
-      bool isConfiguringPin = false,
-      bool isWithdrawing = false,
-      bool isResolvingAccount = false,
-      bool requestedPINReset = false,
-      DebitCard? card,
-      SecurityQuestion securityQuestion = SecurityQuestion.locality,
-      KtList<DebitCard> debitCards = const KtList.empty(),
-      required MoneyMaskedTextController amountTextController,
-      required AmountField<double> amount,
-      required BasicTextField<String?> securityAnswer,
-      required BasicTextField<String?> otpCode,
-      BankAccount? bankAccount,
-      required TextEditingController accountNameController,
-      PaymentStatus paymentStatus = PaymentStatus.pending,
-      PaymentMethod paymentMethod = PaymentMethod.FLUTTERWAVE,
-      required OTPCode withdrawalPin,
-      required OTPCode confirmWithdrawalPin,
-      KtList<Bank> banks = const KtList.empty(),
-      Option<AppHttpResponse?> status = const None()}) {
-    return _WalletState(
-      isLoading: isLoading,
-      isFundingWallet: isFundingWallet,
-      validate: validate,
-      isAddingCard: isAddingCard,
-      isConfiguringPin: isConfiguringPin,
-      isWithdrawing: isWithdrawing,
-      isResolvingAccount: isResolvingAccount,
-      requestedPINReset: requestedPINReset,
-      card: card,
-      securityQuestion: securityQuestion,
-      debitCards: debitCards,
-      amountTextController: amountTextController,
-      amount: amount,
-      securityAnswer: securityAnswer,
-      otpCode: otpCode,
-      bankAccount: bankAccount,
-      accountNameController: accountNameController,
-      paymentStatus: paymentStatus,
-      paymentMethod: paymentMethod,
-      withdrawalPin: withdrawalPin,
-      confirmWithdrawalPin: confirmWithdrawalPin,
-      banks: banks,
-      status: status,
-    );
-  }
-}
-
-/// @nodoc
-const $WalletState = _$WalletStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$WalletState {
@@ -295,11 +236,11 @@ class _$WalletStateCopyWithImpl<$Res> implements $WalletStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$WalletStateCopyWith<$Res>
+abstract class _$$_WalletStateCopyWith<$Res>
     implements $WalletStateCopyWith<$Res> {
-  factory _$WalletStateCopyWith(
-          _WalletState value, $Res Function(_WalletState) then) =
-      __$WalletStateCopyWithImpl<$Res>;
+  factory _$$_WalletStateCopyWith(
+          _$_WalletState value, $Res Function(_$_WalletState) then) =
+      __$$_WalletStateCopyWithImpl<$Res>;
   @override
   $Res call(
       {bool isLoading,
@@ -333,14 +274,14 @@ abstract class _$WalletStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$WalletStateCopyWithImpl<$Res> extends _$WalletStateCopyWithImpl<$Res>
-    implements _$WalletStateCopyWith<$Res> {
-  __$WalletStateCopyWithImpl(
-      _WalletState _value, $Res Function(_WalletState) _then)
-      : super(_value, (v) => _then(v as _WalletState));
+class __$$_WalletStateCopyWithImpl<$Res> extends _$WalletStateCopyWithImpl<$Res>
+    implements _$$_WalletStateCopyWith<$Res> {
+  __$$_WalletStateCopyWithImpl(
+      _$_WalletState _value, $Res Function(_$_WalletState) _then)
+      : super(_value, (v) => _then(v as _$_WalletState));
 
   @override
-  _WalletState get _value => super._value as _WalletState;
+  _$_WalletState get _value => super._value as _$_WalletState;
 
   @override
   $Res call({
@@ -368,7 +309,7 @@ class __$WalletStateCopyWithImpl<$Res> extends _$WalletStateCopyWithImpl<$Res>
     Object? banks = freezed,
     Object? status = freezed,
   }) {
-    return _then(_WalletState(
+    return _then(_$_WalletState(
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -493,37 +434,37 @@ class _$_WalletState implements _WalletState {
       this.banks = const KtList.empty(),
       this.status = const None()});
 
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isLoading;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isFundingWallet;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool validate;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isAddingCard;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isConfiguringPin;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isWithdrawing;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isResolvingAccount;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool requestedPINReset;
   @override
   final DebitCard? card;
-  @JsonKey()
   @override
+  @JsonKey()
   final SecurityQuestion securityQuestion;
-  @JsonKey()
   @override
+  @JsonKey()
   final KtList<DebitCard> debitCards;
   @override
   final MoneyMaskedTextController amountTextController;
@@ -537,21 +478,21 @@ class _$_WalletState implements _WalletState {
   final BankAccount? bankAccount;
   @override
   final TextEditingController accountNameController;
-  @JsonKey()
   @override
+  @JsonKey()
   final PaymentStatus paymentStatus;
-  @JsonKey()
   @override
+  @JsonKey()
   final PaymentMethod paymentMethod;
   @override
   final OTPCode withdrawalPin;
   @override
   final OTPCode confirmWithdrawalPin;
-  @JsonKey()
   @override
+  @JsonKey()
   final KtList<Bank> banks;
-  @JsonKey()
   @override
+  @JsonKey()
   final Option<AppHttpResponse?> status;
 
   @override
@@ -563,7 +504,7 @@ class _$_WalletState implements _WalletState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _WalletState &&
+            other is _$_WalletState &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality()
                 .equals(other.isFundingWallet, isFundingWallet) &&
@@ -635,84 +576,87 @@ class _$_WalletState implements _WalletState {
 
   @JsonKey(ignore: true)
   @override
-  _$WalletStateCopyWith<_WalletState> get copyWith =>
-      __$WalletStateCopyWithImpl<_WalletState>(this, _$identity);
+  _$$_WalletStateCopyWith<_$_WalletState> get copyWith =>
+      __$$_WalletStateCopyWithImpl<_$_WalletState>(this, _$identity);
 }
 
 abstract class _WalletState implements WalletState {
   const factory _WalletState(
-      {bool isLoading,
-      bool isFundingWallet,
-      bool validate,
-      bool isAddingCard,
-      bool isConfiguringPin,
-      bool isWithdrawing,
-      bool isResolvingAccount,
-      bool requestedPINReset,
-      DebitCard? card,
-      SecurityQuestion securityQuestion,
-      KtList<DebitCard> debitCards,
-      required MoneyMaskedTextController amountTextController,
-      required AmountField<double> amount,
-      required BasicTextField<String?> securityAnswer,
-      required BasicTextField<String?> otpCode,
-      BankAccount? bankAccount,
-      required TextEditingController accountNameController,
-      PaymentStatus paymentStatus,
-      PaymentMethod paymentMethod,
-      required OTPCode withdrawalPin,
-      required OTPCode confirmWithdrawalPin,
-      KtList<Bank> banks,
-      Option<AppHttpResponse?> status}) = _$_WalletState;
+      {final bool isLoading,
+      final bool isFundingWallet,
+      final bool validate,
+      final bool isAddingCard,
+      final bool isConfiguringPin,
+      final bool isWithdrawing,
+      final bool isResolvingAccount,
+      final bool requestedPINReset,
+      final DebitCard? card,
+      final SecurityQuestion securityQuestion,
+      final KtList<DebitCard> debitCards,
+      required final MoneyMaskedTextController amountTextController,
+      required final AmountField<double> amount,
+      required final BasicTextField<String?> securityAnswer,
+      required final BasicTextField<String?> otpCode,
+      final BankAccount? bankAccount,
+      required final TextEditingController accountNameController,
+      final PaymentStatus paymentStatus,
+      final PaymentMethod paymentMethod,
+      required final OTPCode withdrawalPin,
+      required final OTPCode confirmWithdrawalPin,
+      final KtList<Bank> banks,
+      final Option<AppHttpResponse?> status}) = _$_WalletState;
 
   @override
-  bool get isLoading;
+  bool get isLoading => throw _privateConstructorUsedError;
   @override
-  bool get isFundingWallet;
+  bool get isFundingWallet => throw _privateConstructorUsedError;
   @override
-  bool get validate;
+  bool get validate => throw _privateConstructorUsedError;
   @override
-  bool get isAddingCard;
+  bool get isAddingCard => throw _privateConstructorUsedError;
   @override
-  bool get isConfiguringPin;
+  bool get isConfiguringPin => throw _privateConstructorUsedError;
   @override
-  bool get isWithdrawing;
+  bool get isWithdrawing => throw _privateConstructorUsedError;
   @override
-  bool get isResolvingAccount;
+  bool get isResolvingAccount => throw _privateConstructorUsedError;
   @override
-  bool get requestedPINReset;
+  bool get requestedPINReset => throw _privateConstructorUsedError;
   @override
-  DebitCard? get card;
+  DebitCard? get card => throw _privateConstructorUsedError;
   @override
-  SecurityQuestion get securityQuestion;
+  SecurityQuestion get securityQuestion => throw _privateConstructorUsedError;
   @override
-  KtList<DebitCard> get debitCards;
+  KtList<DebitCard> get debitCards => throw _privateConstructorUsedError;
   @override
-  MoneyMaskedTextController get amountTextController;
+  MoneyMaskedTextController get amountTextController =>
+      throw _privateConstructorUsedError;
   @override
-  AmountField<double> get amount;
+  AmountField<double> get amount => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get securityAnswer;
+  BasicTextField<String?> get securityAnswer =>
+      throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get otpCode;
+  BasicTextField<String?> get otpCode => throw _privateConstructorUsedError;
   @override
-  BankAccount? get bankAccount;
+  BankAccount? get bankAccount => throw _privateConstructorUsedError;
   @override
-  TextEditingController get accountNameController;
+  TextEditingController get accountNameController =>
+      throw _privateConstructorUsedError;
   @override
-  PaymentStatus get paymentStatus;
+  PaymentStatus get paymentStatus => throw _privateConstructorUsedError;
   @override
-  PaymentMethod get paymentMethod;
+  PaymentMethod get paymentMethod => throw _privateConstructorUsedError;
   @override
-  OTPCode get withdrawalPin;
+  OTPCode get withdrawalPin => throw _privateConstructorUsedError;
   @override
-  OTPCode get confirmWithdrawalPin;
+  OTPCode get confirmWithdrawalPin => throw _privateConstructorUsedError;
   @override
-  KtList<Bank> get banks;
+  KtList<Bank> get banks => throw _privateConstructorUsedError;
   @override
-  Option<AppHttpResponse?> get status;
+  Option<AppHttpResponse?> get status => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$WalletStateCopyWith<_WalletState> get copyWith =>
+  _$$_WalletStateCopyWith<_$_WalletState> get copyWith =>
       throw _privateConstructorUsedError;
 }

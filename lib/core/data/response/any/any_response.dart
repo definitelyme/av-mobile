@@ -66,6 +66,8 @@ class AnyResponse extends Response with _$AnyResponse {
     @JsonKey(ignore: true) @Default(false) bool pop,
   }) = SuccessfulResponse;
 
+  B type<B extends AnyResponse>() => map(success: (s) => s as B, error: (e) => e as B, info: (i) => i as B);
+
   @override
   String get message => messageTxt?.let((m) => m.isNotEmpty ? m : _kdefaultMsg) ?? _kdefaultMsg;
 }

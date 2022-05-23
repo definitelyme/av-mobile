@@ -36,7 +36,7 @@ class ProductCard extends StatelessWidget {
               Flexible(
                 flex: 3,
                 child: ImageBox.network(
-                  heroTag: 'deal-${deal.id.value}-${deal.product?.id.value}-$index',
+                  heroTag: 'deal-${deal.id.value}-${deal.product?.id.value}-$index->${deal.product?.uniqueKey.value}',
                   photo: deal.product != null && deal.product!.photos.isNotEmpty() ? deal.product?.photos.get(0).image.getOrNull : null,
                   fit: BoxFit.cover,
                   borderRadius: 6.br,

@@ -94,6 +94,8 @@ class Product extends BaseEntity with _$Product {
 
   bool get isSellBlank => this == Product.sell();
 
+  UniqueId<String?> get uniqueKey => UniqueId.v4();
+
   Product merge(Product? other) => copyWith(
         id: other?.id.value != null ? other!.id : id,
         deal: deal?.merge(other?.deal),

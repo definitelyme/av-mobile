@@ -12,60 +12,7 @@ part of deal_cubit.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$DealStateTearOff {
-  const _$DealStateTearOff();
-
-  _DealState call(
-      {bool isLoading = false,
-      bool isLoadingSponsored = false,
-      bool isBidding = false,
-      bool validate = false,
-      required Deal currentDeal,
-      required DealCategory currentCategory,
-      SellHistory? sellHistory,
-      BidHistory? bidHistory,
-      Rating? rating,
-      DealPlan? selectedPlan,
-      required Product currentProduct,
-      required AmountField<double> bidAmount,
-      KtList<DealCategory> categories = const KtList.empty(),
-      KtList<Deal> homeDeals = const KtList.empty(),
-      KtList<Deal> liveDeals = const KtList.empty(),
-      KtList<Deal> homeSponsoredDeals = const KtList.empty(),
-      KtList<Deal> dealsList = const KtList.empty(),
-      KtList<MyWish> wishlist = const KtList.empty(),
-      KtList<DealPlan> dealPlans = const KtList.empty(),
-      Option<AppHttpResponse?> status = const None()}) {
-    return _DealState(
-      isLoading: isLoading,
-      isLoadingSponsored: isLoadingSponsored,
-      isBidding: isBidding,
-      validate: validate,
-      currentDeal: currentDeal,
-      currentCategory: currentCategory,
-      sellHistory: sellHistory,
-      bidHistory: bidHistory,
-      rating: rating,
-      selectedPlan: selectedPlan,
-      currentProduct: currentProduct,
-      bidAmount: bidAmount,
-      categories: categories,
-      homeDeals: homeDeals,
-      liveDeals: liveDeals,
-      homeSponsoredDeals: homeSponsoredDeals,
-      dealsList: dealsList,
-      wishlist: wishlist,
-      dealPlans: dealPlans,
-      status: status,
-    );
-  }
-}
-
-/// @nodoc
-const $DealState = _$DealStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$DealState {
@@ -312,10 +259,10 @@ class _$DealStateCopyWithImpl<$Res> implements $DealStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$DealStateCopyWith<$Res> implements $DealStateCopyWith<$Res> {
-  factory _$DealStateCopyWith(
-          _DealState value, $Res Function(_DealState) then) =
-      __$DealStateCopyWithImpl<$Res>;
+abstract class _$$_DealStateCopyWith<$Res> implements $DealStateCopyWith<$Res> {
+  factory _$$_DealStateCopyWith(
+          _$_DealState value, $Res Function(_$_DealState) then) =
+      __$$_DealStateCopyWithImpl<$Res>;
   @override
   $Res call(
       {bool isLoading,
@@ -356,13 +303,14 @@ abstract class _$DealStateCopyWith<$Res> implements $DealStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$DealStateCopyWithImpl<$Res> extends _$DealStateCopyWithImpl<$Res>
-    implements _$DealStateCopyWith<$Res> {
-  __$DealStateCopyWithImpl(_DealState _value, $Res Function(_DealState) _then)
-      : super(_value, (v) => _then(v as _DealState));
+class __$$_DealStateCopyWithImpl<$Res> extends _$DealStateCopyWithImpl<$Res>
+    implements _$$_DealStateCopyWith<$Res> {
+  __$$_DealStateCopyWithImpl(
+      _$_DealState _value, $Res Function(_$_DealState) _then)
+      : super(_value, (v) => _then(v as _$_DealState));
 
   @override
-  _DealState get _value => super._value as _DealState;
+  _$_DealState get _value => super._value as _$_DealState;
 
   @override
   $Res call({
@@ -387,7 +335,7 @@ class __$DealStateCopyWithImpl<$Res> extends _$DealStateCopyWithImpl<$Res>
     Object? dealPlans = freezed,
     Object? status = freezed,
   }) {
-    return _then(_DealState(
+    return _then(_$_DealState(
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -497,17 +445,17 @@ class _$_DealState implements _DealState {
       this.dealPlans = const KtList.empty(),
       this.status = const None()});
 
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isLoading;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isLoadingSponsored;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isBidding;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool validate;
   @override
   final Deal currentDeal;
@@ -525,29 +473,29 @@ class _$_DealState implements _DealState {
   final Product currentProduct;
   @override
   final AmountField<double> bidAmount;
-  @JsonKey()
   @override
+  @JsonKey()
   final KtList<DealCategory> categories;
-  @JsonKey()
   @override
+  @JsonKey()
   final KtList<Deal> homeDeals;
-  @JsonKey()
   @override
+  @JsonKey()
   final KtList<Deal> liveDeals;
-  @JsonKey()
   @override
+  @JsonKey()
   final KtList<Deal> homeSponsoredDeals;
-  @JsonKey()
   @override
+  @JsonKey()
   final KtList<Deal> dealsList;
-  @JsonKey()
   @override
+  @JsonKey()
   final KtList<MyWish> wishlist;
-  @JsonKey()
   @override
+  @JsonKey()
   final KtList<DealPlan> dealPlans;
-  @JsonKey()
   @override
+  @JsonKey()
   final Option<AppHttpResponse?> status;
 
   @override
@@ -559,7 +507,7 @@ class _$_DealState implements _DealState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _DealState &&
+            other is _$_DealState &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality()
                 .equals(other.isLoadingSponsored, isLoadingSponsored) &&
@@ -618,75 +566,75 @@ class _$_DealState implements _DealState {
 
   @JsonKey(ignore: true)
   @override
-  _$DealStateCopyWith<_DealState> get copyWith =>
-      __$DealStateCopyWithImpl<_DealState>(this, _$identity);
+  _$$_DealStateCopyWith<_$_DealState> get copyWith =>
+      __$$_DealStateCopyWithImpl<_$_DealState>(this, _$identity);
 }
 
 abstract class _DealState implements DealState {
   const factory _DealState(
-      {bool isLoading,
-      bool isLoadingSponsored,
-      bool isBidding,
-      bool validate,
-      required Deal currentDeal,
-      required DealCategory currentCategory,
-      SellHistory? sellHistory,
-      BidHistory? bidHistory,
-      Rating? rating,
-      DealPlan? selectedPlan,
-      required Product currentProduct,
-      required AmountField<double> bidAmount,
-      KtList<DealCategory> categories,
-      KtList<Deal> homeDeals,
-      KtList<Deal> liveDeals,
-      KtList<Deal> homeSponsoredDeals,
-      KtList<Deal> dealsList,
-      KtList<MyWish> wishlist,
-      KtList<DealPlan> dealPlans,
-      Option<AppHttpResponse?> status}) = _$_DealState;
+      {final bool isLoading,
+      final bool isLoadingSponsored,
+      final bool isBidding,
+      final bool validate,
+      required final Deal currentDeal,
+      required final DealCategory currentCategory,
+      final SellHistory? sellHistory,
+      final BidHistory? bidHistory,
+      final Rating? rating,
+      final DealPlan? selectedPlan,
+      required final Product currentProduct,
+      required final AmountField<double> bidAmount,
+      final KtList<DealCategory> categories,
+      final KtList<Deal> homeDeals,
+      final KtList<Deal> liveDeals,
+      final KtList<Deal> homeSponsoredDeals,
+      final KtList<Deal> dealsList,
+      final KtList<MyWish> wishlist,
+      final KtList<DealPlan> dealPlans,
+      final Option<AppHttpResponse?> status}) = _$_DealState;
 
   @override
-  bool get isLoading;
+  bool get isLoading => throw _privateConstructorUsedError;
   @override
-  bool get isLoadingSponsored;
+  bool get isLoadingSponsored => throw _privateConstructorUsedError;
   @override
-  bool get isBidding;
+  bool get isBidding => throw _privateConstructorUsedError;
   @override
-  bool get validate;
+  bool get validate => throw _privateConstructorUsedError;
   @override
-  Deal get currentDeal;
+  Deal get currentDeal => throw _privateConstructorUsedError;
   @override
-  DealCategory get currentCategory;
+  DealCategory get currentCategory => throw _privateConstructorUsedError;
   @override
-  SellHistory? get sellHistory;
+  SellHistory? get sellHistory => throw _privateConstructorUsedError;
   @override
-  BidHistory? get bidHistory;
+  BidHistory? get bidHistory => throw _privateConstructorUsedError;
   @override
-  Rating? get rating;
+  Rating? get rating => throw _privateConstructorUsedError;
   @override
-  DealPlan? get selectedPlan;
+  DealPlan? get selectedPlan => throw _privateConstructorUsedError;
   @override
-  Product get currentProduct;
+  Product get currentProduct => throw _privateConstructorUsedError;
   @override
-  AmountField<double> get bidAmount;
+  AmountField<double> get bidAmount => throw _privateConstructorUsedError;
   @override
-  KtList<DealCategory> get categories;
+  KtList<DealCategory> get categories => throw _privateConstructorUsedError;
   @override
-  KtList<Deal> get homeDeals;
+  KtList<Deal> get homeDeals => throw _privateConstructorUsedError;
   @override
-  KtList<Deal> get liveDeals;
+  KtList<Deal> get liveDeals => throw _privateConstructorUsedError;
   @override
-  KtList<Deal> get homeSponsoredDeals;
+  KtList<Deal> get homeSponsoredDeals => throw _privateConstructorUsedError;
   @override
-  KtList<Deal> get dealsList;
+  KtList<Deal> get dealsList => throw _privateConstructorUsedError;
   @override
-  KtList<MyWish> get wishlist;
+  KtList<MyWish> get wishlist => throw _privateConstructorUsedError;
   @override
-  KtList<DealPlan> get dealPlans;
+  KtList<DealPlan> get dealPlans => throw _privateConstructorUsedError;
   @override
-  Option<AppHttpResponse?> get status;
+  Option<AppHttpResponse?> get status => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$DealStateCopyWith<_DealState> get copyWith =>
+  _$$_DealStateCopyWith<_$_DealState> get copyWith =>
       throw _privateConstructorUsedError;
 }

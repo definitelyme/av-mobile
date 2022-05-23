@@ -12,54 +12,7 @@ part of user;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$UserTearOff {
-  const _$UserTearOff();
-
-  _User call(
-      {required UniqueId<String?> id,
-      required DisplayName firstName,
-      required DisplayName lastName,
-      DisplayName? name,
-      required EmailAddress email,
-      required Phone phone,
-      required Password password,
-      required UploadableMedia photo,
-      Country? country,
-      bool isPrivate = false,
-      AuthProvider provider = AuthProvider.regular,
-      bool? active = false,
-      bool? accountVerified = false,
-      SecurityQuestion? securityQuestion,
-      DateTime? createdAt,
-      DateTime? updatedAt,
-      DateTime? deletedAt}) {
-    return _User(
-      id: id,
-      firstName: firstName,
-      lastName: lastName,
-      name: name,
-      email: email,
-      phone: phone,
-      password: password,
-      photo: photo,
-      country: country,
-      isPrivate: isPrivate,
-      provider: provider,
-      active: active,
-      accountVerified: accountVerified,
-      securityQuestion: securityQuestion,
-      createdAt: createdAt,
-      updatedAt: updatedAt,
-      deletedAt: deletedAt,
-    );
-  }
-}
-
-/// @nodoc
-const $User = _$UserTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$User {
@@ -224,9 +177,9 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
-  factory _$UserCopyWith(_User value, $Res Function(_User) then) =
-      __$UserCopyWithImpl<$Res>;
+abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
+  factory _$$_UserCopyWith(_$_User value, $Res Function(_$_User) then) =
+      __$$_UserCopyWithImpl<$Res>;
   @override
   $Res call(
       {UniqueId<String?> id,
@@ -252,13 +205,13 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
-    implements _$UserCopyWith<$Res> {
-  __$UserCopyWithImpl(_User _value, $Res Function(_User) _then)
-      : super(_value, (v) => _then(v as _User));
+class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
+    implements _$$_UserCopyWith<$Res> {
+  __$$_UserCopyWithImpl(_$_User _value, $Res Function(_$_User) _then)
+      : super(_value, (v) => _then(v as _$_User));
 
   @override
-  _User get _value => super._value as _User;
+  _$_User get _value => super._value as _$_User;
 
   @override
   $Res call({
@@ -280,7 +233,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object? updatedAt = freezed,
     Object? deletedAt = freezed,
   }) {
-    return _then(_User(
+    return _then(_$_User(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -394,17 +347,17 @@ class _$_User extends _User with DiagnosticableTreeMixin {
   final UploadableMedia photo;
   @override
   final Country? country;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isPrivate;
-  @JsonKey()
   @override
+  @JsonKey()
   final AuthProvider provider;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool? active;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool? accountVerified;
   @override
   final SecurityQuestion? securityQuestion;
@@ -448,7 +401,7 @@ class _$_User extends _User with DiagnosticableTreeMixin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _User &&
+            other is _$_User &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.firstName, firstName) &&
             const DeepCollectionEquality().equals(other.lastName, lastName) &&
@@ -493,66 +446,66 @@ class _$_User extends _User with DiagnosticableTreeMixin {
 
   @JsonKey(ignore: true)
   @override
-  _$UserCopyWith<_User> get copyWith =>
-      __$UserCopyWithImpl<_User>(this, _$identity);
+  _$$_UserCopyWith<_$_User> get copyWith =>
+      __$$_UserCopyWithImpl<_$_User>(this, _$identity);
 }
 
 abstract class _User extends User {
   const factory _User(
-      {required UniqueId<String?> id,
-      required DisplayName firstName,
-      required DisplayName lastName,
-      DisplayName? name,
-      required EmailAddress email,
-      required Phone phone,
-      required Password password,
-      required UploadableMedia photo,
-      Country? country,
-      bool isPrivate,
-      AuthProvider provider,
-      bool? active,
-      bool? accountVerified,
-      SecurityQuestion? securityQuestion,
-      DateTime? createdAt,
-      DateTime? updatedAt,
-      DateTime? deletedAt}) = _$_User;
+      {required final UniqueId<String?> id,
+      required final DisplayName firstName,
+      required final DisplayName lastName,
+      final DisplayName? name,
+      required final EmailAddress email,
+      required final Phone phone,
+      required final Password password,
+      required final UploadableMedia photo,
+      final Country? country,
+      final bool isPrivate,
+      final AuthProvider provider,
+      final bool? active,
+      final bool? accountVerified,
+      final SecurityQuestion? securityQuestion,
+      final DateTime? createdAt,
+      final DateTime? updatedAt,
+      final DateTime? deletedAt}) = _$_User;
   const _User._() : super._();
 
   @override
-  UniqueId<String?> get id;
+  UniqueId<String?> get id => throw _privateConstructorUsedError;
   @override
-  DisplayName get firstName;
+  DisplayName get firstName => throw _privateConstructorUsedError;
   @override
-  DisplayName get lastName;
+  DisplayName get lastName => throw _privateConstructorUsedError;
   @override
-  DisplayName? get name;
+  DisplayName? get name => throw _privateConstructorUsedError;
   @override
-  EmailAddress get email;
+  EmailAddress get email => throw _privateConstructorUsedError;
   @override
-  Phone get phone;
+  Phone get phone => throw _privateConstructorUsedError;
   @override
-  Password get password;
+  Password get password => throw _privateConstructorUsedError;
   @override
-  UploadableMedia get photo;
+  UploadableMedia get photo => throw _privateConstructorUsedError;
   @override
-  Country? get country;
+  Country? get country => throw _privateConstructorUsedError;
   @override
-  bool get isPrivate;
+  bool get isPrivate => throw _privateConstructorUsedError;
   @override
-  AuthProvider get provider;
+  AuthProvider get provider => throw _privateConstructorUsedError;
   @override
-  bool? get active;
+  bool? get active => throw _privateConstructorUsedError;
   @override
-  bool? get accountVerified;
+  bool? get accountVerified => throw _privateConstructorUsedError;
   @override
-  SecurityQuestion? get securityQuestion;
+  SecurityQuestion? get securityQuestion => throw _privateConstructorUsedError;
   @override
-  DateTime? get createdAt;
+  DateTime? get createdAt => throw _privateConstructorUsedError;
   @override
-  DateTime? get updatedAt;
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
   @override
-  DateTime? get deletedAt;
+  DateTime? get deletedAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$UserCopyWith<_User> get copyWith => throw _privateConstructorUsedError;
+  _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;
 }

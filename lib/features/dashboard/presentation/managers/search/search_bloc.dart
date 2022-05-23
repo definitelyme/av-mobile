@@ -1,6 +1,5 @@
 library search_bloc.dart;
 
-import 'package:auctionvillage/core/data/database/app_database.dart';
 import 'package:auctionvillage/core/data/http_client/index.dart';
 import 'package:auctionvillage/core/data/models/index.dart';
 import 'package:auctionvillage/core/data/response/index.dart';

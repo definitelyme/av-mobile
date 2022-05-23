@@ -12,31 +12,11 @@ part of rating_dto.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 RatingDTO _$RatingDTOFromJson(Map<String, dynamic> json) {
   return _RatingDTO.fromJson(json);
 }
-
-/// @nodoc
-class _$RatingDTOTearOff {
-  const _$RatingDTOTearOff();
-
-  _RatingDTO call(
-      {@JsonKey(name: '_meta') MetaDTO? meta, required _RatingDTOData data}) {
-    return _RatingDTO(
-      meta: meta,
-      data: data,
-    );
-  }
-
-  RatingDTO fromJson(Map<String, Object?> json) {
-    return RatingDTO.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $RatingDTO = _$RatingDTOTearOff();
 
 /// @nodoc
 mixin _$RatingDTO {
@@ -105,10 +85,10 @@ class _$RatingDTOCopyWithImpl<$Res> implements $RatingDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$RatingDTOCopyWith<$Res> implements $RatingDTOCopyWith<$Res> {
-  factory _$RatingDTOCopyWith(
-          _RatingDTO value, $Res Function(_RatingDTO) then) =
-      __$RatingDTOCopyWithImpl<$Res>;
+abstract class _$$_RatingDTOCopyWith<$Res> implements $RatingDTOCopyWith<$Res> {
+  factory _$$_RatingDTOCopyWith(
+          _$_RatingDTO value, $Res Function(_$_RatingDTO) then) =
+      __$$_RatingDTOCopyWithImpl<$Res>;
   @override
   $Res call({@JsonKey(name: '_meta') MetaDTO? meta, _RatingDTOData data});
 
@@ -119,20 +99,21 @@ abstract class _$RatingDTOCopyWith<$Res> implements $RatingDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$RatingDTOCopyWithImpl<$Res> extends _$RatingDTOCopyWithImpl<$Res>
-    implements _$RatingDTOCopyWith<$Res> {
-  __$RatingDTOCopyWithImpl(_RatingDTO _value, $Res Function(_RatingDTO) _then)
-      : super(_value, (v) => _then(v as _RatingDTO));
+class __$$_RatingDTOCopyWithImpl<$Res> extends _$RatingDTOCopyWithImpl<$Res>
+    implements _$$_RatingDTOCopyWith<$Res> {
+  __$$_RatingDTOCopyWithImpl(
+      _$_RatingDTO _value, $Res Function(_$_RatingDTO) _then)
+      : super(_value, (v) => _then(v as _$_RatingDTO));
 
   @override
-  _RatingDTO get _value => super._value as _RatingDTO;
+  _$_RatingDTO get _value => super._value as _$_RatingDTO;
 
   @override
   $Res call({
     Object? meta = freezed,
     Object? data = freezed,
   }) {
-    return _then(_RatingDTO(
+    return _then(_$_RatingDTO(
       meta: meta == freezed
           ? _value.meta
           : meta // ignore: cast_nullable_to_non_nullable
@@ -169,11 +150,12 @@ class _$_RatingDTO extends _RatingDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RatingDTO &&
+            other is _$_RatingDTO &&
             const DeepCollectionEquality().equals(other.meta, meta) &&
             const DeepCollectionEquality().equals(other.data, data));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -182,8 +164,8 @@ class _$_RatingDTO extends _RatingDTO {
 
   @JsonKey(ignore: true)
   @override
-  _$RatingDTOCopyWith<_RatingDTO> get copyWith =>
-      __$RatingDTOCopyWithImpl<_RatingDTO>(this, _$identity);
+  _$$_RatingDTOCopyWith<_$_RatingDTO> get copyWith =>
+      __$$_RatingDTOCopyWithImpl<_$_RatingDTO>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -193,8 +175,8 @@ class _$_RatingDTO extends _RatingDTO {
 
 abstract class _RatingDTO extends RatingDTO {
   const factory _RatingDTO(
-      {@JsonKey(name: '_meta') MetaDTO? meta,
-      required _RatingDTOData data}) = _$_RatingDTO;
+      {@JsonKey(name: '_meta') final MetaDTO? meta,
+      required final _RatingDTOData data}) = _$_RatingDTO;
   const _RatingDTO._() : super._();
 
   factory _RatingDTO.fromJson(Map<String, dynamic> json) =
@@ -202,39 +184,18 @@ abstract class _RatingDTO extends RatingDTO {
 
   @override
   @JsonKey(name: '_meta')
-  MetaDTO? get meta;
+  MetaDTO? get meta => throw _privateConstructorUsedError;
   @override
-  _RatingDTOData get data;
+  _RatingDTOData get data => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$RatingDTOCopyWith<_RatingDTO> get copyWith =>
+  _$$_RatingDTOCopyWith<_$_RatingDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 _RatingDTOData _$_RatingDTODataFromJson(Map<String, dynamic> json) {
   return __RatingDTOData.fromJson(json);
 }
-
-/// @nodoc
-class _$_RatingDTODataTearOff {
-  const _$_RatingDTODataTearOff();
-
-  __RatingDTOData call(
-      {@JsonKey(name: 'value') List<ReviewDTO> reviews = const [],
-      ReviewDTO? average}) {
-    return __RatingDTOData(
-      reviews: reviews,
-      average: average,
-    );
-  }
-
-  _RatingDTOData fromJson(Map<String, Object?> json) {
-    return _RatingDTOData.fromJson(json);
-  }
-}
-
-/// @nodoc
-const _$RatingDTOData = _$_RatingDTODataTearOff();
 
 /// @nodoc
 mixin _$_RatingDTOData {
@@ -298,11 +259,11 @@ class __$RatingDTODataCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$_RatingDTODataCopyWith<$Res>
+abstract class _$$__RatingDTODataCopyWith<$Res>
     implements _$RatingDTODataCopyWith<$Res> {
-  factory _$_RatingDTODataCopyWith(
-          __RatingDTOData value, $Res Function(__RatingDTOData) then) =
-      __$_RatingDTODataCopyWithImpl<$Res>;
+  factory _$$__RatingDTODataCopyWith(
+          _$__RatingDTOData value, $Res Function(_$__RatingDTOData) then) =
+      __$$__RatingDTODataCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: 'value') List<ReviewDTO> reviews, ReviewDTO? average});
@@ -312,24 +273,24 @@ abstract class _$_RatingDTODataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$_RatingDTODataCopyWithImpl<$Res>
+class __$$__RatingDTODataCopyWithImpl<$Res>
     extends __$RatingDTODataCopyWithImpl<$Res>
-    implements _$_RatingDTODataCopyWith<$Res> {
-  __$_RatingDTODataCopyWithImpl(
-      __RatingDTOData _value, $Res Function(__RatingDTOData) _then)
-      : super(_value, (v) => _then(v as __RatingDTOData));
+    implements _$$__RatingDTODataCopyWith<$Res> {
+  __$$__RatingDTODataCopyWithImpl(
+      _$__RatingDTOData _value, $Res Function(_$__RatingDTOData) _then)
+      : super(_value, (v) => _then(v as _$__RatingDTOData));
 
   @override
-  __RatingDTOData get _value => super._value as __RatingDTOData;
+  _$__RatingDTOData get _value => super._value as _$__RatingDTOData;
 
   @override
   $Res call({
     Object? reviews = freezed,
     Object? average = freezed,
   }) {
-    return _then(__RatingDTOData(
+    return _then(_$__RatingDTOData(
       reviews: reviews == freezed
-          ? _value.reviews
+          ? _value._reviews
           : reviews // ignore: cast_nullable_to_non_nullable
               as List<ReviewDTO>,
       average: average == freezed
@@ -344,15 +305,22 @@ class __$_RatingDTODataCopyWithImpl<$Res>
 @JsonSerializable()
 class _$__RatingDTOData extends __RatingDTOData {
   const _$__RatingDTOData(
-      {@JsonKey(name: 'value') this.reviews = const [], this.average})
-      : super._();
+      {@JsonKey(name: 'value') final List<ReviewDTO> reviews = const [],
+      this.average})
+      : _reviews = reviews,
+        super._();
 
   factory _$__RatingDTOData.fromJson(Map<String, dynamic> json) =>
       _$$__RatingDTODataFromJson(json);
 
+  final List<ReviewDTO> _reviews;
   @override
   @JsonKey(name: 'value')
-  final List<ReviewDTO> reviews;
+  List<ReviewDTO> get reviews {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_reviews);
+  }
+
   @override
   final ReviewDTO? average;
 
@@ -365,21 +333,22 @@ class _$__RatingDTOData extends __RatingDTOData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is __RatingDTOData &&
-            const DeepCollectionEquality().equals(other.reviews, reviews) &&
+            other is _$__RatingDTOData &&
+            const DeepCollectionEquality().equals(other._reviews, _reviews) &&
             const DeepCollectionEquality().equals(other.average, average));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(reviews),
+      const DeepCollectionEquality().hash(_reviews),
       const DeepCollectionEquality().hash(average));
 
   @JsonKey(ignore: true)
   @override
-  _$_RatingDTODataCopyWith<__RatingDTOData> get copyWith =>
-      __$_RatingDTODataCopyWithImpl<__RatingDTOData>(this, _$identity);
+  _$$__RatingDTODataCopyWith<_$__RatingDTOData> get copyWith =>
+      __$$__RatingDTODataCopyWithImpl<_$__RatingDTOData>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -389,8 +358,8 @@ class _$__RatingDTOData extends __RatingDTOData {
 
 abstract class __RatingDTOData extends _RatingDTOData {
   const factory __RatingDTOData(
-      {@JsonKey(name: 'value') List<ReviewDTO> reviews,
-      ReviewDTO? average}) = _$__RatingDTOData;
+      {@JsonKey(name: 'value') final List<ReviewDTO> reviews,
+      final ReviewDTO? average}) = _$__RatingDTOData;
   const __RatingDTOData._() : super._();
 
   factory __RatingDTOData.fromJson(Map<String, dynamic> json) =
@@ -398,11 +367,11 @@ abstract class __RatingDTOData extends _RatingDTOData {
 
   @override
   @JsonKey(name: 'value')
-  List<ReviewDTO> get reviews;
+  List<ReviewDTO> get reviews => throw _privateConstructorUsedError;
   @override
-  ReviewDTO? get average;
+  ReviewDTO? get average => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$_RatingDTODataCopyWith<__RatingDTOData> get copyWith =>
+  _$$__RatingDTODataCopyWith<_$__RatingDTOData> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -12,30 +12,7 @@ part of place_prediction.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$PlacePredictionTearOff {
-  const _$PlacePredictionTearOff();
-
-  _PlacePrediction call(
-      {required UniqueId<String?> placeId,
-      required UniqueId<String?> reference,
-      required BasicTextField<String?> description,
-      required ImmutableStrings types,
-      required KtList<MatchedSubstrings?> matched}) {
-    return _PlacePrediction(
-      placeId: placeId,
-      reference: reference,
-      description: description,
-      types: types,
-      matched: matched,
-    );
-  }
-}
-
-/// @nodoc
-const $PlacePrediction = _$PlacePredictionTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$PlacePrediction {
@@ -106,11 +83,11 @@ class _$PlacePredictionCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$PlacePredictionCopyWith<$Res>
+abstract class _$$_PlacePredictionCopyWith<$Res>
     implements $PlacePredictionCopyWith<$Res> {
-  factory _$PlacePredictionCopyWith(
-          _PlacePrediction value, $Res Function(_PlacePrediction) then) =
-      __$PlacePredictionCopyWithImpl<$Res>;
+  factory _$$_PlacePredictionCopyWith(
+          _$_PlacePrediction value, $Res Function(_$_PlacePrediction) then) =
+      __$$_PlacePredictionCopyWithImpl<$Res>;
   @override
   $Res call(
       {UniqueId<String?> placeId,
@@ -121,15 +98,15 @@ abstract class _$PlacePredictionCopyWith<$Res>
 }
 
 /// @nodoc
-class __$PlacePredictionCopyWithImpl<$Res>
+class __$$_PlacePredictionCopyWithImpl<$Res>
     extends _$PlacePredictionCopyWithImpl<$Res>
-    implements _$PlacePredictionCopyWith<$Res> {
-  __$PlacePredictionCopyWithImpl(
-      _PlacePrediction _value, $Res Function(_PlacePrediction) _then)
-      : super(_value, (v) => _then(v as _PlacePrediction));
+    implements _$$_PlacePredictionCopyWith<$Res> {
+  __$$_PlacePredictionCopyWithImpl(
+      _$_PlacePrediction _value, $Res Function(_$_PlacePrediction) _then)
+      : super(_value, (v) => _then(v as _$_PlacePrediction));
 
   @override
-  _PlacePrediction get _value => super._value as _PlacePrediction;
+  _$_PlacePrediction get _value => super._value as _$_PlacePrediction;
 
   @override
   $Res call({
@@ -139,7 +116,7 @@ class __$PlacePredictionCopyWithImpl<$Res>
     Object? types = freezed,
     Object? matched = freezed,
   }) {
-    return _then(_PlacePrediction(
+    return _then(_$_PlacePrediction(
       placeId: placeId == freezed
           ? _value.placeId
           : placeId // ignore: cast_nullable_to_non_nullable
@@ -195,7 +172,7 @@ class _$_PlacePrediction extends _PlacePrediction {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PlacePrediction &&
+            other is _$_PlacePrediction &&
             const DeepCollectionEquality().equals(other.placeId, placeId) &&
             const DeepCollectionEquality().equals(other.reference, reference) &&
             const DeepCollectionEquality()
@@ -215,51 +192,34 @@ class _$_PlacePrediction extends _PlacePrediction {
 
   @JsonKey(ignore: true)
   @override
-  _$PlacePredictionCopyWith<_PlacePrediction> get copyWith =>
-      __$PlacePredictionCopyWithImpl<_PlacePrediction>(this, _$identity);
+  _$$_PlacePredictionCopyWith<_$_PlacePrediction> get copyWith =>
+      __$$_PlacePredictionCopyWithImpl<_$_PlacePrediction>(this, _$identity);
 }
 
 abstract class _PlacePrediction extends PlacePrediction {
   const factory _PlacePrediction(
-      {required UniqueId<String?> placeId,
-      required UniqueId<String?> reference,
-      required BasicTextField<String?> description,
-      required ImmutableStrings types,
-      required KtList<MatchedSubstrings?> matched}) = _$_PlacePrediction;
+      {required final UniqueId<String?> placeId,
+      required final UniqueId<String?> reference,
+      required final BasicTextField<String?> description,
+      required final ImmutableStrings types,
+      required final KtList<MatchedSubstrings?> matched}) = _$_PlacePrediction;
   const _PlacePrediction._() : super._();
 
   @override
-  UniqueId<String?> get placeId;
+  UniqueId<String?> get placeId => throw _privateConstructorUsedError;
   @override
-  UniqueId<String?> get reference;
+  UniqueId<String?> get reference => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get description;
+  BasicTextField<String?> get description => throw _privateConstructorUsedError;
   @override
-  ImmutableStrings get types;
+  ImmutableStrings get types => throw _privateConstructorUsedError;
   @override
-  KtList<MatchedSubstrings?> get matched;
+  KtList<MatchedSubstrings?> get matched => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$PlacePredictionCopyWith<_PlacePrediction> get copyWith =>
+  _$$_PlacePredictionCopyWith<_$_PlacePrediction> get copyWith =>
       throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$MatchedSubstringsTearOff {
-  const _$MatchedSubstringsTearOff();
-
-  _MatchedSubstrings call(
-      {required BasicTextField<int?> length,
-      required BasicTextField<int?> offset}) {
-    return _MatchedSubstrings(
-      length: length,
-      offset: offset,
-    );
-  }
-}
-
-/// @nodoc
-const $MatchedSubstrings = _$MatchedSubstringsTearOff();
 
 /// @nodoc
 mixin _$MatchedSubstrings {
@@ -307,32 +267,32 @@ class _$MatchedSubstringsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$MatchedSubstringsCopyWith<$Res>
+abstract class _$$_MatchedSubstringsCopyWith<$Res>
     implements $MatchedSubstringsCopyWith<$Res> {
-  factory _$MatchedSubstringsCopyWith(
-          _MatchedSubstrings value, $Res Function(_MatchedSubstrings) then) =
-      __$MatchedSubstringsCopyWithImpl<$Res>;
+  factory _$$_MatchedSubstringsCopyWith(_$_MatchedSubstrings value,
+          $Res Function(_$_MatchedSubstrings) then) =
+      __$$_MatchedSubstringsCopyWithImpl<$Res>;
   @override
   $Res call({BasicTextField<int?> length, BasicTextField<int?> offset});
 }
 
 /// @nodoc
-class __$MatchedSubstringsCopyWithImpl<$Res>
+class __$$_MatchedSubstringsCopyWithImpl<$Res>
     extends _$MatchedSubstringsCopyWithImpl<$Res>
-    implements _$MatchedSubstringsCopyWith<$Res> {
-  __$MatchedSubstringsCopyWithImpl(
-      _MatchedSubstrings _value, $Res Function(_MatchedSubstrings) _then)
-      : super(_value, (v) => _then(v as _MatchedSubstrings));
+    implements _$$_MatchedSubstringsCopyWith<$Res> {
+  __$$_MatchedSubstringsCopyWithImpl(
+      _$_MatchedSubstrings _value, $Res Function(_$_MatchedSubstrings) _then)
+      : super(_value, (v) => _then(v as _$_MatchedSubstrings));
 
   @override
-  _MatchedSubstrings get _value => super._value as _MatchedSubstrings;
+  _$_MatchedSubstrings get _value => super._value as _$_MatchedSubstrings;
 
   @override
   $Res call({
     Object? length = freezed,
     Object? offset = freezed,
   }) {
-    return _then(_MatchedSubstrings(
+    return _then(_$_MatchedSubstrings(
       length: length == freezed
           ? _value.length
           : length // ignore: cast_nullable_to_non_nullable
@@ -365,7 +325,7 @@ class _$_MatchedSubstrings extends _MatchedSubstrings {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MatchedSubstrings &&
+            other is _$_MatchedSubstrings &&
             const DeepCollectionEquality().equals(other.length, length) &&
             const DeepCollectionEquality().equals(other.offset, offset));
   }
@@ -378,22 +338,23 @@ class _$_MatchedSubstrings extends _MatchedSubstrings {
 
   @JsonKey(ignore: true)
   @override
-  _$MatchedSubstringsCopyWith<_MatchedSubstrings> get copyWith =>
-      __$MatchedSubstringsCopyWithImpl<_MatchedSubstrings>(this, _$identity);
+  _$$_MatchedSubstringsCopyWith<_$_MatchedSubstrings> get copyWith =>
+      __$$_MatchedSubstringsCopyWithImpl<_$_MatchedSubstrings>(
+          this, _$identity);
 }
 
 abstract class _MatchedSubstrings extends MatchedSubstrings {
   const factory _MatchedSubstrings(
-      {required BasicTextField<int?> length,
-      required BasicTextField<int?> offset}) = _$_MatchedSubstrings;
+      {required final BasicTextField<int?> length,
+      required final BasicTextField<int?> offset}) = _$_MatchedSubstrings;
   const _MatchedSubstrings._() : super._();
 
   @override
-  BasicTextField<int?> get length;
+  BasicTextField<int?> get length => throw _privateConstructorUsedError;
   @override
-  BasicTextField<int?> get offset;
+  BasicTextField<int?> get offset => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$MatchedSubstringsCopyWith<_MatchedSubstrings> get copyWith =>
+  _$$_MatchedSubstringsCopyWith<_$_MatchedSubstrings> get copyWith =>
       throw _privateConstructorUsedError;
 }

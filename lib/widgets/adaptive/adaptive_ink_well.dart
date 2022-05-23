@@ -1,11 +1,10 @@
 library adaptive_inkwell.dart;
 
-import 'package:auto_route/auto_route.dart';
 import 'package:enough_platform_widgets/enough_platform_widgets.dart';
 import 'package:flutter/material.dart';
 
 /// A stateless widget to render AdaptiveInkWell.
-class AdaptiveInkWell extends StatelessWidget with AutoRouteWrapper {
+class AdaptiveInkWell extends StatelessWidget {
   final Widget child;
   final bool autofocus;
   final bool disabled;
@@ -33,6 +32,7 @@ class AdaptiveInkWell extends StatelessWidget with AutoRouteWrapper {
   final double? radius;
   final Color? splashColor;
   final InteractiveInkFeatureFactory? splashFactory;
+  final bool? material;
 
   const AdaptiveInkWell({
     Key? key,
@@ -63,42 +63,40 @@ class AdaptiveInkWell extends StatelessWidget with AutoRouteWrapper {
     this.radius,
     this.splashColor,
     this.splashFactory,
+    this.material,
   }) : super(key: key);
 
-  @override
-  Widget wrappedRoute(BuildContext context) {
-    return this;
-  }
+  Widget get _inkWell => PlatformInkWell(
+        autofocus: autofocus,
+        borderRadius: borderRadius,
+        canRequestFocus: canRequestFocus,
+        containedInkWell: containedInkWell,
+        customBorder: customBorder,
+        enableFeedback: enableFeedback,
+        excludeFromSemantics: excludeFromSemantics,
+        focusColor: focusColor,
+        focusNode: focusNode,
+        highlightColor: highlightColor,
+        highlightShape: highlightShape,
+        hoverColor: hoverColor,
+        mouseCursor: mouseCursor,
+        onDoubleTap: disabled ? null : onDoubleTap,
+        onFocusChange: disabled ? null : onFocusChange,
+        onHighlightChanged: disabled ? null : onHighlightChanged,
+        onHover: disabled ? null : onHover,
+        onLongPress: disabled ? null : onLongPress,
+        onTap: disabled ? null : onTap,
+        onTapCancel: disabled ? null : onTapCancel,
+        onTapDown: disabled ? null : onTapDown,
+        overlayColor: overlayColor,
+        radius: radius,
+        splashColor: splashColor,
+        splashFactory: splashFactory,
+        child: child,
+      );
 
   @override
   Widget build(BuildContext context) {
-    return PlatformInkWell(
-      autofocus: autofocus,
-      borderRadius: borderRadius,
-      canRequestFocus: canRequestFocus,
-      containedInkWell: containedInkWell,
-      customBorder: customBorder,
-      enableFeedback: enableFeedback,
-      excludeFromSemantics: excludeFromSemantics,
-      focusColor: focusColor,
-      focusNode: focusNode,
-      highlightColor: highlightColor,
-      highlightShape: highlightShape,
-      hoverColor: hoverColor,
-      mouseCursor: mouseCursor,
-      onDoubleTap: disabled ? null : onDoubleTap,
-      onFocusChange: disabled ? null : onFocusChange,
-      onHighlightChanged: disabled ? null : onHighlightChanged,
-      onHover: disabled ? null : onHover,
-      onLongPress: disabled ? null : onLongPress,
-      onTap: disabled ? null : onTap,
-      onTapCancel: disabled ? null : onTapCancel,
-      onTapDown: disabled ? null : onTapDown,
-      overlayColor: overlayColor,
-      radius: radius,
-      splashColor: splashColor,
-      splashFactory: splashFactory,
-      child: child,
-    );
+    return material != null && material! ? Material(type: MaterialType.transparency, child: _inkWell) : _inkWell;
   }
 }

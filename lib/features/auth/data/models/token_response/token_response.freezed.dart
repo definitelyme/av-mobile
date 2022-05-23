@@ -12,34 +12,11 @@ part of token_response.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 TokenResponse _$TokenResponseFromJson(Map<String, dynamic> json) {
   return _TokenResponse.fromJson(json);
 }
-
-/// @nodoc
-class _$TokenResponseTearOff {
-  const _$TokenResponseTearOff();
-
-  _TokenResponse call(
-      {@JsonKey(includeIfNull: false, name: 'token') String? accessToken,
-      @JsonKey(includeIfNull: false, name: 'token_type') String? tokenType,
-      @JsonKey(includeIfNull: false, name: 'expires_in') int? expiryDate}) {
-    return _TokenResponse(
-      accessToken: accessToken,
-      tokenType: tokenType,
-      expiryDate: expiryDate,
-    );
-  }
-
-  TokenResponse fromJson(Map<String, Object?> json) {
-    return TokenResponse.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $TokenResponse = _$TokenResponseTearOff();
 
 /// @nodoc
 mixin _$TokenResponse {
@@ -100,11 +77,11 @@ class _$TokenResponseCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$TokenResponseCopyWith<$Res>
+abstract class _$$_TokenResponseCopyWith<$Res>
     implements $TokenResponseCopyWith<$Res> {
-  factory _$TokenResponseCopyWith(
-          _TokenResponse value, $Res Function(_TokenResponse) then) =
-      __$TokenResponseCopyWithImpl<$Res>;
+  factory _$$_TokenResponseCopyWith(
+          _$_TokenResponse value, $Res Function(_$_TokenResponse) then) =
+      __$$_TokenResponseCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(includeIfNull: false, name: 'token') String? accessToken,
@@ -113,15 +90,15 @@ abstract class _$TokenResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$TokenResponseCopyWithImpl<$Res>
+class __$$_TokenResponseCopyWithImpl<$Res>
     extends _$TokenResponseCopyWithImpl<$Res>
-    implements _$TokenResponseCopyWith<$Res> {
-  __$TokenResponseCopyWithImpl(
-      _TokenResponse _value, $Res Function(_TokenResponse) _then)
-      : super(_value, (v) => _then(v as _TokenResponse));
+    implements _$$_TokenResponseCopyWith<$Res> {
+  __$$_TokenResponseCopyWithImpl(
+      _$_TokenResponse _value, $Res Function(_$_TokenResponse) _then)
+      : super(_value, (v) => _then(v as _$_TokenResponse));
 
   @override
-  _TokenResponse get _value => super._value as _TokenResponse;
+  _$_TokenResponse get _value => super._value as _$_TokenResponse;
 
   @override
   $Res call({
@@ -129,7 +106,7 @@ class __$TokenResponseCopyWithImpl<$Res>
     Object? tokenType = freezed,
     Object? expiryDate = freezed,
   }) {
-    return _then(_TokenResponse(
+    return _then(_$_TokenResponse(
       accessToken: accessToken == freezed
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
@@ -177,7 +154,7 @@ class _$_TokenResponse extends _TokenResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _TokenResponse &&
+            other is _$_TokenResponse &&
             const DeepCollectionEquality()
                 .equals(other.accessToken, accessToken) &&
             const DeepCollectionEquality().equals(other.tokenType, tokenType) &&
@@ -185,6 +162,7 @@ class _$_TokenResponse extends _TokenResponse {
                 .equals(other.expiryDate, expiryDate));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -194,8 +172,8 @@ class _$_TokenResponse extends _TokenResponse {
 
   @JsonKey(ignore: true)
   @override
-  _$TokenResponseCopyWith<_TokenResponse> get copyWith =>
-      __$TokenResponseCopyWithImpl<_TokenResponse>(this, _$identity);
+  _$$_TokenResponseCopyWith<_$_TokenResponse> get copyWith =>
+      __$$_TokenResponseCopyWithImpl<_$_TokenResponse>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -205,10 +183,12 @@ class _$_TokenResponse extends _TokenResponse {
 
 abstract class _TokenResponse extends TokenResponse {
   const factory _TokenResponse(
-          {@JsonKey(includeIfNull: false, name: 'token') String? accessToken,
-          @JsonKey(includeIfNull: false, name: 'token_type') String? tokenType,
-          @JsonKey(includeIfNull: false, name: 'expires_in') int? expiryDate}) =
-      _$_TokenResponse;
+      {@JsonKey(includeIfNull: false, name: 'token')
+          final String? accessToken,
+      @JsonKey(includeIfNull: false, name: 'token_type')
+          final String? tokenType,
+      @JsonKey(includeIfNull: false, name: 'expires_in')
+          final int? expiryDate}) = _$_TokenResponse;
   const _TokenResponse._() : super._();
 
   factory _TokenResponse.fromJson(Map<String, dynamic> json) =
@@ -216,15 +196,15 @@ abstract class _TokenResponse extends TokenResponse {
 
   @override
   @JsonKey(includeIfNull: false, name: 'token')
-  String? get accessToken;
+  String? get accessToken => throw _privateConstructorUsedError;
   @override
   @JsonKey(includeIfNull: false, name: 'token_type')
-  String? get tokenType;
+  String? get tokenType => throw _privateConstructorUsedError;
   @override
   @JsonKey(includeIfNull: false, name: 'expires_in')
-  int? get expiryDate;
+  int? get expiryDate => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$TokenResponseCopyWith<_TokenResponse> get copyWith =>
+  _$$_TokenResponseCopyWith<_$_TokenResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }

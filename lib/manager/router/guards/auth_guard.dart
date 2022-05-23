@@ -15,7 +15,7 @@ class AuthGuard extends AutoRouteGuard {
       if (authenticated)
         resolver.next();
       else {
-        WidgetsBinding.instance?.endOfFrame.then((_) {
+        WidgetsBinding.instance.endOfFrame.then((_) {
           if (App.currentRoute != LoginRoute.name) router.replaceAll([const LoginRoute()]);
         });
       }

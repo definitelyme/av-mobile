@@ -12,26 +12,7 @@ part of 'place_opening_hours.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$PlaceOpeningHoursTearOff {
-  const _$PlaceOpeningHoursTearOff();
-
-  _PlaceOpeningHours call(
-      {bool? openNow,
-      KtList<PlaceOpeningPeriod> periods = const KtList.empty(),
-      KtList<BasicTextField<String?>?> weekdayText = const KtList.empty()}) {
-    return _PlaceOpeningHours(
-      openNow: openNow,
-      periods: periods,
-      weekdayText: weekdayText,
-    );
-  }
-}
-
-/// @nodoc
-const $PlaceOpeningHours = _$PlaceOpeningHoursTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$PlaceOpeningHours {
@@ -89,11 +70,11 @@ class _$PlaceOpeningHoursCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$PlaceOpeningHoursCopyWith<$Res>
+abstract class _$$_PlaceOpeningHoursCopyWith<$Res>
     implements $PlaceOpeningHoursCopyWith<$Res> {
-  factory _$PlaceOpeningHoursCopyWith(
-          _PlaceOpeningHours value, $Res Function(_PlaceOpeningHours) then) =
-      __$PlaceOpeningHoursCopyWithImpl<$Res>;
+  factory _$$_PlaceOpeningHoursCopyWith(_$_PlaceOpeningHours value,
+          $Res Function(_$_PlaceOpeningHours) then) =
+      __$$_PlaceOpeningHoursCopyWithImpl<$Res>;
   @override
   $Res call(
       {bool? openNow,
@@ -102,15 +83,15 @@ abstract class _$PlaceOpeningHoursCopyWith<$Res>
 }
 
 /// @nodoc
-class __$PlaceOpeningHoursCopyWithImpl<$Res>
+class __$$_PlaceOpeningHoursCopyWithImpl<$Res>
     extends _$PlaceOpeningHoursCopyWithImpl<$Res>
-    implements _$PlaceOpeningHoursCopyWith<$Res> {
-  __$PlaceOpeningHoursCopyWithImpl(
-      _PlaceOpeningHours _value, $Res Function(_PlaceOpeningHours) _then)
-      : super(_value, (v) => _then(v as _PlaceOpeningHours));
+    implements _$$_PlaceOpeningHoursCopyWith<$Res> {
+  __$$_PlaceOpeningHoursCopyWithImpl(
+      _$_PlaceOpeningHours _value, $Res Function(_$_PlaceOpeningHours) _then)
+      : super(_value, (v) => _then(v as _$_PlaceOpeningHours));
 
   @override
-  _PlaceOpeningHours get _value => super._value as _PlaceOpeningHours;
+  _$_PlaceOpeningHours get _value => super._value as _$_PlaceOpeningHours;
 
   @override
   $Res call({
@@ -118,7 +99,7 @@ class __$PlaceOpeningHoursCopyWithImpl<$Res>
     Object? periods = freezed,
     Object? weekdayText = freezed,
   }) {
-    return _then(_PlaceOpeningHours(
+    return _then(_$_PlaceOpeningHours(
       openNow: openNow == freezed
           ? _value.openNow
           : openNow // ignore: cast_nullable_to_non_nullable
@@ -147,11 +128,11 @@ class _$_PlaceOpeningHours
 
   @override
   final bool? openNow;
-  @JsonKey()
   @override
+  @JsonKey()
   final KtList<PlaceOpeningPeriod> periods;
-  @JsonKey()
   @override
+  @JsonKey()
   final KtList<BasicTextField<String?>?> weekdayText;
 
   @override
@@ -173,7 +154,7 @@ class _$_PlaceOpeningHours
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PlaceOpeningHours &&
+            other is _$_PlaceOpeningHours &&
             const DeepCollectionEquality().equals(other.openNow, openNow) &&
             const DeepCollectionEquality().equals(other.periods, periods) &&
             const DeepCollectionEquality()
@@ -189,42 +170,30 @@ class _$_PlaceOpeningHours
 
   @JsonKey(ignore: true)
   @override
-  _$PlaceOpeningHoursCopyWith<_PlaceOpeningHours> get copyWith =>
-      __$PlaceOpeningHoursCopyWithImpl<_PlaceOpeningHours>(this, _$identity);
+  _$$_PlaceOpeningHoursCopyWith<_$_PlaceOpeningHours> get copyWith =>
+      __$$_PlaceOpeningHoursCopyWithImpl<_$_PlaceOpeningHours>(
+          this, _$identity);
 }
 
 abstract class _PlaceOpeningHours implements PlaceOpeningHours {
   const factory _PlaceOpeningHours(
-      {bool? openNow,
-      KtList<PlaceOpeningPeriod> periods,
-      KtList<BasicTextField<String?>?> weekdayText}) = _$_PlaceOpeningHours;
+          {final bool? openNow,
+          final KtList<PlaceOpeningPeriod> periods,
+          final KtList<BasicTextField<String?>?> weekdayText}) =
+      _$_PlaceOpeningHours;
 
   @override
-  bool? get openNow;
+  bool? get openNow => throw _privateConstructorUsedError;
   @override
-  KtList<PlaceOpeningPeriod> get periods;
+  KtList<PlaceOpeningPeriod> get periods => throw _privateConstructorUsedError;
   @override
-  KtList<BasicTextField<String?>?> get weekdayText;
+  KtList<BasicTextField<String?>?> get weekdayText =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$PlaceOpeningHoursCopyWith<_PlaceOpeningHours> get copyWith =>
+  _$$_PlaceOpeningHoursCopyWith<_$_PlaceOpeningHours> get copyWith =>
       throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$PlaceOpeningPeriodTearOff {
-  const _$PlaceOpeningPeriodTearOff();
-
-  _PlaceOpeningPeriod call({PlaceHours? close, PlaceHours? open}) {
-    return _PlaceOpeningPeriod(
-      close: close,
-      open: open,
-    );
-  }
-}
-
-/// @nodoc
-const $PlaceOpeningPeriod = _$PlaceOpeningPeriodTearOff();
 
 /// @nodoc
 mixin _$PlaceOpeningPeriod {
@@ -297,11 +266,11 @@ class _$PlaceOpeningPeriodCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$PlaceOpeningPeriodCopyWith<$Res>
+abstract class _$$_PlaceOpeningPeriodCopyWith<$Res>
     implements $PlaceOpeningPeriodCopyWith<$Res> {
-  factory _$PlaceOpeningPeriodCopyWith(
-          _PlaceOpeningPeriod value, $Res Function(_PlaceOpeningPeriod) then) =
-      __$PlaceOpeningPeriodCopyWithImpl<$Res>;
+  factory _$$_PlaceOpeningPeriodCopyWith(_$_PlaceOpeningPeriod value,
+          $Res Function(_$_PlaceOpeningPeriod) then) =
+      __$$_PlaceOpeningPeriodCopyWithImpl<$Res>;
   @override
   $Res call({PlaceHours? close, PlaceHours? open});
 
@@ -312,22 +281,22 @@ abstract class _$PlaceOpeningPeriodCopyWith<$Res>
 }
 
 /// @nodoc
-class __$PlaceOpeningPeriodCopyWithImpl<$Res>
+class __$$_PlaceOpeningPeriodCopyWithImpl<$Res>
     extends _$PlaceOpeningPeriodCopyWithImpl<$Res>
-    implements _$PlaceOpeningPeriodCopyWith<$Res> {
-  __$PlaceOpeningPeriodCopyWithImpl(
-      _PlaceOpeningPeriod _value, $Res Function(_PlaceOpeningPeriod) _then)
-      : super(_value, (v) => _then(v as _PlaceOpeningPeriod));
+    implements _$$_PlaceOpeningPeriodCopyWith<$Res> {
+  __$$_PlaceOpeningPeriodCopyWithImpl(
+      _$_PlaceOpeningPeriod _value, $Res Function(_$_PlaceOpeningPeriod) _then)
+      : super(_value, (v) => _then(v as _$_PlaceOpeningPeriod));
 
   @override
-  _PlaceOpeningPeriod get _value => super._value as _PlaceOpeningPeriod;
+  _$_PlaceOpeningPeriod get _value => super._value as _$_PlaceOpeningPeriod;
 
   @override
   $Res call({
     Object? close = freezed,
     Object? open = freezed,
   }) {
-    return _then(_PlaceOpeningPeriod(
+    return _then(_$_PlaceOpeningPeriod(
       close: close == freezed
           ? _value.close
           : close // ignore: cast_nullable_to_non_nullable
@@ -370,7 +339,7 @@ class _$_PlaceOpeningPeriod
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PlaceOpeningPeriod &&
+            other is _$_PlaceOpeningPeriod &&
             const DeepCollectionEquality().equals(other.close, close) &&
             const DeepCollectionEquality().equals(other.open, open));
   }
@@ -383,38 +352,25 @@ class _$_PlaceOpeningPeriod
 
   @JsonKey(ignore: true)
   @override
-  _$PlaceOpeningPeriodCopyWith<_PlaceOpeningPeriod> get copyWith =>
-      __$PlaceOpeningPeriodCopyWithImpl<_PlaceOpeningPeriod>(this, _$identity);
+  _$$_PlaceOpeningPeriodCopyWith<_$_PlaceOpeningPeriod> get copyWith =>
+      __$$_PlaceOpeningPeriodCopyWithImpl<_$_PlaceOpeningPeriod>(
+          this, _$identity);
 }
 
 abstract class _PlaceOpeningPeriod implements PlaceOpeningPeriod {
-  const factory _PlaceOpeningPeriod({PlaceHours? close, PlaceHours? open}) =
-      _$_PlaceOpeningPeriod;
+  const factory _PlaceOpeningPeriod(
+      {final PlaceHours? close,
+      final PlaceHours? open}) = _$_PlaceOpeningPeriod;
 
   @override
-  PlaceHours? get close;
+  PlaceHours? get close => throw _privateConstructorUsedError;
   @override
-  PlaceHours? get open;
+  PlaceHours? get open => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$PlaceOpeningPeriodCopyWith<_PlaceOpeningPeriod> get copyWith =>
+  _$$_PlaceOpeningPeriodCopyWith<_$_PlaceOpeningPeriod> get copyWith =>
       throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$PlaceHoursTearOff {
-  const _$PlaceHoursTearOff();
-
-  _PlaceHours call({BasicTextField<int?>? day, BasicTextField<String?>? time}) {
-    return _PlaceHours(
-      day: day,
-      time: time,
-    );
-  }
-}
-
-/// @nodoc
-const $PlaceHours = _$PlaceHoursTearOff();
 
 /// @nodoc
 mixin _$PlaceHours {
@@ -461,30 +417,31 @@ class _$PlaceHoursCopyWithImpl<$Res> implements $PlaceHoursCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$PlaceHoursCopyWith<$Res> implements $PlaceHoursCopyWith<$Res> {
-  factory _$PlaceHoursCopyWith(
-          _PlaceHours value, $Res Function(_PlaceHours) then) =
-      __$PlaceHoursCopyWithImpl<$Res>;
+abstract class _$$_PlaceHoursCopyWith<$Res>
+    implements $PlaceHoursCopyWith<$Res> {
+  factory _$$_PlaceHoursCopyWith(
+          _$_PlaceHours value, $Res Function(_$_PlaceHours) then) =
+      __$$_PlaceHoursCopyWithImpl<$Res>;
   @override
   $Res call({BasicTextField<int?>? day, BasicTextField<String?>? time});
 }
 
 /// @nodoc
-class __$PlaceHoursCopyWithImpl<$Res> extends _$PlaceHoursCopyWithImpl<$Res>
-    implements _$PlaceHoursCopyWith<$Res> {
-  __$PlaceHoursCopyWithImpl(
-      _PlaceHours _value, $Res Function(_PlaceHours) _then)
-      : super(_value, (v) => _then(v as _PlaceHours));
+class __$$_PlaceHoursCopyWithImpl<$Res> extends _$PlaceHoursCopyWithImpl<$Res>
+    implements _$$_PlaceHoursCopyWith<$Res> {
+  __$$_PlaceHoursCopyWithImpl(
+      _$_PlaceHours _value, $Res Function(_$_PlaceHours) _then)
+      : super(_value, (v) => _then(v as _$_PlaceHours));
 
   @override
-  _PlaceHours get _value => super._value as _PlaceHours;
+  _$_PlaceHours get _value => super._value as _$_PlaceHours;
 
   @override
   $Res call({
     Object? day = freezed,
     Object? time = freezed,
   }) {
-    return _then(_PlaceHours(
+    return _then(_$_PlaceHours(
       day: day == freezed
           ? _value.day
           : day // ignore: cast_nullable_to_non_nullable
@@ -525,7 +482,7 @@ class _$_PlaceHours with DiagnosticableTreeMixin implements _PlaceHours {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PlaceHours &&
+            other is _$_PlaceHours &&
             const DeepCollectionEquality().equals(other.day, day) &&
             const DeepCollectionEquality().equals(other.time, time));
   }
@@ -538,21 +495,21 @@ class _$_PlaceHours with DiagnosticableTreeMixin implements _PlaceHours {
 
   @JsonKey(ignore: true)
   @override
-  _$PlaceHoursCopyWith<_PlaceHours> get copyWith =>
-      __$PlaceHoursCopyWithImpl<_PlaceHours>(this, _$identity);
+  _$$_PlaceHoursCopyWith<_$_PlaceHours> get copyWith =>
+      __$$_PlaceHoursCopyWithImpl<_$_PlaceHours>(this, _$identity);
 }
 
 abstract class _PlaceHours implements PlaceHours {
   const factory _PlaceHours(
-      {BasicTextField<int?>? day,
-      BasicTextField<String?>? time}) = _$_PlaceHours;
+      {final BasicTextField<int?>? day,
+      final BasicTextField<String?>? time}) = _$_PlaceHours;
 
   @override
-  BasicTextField<int?>? get day;
+  BasicTextField<int?>? get day => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?>? get time;
+  BasicTextField<String?>? get time => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$PlaceHoursCopyWith<_PlaceHours> get copyWith =>
+  _$$_PlaceHoursCopyWith<_$_PlaceHours> get copyWith =>
       throw _privateConstructorUsedError;
 }

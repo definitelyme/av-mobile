@@ -12,56 +12,7 @@ part of 'google_map_place.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$GoogleMapPlaceTearOff {
-  const _$GoogleMapPlaceTearOff();
-
-  _GoogleMapPlace call(
-      {required UniqueId<String?> placeId,
-      KtList<AddressComponent> addressComponents = const KtList.empty(),
-      required BasicTextField<String?> formattedAddress,
-      required BasicTextField<String?> formattedPhoneNumber,
-      required BasicTextField<String?> icon,
-      required BasicTextField<String?> iconBackgroundColor,
-      required BasicTextField<String?> iconMaskBaseUri,
-      required BasicTextField<String?> internationalPhoneNumber,
-      required BasicTextField<String?> name,
-      required BasicTextField<double?> rating,
-      required BasicTextField<String?> reference,
-      KtList<BasicTextField<String?>?> types = const KtList.empty(),
-      required BasicTextField<String?> url,
-      required BasicTextField<String?> website,
-      PlacePlusCode? plusCode,
-      PlaceGeometry? geometry,
-      PlaceOpeningHours? openingHours,
-      PlaceStatus status = PlaceStatus.ZERO_RESULTS}) {
-    return _GoogleMapPlace(
-      placeId: placeId,
-      addressComponents: addressComponents,
-      formattedAddress: formattedAddress,
-      formattedPhoneNumber: formattedPhoneNumber,
-      icon: icon,
-      iconBackgroundColor: iconBackgroundColor,
-      iconMaskBaseUri: iconMaskBaseUri,
-      internationalPhoneNumber: internationalPhoneNumber,
-      name: name,
-      rating: rating,
-      reference: reference,
-      types: types,
-      url: url,
-      website: website,
-      plusCode: plusCode,
-      geometry: geometry,
-      openingHours: openingHours,
-      status: status,
-    );
-  }
-}
-
-/// @nodoc
-const $GoogleMapPlace = _$GoogleMapPlaceTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$GoogleMapPlace {
@@ -267,11 +218,11 @@ class _$GoogleMapPlaceCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$GoogleMapPlaceCopyWith<$Res>
+abstract class _$$_GoogleMapPlaceCopyWith<$Res>
     implements $GoogleMapPlaceCopyWith<$Res> {
-  factory _$GoogleMapPlaceCopyWith(
-          _GoogleMapPlace value, $Res Function(_GoogleMapPlace) then) =
-      __$GoogleMapPlaceCopyWithImpl<$Res>;
+  factory _$$_GoogleMapPlaceCopyWith(
+          _$_GoogleMapPlace value, $Res Function(_$_GoogleMapPlace) then) =
+      __$$_GoogleMapPlaceCopyWithImpl<$Res>;
   @override
   $Res call(
       {UniqueId<String?> placeId,
@@ -302,15 +253,15 @@ abstract class _$GoogleMapPlaceCopyWith<$Res>
 }
 
 /// @nodoc
-class __$GoogleMapPlaceCopyWithImpl<$Res>
+class __$$_GoogleMapPlaceCopyWithImpl<$Res>
     extends _$GoogleMapPlaceCopyWithImpl<$Res>
-    implements _$GoogleMapPlaceCopyWith<$Res> {
-  __$GoogleMapPlaceCopyWithImpl(
-      _GoogleMapPlace _value, $Res Function(_GoogleMapPlace) _then)
-      : super(_value, (v) => _then(v as _GoogleMapPlace));
+    implements _$$_GoogleMapPlaceCopyWith<$Res> {
+  __$$_GoogleMapPlaceCopyWithImpl(
+      _$_GoogleMapPlace _value, $Res Function(_$_GoogleMapPlace) _then)
+      : super(_value, (v) => _then(v as _$_GoogleMapPlace));
 
   @override
-  _GoogleMapPlace get _value => super._value as _GoogleMapPlace;
+  _$_GoogleMapPlace get _value => super._value as _$_GoogleMapPlace;
 
   @override
   $Res call({
@@ -333,7 +284,7 @@ class __$GoogleMapPlaceCopyWithImpl<$Res>
     Object? openingHours = freezed,
     Object? status = freezed,
   }) {
-    return _then(_GoogleMapPlace(
+    return _then(_$_GoogleMapPlace(
       placeId: placeId == freezed
           ? _value.placeId
           : placeId // ignore: cast_nullable_to_non_nullable
@@ -436,8 +387,8 @@ class _$_GoogleMapPlace extends _GoogleMapPlace with DiagnosticableTreeMixin {
 
   @override
   final UniqueId<String?> placeId;
-  @JsonKey()
   @override
+  @JsonKey()
   final KtList<AddressComponent> addressComponents;
   @override
   final BasicTextField<String?> formattedAddress;
@@ -457,8 +408,8 @@ class _$_GoogleMapPlace extends _GoogleMapPlace with DiagnosticableTreeMixin {
   final BasicTextField<double?> rating;
   @override
   final BasicTextField<String?> reference;
-  @JsonKey()
   @override
+  @JsonKey()
   final KtList<BasicTextField<String?>?> types;
   @override
   final BasicTextField<String?> url;
@@ -470,8 +421,8 @@ class _$_GoogleMapPlace extends _GoogleMapPlace with DiagnosticableTreeMixin {
   final PlaceGeometry? geometry;
   @override
   final PlaceOpeningHours? openingHours;
-  @JsonKey()
   @override
+  @JsonKey()
   final PlaceStatus status;
 
   @override
@@ -509,7 +460,7 @@ class _$_GoogleMapPlace extends _GoogleMapPlace with DiagnosticableTreeMixin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _GoogleMapPlace &&
+            other is _$_GoogleMapPlace &&
             const DeepCollectionEquality().equals(other.placeId, placeId) &&
             const DeepCollectionEquality()
                 .equals(other.addressComponents, addressComponents) &&
@@ -561,90 +512,80 @@ class _$_GoogleMapPlace extends _GoogleMapPlace with DiagnosticableTreeMixin {
 
   @JsonKey(ignore: true)
   @override
-  _$GoogleMapPlaceCopyWith<_GoogleMapPlace> get copyWith =>
-      __$GoogleMapPlaceCopyWithImpl<_GoogleMapPlace>(this, _$identity);
+  _$$_GoogleMapPlaceCopyWith<_$_GoogleMapPlace> get copyWith =>
+      __$$_GoogleMapPlaceCopyWithImpl<_$_GoogleMapPlace>(this, _$identity);
 }
 
 abstract class _GoogleMapPlace extends GoogleMapPlace {
   const factory _GoogleMapPlace(
-      {required UniqueId<String?> placeId,
-      KtList<AddressComponent> addressComponents,
-      required BasicTextField<String?> formattedAddress,
-      required BasicTextField<String?> formattedPhoneNumber,
-      required BasicTextField<String?> icon,
-      required BasicTextField<String?> iconBackgroundColor,
-      required BasicTextField<String?> iconMaskBaseUri,
-      required BasicTextField<String?> internationalPhoneNumber,
-      required BasicTextField<String?> name,
-      required BasicTextField<double?> rating,
-      required BasicTextField<String?> reference,
-      KtList<BasicTextField<String?>?> types,
-      required BasicTextField<String?> url,
-      required BasicTextField<String?> website,
-      PlacePlusCode? plusCode,
-      PlaceGeometry? geometry,
-      PlaceOpeningHours? openingHours,
-      PlaceStatus status}) = _$_GoogleMapPlace;
+      {required final UniqueId<String?> placeId,
+      final KtList<AddressComponent> addressComponents,
+      required final BasicTextField<String?> formattedAddress,
+      required final BasicTextField<String?> formattedPhoneNumber,
+      required final BasicTextField<String?> icon,
+      required final BasicTextField<String?> iconBackgroundColor,
+      required final BasicTextField<String?> iconMaskBaseUri,
+      required final BasicTextField<String?> internationalPhoneNumber,
+      required final BasicTextField<String?> name,
+      required final BasicTextField<double?> rating,
+      required final BasicTextField<String?> reference,
+      final KtList<BasicTextField<String?>?> types,
+      required final BasicTextField<String?> url,
+      required final BasicTextField<String?> website,
+      final PlacePlusCode? plusCode,
+      final PlaceGeometry? geometry,
+      final PlaceOpeningHours? openingHours,
+      final PlaceStatus status}) = _$_GoogleMapPlace;
   const _GoogleMapPlace._() : super._();
 
   @override
-  UniqueId<String?> get placeId;
+  UniqueId<String?> get placeId => throw _privateConstructorUsedError;
   @override
-  KtList<AddressComponent> get addressComponents;
+  KtList<AddressComponent> get addressComponents =>
+      throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get formattedAddress;
+  BasicTextField<String?> get formattedAddress =>
+      throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get formattedPhoneNumber;
+  BasicTextField<String?> get formattedPhoneNumber =>
+      throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get icon;
+  BasicTextField<String?> get icon => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get iconBackgroundColor;
+  BasicTextField<String?> get iconBackgroundColor =>
+      throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get iconMaskBaseUri;
+  BasicTextField<String?> get iconMaskBaseUri =>
+      throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get internationalPhoneNumber;
+  BasicTextField<String?> get internationalPhoneNumber =>
+      throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get name;
+  BasicTextField<String?> get name => throw _privateConstructorUsedError;
   @override
-  BasicTextField<double?> get rating;
+  BasicTextField<double?> get rating => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get reference;
+  BasicTextField<String?> get reference => throw _privateConstructorUsedError;
   @override
-  KtList<BasicTextField<String?>?> get types;
+  KtList<BasicTextField<String?>?> get types =>
+      throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get url;
+  BasicTextField<String?> get url => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get website;
+  BasicTextField<String?> get website => throw _privateConstructorUsedError;
   @override
-  PlacePlusCode? get plusCode;
+  PlacePlusCode? get plusCode => throw _privateConstructorUsedError;
   @override
-  PlaceGeometry? get geometry;
+  PlaceGeometry? get geometry => throw _privateConstructorUsedError;
   @override
-  PlaceOpeningHours? get openingHours;
+  PlaceOpeningHours? get openingHours => throw _privateConstructorUsedError;
   @override
-  PlaceStatus get status;
+  PlaceStatus get status => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$GoogleMapPlaceCopyWith<_GoogleMapPlace> get copyWith =>
+  _$$_GoogleMapPlaceCopyWith<_$_GoogleMapPlace> get copyWith =>
       throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$PlacePlusCodeTearOff {
-  const _$PlacePlusCodeTearOff();
-
-  _PlacePlusCode call(
-      {BasicTextField<String?>? compoundCode,
-      BasicTextField<String?>? globalCode}) {
-    return _PlacePlusCode(
-      compoundCode: compoundCode,
-      globalCode: globalCode,
-    );
-  }
-}
-
-/// @nodoc
-const $PlacePlusCode = _$PlacePlusCodeTearOff();
 
 /// @nodoc
 mixin _$PlacePlusCode {
@@ -695,11 +636,11 @@ class _$PlacePlusCodeCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$PlacePlusCodeCopyWith<$Res>
+abstract class _$$_PlacePlusCodeCopyWith<$Res>
     implements $PlacePlusCodeCopyWith<$Res> {
-  factory _$PlacePlusCodeCopyWith(
-          _PlacePlusCode value, $Res Function(_PlacePlusCode) then) =
-      __$PlacePlusCodeCopyWithImpl<$Res>;
+  factory _$$_PlacePlusCodeCopyWith(
+          _$_PlacePlusCode value, $Res Function(_$_PlacePlusCode) then) =
+      __$$_PlacePlusCodeCopyWithImpl<$Res>;
   @override
   $Res call(
       {BasicTextField<String?>? compoundCode,
@@ -707,22 +648,22 @@ abstract class _$PlacePlusCodeCopyWith<$Res>
 }
 
 /// @nodoc
-class __$PlacePlusCodeCopyWithImpl<$Res>
+class __$$_PlacePlusCodeCopyWithImpl<$Res>
     extends _$PlacePlusCodeCopyWithImpl<$Res>
-    implements _$PlacePlusCodeCopyWith<$Res> {
-  __$PlacePlusCodeCopyWithImpl(
-      _PlacePlusCode _value, $Res Function(_PlacePlusCode) _then)
-      : super(_value, (v) => _then(v as _PlacePlusCode));
+    implements _$$_PlacePlusCodeCopyWith<$Res> {
+  __$$_PlacePlusCodeCopyWithImpl(
+      _$_PlacePlusCode _value, $Res Function(_$_PlacePlusCode) _then)
+      : super(_value, (v) => _then(v as _$_PlacePlusCode));
 
   @override
-  _PlacePlusCode get _value => super._value as _PlacePlusCode;
+  _$_PlacePlusCode get _value => super._value as _$_PlacePlusCode;
 
   @override
   $Res call({
     Object? compoundCode = freezed,
     Object? globalCode = freezed,
   }) {
-    return _then(_PlacePlusCode(
+    return _then(_$_PlacePlusCode(
       compoundCode: compoundCode == freezed
           ? _value.compoundCode
           : compoundCode // ignore: cast_nullable_to_non_nullable
@@ -763,7 +704,7 @@ class _$_PlacePlusCode with DiagnosticableTreeMixin implements _PlacePlusCode {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PlacePlusCode &&
+            other is _$_PlacePlusCode &&
             const DeepCollectionEquality()
                 .equals(other.compoundCode, compoundCode) &&
             const DeepCollectionEquality()
@@ -778,21 +719,22 @@ class _$_PlacePlusCode with DiagnosticableTreeMixin implements _PlacePlusCode {
 
   @JsonKey(ignore: true)
   @override
-  _$PlacePlusCodeCopyWith<_PlacePlusCode> get copyWith =>
-      __$PlacePlusCodeCopyWithImpl<_PlacePlusCode>(this, _$identity);
+  _$$_PlacePlusCodeCopyWith<_$_PlacePlusCode> get copyWith =>
+      __$$_PlacePlusCodeCopyWithImpl<_$_PlacePlusCode>(this, _$identity);
 }
 
 abstract class _PlacePlusCode implements PlacePlusCode {
   const factory _PlacePlusCode(
-      {BasicTextField<String?>? compoundCode,
-      BasicTextField<String?>? globalCode}) = _$_PlacePlusCode;
+      {final BasicTextField<String?>? compoundCode,
+      final BasicTextField<String?>? globalCode}) = _$_PlacePlusCode;
 
   @override
-  BasicTextField<String?>? get compoundCode;
+  BasicTextField<String?>? get compoundCode =>
+      throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?>? get globalCode;
+  BasicTextField<String?>? get globalCode => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$PlacePlusCodeCopyWith<_PlacePlusCode> get copyWith =>
+  _$$_PlacePlusCodeCopyWith<_$_PlacePlusCode> get copyWith =>
       throw _privateConstructorUsedError;
 }

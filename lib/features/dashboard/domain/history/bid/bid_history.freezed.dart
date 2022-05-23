@@ -12,28 +12,7 @@ part of bid_history.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$BidHistoryTearOff {
-  const _$BidHistoryTearOff();
-
-  _BidHistory call(
-      {required AmountField<double> totalAuctionsParticipated,
-      required AmountField<double> totalWinningBid,
-      required AmountField<double> totalAmountSpent,
-      KtList<Deal> deals = const KtList.empty()}) {
-    return _BidHistory(
-      totalAuctionsParticipated: totalAuctionsParticipated,
-      totalWinningBid: totalWinningBid,
-      totalAmountSpent: totalAmountSpent,
-      deals: deals,
-    );
-  }
-}
-
-/// @nodoc
-const $BidHistory = _$BidHistoryTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$BidHistory {
@@ -98,10 +77,11 @@ class _$BidHistoryCopyWithImpl<$Res> implements $BidHistoryCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$BidHistoryCopyWith<$Res> implements $BidHistoryCopyWith<$Res> {
-  factory _$BidHistoryCopyWith(
-          _BidHistory value, $Res Function(_BidHistory) then) =
-      __$BidHistoryCopyWithImpl<$Res>;
+abstract class _$$_BidHistoryCopyWith<$Res>
+    implements $BidHistoryCopyWith<$Res> {
+  factory _$$_BidHistoryCopyWith(
+          _$_BidHistory value, $Res Function(_$_BidHistory) then) =
+      __$$_BidHistoryCopyWithImpl<$Res>;
   @override
   $Res call(
       {AmountField<double> totalAuctionsParticipated,
@@ -111,14 +91,14 @@ abstract class _$BidHistoryCopyWith<$Res> implements $BidHistoryCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$BidHistoryCopyWithImpl<$Res> extends _$BidHistoryCopyWithImpl<$Res>
-    implements _$BidHistoryCopyWith<$Res> {
-  __$BidHistoryCopyWithImpl(
-      _BidHistory _value, $Res Function(_BidHistory) _then)
-      : super(_value, (v) => _then(v as _BidHistory));
+class __$$_BidHistoryCopyWithImpl<$Res> extends _$BidHistoryCopyWithImpl<$Res>
+    implements _$$_BidHistoryCopyWith<$Res> {
+  __$$_BidHistoryCopyWithImpl(
+      _$_BidHistory _value, $Res Function(_$_BidHistory) _then)
+      : super(_value, (v) => _then(v as _$_BidHistory));
 
   @override
-  _BidHistory get _value => super._value as _BidHistory;
+  _$_BidHistory get _value => super._value as _$_BidHistory;
 
   @override
   $Res call({
@@ -127,7 +107,7 @@ class __$BidHistoryCopyWithImpl<$Res> extends _$BidHistoryCopyWithImpl<$Res>
     Object? totalAmountSpent = freezed,
     Object? deals = freezed,
   }) {
-    return _then(_BidHistory(
+    return _then(_$_BidHistory(
       totalAuctionsParticipated: totalAuctionsParticipated == freezed
           ? _value.totalAuctionsParticipated
           : totalAuctionsParticipated // ignore: cast_nullable_to_non_nullable
@@ -164,8 +144,8 @@ class _$_BidHistory extends _BidHistory {
   final AmountField<double> totalWinningBid;
   @override
   final AmountField<double> totalAmountSpent;
-  @JsonKey()
   @override
+  @JsonKey()
   final KtList<Deal> deals;
 
   @override
@@ -177,7 +157,7 @@ class _$_BidHistory extends _BidHistory {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _BidHistory &&
+            other is _$_BidHistory &&
             const DeepCollectionEquality().equals(
                 other.totalAuctionsParticipated, totalAuctionsParticipated) &&
             const DeepCollectionEquality()
@@ -197,28 +177,30 @@ class _$_BidHistory extends _BidHistory {
 
   @JsonKey(ignore: true)
   @override
-  _$BidHistoryCopyWith<_BidHistory> get copyWith =>
-      __$BidHistoryCopyWithImpl<_BidHistory>(this, _$identity);
+  _$$_BidHistoryCopyWith<_$_BidHistory> get copyWith =>
+      __$$_BidHistoryCopyWithImpl<_$_BidHistory>(this, _$identity);
 }
 
 abstract class _BidHistory extends BidHistory {
   const factory _BidHistory(
-      {required AmountField<double> totalAuctionsParticipated,
-      required AmountField<double> totalWinningBid,
-      required AmountField<double> totalAmountSpent,
-      KtList<Deal> deals}) = _$_BidHistory;
+      {required final AmountField<double> totalAuctionsParticipated,
+      required final AmountField<double> totalWinningBid,
+      required final AmountField<double> totalAmountSpent,
+      final KtList<Deal> deals}) = _$_BidHistory;
   const _BidHistory._() : super._();
 
   @override
-  AmountField<double> get totalAuctionsParticipated;
+  AmountField<double> get totalAuctionsParticipated =>
+      throw _privateConstructorUsedError;
   @override
-  AmountField<double> get totalWinningBid;
+  AmountField<double> get totalWinningBid => throw _privateConstructorUsedError;
   @override
-  AmountField<double> get totalAmountSpent;
+  AmountField<double> get totalAmountSpent =>
+      throw _privateConstructorUsedError;
   @override
-  KtList<Deal> get deals;
+  KtList<Deal> get deals => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$BidHistoryCopyWith<_BidHistory> get copyWith =>
+  _$$_BidHistoryCopyWith<_$_BidHistory> get copyWith =>
       throw _privateConstructorUsedError;
 }

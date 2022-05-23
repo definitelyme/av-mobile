@@ -12,22 +12,7 @@ part of 'place_geometry.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$PlaceGeometryTearOff {
-  const _$PlaceGeometryTearOff();
-
-  _GeometryDTO call({PlaceCoordinate? location, PlaceViewport? viewport}) {
-    return _GeometryDTO(
-      location: location,
-      viewport: viewport,
-    );
-  }
-}
-
-/// @nodoc
-const $PlaceGeometry = _$PlaceGeometryTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$PlaceGeometry {
@@ -100,11 +85,11 @@ class _$PlaceGeometryCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$GeometryDTOCopyWith<$Res>
+abstract class _$$_GeometryDTOCopyWith<$Res>
     implements $PlaceGeometryCopyWith<$Res> {
-  factory _$GeometryDTOCopyWith(
-          _GeometryDTO value, $Res Function(_GeometryDTO) then) =
-      __$GeometryDTOCopyWithImpl<$Res>;
+  factory _$$_GeometryDTOCopyWith(
+          _$_GeometryDTO value, $Res Function(_$_GeometryDTO) then) =
+      __$$_GeometryDTOCopyWithImpl<$Res>;
   @override
   $Res call({PlaceCoordinate? location, PlaceViewport? viewport});
 
@@ -115,21 +100,22 @@ abstract class _$GeometryDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$GeometryDTOCopyWithImpl<$Res> extends _$PlaceGeometryCopyWithImpl<$Res>
-    implements _$GeometryDTOCopyWith<$Res> {
-  __$GeometryDTOCopyWithImpl(
-      _GeometryDTO _value, $Res Function(_GeometryDTO) _then)
-      : super(_value, (v) => _then(v as _GeometryDTO));
+class __$$_GeometryDTOCopyWithImpl<$Res>
+    extends _$PlaceGeometryCopyWithImpl<$Res>
+    implements _$$_GeometryDTOCopyWith<$Res> {
+  __$$_GeometryDTOCopyWithImpl(
+      _$_GeometryDTO _value, $Res Function(_$_GeometryDTO) _then)
+      : super(_value, (v) => _then(v as _$_GeometryDTO));
 
   @override
-  _GeometryDTO get _value => super._value as _GeometryDTO;
+  _$_GeometryDTO get _value => super._value as _$_GeometryDTO;
 
   @override
   $Res call({
     Object? location = freezed,
     Object? viewport = freezed,
   }) {
-    return _then(_GeometryDTO(
+    return _then(_$_GeometryDTO(
       location: location == freezed
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
@@ -170,7 +156,7 @@ class _$_GeometryDTO with DiagnosticableTreeMixin implements _GeometryDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _GeometryDTO &&
+            other is _$_GeometryDTO &&
             const DeepCollectionEquality().equals(other.location, location) &&
             const DeepCollectionEquality().equals(other.viewport, viewport));
   }
@@ -183,39 +169,24 @@ class _$_GeometryDTO with DiagnosticableTreeMixin implements _GeometryDTO {
 
   @JsonKey(ignore: true)
   @override
-  _$GeometryDTOCopyWith<_GeometryDTO> get copyWith =>
-      __$GeometryDTOCopyWithImpl<_GeometryDTO>(this, _$identity);
+  _$$_GeometryDTOCopyWith<_$_GeometryDTO> get copyWith =>
+      __$$_GeometryDTOCopyWithImpl<_$_GeometryDTO>(this, _$identity);
 }
 
 abstract class _GeometryDTO implements PlaceGeometry {
   const factory _GeometryDTO(
-      {PlaceCoordinate? location, PlaceViewport? viewport}) = _$_GeometryDTO;
+      {final PlaceCoordinate? location,
+      final PlaceViewport? viewport}) = _$_GeometryDTO;
 
   @override
-  PlaceCoordinate? get location;
+  PlaceCoordinate? get location => throw _privateConstructorUsedError;
   @override
-  PlaceViewport? get viewport;
+  PlaceViewport? get viewport => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$GeometryDTOCopyWith<_GeometryDTO> get copyWith =>
+  _$$_GeometryDTOCopyWith<_$_GeometryDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$PlaceViewportTearOff {
-  const _$PlaceViewportTearOff();
-
-  _PlaceViewport call(
-      {PlaceCoordinate? northeast, PlaceCoordinate? southwest}) {
-    return _PlaceViewport(
-      northeast: northeast,
-      southwest: southwest,
-    );
-  }
-}
-
-/// @nodoc
-const $PlaceViewport = _$PlaceViewportTearOff();
 
 /// @nodoc
 mixin _$PlaceViewport {
@@ -288,11 +259,11 @@ class _$PlaceViewportCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$PlaceViewportCopyWith<$Res>
+abstract class _$$_PlaceViewportCopyWith<$Res>
     implements $PlaceViewportCopyWith<$Res> {
-  factory _$PlaceViewportCopyWith(
-          _PlaceViewport value, $Res Function(_PlaceViewport) then) =
-      __$PlaceViewportCopyWithImpl<$Res>;
+  factory _$$_PlaceViewportCopyWith(
+          _$_PlaceViewport value, $Res Function(_$_PlaceViewport) then) =
+      __$$_PlaceViewportCopyWithImpl<$Res>;
   @override
   $Res call({PlaceCoordinate? northeast, PlaceCoordinate? southwest});
 
@@ -303,22 +274,22 @@ abstract class _$PlaceViewportCopyWith<$Res>
 }
 
 /// @nodoc
-class __$PlaceViewportCopyWithImpl<$Res>
+class __$$_PlaceViewportCopyWithImpl<$Res>
     extends _$PlaceViewportCopyWithImpl<$Res>
-    implements _$PlaceViewportCopyWith<$Res> {
-  __$PlaceViewportCopyWithImpl(
-      _PlaceViewport _value, $Res Function(_PlaceViewport) _then)
-      : super(_value, (v) => _then(v as _PlaceViewport));
+    implements _$$_PlaceViewportCopyWith<$Res> {
+  __$$_PlaceViewportCopyWithImpl(
+      _$_PlaceViewport _value, $Res Function(_$_PlaceViewport) _then)
+      : super(_value, (v) => _then(v as _$_PlaceViewport));
 
   @override
-  _PlaceViewport get _value => super._value as _PlaceViewport;
+  _$_PlaceViewport get _value => super._value as _$_PlaceViewport;
 
   @override
   $Res call({
     Object? northeast = freezed,
     Object? southwest = freezed,
   }) {
-    return _then(_PlaceViewport(
+    return _then(_$_PlaceViewport(
       northeast: northeast == freezed
           ? _value.northeast
           : northeast // ignore: cast_nullable_to_non_nullable
@@ -359,7 +330,7 @@ class _$_PlaceViewport with DiagnosticableTreeMixin implements _PlaceViewport {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PlaceViewport &&
+            other is _$_PlaceViewport &&
             const DeepCollectionEquality().equals(other.northeast, northeast) &&
             const DeepCollectionEquality().equals(other.southwest, southwest));
   }
@@ -372,41 +343,24 @@ class _$_PlaceViewport with DiagnosticableTreeMixin implements _PlaceViewport {
 
   @JsonKey(ignore: true)
   @override
-  _$PlaceViewportCopyWith<_PlaceViewport> get copyWith =>
-      __$PlaceViewportCopyWithImpl<_PlaceViewport>(this, _$identity);
+  _$$_PlaceViewportCopyWith<_$_PlaceViewport> get copyWith =>
+      __$$_PlaceViewportCopyWithImpl<_$_PlaceViewport>(this, _$identity);
 }
 
 abstract class _PlaceViewport implements PlaceViewport {
   const factory _PlaceViewport(
-      {PlaceCoordinate? northeast,
-      PlaceCoordinate? southwest}) = _$_PlaceViewport;
+      {final PlaceCoordinate? northeast,
+      final PlaceCoordinate? southwest}) = _$_PlaceViewport;
 
   @override
-  PlaceCoordinate? get northeast;
+  PlaceCoordinate? get northeast => throw _privateConstructorUsedError;
   @override
-  PlaceCoordinate? get southwest;
+  PlaceCoordinate? get southwest => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$PlaceViewportCopyWith<_PlaceViewport> get copyWith =>
+  _$$_PlaceViewportCopyWith<_$_PlaceViewport> get copyWith =>
       throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$PlaceCoordinateTearOff {
-  const _$PlaceCoordinateTearOff();
-
-  _PlaceCoordinate call(
-      {required BasicTextField<double?> lat,
-      required BasicTextField<double?> lng}) {
-    return _PlaceCoordinate(
-      lat: lat,
-      lng: lng,
-    );
-  }
-}
-
-/// @nodoc
-const $PlaceCoordinate = _$PlaceCoordinateTearOff();
 
 /// @nodoc
 mixin _$PlaceCoordinate {
@@ -454,32 +408,32 @@ class _$PlaceCoordinateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$PlaceCoordinateCopyWith<$Res>
+abstract class _$$_PlaceCoordinateCopyWith<$Res>
     implements $PlaceCoordinateCopyWith<$Res> {
-  factory _$PlaceCoordinateCopyWith(
-          _PlaceCoordinate value, $Res Function(_PlaceCoordinate) then) =
-      __$PlaceCoordinateCopyWithImpl<$Res>;
+  factory _$$_PlaceCoordinateCopyWith(
+          _$_PlaceCoordinate value, $Res Function(_$_PlaceCoordinate) then) =
+      __$$_PlaceCoordinateCopyWithImpl<$Res>;
   @override
   $Res call({BasicTextField<double?> lat, BasicTextField<double?> lng});
 }
 
 /// @nodoc
-class __$PlaceCoordinateCopyWithImpl<$Res>
+class __$$_PlaceCoordinateCopyWithImpl<$Res>
     extends _$PlaceCoordinateCopyWithImpl<$Res>
-    implements _$PlaceCoordinateCopyWith<$Res> {
-  __$PlaceCoordinateCopyWithImpl(
-      _PlaceCoordinate _value, $Res Function(_PlaceCoordinate) _then)
-      : super(_value, (v) => _then(v as _PlaceCoordinate));
+    implements _$$_PlaceCoordinateCopyWith<$Res> {
+  __$$_PlaceCoordinateCopyWithImpl(
+      _$_PlaceCoordinate _value, $Res Function(_$_PlaceCoordinate) _then)
+      : super(_value, (v) => _then(v as _$_PlaceCoordinate));
 
   @override
-  _PlaceCoordinate get _value => super._value as _PlaceCoordinate;
+  _$_PlaceCoordinate get _value => super._value as _$_PlaceCoordinate;
 
   @override
   $Res call({
     Object? lat = freezed,
     Object? lng = freezed,
   }) {
-    return _then(_PlaceCoordinate(
+    return _then(_$_PlaceCoordinate(
       lat: lat == freezed
           ? _value.lat
           : lat // ignore: cast_nullable_to_non_nullable
@@ -522,7 +476,7 @@ class _$_PlaceCoordinate
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PlaceCoordinate &&
+            other is _$_PlaceCoordinate &&
             const DeepCollectionEquality().equals(other.lat, lat) &&
             const DeepCollectionEquality().equals(other.lng, lng));
   }
@@ -535,21 +489,21 @@ class _$_PlaceCoordinate
 
   @JsonKey(ignore: true)
   @override
-  _$PlaceCoordinateCopyWith<_PlaceCoordinate> get copyWith =>
-      __$PlaceCoordinateCopyWithImpl<_PlaceCoordinate>(this, _$identity);
+  _$$_PlaceCoordinateCopyWith<_$_PlaceCoordinate> get copyWith =>
+      __$$_PlaceCoordinateCopyWithImpl<_$_PlaceCoordinate>(this, _$identity);
 }
 
 abstract class _PlaceCoordinate implements PlaceCoordinate {
   const factory _PlaceCoordinate(
-      {required BasicTextField<double?> lat,
-      required BasicTextField<double?> lng}) = _$_PlaceCoordinate;
+      {required final BasicTextField<double?> lat,
+      required final BasicTextField<double?> lng}) = _$_PlaceCoordinate;
 
   @override
-  BasicTextField<double?> get lat;
+  BasicTextField<double?> get lat => throw _privateConstructorUsedError;
   @override
-  BasicTextField<double?> get lng;
+  BasicTextField<double?> get lng => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$PlaceCoordinateCopyWith<_PlaceCoordinate> get copyWith =>
+  _$$_PlaceCoordinateCopyWith<_$_PlaceCoordinate> get copyWith =>
       throw _privateConstructorUsedError;
 }

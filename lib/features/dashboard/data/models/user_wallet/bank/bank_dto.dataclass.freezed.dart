@@ -12,32 +12,11 @@ part of bank_dto.dataclass.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 BankDTO _$BankDTOFromJson(Map<String, dynamic> json) {
   return _BankDTO.fromJson(json);
 }
-
-/// @nodoc
-class _$BankDTOTearOff {
-  const _$BankDTOTearOff();
-
-  _BankDTO call(
-      {String? status, String? message, List<BankDTOData> data = const []}) {
-    return _BankDTO(
-      status: status,
-      message: message,
-      data: data,
-    );
-  }
-
-  BankDTO fromJson(Map<String, Object?> json) {
-    return BankDTO.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $BankDTO = _$BankDTOTearOff();
 
 /// @nodoc
 mixin _$BankDTO {
@@ -89,21 +68,22 @@ class _$BankDTOCopyWithImpl<$Res> implements $BankDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$BankDTOCopyWith<$Res> implements $BankDTOCopyWith<$Res> {
-  factory _$BankDTOCopyWith(_BankDTO value, $Res Function(_BankDTO) then) =
-      __$BankDTOCopyWithImpl<$Res>;
+abstract class _$$_BankDTOCopyWith<$Res> implements $BankDTOCopyWith<$Res> {
+  factory _$$_BankDTOCopyWith(
+          _$_BankDTO value, $Res Function(_$_BankDTO) then) =
+      __$$_BankDTOCopyWithImpl<$Res>;
   @override
   $Res call({String? status, String? message, List<BankDTOData> data});
 }
 
 /// @nodoc
-class __$BankDTOCopyWithImpl<$Res> extends _$BankDTOCopyWithImpl<$Res>
-    implements _$BankDTOCopyWith<$Res> {
-  __$BankDTOCopyWithImpl(_BankDTO _value, $Res Function(_BankDTO) _then)
-      : super(_value, (v) => _then(v as _BankDTO));
+class __$$_BankDTOCopyWithImpl<$Res> extends _$BankDTOCopyWithImpl<$Res>
+    implements _$$_BankDTOCopyWith<$Res> {
+  __$$_BankDTOCopyWithImpl(_$_BankDTO _value, $Res Function(_$_BankDTO) _then)
+      : super(_value, (v) => _then(v as _$_BankDTO));
 
   @override
-  _BankDTO get _value => super._value as _BankDTO;
+  _$_BankDTO get _value => super._value as _$_BankDTO;
 
   @override
   $Res call({
@@ -111,7 +91,7 @@ class __$BankDTOCopyWithImpl<$Res> extends _$BankDTOCopyWithImpl<$Res>
     Object? message = freezed,
     Object? data = freezed,
   }) {
-    return _then(_BankDTO(
+    return _then(_$_BankDTO(
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -121,7 +101,7 @@ class __$BankDTOCopyWithImpl<$Res> extends _$BankDTOCopyWithImpl<$Res>
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
       data: data == freezed
-          ? _value.data
+          ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
               as List<BankDTOData>,
     ));
@@ -131,8 +111,10 @@ class __$BankDTOCopyWithImpl<$Res> extends _$BankDTOCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_BankDTO extends _BankDTO {
-  const _$_BankDTO({this.status, this.message, this.data = const []})
-      : super._();
+  const _$_BankDTO(
+      {this.status, this.message, final List<BankDTOData> data = const []})
+      : _data = data,
+        super._();
 
   factory _$_BankDTO.fromJson(Map<String, dynamic> json) =>
       _$$_BankDTOFromJson(json);
@@ -141,9 +123,13 @@ class _$_BankDTO extends _BankDTO {
   final String? status;
   @override
   final String? message;
-  @JsonKey()
+  final List<BankDTOData> _data;
   @override
-  final List<BankDTOData> data;
+  @JsonKey()
+  List<BankDTOData> get data {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_data);
+  }
 
   @override
   String toString() {
@@ -154,23 +140,24 @@ class _$_BankDTO extends _BankDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _BankDTO &&
+            other is _$_BankDTO &&
             const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality().equals(other.message, message) &&
-            const DeepCollectionEquality().equals(other.data, data));
+            const DeepCollectionEquality().equals(other._data, _data));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(status),
       const DeepCollectionEquality().hash(message),
-      const DeepCollectionEquality().hash(data));
+      const DeepCollectionEquality().hash(_data));
 
   @JsonKey(ignore: true)
   @override
-  _$BankDTOCopyWith<_BankDTO> get copyWith =>
-      __$BankDTOCopyWithImpl<_BankDTO>(this, _$identity);
+  _$$_BankDTOCopyWith<_$_BankDTO> get copyWith =>
+      __$$_BankDTOCopyWithImpl<_$_BankDTO>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -180,49 +167,28 @@ class _$_BankDTO extends _BankDTO {
 
 abstract class _BankDTO extends BankDTO {
   const factory _BankDTO(
-      {String? status, String? message, List<BankDTOData> data}) = _$_BankDTO;
+      {final String? status,
+      final String? message,
+      final List<BankDTOData> data}) = _$_BankDTO;
   const _BankDTO._() : super._();
 
   factory _BankDTO.fromJson(Map<String, dynamic> json) = _$_BankDTO.fromJson;
 
   @override
-  String? get status;
+  String? get status => throw _privateConstructorUsedError;
   @override
-  String? get message;
+  String? get message => throw _privateConstructorUsedError;
   @override
-  List<BankDTOData> get data;
+  List<BankDTOData> get data => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$BankDTOCopyWith<_BankDTO> get copyWith =>
+  _$$_BankDTOCopyWith<_$_BankDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 BankDTOData _$BankDTODataFromJson(Map<String, dynamic> json) {
   return _BankDTOData.fromJson(json);
 }
-
-/// @nodoc
-class _$BankDTODataTearOff {
-  const _$BankDTODataTearOff();
-
-  _BankDTOData call(
-      {@StringSerializer() String? id,
-      String? code,
-      @JsonKey(name: 'name') String? bank}) {
-    return _BankDTOData(
-      id: id,
-      code: code,
-      bank: bank,
-    );
-  }
-
-  BankDTOData fromJson(Map<String, Object?> json) {
-    return BankDTOData.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $BankDTOData = _$BankDTODataTearOff();
 
 /// @nodoc
 mixin _$BankDTOData {
@@ -281,11 +247,11 @@ class _$BankDTODataCopyWithImpl<$Res> implements $BankDTODataCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$BankDTODataCopyWith<$Res>
+abstract class _$$_BankDTODataCopyWith<$Res>
     implements $BankDTODataCopyWith<$Res> {
-  factory _$BankDTODataCopyWith(
-          _BankDTOData value, $Res Function(_BankDTOData) then) =
-      __$BankDTODataCopyWithImpl<$Res>;
+  factory _$$_BankDTODataCopyWith(
+          _$_BankDTOData value, $Res Function(_$_BankDTOData) then) =
+      __$$_BankDTODataCopyWithImpl<$Res>;
   @override
   $Res call(
       {@StringSerializer() String? id,
@@ -294,14 +260,14 @@ abstract class _$BankDTODataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$BankDTODataCopyWithImpl<$Res> extends _$BankDTODataCopyWithImpl<$Res>
-    implements _$BankDTODataCopyWith<$Res> {
-  __$BankDTODataCopyWithImpl(
-      _BankDTOData _value, $Res Function(_BankDTOData) _then)
-      : super(_value, (v) => _then(v as _BankDTOData));
+class __$$_BankDTODataCopyWithImpl<$Res> extends _$BankDTODataCopyWithImpl<$Res>
+    implements _$$_BankDTODataCopyWith<$Res> {
+  __$$_BankDTODataCopyWithImpl(
+      _$_BankDTOData _value, $Res Function(_$_BankDTOData) _then)
+      : super(_value, (v) => _then(v as _$_BankDTOData));
 
   @override
-  _BankDTOData get _value => super._value as _BankDTOData;
+  _$_BankDTOData get _value => super._value as _$_BankDTOData;
 
   @override
   $Res call({
@@ -309,7 +275,7 @@ class __$BankDTODataCopyWithImpl<$Res> extends _$BankDTODataCopyWithImpl<$Res>
     Object? code = freezed,
     Object? bank = freezed,
   }) {
-    return _then(_BankDTOData(
+    return _then(_$_BankDTOData(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -356,12 +322,13 @@ class _$_BankDTOData extends _BankDTOData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _BankDTOData &&
+            other is _$_BankDTOData &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.code, code) &&
             const DeepCollectionEquality().equals(other.bank, bank));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -371,8 +338,8 @@ class _$_BankDTOData extends _BankDTOData {
 
   @JsonKey(ignore: true)
   @override
-  _$BankDTODataCopyWith<_BankDTOData> get copyWith =>
-      __$BankDTODataCopyWithImpl<_BankDTOData>(this, _$identity);
+  _$$_BankDTODataCopyWith<_$_BankDTOData> get copyWith =>
+      __$$_BankDTODataCopyWithImpl<_$_BankDTOData>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -382,9 +349,9 @@ class _$_BankDTOData extends _BankDTOData {
 
 abstract class _BankDTOData extends BankDTOData {
   const factory _BankDTOData(
-      {@StringSerializer() String? id,
-      String? code,
-      @JsonKey(name: 'name') String? bank}) = _$_BankDTOData;
+      {@StringSerializer() final String? id,
+      final String? code,
+      @JsonKey(name: 'name') final String? bank}) = _$_BankDTOData;
   const _BankDTOData._() : super._();
 
   factory _BankDTOData.fromJson(Map<String, dynamic> json) =
@@ -392,14 +359,14 @@ abstract class _BankDTOData extends BankDTOData {
 
   @override
   @StringSerializer()
-  String? get id;
+  String? get id => throw _privateConstructorUsedError;
   @override
-  String? get code;
+  String? get code => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'name')
-  String? get bank;
+  String? get bank => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$BankDTODataCopyWith<_BankDTOData> get copyWith =>
+  _$$_BankDTODataCopyWith<_$_BankDTOData> get copyWith =>
       throw _privateConstructorUsedError;
 }

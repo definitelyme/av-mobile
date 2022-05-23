@@ -45,65 +45,71 @@ class AppRouter extends _i6.RootStackRouter {
     },
     LoginRoute.name: (routeData) {
       return _i6.AdaptivePage<dynamic>(
-          routeData: routeData, child: const _i2.LoginScreen(), title: 'Login');
+          routeData: routeData,
+          child: _i6.WrappedRoute(child: const _i2.LoginScreen()),
+          title: 'Login');
     },
     SignupRoute.name: (routeData) {
       return _i6.AdaptivePage<dynamic>(
           routeData: routeData,
-          child: const _i2.SignupScreen(),
+          child: _i6.WrappedRoute(child: const _i2.SignupScreen()),
           title: 'Sign Up');
     },
     ForgotPasswordRoute.name: (routeData) {
       return _i6.AdaptivePage<dynamic>(
           routeData: routeData,
-          child: const _i2.ForgotPasswordScreen(),
+          child: _i6.WrappedRoute(child: const _i2.ForgotPasswordScreen()),
           fullscreenDialog: true,
           title: 'Forgot Password');
     },
     PasswordResetRoute.name: (routeData) {
       return _i6.AdaptivePage<dynamic>(
           routeData: routeData,
-          child: const _i2.PasswordResetScreen(),
+          child: _i6.WrappedRoute(child: const _i2.PasswordResetScreen()),
           fullscreenDialog: true,
           title: 'Reset Password');
     },
     PhoneVerificationRoute.name: (routeData) {
       return _i6.AdaptivePage<dynamic>(
           routeData: routeData,
-          child: const _i2.PhoneVerificationScreen(),
+          child: _i6.WrappedRoute(child: const _i2.PhoneVerificationScreen()),
           fullscreenDialog: true,
           title: 'OTP');
     },
     DashboardRoute.name: (routeData) {
       return _i6.AdaptivePage<dynamic>(
-          routeData: routeData, child: const _i3.DashboardScreen());
+          routeData: routeData,
+          child: _i6.WrappedRoute(child: const _i3.DashboardScreen()));
     },
     DealDetailRoute.name: (routeData) {
       final args = routeData.argsAs<DealDetailRouteArgs>();
       return _i6.AdaptivePage<dynamic>(
           routeData: routeData,
-          child: _i3.DealDetailScreen(args.deal, key: args.key),
+          child: _i6.WrappedRoute(
+              child: _i3.DealDetailScreen(args.deal, key: args.key)),
           title: 'Product');
     },
     DealsListRoute.name: (routeData) {
       final args = routeData.argsAs<DealsListRouteArgs>();
       return _i6.AdaptivePage<dynamic>(
           routeData: routeData,
-          child: _i3.DealsListScreen(args.title,
-              key: args.key,
-              isPrivate: args.isPrivate,
-              type: args.type,
-              bidStatus: args.bidStatus,
-              category: args.category));
+          child: _i6.WrappedRoute(
+              child: _i3.DealsListScreen(args.title,
+                  key: args.key,
+                  isPrivate: args.isPrivate,
+                  type: args.type,
+                  bidStatus: args.bidStatus,
+                  category: args.category)));
     },
     ProductListRoute.name: (routeData) {
       return _i6.AdaptivePage<dynamic>(
-          routeData: routeData, child: const _i3.ProductListScreen());
+          routeData: routeData,
+          child: _i6.WrappedRoute(child: const _i3.ProductListScreen()));
     },
     FundWalletRoute.name: (routeData) {
       return _i6.AdaptivePage<dynamic>(
           routeData: routeData,
-          child: const _i3.FundWalletScreen(),
+          child: _i6.WrappedRoute(child: const _i3.FundWalletScreen()),
           title: 'Fund Wallet');
     },
     AddCardRoute.name: (routeData) {
@@ -111,14 +117,15 @@ class AppRouter extends _i6.RootStackRouter {
           orElse: () => const AddCardRouteArgs());
       return _i6.AdaptivePage<dynamic>(
           routeData: routeData,
-          child: _i3.AddCardScreen(
-              key: args.key, intendedRoute: args.intendedRoute),
+          child: _i6.WrappedRoute(
+              child: _i3.AddCardScreen(
+                  key: args.key, intendedRoute: args.intendedRoute)),
           title: 'Add Card');
     },
     WithdrawalRoute.name: (routeData) {
       return _i6.AdaptivePage<dynamic>(
           routeData: routeData,
-          child: const _i3.WithdrawalScreen(),
+          child: _i6.WrappedRoute(child: const _i3.WithdrawalScreen()),
           title: 'Withdraw to Account');
     },
     TransactionPinSetupRoute.name: (routeData) {
@@ -126,60 +133,64 @@ class AppRouter extends _i6.RootStackRouter {
           orElse: () => const TransactionPinSetupRouteArgs());
       return _i6.AdaptivePage<dynamic>(
           routeData: routeData,
-          child: _i3.TransactionPinSetupScreen(
-              key: args.key,
-              requestedOTP: args.requestedOTP,
-              duration: args.duration),
+          child: _i6.WrappedRoute(
+              child: _i3.TransactionPinSetupScreen(
+                  key: args.key,
+                  requestedOTP: args.requestedOTP,
+                  duration: args.duration)),
           title: 'Withdraw PIN Setup');
     },
     ForgotTransactionPinRoute.name: (routeData) {
       return _i6.AdaptivePage<dynamic>(
           routeData: routeData,
-          child: const _i3.ForgotTransactionPinScreen(),
+          child:
+              _i6.WrappedRoute(child: const _i3.ForgotTransactionPinScreen()),
           title: 'Forgot Transaction PIN');
     },
     WalletHistoryRoute.name: (routeData) {
       return _i6.AdaptivePage<dynamic>(
           routeData: routeData,
-          child: const _i3.WalletHistoryScreen(),
+          child: _i6.WrappedRoute(child: const _i3.WalletHistoryScreen()),
           title: 'Wallet Activities');
     },
     MyBidsRoute.name: (routeData) {
       return _i6.AdaptivePage<dynamic>(
           routeData: routeData,
-          child: const _i3.MyBidsScreen(),
+          child: _i6.WrappedRoute(child: const _i3.MyBidsScreen()),
           title: 'Bidding Activities');
     },
     MySellingsRoute.name: (routeData) {
       return _i6.AdaptivePage<dynamic>(
           routeData: routeData,
-          child: const _i3.MySellingsScreen(),
+          child: _i6.WrappedRoute(child: const _i3.MySellingsScreen()),
           title: 'Selling Activities');
     },
     MyWishlistRoute.name: (routeData) {
       return _i6.AdaptivePage<dynamic>(
           routeData: routeData,
-          child: const _i3.MyWishlistScreen(),
+          child: _i6.WrappedRoute(child: const _i3.MyWishlistScreen()),
           title: 'My Wishlist');
     },
     MyReviewsRoute.name: (routeData) {
       return _i6.AdaptivePage<dynamic>(
           routeData: routeData,
-          child: const _i3.MyReviewsScreen(),
+          child: _i6.WrappedRoute(child: const _i3.MyReviewsScreen()),
           title: 'My Reviews');
     },
     EditProfileRoute.name: (routeData) {
       final args = routeData.argsAs<EditProfileRouteArgs>();
       return _i6.AdaptivePage<dynamic>(
           routeData: routeData,
-          child: _i3.EditProfileScreen(args.user, key: args.key),
+          child: _i6.WrappedRoute(
+              child: _i3.EditProfileScreen(args.user, key: args.key)),
           title: 'Edit Profile');
     },
     PricingPlanRoute.name: (routeData) {
       final args = routeData.argsAs<PricingPlanRouteArgs>();
       return _i6.AdaptivePage<dynamic>(
           routeData: routeData,
-          child: _i3.PricingPlanScreen(args.product, key: args.key),
+          child: _i6.WrappedRoute(
+              child: _i3.PricingPlanScreen(args.product, key: args.key)),
           fullscreenDialog: true,
           title: 'Pricing Plan');
     },
@@ -187,20 +198,21 @@ class AppRouter extends _i6.RootStackRouter {
       final args = routeData.argsAs<SuccessRouteArgs>();
       return _i6.AdaptivePage<dynamic>(
           routeData: routeData,
-          child: _i4.SuccessScreen(
-              key: args.key,
-              svg: args.svg,
-              image: args.image,
-              title: args.title,
-              description: args.description,
-              buttonText: args.buttonText,
-              animationDuration: args.animationDuration,
-              fit: args.fit,
-              width: args.width,
-              height: args.height,
-              onButtonPressed: args.onButtonPressed,
-              onBackPressed: args.onBackPressed,
-              hasAppBar: args.hasAppBar),
+          child: _i6.WrappedRoute(
+              child: _i4.SuccessScreen(
+                  key: args.key,
+                  svg: args.svg,
+                  image: args.image,
+                  title: args.title,
+                  description: args.description,
+                  buttonText: args.buttonText,
+                  animationDuration: args.animationDuration,
+                  fit: args.fit,
+                  width: args.width,
+                  height: args.height,
+                  onButtonPressed: args.onButtonPressed,
+                  onBackPressed: args.onBackPressed,
+                  hasAppBar: args.hasAppBar)),
           fullscreenDialog: true);
     },
     CountryPickerRoute.name: (routeData) {

@@ -12,43 +12,11 @@ part of terms_information_dto.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 TermsInformationDTO _$TermsInformationDTOFromJson(Map<String, dynamic> json) {
   return _TermsInformationDTO.fromJson(json);
 }
-
-/// @nodoc
-class _$TermsInformationDTOTearOff {
-  const _$TermsInformationDTOTearOff();
-
-  _TermsInformationDTO call(
-      {@StringSerializer()
-          int? yearOfPurchase,
-      @JsonKey(toJson: BooleanSerializer.toJsonString)
-      @BooleanSerializer()
-          bool? repairHistory,
-      @JsonKey(toJson: BooleanSerializer.toJsonString)
-      @BooleanSerializer()
-          bool? refundPolicy,
-      String? warranty,
-      String? otherInfo}) {
-    return _TermsInformationDTO(
-      yearOfPurchase: yearOfPurchase,
-      repairHistory: repairHistory,
-      refundPolicy: refundPolicy,
-      warranty: warranty,
-      otherInfo: otherInfo,
-    );
-  }
-
-  TermsInformationDTO fromJson(Map<String, Object?> json) {
-    return TermsInformationDTO.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $TermsInformationDTO = _$TermsInformationDTOTearOff();
 
 /// @nodoc
 mixin _$TermsInformationDTO {
@@ -130,11 +98,11 @@ class _$TermsInformationDTOCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$TermsInformationDTOCopyWith<$Res>
+abstract class _$$_TermsInformationDTOCopyWith<$Res>
     implements $TermsInformationDTOCopyWith<$Res> {
-  factory _$TermsInformationDTOCopyWith(_TermsInformationDTO value,
-          $Res Function(_TermsInformationDTO) then) =
-      __$TermsInformationDTOCopyWithImpl<$Res>;
+  factory _$$_TermsInformationDTOCopyWith(_$_TermsInformationDTO value,
+          $Res Function(_$_TermsInformationDTO) then) =
+      __$$_TermsInformationDTOCopyWithImpl<$Res>;
   @override
   $Res call(
       {@StringSerializer()
@@ -150,15 +118,15 @@ abstract class _$TermsInformationDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$TermsInformationDTOCopyWithImpl<$Res>
+class __$$_TermsInformationDTOCopyWithImpl<$Res>
     extends _$TermsInformationDTOCopyWithImpl<$Res>
-    implements _$TermsInformationDTOCopyWith<$Res> {
-  __$TermsInformationDTOCopyWithImpl(
-      _TermsInformationDTO _value, $Res Function(_TermsInformationDTO) _then)
-      : super(_value, (v) => _then(v as _TermsInformationDTO));
+    implements _$$_TermsInformationDTOCopyWith<$Res> {
+  __$$_TermsInformationDTOCopyWithImpl(_$_TermsInformationDTO _value,
+      $Res Function(_$_TermsInformationDTO) _then)
+      : super(_value, (v) => _then(v as _$_TermsInformationDTO));
 
   @override
-  _TermsInformationDTO get _value => super._value as _TermsInformationDTO;
+  _$_TermsInformationDTO get _value => super._value as _$_TermsInformationDTO;
 
   @override
   $Res call({
@@ -168,7 +136,7 @@ class __$TermsInformationDTOCopyWithImpl<$Res>
     Object? warranty = freezed,
     Object? otherInfo = freezed,
   }) {
-    return _then(_TermsInformationDTO(
+    return _then(_$_TermsInformationDTO(
       yearOfPurchase: yearOfPurchase == freezed
           ? _value.yearOfPurchase
           : yearOfPurchase // ignore: cast_nullable_to_non_nullable
@@ -237,7 +205,7 @@ class _$_TermsInformationDTO extends _TermsInformationDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _TermsInformationDTO &&
+            other is _$_TermsInformationDTO &&
             const DeepCollectionEquality()
                 .equals(other.yearOfPurchase, yearOfPurchase) &&
             const DeepCollectionEquality()
@@ -248,6 +216,7 @@ class _$_TermsInformationDTO extends _TermsInformationDTO {
             const DeepCollectionEquality().equals(other.otherInfo, otherInfo));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -259,8 +228,8 @@ class _$_TermsInformationDTO extends _TermsInformationDTO {
 
   @JsonKey(ignore: true)
   @override
-  _$TermsInformationDTOCopyWith<_TermsInformationDTO> get copyWith =>
-      __$TermsInformationDTOCopyWithImpl<_TermsInformationDTO>(
+  _$$_TermsInformationDTOCopyWith<_$_TermsInformationDTO> get copyWith =>
+      __$$_TermsInformationDTOCopyWithImpl<_$_TermsInformationDTO>(
           this, _$identity);
 
   @override
@@ -272,15 +241,15 @@ class _$_TermsInformationDTO extends _TermsInformationDTO {
 abstract class _TermsInformationDTO extends TermsInformationDTO {
   factory _TermsInformationDTO(
       {@StringSerializer()
-          int? yearOfPurchase,
+          final int? yearOfPurchase,
       @JsonKey(toJson: BooleanSerializer.toJsonString)
       @BooleanSerializer()
-          bool? repairHistory,
+          final bool? repairHistory,
       @JsonKey(toJson: BooleanSerializer.toJsonString)
       @BooleanSerializer()
-          bool? refundPolicy,
-      String? warranty,
-      String? otherInfo}) = _$_TermsInformationDTO;
+          final bool? refundPolicy,
+      final String? warranty,
+      final String? otherInfo}) = _$_TermsInformationDTO;
   _TermsInformationDTO._() : super._();
 
   factory _TermsInformationDTO.fromJson(Map<String, dynamic> json) =
@@ -288,21 +257,21 @@ abstract class _TermsInformationDTO extends TermsInformationDTO {
 
   @override
   @StringSerializer()
-  int? get yearOfPurchase;
+  int? get yearOfPurchase => throw _privateConstructorUsedError;
   @override
   @JsonKey(toJson: BooleanSerializer.toJsonString)
   @BooleanSerializer()
-  bool? get repairHistory;
+  bool? get repairHistory => throw _privateConstructorUsedError;
   @override
   @JsonKey(toJson: BooleanSerializer.toJsonString)
   @BooleanSerializer()
-  bool? get refundPolicy;
+  bool? get refundPolicy => throw _privateConstructorUsedError;
   @override
-  String? get warranty;
+  String? get warranty => throw _privateConstructorUsedError;
   @override
-  String? get otherInfo;
+  String? get otherInfo => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$TermsInformationDTOCopyWith<_TermsInformationDTO> get copyWith =>
+  _$$_TermsInformationDTOCopyWith<_$_TermsInformationDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }

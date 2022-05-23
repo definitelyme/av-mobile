@@ -12,26 +12,7 @@ part of access_token.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$AccessTokenTearOff {
-  const _$AccessTokenTearOff();
-
-  _AccessToken call(
-      {required BasicTextField<String?> accessToken,
-      required TokenType tokenType,
-      required BasicTextField<int?> expiryDate}) {
-    return _AccessToken(
-      accessToken: accessToken,
-      tokenType: tokenType,
-      expiryDate: expiryDate,
-    );
-  }
-}
-
-/// @nodoc
-const $AccessToken = _$AccessTokenTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$AccessToken {
@@ -87,11 +68,11 @@ class _$AccessTokenCopyWithImpl<$Res> implements $AccessTokenCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$AccessTokenCopyWith<$Res>
+abstract class _$$_AccessTokenCopyWith<$Res>
     implements $AccessTokenCopyWith<$Res> {
-  factory _$AccessTokenCopyWith(
-          _AccessToken value, $Res Function(_AccessToken) then) =
-      __$AccessTokenCopyWithImpl<$Res>;
+  factory _$$_AccessTokenCopyWith(
+          _$_AccessToken value, $Res Function(_$_AccessToken) then) =
+      __$$_AccessTokenCopyWithImpl<$Res>;
   @override
   $Res call(
       {BasicTextField<String?> accessToken,
@@ -100,14 +81,14 @@ abstract class _$AccessTokenCopyWith<$Res>
 }
 
 /// @nodoc
-class __$AccessTokenCopyWithImpl<$Res> extends _$AccessTokenCopyWithImpl<$Res>
-    implements _$AccessTokenCopyWith<$Res> {
-  __$AccessTokenCopyWithImpl(
-      _AccessToken _value, $Res Function(_AccessToken) _then)
-      : super(_value, (v) => _then(v as _AccessToken));
+class __$$_AccessTokenCopyWithImpl<$Res> extends _$AccessTokenCopyWithImpl<$Res>
+    implements _$$_AccessTokenCopyWith<$Res> {
+  __$$_AccessTokenCopyWithImpl(
+      _$_AccessToken _value, $Res Function(_$_AccessToken) _then)
+      : super(_value, (v) => _then(v as _$_AccessToken));
 
   @override
-  _AccessToken get _value => super._value as _AccessToken;
+  _$_AccessToken get _value => super._value as _$_AccessToken;
 
   @override
   $Res call({
@@ -115,7 +96,7 @@ class __$AccessTokenCopyWithImpl<$Res> extends _$AccessTokenCopyWithImpl<$Res>
     Object? tokenType = freezed,
     Object? expiryDate = freezed,
   }) {
-    return _then(_AccessToken(
+    return _then(_$_AccessToken(
       accessToken: accessToken == freezed
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
@@ -157,7 +138,7 @@ class _$_AccessToken extends _AccessToken {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AccessToken &&
+            other is _$_AccessToken &&
             const DeepCollectionEquality()
                 .equals(other.accessToken, accessToken) &&
             const DeepCollectionEquality().equals(other.tokenType, tokenType) &&
@@ -174,25 +155,25 @@ class _$_AccessToken extends _AccessToken {
 
   @JsonKey(ignore: true)
   @override
-  _$AccessTokenCopyWith<_AccessToken> get copyWith =>
-      __$AccessTokenCopyWithImpl<_AccessToken>(this, _$identity);
+  _$$_AccessTokenCopyWith<_$_AccessToken> get copyWith =>
+      __$$_AccessTokenCopyWithImpl<_$_AccessToken>(this, _$identity);
 }
 
 abstract class _AccessToken extends AccessToken {
   const factory _AccessToken(
-      {required BasicTextField<String?> accessToken,
-      required TokenType tokenType,
-      required BasicTextField<int?> expiryDate}) = _$_AccessToken;
+      {required final BasicTextField<String?> accessToken,
+      required final TokenType tokenType,
+      required final BasicTextField<int?> expiryDate}) = _$_AccessToken;
   const _AccessToken._() : super._();
 
   @override
-  BasicTextField<String?> get accessToken;
+  BasicTextField<String?> get accessToken => throw _privateConstructorUsedError;
   @override
-  TokenType get tokenType;
+  TokenType get tokenType => throw _privateConstructorUsedError;
   @override
-  BasicTextField<int?> get expiryDate;
+  BasicTextField<int?> get expiryDate => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AccessTokenCopyWith<_AccessToken> get copyWith =>
+  _$$_AccessTokenCopyWith<_$_AccessToken> get copyWith =>
       throw _privateConstructorUsedError;
 }

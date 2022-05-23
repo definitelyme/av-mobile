@@ -12,31 +12,11 @@ part of product_dto.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 ProductDTO _$ProductDTOFromJson(Map<String, dynamic> json) {
   return _ProductDTO.fromJson(json);
 }
-
-/// @nodoc
-class _$ProductDTOTearOff {
-  const _$ProductDTOTearOff();
-
-  _ProductDTO call(
-      {@JsonKey(name: '_meta') MetaDTO? meta, required ProductDTOData data}) {
-    return _ProductDTO(
-      meta: meta,
-      data: data,
-    );
-  }
-
-  ProductDTO fromJson(Map<String, Object?> json) {
-    return ProductDTO.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $ProductDTO = _$ProductDTOTearOff();
 
 /// @nodoc
 mixin _$ProductDTO {
@@ -106,10 +86,11 @@ class _$ProductDTOCopyWithImpl<$Res> implements $ProductDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$ProductDTOCopyWith<$Res> implements $ProductDTOCopyWith<$Res> {
-  factory _$ProductDTOCopyWith(
-          _ProductDTO value, $Res Function(_ProductDTO) then) =
-      __$ProductDTOCopyWithImpl<$Res>;
+abstract class _$$_ProductDTOCopyWith<$Res>
+    implements $ProductDTOCopyWith<$Res> {
+  factory _$$_ProductDTOCopyWith(
+          _$_ProductDTO value, $Res Function(_$_ProductDTO) then) =
+      __$$_ProductDTOCopyWithImpl<$Res>;
   @override
   $Res call({@JsonKey(name: '_meta') MetaDTO? meta, ProductDTOData data});
 
@@ -120,21 +101,21 @@ abstract class _$ProductDTOCopyWith<$Res> implements $ProductDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$ProductDTOCopyWithImpl<$Res> extends _$ProductDTOCopyWithImpl<$Res>
-    implements _$ProductDTOCopyWith<$Res> {
-  __$ProductDTOCopyWithImpl(
-      _ProductDTO _value, $Res Function(_ProductDTO) _then)
-      : super(_value, (v) => _then(v as _ProductDTO));
+class __$$_ProductDTOCopyWithImpl<$Res> extends _$ProductDTOCopyWithImpl<$Res>
+    implements _$$_ProductDTOCopyWith<$Res> {
+  __$$_ProductDTOCopyWithImpl(
+      _$_ProductDTO _value, $Res Function(_$_ProductDTO) _then)
+      : super(_value, (v) => _then(v as _$_ProductDTO));
 
   @override
-  _ProductDTO get _value => super._value as _ProductDTO;
+  _$_ProductDTO get _value => super._value as _$_ProductDTO;
 
   @override
   $Res call({
     Object? meta = freezed,
     Object? data = freezed,
   }) {
-    return _then(_ProductDTO(
+    return _then(_$_ProductDTO(
       meta: meta == freezed
           ? _value.meta
           : meta // ignore: cast_nullable_to_non_nullable
@@ -171,11 +152,12 @@ class _$_ProductDTO extends _ProductDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ProductDTO &&
+            other is _$_ProductDTO &&
             const DeepCollectionEquality().equals(other.meta, meta) &&
             const DeepCollectionEquality().equals(other.data, data));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -184,8 +166,8 @@ class _$_ProductDTO extends _ProductDTO {
 
   @JsonKey(ignore: true)
   @override
-  _$ProductDTOCopyWith<_ProductDTO> get copyWith =>
-      __$ProductDTOCopyWithImpl<_ProductDTO>(this, _$identity);
+  _$$_ProductDTOCopyWith<_$_ProductDTO> get copyWith =>
+      __$$_ProductDTOCopyWithImpl<_$_ProductDTO>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -195,8 +177,8 @@ class _$_ProductDTO extends _ProductDTO {
 
 abstract class _ProductDTO extends ProductDTO {
   const factory _ProductDTO(
-      {@JsonKey(name: '_meta') MetaDTO? meta,
-      required ProductDTOData data}) = _$_ProductDTO;
+      {@JsonKey(name: '_meta') final MetaDTO? meta,
+      required final ProductDTOData data}) = _$_ProductDTO;
   const _ProductDTO._() : super._();
 
   factory _ProductDTO.fromJson(Map<String, dynamic> json) =
@@ -204,80 +186,18 @@ abstract class _ProductDTO extends ProductDTO {
 
   @override
   @JsonKey(name: '_meta')
-  MetaDTO? get meta;
+  MetaDTO? get meta => throw _privateConstructorUsedError;
   @override
-  ProductDTOData get data;
+  ProductDTOData get data => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ProductDTOCopyWith<_ProductDTO> get copyWith =>
+  _$$_ProductDTOCopyWith<_$_ProductDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 ProductDTOData _$ProductDTODataFromJson(Map<String, dynamic> json) {
   return _ProductDTOData.fromJson(json);
 }
-
-/// @nodoc
-class _$ProductDTODataTearOff {
-  const _$ProductDTODataTearOff();
-
-  _ProductDTOData call(
-      {BrandInformationDTO? brandInformation,
-      ShippingInformationDTO? shippingInformation,
-      TermsInformationDTO? termsInformation,
-      CategoryDTOData? category,
-      UserDTO? user,
-      UserDTO? vendor,
-      @BooleanSerializer()
-          bool? isFavorite,
-      List<String> photos = const [],
-      @BooleanSerializer()
-          bool? active,
-      @JsonKey(name: '_id')
-          String? id,
-      String? description,
-      @JsonKey(toJson: DealStatusSerializer.toJsonString)
-      @DealStatusSerializer()
-          DealStatus? status,
-      DealDTOData? deal,
-      String? lga,
-      String? name,
-      String? state,
-      String? country,
-      @TimestampConverter()
-          DateTime? createdAt,
-      @TimestampConverter()
-          DateTime? updatedAt}) {
-    return _ProductDTOData(
-      brandInformation: brandInformation,
-      shippingInformation: shippingInformation,
-      termsInformation: termsInformation,
-      category: category,
-      user: user,
-      vendor: vendor,
-      isFavorite: isFavorite,
-      photos: photos,
-      active: active,
-      id: id,
-      description: description,
-      status: status,
-      deal: deal,
-      lga: lga,
-      name: name,
-      state: state,
-      country: country,
-      createdAt: createdAt,
-      updatedAt: updatedAt,
-    );
-  }
-
-  ProductDTOData fromJson(Map<String, Object?> json) {
-    return ProductDTOData.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $ProductDTOData = _$ProductDTODataTearOff();
 
 /// @nodoc
 mixin _$ProductDTOData {
@@ -552,11 +472,11 @@ class _$ProductDTODataCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$ProductDTODataCopyWith<$Res>
+abstract class _$$_ProductDTODataCopyWith<$Res>
     implements $ProductDTODataCopyWith<$Res> {
-  factory _$ProductDTODataCopyWith(
-          _ProductDTOData value, $Res Function(_ProductDTOData) then) =
-      __$ProductDTODataCopyWithImpl<$Res>;
+  factory _$$_ProductDTODataCopyWith(
+          _$_ProductDTOData value, $Res Function(_$_ProductDTOData) then) =
+      __$$_ProductDTODataCopyWithImpl<$Res>;
   @override
   $Res call(
       {BrandInformationDTO? brandInformation,
@@ -603,15 +523,15 @@ abstract class _$ProductDTODataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$ProductDTODataCopyWithImpl<$Res>
+class __$$_ProductDTODataCopyWithImpl<$Res>
     extends _$ProductDTODataCopyWithImpl<$Res>
-    implements _$ProductDTODataCopyWith<$Res> {
-  __$ProductDTODataCopyWithImpl(
-      _ProductDTOData _value, $Res Function(_ProductDTOData) _then)
-      : super(_value, (v) => _then(v as _ProductDTOData));
+    implements _$$_ProductDTODataCopyWith<$Res> {
+  __$$_ProductDTODataCopyWithImpl(
+      _$_ProductDTOData _value, $Res Function(_$_ProductDTOData) _then)
+      : super(_value, (v) => _then(v as _$_ProductDTOData));
 
   @override
-  _ProductDTOData get _value => super._value as _ProductDTOData;
+  _$_ProductDTOData get _value => super._value as _$_ProductDTOData;
 
   @override
   $Res call({
@@ -635,7 +555,7 @@ class __$ProductDTODataCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(_ProductDTOData(
+    return _then(_$_ProductDTOData(
       brandInformation: brandInformation == freezed
           ? _value.brandInformation
           : brandInformation // ignore: cast_nullable_to_non_nullable
@@ -665,7 +585,7 @@ class __$ProductDTODataCopyWithImpl<$Res>
           : isFavorite // ignore: cast_nullable_to_non_nullable
               as bool?,
       photos: photos == freezed
-          ? _value.photos
+          ? _value._photos
           : photos // ignore: cast_nullable_to_non_nullable
               as List<String>,
       active: active == freezed
@@ -728,7 +648,7 @@ class _$_ProductDTOData extends _ProductDTOData {
       this.vendor,
       @BooleanSerializer()
           this.isFavorite,
-      this.photos = const [],
+      final List<String> photos = const [],
       @BooleanSerializer()
           this.active,
       @JsonKey(name: '_id')
@@ -746,7 +666,8 @@ class _$_ProductDTOData extends _ProductDTOData {
           this.createdAt,
       @TimestampConverter()
           this.updatedAt})
-      : super._();
+      : _photos = photos,
+        super._();
 
   factory _$_ProductDTOData.fromJson(Map<String, dynamic> json) =>
       _$$_ProductDTODataFromJson(json);
@@ -766,9 +687,14 @@ class _$_ProductDTOData extends _ProductDTOData {
   @override
   @BooleanSerializer()
   final bool? isFavorite;
-  @JsonKey()
+  final List<String> _photos;
   @override
-  final List<String> photos;
+  @JsonKey()
+  List<String> get photos {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_photos);
+  }
+
   @override
   @BooleanSerializer()
   final bool? active;
@@ -807,7 +733,7 @@ class _$_ProductDTOData extends _ProductDTOData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ProductDTOData &&
+            other is _$_ProductDTOData &&
             const DeepCollectionEquality()
                 .equals(other.brandInformation, brandInformation) &&
             const DeepCollectionEquality()
@@ -819,7 +745,7 @@ class _$_ProductDTOData extends _ProductDTOData {
             const DeepCollectionEquality().equals(other.vendor, vendor) &&
             const DeepCollectionEquality()
                 .equals(other.isFavorite, isFavorite) &&
-            const DeepCollectionEquality().equals(other.photos, photos) &&
+            const DeepCollectionEquality().equals(other._photos, _photos) &&
             const DeepCollectionEquality().equals(other.active, active) &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality()
@@ -834,6 +760,7 @@ class _$_ProductDTOData extends _ProductDTOData {
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
@@ -844,7 +771,7 @@ class _$_ProductDTOData extends _ProductDTOData {
         const DeepCollectionEquality().hash(user),
         const DeepCollectionEquality().hash(vendor),
         const DeepCollectionEquality().hash(isFavorite),
-        const DeepCollectionEquality().hash(photos),
+        const DeepCollectionEquality().hash(_photos),
         const DeepCollectionEquality().hash(active),
         const DeepCollectionEquality().hash(id),
         const DeepCollectionEquality().hash(description),
@@ -860,8 +787,8 @@ class _$_ProductDTOData extends _ProductDTOData {
 
   @JsonKey(ignore: true)
   @override
-  _$ProductDTODataCopyWith<_ProductDTOData> get copyWith =>
-      __$ProductDTODataCopyWithImpl<_ProductDTOData>(this, _$identity);
+  _$$_ProductDTODataCopyWith<_$_ProductDTOData> get copyWith =>
+      __$$_ProductDTODataCopyWithImpl<_$_ProductDTOData>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -871,112 +798,94 @@ class _$_ProductDTOData extends _ProductDTOData {
 
 abstract class _ProductDTOData extends ProductDTOData {
   factory _ProductDTOData(
-      {BrandInformationDTO? brandInformation,
-      ShippingInformationDTO? shippingInformation,
-      TermsInformationDTO? termsInformation,
-      CategoryDTOData? category,
-      UserDTO? user,
-      UserDTO? vendor,
+      {final BrandInformationDTO? brandInformation,
+      final ShippingInformationDTO? shippingInformation,
+      final TermsInformationDTO? termsInformation,
+      final CategoryDTOData? category,
+      final UserDTO? user,
+      final UserDTO? vendor,
       @BooleanSerializer()
-          bool? isFavorite,
-      List<String> photos,
+          final bool? isFavorite,
+      final List<String> photos,
       @BooleanSerializer()
-          bool? active,
+          final bool? active,
       @JsonKey(name: '_id')
-          String? id,
-      String? description,
+          final String? id,
+      final String? description,
       @JsonKey(toJson: DealStatusSerializer.toJsonString)
       @DealStatusSerializer()
-          DealStatus? status,
-      DealDTOData? deal,
-      String? lga,
-      String? name,
-      String? state,
-      String? country,
+          final DealStatus? status,
+      final DealDTOData? deal,
+      final String? lga,
+      final String? name,
+      final String? state,
+      final String? country,
       @TimestampConverter()
-          DateTime? createdAt,
+          final DateTime? createdAt,
       @TimestampConverter()
-          DateTime? updatedAt}) = _$_ProductDTOData;
+          final DateTime? updatedAt}) = _$_ProductDTOData;
   _ProductDTOData._() : super._();
 
   factory _ProductDTOData.fromJson(Map<String, dynamic> json) =
       _$_ProductDTOData.fromJson;
 
   @override
-  BrandInformationDTO? get brandInformation;
+  BrandInformationDTO? get brandInformation =>
+      throw _privateConstructorUsedError;
   @override
-  ShippingInformationDTO? get shippingInformation;
+  ShippingInformationDTO? get shippingInformation =>
+      throw _privateConstructorUsedError;
   @override
-  TermsInformationDTO? get termsInformation;
+  TermsInformationDTO? get termsInformation =>
+      throw _privateConstructorUsedError;
   @override
-  CategoryDTOData? get category;
+  CategoryDTOData? get category => throw _privateConstructorUsedError;
   @override
-  UserDTO? get user;
+  UserDTO? get user => throw _privateConstructorUsedError;
   @override
-  UserDTO? get vendor;
-  @override
-  @BooleanSerializer()
-  bool? get isFavorite;
-  @override
-  List<String> get photos;
+  UserDTO? get vendor => throw _privateConstructorUsedError;
   @override
   @BooleanSerializer()
-  bool? get active;
+  bool? get isFavorite => throw _privateConstructorUsedError;
+  @override
+  List<String> get photos => throw _privateConstructorUsedError;
+  @override
+  @BooleanSerializer()
+  bool? get active => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: '_id')
-  String? get id;
+  String? get id => throw _privateConstructorUsedError;
   @override
-  String? get description;
+  String? get description => throw _privateConstructorUsedError;
   @override
   @JsonKey(toJson: DealStatusSerializer.toJsonString)
   @DealStatusSerializer()
-  DealStatus? get status;
+  DealStatus? get status => throw _privateConstructorUsedError;
   @override
-  DealDTOData? get deal;
+  DealDTOData? get deal => throw _privateConstructorUsedError;
   @override
-  String? get lga;
+  String? get lga => throw _privateConstructorUsedError;
   @override
-  String? get name;
+  String? get name => throw _privateConstructorUsedError;
   @override
-  String? get state;
+  String? get state => throw _privateConstructorUsedError;
   @override
-  String? get country;
-  @override
-  @TimestampConverter()
-  DateTime? get createdAt;
+  String? get country => throw _privateConstructorUsedError;
   @override
   @TimestampConverter()
-  DateTime? get updatedAt;
+  DateTime? get createdAt => throw _privateConstructorUsedError;
+  @override
+  @TimestampConverter()
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ProductDTODataCopyWith<_ProductDTOData> get copyWith =>
+  _$$_ProductDTODataCopyWith<_$_ProductDTOData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 ProductListDTO _$ProductListDTOFromJson(Map<String, dynamic> json) {
   return _ProductListDTO.fromJson(json);
 }
-
-/// @nodoc
-class _$ProductListDTOTearOff {
-  const _$ProductListDTOTearOff();
-
-  _ProductListDTO call(
-      {@JsonKey(name: '_meta') MetaDTO? meta,
-      List<ProductDTOData> data = const []}) {
-    return _ProductListDTO(
-      meta: meta,
-      data: data,
-    );
-  }
-
-  ProductListDTO fromJson(Map<String, Object?> json) {
-    return ProductListDTO.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $ProductListDTO = _$ProductListDTOTearOff();
 
 /// @nodoc
 mixin _$ProductListDTO {
@@ -1039,11 +948,11 @@ class _$ProductListDTOCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$ProductListDTOCopyWith<$Res>
+abstract class _$$_ProductListDTOCopyWith<$Res>
     implements $ProductListDTOCopyWith<$Res> {
-  factory _$ProductListDTOCopyWith(
-          _ProductListDTO value, $Res Function(_ProductListDTO) then) =
-      __$ProductListDTOCopyWithImpl<$Res>;
+  factory _$$_ProductListDTOCopyWith(
+          _$_ProductListDTO value, $Res Function(_$_ProductListDTO) then) =
+      __$$_ProductListDTOCopyWithImpl<$Res>;
   @override
   $Res call({@JsonKey(name: '_meta') MetaDTO? meta, List<ProductDTOData> data});
 
@@ -1052,28 +961,28 @@ abstract class _$ProductListDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$ProductListDTOCopyWithImpl<$Res>
+class __$$_ProductListDTOCopyWithImpl<$Res>
     extends _$ProductListDTOCopyWithImpl<$Res>
-    implements _$ProductListDTOCopyWith<$Res> {
-  __$ProductListDTOCopyWithImpl(
-      _ProductListDTO _value, $Res Function(_ProductListDTO) _then)
-      : super(_value, (v) => _then(v as _ProductListDTO));
+    implements _$$_ProductListDTOCopyWith<$Res> {
+  __$$_ProductListDTOCopyWithImpl(
+      _$_ProductListDTO _value, $Res Function(_$_ProductListDTO) _then)
+      : super(_value, (v) => _then(v as _$_ProductListDTO));
 
   @override
-  _ProductListDTO get _value => super._value as _ProductListDTO;
+  _$_ProductListDTO get _value => super._value as _$_ProductListDTO;
 
   @override
   $Res call({
     Object? meta = freezed,
     Object? data = freezed,
   }) {
-    return _then(_ProductListDTO(
+    return _then(_$_ProductListDTO(
       meta: meta == freezed
           ? _value.meta
           : meta // ignore: cast_nullable_to_non_nullable
               as MetaDTO?,
       data: data == freezed
-          ? _value.data
+          ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
               as List<ProductDTOData>,
     ));
@@ -1084,8 +993,10 @@ class __$ProductListDTOCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ProductListDTO extends _ProductListDTO {
   const _$_ProductListDTO(
-      {@JsonKey(name: '_meta') this.meta, this.data = const []})
-      : super._();
+      {@JsonKey(name: '_meta') this.meta,
+      final List<ProductDTOData> data = const []})
+      : _data = data,
+        super._();
 
   factory _$_ProductListDTO.fromJson(Map<String, dynamic> json) =>
       _$$_ProductListDTOFromJson(json);
@@ -1093,9 +1004,13 @@ class _$_ProductListDTO extends _ProductListDTO {
   @override
   @JsonKey(name: '_meta')
   final MetaDTO? meta;
-  @JsonKey()
+  final List<ProductDTOData> _data;
   @override
-  final List<ProductDTOData> data;
+  @JsonKey()
+  List<ProductDTOData> get data {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_data);
+  }
 
   @override
   String toString() {
@@ -1106,21 +1021,22 @@ class _$_ProductListDTO extends _ProductListDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ProductListDTO &&
+            other is _$_ProductListDTO &&
             const DeepCollectionEquality().equals(other.meta, meta) &&
-            const DeepCollectionEquality().equals(other.data, data));
+            const DeepCollectionEquality().equals(other._data, _data));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(meta),
-      const DeepCollectionEquality().hash(data));
+      const DeepCollectionEquality().hash(_data));
 
   @JsonKey(ignore: true)
   @override
-  _$ProductListDTOCopyWith<_ProductListDTO> get copyWith =>
-      __$ProductListDTOCopyWithImpl<_ProductListDTO>(this, _$identity);
+  _$$_ProductListDTOCopyWith<_$_ProductListDTO> get copyWith =>
+      __$$_ProductListDTOCopyWithImpl<_$_ProductListDTO>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -1130,8 +1046,8 @@ class _$_ProductListDTO extends _ProductListDTO {
 
 abstract class _ProductListDTO extends ProductListDTO {
   const factory _ProductListDTO(
-      {@JsonKey(name: '_meta') MetaDTO? meta,
-      List<ProductDTOData> data}) = _$_ProductListDTO;
+      {@JsonKey(name: '_meta') final MetaDTO? meta,
+      final List<ProductDTOData> data}) = _$_ProductListDTO;
   const _ProductListDTO._() : super._();
 
   factory _ProductListDTO.fromJson(Map<String, dynamic> json) =
@@ -1139,11 +1055,11 @@ abstract class _ProductListDTO extends ProductListDTO {
 
   @override
   @JsonKey(name: '_meta')
-  MetaDTO? get meta;
+  MetaDTO? get meta => throw _privateConstructorUsedError;
   @override
-  List<ProductDTOData> get data;
+  List<ProductDTOData> get data => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ProductListDTOCopyWith<_ProductListDTO> get copyWith =>
+  _$$_ProductListDTOCopyWith<_$_ProductListDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }

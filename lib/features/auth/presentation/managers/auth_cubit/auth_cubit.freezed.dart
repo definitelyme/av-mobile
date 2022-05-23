@@ -12,50 +12,7 @@ part of auth_cubit.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$AuthStateTearOff {
-  const _$AuthStateTearOff();
-
-  _AuthState call(
-      {bool isLoading = false,
-      bool isUploadingImage = false,
-      bool validate = false,
-      bool isPasswordHidden = true,
-      bool isOldPasswordHidden = true,
-      bool passwordMatches = false,
-      bool isGoogleAuthLoading = false,
-      bool isAppleAuthLoading = false,
-      required Password oldPassword,
-      required Password confirmPassword,
-      required OTPCode code,
-      required User user,
-      required TextEditingController phoneTextController,
-      bool acceptedTerms = false,
-      Option<AppHttpResponse?> status = const None()}) {
-    return _AuthState(
-      isLoading: isLoading,
-      isUploadingImage: isUploadingImage,
-      validate: validate,
-      isPasswordHidden: isPasswordHidden,
-      isOldPasswordHidden: isOldPasswordHidden,
-      passwordMatches: passwordMatches,
-      isGoogleAuthLoading: isGoogleAuthLoading,
-      isAppleAuthLoading: isAppleAuthLoading,
-      oldPassword: oldPassword,
-      confirmPassword: confirmPassword,
-      code: code,
-      user: user,
-      phoneTextController: phoneTextController,
-      acceptedTerms: acceptedTerms,
-      status: status,
-    );
-  }
-}
-
-/// @nodoc
-const $AuthState = _$AuthStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$AuthState {
@@ -204,10 +161,10 @@ class _$AuthStateCopyWithImpl<$Res> implements $AuthStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
-  factory _$AuthStateCopyWith(
-          _AuthState value, $Res Function(_AuthState) then) =
-      __$AuthStateCopyWithImpl<$Res>;
+abstract class _$$_AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
+  factory _$$_AuthStateCopyWith(
+          _$_AuthState value, $Res Function(_$_AuthState) then) =
+      __$$_AuthStateCopyWithImpl<$Res>;
   @override
   $Res call(
       {bool isLoading,
@@ -231,13 +188,14 @@ abstract class _$AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$AuthStateCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
-    implements _$AuthStateCopyWith<$Res> {
-  __$AuthStateCopyWithImpl(_AuthState _value, $Res Function(_AuthState) _then)
-      : super(_value, (v) => _then(v as _AuthState));
+class __$$_AuthStateCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+    implements _$$_AuthStateCopyWith<$Res> {
+  __$$_AuthStateCopyWithImpl(
+      _$_AuthState _value, $Res Function(_$_AuthState) _then)
+      : super(_value, (v) => _then(v as _$_AuthState));
 
   @override
-  _AuthState get _value => super._value as _AuthState;
+  _$_AuthState get _value => super._value as _$_AuthState;
 
   @override
   $Res call({
@@ -257,7 +215,7 @@ class __$AuthStateCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
     Object? acceptedTerms = freezed,
     Object? status = freezed,
   }) {
-    return _then(_AuthState(
+    return _then(_$_AuthState(
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -343,29 +301,29 @@ class _$_AuthState extends _AuthState {
       this.status = const None()})
       : super._();
 
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isLoading;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isUploadingImage;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool validate;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isPasswordHidden;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isOldPasswordHidden;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool passwordMatches;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isGoogleAuthLoading;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isAppleAuthLoading;
   @override
   final Password oldPassword;
@@ -377,11 +335,11 @@ class _$_AuthState extends _AuthState {
   final User user;
   @override
   final TextEditingController phoneTextController;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool acceptedTerms;
-  @JsonKey()
   @override
+  @JsonKey()
   final Option<AppHttpResponse?> status;
 
   @override
@@ -393,7 +351,7 @@ class _$_AuthState extends _AuthState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AuthState &&
+            other is _$_AuthState &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality()
                 .equals(other.isUploadingImage, isUploadingImage) &&
@@ -442,61 +400,62 @@ class _$_AuthState extends _AuthState {
 
   @JsonKey(ignore: true)
   @override
-  _$AuthStateCopyWith<_AuthState> get copyWith =>
-      __$AuthStateCopyWithImpl<_AuthState>(this, _$identity);
+  _$$_AuthStateCopyWith<_$_AuthState> get copyWith =>
+      __$$_AuthStateCopyWithImpl<_$_AuthState>(this, _$identity);
 }
 
 abstract class _AuthState extends AuthState {
   const factory _AuthState(
-      {bool isLoading,
-      bool isUploadingImage,
-      bool validate,
-      bool isPasswordHidden,
-      bool isOldPasswordHidden,
-      bool passwordMatches,
-      bool isGoogleAuthLoading,
-      bool isAppleAuthLoading,
-      required Password oldPassword,
-      required Password confirmPassword,
-      required OTPCode code,
-      required User user,
-      required TextEditingController phoneTextController,
-      bool acceptedTerms,
-      Option<AppHttpResponse?> status}) = _$_AuthState;
+      {final bool isLoading,
+      final bool isUploadingImage,
+      final bool validate,
+      final bool isPasswordHidden,
+      final bool isOldPasswordHidden,
+      final bool passwordMatches,
+      final bool isGoogleAuthLoading,
+      final bool isAppleAuthLoading,
+      required final Password oldPassword,
+      required final Password confirmPassword,
+      required final OTPCode code,
+      required final User user,
+      required final TextEditingController phoneTextController,
+      final bool acceptedTerms,
+      final Option<AppHttpResponse?> status}) = _$_AuthState;
   const _AuthState._() : super._();
 
   @override
-  bool get isLoading;
+  bool get isLoading => throw _privateConstructorUsedError;
   @override
-  bool get isUploadingImage;
+  bool get isUploadingImage => throw _privateConstructorUsedError;
   @override
-  bool get validate;
+  bool get validate => throw _privateConstructorUsedError;
   @override
-  bool get isPasswordHidden;
+  bool get isPasswordHidden => throw _privateConstructorUsedError;
   @override
-  bool get isOldPasswordHidden;
+  bool get isOldPasswordHidden => throw _privateConstructorUsedError;
   @override
-  bool get passwordMatches;
+  bool get passwordMatches => throw _privateConstructorUsedError;
   @override
-  bool get isGoogleAuthLoading;
+  bool get isGoogleAuthLoading => throw _privateConstructorUsedError;
   @override
-  bool get isAppleAuthLoading;
+  bool get isAppleAuthLoading => throw _privateConstructorUsedError;
   @override
-  Password get oldPassword;
+  Password get oldPassword => throw _privateConstructorUsedError;
   @override
-  Password get confirmPassword;
+  Password get confirmPassword => throw _privateConstructorUsedError;
   @override
-  OTPCode get code;
+  OTPCode get code => throw _privateConstructorUsedError;
   @override
-  User get user;
+  User get user => throw _privateConstructorUsedError;
   @override
-  TextEditingController get phoneTextController;
+  TextEditingController get phoneTextController =>
+      throw _privateConstructorUsedError;
   @override
-  bool get acceptedTerms;
+  bool get acceptedTerms => throw _privateConstructorUsedError;
   @override
-  Option<AppHttpResponse?> get status;
+  Option<AppHttpResponse?> get status => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AuthStateCopyWith<_AuthState> get copyWith =>
+  _$$_AuthStateCopyWith<_$_AuthState> get copyWith =>
       throw _privateConstructorUsedError;
 }

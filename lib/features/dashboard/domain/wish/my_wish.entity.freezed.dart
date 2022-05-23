@@ -12,32 +12,7 @@ part of my_wish.entity.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$MyWishTearOff {
-  const _$MyWishTearOff();
-
-  _MyWish call(
-      {required UniqueId<String?> id,
-      bool active = false,
-      required Deal? deal,
-      required User? user,
-      DateTime? createdAt,
-      DateTime? updatedAt}) {
-    return _MyWish(
-      id: id,
-      active: active,
-      deal: deal,
-      user: user,
-      createdAt: createdAt,
-      updatedAt: updatedAt,
-    );
-  }
-}
-
-/// @nodoc
-const $MyWish = _$MyWishTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$MyWish {
@@ -137,9 +112,9 @@ class _$MyWishCopyWithImpl<$Res> implements $MyWishCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$MyWishCopyWith<$Res> implements $MyWishCopyWith<$Res> {
-  factory _$MyWishCopyWith(_MyWish value, $Res Function(_MyWish) then) =
-      __$MyWishCopyWithImpl<$Res>;
+abstract class _$$_MyWishCopyWith<$Res> implements $MyWishCopyWith<$Res> {
+  factory _$$_MyWishCopyWith(_$_MyWish value, $Res Function(_$_MyWish) then) =
+      __$$_MyWishCopyWithImpl<$Res>;
   @override
   $Res call(
       {UniqueId<String?> id,
@@ -156,13 +131,13 @@ abstract class _$MyWishCopyWith<$Res> implements $MyWishCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$MyWishCopyWithImpl<$Res> extends _$MyWishCopyWithImpl<$Res>
-    implements _$MyWishCopyWith<$Res> {
-  __$MyWishCopyWithImpl(_MyWish _value, $Res Function(_MyWish) _then)
-      : super(_value, (v) => _then(v as _MyWish));
+class __$$_MyWishCopyWithImpl<$Res> extends _$MyWishCopyWithImpl<$Res>
+    implements _$$_MyWishCopyWith<$Res> {
+  __$$_MyWishCopyWithImpl(_$_MyWish _value, $Res Function(_$_MyWish) _then)
+      : super(_value, (v) => _then(v as _$_MyWish));
 
   @override
-  _MyWish get _value => super._value as _MyWish;
+  _$_MyWish get _value => super._value as _$_MyWish;
 
   @override
   $Res call({
@@ -173,7 +148,7 @@ class __$MyWishCopyWithImpl<$Res> extends _$MyWishCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(_MyWish(
+    return _then(_$_MyWish(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -216,8 +191,8 @@ class _$_MyWish extends _MyWish {
 
   @override
   final UniqueId<String?> id;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool active;
   @override
   final Deal? deal;
@@ -237,7 +212,7 @@ class _$_MyWish extends _MyWish {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MyWish &&
+            other is _$_MyWish &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.active, active) &&
             const DeepCollectionEquality().equals(other.deal, deal) &&
@@ -258,33 +233,34 @@ class _$_MyWish extends _MyWish {
 
   @JsonKey(ignore: true)
   @override
-  _$MyWishCopyWith<_MyWish> get copyWith =>
-      __$MyWishCopyWithImpl<_MyWish>(this, _$identity);
+  _$$_MyWishCopyWith<_$_MyWish> get copyWith =>
+      __$$_MyWishCopyWithImpl<_$_MyWish>(this, _$identity);
 }
 
 abstract class _MyWish extends MyWish {
   const factory _MyWish(
-      {required UniqueId<String?> id,
-      bool active,
-      required Deal? deal,
-      required User? user,
-      DateTime? createdAt,
-      DateTime? updatedAt}) = _$_MyWish;
+      {required final UniqueId<String?> id,
+      final bool active,
+      required final Deal? deal,
+      required final User? user,
+      final DateTime? createdAt,
+      final DateTime? updatedAt}) = _$_MyWish;
   const _MyWish._() : super._();
 
   @override
-  UniqueId<String?> get id;
+  UniqueId<String?> get id => throw _privateConstructorUsedError;
   @override
-  bool get active;
+  bool get active => throw _privateConstructorUsedError;
   @override
-  Deal? get deal;
+  Deal? get deal => throw _privateConstructorUsedError;
   @override
-  User? get user;
+  User? get user => throw _privateConstructorUsedError;
   @override
-  DateTime? get createdAt;
+  DateTime? get createdAt => throw _privateConstructorUsedError;
   @override
-  DateTime? get updatedAt;
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$MyWishCopyWith<_MyWish> get copyWith => throw _privateConstructorUsedError;
+  _$$_MyWishCopyWith<_$_MyWish> get copyWith =>
+      throw _privateConstructorUsedError;
 }

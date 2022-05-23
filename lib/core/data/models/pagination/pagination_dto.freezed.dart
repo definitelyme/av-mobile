@@ -12,36 +12,11 @@ part of meta_field;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 PaginationDTO _$PaginationDTOFromJson(Map<String, dynamic> json) {
   return _PaginationDTO.fromJson(json);
 }
-
-/// @nodoc
-class _$PaginationDTOTearOff {
-  const _$PaginationDTOTearOff();
-
-  _PaginationDTO call(
-      {@JsonKey(name: 'current') int? currentPage,
-      @JsonKey(name: 'next') int? next,
-      @JsonKey(name: 'per_page') int? perPage,
-      @JsonKey(name: 'total_count') int? total}) {
-    return _PaginationDTO(
-      currentPage: currentPage,
-      next: next,
-      perPage: perPage,
-      total: total,
-    );
-  }
-
-  PaginationDTO fromJson(Map<String, Object?> json) {
-    return PaginationDTO.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $PaginationDTO = _$PaginationDTOTearOff();
 
 /// @nodoc
 mixin _$PaginationDTO {
@@ -110,11 +85,11 @@ class _$PaginationDTOCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$PaginationDTOCopyWith<$Res>
+abstract class _$$_PaginationDTOCopyWith<$Res>
     implements $PaginationDTOCopyWith<$Res> {
-  factory _$PaginationDTOCopyWith(
-          _PaginationDTO value, $Res Function(_PaginationDTO) then) =
-      __$PaginationDTOCopyWithImpl<$Res>;
+  factory _$$_PaginationDTOCopyWith(
+          _$_PaginationDTO value, $Res Function(_$_PaginationDTO) then) =
+      __$$_PaginationDTOCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: 'current') int? currentPage,
@@ -124,15 +99,15 @@ abstract class _$PaginationDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$PaginationDTOCopyWithImpl<$Res>
+class __$$_PaginationDTOCopyWithImpl<$Res>
     extends _$PaginationDTOCopyWithImpl<$Res>
-    implements _$PaginationDTOCopyWith<$Res> {
-  __$PaginationDTOCopyWithImpl(
-      _PaginationDTO _value, $Res Function(_PaginationDTO) _then)
-      : super(_value, (v) => _then(v as _PaginationDTO));
+    implements _$$_PaginationDTOCopyWith<$Res> {
+  __$$_PaginationDTOCopyWithImpl(
+      _$_PaginationDTO _value, $Res Function(_$_PaginationDTO) _then)
+      : super(_value, (v) => _then(v as _$_PaginationDTO));
 
   @override
-  _PaginationDTO get _value => super._value as _PaginationDTO;
+  _$_PaginationDTO get _value => super._value as _$_PaginationDTO;
 
   @override
   $Res call({
@@ -141,7 +116,7 @@ class __$PaginationDTOCopyWithImpl<$Res>
     Object? perPage = freezed,
     Object? total = freezed,
   }) {
-    return _then(_PaginationDTO(
+    return _then(_$_PaginationDTO(
       currentPage: currentPage == freezed
           ? _value.currentPage
           : currentPage // ignore: cast_nullable_to_non_nullable
@@ -197,7 +172,7 @@ class _$_PaginationDTO extends _PaginationDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PaginationDTO &&
+            other is _$_PaginationDTO &&
             const DeepCollectionEquality()
                 .equals(other.currentPage, currentPage) &&
             const DeepCollectionEquality().equals(other.next, next) &&
@@ -205,6 +180,7 @@ class _$_PaginationDTO extends _PaginationDTO {
             const DeepCollectionEquality().equals(other.total, total));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -215,8 +191,8 @@ class _$_PaginationDTO extends _PaginationDTO {
 
   @JsonKey(ignore: true)
   @override
-  _$PaginationDTOCopyWith<_PaginationDTO> get copyWith =>
-      __$PaginationDTOCopyWithImpl<_PaginationDTO>(this, _$identity);
+  _$$_PaginationDTOCopyWith<_$_PaginationDTO> get copyWith =>
+      __$$_PaginationDTOCopyWithImpl<_$_PaginationDTO>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -226,10 +202,10 @@ class _$_PaginationDTO extends _PaginationDTO {
 
 abstract class _PaginationDTO extends PaginationDTO {
   const factory _PaginationDTO(
-      {@JsonKey(name: 'current') int? currentPage,
-      @JsonKey(name: 'next') int? next,
-      @JsonKey(name: 'per_page') int? perPage,
-      @JsonKey(name: 'total_count') int? total}) = _$_PaginationDTO;
+      {@JsonKey(name: 'current') final int? currentPage,
+      @JsonKey(name: 'next') final int? next,
+      @JsonKey(name: 'per_page') final int? perPage,
+      @JsonKey(name: 'total_count') final int? total}) = _$_PaginationDTO;
   const _PaginationDTO._() : super._();
 
   factory _PaginationDTO.fromJson(Map<String, dynamic> json) =
@@ -237,18 +213,18 @@ abstract class _PaginationDTO extends PaginationDTO {
 
   @override
   @JsonKey(name: 'current')
-  int? get currentPage;
+  int? get currentPage => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'next')
-  int? get next;
+  int? get next => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'per_page')
-  int? get perPage;
+  int? get perPage => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'total_count')
-  int? get total;
+  int? get total => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$PaginationDTOCopyWith<_PaginationDTO> get copyWith =>
+  _$$_PaginationDTOCopyWith<_$_PaginationDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }

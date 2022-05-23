@@ -12,42 +12,11 @@ part of 'failure_response.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 FailureResponse _$FailureResponseFromJson(Map<String, dynamic> json) {
   return _FailureResponse.fromJson(json);
 }
-
-/// @nodoc
-class _$FailureResponseTearOff {
-  const _$FailureResponseTearOff();
-
-  _FailureResponse call(
-      {int? code,
-      @JsonKey(defaultValue: false) bool? status,
-      ServerFieldErrors? errors,
-      @JsonKey(defaultValue: '') required String message,
-      @JsonKey(ignore: true) String? details,
-      @JsonKey(ignore: true) bool pop = true,
-      @JsonKey(ignore: true) bool show = true}) {
-    return _FailureResponse(
-      code: code,
-      status: status,
-      errors: errors,
-      message: message,
-      details: details,
-      pop: pop,
-      show: show,
-    );
-  }
-
-  FailureResponse fromJson(Map<String, Object?> json) {
-    return FailureResponse.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $FailureResponse = _$FailureResponseTearOff();
 
 /// @nodoc
 mixin _$FailureResponse {
@@ -151,11 +120,11 @@ class _$FailureResponseCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$FailureResponseCopyWith<$Res>
+abstract class _$$_FailureResponseCopyWith<$Res>
     implements $FailureResponseCopyWith<$Res> {
-  factory _$FailureResponseCopyWith(
-          _FailureResponse value, $Res Function(_FailureResponse) then) =
-      __$FailureResponseCopyWithImpl<$Res>;
+  factory _$$_FailureResponseCopyWith(
+          _$_FailureResponse value, $Res Function(_$_FailureResponse) then) =
+      __$$_FailureResponseCopyWithImpl<$Res>;
   @override
   $Res call(
       {int? code,
@@ -171,15 +140,15 @@ abstract class _$FailureResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$FailureResponseCopyWithImpl<$Res>
+class __$$_FailureResponseCopyWithImpl<$Res>
     extends _$FailureResponseCopyWithImpl<$Res>
-    implements _$FailureResponseCopyWith<$Res> {
-  __$FailureResponseCopyWithImpl(
-      _FailureResponse _value, $Res Function(_FailureResponse) _then)
-      : super(_value, (v) => _then(v as _FailureResponse));
+    implements _$$_FailureResponseCopyWith<$Res> {
+  __$$_FailureResponseCopyWithImpl(
+      _$_FailureResponse _value, $Res Function(_$_FailureResponse) _then)
+      : super(_value, (v) => _then(v as _$_FailureResponse));
 
   @override
-  _FailureResponse get _value => super._value as _FailureResponse;
+  _$_FailureResponse get _value => super._value as _$_FailureResponse;
 
   @override
   $Res call({
@@ -191,7 +160,7 @@ class __$FailureResponseCopyWithImpl<$Res>
     Object? pop = freezed,
     Object? show = freezed,
   }) {
-    return _then(_FailureResponse(
+    return _then(_$_FailureResponse(
       code: code == freezed
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -226,7 +195,6 @@ class __$FailureResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-@With<Failure>()
 class _$_FailureResponse extends _FailureResponse with Failure {
   const _$_FailureResponse(
       {this.code,
@@ -246,7 +214,8 @@ class _$_FailureResponse extends _FailureResponse with Failure {
   @override
   @JsonKey(defaultValue: false)
   final bool? status;
-  @override // String? error,
+// String? error,
+  @override
   final ServerFieldErrors? errors;
   @override
   @JsonKey(defaultValue: '')
@@ -270,7 +239,7 @@ class _$_FailureResponse extends _FailureResponse with Failure {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _FailureResponse &&
+            other is _$_FailureResponse &&
             const DeepCollectionEquality().equals(other.code, code) &&
             const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality().equals(other.errors, errors) &&
@@ -280,6 +249,7 @@ class _$_FailureResponse extends _FailureResponse with Failure {
             const DeepCollectionEquality().equals(other.show, show));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -293,8 +263,8 @@ class _$_FailureResponse extends _FailureResponse with Failure {
 
   @JsonKey(ignore: true)
   @override
-  _$FailureResponseCopyWith<_FailureResponse> get copyWith =>
-      __$FailureResponseCopyWithImpl<_FailureResponse>(this, _$identity);
+  _$$_FailureResponseCopyWith<_$_FailureResponse> get copyWith =>
+      __$$_FailureResponseCopyWithImpl<_$_FailureResponse>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -304,39 +274,39 @@ class _$_FailureResponse extends _FailureResponse with Failure {
 
 abstract class _FailureResponse extends FailureResponse implements Failure {
   const factory _FailureResponse(
-      {int? code,
-      @JsonKey(defaultValue: false) bool? status,
-      ServerFieldErrors? errors,
-      @JsonKey(defaultValue: '') required String message,
-      @JsonKey(ignore: true) String? details,
-      @JsonKey(ignore: true) bool pop,
-      @JsonKey(ignore: true) bool show}) = _$_FailureResponse;
+      {final int? code,
+      @JsonKey(defaultValue: false) final bool? status,
+      final ServerFieldErrors? errors,
+      @JsonKey(defaultValue: '') required final String message,
+      @JsonKey(ignore: true) final String? details,
+      @JsonKey(ignore: true) final bool pop,
+      @JsonKey(ignore: true) final bool show}) = _$_FailureResponse;
   const _FailureResponse._() : super._();
 
   factory _FailureResponse.fromJson(Map<String, dynamic> json) =
       _$_FailureResponse.fromJson;
 
   @override
-  int? get code;
+  int? get code => throw _privateConstructorUsedError;
   @override
   @JsonKey(defaultValue: false)
-  bool? get status;
+  bool? get status => throw _privateConstructorUsedError;
   @override // String? error,
-  ServerFieldErrors? get errors;
+  ServerFieldErrors? get errors => throw _privateConstructorUsedError;
   @override
   @JsonKey(defaultValue: '')
-  String get message;
+  String get message => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  String? get details;
+  String? get details => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  bool get pop;
+  bool get pop => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  bool get show;
+  bool get show => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$FailureResponseCopyWith<_FailureResponse> get copyWith =>
+  _$$_FailureResponseCopyWith<_$_FailureResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }

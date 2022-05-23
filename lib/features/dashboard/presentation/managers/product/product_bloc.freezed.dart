@@ -12,286 +12,10 @@ part of product_bloc.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$ProductSyncEventTearOff {
-  const _$ProductSyncEventTearOff();
-
-  _InitializeProductBlocEvent init({Product? product}) {
-    return _InitializeProductBlocEvent(
-      product: product,
-    );
-  }
-
-  _CategoryChangedEvent categoryChanged(DealCategory? category) {
-    return _CategoryChangedEvent(
-      category,
-    );
-  }
-
-  _CountryChangedEvent countryChanged(Country? country) {
-    return _CountryChangedEvent(
-      country,
-    );
-  }
-
-  _DealPlanChangedEvent dealPlanChanged(DealPlan? plan) {
-    return _DealPlanChangedEvent(
-      plan,
-    );
-  }
-
-  _DealTypeChangedEvent dealTypeChanged(DealType? type) {
-    return _DealTypeChangedEvent(
-      type,
-    );
-  }
-
-  _ProductNameChangedEvent itemNameChanged() {
-    return const _ProductNameChangedEvent();
-  }
-
-  _ProductStateChangedEvent stateChanged() {
-    return const _ProductStateChangedEvent();
-  }
-
-  _ProductTownChangedEvent townChanged() {
-    return const _ProductTownChangedEvent();
-  }
-
-  _ProductDescriptionChangedEvent itemDescriptionChanged() {
-    return const _ProductDescriptionChangedEvent();
-  }
-
-  _ProductBrandChangedEvent brandChanged() {
-    return const _ProductBrandChangedEvent();
-  }
-
-  _ProductBrandModelChangedEvent brandModelChanged() {
-    return const _ProductBrandModelChangedEvent();
-  }
-
-  _ProductTransmissionChangedEvent transmissionChanged() {
-    return const _ProductTransmissionChangedEvent();
-  }
-
-  _ProductWeightChangedEvent weightChanged() {
-    return const _ProductWeightChangedEvent();
-  }
-
-  _ProductBasePriceChangedEvent basePriceChanged() {
-    return const _ProductBasePriceChangedEvent();
-  }
-
-  _ProductLengthChangedEvent lengthChanged() {
-    return const _ProductLengthChangedEvent();
-  }
-
-  _ProductWidthChangedEvent widthChanged() {
-    return const _ProductWidthChangedEvent();
-  }
-
-  _ProductHeightChangedEvent heightChanged() {
-    return const _ProductHeightChangedEvent();
-  }
-
-  _ProductDeliveryModeChangedEvent deliveryModeChanged(bool? value) {
-    return _ProductDeliveryModeChangedEvent(
-      value,
-    );
-  }
-
-  _ProductShippingDescChangedEvent shippingDescChanged() {
-    return const _ProductShippingDescChangedEvent();
-  }
-
-  _ProductConditionChangedEvent conditionChanged(ItemCondition? value) {
-    return _ProductConditionChangedEvent(
-      value,
-    );
-  }
-
-  _DealQuantityTypeChangedEvent quantityTypeChanged(QuantityType? value) {
-    return _DealQuantityTypeChangedEvent(
-      value,
-    );
-  }
-
-  _DealBiddingTypeChangedEvent biddingTypeChanged(BiddingType? value) {
-    return _DealBiddingTypeChangedEvent(
-      value,
-    );
-  }
-
-  _DealOfferTypeChangedEvent offerTypeChanged(OfferType? value) {
-    return _DealOfferTypeChangedEvent(
-      value,
-    );
-  }
-
-  _DealStartDateChangedEvent startDateChanged(DateTime? value) {
-    return _DealStartDateChangedEvent(
-      value,
-    );
-  }
-
-  _DealEndDateChangedEvent endDateChanged(DateTime? value) {
-    return _DealEndDateChangedEvent(
-      value,
-    );
-  }
-
-  _DealAddressChangedEvent addressChanged() {
-    return const _DealAddressChangedEvent();
-  }
-
-  _ProductColorChangedEvent colorChanged(Color? value) {
-    return _ProductColorChangedEvent(
-      value,
-    );
-  }
-
-  _ProductDeliveryPeriodChangedEvent deliveryPeriodChanged(String? value) {
-    return _ProductDeliveryPeriodChangedEvent(
-      value,
-    );
-  }
-
-  _ProductWarrantyPeriodChangedEvent warrantyPeriodChanged(String? value) {
-    return _ProductWarrantyPeriodChangedEvent(
-      value,
-    );
-  }
-
-  _ProductYearOfPurchaseChangedEvent yearOfPurchaseChanged(String? value) {
-    return _ProductYearOfPurchaseChangedEvent(
-      value,
-    );
-  }
-
-  _ProductYearOfManufactureChangedEvent yearOfManufactureChanged(
-      String? value) {
-    return _ProductYearOfManufactureChangedEvent(
-      value,
-    );
-  }
-
-  _ProductRepairHistoryChangedEvent repairHistoryChanged(bool? value) {
-    return _ProductRepairHistoryChangedEvent(
-      value,
-    );
-  }
-
-  _ProductRefundPolicyChangedEvent refundPolicyChanged(bool? value) {
-    return _ProductRefundPolicyChangedEvent(
-      value,
-    );
-  }
-
-  _ProductTermsInfoChangedEvent termsInfoChanged(String? value) {
-    return _ProductTermsInfoChangedEvent(
-      value,
-    );
-  }
-
-  _ValidateFormFieldEvent validate([bool? validate]) {
-    return _ValidateFormFieldEvent(
-      validate,
-    );
-  }
-
-  _ClearFormFieldsEvent clearForm() {
-    return const _ClearFormFieldsEvent();
-  }
-}
-
-/// @nodoc
-const $ProductSyncEvent = _$ProductSyncEventTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$ProductSyncEvent {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) =>
-      throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitializeProductBlocEvent value) init,
@@ -400,6 +124,57 @@ mixin _$ProductSyncEvent {
     TResult Function(_ClearFormFieldsEvent value)? clearForm,
   }) =>
       throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -420,33 +195,34 @@ class _$ProductSyncEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$InitializeProductBlocEventCopyWith<$Res> {
-  factory _$InitializeProductBlocEventCopyWith(
-          _InitializeProductBlocEvent value,
-          $Res Function(_InitializeProductBlocEvent) then) =
-      __$InitializeProductBlocEventCopyWithImpl<$Res>;
+abstract class _$$_InitializeProductBlocEventCopyWith<$Res> {
+  factory _$$_InitializeProductBlocEventCopyWith(
+          _$_InitializeProductBlocEvent value,
+          $Res Function(_$_InitializeProductBlocEvent) then) =
+      __$$_InitializeProductBlocEventCopyWithImpl<$Res>;
   $Res call({Product? product});
 
   $ProductCopyWith<$Res>? get product;
 }
 
 /// @nodoc
-class __$InitializeProductBlocEventCopyWithImpl<$Res>
+class __$$_InitializeProductBlocEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$InitializeProductBlocEventCopyWith<$Res> {
-  __$InitializeProductBlocEventCopyWithImpl(_InitializeProductBlocEvent _value,
-      $Res Function(_InitializeProductBlocEvent) _then)
-      : super(_value, (v) => _then(v as _InitializeProductBlocEvent));
+    implements _$$_InitializeProductBlocEventCopyWith<$Res> {
+  __$$_InitializeProductBlocEventCopyWithImpl(
+      _$_InitializeProductBlocEvent _value,
+      $Res Function(_$_InitializeProductBlocEvent) _then)
+      : super(_value, (v) => _then(v as _$_InitializeProductBlocEvent));
 
   @override
-  _InitializeProductBlocEvent get _value =>
-      super._value as _InitializeProductBlocEvent;
+  _$_InitializeProductBlocEvent get _value =>
+      super._value as _$_InitializeProductBlocEvent;
 
   @override
   $Res call({
     Object? product = freezed,
   }) {
-    return _then(_InitializeProductBlocEvent(
+    return _then(_$_InitializeProductBlocEvent(
       product: product == freezed
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
@@ -483,7 +259,7 @@ class _$_InitializeProductBlocEvent implements _InitializeProductBlocEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _InitializeProductBlocEvent &&
+            other is _$_InitializeProductBlocEvent &&
             const DeepCollectionEquality().equals(other.product, product));
   }
 
@@ -493,95 +269,9 @@ class _$_InitializeProductBlocEvent implements _InitializeProductBlocEvent {
 
   @JsonKey(ignore: true)
   @override
-  _$InitializeProductBlocEventCopyWith<_InitializeProductBlocEvent>
-      get copyWith => __$InitializeProductBlocEventCopyWithImpl<
-          _InitializeProductBlocEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return init(product);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return init?.call(product);
-  }
+  _$$_InitializeProductBlocEventCopyWith<_$_InitializeProductBlocEvent>
+      get copyWith => __$$_InitializeProductBlocEventCopyWithImpl<
+          _$_InitializeProductBlocEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -696,44 +386,101 @@ class _$_InitializeProductBlocEvent implements _InitializeProductBlocEvent {
   }) {
     return init?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (init != null) {
+      return init(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _InitializeProductBlocEvent implements ProductSyncEvent {
-  const factory _InitializeProductBlocEvent({Product? product}) =
+  const factory _InitializeProductBlocEvent({final Product? product}) =
       _$_InitializeProductBlocEvent;
 
-  Product? get product;
+  Product? get product => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$InitializeProductBlocEventCopyWith<_InitializeProductBlocEvent>
+  _$$_InitializeProductBlocEventCopyWith<_$_InitializeProductBlocEvent>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$CategoryChangedEventCopyWith<$Res> {
-  factory _$CategoryChangedEventCopyWith(_CategoryChangedEvent value,
-          $Res Function(_CategoryChangedEvent) then) =
-      __$CategoryChangedEventCopyWithImpl<$Res>;
+abstract class _$$_CategoryChangedEventCopyWith<$Res> {
+  factory _$$_CategoryChangedEventCopyWith(_$_CategoryChangedEvent value,
+          $Res Function(_$_CategoryChangedEvent) then) =
+      __$$_CategoryChangedEventCopyWithImpl<$Res>;
   $Res call({DealCategory? category});
 
   $DealCategoryCopyWith<$Res>? get category;
 }
 
 /// @nodoc
-class __$CategoryChangedEventCopyWithImpl<$Res>
+class __$$_CategoryChangedEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$CategoryChangedEventCopyWith<$Res> {
-  __$CategoryChangedEventCopyWithImpl(
-      _CategoryChangedEvent _value, $Res Function(_CategoryChangedEvent) _then)
-      : super(_value, (v) => _then(v as _CategoryChangedEvent));
+    implements _$$_CategoryChangedEventCopyWith<$Res> {
+  __$$_CategoryChangedEventCopyWithImpl(_$_CategoryChangedEvent _value,
+      $Res Function(_$_CategoryChangedEvent) _then)
+      : super(_value, (v) => _then(v as _$_CategoryChangedEvent));
 
   @override
-  _CategoryChangedEvent get _value => super._value as _CategoryChangedEvent;
+  _$_CategoryChangedEvent get _value => super._value as _$_CategoryChangedEvent;
 
   @override
   $Res call({
     Object? category = freezed,
   }) {
-    return _then(_CategoryChangedEvent(
+    return _then(_$_CategoryChangedEvent(
       category == freezed
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
@@ -770,7 +517,7 @@ class _$_CategoryChangedEvent implements _CategoryChangedEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _CategoryChangedEvent &&
+            other is _$_CategoryChangedEvent &&
             const DeepCollectionEquality().equals(other.category, category));
   }
 
@@ -780,95 +527,9 @@ class _$_CategoryChangedEvent implements _CategoryChangedEvent {
 
   @JsonKey(ignore: true)
   @override
-  _$CategoryChangedEventCopyWith<_CategoryChangedEvent> get copyWith =>
-      __$CategoryChangedEventCopyWithImpl<_CategoryChangedEvent>(
+  _$$_CategoryChangedEventCopyWith<_$_CategoryChangedEvent> get copyWith =>
+      __$$_CategoryChangedEventCopyWithImpl<_$_CategoryChangedEvent>(
           this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return categoryChanged(category);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return categoryChanged?.call(category);
-  }
 
   @override
   @optionalTypeArgs
@@ -983,44 +644,101 @@ class _$_CategoryChangedEvent implements _CategoryChangedEvent {
   }) {
     return categoryChanged?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (categoryChanged != null) {
+      return categoryChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _CategoryChangedEvent implements ProductSyncEvent {
-  const factory _CategoryChangedEvent(DealCategory? category) =
+  const factory _CategoryChangedEvent(final DealCategory? category) =
       _$_CategoryChangedEvent;
 
-  DealCategory? get category;
+  DealCategory? get category => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$CategoryChangedEventCopyWith<_CategoryChangedEvent> get copyWith =>
+  _$$_CategoryChangedEventCopyWith<_$_CategoryChangedEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$CountryChangedEventCopyWith<$Res> {
-  factory _$CountryChangedEventCopyWith(_CountryChangedEvent value,
-          $Res Function(_CountryChangedEvent) then) =
-      __$CountryChangedEventCopyWithImpl<$Res>;
+abstract class _$$_CountryChangedEventCopyWith<$Res> {
+  factory _$$_CountryChangedEventCopyWith(_$_CountryChangedEvent value,
+          $Res Function(_$_CountryChangedEvent) then) =
+      __$$_CountryChangedEventCopyWithImpl<$Res>;
   $Res call({Country? country});
 
   $CountryCopyWith<$Res>? get country;
 }
 
 /// @nodoc
-class __$CountryChangedEventCopyWithImpl<$Res>
+class __$$_CountryChangedEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$CountryChangedEventCopyWith<$Res> {
-  __$CountryChangedEventCopyWithImpl(
-      _CountryChangedEvent _value, $Res Function(_CountryChangedEvent) _then)
-      : super(_value, (v) => _then(v as _CountryChangedEvent));
+    implements _$$_CountryChangedEventCopyWith<$Res> {
+  __$$_CountryChangedEventCopyWithImpl(_$_CountryChangedEvent _value,
+      $Res Function(_$_CountryChangedEvent) _then)
+      : super(_value, (v) => _then(v as _$_CountryChangedEvent));
 
   @override
-  _CountryChangedEvent get _value => super._value as _CountryChangedEvent;
+  _$_CountryChangedEvent get _value => super._value as _$_CountryChangedEvent;
 
   @override
   $Res call({
     Object? country = freezed,
   }) {
-    return _then(_CountryChangedEvent(
+    return _then(_$_CountryChangedEvent(
       country == freezed
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
@@ -1057,7 +775,7 @@ class _$_CountryChangedEvent implements _CountryChangedEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _CountryChangedEvent &&
+            other is _$_CountryChangedEvent &&
             const DeepCollectionEquality().equals(other.country, country));
   }
 
@@ -1067,95 +785,9 @@ class _$_CountryChangedEvent implements _CountryChangedEvent {
 
   @JsonKey(ignore: true)
   @override
-  _$CountryChangedEventCopyWith<_CountryChangedEvent> get copyWith =>
-      __$CountryChangedEventCopyWithImpl<_CountryChangedEvent>(
+  _$$_CountryChangedEventCopyWith<_$_CountryChangedEvent> get copyWith =>
+      __$$_CountryChangedEventCopyWithImpl<_$_CountryChangedEvent>(
           this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return countryChanged(country);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return countryChanged?.call(country);
-  }
 
   @override
   @optionalTypeArgs
@@ -1270,43 +902,101 @@ class _$_CountryChangedEvent implements _CountryChangedEvent {
   }) {
     return countryChanged?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (countryChanged != null) {
+      return countryChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _CountryChangedEvent implements ProductSyncEvent {
-  const factory _CountryChangedEvent(Country? country) = _$_CountryChangedEvent;
+  const factory _CountryChangedEvent(final Country? country) =
+      _$_CountryChangedEvent;
 
-  Country? get country;
+  Country? get country => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$CountryChangedEventCopyWith<_CountryChangedEvent> get copyWith =>
+  _$$_CountryChangedEventCopyWith<_$_CountryChangedEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$DealPlanChangedEventCopyWith<$Res> {
-  factory _$DealPlanChangedEventCopyWith(_DealPlanChangedEvent value,
-          $Res Function(_DealPlanChangedEvent) then) =
-      __$DealPlanChangedEventCopyWithImpl<$Res>;
+abstract class _$$_DealPlanChangedEventCopyWith<$Res> {
+  factory _$$_DealPlanChangedEventCopyWith(_$_DealPlanChangedEvent value,
+          $Res Function(_$_DealPlanChangedEvent) then) =
+      __$$_DealPlanChangedEventCopyWithImpl<$Res>;
   $Res call({DealPlan? plan});
 
   $DealPlanCopyWith<$Res>? get plan;
 }
 
 /// @nodoc
-class __$DealPlanChangedEventCopyWithImpl<$Res>
+class __$$_DealPlanChangedEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$DealPlanChangedEventCopyWith<$Res> {
-  __$DealPlanChangedEventCopyWithImpl(
-      _DealPlanChangedEvent _value, $Res Function(_DealPlanChangedEvent) _then)
-      : super(_value, (v) => _then(v as _DealPlanChangedEvent));
+    implements _$$_DealPlanChangedEventCopyWith<$Res> {
+  __$$_DealPlanChangedEventCopyWithImpl(_$_DealPlanChangedEvent _value,
+      $Res Function(_$_DealPlanChangedEvent) _then)
+      : super(_value, (v) => _then(v as _$_DealPlanChangedEvent));
 
   @override
-  _DealPlanChangedEvent get _value => super._value as _DealPlanChangedEvent;
+  _$_DealPlanChangedEvent get _value => super._value as _$_DealPlanChangedEvent;
 
   @override
   $Res call({
     Object? plan = freezed,
   }) {
-    return _then(_DealPlanChangedEvent(
+    return _then(_$_DealPlanChangedEvent(
       plan == freezed
           ? _value.plan
           : plan // ignore: cast_nullable_to_non_nullable
@@ -1343,7 +1033,7 @@ class _$_DealPlanChangedEvent implements _DealPlanChangedEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _DealPlanChangedEvent &&
+            other is _$_DealPlanChangedEvent &&
             const DeepCollectionEquality().equals(other.plan, plan));
   }
 
@@ -1353,95 +1043,9 @@ class _$_DealPlanChangedEvent implements _DealPlanChangedEvent {
 
   @JsonKey(ignore: true)
   @override
-  _$DealPlanChangedEventCopyWith<_DealPlanChangedEvent> get copyWith =>
-      __$DealPlanChangedEventCopyWithImpl<_DealPlanChangedEvent>(
+  _$$_DealPlanChangedEventCopyWith<_$_DealPlanChangedEvent> get copyWith =>
+      __$$_DealPlanChangedEventCopyWithImpl<_$_DealPlanChangedEvent>(
           this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return dealPlanChanged(plan);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return dealPlanChanged?.call(plan);
-  }
 
   @override
   @optionalTypeArgs
@@ -1556,41 +1160,99 @@ class _$_DealPlanChangedEvent implements _DealPlanChangedEvent {
   }) {
     return dealPlanChanged?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (dealPlanChanged != null) {
+      return dealPlanChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _DealPlanChangedEvent implements ProductSyncEvent {
-  const factory _DealPlanChangedEvent(DealPlan? plan) = _$_DealPlanChangedEvent;
+  const factory _DealPlanChangedEvent(final DealPlan? plan) =
+      _$_DealPlanChangedEvent;
 
-  DealPlan? get plan;
+  DealPlan? get plan => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$DealPlanChangedEventCopyWith<_DealPlanChangedEvent> get copyWith =>
+  _$$_DealPlanChangedEventCopyWith<_$_DealPlanChangedEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$DealTypeChangedEventCopyWith<$Res> {
-  factory _$DealTypeChangedEventCopyWith(_DealTypeChangedEvent value,
-          $Res Function(_DealTypeChangedEvent) then) =
-      __$DealTypeChangedEventCopyWithImpl<$Res>;
+abstract class _$$_DealTypeChangedEventCopyWith<$Res> {
+  factory _$$_DealTypeChangedEventCopyWith(_$_DealTypeChangedEvent value,
+          $Res Function(_$_DealTypeChangedEvent) then) =
+      __$$_DealTypeChangedEventCopyWithImpl<$Res>;
   $Res call({DealType? type});
 }
 
 /// @nodoc
-class __$DealTypeChangedEventCopyWithImpl<$Res>
+class __$$_DealTypeChangedEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$DealTypeChangedEventCopyWith<$Res> {
-  __$DealTypeChangedEventCopyWithImpl(
-      _DealTypeChangedEvent _value, $Res Function(_DealTypeChangedEvent) _then)
-      : super(_value, (v) => _then(v as _DealTypeChangedEvent));
+    implements _$$_DealTypeChangedEventCopyWith<$Res> {
+  __$$_DealTypeChangedEventCopyWithImpl(_$_DealTypeChangedEvent _value,
+      $Res Function(_$_DealTypeChangedEvent) _then)
+      : super(_value, (v) => _then(v as _$_DealTypeChangedEvent));
 
   @override
-  _DealTypeChangedEvent get _value => super._value as _DealTypeChangedEvent;
+  _$_DealTypeChangedEvent get _value => super._value as _$_DealTypeChangedEvent;
 
   @override
   $Res call({
     Object? type = freezed,
   }) {
-    return _then(_DealTypeChangedEvent(
+    return _then(_$_DealTypeChangedEvent(
       type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -1616,7 +1278,7 @@ class _$_DealTypeChangedEvent implements _DealTypeChangedEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _DealTypeChangedEvent &&
+            other is _$_DealTypeChangedEvent &&
             const DeepCollectionEquality().equals(other.type, type));
   }
 
@@ -1626,95 +1288,9 @@ class _$_DealTypeChangedEvent implements _DealTypeChangedEvent {
 
   @JsonKey(ignore: true)
   @override
-  _$DealTypeChangedEventCopyWith<_DealTypeChangedEvent> get copyWith =>
-      __$DealTypeChangedEventCopyWithImpl<_DealTypeChangedEvent>(
+  _$$_DealTypeChangedEventCopyWith<_$_DealTypeChangedEvent> get copyWith =>
+      __$$_DealTypeChangedEventCopyWithImpl<_$_DealTypeChangedEvent>(
           this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return dealTypeChanged(type);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return dealTypeChanged?.call(type);
-  }
 
   @override
   @optionalTypeArgs
@@ -1829,35 +1405,93 @@ class _$_DealTypeChangedEvent implements _DealTypeChangedEvent {
   }) {
     return dealTypeChanged?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (dealTypeChanged != null) {
+      return dealTypeChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _DealTypeChangedEvent implements ProductSyncEvent {
-  const factory _DealTypeChangedEvent(DealType? type) = _$_DealTypeChangedEvent;
+  const factory _DealTypeChangedEvent(final DealType? type) =
+      _$_DealTypeChangedEvent;
 
-  DealType? get type;
+  DealType? get type => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$DealTypeChangedEventCopyWith<_DealTypeChangedEvent> get copyWith =>
+  _$$_DealTypeChangedEventCopyWith<_$_DealTypeChangedEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$ProductNameChangedEventCopyWith<$Res> {
-  factory _$ProductNameChangedEventCopyWith(_ProductNameChangedEvent value,
-          $Res Function(_ProductNameChangedEvent) then) =
-      __$ProductNameChangedEventCopyWithImpl<$Res>;
+abstract class _$$_ProductNameChangedEventCopyWith<$Res> {
+  factory _$$_ProductNameChangedEventCopyWith(_$_ProductNameChangedEvent value,
+          $Res Function(_$_ProductNameChangedEvent) then) =
+      __$$_ProductNameChangedEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$ProductNameChangedEventCopyWithImpl<$Res>
+class __$$_ProductNameChangedEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$ProductNameChangedEventCopyWith<$Res> {
-  __$ProductNameChangedEventCopyWithImpl(_ProductNameChangedEvent _value,
-      $Res Function(_ProductNameChangedEvent) _then)
-      : super(_value, (v) => _then(v as _ProductNameChangedEvent));
+    implements _$$_ProductNameChangedEventCopyWith<$Res> {
+  __$$_ProductNameChangedEventCopyWithImpl(_$_ProductNameChangedEvent _value,
+      $Res Function(_$_ProductNameChangedEvent) _then)
+      : super(_value, (v) => _then(v as _$_ProductNameChangedEvent));
 
   @override
-  _ProductNameChangedEvent get _value =>
-      super._value as _ProductNameChangedEvent;
+  _$_ProductNameChangedEvent get _value =>
+      super._value as _$_ProductNameChangedEvent;
 }
 
 /// @nodoc
@@ -1873,97 +1507,12 @@ class _$_ProductNameChangedEvent implements _ProductNameChangedEvent {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _ProductNameChangedEvent);
+        (other.runtimeType == runtimeType &&
+            other is _$_ProductNameChangedEvent);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return itemNameChanged();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return itemNameChanged?.call();
-  }
 
   @override
   @optionalTypeArgs
@@ -2078,6 +1627,63 @@ class _$_ProductNameChangedEvent implements _ProductNameChangedEvent {
   }) {
     return itemNameChanged?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (itemNameChanged != null) {
+      return itemNameChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _ProductNameChangedEvent implements ProductSyncEvent {
@@ -2085,23 +1691,24 @@ abstract class _ProductNameChangedEvent implements ProductSyncEvent {
 }
 
 /// @nodoc
-abstract class _$ProductStateChangedEventCopyWith<$Res> {
-  factory _$ProductStateChangedEventCopyWith(_ProductStateChangedEvent value,
-          $Res Function(_ProductStateChangedEvent) then) =
-      __$ProductStateChangedEventCopyWithImpl<$Res>;
+abstract class _$$_ProductStateChangedEventCopyWith<$Res> {
+  factory _$$_ProductStateChangedEventCopyWith(
+          _$_ProductStateChangedEvent value,
+          $Res Function(_$_ProductStateChangedEvent) then) =
+      __$$_ProductStateChangedEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$ProductStateChangedEventCopyWithImpl<$Res>
+class __$$_ProductStateChangedEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$ProductStateChangedEventCopyWith<$Res> {
-  __$ProductStateChangedEventCopyWithImpl(_ProductStateChangedEvent _value,
-      $Res Function(_ProductStateChangedEvent) _then)
-      : super(_value, (v) => _then(v as _ProductStateChangedEvent));
+    implements _$$_ProductStateChangedEventCopyWith<$Res> {
+  __$$_ProductStateChangedEventCopyWithImpl(_$_ProductStateChangedEvent _value,
+      $Res Function(_$_ProductStateChangedEvent) _then)
+      : super(_value, (v) => _then(v as _$_ProductStateChangedEvent));
 
   @override
-  _ProductStateChangedEvent get _value =>
-      super._value as _ProductStateChangedEvent;
+  _$_ProductStateChangedEvent get _value =>
+      super._value as _$_ProductStateChangedEvent;
 }
 
 /// @nodoc
@@ -2118,97 +1725,11 @@ class _$_ProductStateChangedEvent implements _ProductStateChangedEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ProductStateChangedEvent);
+            other is _$_ProductStateChangedEvent);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return stateChanged();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return stateChanged?.call();
-  }
 
   @override
   @optionalTypeArgs
@@ -2323,6 +1844,63 @@ class _$_ProductStateChangedEvent implements _ProductStateChangedEvent {
   }) {
     return stateChanged?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (stateChanged != null) {
+      return stateChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _ProductStateChangedEvent implements ProductSyncEvent {
@@ -2330,23 +1908,23 @@ abstract class _ProductStateChangedEvent implements ProductSyncEvent {
 }
 
 /// @nodoc
-abstract class _$ProductTownChangedEventCopyWith<$Res> {
-  factory _$ProductTownChangedEventCopyWith(_ProductTownChangedEvent value,
-          $Res Function(_ProductTownChangedEvent) then) =
-      __$ProductTownChangedEventCopyWithImpl<$Res>;
+abstract class _$$_ProductTownChangedEventCopyWith<$Res> {
+  factory _$$_ProductTownChangedEventCopyWith(_$_ProductTownChangedEvent value,
+          $Res Function(_$_ProductTownChangedEvent) then) =
+      __$$_ProductTownChangedEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$ProductTownChangedEventCopyWithImpl<$Res>
+class __$$_ProductTownChangedEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$ProductTownChangedEventCopyWith<$Res> {
-  __$ProductTownChangedEventCopyWithImpl(_ProductTownChangedEvent _value,
-      $Res Function(_ProductTownChangedEvent) _then)
-      : super(_value, (v) => _then(v as _ProductTownChangedEvent));
+    implements _$$_ProductTownChangedEventCopyWith<$Res> {
+  __$$_ProductTownChangedEventCopyWithImpl(_$_ProductTownChangedEvent _value,
+      $Res Function(_$_ProductTownChangedEvent) _then)
+      : super(_value, (v) => _then(v as _$_ProductTownChangedEvent));
 
   @override
-  _ProductTownChangedEvent get _value =>
-      super._value as _ProductTownChangedEvent;
+  _$_ProductTownChangedEvent get _value =>
+      super._value as _$_ProductTownChangedEvent;
 }
 
 /// @nodoc
@@ -2362,97 +1940,12 @@ class _$_ProductTownChangedEvent implements _ProductTownChangedEvent {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _ProductTownChangedEvent);
+        (other.runtimeType == runtimeType &&
+            other is _$_ProductTownChangedEvent);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return townChanged();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return townChanged?.call();
-  }
 
   @override
   @optionalTypeArgs
@@ -2567,6 +2060,63 @@ class _$_ProductTownChangedEvent implements _ProductTownChangedEvent {
   }) {
     return townChanged?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (townChanged != null) {
+      return townChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _ProductTownChangedEvent implements ProductSyncEvent {
@@ -2574,25 +2124,25 @@ abstract class _ProductTownChangedEvent implements ProductSyncEvent {
 }
 
 /// @nodoc
-abstract class _$ProductDescriptionChangedEventCopyWith<$Res> {
-  factory _$ProductDescriptionChangedEventCopyWith(
-          _ProductDescriptionChangedEvent value,
-          $Res Function(_ProductDescriptionChangedEvent) then) =
-      __$ProductDescriptionChangedEventCopyWithImpl<$Res>;
+abstract class _$$_ProductDescriptionChangedEventCopyWith<$Res> {
+  factory _$$_ProductDescriptionChangedEventCopyWith(
+          _$_ProductDescriptionChangedEvent value,
+          $Res Function(_$_ProductDescriptionChangedEvent) then) =
+      __$$_ProductDescriptionChangedEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$ProductDescriptionChangedEventCopyWithImpl<$Res>
+class __$$_ProductDescriptionChangedEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$ProductDescriptionChangedEventCopyWith<$Res> {
-  __$ProductDescriptionChangedEventCopyWithImpl(
-      _ProductDescriptionChangedEvent _value,
-      $Res Function(_ProductDescriptionChangedEvent) _then)
-      : super(_value, (v) => _then(v as _ProductDescriptionChangedEvent));
+    implements _$$_ProductDescriptionChangedEventCopyWith<$Res> {
+  __$$_ProductDescriptionChangedEventCopyWithImpl(
+      _$_ProductDescriptionChangedEvent _value,
+      $Res Function(_$_ProductDescriptionChangedEvent) _then)
+      : super(_value, (v) => _then(v as _$_ProductDescriptionChangedEvent));
 
   @override
-  _ProductDescriptionChangedEvent get _value =>
-      super._value as _ProductDescriptionChangedEvent;
+  _$_ProductDescriptionChangedEvent get _value =>
+      super._value as _$_ProductDescriptionChangedEvent;
 }
 
 /// @nodoc
@@ -2610,97 +2160,11 @@ class _$_ProductDescriptionChangedEvent
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ProductDescriptionChangedEvent);
+            other is _$_ProductDescriptionChangedEvent);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return itemDescriptionChanged();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return itemDescriptionChanged?.call();
-  }
 
   @override
   @optionalTypeArgs
@@ -2815,6 +2279,63 @@ class _$_ProductDescriptionChangedEvent
   }) {
     return itemDescriptionChanged?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (itemDescriptionChanged != null) {
+      return itemDescriptionChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _ProductDescriptionChangedEvent implements ProductSyncEvent {
@@ -2823,23 +2344,24 @@ abstract class _ProductDescriptionChangedEvent implements ProductSyncEvent {
 }
 
 /// @nodoc
-abstract class _$ProductBrandChangedEventCopyWith<$Res> {
-  factory _$ProductBrandChangedEventCopyWith(_ProductBrandChangedEvent value,
-          $Res Function(_ProductBrandChangedEvent) then) =
-      __$ProductBrandChangedEventCopyWithImpl<$Res>;
+abstract class _$$_ProductBrandChangedEventCopyWith<$Res> {
+  factory _$$_ProductBrandChangedEventCopyWith(
+          _$_ProductBrandChangedEvent value,
+          $Res Function(_$_ProductBrandChangedEvent) then) =
+      __$$_ProductBrandChangedEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$ProductBrandChangedEventCopyWithImpl<$Res>
+class __$$_ProductBrandChangedEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$ProductBrandChangedEventCopyWith<$Res> {
-  __$ProductBrandChangedEventCopyWithImpl(_ProductBrandChangedEvent _value,
-      $Res Function(_ProductBrandChangedEvent) _then)
-      : super(_value, (v) => _then(v as _ProductBrandChangedEvent));
+    implements _$$_ProductBrandChangedEventCopyWith<$Res> {
+  __$$_ProductBrandChangedEventCopyWithImpl(_$_ProductBrandChangedEvent _value,
+      $Res Function(_$_ProductBrandChangedEvent) _then)
+      : super(_value, (v) => _then(v as _$_ProductBrandChangedEvent));
 
   @override
-  _ProductBrandChangedEvent get _value =>
-      super._value as _ProductBrandChangedEvent;
+  _$_ProductBrandChangedEvent get _value =>
+      super._value as _$_ProductBrandChangedEvent;
 }
 
 /// @nodoc
@@ -2856,97 +2378,11 @@ class _$_ProductBrandChangedEvent implements _ProductBrandChangedEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ProductBrandChangedEvent);
+            other is _$_ProductBrandChangedEvent);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return brandChanged();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return brandChanged?.call();
-  }
 
   @override
   @optionalTypeArgs
@@ -3061,6 +2497,63 @@ class _$_ProductBrandChangedEvent implements _ProductBrandChangedEvent {
   }) {
     return brandChanged?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (brandChanged != null) {
+      return brandChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _ProductBrandChangedEvent implements ProductSyncEvent {
@@ -3068,25 +2561,25 @@ abstract class _ProductBrandChangedEvent implements ProductSyncEvent {
 }
 
 /// @nodoc
-abstract class _$ProductBrandModelChangedEventCopyWith<$Res> {
-  factory _$ProductBrandModelChangedEventCopyWith(
-          _ProductBrandModelChangedEvent value,
-          $Res Function(_ProductBrandModelChangedEvent) then) =
-      __$ProductBrandModelChangedEventCopyWithImpl<$Res>;
+abstract class _$$_ProductBrandModelChangedEventCopyWith<$Res> {
+  factory _$$_ProductBrandModelChangedEventCopyWith(
+          _$_ProductBrandModelChangedEvent value,
+          $Res Function(_$_ProductBrandModelChangedEvent) then) =
+      __$$_ProductBrandModelChangedEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$ProductBrandModelChangedEventCopyWithImpl<$Res>
+class __$$_ProductBrandModelChangedEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$ProductBrandModelChangedEventCopyWith<$Res> {
-  __$ProductBrandModelChangedEventCopyWithImpl(
-      _ProductBrandModelChangedEvent _value,
-      $Res Function(_ProductBrandModelChangedEvent) _then)
-      : super(_value, (v) => _then(v as _ProductBrandModelChangedEvent));
+    implements _$$_ProductBrandModelChangedEventCopyWith<$Res> {
+  __$$_ProductBrandModelChangedEventCopyWithImpl(
+      _$_ProductBrandModelChangedEvent _value,
+      $Res Function(_$_ProductBrandModelChangedEvent) _then)
+      : super(_value, (v) => _then(v as _$_ProductBrandModelChangedEvent));
 
   @override
-  _ProductBrandModelChangedEvent get _value =>
-      super._value as _ProductBrandModelChangedEvent;
+  _$_ProductBrandModelChangedEvent get _value =>
+      super._value as _$_ProductBrandModelChangedEvent;
 }
 
 /// @nodoc
@@ -3104,97 +2597,11 @@ class _$_ProductBrandModelChangedEvent
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ProductBrandModelChangedEvent);
+            other is _$_ProductBrandModelChangedEvent);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return brandModelChanged();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return brandModelChanged?.call();
-  }
 
   @override
   @optionalTypeArgs
@@ -3309,6 +2716,63 @@ class _$_ProductBrandModelChangedEvent
   }) {
     return brandModelChanged?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (brandModelChanged != null) {
+      return brandModelChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _ProductBrandModelChangedEvent implements ProductSyncEvent {
@@ -3317,25 +2781,25 @@ abstract class _ProductBrandModelChangedEvent implements ProductSyncEvent {
 }
 
 /// @nodoc
-abstract class _$ProductTransmissionChangedEventCopyWith<$Res> {
-  factory _$ProductTransmissionChangedEventCopyWith(
-          _ProductTransmissionChangedEvent value,
-          $Res Function(_ProductTransmissionChangedEvent) then) =
-      __$ProductTransmissionChangedEventCopyWithImpl<$Res>;
+abstract class _$$_ProductTransmissionChangedEventCopyWith<$Res> {
+  factory _$$_ProductTransmissionChangedEventCopyWith(
+          _$_ProductTransmissionChangedEvent value,
+          $Res Function(_$_ProductTransmissionChangedEvent) then) =
+      __$$_ProductTransmissionChangedEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$ProductTransmissionChangedEventCopyWithImpl<$Res>
+class __$$_ProductTransmissionChangedEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$ProductTransmissionChangedEventCopyWith<$Res> {
-  __$ProductTransmissionChangedEventCopyWithImpl(
-      _ProductTransmissionChangedEvent _value,
-      $Res Function(_ProductTransmissionChangedEvent) _then)
-      : super(_value, (v) => _then(v as _ProductTransmissionChangedEvent));
+    implements _$$_ProductTransmissionChangedEventCopyWith<$Res> {
+  __$$_ProductTransmissionChangedEventCopyWithImpl(
+      _$_ProductTransmissionChangedEvent _value,
+      $Res Function(_$_ProductTransmissionChangedEvent) _then)
+      : super(_value, (v) => _then(v as _$_ProductTransmissionChangedEvent));
 
   @override
-  _ProductTransmissionChangedEvent get _value =>
-      super._value as _ProductTransmissionChangedEvent;
+  _$_ProductTransmissionChangedEvent get _value =>
+      super._value as _$_ProductTransmissionChangedEvent;
 }
 
 /// @nodoc
@@ -3353,97 +2817,11 @@ class _$_ProductTransmissionChangedEvent
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ProductTransmissionChangedEvent);
+            other is _$_ProductTransmissionChangedEvent);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return transmissionChanged();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return transmissionChanged?.call();
-  }
 
   @override
   @optionalTypeArgs
@@ -3558,6 +2936,63 @@ class _$_ProductTransmissionChangedEvent
   }) {
     return transmissionChanged?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (transmissionChanged != null) {
+      return transmissionChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _ProductTransmissionChangedEvent implements ProductSyncEvent {
@@ -3566,23 +3001,25 @@ abstract class _ProductTransmissionChangedEvent implements ProductSyncEvent {
 }
 
 /// @nodoc
-abstract class _$ProductWeightChangedEventCopyWith<$Res> {
-  factory _$ProductWeightChangedEventCopyWith(_ProductWeightChangedEvent value,
-          $Res Function(_ProductWeightChangedEvent) then) =
-      __$ProductWeightChangedEventCopyWithImpl<$Res>;
+abstract class _$$_ProductWeightChangedEventCopyWith<$Res> {
+  factory _$$_ProductWeightChangedEventCopyWith(
+          _$_ProductWeightChangedEvent value,
+          $Res Function(_$_ProductWeightChangedEvent) then) =
+      __$$_ProductWeightChangedEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$ProductWeightChangedEventCopyWithImpl<$Res>
+class __$$_ProductWeightChangedEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$ProductWeightChangedEventCopyWith<$Res> {
-  __$ProductWeightChangedEventCopyWithImpl(_ProductWeightChangedEvent _value,
-      $Res Function(_ProductWeightChangedEvent) _then)
-      : super(_value, (v) => _then(v as _ProductWeightChangedEvent));
+    implements _$$_ProductWeightChangedEventCopyWith<$Res> {
+  __$$_ProductWeightChangedEventCopyWithImpl(
+      _$_ProductWeightChangedEvent _value,
+      $Res Function(_$_ProductWeightChangedEvent) _then)
+      : super(_value, (v) => _then(v as _$_ProductWeightChangedEvent));
 
   @override
-  _ProductWeightChangedEvent get _value =>
-      super._value as _ProductWeightChangedEvent;
+  _$_ProductWeightChangedEvent get _value =>
+      super._value as _$_ProductWeightChangedEvent;
 }
 
 /// @nodoc
@@ -3599,97 +3036,11 @@ class _$_ProductWeightChangedEvent implements _ProductWeightChangedEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ProductWeightChangedEvent);
+            other is _$_ProductWeightChangedEvent);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return weightChanged();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return weightChanged?.call();
-  }
 
   @override
   @optionalTypeArgs
@@ -3804,6 +3155,63 @@ class _$_ProductWeightChangedEvent implements _ProductWeightChangedEvent {
   }) {
     return weightChanged?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (weightChanged != null) {
+      return weightChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _ProductWeightChangedEvent implements ProductSyncEvent {
@@ -3811,25 +3219,25 @@ abstract class _ProductWeightChangedEvent implements ProductSyncEvent {
 }
 
 /// @nodoc
-abstract class _$ProductBasePriceChangedEventCopyWith<$Res> {
-  factory _$ProductBasePriceChangedEventCopyWith(
-          _ProductBasePriceChangedEvent value,
-          $Res Function(_ProductBasePriceChangedEvent) then) =
-      __$ProductBasePriceChangedEventCopyWithImpl<$Res>;
+abstract class _$$_ProductBasePriceChangedEventCopyWith<$Res> {
+  factory _$$_ProductBasePriceChangedEventCopyWith(
+          _$_ProductBasePriceChangedEvent value,
+          $Res Function(_$_ProductBasePriceChangedEvent) then) =
+      __$$_ProductBasePriceChangedEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$ProductBasePriceChangedEventCopyWithImpl<$Res>
+class __$$_ProductBasePriceChangedEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$ProductBasePriceChangedEventCopyWith<$Res> {
-  __$ProductBasePriceChangedEventCopyWithImpl(
-      _ProductBasePriceChangedEvent _value,
-      $Res Function(_ProductBasePriceChangedEvent) _then)
-      : super(_value, (v) => _then(v as _ProductBasePriceChangedEvent));
+    implements _$$_ProductBasePriceChangedEventCopyWith<$Res> {
+  __$$_ProductBasePriceChangedEventCopyWithImpl(
+      _$_ProductBasePriceChangedEvent _value,
+      $Res Function(_$_ProductBasePriceChangedEvent) _then)
+      : super(_value, (v) => _then(v as _$_ProductBasePriceChangedEvent));
 
   @override
-  _ProductBasePriceChangedEvent get _value =>
-      super._value as _ProductBasePriceChangedEvent;
+  _$_ProductBasePriceChangedEvent get _value =>
+      super._value as _$_ProductBasePriceChangedEvent;
 }
 
 /// @nodoc
@@ -3846,97 +3254,11 @@ class _$_ProductBasePriceChangedEvent implements _ProductBasePriceChangedEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ProductBasePriceChangedEvent);
+            other is _$_ProductBasePriceChangedEvent);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return basePriceChanged();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return basePriceChanged?.call();
-  }
 
   @override
   @optionalTypeArgs
@@ -4051,6 +3373,63 @@ class _$_ProductBasePriceChangedEvent implements _ProductBasePriceChangedEvent {
   }) {
     return basePriceChanged?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (basePriceChanged != null) {
+      return basePriceChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _ProductBasePriceChangedEvent implements ProductSyncEvent {
@@ -4059,23 +3438,25 @@ abstract class _ProductBasePriceChangedEvent implements ProductSyncEvent {
 }
 
 /// @nodoc
-abstract class _$ProductLengthChangedEventCopyWith<$Res> {
-  factory _$ProductLengthChangedEventCopyWith(_ProductLengthChangedEvent value,
-          $Res Function(_ProductLengthChangedEvent) then) =
-      __$ProductLengthChangedEventCopyWithImpl<$Res>;
+abstract class _$$_ProductLengthChangedEventCopyWith<$Res> {
+  factory _$$_ProductLengthChangedEventCopyWith(
+          _$_ProductLengthChangedEvent value,
+          $Res Function(_$_ProductLengthChangedEvent) then) =
+      __$$_ProductLengthChangedEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$ProductLengthChangedEventCopyWithImpl<$Res>
+class __$$_ProductLengthChangedEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$ProductLengthChangedEventCopyWith<$Res> {
-  __$ProductLengthChangedEventCopyWithImpl(_ProductLengthChangedEvent _value,
-      $Res Function(_ProductLengthChangedEvent) _then)
-      : super(_value, (v) => _then(v as _ProductLengthChangedEvent));
+    implements _$$_ProductLengthChangedEventCopyWith<$Res> {
+  __$$_ProductLengthChangedEventCopyWithImpl(
+      _$_ProductLengthChangedEvent _value,
+      $Res Function(_$_ProductLengthChangedEvent) _then)
+      : super(_value, (v) => _then(v as _$_ProductLengthChangedEvent));
 
   @override
-  _ProductLengthChangedEvent get _value =>
-      super._value as _ProductLengthChangedEvent;
+  _$_ProductLengthChangedEvent get _value =>
+      super._value as _$_ProductLengthChangedEvent;
 }
 
 /// @nodoc
@@ -4092,97 +3473,11 @@ class _$_ProductLengthChangedEvent implements _ProductLengthChangedEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ProductLengthChangedEvent);
+            other is _$_ProductLengthChangedEvent);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return lengthChanged();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return lengthChanged?.call();
-  }
 
   @override
   @optionalTypeArgs
@@ -4297,6 +3592,63 @@ class _$_ProductLengthChangedEvent implements _ProductLengthChangedEvent {
   }) {
     return lengthChanged?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (lengthChanged != null) {
+      return lengthChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _ProductLengthChangedEvent implements ProductSyncEvent {
@@ -4304,23 +3656,24 @@ abstract class _ProductLengthChangedEvent implements ProductSyncEvent {
 }
 
 /// @nodoc
-abstract class _$ProductWidthChangedEventCopyWith<$Res> {
-  factory _$ProductWidthChangedEventCopyWith(_ProductWidthChangedEvent value,
-          $Res Function(_ProductWidthChangedEvent) then) =
-      __$ProductWidthChangedEventCopyWithImpl<$Res>;
+abstract class _$$_ProductWidthChangedEventCopyWith<$Res> {
+  factory _$$_ProductWidthChangedEventCopyWith(
+          _$_ProductWidthChangedEvent value,
+          $Res Function(_$_ProductWidthChangedEvent) then) =
+      __$$_ProductWidthChangedEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$ProductWidthChangedEventCopyWithImpl<$Res>
+class __$$_ProductWidthChangedEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$ProductWidthChangedEventCopyWith<$Res> {
-  __$ProductWidthChangedEventCopyWithImpl(_ProductWidthChangedEvent _value,
-      $Res Function(_ProductWidthChangedEvent) _then)
-      : super(_value, (v) => _then(v as _ProductWidthChangedEvent));
+    implements _$$_ProductWidthChangedEventCopyWith<$Res> {
+  __$$_ProductWidthChangedEventCopyWithImpl(_$_ProductWidthChangedEvent _value,
+      $Res Function(_$_ProductWidthChangedEvent) _then)
+      : super(_value, (v) => _then(v as _$_ProductWidthChangedEvent));
 
   @override
-  _ProductWidthChangedEvent get _value =>
-      super._value as _ProductWidthChangedEvent;
+  _$_ProductWidthChangedEvent get _value =>
+      super._value as _$_ProductWidthChangedEvent;
 }
 
 /// @nodoc
@@ -4337,97 +3690,11 @@ class _$_ProductWidthChangedEvent implements _ProductWidthChangedEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ProductWidthChangedEvent);
+            other is _$_ProductWidthChangedEvent);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return widthChanged();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return widthChanged?.call();
-  }
 
   @override
   @optionalTypeArgs
@@ -4542,6 +3809,63 @@ class _$_ProductWidthChangedEvent implements _ProductWidthChangedEvent {
   }) {
     return widthChanged?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (widthChanged != null) {
+      return widthChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _ProductWidthChangedEvent implements ProductSyncEvent {
@@ -4549,23 +3873,25 @@ abstract class _ProductWidthChangedEvent implements ProductSyncEvent {
 }
 
 /// @nodoc
-abstract class _$ProductHeightChangedEventCopyWith<$Res> {
-  factory _$ProductHeightChangedEventCopyWith(_ProductHeightChangedEvent value,
-          $Res Function(_ProductHeightChangedEvent) then) =
-      __$ProductHeightChangedEventCopyWithImpl<$Res>;
+abstract class _$$_ProductHeightChangedEventCopyWith<$Res> {
+  factory _$$_ProductHeightChangedEventCopyWith(
+          _$_ProductHeightChangedEvent value,
+          $Res Function(_$_ProductHeightChangedEvent) then) =
+      __$$_ProductHeightChangedEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$ProductHeightChangedEventCopyWithImpl<$Res>
+class __$$_ProductHeightChangedEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$ProductHeightChangedEventCopyWith<$Res> {
-  __$ProductHeightChangedEventCopyWithImpl(_ProductHeightChangedEvent _value,
-      $Res Function(_ProductHeightChangedEvent) _then)
-      : super(_value, (v) => _then(v as _ProductHeightChangedEvent));
+    implements _$$_ProductHeightChangedEventCopyWith<$Res> {
+  __$$_ProductHeightChangedEventCopyWithImpl(
+      _$_ProductHeightChangedEvent _value,
+      $Res Function(_$_ProductHeightChangedEvent) _then)
+      : super(_value, (v) => _then(v as _$_ProductHeightChangedEvent));
 
   @override
-  _ProductHeightChangedEvent get _value =>
-      super._value as _ProductHeightChangedEvent;
+  _$_ProductHeightChangedEvent get _value =>
+      super._value as _$_ProductHeightChangedEvent;
 }
 
 /// @nodoc
@@ -4582,97 +3908,11 @@ class _$_ProductHeightChangedEvent implements _ProductHeightChangedEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ProductHeightChangedEvent);
+            other is _$_ProductHeightChangedEvent);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return heightChanged();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return heightChanged?.call();
-  }
 
   @override
   @optionalTypeArgs
@@ -4787,6 +4027,63 @@ class _$_ProductHeightChangedEvent implements _ProductHeightChangedEvent {
   }) {
     return heightChanged?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (heightChanged != null) {
+      return heightChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _ProductHeightChangedEvent implements ProductSyncEvent {
@@ -4794,32 +4091,32 @@ abstract class _ProductHeightChangedEvent implements ProductSyncEvent {
 }
 
 /// @nodoc
-abstract class _$ProductDeliveryModeChangedEventCopyWith<$Res> {
-  factory _$ProductDeliveryModeChangedEventCopyWith(
-          _ProductDeliveryModeChangedEvent value,
-          $Res Function(_ProductDeliveryModeChangedEvent) then) =
-      __$ProductDeliveryModeChangedEventCopyWithImpl<$Res>;
+abstract class _$$_ProductDeliveryModeChangedEventCopyWith<$Res> {
+  factory _$$_ProductDeliveryModeChangedEventCopyWith(
+          _$_ProductDeliveryModeChangedEvent value,
+          $Res Function(_$_ProductDeliveryModeChangedEvent) then) =
+      __$$_ProductDeliveryModeChangedEventCopyWithImpl<$Res>;
   $Res call({bool? value});
 }
 
 /// @nodoc
-class __$ProductDeliveryModeChangedEventCopyWithImpl<$Res>
+class __$$_ProductDeliveryModeChangedEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$ProductDeliveryModeChangedEventCopyWith<$Res> {
-  __$ProductDeliveryModeChangedEventCopyWithImpl(
-      _ProductDeliveryModeChangedEvent _value,
-      $Res Function(_ProductDeliveryModeChangedEvent) _then)
-      : super(_value, (v) => _then(v as _ProductDeliveryModeChangedEvent));
+    implements _$$_ProductDeliveryModeChangedEventCopyWith<$Res> {
+  __$$_ProductDeliveryModeChangedEventCopyWithImpl(
+      _$_ProductDeliveryModeChangedEvent _value,
+      $Res Function(_$_ProductDeliveryModeChangedEvent) _then)
+      : super(_value, (v) => _then(v as _$_ProductDeliveryModeChangedEvent));
 
   @override
-  _ProductDeliveryModeChangedEvent get _value =>
-      super._value as _ProductDeliveryModeChangedEvent;
+  _$_ProductDeliveryModeChangedEvent get _value =>
+      super._value as _$_ProductDeliveryModeChangedEvent;
 
   @override
   $Res call({
     Object? value = freezed,
   }) {
-    return _then(_ProductDeliveryModeChangedEvent(
+    return _then(_$_ProductDeliveryModeChangedEvent(
       value == freezed
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -4846,7 +4143,7 @@ class _$_ProductDeliveryModeChangedEvent
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ProductDeliveryModeChangedEvent &&
+            other is _$_ProductDeliveryModeChangedEvent &&
             const DeepCollectionEquality().equals(other.value, value));
   }
 
@@ -4856,95 +4153,10 @@ class _$_ProductDeliveryModeChangedEvent
 
   @JsonKey(ignore: true)
   @override
-  _$ProductDeliveryModeChangedEventCopyWith<_ProductDeliveryModeChangedEvent>
-      get copyWith => __$ProductDeliveryModeChangedEventCopyWithImpl<
-          _ProductDeliveryModeChangedEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return deliveryModeChanged(value);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return deliveryModeChanged?.call(value);
-  }
+  _$$_ProductDeliveryModeChangedEventCopyWith<
+          _$_ProductDeliveryModeChangedEvent>
+      get copyWith => __$$_ProductDeliveryModeChangedEventCopyWithImpl<
+          _$_ProductDeliveryModeChangedEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -5059,38 +4271,96 @@ class _$_ProductDeliveryModeChangedEvent
   }) {
     return deliveryModeChanged?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (deliveryModeChanged != null) {
+      return deliveryModeChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _ProductDeliveryModeChangedEvent implements ProductSyncEvent {
-  const factory _ProductDeliveryModeChangedEvent(bool? value) =
+  const factory _ProductDeliveryModeChangedEvent(final bool? value) =
       _$_ProductDeliveryModeChangedEvent;
 
-  bool? get value;
+  bool? get value => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$ProductDeliveryModeChangedEventCopyWith<_ProductDeliveryModeChangedEvent>
+  _$$_ProductDeliveryModeChangedEventCopyWith<
+          _$_ProductDeliveryModeChangedEvent>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$ProductShippingDescChangedEventCopyWith<$Res> {
-  factory _$ProductShippingDescChangedEventCopyWith(
-          _ProductShippingDescChangedEvent value,
-          $Res Function(_ProductShippingDescChangedEvent) then) =
-      __$ProductShippingDescChangedEventCopyWithImpl<$Res>;
+abstract class _$$_ProductShippingDescChangedEventCopyWith<$Res> {
+  factory _$$_ProductShippingDescChangedEventCopyWith(
+          _$_ProductShippingDescChangedEvent value,
+          $Res Function(_$_ProductShippingDescChangedEvent) then) =
+      __$$_ProductShippingDescChangedEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$ProductShippingDescChangedEventCopyWithImpl<$Res>
+class __$$_ProductShippingDescChangedEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$ProductShippingDescChangedEventCopyWith<$Res> {
-  __$ProductShippingDescChangedEventCopyWithImpl(
-      _ProductShippingDescChangedEvent _value,
-      $Res Function(_ProductShippingDescChangedEvent) _then)
-      : super(_value, (v) => _then(v as _ProductShippingDescChangedEvent));
+    implements _$$_ProductShippingDescChangedEventCopyWith<$Res> {
+  __$$_ProductShippingDescChangedEventCopyWithImpl(
+      _$_ProductShippingDescChangedEvent _value,
+      $Res Function(_$_ProductShippingDescChangedEvent) _then)
+      : super(_value, (v) => _then(v as _$_ProductShippingDescChangedEvent));
 
   @override
-  _ProductShippingDescChangedEvent get _value =>
-      super._value as _ProductShippingDescChangedEvent;
+  _$_ProductShippingDescChangedEvent get _value =>
+      super._value as _$_ProductShippingDescChangedEvent;
 }
 
 /// @nodoc
@@ -5108,97 +4378,11 @@ class _$_ProductShippingDescChangedEvent
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ProductShippingDescChangedEvent);
+            other is _$_ProductShippingDescChangedEvent);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return shippingDescChanged();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return shippingDescChanged?.call();
-  }
 
   @override
   @optionalTypeArgs
@@ -5313,6 +4497,63 @@ class _$_ProductShippingDescChangedEvent
   }) {
     return shippingDescChanged?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (shippingDescChanged != null) {
+      return shippingDescChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _ProductShippingDescChangedEvent implements ProductSyncEvent {
@@ -5321,32 +4562,32 @@ abstract class _ProductShippingDescChangedEvent implements ProductSyncEvent {
 }
 
 /// @nodoc
-abstract class _$ProductConditionChangedEventCopyWith<$Res> {
-  factory _$ProductConditionChangedEventCopyWith(
-          _ProductConditionChangedEvent value,
-          $Res Function(_ProductConditionChangedEvent) then) =
-      __$ProductConditionChangedEventCopyWithImpl<$Res>;
+abstract class _$$_ProductConditionChangedEventCopyWith<$Res> {
+  factory _$$_ProductConditionChangedEventCopyWith(
+          _$_ProductConditionChangedEvent value,
+          $Res Function(_$_ProductConditionChangedEvent) then) =
+      __$$_ProductConditionChangedEventCopyWithImpl<$Res>;
   $Res call({ItemCondition? value});
 }
 
 /// @nodoc
-class __$ProductConditionChangedEventCopyWithImpl<$Res>
+class __$$_ProductConditionChangedEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$ProductConditionChangedEventCopyWith<$Res> {
-  __$ProductConditionChangedEventCopyWithImpl(
-      _ProductConditionChangedEvent _value,
-      $Res Function(_ProductConditionChangedEvent) _then)
-      : super(_value, (v) => _then(v as _ProductConditionChangedEvent));
+    implements _$$_ProductConditionChangedEventCopyWith<$Res> {
+  __$$_ProductConditionChangedEventCopyWithImpl(
+      _$_ProductConditionChangedEvent _value,
+      $Res Function(_$_ProductConditionChangedEvent) _then)
+      : super(_value, (v) => _then(v as _$_ProductConditionChangedEvent));
 
   @override
-  _ProductConditionChangedEvent get _value =>
-      super._value as _ProductConditionChangedEvent;
+  _$_ProductConditionChangedEvent get _value =>
+      super._value as _$_ProductConditionChangedEvent;
 
   @override
   $Res call({
     Object? value = freezed,
   }) {
-    return _then(_ProductConditionChangedEvent(
+    return _then(_$_ProductConditionChangedEvent(
       value == freezed
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -5372,7 +4613,7 @@ class _$_ProductConditionChangedEvent implements _ProductConditionChangedEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ProductConditionChangedEvent &&
+            other is _$_ProductConditionChangedEvent &&
             const DeepCollectionEquality().equals(other.value, value));
   }
 
@@ -5382,95 +4623,9 @@ class _$_ProductConditionChangedEvent implements _ProductConditionChangedEvent {
 
   @JsonKey(ignore: true)
   @override
-  _$ProductConditionChangedEventCopyWith<_ProductConditionChangedEvent>
-      get copyWith => __$ProductConditionChangedEventCopyWithImpl<
-          _ProductConditionChangedEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return conditionChanged(value);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return conditionChanged?.call(value);
-  }
+  _$$_ProductConditionChangedEventCopyWith<_$_ProductConditionChangedEvent>
+      get copyWith => __$$_ProductConditionChangedEventCopyWithImpl<
+          _$_ProductConditionChangedEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -5585,45 +4740,102 @@ class _$_ProductConditionChangedEvent implements _ProductConditionChangedEvent {
   }) {
     return conditionChanged?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (conditionChanged != null) {
+      return conditionChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _ProductConditionChangedEvent implements ProductSyncEvent {
-  const factory _ProductConditionChangedEvent(ItemCondition? value) =
+  const factory _ProductConditionChangedEvent(final ItemCondition? value) =
       _$_ProductConditionChangedEvent;
 
-  ItemCondition? get value;
+  ItemCondition? get value => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$ProductConditionChangedEventCopyWith<_ProductConditionChangedEvent>
+  _$$_ProductConditionChangedEventCopyWith<_$_ProductConditionChangedEvent>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$DealQuantityTypeChangedEventCopyWith<$Res> {
-  factory _$DealQuantityTypeChangedEventCopyWith(
-          _DealQuantityTypeChangedEvent value,
-          $Res Function(_DealQuantityTypeChangedEvent) then) =
-      __$DealQuantityTypeChangedEventCopyWithImpl<$Res>;
+abstract class _$$_DealQuantityTypeChangedEventCopyWith<$Res> {
+  factory _$$_DealQuantityTypeChangedEventCopyWith(
+          _$_DealQuantityTypeChangedEvent value,
+          $Res Function(_$_DealQuantityTypeChangedEvent) then) =
+      __$$_DealQuantityTypeChangedEventCopyWithImpl<$Res>;
   $Res call({QuantityType? value});
 }
 
 /// @nodoc
-class __$DealQuantityTypeChangedEventCopyWithImpl<$Res>
+class __$$_DealQuantityTypeChangedEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$DealQuantityTypeChangedEventCopyWith<$Res> {
-  __$DealQuantityTypeChangedEventCopyWithImpl(
-      _DealQuantityTypeChangedEvent _value,
-      $Res Function(_DealQuantityTypeChangedEvent) _then)
-      : super(_value, (v) => _then(v as _DealQuantityTypeChangedEvent));
+    implements _$$_DealQuantityTypeChangedEventCopyWith<$Res> {
+  __$$_DealQuantityTypeChangedEventCopyWithImpl(
+      _$_DealQuantityTypeChangedEvent _value,
+      $Res Function(_$_DealQuantityTypeChangedEvent) _then)
+      : super(_value, (v) => _then(v as _$_DealQuantityTypeChangedEvent));
 
   @override
-  _DealQuantityTypeChangedEvent get _value =>
-      super._value as _DealQuantityTypeChangedEvent;
+  _$_DealQuantityTypeChangedEvent get _value =>
+      super._value as _$_DealQuantityTypeChangedEvent;
 
   @override
   $Res call({
     Object? value = freezed,
   }) {
-    return _then(_DealQuantityTypeChangedEvent(
+    return _then(_$_DealQuantityTypeChangedEvent(
       value == freezed
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -5649,7 +4861,7 @@ class _$_DealQuantityTypeChangedEvent implements _DealQuantityTypeChangedEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _DealQuantityTypeChangedEvent &&
+            other is _$_DealQuantityTypeChangedEvent &&
             const DeepCollectionEquality().equals(other.value, value));
   }
 
@@ -5659,95 +4871,9 @@ class _$_DealQuantityTypeChangedEvent implements _DealQuantityTypeChangedEvent {
 
   @JsonKey(ignore: true)
   @override
-  _$DealQuantityTypeChangedEventCopyWith<_DealQuantityTypeChangedEvent>
-      get copyWith => __$DealQuantityTypeChangedEventCopyWithImpl<
-          _DealQuantityTypeChangedEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return quantityTypeChanged(value);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return quantityTypeChanged?.call(value);
-  }
+  _$$_DealQuantityTypeChangedEventCopyWith<_$_DealQuantityTypeChangedEvent>
+      get copyWith => __$$_DealQuantityTypeChangedEventCopyWithImpl<
+          _$_DealQuantityTypeChangedEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -5862,45 +4988,102 @@ class _$_DealQuantityTypeChangedEvent implements _DealQuantityTypeChangedEvent {
   }) {
     return quantityTypeChanged?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (quantityTypeChanged != null) {
+      return quantityTypeChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _DealQuantityTypeChangedEvent implements ProductSyncEvent {
-  const factory _DealQuantityTypeChangedEvent(QuantityType? value) =
+  const factory _DealQuantityTypeChangedEvent(final QuantityType? value) =
       _$_DealQuantityTypeChangedEvent;
 
-  QuantityType? get value;
+  QuantityType? get value => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$DealQuantityTypeChangedEventCopyWith<_DealQuantityTypeChangedEvent>
+  _$$_DealQuantityTypeChangedEventCopyWith<_$_DealQuantityTypeChangedEvent>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$DealBiddingTypeChangedEventCopyWith<$Res> {
-  factory _$DealBiddingTypeChangedEventCopyWith(
-          _DealBiddingTypeChangedEvent value,
-          $Res Function(_DealBiddingTypeChangedEvent) then) =
-      __$DealBiddingTypeChangedEventCopyWithImpl<$Res>;
+abstract class _$$_DealBiddingTypeChangedEventCopyWith<$Res> {
+  factory _$$_DealBiddingTypeChangedEventCopyWith(
+          _$_DealBiddingTypeChangedEvent value,
+          $Res Function(_$_DealBiddingTypeChangedEvent) then) =
+      __$$_DealBiddingTypeChangedEventCopyWithImpl<$Res>;
   $Res call({BiddingType? value});
 }
 
 /// @nodoc
-class __$DealBiddingTypeChangedEventCopyWithImpl<$Res>
+class __$$_DealBiddingTypeChangedEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$DealBiddingTypeChangedEventCopyWith<$Res> {
-  __$DealBiddingTypeChangedEventCopyWithImpl(
-      _DealBiddingTypeChangedEvent _value,
-      $Res Function(_DealBiddingTypeChangedEvent) _then)
-      : super(_value, (v) => _then(v as _DealBiddingTypeChangedEvent));
+    implements _$$_DealBiddingTypeChangedEventCopyWith<$Res> {
+  __$$_DealBiddingTypeChangedEventCopyWithImpl(
+      _$_DealBiddingTypeChangedEvent _value,
+      $Res Function(_$_DealBiddingTypeChangedEvent) _then)
+      : super(_value, (v) => _then(v as _$_DealBiddingTypeChangedEvent));
 
   @override
-  _DealBiddingTypeChangedEvent get _value =>
-      super._value as _DealBiddingTypeChangedEvent;
+  _$_DealBiddingTypeChangedEvent get _value =>
+      super._value as _$_DealBiddingTypeChangedEvent;
 
   @override
   $Res call({
     Object? value = freezed,
   }) {
-    return _then(_DealBiddingTypeChangedEvent(
+    return _then(_$_DealBiddingTypeChangedEvent(
       value == freezed
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -5926,7 +5109,7 @@ class _$_DealBiddingTypeChangedEvent implements _DealBiddingTypeChangedEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _DealBiddingTypeChangedEvent &&
+            other is _$_DealBiddingTypeChangedEvent &&
             const DeepCollectionEquality().equals(other.value, value));
   }
 
@@ -5936,95 +5119,9 @@ class _$_DealBiddingTypeChangedEvent implements _DealBiddingTypeChangedEvent {
 
   @JsonKey(ignore: true)
   @override
-  _$DealBiddingTypeChangedEventCopyWith<_DealBiddingTypeChangedEvent>
-      get copyWith => __$DealBiddingTypeChangedEventCopyWithImpl<
-          _DealBiddingTypeChangedEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return biddingTypeChanged(value);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return biddingTypeChanged?.call(value);
-  }
+  _$$_DealBiddingTypeChangedEventCopyWith<_$_DealBiddingTypeChangedEvent>
+      get copyWith => __$$_DealBiddingTypeChangedEventCopyWithImpl<
+          _$_DealBiddingTypeChangedEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -6139,43 +5236,102 @@ class _$_DealBiddingTypeChangedEvent implements _DealBiddingTypeChangedEvent {
   }) {
     return biddingTypeChanged?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (biddingTypeChanged != null) {
+      return biddingTypeChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _DealBiddingTypeChangedEvent implements ProductSyncEvent {
-  const factory _DealBiddingTypeChangedEvent(BiddingType? value) =
+  const factory _DealBiddingTypeChangedEvent(final BiddingType? value) =
       _$_DealBiddingTypeChangedEvent;
 
-  BiddingType? get value;
+  BiddingType? get value => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$DealBiddingTypeChangedEventCopyWith<_DealBiddingTypeChangedEvent>
+  _$$_DealBiddingTypeChangedEventCopyWith<_$_DealBiddingTypeChangedEvent>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$DealOfferTypeChangedEventCopyWith<$Res> {
-  factory _$DealOfferTypeChangedEventCopyWith(_DealOfferTypeChangedEvent value,
-          $Res Function(_DealOfferTypeChangedEvent) then) =
-      __$DealOfferTypeChangedEventCopyWithImpl<$Res>;
+abstract class _$$_DealOfferTypeChangedEventCopyWith<$Res> {
+  factory _$$_DealOfferTypeChangedEventCopyWith(
+          _$_DealOfferTypeChangedEvent value,
+          $Res Function(_$_DealOfferTypeChangedEvent) then) =
+      __$$_DealOfferTypeChangedEventCopyWithImpl<$Res>;
   $Res call({OfferType? value});
 }
 
 /// @nodoc
-class __$DealOfferTypeChangedEventCopyWithImpl<$Res>
+class __$$_DealOfferTypeChangedEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$DealOfferTypeChangedEventCopyWith<$Res> {
-  __$DealOfferTypeChangedEventCopyWithImpl(_DealOfferTypeChangedEvent _value,
-      $Res Function(_DealOfferTypeChangedEvent) _then)
-      : super(_value, (v) => _then(v as _DealOfferTypeChangedEvent));
+    implements _$$_DealOfferTypeChangedEventCopyWith<$Res> {
+  __$$_DealOfferTypeChangedEventCopyWithImpl(
+      _$_DealOfferTypeChangedEvent _value,
+      $Res Function(_$_DealOfferTypeChangedEvent) _then)
+      : super(_value, (v) => _then(v as _$_DealOfferTypeChangedEvent));
 
   @override
-  _DealOfferTypeChangedEvent get _value =>
-      super._value as _DealOfferTypeChangedEvent;
+  _$_DealOfferTypeChangedEvent get _value =>
+      super._value as _$_DealOfferTypeChangedEvent;
 
   @override
   $Res call({
     Object? value = freezed,
   }) {
-    return _then(_DealOfferTypeChangedEvent(
+    return _then(_$_DealOfferTypeChangedEvent(
       value == freezed
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -6201,7 +5357,7 @@ class _$_DealOfferTypeChangedEvent implements _DealOfferTypeChangedEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _DealOfferTypeChangedEvent &&
+            other is _$_DealOfferTypeChangedEvent &&
             const DeepCollectionEquality().equals(other.value, value));
   }
 
@@ -6211,96 +5367,9 @@ class _$_DealOfferTypeChangedEvent implements _DealOfferTypeChangedEvent {
 
   @JsonKey(ignore: true)
   @override
-  _$DealOfferTypeChangedEventCopyWith<_DealOfferTypeChangedEvent>
-      get copyWith =>
-          __$DealOfferTypeChangedEventCopyWithImpl<_DealOfferTypeChangedEvent>(
-              this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return offerTypeChanged(value);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return offerTypeChanged?.call(value);
-  }
+  _$$_DealOfferTypeChangedEventCopyWith<_$_DealOfferTypeChangedEvent>
+      get copyWith => __$$_DealOfferTypeChangedEventCopyWithImpl<
+          _$_DealOfferTypeChangedEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -6415,43 +5484,102 @@ class _$_DealOfferTypeChangedEvent implements _DealOfferTypeChangedEvent {
   }) {
     return offerTypeChanged?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (offerTypeChanged != null) {
+      return offerTypeChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _DealOfferTypeChangedEvent implements ProductSyncEvent {
-  const factory _DealOfferTypeChangedEvent(OfferType? value) =
+  const factory _DealOfferTypeChangedEvent(final OfferType? value) =
       _$_DealOfferTypeChangedEvent;
 
-  OfferType? get value;
+  OfferType? get value => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$DealOfferTypeChangedEventCopyWith<_DealOfferTypeChangedEvent>
+  _$$_DealOfferTypeChangedEventCopyWith<_$_DealOfferTypeChangedEvent>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$DealStartDateChangedEventCopyWith<$Res> {
-  factory _$DealStartDateChangedEventCopyWith(_DealStartDateChangedEvent value,
-          $Res Function(_DealStartDateChangedEvent) then) =
-      __$DealStartDateChangedEventCopyWithImpl<$Res>;
+abstract class _$$_DealStartDateChangedEventCopyWith<$Res> {
+  factory _$$_DealStartDateChangedEventCopyWith(
+          _$_DealStartDateChangedEvent value,
+          $Res Function(_$_DealStartDateChangedEvent) then) =
+      __$$_DealStartDateChangedEventCopyWithImpl<$Res>;
   $Res call({DateTime? value});
 }
 
 /// @nodoc
-class __$DealStartDateChangedEventCopyWithImpl<$Res>
+class __$$_DealStartDateChangedEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$DealStartDateChangedEventCopyWith<$Res> {
-  __$DealStartDateChangedEventCopyWithImpl(_DealStartDateChangedEvent _value,
-      $Res Function(_DealStartDateChangedEvent) _then)
-      : super(_value, (v) => _then(v as _DealStartDateChangedEvent));
+    implements _$$_DealStartDateChangedEventCopyWith<$Res> {
+  __$$_DealStartDateChangedEventCopyWithImpl(
+      _$_DealStartDateChangedEvent _value,
+      $Res Function(_$_DealStartDateChangedEvent) _then)
+      : super(_value, (v) => _then(v as _$_DealStartDateChangedEvent));
 
   @override
-  _DealStartDateChangedEvent get _value =>
-      super._value as _DealStartDateChangedEvent;
+  _$_DealStartDateChangedEvent get _value =>
+      super._value as _$_DealStartDateChangedEvent;
 
   @override
   $Res call({
     Object? value = freezed,
   }) {
-    return _then(_DealStartDateChangedEvent(
+    return _then(_$_DealStartDateChangedEvent(
       value == freezed
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -6477,7 +5605,7 @@ class _$_DealStartDateChangedEvent implements _DealStartDateChangedEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _DealStartDateChangedEvent &&
+            other is _$_DealStartDateChangedEvent &&
             const DeepCollectionEquality().equals(other.value, value));
   }
 
@@ -6487,96 +5615,9 @@ class _$_DealStartDateChangedEvent implements _DealStartDateChangedEvent {
 
   @JsonKey(ignore: true)
   @override
-  _$DealStartDateChangedEventCopyWith<_DealStartDateChangedEvent>
-      get copyWith =>
-          __$DealStartDateChangedEventCopyWithImpl<_DealStartDateChangedEvent>(
-              this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return startDateChanged(value);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return startDateChanged?.call(value);
-  }
+  _$$_DealStartDateChangedEventCopyWith<_$_DealStartDateChangedEvent>
+      get copyWith => __$$_DealStartDateChangedEventCopyWithImpl<
+          _$_DealStartDateChangedEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -6691,43 +5732,100 @@ class _$_DealStartDateChangedEvent implements _DealStartDateChangedEvent {
   }) {
     return startDateChanged?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (startDateChanged != null) {
+      return startDateChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _DealStartDateChangedEvent implements ProductSyncEvent {
-  const factory _DealStartDateChangedEvent(DateTime? value) =
+  const factory _DealStartDateChangedEvent(final DateTime? value) =
       _$_DealStartDateChangedEvent;
 
-  DateTime? get value;
+  DateTime? get value => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$DealStartDateChangedEventCopyWith<_DealStartDateChangedEvent>
+  _$$_DealStartDateChangedEventCopyWith<_$_DealStartDateChangedEvent>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$DealEndDateChangedEventCopyWith<$Res> {
-  factory _$DealEndDateChangedEventCopyWith(_DealEndDateChangedEvent value,
-          $Res Function(_DealEndDateChangedEvent) then) =
-      __$DealEndDateChangedEventCopyWithImpl<$Res>;
+abstract class _$$_DealEndDateChangedEventCopyWith<$Res> {
+  factory _$$_DealEndDateChangedEventCopyWith(_$_DealEndDateChangedEvent value,
+          $Res Function(_$_DealEndDateChangedEvent) then) =
+      __$$_DealEndDateChangedEventCopyWithImpl<$Res>;
   $Res call({DateTime? value});
 }
 
 /// @nodoc
-class __$DealEndDateChangedEventCopyWithImpl<$Res>
+class __$$_DealEndDateChangedEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$DealEndDateChangedEventCopyWith<$Res> {
-  __$DealEndDateChangedEventCopyWithImpl(_DealEndDateChangedEvent _value,
-      $Res Function(_DealEndDateChangedEvent) _then)
-      : super(_value, (v) => _then(v as _DealEndDateChangedEvent));
+    implements _$$_DealEndDateChangedEventCopyWith<$Res> {
+  __$$_DealEndDateChangedEventCopyWithImpl(_$_DealEndDateChangedEvent _value,
+      $Res Function(_$_DealEndDateChangedEvent) _then)
+      : super(_value, (v) => _then(v as _$_DealEndDateChangedEvent));
 
   @override
-  _DealEndDateChangedEvent get _value =>
-      super._value as _DealEndDateChangedEvent;
+  _$_DealEndDateChangedEvent get _value =>
+      super._value as _$_DealEndDateChangedEvent;
 
   @override
   $Res call({
     Object? value = freezed,
   }) {
-    return _then(_DealEndDateChangedEvent(
+    return _then(_$_DealEndDateChangedEvent(
       value == freezed
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -6753,7 +5851,7 @@ class _$_DealEndDateChangedEvent implements _DealEndDateChangedEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _DealEndDateChangedEvent &&
+            other is _$_DealEndDateChangedEvent &&
             const DeepCollectionEquality().equals(other.value, value));
   }
 
@@ -6763,95 +5861,10 @@ class _$_DealEndDateChangedEvent implements _DealEndDateChangedEvent {
 
   @JsonKey(ignore: true)
   @override
-  _$DealEndDateChangedEventCopyWith<_DealEndDateChangedEvent> get copyWith =>
-      __$DealEndDateChangedEventCopyWithImpl<_DealEndDateChangedEvent>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return endDateChanged(value);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return endDateChanged?.call(value);
-  }
+  _$$_DealEndDateChangedEventCopyWith<_$_DealEndDateChangedEvent>
+      get copyWith =>
+          __$$_DealEndDateChangedEventCopyWithImpl<_$_DealEndDateChangedEvent>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -6966,36 +5979,93 @@ class _$_DealEndDateChangedEvent implements _DealEndDateChangedEvent {
   }) {
     return endDateChanged?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (endDateChanged != null) {
+      return endDateChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _DealEndDateChangedEvent implements ProductSyncEvent {
-  const factory _DealEndDateChangedEvent(DateTime? value) =
+  const factory _DealEndDateChangedEvent(final DateTime? value) =
       _$_DealEndDateChangedEvent;
 
-  DateTime? get value;
+  DateTime? get value => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$DealEndDateChangedEventCopyWith<_DealEndDateChangedEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_DealEndDateChangedEventCopyWith<_$_DealEndDateChangedEvent>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$DealAddressChangedEventCopyWith<$Res> {
-  factory _$DealAddressChangedEventCopyWith(_DealAddressChangedEvent value,
-          $Res Function(_DealAddressChangedEvent) then) =
-      __$DealAddressChangedEventCopyWithImpl<$Res>;
+abstract class _$$_DealAddressChangedEventCopyWith<$Res> {
+  factory _$$_DealAddressChangedEventCopyWith(_$_DealAddressChangedEvent value,
+          $Res Function(_$_DealAddressChangedEvent) then) =
+      __$$_DealAddressChangedEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$DealAddressChangedEventCopyWithImpl<$Res>
+class __$$_DealAddressChangedEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$DealAddressChangedEventCopyWith<$Res> {
-  __$DealAddressChangedEventCopyWithImpl(_DealAddressChangedEvent _value,
-      $Res Function(_DealAddressChangedEvent) _then)
-      : super(_value, (v) => _then(v as _DealAddressChangedEvent));
+    implements _$$_DealAddressChangedEventCopyWith<$Res> {
+  __$$_DealAddressChangedEventCopyWithImpl(_$_DealAddressChangedEvent _value,
+      $Res Function(_$_DealAddressChangedEvent) _then)
+      : super(_value, (v) => _then(v as _$_DealAddressChangedEvent));
 
   @override
-  _DealAddressChangedEvent get _value =>
-      super._value as _DealAddressChangedEvent;
+  _$_DealAddressChangedEvent get _value =>
+      super._value as _$_DealAddressChangedEvent;
 }
 
 /// @nodoc
@@ -7011,97 +6081,12 @@ class _$_DealAddressChangedEvent implements _DealAddressChangedEvent {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _DealAddressChangedEvent);
+        (other.runtimeType == runtimeType &&
+            other is _$_DealAddressChangedEvent);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return addressChanged();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return addressChanged?.call();
-  }
 
   @override
   @optionalTypeArgs
@@ -7216,6 +6201,63 @@ class _$_DealAddressChangedEvent implements _DealAddressChangedEvent {
   }) {
     return addressChanged?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (addressChanged != null) {
+      return addressChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _DealAddressChangedEvent implements ProductSyncEvent {
@@ -7223,30 +6265,31 @@ abstract class _DealAddressChangedEvent implements ProductSyncEvent {
 }
 
 /// @nodoc
-abstract class _$ProductColorChangedEventCopyWith<$Res> {
-  factory _$ProductColorChangedEventCopyWith(_ProductColorChangedEvent value,
-          $Res Function(_ProductColorChangedEvent) then) =
-      __$ProductColorChangedEventCopyWithImpl<$Res>;
+abstract class _$$_ProductColorChangedEventCopyWith<$Res> {
+  factory _$$_ProductColorChangedEventCopyWith(
+          _$_ProductColorChangedEvent value,
+          $Res Function(_$_ProductColorChangedEvent) then) =
+      __$$_ProductColorChangedEventCopyWithImpl<$Res>;
   $Res call({Color? value});
 }
 
 /// @nodoc
-class __$ProductColorChangedEventCopyWithImpl<$Res>
+class __$$_ProductColorChangedEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$ProductColorChangedEventCopyWith<$Res> {
-  __$ProductColorChangedEventCopyWithImpl(_ProductColorChangedEvent _value,
-      $Res Function(_ProductColorChangedEvent) _then)
-      : super(_value, (v) => _then(v as _ProductColorChangedEvent));
+    implements _$$_ProductColorChangedEventCopyWith<$Res> {
+  __$$_ProductColorChangedEventCopyWithImpl(_$_ProductColorChangedEvent _value,
+      $Res Function(_$_ProductColorChangedEvent) _then)
+      : super(_value, (v) => _then(v as _$_ProductColorChangedEvent));
 
   @override
-  _ProductColorChangedEvent get _value =>
-      super._value as _ProductColorChangedEvent;
+  _$_ProductColorChangedEvent get _value =>
+      super._value as _$_ProductColorChangedEvent;
 
   @override
   $Res call({
     Object? value = freezed,
   }) {
-    return _then(_ProductColorChangedEvent(
+    return _then(_$_ProductColorChangedEvent(
       value == freezed
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -7272,7 +6315,7 @@ class _$_ProductColorChangedEvent implements _ProductColorChangedEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ProductColorChangedEvent &&
+            other is _$_ProductColorChangedEvent &&
             const DeepCollectionEquality().equals(other.value, value));
   }
 
@@ -7282,95 +6325,9 @@ class _$_ProductColorChangedEvent implements _ProductColorChangedEvent {
 
   @JsonKey(ignore: true)
   @override
-  _$ProductColorChangedEventCopyWith<_ProductColorChangedEvent> get copyWith =>
-      __$ProductColorChangedEventCopyWithImpl<_ProductColorChangedEvent>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return colorChanged(value);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return colorChanged?.call(value);
-  }
+  _$$_ProductColorChangedEventCopyWith<_$_ProductColorChangedEvent>
+      get copyWith => __$$_ProductColorChangedEventCopyWithImpl<
+          _$_ProductColorChangedEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -7485,45 +6442,102 @@ class _$_ProductColorChangedEvent implements _ProductColorChangedEvent {
   }) {
     return colorChanged?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (colorChanged != null) {
+      return colorChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _ProductColorChangedEvent implements ProductSyncEvent {
-  const factory _ProductColorChangedEvent(Color? value) =
+  const factory _ProductColorChangedEvent(final Color? value) =
       _$_ProductColorChangedEvent;
 
-  Color? get value;
+  Color? get value => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$ProductColorChangedEventCopyWith<_ProductColorChangedEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_ProductColorChangedEventCopyWith<_$_ProductColorChangedEvent>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$ProductDeliveryPeriodChangedEventCopyWith<$Res> {
-  factory _$ProductDeliveryPeriodChangedEventCopyWith(
-          _ProductDeliveryPeriodChangedEvent value,
-          $Res Function(_ProductDeliveryPeriodChangedEvent) then) =
-      __$ProductDeliveryPeriodChangedEventCopyWithImpl<$Res>;
+abstract class _$$_ProductDeliveryPeriodChangedEventCopyWith<$Res> {
+  factory _$$_ProductDeliveryPeriodChangedEventCopyWith(
+          _$_ProductDeliveryPeriodChangedEvent value,
+          $Res Function(_$_ProductDeliveryPeriodChangedEvent) then) =
+      __$$_ProductDeliveryPeriodChangedEventCopyWithImpl<$Res>;
   $Res call({String? value});
 }
 
 /// @nodoc
-class __$ProductDeliveryPeriodChangedEventCopyWithImpl<$Res>
+class __$$_ProductDeliveryPeriodChangedEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$ProductDeliveryPeriodChangedEventCopyWith<$Res> {
-  __$ProductDeliveryPeriodChangedEventCopyWithImpl(
-      _ProductDeliveryPeriodChangedEvent _value,
-      $Res Function(_ProductDeliveryPeriodChangedEvent) _then)
-      : super(_value, (v) => _then(v as _ProductDeliveryPeriodChangedEvent));
+    implements _$$_ProductDeliveryPeriodChangedEventCopyWith<$Res> {
+  __$$_ProductDeliveryPeriodChangedEventCopyWithImpl(
+      _$_ProductDeliveryPeriodChangedEvent _value,
+      $Res Function(_$_ProductDeliveryPeriodChangedEvent) _then)
+      : super(_value, (v) => _then(v as _$_ProductDeliveryPeriodChangedEvent));
 
   @override
-  _ProductDeliveryPeriodChangedEvent get _value =>
-      super._value as _ProductDeliveryPeriodChangedEvent;
+  _$_ProductDeliveryPeriodChangedEvent get _value =>
+      super._value as _$_ProductDeliveryPeriodChangedEvent;
 
   @override
   $Res call({
     Object? value = freezed,
   }) {
-    return _then(_ProductDeliveryPeriodChangedEvent(
+    return _then(_$_ProductDeliveryPeriodChangedEvent(
       value == freezed
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -7550,7 +6564,7 @@ class _$_ProductDeliveryPeriodChangedEvent
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ProductDeliveryPeriodChangedEvent &&
+            other is _$_ProductDeliveryPeriodChangedEvent &&
             const DeepCollectionEquality().equals(other.value, value));
   }
 
@@ -7560,96 +6574,10 @@ class _$_ProductDeliveryPeriodChangedEvent
 
   @JsonKey(ignore: true)
   @override
-  _$ProductDeliveryPeriodChangedEventCopyWith<
-          _ProductDeliveryPeriodChangedEvent>
-      get copyWith => __$ProductDeliveryPeriodChangedEventCopyWithImpl<
-          _ProductDeliveryPeriodChangedEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return deliveryPeriodChanged(value);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return deliveryPeriodChanged?.call(value);
-  }
+  _$$_ProductDeliveryPeriodChangedEventCopyWith<
+          _$_ProductDeliveryPeriodChangedEvent>
+      get copyWith => __$$_ProductDeliveryPeriodChangedEventCopyWithImpl<
+          _$_ProductDeliveryPeriodChangedEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -7764,46 +6692,103 @@ class _$_ProductDeliveryPeriodChangedEvent
   }) {
     return deliveryPeriodChanged?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (deliveryPeriodChanged != null) {
+      return deliveryPeriodChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _ProductDeliveryPeriodChangedEvent implements ProductSyncEvent {
-  const factory _ProductDeliveryPeriodChangedEvent(String? value) =
+  const factory _ProductDeliveryPeriodChangedEvent(final String? value) =
       _$_ProductDeliveryPeriodChangedEvent;
 
-  String? get value;
+  String? get value => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$ProductDeliveryPeriodChangedEventCopyWith<
-          _ProductDeliveryPeriodChangedEvent>
+  _$$_ProductDeliveryPeriodChangedEventCopyWith<
+          _$_ProductDeliveryPeriodChangedEvent>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$ProductWarrantyPeriodChangedEventCopyWith<$Res> {
-  factory _$ProductWarrantyPeriodChangedEventCopyWith(
-          _ProductWarrantyPeriodChangedEvent value,
-          $Res Function(_ProductWarrantyPeriodChangedEvent) then) =
-      __$ProductWarrantyPeriodChangedEventCopyWithImpl<$Res>;
+abstract class _$$_ProductWarrantyPeriodChangedEventCopyWith<$Res> {
+  factory _$$_ProductWarrantyPeriodChangedEventCopyWith(
+          _$_ProductWarrantyPeriodChangedEvent value,
+          $Res Function(_$_ProductWarrantyPeriodChangedEvent) then) =
+      __$$_ProductWarrantyPeriodChangedEventCopyWithImpl<$Res>;
   $Res call({String? value});
 }
 
 /// @nodoc
-class __$ProductWarrantyPeriodChangedEventCopyWithImpl<$Res>
+class __$$_ProductWarrantyPeriodChangedEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$ProductWarrantyPeriodChangedEventCopyWith<$Res> {
-  __$ProductWarrantyPeriodChangedEventCopyWithImpl(
-      _ProductWarrantyPeriodChangedEvent _value,
-      $Res Function(_ProductWarrantyPeriodChangedEvent) _then)
-      : super(_value, (v) => _then(v as _ProductWarrantyPeriodChangedEvent));
+    implements _$$_ProductWarrantyPeriodChangedEventCopyWith<$Res> {
+  __$$_ProductWarrantyPeriodChangedEventCopyWithImpl(
+      _$_ProductWarrantyPeriodChangedEvent _value,
+      $Res Function(_$_ProductWarrantyPeriodChangedEvent) _then)
+      : super(_value, (v) => _then(v as _$_ProductWarrantyPeriodChangedEvent));
 
   @override
-  _ProductWarrantyPeriodChangedEvent get _value =>
-      super._value as _ProductWarrantyPeriodChangedEvent;
+  _$_ProductWarrantyPeriodChangedEvent get _value =>
+      super._value as _$_ProductWarrantyPeriodChangedEvent;
 
   @override
   $Res call({
     Object? value = freezed,
   }) {
-    return _then(_ProductWarrantyPeriodChangedEvent(
+    return _then(_$_ProductWarrantyPeriodChangedEvent(
       value == freezed
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -7830,7 +6815,7 @@ class _$_ProductWarrantyPeriodChangedEvent
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ProductWarrantyPeriodChangedEvent &&
+            other is _$_ProductWarrantyPeriodChangedEvent &&
             const DeepCollectionEquality().equals(other.value, value));
   }
 
@@ -7840,96 +6825,10 @@ class _$_ProductWarrantyPeriodChangedEvent
 
   @JsonKey(ignore: true)
   @override
-  _$ProductWarrantyPeriodChangedEventCopyWith<
-          _ProductWarrantyPeriodChangedEvent>
-      get copyWith => __$ProductWarrantyPeriodChangedEventCopyWithImpl<
-          _ProductWarrantyPeriodChangedEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return warrantyPeriodChanged(value);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return warrantyPeriodChanged?.call(value);
-  }
+  _$$_ProductWarrantyPeriodChangedEventCopyWith<
+          _$_ProductWarrantyPeriodChangedEvent>
+      get copyWith => __$$_ProductWarrantyPeriodChangedEventCopyWithImpl<
+          _$_ProductWarrantyPeriodChangedEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -8044,46 +6943,103 @@ class _$_ProductWarrantyPeriodChangedEvent
   }) {
     return warrantyPeriodChanged?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (warrantyPeriodChanged != null) {
+      return warrantyPeriodChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _ProductWarrantyPeriodChangedEvent implements ProductSyncEvent {
-  const factory _ProductWarrantyPeriodChangedEvent(String? value) =
+  const factory _ProductWarrantyPeriodChangedEvent(final String? value) =
       _$_ProductWarrantyPeriodChangedEvent;
 
-  String? get value;
+  String? get value => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$ProductWarrantyPeriodChangedEventCopyWith<
-          _ProductWarrantyPeriodChangedEvent>
+  _$$_ProductWarrantyPeriodChangedEventCopyWith<
+          _$_ProductWarrantyPeriodChangedEvent>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$ProductYearOfPurchaseChangedEventCopyWith<$Res> {
-  factory _$ProductYearOfPurchaseChangedEventCopyWith(
-          _ProductYearOfPurchaseChangedEvent value,
-          $Res Function(_ProductYearOfPurchaseChangedEvent) then) =
-      __$ProductYearOfPurchaseChangedEventCopyWithImpl<$Res>;
+abstract class _$$_ProductYearOfPurchaseChangedEventCopyWith<$Res> {
+  factory _$$_ProductYearOfPurchaseChangedEventCopyWith(
+          _$_ProductYearOfPurchaseChangedEvent value,
+          $Res Function(_$_ProductYearOfPurchaseChangedEvent) then) =
+      __$$_ProductYearOfPurchaseChangedEventCopyWithImpl<$Res>;
   $Res call({String? value});
 }
 
 /// @nodoc
-class __$ProductYearOfPurchaseChangedEventCopyWithImpl<$Res>
+class __$$_ProductYearOfPurchaseChangedEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$ProductYearOfPurchaseChangedEventCopyWith<$Res> {
-  __$ProductYearOfPurchaseChangedEventCopyWithImpl(
-      _ProductYearOfPurchaseChangedEvent _value,
-      $Res Function(_ProductYearOfPurchaseChangedEvent) _then)
-      : super(_value, (v) => _then(v as _ProductYearOfPurchaseChangedEvent));
+    implements _$$_ProductYearOfPurchaseChangedEventCopyWith<$Res> {
+  __$$_ProductYearOfPurchaseChangedEventCopyWithImpl(
+      _$_ProductYearOfPurchaseChangedEvent _value,
+      $Res Function(_$_ProductYearOfPurchaseChangedEvent) _then)
+      : super(_value, (v) => _then(v as _$_ProductYearOfPurchaseChangedEvent));
 
   @override
-  _ProductYearOfPurchaseChangedEvent get _value =>
-      super._value as _ProductYearOfPurchaseChangedEvent;
+  _$_ProductYearOfPurchaseChangedEvent get _value =>
+      super._value as _$_ProductYearOfPurchaseChangedEvent;
 
   @override
   $Res call({
     Object? value = freezed,
   }) {
-    return _then(_ProductYearOfPurchaseChangedEvent(
+    return _then(_$_ProductYearOfPurchaseChangedEvent(
       value == freezed
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -8110,7 +7066,7 @@ class _$_ProductYearOfPurchaseChangedEvent
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ProductYearOfPurchaseChangedEvent &&
+            other is _$_ProductYearOfPurchaseChangedEvent &&
             const DeepCollectionEquality().equals(other.value, value));
   }
 
@@ -8120,96 +7076,10 @@ class _$_ProductYearOfPurchaseChangedEvent
 
   @JsonKey(ignore: true)
   @override
-  _$ProductYearOfPurchaseChangedEventCopyWith<
-          _ProductYearOfPurchaseChangedEvent>
-      get copyWith => __$ProductYearOfPurchaseChangedEventCopyWithImpl<
-          _ProductYearOfPurchaseChangedEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return yearOfPurchaseChanged(value);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return yearOfPurchaseChanged?.call(value);
-  }
+  _$$_ProductYearOfPurchaseChangedEventCopyWith<
+          _$_ProductYearOfPurchaseChangedEvent>
+      get copyWith => __$$_ProductYearOfPurchaseChangedEventCopyWithImpl<
+          _$_ProductYearOfPurchaseChangedEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -8324,46 +7194,104 @@ class _$_ProductYearOfPurchaseChangedEvent
   }) {
     return yearOfPurchaseChanged?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (yearOfPurchaseChanged != null) {
+      return yearOfPurchaseChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _ProductYearOfPurchaseChangedEvent implements ProductSyncEvent {
-  const factory _ProductYearOfPurchaseChangedEvent(String? value) =
+  const factory _ProductYearOfPurchaseChangedEvent(final String? value) =
       _$_ProductYearOfPurchaseChangedEvent;
 
-  String? get value;
+  String? get value => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$ProductYearOfPurchaseChangedEventCopyWith<
-          _ProductYearOfPurchaseChangedEvent>
+  _$$_ProductYearOfPurchaseChangedEventCopyWith<
+          _$_ProductYearOfPurchaseChangedEvent>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$ProductYearOfManufactureChangedEventCopyWith<$Res> {
-  factory _$ProductYearOfManufactureChangedEventCopyWith(
-          _ProductYearOfManufactureChangedEvent value,
-          $Res Function(_ProductYearOfManufactureChangedEvent) then) =
-      __$ProductYearOfManufactureChangedEventCopyWithImpl<$Res>;
+abstract class _$$_ProductYearOfManufactureChangedEventCopyWith<$Res> {
+  factory _$$_ProductYearOfManufactureChangedEventCopyWith(
+          _$_ProductYearOfManufactureChangedEvent value,
+          $Res Function(_$_ProductYearOfManufactureChangedEvent) then) =
+      __$$_ProductYearOfManufactureChangedEventCopyWithImpl<$Res>;
   $Res call({String? value});
 }
 
 /// @nodoc
-class __$ProductYearOfManufactureChangedEventCopyWithImpl<$Res>
+class __$$_ProductYearOfManufactureChangedEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$ProductYearOfManufactureChangedEventCopyWith<$Res> {
-  __$ProductYearOfManufactureChangedEventCopyWithImpl(
-      _ProductYearOfManufactureChangedEvent _value,
-      $Res Function(_ProductYearOfManufactureChangedEvent) _then)
-      : super(_value, (v) => _then(v as _ProductYearOfManufactureChangedEvent));
+    implements _$$_ProductYearOfManufactureChangedEventCopyWith<$Res> {
+  __$$_ProductYearOfManufactureChangedEventCopyWithImpl(
+      _$_ProductYearOfManufactureChangedEvent _value,
+      $Res Function(_$_ProductYearOfManufactureChangedEvent) _then)
+      : super(
+            _value, (v) => _then(v as _$_ProductYearOfManufactureChangedEvent));
 
   @override
-  _ProductYearOfManufactureChangedEvent get _value =>
-      super._value as _ProductYearOfManufactureChangedEvent;
+  _$_ProductYearOfManufactureChangedEvent get _value =>
+      super._value as _$_ProductYearOfManufactureChangedEvent;
 
   @override
   $Res call({
     Object? value = freezed,
   }) {
-    return _then(_ProductYearOfManufactureChangedEvent(
+    return _then(_$_ProductYearOfManufactureChangedEvent(
       value == freezed
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -8390,7 +7318,7 @@ class _$_ProductYearOfManufactureChangedEvent
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ProductYearOfManufactureChangedEvent &&
+            other is _$_ProductYearOfManufactureChangedEvent &&
             const DeepCollectionEquality().equals(other.value, value));
   }
 
@@ -8400,96 +7328,10 @@ class _$_ProductYearOfManufactureChangedEvent
 
   @JsonKey(ignore: true)
   @override
-  _$ProductYearOfManufactureChangedEventCopyWith<
-          _ProductYearOfManufactureChangedEvent>
-      get copyWith => __$ProductYearOfManufactureChangedEventCopyWithImpl<
-          _ProductYearOfManufactureChangedEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return yearOfManufactureChanged(value);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return yearOfManufactureChanged?.call(value);
-  }
+  _$$_ProductYearOfManufactureChangedEventCopyWith<
+          _$_ProductYearOfManufactureChangedEvent>
+      get copyWith => __$$_ProductYearOfManufactureChangedEventCopyWithImpl<
+          _$_ProductYearOfManufactureChangedEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -8604,47 +7446,104 @@ class _$_ProductYearOfManufactureChangedEvent
   }) {
     return yearOfManufactureChanged?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (yearOfManufactureChanged != null) {
+      return yearOfManufactureChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _ProductYearOfManufactureChangedEvent
     implements ProductSyncEvent {
-  const factory _ProductYearOfManufactureChangedEvent(String? value) =
+  const factory _ProductYearOfManufactureChangedEvent(final String? value) =
       _$_ProductYearOfManufactureChangedEvent;
 
-  String? get value;
+  String? get value => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$ProductYearOfManufactureChangedEventCopyWith<
-          _ProductYearOfManufactureChangedEvent>
+  _$$_ProductYearOfManufactureChangedEventCopyWith<
+          _$_ProductYearOfManufactureChangedEvent>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$ProductRepairHistoryChangedEventCopyWith<$Res> {
-  factory _$ProductRepairHistoryChangedEventCopyWith(
-          _ProductRepairHistoryChangedEvent value,
-          $Res Function(_ProductRepairHistoryChangedEvent) then) =
-      __$ProductRepairHistoryChangedEventCopyWithImpl<$Res>;
+abstract class _$$_ProductRepairHistoryChangedEventCopyWith<$Res> {
+  factory _$$_ProductRepairHistoryChangedEventCopyWith(
+          _$_ProductRepairHistoryChangedEvent value,
+          $Res Function(_$_ProductRepairHistoryChangedEvent) then) =
+      __$$_ProductRepairHistoryChangedEventCopyWithImpl<$Res>;
   $Res call({bool? value});
 }
 
 /// @nodoc
-class __$ProductRepairHistoryChangedEventCopyWithImpl<$Res>
+class __$$_ProductRepairHistoryChangedEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$ProductRepairHistoryChangedEventCopyWith<$Res> {
-  __$ProductRepairHistoryChangedEventCopyWithImpl(
-      _ProductRepairHistoryChangedEvent _value,
-      $Res Function(_ProductRepairHistoryChangedEvent) _then)
-      : super(_value, (v) => _then(v as _ProductRepairHistoryChangedEvent));
+    implements _$$_ProductRepairHistoryChangedEventCopyWith<$Res> {
+  __$$_ProductRepairHistoryChangedEventCopyWithImpl(
+      _$_ProductRepairHistoryChangedEvent _value,
+      $Res Function(_$_ProductRepairHistoryChangedEvent) _then)
+      : super(_value, (v) => _then(v as _$_ProductRepairHistoryChangedEvent));
 
   @override
-  _ProductRepairHistoryChangedEvent get _value =>
-      super._value as _ProductRepairHistoryChangedEvent;
+  _$_ProductRepairHistoryChangedEvent get _value =>
+      super._value as _$_ProductRepairHistoryChangedEvent;
 
   @override
   $Res call({
     Object? value = freezed,
   }) {
-    return _then(_ProductRepairHistoryChangedEvent(
+    return _then(_$_ProductRepairHistoryChangedEvent(
       value == freezed
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -8671,7 +7570,7 @@ class _$_ProductRepairHistoryChangedEvent
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ProductRepairHistoryChangedEvent &&
+            other is _$_ProductRepairHistoryChangedEvent &&
             const DeepCollectionEquality().equals(other.value, value));
   }
 
@@ -8681,95 +7580,10 @@ class _$_ProductRepairHistoryChangedEvent
 
   @JsonKey(ignore: true)
   @override
-  _$ProductRepairHistoryChangedEventCopyWith<_ProductRepairHistoryChangedEvent>
-      get copyWith => __$ProductRepairHistoryChangedEventCopyWithImpl<
-          _ProductRepairHistoryChangedEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return repairHistoryChanged(value);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return repairHistoryChanged?.call(value);
-  }
+  _$$_ProductRepairHistoryChangedEventCopyWith<
+          _$_ProductRepairHistoryChangedEvent>
+      get copyWith => __$$_ProductRepairHistoryChangedEventCopyWithImpl<
+          _$_ProductRepairHistoryChangedEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -8884,45 +7698,103 @@ class _$_ProductRepairHistoryChangedEvent
   }) {
     return repairHistoryChanged?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (repairHistoryChanged != null) {
+      return repairHistoryChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _ProductRepairHistoryChangedEvent implements ProductSyncEvent {
-  const factory _ProductRepairHistoryChangedEvent(bool? value) =
+  const factory _ProductRepairHistoryChangedEvent(final bool? value) =
       _$_ProductRepairHistoryChangedEvent;
 
-  bool? get value;
+  bool? get value => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$ProductRepairHistoryChangedEventCopyWith<_ProductRepairHistoryChangedEvent>
+  _$$_ProductRepairHistoryChangedEventCopyWith<
+          _$_ProductRepairHistoryChangedEvent>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$ProductRefundPolicyChangedEventCopyWith<$Res> {
-  factory _$ProductRefundPolicyChangedEventCopyWith(
-          _ProductRefundPolicyChangedEvent value,
-          $Res Function(_ProductRefundPolicyChangedEvent) then) =
-      __$ProductRefundPolicyChangedEventCopyWithImpl<$Res>;
+abstract class _$$_ProductRefundPolicyChangedEventCopyWith<$Res> {
+  factory _$$_ProductRefundPolicyChangedEventCopyWith(
+          _$_ProductRefundPolicyChangedEvent value,
+          $Res Function(_$_ProductRefundPolicyChangedEvent) then) =
+      __$$_ProductRefundPolicyChangedEventCopyWithImpl<$Res>;
   $Res call({bool? value});
 }
 
 /// @nodoc
-class __$ProductRefundPolicyChangedEventCopyWithImpl<$Res>
+class __$$_ProductRefundPolicyChangedEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$ProductRefundPolicyChangedEventCopyWith<$Res> {
-  __$ProductRefundPolicyChangedEventCopyWithImpl(
-      _ProductRefundPolicyChangedEvent _value,
-      $Res Function(_ProductRefundPolicyChangedEvent) _then)
-      : super(_value, (v) => _then(v as _ProductRefundPolicyChangedEvent));
+    implements _$$_ProductRefundPolicyChangedEventCopyWith<$Res> {
+  __$$_ProductRefundPolicyChangedEventCopyWithImpl(
+      _$_ProductRefundPolicyChangedEvent _value,
+      $Res Function(_$_ProductRefundPolicyChangedEvent) _then)
+      : super(_value, (v) => _then(v as _$_ProductRefundPolicyChangedEvent));
 
   @override
-  _ProductRefundPolicyChangedEvent get _value =>
-      super._value as _ProductRefundPolicyChangedEvent;
+  _$_ProductRefundPolicyChangedEvent get _value =>
+      super._value as _$_ProductRefundPolicyChangedEvent;
 
   @override
   $Res call({
     Object? value = freezed,
   }) {
-    return _then(_ProductRefundPolicyChangedEvent(
+    return _then(_$_ProductRefundPolicyChangedEvent(
       value == freezed
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -8949,7 +7821,7 @@ class _$_ProductRefundPolicyChangedEvent
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ProductRefundPolicyChangedEvent &&
+            other is _$_ProductRefundPolicyChangedEvent &&
             const DeepCollectionEquality().equals(other.value, value));
   }
 
@@ -8959,95 +7831,10 @@ class _$_ProductRefundPolicyChangedEvent
 
   @JsonKey(ignore: true)
   @override
-  _$ProductRefundPolicyChangedEventCopyWith<_ProductRefundPolicyChangedEvent>
-      get copyWith => __$ProductRefundPolicyChangedEventCopyWithImpl<
-          _ProductRefundPolicyChangedEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return refundPolicyChanged(value);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return refundPolicyChanged?.call(value);
-  }
+  _$$_ProductRefundPolicyChangedEventCopyWith<
+          _$_ProductRefundPolicyChangedEvent>
+      get copyWith => __$$_ProductRefundPolicyChangedEventCopyWithImpl<
+          _$_ProductRefundPolicyChangedEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -9162,45 +7949,103 @@ class _$_ProductRefundPolicyChangedEvent
   }) {
     return refundPolicyChanged?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (refundPolicyChanged != null) {
+      return refundPolicyChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _ProductRefundPolicyChangedEvent implements ProductSyncEvent {
-  const factory _ProductRefundPolicyChangedEvent(bool? value) =
+  const factory _ProductRefundPolicyChangedEvent(final bool? value) =
       _$_ProductRefundPolicyChangedEvent;
 
-  bool? get value;
+  bool? get value => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$ProductRefundPolicyChangedEventCopyWith<_ProductRefundPolicyChangedEvent>
+  _$$_ProductRefundPolicyChangedEventCopyWith<
+          _$_ProductRefundPolicyChangedEvent>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$ProductTermsInfoChangedEventCopyWith<$Res> {
-  factory _$ProductTermsInfoChangedEventCopyWith(
-          _ProductTermsInfoChangedEvent value,
-          $Res Function(_ProductTermsInfoChangedEvent) then) =
-      __$ProductTermsInfoChangedEventCopyWithImpl<$Res>;
+abstract class _$$_ProductTermsInfoChangedEventCopyWith<$Res> {
+  factory _$$_ProductTermsInfoChangedEventCopyWith(
+          _$_ProductTermsInfoChangedEvent value,
+          $Res Function(_$_ProductTermsInfoChangedEvent) then) =
+      __$$_ProductTermsInfoChangedEventCopyWithImpl<$Res>;
   $Res call({String? value});
 }
 
 /// @nodoc
-class __$ProductTermsInfoChangedEventCopyWithImpl<$Res>
+class __$$_ProductTermsInfoChangedEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$ProductTermsInfoChangedEventCopyWith<$Res> {
-  __$ProductTermsInfoChangedEventCopyWithImpl(
-      _ProductTermsInfoChangedEvent _value,
-      $Res Function(_ProductTermsInfoChangedEvent) _then)
-      : super(_value, (v) => _then(v as _ProductTermsInfoChangedEvent));
+    implements _$$_ProductTermsInfoChangedEventCopyWith<$Res> {
+  __$$_ProductTermsInfoChangedEventCopyWithImpl(
+      _$_ProductTermsInfoChangedEvent _value,
+      $Res Function(_$_ProductTermsInfoChangedEvent) _then)
+      : super(_value, (v) => _then(v as _$_ProductTermsInfoChangedEvent));
 
   @override
-  _ProductTermsInfoChangedEvent get _value =>
-      super._value as _ProductTermsInfoChangedEvent;
+  _$_ProductTermsInfoChangedEvent get _value =>
+      super._value as _$_ProductTermsInfoChangedEvent;
 
   @override
   $Res call({
     Object? value = freezed,
   }) {
-    return _then(_ProductTermsInfoChangedEvent(
+    return _then(_$_ProductTermsInfoChangedEvent(
       value == freezed
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -9226,7 +8071,7 @@ class _$_ProductTermsInfoChangedEvent implements _ProductTermsInfoChangedEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ProductTermsInfoChangedEvent &&
+            other is _$_ProductTermsInfoChangedEvent &&
             const DeepCollectionEquality().equals(other.value, value));
   }
 
@@ -9236,95 +8081,9 @@ class _$_ProductTermsInfoChangedEvent implements _ProductTermsInfoChangedEvent {
 
   @JsonKey(ignore: true)
   @override
-  _$ProductTermsInfoChangedEventCopyWith<_ProductTermsInfoChangedEvent>
-      get copyWith => __$ProductTermsInfoChangedEventCopyWithImpl<
-          _ProductTermsInfoChangedEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return termsInfoChanged(value);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return termsInfoChanged?.call(value);
-  }
+  _$$_ProductTermsInfoChangedEventCopyWith<_$_ProductTermsInfoChangedEvent>
+      get copyWith => __$$_ProductTermsInfoChangedEventCopyWithImpl<
+          _$_ProductTermsInfoChangedEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -9439,42 +8198,100 @@ class _$_ProductTermsInfoChangedEvent implements _ProductTermsInfoChangedEvent {
   }) {
     return termsInfoChanged?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (termsInfoChanged != null) {
+      return termsInfoChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _ProductTermsInfoChangedEvent implements ProductSyncEvent {
-  const factory _ProductTermsInfoChangedEvent(String? value) =
+  const factory _ProductTermsInfoChangedEvent(final String? value) =
       _$_ProductTermsInfoChangedEvent;
 
-  String? get value;
+  String? get value => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$ProductTermsInfoChangedEventCopyWith<_ProductTermsInfoChangedEvent>
+  _$$_ProductTermsInfoChangedEventCopyWith<_$_ProductTermsInfoChangedEvent>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$ValidateFormFieldEventCopyWith<$Res> {
-  factory _$ValidateFormFieldEventCopyWith(_ValidateFormFieldEvent value,
-          $Res Function(_ValidateFormFieldEvent) then) =
-      __$ValidateFormFieldEventCopyWithImpl<$Res>;
+abstract class _$$_ValidateFormFieldEventCopyWith<$Res> {
+  factory _$$_ValidateFormFieldEventCopyWith(_$_ValidateFormFieldEvent value,
+          $Res Function(_$_ValidateFormFieldEvent) then) =
+      __$$_ValidateFormFieldEventCopyWithImpl<$Res>;
   $Res call({bool? validate});
 }
 
 /// @nodoc
-class __$ValidateFormFieldEventCopyWithImpl<$Res>
+class __$$_ValidateFormFieldEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$ValidateFormFieldEventCopyWith<$Res> {
-  __$ValidateFormFieldEventCopyWithImpl(_ValidateFormFieldEvent _value,
-      $Res Function(_ValidateFormFieldEvent) _then)
-      : super(_value, (v) => _then(v as _ValidateFormFieldEvent));
+    implements _$$_ValidateFormFieldEventCopyWith<$Res> {
+  __$$_ValidateFormFieldEventCopyWithImpl(_$_ValidateFormFieldEvent _value,
+      $Res Function(_$_ValidateFormFieldEvent) _then)
+      : super(_value, (v) => _then(v as _$_ValidateFormFieldEvent));
 
   @override
-  _ValidateFormFieldEvent get _value => super._value as _ValidateFormFieldEvent;
+  _$_ValidateFormFieldEvent get _value =>
+      super._value as _$_ValidateFormFieldEvent;
 
   @override
   $Res call({
     Object? validate = freezed,
   }) {
-    return _then(_ValidateFormFieldEvent(
+    return _then(_$_ValidateFormFieldEvent(
       validate == freezed
           ? _value.validate
           : validate // ignore: cast_nullable_to_non_nullable
@@ -9500,7 +8317,7 @@ class _$_ValidateFormFieldEvent implements _ValidateFormFieldEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ValidateFormFieldEvent &&
+            other is _$_ValidateFormFieldEvent &&
             const DeepCollectionEquality().equals(other.validate, validate));
   }
 
@@ -9510,95 +8327,9 @@ class _$_ValidateFormFieldEvent implements _ValidateFormFieldEvent {
 
   @JsonKey(ignore: true)
   @override
-  _$ValidateFormFieldEventCopyWith<_ValidateFormFieldEvent> get copyWith =>
-      __$ValidateFormFieldEventCopyWithImpl<_ValidateFormFieldEvent>(
+  _$$_ValidateFormFieldEventCopyWith<_$_ValidateFormFieldEvent> get copyWith =>
+      __$$_ValidateFormFieldEventCopyWithImpl<_$_ValidateFormFieldEvent>(
           this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return validate(this.validate);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return validate?.call(this.validate);
-  }
 
   @override
   @optionalTypeArgs
@@ -9713,35 +8444,92 @@ class _$_ValidateFormFieldEvent implements _ValidateFormFieldEvent {
   }) {
     return validate?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (validate != null) {
+      return validate(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _ValidateFormFieldEvent implements ProductSyncEvent {
-  const factory _ValidateFormFieldEvent([bool? validate]) =
+  const factory _ValidateFormFieldEvent([final bool? validate]) =
       _$_ValidateFormFieldEvent;
 
-  bool? get validate;
+  bool? get validate => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$ValidateFormFieldEventCopyWith<_ValidateFormFieldEvent> get copyWith =>
+  _$$_ValidateFormFieldEventCopyWith<_$_ValidateFormFieldEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$ClearFormFieldsEventCopyWith<$Res> {
-  factory _$ClearFormFieldsEventCopyWith(_ClearFormFieldsEvent value,
-          $Res Function(_ClearFormFieldsEvent) then) =
-      __$ClearFormFieldsEventCopyWithImpl<$Res>;
+abstract class _$$_ClearFormFieldsEventCopyWith<$Res> {
+  factory _$$_ClearFormFieldsEventCopyWith(_$_ClearFormFieldsEvent value,
+          $Res Function(_$_ClearFormFieldsEvent) then) =
+      __$$_ClearFormFieldsEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$ClearFormFieldsEventCopyWithImpl<$Res>
+class __$$_ClearFormFieldsEventCopyWithImpl<$Res>
     extends _$ProductSyncEventCopyWithImpl<$Res>
-    implements _$ClearFormFieldsEventCopyWith<$Res> {
-  __$ClearFormFieldsEventCopyWithImpl(
-      _ClearFormFieldsEvent _value, $Res Function(_ClearFormFieldsEvent) _then)
-      : super(_value, (v) => _then(v as _ClearFormFieldsEvent));
+    implements _$$_ClearFormFieldsEventCopyWith<$Res> {
+  __$$_ClearFormFieldsEventCopyWithImpl(_$_ClearFormFieldsEvent _value,
+      $Res Function(_$_ClearFormFieldsEvent) _then)
+      : super(_value, (v) => _then(v as _$_ClearFormFieldsEvent));
 
   @override
-  _ClearFormFieldsEvent get _value => super._value as _ClearFormFieldsEvent;
+  _$_ClearFormFieldsEvent get _value => super._value as _$_ClearFormFieldsEvent;
 }
 
 /// @nodoc
@@ -9757,97 +8545,11 @@ class _$_ClearFormFieldsEvent implements _ClearFormFieldsEvent {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _ClearFormFieldsEvent);
+        (other.runtimeType == runtimeType && other is _$_ClearFormFieldsEvent);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Product? product) init,
-    required TResult Function(DealCategory? category) categoryChanged,
-    required TResult Function(Country? country) countryChanged,
-    required TResult Function(DealPlan? plan) dealPlanChanged,
-    required TResult Function(DealType? type) dealTypeChanged,
-    required TResult Function() itemNameChanged,
-    required TResult Function() stateChanged,
-    required TResult Function() townChanged,
-    required TResult Function() itemDescriptionChanged,
-    required TResult Function() brandChanged,
-    required TResult Function() brandModelChanged,
-    required TResult Function() transmissionChanged,
-    required TResult Function() weightChanged,
-    required TResult Function() basePriceChanged,
-    required TResult Function() lengthChanged,
-    required TResult Function() widthChanged,
-    required TResult Function() heightChanged,
-    required TResult Function(bool? value) deliveryModeChanged,
-    required TResult Function() shippingDescChanged,
-    required TResult Function(ItemCondition? value) conditionChanged,
-    required TResult Function(QuantityType? value) quantityTypeChanged,
-    required TResult Function(BiddingType? value) biddingTypeChanged,
-    required TResult Function(OfferType? value) offerTypeChanged,
-    required TResult Function(DateTime? value) startDateChanged,
-    required TResult Function(DateTime? value) endDateChanged,
-    required TResult Function() addressChanged,
-    required TResult Function(Color? value) colorChanged,
-    required TResult Function(String? value) deliveryPeriodChanged,
-    required TResult Function(String? value) warrantyPeriodChanged,
-    required TResult Function(String? value) yearOfPurchaseChanged,
-    required TResult Function(String? value) yearOfManufactureChanged,
-    required TResult Function(bool? value) repairHistoryChanged,
-    required TResult Function(bool? value) refundPolicyChanged,
-    required TResult Function(String? value) termsInfoChanged,
-    required TResult Function(bool? validate) validate,
-    required TResult Function() clearForm,
-  }) {
-    return clearForm();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Product? product)? init,
-    TResult Function(DealCategory? category)? categoryChanged,
-    TResult Function(Country? country)? countryChanged,
-    TResult Function(DealPlan? plan)? dealPlanChanged,
-    TResult Function(DealType? type)? dealTypeChanged,
-    TResult Function()? itemNameChanged,
-    TResult Function()? stateChanged,
-    TResult Function()? townChanged,
-    TResult Function()? itemDescriptionChanged,
-    TResult Function()? brandChanged,
-    TResult Function()? brandModelChanged,
-    TResult Function()? transmissionChanged,
-    TResult Function()? weightChanged,
-    TResult Function()? basePriceChanged,
-    TResult Function()? lengthChanged,
-    TResult Function()? widthChanged,
-    TResult Function()? heightChanged,
-    TResult Function(bool? value)? deliveryModeChanged,
-    TResult Function()? shippingDescChanged,
-    TResult Function(ItemCondition? value)? conditionChanged,
-    TResult Function(QuantityType? value)? quantityTypeChanged,
-    TResult Function(BiddingType? value)? biddingTypeChanged,
-    TResult Function(OfferType? value)? offerTypeChanged,
-    TResult Function(DateTime? value)? startDateChanged,
-    TResult Function(DateTime? value)? endDateChanged,
-    TResult Function()? addressChanged,
-    TResult Function(Color? value)? colorChanged,
-    TResult Function(String? value)? deliveryPeriodChanged,
-    TResult Function(String? value)? warrantyPeriodChanged,
-    TResult Function(String? value)? yearOfPurchaseChanged,
-    TResult Function(String? value)? yearOfManufactureChanged,
-    TResult Function(bool? value)? repairHistoryChanged,
-    TResult Function(bool? value)? refundPolicyChanged,
-    TResult Function(String? value)? termsInfoChanged,
-    TResult Function(bool? validate)? validate,
-    TResult Function()? clearForm,
-  }) {
-    return clearForm?.call();
-  }
 
   @override
   @optionalTypeArgs
@@ -9962,6 +8664,63 @@ class _$_ClearFormFieldsEvent implements _ClearFormFieldsEvent {
   }) {
     return clearForm?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeProductBlocEvent value)? init,
+    TResult Function(_CategoryChangedEvent value)? categoryChanged,
+    TResult Function(_CountryChangedEvent value)? countryChanged,
+    TResult Function(_DealPlanChangedEvent value)? dealPlanChanged,
+    TResult Function(_DealTypeChangedEvent value)? dealTypeChanged,
+    TResult Function(_ProductNameChangedEvent value)? itemNameChanged,
+    TResult Function(_ProductStateChangedEvent value)? stateChanged,
+    TResult Function(_ProductTownChangedEvent value)? townChanged,
+    TResult Function(_ProductDescriptionChangedEvent value)?
+        itemDescriptionChanged,
+    TResult Function(_ProductBrandChangedEvent value)? brandChanged,
+    TResult Function(_ProductBrandModelChangedEvent value)? brandModelChanged,
+    TResult Function(_ProductTransmissionChangedEvent value)?
+        transmissionChanged,
+    TResult Function(_ProductWeightChangedEvent value)? weightChanged,
+    TResult Function(_ProductBasePriceChangedEvent value)? basePriceChanged,
+    TResult Function(_ProductLengthChangedEvent value)? lengthChanged,
+    TResult Function(_ProductWidthChangedEvent value)? widthChanged,
+    TResult Function(_ProductHeightChangedEvent value)? heightChanged,
+    TResult Function(_ProductDeliveryModeChangedEvent value)?
+        deliveryModeChanged,
+    TResult Function(_ProductShippingDescChangedEvent value)?
+        shippingDescChanged,
+    TResult Function(_ProductConditionChangedEvent value)? conditionChanged,
+    TResult Function(_DealQuantityTypeChangedEvent value)? quantityTypeChanged,
+    TResult Function(_DealBiddingTypeChangedEvent value)? biddingTypeChanged,
+    TResult Function(_DealOfferTypeChangedEvent value)? offerTypeChanged,
+    TResult Function(_DealStartDateChangedEvent value)? startDateChanged,
+    TResult Function(_DealEndDateChangedEvent value)? endDateChanged,
+    TResult Function(_DealAddressChangedEvent value)? addressChanged,
+    TResult Function(_ProductColorChangedEvent value)? colorChanged,
+    TResult Function(_ProductDeliveryPeriodChangedEvent value)?
+        deliveryPeriodChanged,
+    TResult Function(_ProductWarrantyPeriodChangedEvent value)?
+        warrantyPeriodChanged,
+    TResult Function(_ProductYearOfPurchaseChangedEvent value)?
+        yearOfPurchaseChanged,
+    TResult Function(_ProductYearOfManufactureChangedEvent value)?
+        yearOfManufactureChanged,
+    TResult Function(_ProductRepairHistoryChangedEvent value)?
+        repairHistoryChanged,
+    TResult Function(_ProductRefundPolicyChangedEvent value)?
+        refundPolicyChanged,
+    TResult Function(_ProductTermsInfoChangedEvent value)? termsInfoChanged,
+    TResult Function(_ValidateFormFieldEvent value)? validate,
+    TResult Function(_ClearFormFieldsEvent value)? clearForm,
+    required TResult orElse(),
+  }) {
+    if (clearForm != null) {
+      return clearForm(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _ClearFormFieldsEvent implements ProductSyncEvent {
@@ -9969,35 +8728,9 @@ abstract class _ClearFormFieldsEvent implements ProductSyncEvent {
 }
 
 /// @nodoc
-class _$ProductStructEventTearOff {
-  const _$ProductStructEventTearOff();
-
-  _StoreNewProductEvent store(User? user, {AwaitCallback? callback}) {
-    return _StoreNewProductEvent(
-      user,
-      callback: callback,
-    );
-  }
-}
-
-/// @nodoc
-const $ProductStructEvent = _$ProductStructEventTearOff();
-
-/// @nodoc
 mixin _$ProductStructEvent {
   User? get user => throw _privateConstructorUsedError;
   AwaitCallback? get callback => throw _privateConstructorUsedError;
-
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(User? user, AwaitCallback? callback) store,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(User? user, AwaitCallback? callback)? store,
-  }) =>
-      throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
@@ -10007,6 +8740,12 @@ mixin _$ProductStructEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_StoreNewProductEvent value)? store,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_StoreNewProductEvent value)? store,
+    required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 
@@ -10064,11 +8803,11 @@ class _$ProductStructEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$StoreNewProductEventCopyWith<$Res>
+abstract class _$$_StoreNewProductEventCopyWith<$Res>
     implements $ProductStructEventCopyWith<$Res> {
-  factory _$StoreNewProductEventCopyWith(_StoreNewProductEvent value,
-          $Res Function(_StoreNewProductEvent) then) =
-      __$StoreNewProductEventCopyWithImpl<$Res>;
+  factory _$$_StoreNewProductEventCopyWith(_$_StoreNewProductEvent value,
+          $Res Function(_$_StoreNewProductEvent) then) =
+      __$$_StoreNewProductEventCopyWithImpl<$Res>;
   @override
   $Res call({User? user, AwaitCallback? callback});
 
@@ -10077,22 +8816,22 @@ abstract class _$StoreNewProductEventCopyWith<$Res>
 }
 
 /// @nodoc
-class __$StoreNewProductEventCopyWithImpl<$Res>
+class __$$_StoreNewProductEventCopyWithImpl<$Res>
     extends _$ProductStructEventCopyWithImpl<$Res>
-    implements _$StoreNewProductEventCopyWith<$Res> {
-  __$StoreNewProductEventCopyWithImpl(
-      _StoreNewProductEvent _value, $Res Function(_StoreNewProductEvent) _then)
-      : super(_value, (v) => _then(v as _StoreNewProductEvent));
+    implements _$$_StoreNewProductEventCopyWith<$Res> {
+  __$$_StoreNewProductEventCopyWithImpl(_$_StoreNewProductEvent _value,
+      $Res Function(_$_StoreNewProductEvent) _then)
+      : super(_value, (v) => _then(v as _$_StoreNewProductEvent));
 
   @override
-  _StoreNewProductEvent get _value => super._value as _StoreNewProductEvent;
+  _$_StoreNewProductEvent get _value => super._value as _$_StoreNewProductEvent;
 
   @override
   $Res call({
     Object? user = freezed,
     Object? callback = freezed,
   }) {
-    return _then(_StoreNewProductEvent(
+    return _then(_$_StoreNewProductEvent(
       user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -10124,7 +8863,7 @@ class _$_StoreNewProductEvent implements _StoreNewProductEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _StoreNewProductEvent &&
+            other is _$_StoreNewProductEvent &&
             const DeepCollectionEquality().equals(other.user, user) &&
             (identical(other.callback, callback) ||
                 other.callback == callback));
@@ -10136,25 +8875,9 @@ class _$_StoreNewProductEvent implements _StoreNewProductEvent {
 
   @JsonKey(ignore: true)
   @override
-  _$StoreNewProductEventCopyWith<_StoreNewProductEvent> get copyWith =>
-      __$StoreNewProductEventCopyWithImpl<_StoreNewProductEvent>(
+  _$$_StoreNewProductEventCopyWith<_$_StoreNewProductEvent> get copyWith =>
+      __$$_StoreNewProductEventCopyWithImpl<_$_StoreNewProductEvent>(
           this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(User? user, AwaitCallback? callback) store,
-  }) {
-    return store(user, callback);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(User? user, AwaitCallback? callback)? store,
-  }) {
-    return store?.call(user, callback);
-  }
 
   @override
   @optionalTypeArgs
@@ -10171,56 +8894,36 @@ class _$_StoreNewProductEvent implements _StoreNewProductEvent {
   }) {
     return store?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_StoreNewProductEvent value)? store,
+    required TResult orElse(),
+  }) {
+    if (store != null) {
+      return store(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _StoreNewProductEvent implements ProductStructEvent {
-  const factory _StoreNewProductEvent(User? user, {AwaitCallback? callback}) =
-      _$_StoreNewProductEvent;
+  const factory _StoreNewProductEvent(final User? user,
+      {final AwaitCallback? callback}) = _$_StoreNewProductEvent;
 
   @override
-  User? get user;
+  User? get user => throw _privateConstructorUsedError;
   @override
-  AwaitCallback? get callback;
+  AwaitCallback? get callback => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$StoreNewProductEventCopyWith<_StoreNewProductEvent> get copyWith =>
+  _$$_StoreNewProductEventCopyWith<_$_StoreNewProductEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$ProductGetEventTearOff {
-  const _$ProductGetEventTearOff();
-
-  _GetCategoriesEvent categories() {
-    return const _GetCategoriesEvent();
-  }
-
-  _GetDealPlansEvent getDealPlans({int? perPage, bool nextPage = false}) {
-    return _GetDealPlansEvent(
-      perPage: perPage,
-      nextPage: nextPage,
-    );
-  }
-}
-
-/// @nodoc
-const $ProductGetEvent = _$ProductGetEventTearOff();
 
 /// @nodoc
 mixin _$ProductGetEvent {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() categories,
-    required TResult Function(int? perPage, bool nextPage) getDealPlans,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? categories,
-    TResult Function(int? perPage, bool nextPage)? getDealPlans,
-  }) =>
-      throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetCategoriesEvent value) categories,
@@ -10231,6 +8934,13 @@ mixin _$ProductGetEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_GetCategoriesEvent value)? categories,
     TResult Function(_GetDealPlansEvent value)? getDealPlans,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetCategoriesEvent value)? categories,
+    TResult Function(_GetDealPlansEvent value)? getDealPlans,
+    required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
@@ -10253,22 +8963,22 @@ class _$ProductGetEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$GetCategoriesEventCopyWith<$Res> {
-  factory _$GetCategoriesEventCopyWith(
-          _GetCategoriesEvent value, $Res Function(_GetCategoriesEvent) then) =
-      __$GetCategoriesEventCopyWithImpl<$Res>;
+abstract class _$$_GetCategoriesEventCopyWith<$Res> {
+  factory _$$_GetCategoriesEventCopyWith(_$_GetCategoriesEvent value,
+          $Res Function(_$_GetCategoriesEvent) then) =
+      __$$_GetCategoriesEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$GetCategoriesEventCopyWithImpl<$Res>
+class __$$_GetCategoriesEventCopyWithImpl<$Res>
     extends _$ProductGetEventCopyWithImpl<$Res>
-    implements _$GetCategoriesEventCopyWith<$Res> {
-  __$GetCategoriesEventCopyWithImpl(
-      _GetCategoriesEvent _value, $Res Function(_GetCategoriesEvent) _then)
-      : super(_value, (v) => _then(v as _GetCategoriesEvent));
+    implements _$$_GetCategoriesEventCopyWith<$Res> {
+  __$$_GetCategoriesEventCopyWithImpl(
+      _$_GetCategoriesEvent _value, $Res Function(_$_GetCategoriesEvent) _then)
+      : super(_value, (v) => _then(v as _$_GetCategoriesEvent));
 
   @override
-  _GetCategoriesEvent get _value => super._value as _GetCategoriesEvent;
+  _$_GetCategoriesEvent get _value => super._value as _$_GetCategoriesEvent;
 }
 
 /// @nodoc
@@ -10284,29 +8994,11 @@ class _$_GetCategoriesEvent implements _GetCategoriesEvent {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _GetCategoriesEvent);
+        (other.runtimeType == runtimeType && other is _$_GetCategoriesEvent);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() categories,
-    required TResult Function(int? perPage, bool nextPage) getDealPlans,
-  }) {
-    return categories();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? categories,
-    TResult Function(int? perPage, bool nextPage)? getDealPlans,
-  }) {
-    return categories?.call();
-  }
 
   @override
   @optionalTypeArgs
@@ -10325,6 +9017,19 @@ class _$_GetCategoriesEvent implements _GetCategoriesEvent {
   }) {
     return categories?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetCategoriesEvent value)? categories,
+    TResult Function(_GetDealPlansEvent value)? getDealPlans,
+    required TResult orElse(),
+  }) {
+    if (categories != null) {
+      return categories(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _GetCategoriesEvent implements ProductGetEvent {
@@ -10332,30 +9037,30 @@ abstract class _GetCategoriesEvent implements ProductGetEvent {
 }
 
 /// @nodoc
-abstract class _$GetDealPlansEventCopyWith<$Res> {
-  factory _$GetDealPlansEventCopyWith(
-          _GetDealPlansEvent value, $Res Function(_GetDealPlansEvent) then) =
-      __$GetDealPlansEventCopyWithImpl<$Res>;
+abstract class _$$_GetDealPlansEventCopyWith<$Res> {
+  factory _$$_GetDealPlansEventCopyWith(_$_GetDealPlansEvent value,
+          $Res Function(_$_GetDealPlansEvent) then) =
+      __$$_GetDealPlansEventCopyWithImpl<$Res>;
   $Res call({int? perPage, bool nextPage});
 }
 
 /// @nodoc
-class __$GetDealPlansEventCopyWithImpl<$Res>
+class __$$_GetDealPlansEventCopyWithImpl<$Res>
     extends _$ProductGetEventCopyWithImpl<$Res>
-    implements _$GetDealPlansEventCopyWith<$Res> {
-  __$GetDealPlansEventCopyWithImpl(
-      _GetDealPlansEvent _value, $Res Function(_GetDealPlansEvent) _then)
-      : super(_value, (v) => _then(v as _GetDealPlansEvent));
+    implements _$$_GetDealPlansEventCopyWith<$Res> {
+  __$$_GetDealPlansEventCopyWithImpl(
+      _$_GetDealPlansEvent _value, $Res Function(_$_GetDealPlansEvent) _then)
+      : super(_value, (v) => _then(v as _$_GetDealPlansEvent));
 
   @override
-  _GetDealPlansEvent get _value => super._value as _GetDealPlansEvent;
+  _$_GetDealPlansEvent get _value => super._value as _$_GetDealPlansEvent;
 
   @override
   $Res call({
     Object? perPage = freezed,
     Object? nextPage = freezed,
   }) {
-    return _then(_GetDealPlansEvent(
+    return _then(_$_GetDealPlansEvent(
       perPage: perPage == freezed
           ? _value.perPage
           : perPage // ignore: cast_nullable_to_non_nullable
@@ -10375,8 +9080,8 @@ class _$_GetDealPlansEvent implements _GetDealPlansEvent {
 
   @override
   final int? perPage;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool nextPage;
 
   @override
@@ -10388,7 +9093,7 @@ class _$_GetDealPlansEvent implements _GetDealPlansEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _GetDealPlansEvent &&
+            other is _$_GetDealPlansEvent &&
             const DeepCollectionEquality().equals(other.perPage, perPage) &&
             const DeepCollectionEquality().equals(other.nextPage, nextPage));
   }
@@ -10401,26 +9106,9 @@ class _$_GetDealPlansEvent implements _GetDealPlansEvent {
 
   @JsonKey(ignore: true)
   @override
-  _$GetDealPlansEventCopyWith<_GetDealPlansEvent> get copyWith =>
-      __$GetDealPlansEventCopyWithImpl<_GetDealPlansEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() categories,
-    required TResult Function(int? perPage, bool nextPage) getDealPlans,
-  }) {
-    return getDealPlans(perPage, nextPage);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? categories,
-    TResult Function(int? perPage, bool nextPage)? getDealPlans,
-  }) {
-    return getDealPlans?.call(perPage, nextPage);
-  }
+  _$$_GetDealPlansEventCopyWith<_$_GetDealPlansEvent> get copyWith =>
+      __$$_GetDealPlansEventCopyWithImpl<_$_GetDealPlansEvent>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -10439,78 +9127,34 @@ class _$_GetDealPlansEvent implements _GetDealPlansEvent {
   }) {
     return getDealPlans?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetCategoriesEvent value)? categories,
+    TResult Function(_GetDealPlansEvent value)? getDealPlans,
+    required TResult orElse(),
+  }) {
+    if (getDealPlans != null) {
+      return getDealPlans(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _GetDealPlansEvent implements ProductGetEvent {
-  const factory _GetDealPlansEvent({int? perPage, bool nextPage}) =
+  const factory _GetDealPlansEvent({final int? perPage, final bool nextPage}) =
       _$_GetDealPlansEvent;
 
-  int? get perPage;
-  bool get nextPage;
+  int? get perPage => throw _privateConstructorUsedError;
+  bool get nextPage => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$GetDealPlansEventCopyWith<_GetDealPlansEvent> get copyWith =>
+  _$$_GetDealPlansEventCopyWith<_$_GetDealPlansEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$ProductPageControllerEventTearOff {
-  const _$ProductPageControllerEventTearOff();
-
-  _AttachPageControllerListener attachListener() {
-    return const _AttachPageControllerListener();
-  }
-
-  _PageIndexChangedEvent indexChanged(int index) {
-    return _PageIndexChangedEvent(
-      index,
-    );
-  }
-
-  _OnNextPage next(List<dynamic> items, int index) {
-    return _OnNextPage(
-      items,
-      index,
-    );
-  }
-
-  _OnPreviousPage prev() {
-    return const _OnPreviousPage();
-  }
-
-  _OnAnimateToPage animateTo(int page, {Duration? duration, Curve? curve}) {
-    return _OnAnimateToPage(
-      page,
-      duration: duration,
-      curve: curve,
-    );
-  }
-}
-
-/// @nodoc
-const $ProductPageControllerEvent = _$ProductPageControllerEventTearOff();
 
 /// @nodoc
 mixin _$ProductPageControllerEvent {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() attachListener,
-    required TResult Function(int index) indexChanged,
-    required TResult Function(List<dynamic> items, int index) next,
-    required TResult Function() prev,
-    required TResult Function(int page, Duration? duration, Curve? curve)
-        animateTo,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? attachListener,
-    TResult Function(int index)? indexChanged,
-    TResult Function(List<dynamic> items, int index)? next,
-    TResult Function()? prev,
-    TResult Function(int page, Duration? duration, Curve? curve)? animateTo,
-  }) =>
-      throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AttachPageControllerListener value)
@@ -10528,6 +9172,16 @@ mixin _$ProductPageControllerEvent {
     TResult Function(_OnNextPage value)? next,
     TResult Function(_OnPreviousPage value)? prev,
     TResult Function(_OnAnimateToPage value)? animateTo,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AttachPageControllerListener value)? attachListener,
+    TResult Function(_PageIndexChangedEvent value)? indexChanged,
+    TResult Function(_OnNextPage value)? next,
+    TResult Function(_OnPreviousPage value)? prev,
+    TResult Function(_OnAnimateToPage value)? animateTo,
+    required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
@@ -10550,25 +9204,25 @@ class _$ProductPageControllerEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$AttachPageControllerListenerCopyWith<$Res> {
-  factory _$AttachPageControllerListenerCopyWith(
-          _AttachPageControllerListener value,
-          $Res Function(_AttachPageControllerListener) then) =
-      __$AttachPageControllerListenerCopyWithImpl<$Res>;
+abstract class _$$_AttachPageControllerListenerCopyWith<$Res> {
+  factory _$$_AttachPageControllerListenerCopyWith(
+          _$_AttachPageControllerListener value,
+          $Res Function(_$_AttachPageControllerListener) then) =
+      __$$_AttachPageControllerListenerCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$AttachPageControllerListenerCopyWithImpl<$Res>
+class __$$_AttachPageControllerListenerCopyWithImpl<$Res>
     extends _$ProductPageControllerEventCopyWithImpl<$Res>
-    implements _$AttachPageControllerListenerCopyWith<$Res> {
-  __$AttachPageControllerListenerCopyWithImpl(
-      _AttachPageControllerListener _value,
-      $Res Function(_AttachPageControllerListener) _then)
-      : super(_value, (v) => _then(v as _AttachPageControllerListener));
+    implements _$$_AttachPageControllerListenerCopyWith<$Res> {
+  __$$_AttachPageControllerListenerCopyWithImpl(
+      _$_AttachPageControllerListener _value,
+      $Res Function(_$_AttachPageControllerListener) _then)
+      : super(_value, (v) => _then(v as _$_AttachPageControllerListener));
 
   @override
-  _AttachPageControllerListener get _value =>
-      super._value as _AttachPageControllerListener;
+  _$_AttachPageControllerListener get _value =>
+      super._value as _$_AttachPageControllerListener;
 }
 
 /// @nodoc
@@ -10585,36 +9239,11 @@ class _$_AttachPageControllerListener implements _AttachPageControllerListener {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AttachPageControllerListener);
+            other is _$_AttachPageControllerListener);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() attachListener,
-    required TResult Function(int index) indexChanged,
-    required TResult Function(List<dynamic> items, int index) next,
-    required TResult Function() prev,
-    required TResult Function(int page, Duration? duration, Curve? curve)
-        animateTo,
-  }) {
-    return attachListener();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? attachListener,
-    TResult Function(int index)? indexChanged,
-    TResult Function(List<dynamic> items, int index)? next,
-    TResult Function()? prev,
-    TResult Function(int page, Duration? duration, Curve? curve)? animateTo,
-  }) {
-    return attachListener?.call();
-  }
 
   @override
   @optionalTypeArgs
@@ -10640,6 +9269,22 @@ class _$_AttachPageControllerListener implements _AttachPageControllerListener {
   }) {
     return attachListener?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AttachPageControllerListener value)? attachListener,
+    TResult Function(_PageIndexChangedEvent value)? indexChanged,
+    TResult Function(_OnNextPage value)? next,
+    TResult Function(_OnPreviousPage value)? prev,
+    TResult Function(_OnAnimateToPage value)? animateTo,
+    required TResult orElse(),
+  }) {
+    if (attachListener != null) {
+      return attachListener(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _AttachPageControllerListener
@@ -10649,29 +9294,30 @@ abstract class _AttachPageControllerListener
 }
 
 /// @nodoc
-abstract class _$PageIndexChangedEventCopyWith<$Res> {
-  factory _$PageIndexChangedEventCopyWith(_PageIndexChangedEvent value,
-          $Res Function(_PageIndexChangedEvent) then) =
-      __$PageIndexChangedEventCopyWithImpl<$Res>;
+abstract class _$$_PageIndexChangedEventCopyWith<$Res> {
+  factory _$$_PageIndexChangedEventCopyWith(_$_PageIndexChangedEvent value,
+          $Res Function(_$_PageIndexChangedEvent) then) =
+      __$$_PageIndexChangedEventCopyWithImpl<$Res>;
   $Res call({int index});
 }
 
 /// @nodoc
-class __$PageIndexChangedEventCopyWithImpl<$Res>
+class __$$_PageIndexChangedEventCopyWithImpl<$Res>
     extends _$ProductPageControllerEventCopyWithImpl<$Res>
-    implements _$PageIndexChangedEventCopyWith<$Res> {
-  __$PageIndexChangedEventCopyWithImpl(_PageIndexChangedEvent _value,
-      $Res Function(_PageIndexChangedEvent) _then)
-      : super(_value, (v) => _then(v as _PageIndexChangedEvent));
+    implements _$$_PageIndexChangedEventCopyWith<$Res> {
+  __$$_PageIndexChangedEventCopyWithImpl(_$_PageIndexChangedEvent _value,
+      $Res Function(_$_PageIndexChangedEvent) _then)
+      : super(_value, (v) => _then(v as _$_PageIndexChangedEvent));
 
   @override
-  _PageIndexChangedEvent get _value => super._value as _PageIndexChangedEvent;
+  _$_PageIndexChangedEvent get _value =>
+      super._value as _$_PageIndexChangedEvent;
 
   @override
   $Res call({
     Object? index = freezed,
   }) {
-    return _then(_PageIndexChangedEvent(
+    return _then(_$_PageIndexChangedEvent(
       index == freezed
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
@@ -10697,7 +9343,7 @@ class _$_PageIndexChangedEvent implements _PageIndexChangedEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PageIndexChangedEvent &&
+            other is _$_PageIndexChangedEvent &&
             const DeepCollectionEquality().equals(other.index, index));
   }
 
@@ -10707,34 +9353,9 @@ class _$_PageIndexChangedEvent implements _PageIndexChangedEvent {
 
   @JsonKey(ignore: true)
   @override
-  _$PageIndexChangedEventCopyWith<_PageIndexChangedEvent> get copyWith =>
-      __$PageIndexChangedEventCopyWithImpl<_PageIndexChangedEvent>(
+  _$$_PageIndexChangedEventCopyWith<_$_PageIndexChangedEvent> get copyWith =>
+      __$$_PageIndexChangedEventCopyWithImpl<_$_PageIndexChangedEvent>(
           this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() attachListener,
-    required TResult Function(int index) indexChanged,
-    required TResult Function(List<dynamic> items, int index) next,
-    required TResult Function() prev,
-    required TResult Function(int page, Duration? duration, Curve? curve)
-        animateTo,
-  }) {
-    return indexChanged(index);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? attachListener,
-    TResult Function(int index)? indexChanged,
-    TResult Function(List<dynamic> items, int index)? next,
-    TResult Function()? prev,
-    TResult Function(int page, Duration? duration, Curve? curve)? animateTo,
-  }) {
-    return indexChanged?.call(index);
-  }
 
   @override
   @optionalTypeArgs
@@ -10760,44 +9381,61 @@ class _$_PageIndexChangedEvent implements _PageIndexChangedEvent {
   }) {
     return indexChanged?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AttachPageControllerListener value)? attachListener,
+    TResult Function(_PageIndexChangedEvent value)? indexChanged,
+    TResult Function(_OnNextPage value)? next,
+    TResult Function(_OnPreviousPage value)? prev,
+    TResult Function(_OnAnimateToPage value)? animateTo,
+    required TResult orElse(),
+  }) {
+    if (indexChanged != null) {
+      return indexChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _PageIndexChangedEvent implements ProductPageControllerEvent {
-  const factory _PageIndexChangedEvent(int index) = _$_PageIndexChangedEvent;
+  const factory _PageIndexChangedEvent(final int index) =
+      _$_PageIndexChangedEvent;
 
-  int get index;
+  int get index => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$PageIndexChangedEventCopyWith<_PageIndexChangedEvent> get copyWith =>
+  _$$_PageIndexChangedEventCopyWith<_$_PageIndexChangedEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$OnNextPageCopyWith<$Res> {
-  factory _$OnNextPageCopyWith(
-          _OnNextPage value, $Res Function(_OnNextPage) then) =
-      __$OnNextPageCopyWithImpl<$Res>;
+abstract class _$$_OnNextPageCopyWith<$Res> {
+  factory _$$_OnNextPageCopyWith(
+          _$_OnNextPage value, $Res Function(_$_OnNextPage) then) =
+      __$$_OnNextPageCopyWithImpl<$Res>;
   $Res call({List<dynamic> items, int index});
 }
 
 /// @nodoc
-class __$OnNextPageCopyWithImpl<$Res>
+class __$$_OnNextPageCopyWithImpl<$Res>
     extends _$ProductPageControllerEventCopyWithImpl<$Res>
-    implements _$OnNextPageCopyWith<$Res> {
-  __$OnNextPageCopyWithImpl(
-      _OnNextPage _value, $Res Function(_OnNextPage) _then)
-      : super(_value, (v) => _then(v as _OnNextPage));
+    implements _$$_OnNextPageCopyWith<$Res> {
+  __$$_OnNextPageCopyWithImpl(
+      _$_OnNextPage _value, $Res Function(_$_OnNextPage) _then)
+      : super(_value, (v) => _then(v as _$_OnNextPage));
 
   @override
-  _OnNextPage get _value => super._value as _OnNextPage;
+  _$_OnNextPage get _value => super._value as _$_OnNextPage;
 
   @override
   $Res call({
     Object? items = freezed,
     Object? index = freezed,
   }) {
-    return _then(_OnNextPage(
+    return _then(_$_OnNextPage(
       items == freezed
-          ? _value.items
+          ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
       index == freezed
@@ -10811,10 +9449,15 @@ class __$OnNextPageCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_OnNextPage implements _OnNextPage {
-  const _$_OnNextPage(this.items, this.index);
+  const _$_OnNextPage(final List<dynamic> items, this.index) : _items = items;
 
+  final List<dynamic> _items;
   @override
-  final List<dynamic> items;
+  List<dynamic> get items {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_items);
+  }
+
   @override
   final int index;
 
@@ -10827,46 +9470,21 @@ class _$_OnNextPage implements _OnNextPage {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _OnNextPage &&
-            const DeepCollectionEquality().equals(other.items, items) &&
+            other is _$_OnNextPage &&
+            const DeepCollectionEquality().equals(other._items, _items) &&
             const DeepCollectionEquality().equals(other.index, index));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(items),
+      const DeepCollectionEquality().hash(_items),
       const DeepCollectionEquality().hash(index));
 
   @JsonKey(ignore: true)
   @override
-  _$OnNextPageCopyWith<_OnNextPage> get copyWith =>
-      __$OnNextPageCopyWithImpl<_OnNextPage>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() attachListener,
-    required TResult Function(int index) indexChanged,
-    required TResult Function(List<dynamic> items, int index) next,
-    required TResult Function() prev,
-    required TResult Function(int page, Duration? duration, Curve? curve)
-        animateTo,
-  }) {
-    return next(items, index);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? attachListener,
-    TResult Function(int index)? indexChanged,
-    TResult Function(List<dynamic> items, int index)? next,
-    TResult Function()? prev,
-    TResult Function(int page, Duration? duration, Curve? curve)? animateTo,
-  }) {
-    return next?.call(items, index);
-  }
+  _$$_OnNextPageCopyWith<_$_OnNextPage> get copyWith =>
+      __$$_OnNextPageCopyWithImpl<_$_OnNextPage>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -10892,35 +9510,52 @@ class _$_OnNextPage implements _OnNextPage {
   }) {
     return next?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AttachPageControllerListener value)? attachListener,
+    TResult Function(_PageIndexChangedEvent value)? indexChanged,
+    TResult Function(_OnNextPage value)? next,
+    TResult Function(_OnPreviousPage value)? prev,
+    TResult Function(_OnAnimateToPage value)? animateTo,
+    required TResult orElse(),
+  }) {
+    if (next != null) {
+      return next(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _OnNextPage implements ProductPageControllerEvent {
-  const factory _OnNextPage(List<dynamic> items, int index) = _$_OnNextPage;
+  const factory _OnNextPage(final List<dynamic> items, final int index) =
+      _$_OnNextPage;
 
-  List<dynamic> get items;
-  int get index;
+  List<dynamic> get items => throw _privateConstructorUsedError;
+  int get index => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$OnNextPageCopyWith<_OnNextPage> get copyWith =>
+  _$$_OnNextPageCopyWith<_$_OnNextPage> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$OnPreviousPageCopyWith<$Res> {
-  factory _$OnPreviousPageCopyWith(
-          _OnPreviousPage value, $Res Function(_OnPreviousPage) then) =
-      __$OnPreviousPageCopyWithImpl<$Res>;
+abstract class _$$_OnPreviousPageCopyWith<$Res> {
+  factory _$$_OnPreviousPageCopyWith(
+          _$_OnPreviousPage value, $Res Function(_$_OnPreviousPage) then) =
+      __$$_OnPreviousPageCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$OnPreviousPageCopyWithImpl<$Res>
+class __$$_OnPreviousPageCopyWithImpl<$Res>
     extends _$ProductPageControllerEventCopyWithImpl<$Res>
-    implements _$OnPreviousPageCopyWith<$Res> {
-  __$OnPreviousPageCopyWithImpl(
-      _OnPreviousPage _value, $Res Function(_OnPreviousPage) _then)
-      : super(_value, (v) => _then(v as _OnPreviousPage));
+    implements _$$_OnPreviousPageCopyWith<$Res> {
+  __$$_OnPreviousPageCopyWithImpl(
+      _$_OnPreviousPage _value, $Res Function(_$_OnPreviousPage) _then)
+      : super(_value, (v) => _then(v as _$_OnPreviousPage));
 
   @override
-  _OnPreviousPage get _value => super._value as _OnPreviousPage;
+  _$_OnPreviousPage get _value => super._value as _$_OnPreviousPage;
 }
 
 /// @nodoc
@@ -10936,36 +9571,11 @@ class _$_OnPreviousPage implements _OnPreviousPage {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _OnPreviousPage);
+        (other.runtimeType == runtimeType && other is _$_OnPreviousPage);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() attachListener,
-    required TResult Function(int index) indexChanged,
-    required TResult Function(List<dynamic> items, int index) next,
-    required TResult Function() prev,
-    required TResult Function(int page, Duration? duration, Curve? curve)
-        animateTo,
-  }) {
-    return prev();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? attachListener,
-    TResult Function(int index)? indexChanged,
-    TResult Function(List<dynamic> items, int index)? next,
-    TResult Function()? prev,
-    TResult Function(int page, Duration? duration, Curve? curve)? animateTo,
-  }) {
-    return prev?.call();
-  }
 
   @override
   @optionalTypeArgs
@@ -10991,6 +9601,22 @@ class _$_OnPreviousPage implements _OnPreviousPage {
   }) {
     return prev?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AttachPageControllerListener value)? attachListener,
+    TResult Function(_PageIndexChangedEvent value)? indexChanged,
+    TResult Function(_OnNextPage value)? next,
+    TResult Function(_OnPreviousPage value)? prev,
+    TResult Function(_OnAnimateToPage value)? animateTo,
+    required TResult orElse(),
+  }) {
+    if (prev != null) {
+      return prev(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _OnPreviousPage implements ProductPageControllerEvent {
@@ -10998,23 +9624,23 @@ abstract class _OnPreviousPage implements ProductPageControllerEvent {
 }
 
 /// @nodoc
-abstract class _$OnAnimateToPageCopyWith<$Res> {
-  factory _$OnAnimateToPageCopyWith(
-          _OnAnimateToPage value, $Res Function(_OnAnimateToPage) then) =
-      __$OnAnimateToPageCopyWithImpl<$Res>;
+abstract class _$$_OnAnimateToPageCopyWith<$Res> {
+  factory _$$_OnAnimateToPageCopyWith(
+          _$_OnAnimateToPage value, $Res Function(_$_OnAnimateToPage) then) =
+      __$$_OnAnimateToPageCopyWithImpl<$Res>;
   $Res call({int page, Duration? duration, Curve? curve});
 }
 
 /// @nodoc
-class __$OnAnimateToPageCopyWithImpl<$Res>
+class __$$_OnAnimateToPageCopyWithImpl<$Res>
     extends _$ProductPageControllerEventCopyWithImpl<$Res>
-    implements _$OnAnimateToPageCopyWith<$Res> {
-  __$OnAnimateToPageCopyWithImpl(
-      _OnAnimateToPage _value, $Res Function(_OnAnimateToPage) _then)
-      : super(_value, (v) => _then(v as _OnAnimateToPage));
+    implements _$$_OnAnimateToPageCopyWith<$Res> {
+  __$$_OnAnimateToPageCopyWithImpl(
+      _$_OnAnimateToPage _value, $Res Function(_$_OnAnimateToPage) _then)
+      : super(_value, (v) => _then(v as _$_OnAnimateToPage));
 
   @override
-  _OnAnimateToPage get _value => super._value as _OnAnimateToPage;
+  _$_OnAnimateToPage get _value => super._value as _$_OnAnimateToPage;
 
   @override
   $Res call({
@@ -11022,7 +9648,7 @@ class __$OnAnimateToPageCopyWithImpl<$Res>
     Object? duration = freezed,
     Object? curve = freezed,
   }) {
-    return _then(_OnAnimateToPage(
+    return _then(_$_OnAnimateToPage(
       page == freezed
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
@@ -11060,7 +9686,7 @@ class _$_OnAnimateToPage implements _OnAnimateToPage {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _OnAnimateToPage &&
+            other is _$_OnAnimateToPage &&
             const DeepCollectionEquality().equals(other.page, page) &&
             const DeepCollectionEquality().equals(other.duration, duration) &&
             const DeepCollectionEquality().equals(other.curve, curve));
@@ -11075,33 +9701,8 @@ class _$_OnAnimateToPage implements _OnAnimateToPage {
 
   @JsonKey(ignore: true)
   @override
-  _$OnAnimateToPageCopyWith<_OnAnimateToPage> get copyWith =>
-      __$OnAnimateToPageCopyWithImpl<_OnAnimateToPage>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() attachListener,
-    required TResult Function(int index) indexChanged,
-    required TResult Function(List<dynamic> items, int index) next,
-    required TResult Function() prev,
-    required TResult Function(int page, Duration? duration, Curve? curve)
-        animateTo,
-  }) {
-    return animateTo(page, duration, curve);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? attachListener,
-    TResult Function(int index)? indexChanged,
-    TResult Function(List<dynamic> items, int index)? next,
-    TResult Function()? prev,
-    TResult Function(int page, Duration? duration, Curve? curve)? animateTo,
-  }) {
-    return animateTo?.call(page, duration, curve);
-  }
+  _$$_OnAnimateToPageCopyWith<_$_OnAnimateToPage> get copyWith =>
+      __$$_OnAnimateToPageCopyWithImpl<_$_OnAnimateToPage>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -11127,73 +9728,39 @@ class _$_OnAnimateToPage implements _OnAnimateToPage {
   }) {
     return animateTo?.call(this);
   }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AttachPageControllerListener value)? attachListener,
+    TResult Function(_PageIndexChangedEvent value)? indexChanged,
+    TResult Function(_OnNextPage value)? next,
+    TResult Function(_OnPreviousPage value)? prev,
+    TResult Function(_OnAnimateToPage value)? animateTo,
+    required TResult orElse(),
+  }) {
+    if (animateTo != null) {
+      return animateTo(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _OnAnimateToPage implements ProductPageControllerEvent {
-  const factory _OnAnimateToPage(int page, {Duration? duration, Curve? curve}) =
-      _$_OnAnimateToPage;
+  const factory _OnAnimateToPage(final int page,
+      {final Duration? duration, final Curve? curve}) = _$_OnAnimateToPage;
 
-  int get page;
-  Duration? get duration;
-  Curve? get curve;
+  int get page => throw _privateConstructorUsedError;
+  Duration? get duration => throw _privateConstructorUsedError;
+  Curve? get curve => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$OnAnimateToPageCopyWith<_OnAnimateToPage> get copyWith =>
+  _$$_OnAnimateToPageCopyWith<_$_OnAnimateToPage> get copyWith =>
       throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$ProductMediaEventsTearOff {
-  const _$ProductMediaEventsTearOff();
-
-  _UploadMediaEvent uploadMedia(File file, [int? index]) {
-    return _UploadMediaEvent(
-      file,
-      index,
-    );
-  }
-
-  _PickCameraEvent pickCamera([int? index]) {
-    return _PickCameraEvent(
-      index,
-    );
-  }
-
-  _PickGalleryEvent pickGallery([int? index]) {
-    return _PickGalleryEvent(
-      index,
-    );
-  }
-
-  _RemoveMediaEvent removeMedia([int? index]) {
-    return _RemoveMediaEvent(
-      index,
-    );
-  }
-}
-
-/// @nodoc
-const $ProductMediaEvents = _$ProductMediaEventsTearOff();
 
 /// @nodoc
 mixin _$ProductMediaEvents {
   int? get index => throw _privateConstructorUsedError;
-
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(File file, int? index) uploadMedia,
-    required TResult Function(int? index) pickCamera,
-    required TResult Function(int? index) pickGallery,
-    required TResult Function(int? index) removeMedia,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(File file, int? index)? uploadMedia,
-    TResult Function(int? index)? pickCamera,
-    TResult Function(int? index)? pickGallery,
-    TResult Function(int? index)? removeMedia,
-  }) =>
-      throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
@@ -11257,32 +9824,32 @@ class _$ProductMediaEventsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$UploadMediaEventCopyWith<$Res>
+abstract class _$$_UploadMediaEventCopyWith<$Res>
     implements $ProductMediaEventsCopyWith<$Res> {
-  factory _$UploadMediaEventCopyWith(
-          _UploadMediaEvent value, $Res Function(_UploadMediaEvent) then) =
-      __$UploadMediaEventCopyWithImpl<$Res>;
+  factory _$$_UploadMediaEventCopyWith(
+          _$_UploadMediaEvent value, $Res Function(_$_UploadMediaEvent) then) =
+      __$$_UploadMediaEventCopyWithImpl<$Res>;
   @override
   $Res call({File file, int? index});
 }
 
 /// @nodoc
-class __$UploadMediaEventCopyWithImpl<$Res>
+class __$$_UploadMediaEventCopyWithImpl<$Res>
     extends _$ProductMediaEventsCopyWithImpl<$Res>
-    implements _$UploadMediaEventCopyWith<$Res> {
-  __$UploadMediaEventCopyWithImpl(
-      _UploadMediaEvent _value, $Res Function(_UploadMediaEvent) _then)
-      : super(_value, (v) => _then(v as _UploadMediaEvent));
+    implements _$$_UploadMediaEventCopyWith<$Res> {
+  __$$_UploadMediaEventCopyWithImpl(
+      _$_UploadMediaEvent _value, $Res Function(_$_UploadMediaEvent) _then)
+      : super(_value, (v) => _then(v as _$_UploadMediaEvent));
 
   @override
-  _UploadMediaEvent get _value => super._value as _UploadMediaEvent;
+  _$_UploadMediaEvent get _value => super._value as _$_UploadMediaEvent;
 
   @override
   $Res call({
     Object? file = freezed,
     Object? index = freezed,
   }) {
-    return _then(_UploadMediaEvent(
+    return _then(_$_UploadMediaEvent(
       file == freezed
           ? _value.file
           : file // ignore: cast_nullable_to_non_nullable
@@ -11315,7 +9882,7 @@ class _$_UploadMediaEvent implements _UploadMediaEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _UploadMediaEvent &&
+            other is _$_UploadMediaEvent &&
             const DeepCollectionEquality().equals(other.file, file) &&
             const DeepCollectionEquality().equals(other.index, index));
   }
@@ -11328,30 +9895,8 @@ class _$_UploadMediaEvent implements _UploadMediaEvent {
 
   @JsonKey(ignore: true)
   @override
-  _$UploadMediaEventCopyWith<_UploadMediaEvent> get copyWith =>
-      __$UploadMediaEventCopyWithImpl<_UploadMediaEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(File file, int? index) uploadMedia,
-    required TResult Function(int? index) pickCamera,
-    required TResult Function(int? index) pickGallery,
-    required TResult Function(int? index) removeMedia,
-  }) {
-    return uploadMedia(file, index);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(File file, int? index)? uploadMedia,
-    TResult Function(int? index)? pickCamera,
-    TResult Function(int? index)? pickGallery,
-    TResult Function(int? index)? removeMedia,
-  }) {
-    return uploadMedia?.call(file, index);
-  }
+  _$$_UploadMediaEventCopyWith<_$_UploadMediaEvent> get copyWith =>
+      __$$_UploadMediaEventCopyWithImpl<_$_UploadMediaEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -11392,44 +9937,44 @@ class _$_UploadMediaEvent implements _UploadMediaEvent {
 }
 
 abstract class _UploadMediaEvent implements ProductMediaEvents {
-  const factory _UploadMediaEvent(File file, [int? index]) =
+  const factory _UploadMediaEvent(final File file, [final int? index]) =
       _$_UploadMediaEvent;
 
-  File get file;
+  File get file => throw _privateConstructorUsedError;
   @override
-  int? get index;
+  int? get index => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$UploadMediaEventCopyWith<_UploadMediaEvent> get copyWith =>
+  _$$_UploadMediaEventCopyWith<_$_UploadMediaEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$PickCameraEventCopyWith<$Res>
+abstract class _$$_PickCameraEventCopyWith<$Res>
     implements $ProductMediaEventsCopyWith<$Res> {
-  factory _$PickCameraEventCopyWith(
-          _PickCameraEvent value, $Res Function(_PickCameraEvent) then) =
-      __$PickCameraEventCopyWithImpl<$Res>;
+  factory _$$_PickCameraEventCopyWith(
+          _$_PickCameraEvent value, $Res Function(_$_PickCameraEvent) then) =
+      __$$_PickCameraEventCopyWithImpl<$Res>;
   @override
   $Res call({int? index});
 }
 
 /// @nodoc
-class __$PickCameraEventCopyWithImpl<$Res>
+class __$$_PickCameraEventCopyWithImpl<$Res>
     extends _$ProductMediaEventsCopyWithImpl<$Res>
-    implements _$PickCameraEventCopyWith<$Res> {
-  __$PickCameraEventCopyWithImpl(
-      _PickCameraEvent _value, $Res Function(_PickCameraEvent) _then)
-      : super(_value, (v) => _then(v as _PickCameraEvent));
+    implements _$$_PickCameraEventCopyWith<$Res> {
+  __$$_PickCameraEventCopyWithImpl(
+      _$_PickCameraEvent _value, $Res Function(_$_PickCameraEvent) _then)
+      : super(_value, (v) => _then(v as _$_PickCameraEvent));
 
   @override
-  _PickCameraEvent get _value => super._value as _PickCameraEvent;
+  _$_PickCameraEvent get _value => super._value as _$_PickCameraEvent;
 
   @override
   $Res call({
     Object? index = freezed,
   }) {
-    return _then(_PickCameraEvent(
+    return _then(_$_PickCameraEvent(
       index == freezed
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
@@ -11455,7 +10000,7 @@ class _$_PickCameraEvent implements _PickCameraEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PickCameraEvent &&
+            other is _$_PickCameraEvent &&
             const DeepCollectionEquality().equals(other.index, index));
   }
 
@@ -11465,30 +10010,8 @@ class _$_PickCameraEvent implements _PickCameraEvent {
 
   @JsonKey(ignore: true)
   @override
-  _$PickCameraEventCopyWith<_PickCameraEvent> get copyWith =>
-      __$PickCameraEventCopyWithImpl<_PickCameraEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(File file, int? index) uploadMedia,
-    required TResult Function(int? index) pickCamera,
-    required TResult Function(int? index) pickGallery,
-    required TResult Function(int? index) removeMedia,
-  }) {
-    return pickCamera(index);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(File file, int? index)? uploadMedia,
-    TResult Function(int? index)? pickCamera,
-    TResult Function(int? index)? pickGallery,
-    TResult Function(int? index)? removeMedia,
-  }) {
-    return pickCamera?.call(index);
-  }
+  _$$_PickCameraEventCopyWith<_$_PickCameraEvent> get copyWith =>
+      __$$_PickCameraEventCopyWithImpl<_$_PickCameraEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -11529,42 +10052,42 @@ class _$_PickCameraEvent implements _PickCameraEvent {
 }
 
 abstract class _PickCameraEvent implements ProductMediaEvents {
-  const factory _PickCameraEvent([int? index]) = _$_PickCameraEvent;
+  const factory _PickCameraEvent([final int? index]) = _$_PickCameraEvent;
 
   @override
-  int? get index;
+  int? get index => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$PickCameraEventCopyWith<_PickCameraEvent> get copyWith =>
+  _$$_PickCameraEventCopyWith<_$_PickCameraEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$PickGalleryEventCopyWith<$Res>
+abstract class _$$_PickGalleryEventCopyWith<$Res>
     implements $ProductMediaEventsCopyWith<$Res> {
-  factory _$PickGalleryEventCopyWith(
-          _PickGalleryEvent value, $Res Function(_PickGalleryEvent) then) =
-      __$PickGalleryEventCopyWithImpl<$Res>;
+  factory _$$_PickGalleryEventCopyWith(
+          _$_PickGalleryEvent value, $Res Function(_$_PickGalleryEvent) then) =
+      __$$_PickGalleryEventCopyWithImpl<$Res>;
   @override
   $Res call({int? index});
 }
 
 /// @nodoc
-class __$PickGalleryEventCopyWithImpl<$Res>
+class __$$_PickGalleryEventCopyWithImpl<$Res>
     extends _$ProductMediaEventsCopyWithImpl<$Res>
-    implements _$PickGalleryEventCopyWith<$Res> {
-  __$PickGalleryEventCopyWithImpl(
-      _PickGalleryEvent _value, $Res Function(_PickGalleryEvent) _then)
-      : super(_value, (v) => _then(v as _PickGalleryEvent));
+    implements _$$_PickGalleryEventCopyWith<$Res> {
+  __$$_PickGalleryEventCopyWithImpl(
+      _$_PickGalleryEvent _value, $Res Function(_$_PickGalleryEvent) _then)
+      : super(_value, (v) => _then(v as _$_PickGalleryEvent));
 
   @override
-  _PickGalleryEvent get _value => super._value as _PickGalleryEvent;
+  _$_PickGalleryEvent get _value => super._value as _$_PickGalleryEvent;
 
   @override
   $Res call({
     Object? index = freezed,
   }) {
-    return _then(_PickGalleryEvent(
+    return _then(_$_PickGalleryEvent(
       index == freezed
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
@@ -11590,7 +10113,7 @@ class _$_PickGalleryEvent implements _PickGalleryEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PickGalleryEvent &&
+            other is _$_PickGalleryEvent &&
             const DeepCollectionEquality().equals(other.index, index));
   }
 
@@ -11600,30 +10123,8 @@ class _$_PickGalleryEvent implements _PickGalleryEvent {
 
   @JsonKey(ignore: true)
   @override
-  _$PickGalleryEventCopyWith<_PickGalleryEvent> get copyWith =>
-      __$PickGalleryEventCopyWithImpl<_PickGalleryEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(File file, int? index) uploadMedia,
-    required TResult Function(int? index) pickCamera,
-    required TResult Function(int? index) pickGallery,
-    required TResult Function(int? index) removeMedia,
-  }) {
-    return pickGallery(index);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(File file, int? index)? uploadMedia,
-    TResult Function(int? index)? pickCamera,
-    TResult Function(int? index)? pickGallery,
-    TResult Function(int? index)? removeMedia,
-  }) {
-    return pickGallery?.call(index);
-  }
+  _$$_PickGalleryEventCopyWith<_$_PickGalleryEvent> get copyWith =>
+      __$$_PickGalleryEventCopyWithImpl<_$_PickGalleryEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -11664,42 +10165,42 @@ class _$_PickGalleryEvent implements _PickGalleryEvent {
 }
 
 abstract class _PickGalleryEvent implements ProductMediaEvents {
-  const factory _PickGalleryEvent([int? index]) = _$_PickGalleryEvent;
+  const factory _PickGalleryEvent([final int? index]) = _$_PickGalleryEvent;
 
   @override
-  int? get index;
+  int? get index => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$PickGalleryEventCopyWith<_PickGalleryEvent> get copyWith =>
+  _$$_PickGalleryEventCopyWith<_$_PickGalleryEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$RemoveMediaEventCopyWith<$Res>
+abstract class _$$_RemoveMediaEventCopyWith<$Res>
     implements $ProductMediaEventsCopyWith<$Res> {
-  factory _$RemoveMediaEventCopyWith(
-          _RemoveMediaEvent value, $Res Function(_RemoveMediaEvent) then) =
-      __$RemoveMediaEventCopyWithImpl<$Res>;
+  factory _$$_RemoveMediaEventCopyWith(
+          _$_RemoveMediaEvent value, $Res Function(_$_RemoveMediaEvent) then) =
+      __$$_RemoveMediaEventCopyWithImpl<$Res>;
   @override
   $Res call({int? index});
 }
 
 /// @nodoc
-class __$RemoveMediaEventCopyWithImpl<$Res>
+class __$$_RemoveMediaEventCopyWithImpl<$Res>
     extends _$ProductMediaEventsCopyWithImpl<$Res>
-    implements _$RemoveMediaEventCopyWith<$Res> {
-  __$RemoveMediaEventCopyWithImpl(
-      _RemoveMediaEvent _value, $Res Function(_RemoveMediaEvent) _then)
-      : super(_value, (v) => _then(v as _RemoveMediaEvent));
+    implements _$$_RemoveMediaEventCopyWith<$Res> {
+  __$$_RemoveMediaEventCopyWithImpl(
+      _$_RemoveMediaEvent _value, $Res Function(_$_RemoveMediaEvent) _then)
+      : super(_value, (v) => _then(v as _$_RemoveMediaEvent));
 
   @override
-  _RemoveMediaEvent get _value => super._value as _RemoveMediaEvent;
+  _$_RemoveMediaEvent get _value => super._value as _$_RemoveMediaEvent;
 
   @override
   $Res call({
     Object? index = freezed,
   }) {
-    return _then(_RemoveMediaEvent(
+    return _then(_$_RemoveMediaEvent(
       index == freezed
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
@@ -11725,7 +10226,7 @@ class _$_RemoveMediaEvent implements _RemoveMediaEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RemoveMediaEvent &&
+            other is _$_RemoveMediaEvent &&
             const DeepCollectionEquality().equals(other.index, index));
   }
 
@@ -11735,30 +10236,8 @@ class _$_RemoveMediaEvent implements _RemoveMediaEvent {
 
   @JsonKey(ignore: true)
   @override
-  _$RemoveMediaEventCopyWith<_RemoveMediaEvent> get copyWith =>
-      __$RemoveMediaEventCopyWithImpl<_RemoveMediaEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(File file, int? index) uploadMedia,
-    required TResult Function(int? index) pickCamera,
-    required TResult Function(int? index) pickGallery,
-    required TResult Function(int? index) removeMedia,
-  }) {
-    return removeMedia(index);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(File file, int? index)? uploadMedia,
-    TResult Function(int? index)? pickCamera,
-    TResult Function(int? index)? pickGallery,
-    TResult Function(int? index)? removeMedia,
-  }) {
-    return removeMedia?.call(index);
-  }
+  _$$_RemoveMediaEventCopyWith<_$_RemoveMediaEvent> get copyWith =>
+      __$$_RemoveMediaEventCopyWithImpl<_$_RemoveMediaEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -11799,88 +10278,15 @@ class _$_RemoveMediaEvent implements _RemoveMediaEvent {
 }
 
 abstract class _RemoveMediaEvent implements ProductMediaEvents {
-  const factory _RemoveMediaEvent([int? index]) = _$_RemoveMediaEvent;
+  const factory _RemoveMediaEvent([final int? index]) = _$_RemoveMediaEvent;
 
   @override
-  int? get index;
+  int? get index => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$RemoveMediaEventCopyWith<_RemoveMediaEvent> get copyWith =>
+  _$$_RemoveMediaEventCopyWith<_$_RemoveMediaEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$ProductStateTearOff {
-  const _$ProductStateTearOff();
-
-  _ProductState call(
-      {bool isLoading = false,
-      bool validate = false,
-      bool isFetchingCategories = false,
-      bool isSavingState = false,
-      bool isCreatingProduct = false,
-      bool productCreated = false,
-      required MoneyMaskedTextController basePriceController,
-      required TextEditingController itemNameTextController,
-      required TextEditingController stateTextController,
-      required TextEditingController townTextController,
-      required TextEditingController descriptionTextController,
-      required TextEditingController brandTextController,
-      required TextEditingController brandModelTextController,
-      required TextEditingController transmissionTextController,
-      required TextEditingController shippingDescTextController,
-      required TextEditingController addressTextController,
-      required TextEditingController weightTextController,
-      required TextEditingController widthTextController,
-      required TextEditingController heightTextController,
-      required TextEditingController lengthTextController,
-      required TextEditingController termsInfoTextController,
-      required TextEditingController startDateTextController,
-      required TextEditingController endDateTextController,
-      required DealPlan selectedPlan,
-      required Product product,
-      required PageController controller,
-      int currentIndex = ProductState.kInitialPage,
-      KtList<DealCategory> categories = const KtList.empty(),
-      KtList<DealPlan> dealPlans = const KtList.empty(),
-      Option<AppHttpResponse?> status = const None()}) {
-    return _ProductState(
-      isLoading: isLoading,
-      validate: validate,
-      isFetchingCategories: isFetchingCategories,
-      isSavingState: isSavingState,
-      isCreatingProduct: isCreatingProduct,
-      productCreated: productCreated,
-      basePriceController: basePriceController,
-      itemNameTextController: itemNameTextController,
-      stateTextController: stateTextController,
-      townTextController: townTextController,
-      descriptionTextController: descriptionTextController,
-      brandTextController: brandTextController,
-      brandModelTextController: brandModelTextController,
-      transmissionTextController: transmissionTextController,
-      shippingDescTextController: shippingDescTextController,
-      addressTextController: addressTextController,
-      weightTextController: weightTextController,
-      widthTextController: widthTextController,
-      heightTextController: heightTextController,
-      lengthTextController: lengthTextController,
-      termsInfoTextController: termsInfoTextController,
-      startDateTextController: startDateTextController,
-      endDateTextController: endDateTextController,
-      selectedPlan: selectedPlan,
-      product: product,
-      controller: controller,
-      currentIndex: currentIndex,
-      categories: categories,
-      dealPlans: dealPlans,
-      status: status,
-    );
-  }
-}
-
-/// @nodoc
-const $ProductState = _$ProductStateTearOff();
 
 /// @nodoc
 mixin _$ProductState {
@@ -12159,11 +10565,11 @@ class _$ProductStateCopyWithImpl<$Res> implements $ProductStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$ProductStateCopyWith<$Res>
+abstract class _$$_ProductStateCopyWith<$Res>
     implements $ProductStateCopyWith<$Res> {
-  factory _$ProductStateCopyWith(
-          _ProductState value, $Res Function(_ProductState) then) =
-      __$ProductStateCopyWithImpl<$Res>;
+  factory _$$_ProductStateCopyWith(
+          _$_ProductState value, $Res Function(_$_ProductState) then) =
+      __$$_ProductStateCopyWithImpl<$Res>;
   @override
   $Res call(
       {bool isLoading,
@@ -12204,14 +10610,15 @@ abstract class _$ProductStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$ProductStateCopyWithImpl<$Res> extends _$ProductStateCopyWithImpl<$Res>
-    implements _$ProductStateCopyWith<$Res> {
-  __$ProductStateCopyWithImpl(
-      _ProductState _value, $Res Function(_ProductState) _then)
-      : super(_value, (v) => _then(v as _ProductState));
+class __$$_ProductStateCopyWithImpl<$Res>
+    extends _$ProductStateCopyWithImpl<$Res>
+    implements _$$_ProductStateCopyWith<$Res> {
+  __$$_ProductStateCopyWithImpl(
+      _$_ProductState _value, $Res Function(_$_ProductState) _then)
+      : super(_value, (v) => _then(v as _$_ProductState));
 
   @override
-  _ProductState get _value => super._value as _ProductState;
+  _$_ProductState get _value => super._value as _$_ProductState;
 
   @override
   $Res call({
@@ -12246,7 +10653,7 @@ class __$ProductStateCopyWithImpl<$Res> extends _$ProductStateCopyWithImpl<$Res>
     Object? dealPlans = freezed,
     Object? status = freezed,
   }) {
-    return _then(_ProductState(
+    return _then(_$_ProductState(
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -12406,25 +10813,26 @@ class _$_ProductState implements _ProductState {
       this.dealPlans = const KtList.empty(),
       this.status = const None()});
 
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isLoading;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool validate;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isFetchingCategories;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isSavingState;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isCreatingProduct;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool productCreated;
-  @override //
+//
+  @override
   final MoneyMaskedTextController basePriceController;
   @override
   final TextEditingController itemNameTextController;
@@ -12458,23 +10866,24 @@ class _$_ProductState implements _ProductState {
   final TextEditingController startDateTextController;
   @override
   final TextEditingController endDateTextController;
-  @override //
+//
+  @override
   final DealPlan selectedPlan;
   @override
   final Product product;
   @override
   final PageController controller;
-  @JsonKey()
   @override
+  @JsonKey()
   final int currentIndex;
-  @JsonKey()
   @override
+  @JsonKey()
   final KtList<DealCategory> categories;
-  @JsonKey()
   @override
+  @JsonKey()
   final KtList<DealPlan> dealPlans;
-  @JsonKey()
   @override
+  @JsonKey()
   final Option<AppHttpResponse?> status;
 
   @override
@@ -12486,7 +10895,7 @@ class _$_ProductState implements _ProductState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ProductState &&
+            other is _$_ProductState &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality().equals(other.validate, validate) &&
             const DeepCollectionEquality()
@@ -12581,105 +10990,122 @@ class _$_ProductState implements _ProductState {
 
   @JsonKey(ignore: true)
   @override
-  _$ProductStateCopyWith<_ProductState> get copyWith =>
-      __$ProductStateCopyWithImpl<_ProductState>(this, _$identity);
+  _$$_ProductStateCopyWith<_$_ProductState> get copyWith =>
+      __$$_ProductStateCopyWithImpl<_$_ProductState>(this, _$identity);
 }
 
 abstract class _ProductState implements ProductState {
   const factory _ProductState(
-      {bool isLoading,
-      bool validate,
-      bool isFetchingCategories,
-      bool isSavingState,
-      bool isCreatingProduct,
-      bool productCreated,
-      required MoneyMaskedTextController basePriceController,
-      required TextEditingController itemNameTextController,
-      required TextEditingController stateTextController,
-      required TextEditingController townTextController,
-      required TextEditingController descriptionTextController,
-      required TextEditingController brandTextController,
-      required TextEditingController brandModelTextController,
-      required TextEditingController transmissionTextController,
-      required TextEditingController shippingDescTextController,
-      required TextEditingController addressTextController,
-      required TextEditingController weightTextController,
-      required TextEditingController widthTextController,
-      required TextEditingController heightTextController,
-      required TextEditingController lengthTextController,
-      required TextEditingController termsInfoTextController,
-      required TextEditingController startDateTextController,
-      required TextEditingController endDateTextController,
-      required DealPlan selectedPlan,
-      required Product product,
-      required PageController controller,
-      int currentIndex,
-      KtList<DealCategory> categories,
-      KtList<DealPlan> dealPlans,
-      Option<AppHttpResponse?> status}) = _$_ProductState;
+      {final bool isLoading,
+      final bool validate,
+      final bool isFetchingCategories,
+      final bool isSavingState,
+      final bool isCreatingProduct,
+      final bool productCreated,
+      required final MoneyMaskedTextController basePriceController,
+      required final TextEditingController itemNameTextController,
+      required final TextEditingController stateTextController,
+      required final TextEditingController townTextController,
+      required final TextEditingController descriptionTextController,
+      required final TextEditingController brandTextController,
+      required final TextEditingController brandModelTextController,
+      required final TextEditingController transmissionTextController,
+      required final TextEditingController shippingDescTextController,
+      required final TextEditingController addressTextController,
+      required final TextEditingController weightTextController,
+      required final TextEditingController widthTextController,
+      required final TextEditingController heightTextController,
+      required final TextEditingController lengthTextController,
+      required final TextEditingController termsInfoTextController,
+      required final TextEditingController startDateTextController,
+      required final TextEditingController endDateTextController,
+      required final DealPlan selectedPlan,
+      required final Product product,
+      required final PageController controller,
+      final int currentIndex,
+      final KtList<DealCategory> categories,
+      final KtList<DealPlan> dealPlans,
+      final Option<AppHttpResponse?> status}) = _$_ProductState;
 
   @override
-  bool get isLoading;
+  bool get isLoading => throw _privateConstructorUsedError;
   @override
-  bool get validate;
+  bool get validate => throw _privateConstructorUsedError;
   @override
-  bool get isFetchingCategories;
+  bool get isFetchingCategories => throw _privateConstructorUsedError;
   @override
-  bool get isSavingState;
+  bool get isSavingState => throw _privateConstructorUsedError;
   @override
-  bool get isCreatingProduct;
+  bool get isCreatingProduct => throw _privateConstructorUsedError;
   @override
-  bool get productCreated;
+  bool get productCreated => throw _privateConstructorUsedError;
   @override //
-  MoneyMaskedTextController get basePriceController;
+  MoneyMaskedTextController get basePriceController =>
+      throw _privateConstructorUsedError;
   @override
-  TextEditingController get itemNameTextController;
+  TextEditingController get itemNameTextController =>
+      throw _privateConstructorUsedError;
   @override
-  TextEditingController get stateTextController;
+  TextEditingController get stateTextController =>
+      throw _privateConstructorUsedError;
   @override
-  TextEditingController get townTextController;
+  TextEditingController get townTextController =>
+      throw _privateConstructorUsedError;
   @override
-  TextEditingController get descriptionTextController;
+  TextEditingController get descriptionTextController =>
+      throw _privateConstructorUsedError;
   @override
-  TextEditingController get brandTextController;
+  TextEditingController get brandTextController =>
+      throw _privateConstructorUsedError;
   @override
-  TextEditingController get brandModelTextController;
+  TextEditingController get brandModelTextController =>
+      throw _privateConstructorUsedError;
   @override
-  TextEditingController get transmissionTextController;
+  TextEditingController get transmissionTextController =>
+      throw _privateConstructorUsedError;
   @override
-  TextEditingController get shippingDescTextController;
+  TextEditingController get shippingDescTextController =>
+      throw _privateConstructorUsedError;
   @override
-  TextEditingController get addressTextController;
+  TextEditingController get addressTextController =>
+      throw _privateConstructorUsedError;
   @override
-  TextEditingController get weightTextController;
+  TextEditingController get weightTextController =>
+      throw _privateConstructorUsedError;
   @override
-  TextEditingController get widthTextController;
+  TextEditingController get widthTextController =>
+      throw _privateConstructorUsedError;
   @override
-  TextEditingController get heightTextController;
+  TextEditingController get heightTextController =>
+      throw _privateConstructorUsedError;
   @override
-  TextEditingController get lengthTextController;
+  TextEditingController get lengthTextController =>
+      throw _privateConstructorUsedError;
   @override
-  TextEditingController get termsInfoTextController;
+  TextEditingController get termsInfoTextController =>
+      throw _privateConstructorUsedError;
   @override
-  TextEditingController get startDateTextController;
+  TextEditingController get startDateTextController =>
+      throw _privateConstructorUsedError;
   @override
-  TextEditingController get endDateTextController;
+  TextEditingController get endDateTextController =>
+      throw _privateConstructorUsedError;
   @override //
-  DealPlan get selectedPlan;
+  DealPlan get selectedPlan => throw _privateConstructorUsedError;
   @override
-  Product get product;
+  Product get product => throw _privateConstructorUsedError;
   @override
-  PageController get controller;
+  PageController get controller => throw _privateConstructorUsedError;
   @override
-  int get currentIndex;
+  int get currentIndex => throw _privateConstructorUsedError;
   @override
-  KtList<DealCategory> get categories;
+  KtList<DealCategory> get categories => throw _privateConstructorUsedError;
   @override
-  KtList<DealPlan> get dealPlans;
+  KtList<DealPlan> get dealPlans => throw _privateConstructorUsedError;
   @override
-  Option<AppHttpResponse?> get status;
+  Option<AppHttpResponse?> get status => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ProductStateCopyWith<_ProductState> get copyWith =>
+  _$$_ProductStateCopyWith<_$_ProductState> get copyWith =>
       throw _privateConstructorUsedError;
 }

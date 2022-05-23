@@ -54,12 +54,13 @@ class _MyWishlistScreenState extends State<MyWishlistScreen> {
   User get currentUser => context.read<AuthWatcherCubit>().state.user!;
 
   void onLoadMore(DragToRefreshState refresh) async {
-    await _cubit.myWishlist(
-      currentUser,
-      nextPage: true,
-      endOfList: () => refresh.loadNoData(),
-      callback: (_) => refresh.loadComplete(),
-    );
+    if (_cubit.state.wishlist.isNotEmpty())
+      await _cubit.myWishlist(
+        currentUser,
+        nextPage: true,
+        endOfList: () => refresh.loadNoData(),
+        callback: (_) => refresh.loadComplete(),
+      );
   }
 
   void onRefresh(DragToRefreshState refresh) async {

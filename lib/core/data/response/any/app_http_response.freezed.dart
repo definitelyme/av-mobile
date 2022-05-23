@@ -12,35 +12,11 @@ part of app_http_response.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 AppHttpResponse _$AppHttpResponseFromJson(Map<String, dynamic> json) {
   return _AppHttpResponse.fromJson(json);
 }
-
-/// @nodoc
-class _$AppHttpResponseTearOff {
-  const _$AppHttpResponseTearOff();
-
-  _AppHttpResponse call(@AnyResponseSerializer() AnyResponse response,
-      {@JsonKey(ignore: true) dynamic data,
-      @JsonKey(ignore: true) _d.DioError? exception,
-      @JsonKey(ignore: true) AppNetworkExceptionReason? failureReason}) {
-    return _AppHttpResponse(
-      response,
-      data: data,
-      exception: exception,
-      failureReason: failureReason,
-    );
-  }
-
-  AppHttpResponse fromJson(Map<String, Object?> json) {
-    return AppHttpResponse.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $AppHttpResponse = _$AppHttpResponseTearOff();
 
 /// @nodoc
 mixin _$AppHttpResponse {
@@ -119,11 +95,11 @@ class _$AppHttpResponseCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$AppHttpResponseCopyWith<$Res>
+abstract class _$$_AppHttpResponseCopyWith<$Res>
     implements $AppHttpResponseCopyWith<$Res> {
-  factory _$AppHttpResponseCopyWith(
-          _AppHttpResponse value, $Res Function(_AppHttpResponse) then) =
-      __$AppHttpResponseCopyWithImpl<$Res>;
+  factory _$$_AppHttpResponseCopyWith(
+          _$_AppHttpResponse value, $Res Function(_$_AppHttpResponse) then) =
+      __$$_AppHttpResponseCopyWithImpl<$Res>;
   @override
   $Res call(
       {@AnyResponseSerializer() AnyResponse response,
@@ -136,15 +112,15 @@ abstract class _$AppHttpResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$AppHttpResponseCopyWithImpl<$Res>
+class __$$_AppHttpResponseCopyWithImpl<$Res>
     extends _$AppHttpResponseCopyWithImpl<$Res>
-    implements _$AppHttpResponseCopyWith<$Res> {
-  __$AppHttpResponseCopyWithImpl(
-      _AppHttpResponse _value, $Res Function(_AppHttpResponse) _then)
-      : super(_value, (v) => _then(v as _AppHttpResponse));
+    implements _$$_AppHttpResponseCopyWith<$Res> {
+  __$$_AppHttpResponseCopyWithImpl(
+      _$_AppHttpResponse _value, $Res Function(_$_AppHttpResponse) _then)
+      : super(_value, (v) => _then(v as _$_AppHttpResponse));
 
   @override
-  _AppHttpResponse get _value => super._value as _AppHttpResponse;
+  _$_AppHttpResponse get _value => super._value as _$_AppHttpResponse;
 
   @override
   $Res call({
@@ -153,7 +129,7 @@ class __$AppHttpResponseCopyWithImpl<$Res>
     Object? exception = freezed,
     Object? failureReason = freezed,
   }) {
-    return _then(_AppHttpResponse(
+    return _then(_$_AppHttpResponse(
       response == freezed
           ? _value.response
           : response // ignore: cast_nullable_to_non_nullable
@@ -203,7 +179,7 @@ class _$_AppHttpResponse extends _AppHttpResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AppHttpResponse &&
+            other is _$_AppHttpResponse &&
             const DeepCollectionEquality().equals(other.response, response) &&
             const DeepCollectionEquality().equals(other.data, data) &&
             const DeepCollectionEquality().equals(other.exception, exception) &&
@@ -211,6 +187,7 @@ class _$_AppHttpResponse extends _AppHttpResponse {
                 .equals(other.failureReason, failureReason));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -221,8 +198,8 @@ class _$_AppHttpResponse extends _AppHttpResponse {
 
   @JsonKey(ignore: true)
   @override
-  _$AppHttpResponseCopyWith<_AppHttpResponse> get copyWith =>
-      __$AppHttpResponseCopyWithImpl<_AppHttpResponse>(this, _$identity);
+  _$$_AppHttpResponseCopyWith<_$_AppHttpResponse> get copyWith =>
+      __$$_AppHttpResponseCopyWithImpl<_$_AppHttpResponse>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -231,11 +208,15 @@ class _$_AppHttpResponse extends _AppHttpResponse {
 }
 
 abstract class _AppHttpResponse extends AppHttpResponse {
-  const factory _AppHttpResponse(@AnyResponseSerializer() AnyResponse response,
-          {@JsonKey(ignore: true) dynamic data,
-          @JsonKey(ignore: true) _d.DioError? exception,
-          @JsonKey(ignore: true) AppNetworkExceptionReason? failureReason}) =
-      _$_AppHttpResponse;
+  const factory _AppHttpResponse(
+      @AnyResponseSerializer()
+          final AnyResponse response,
+      {@JsonKey(ignore: true)
+          final dynamic data,
+      @JsonKey(ignore: true)
+          final _d.DioError? exception,
+      @JsonKey(ignore: true)
+          final AppNetworkExceptionReason? failureReason}) = _$_AppHttpResponse;
   const _AppHttpResponse._() : super._();
 
   factory _AppHttpResponse.fromJson(Map<String, dynamic> json) =
@@ -243,18 +224,19 @@ abstract class _AppHttpResponse extends AppHttpResponse {
 
   @override
   @AnyResponseSerializer()
-  AnyResponse get response;
+  AnyResponse get response => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  dynamic get data;
+  dynamic get data => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _d.DioError? get exception;
+  _d.DioError? get exception => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  AppNetworkExceptionReason? get failureReason;
+  AppNetworkExceptionReason? get failureReason =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AppHttpResponseCopyWith<_AppHttpResponse> get copyWith =>
+  _$$_AppHttpResponseCopyWith<_$_AppHttpResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }

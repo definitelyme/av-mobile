@@ -12,56 +12,7 @@ part of product.entity.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$ProductTearOff {
-  const _$ProductTearOff();
-
-  _Product call(
-      {required UniqueId<String?> id,
-      required BasicTextField<String?> name,
-      required BasicTextField<String?> description,
-      KtList<UploadableMedia> photos = const KtList.empty(),
-      bool isActive = false,
-      bool isFavorite = false,
-      DealStatus dealStatus = DealStatus.pending,
-      required BasicTextField<String?> lga,
-      required BasicTextField<String?> state,
-      User? vendor,
-      Deal? deal,
-      Country? country,
-      DealCategory? category,
-      BrandInformation? brandInformation,
-      ShippingInformation? shippingInformation,
-      TermsInformation? termsInformation,
-      DateTime? createdAt,
-      DateTime? updatedAt}) {
-    return _Product(
-      id: id,
-      name: name,
-      description: description,
-      photos: photos,
-      isActive: isActive,
-      isFavorite: isFavorite,
-      dealStatus: dealStatus,
-      lga: lga,
-      state: state,
-      vendor: vendor,
-      deal: deal,
-      country: country,
-      category: category,
-      brandInformation: brandInformation,
-      shippingInformation: shippingInformation,
-      termsInformation: termsInformation,
-      createdAt: createdAt,
-      updatedAt: updatedAt,
-    );
-  }
-}
-
-/// @nodoc
-const $Product = _$ProductTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$Product {
@@ -307,9 +258,10 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
-  factory _$ProductCopyWith(_Product value, $Res Function(_Product) then) =
-      __$ProductCopyWithImpl<$Res>;
+abstract class _$$_ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
+  factory _$$_ProductCopyWith(
+          _$_Product value, $Res Function(_$_Product) then) =
+      __$$_ProductCopyWithImpl<$Res>;
   @override
   $Res call(
       {UniqueId<String?> id,
@@ -348,13 +300,13 @@ abstract class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
-    implements _$ProductCopyWith<$Res> {
-  __$ProductCopyWithImpl(_Product _value, $Res Function(_Product) _then)
-      : super(_value, (v) => _then(v as _Product));
+class __$$_ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
+    implements _$$_ProductCopyWith<$Res> {
+  __$$_ProductCopyWithImpl(_$_Product _value, $Res Function(_$_Product) _then)
+      : super(_value, (v) => _then(v as _$_Product));
 
   @override
-  _Product get _value => super._value as _Product;
+  _$_Product get _value => super._value as _$_Product;
 
   @override
   $Res call({
@@ -377,7 +329,7 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(_Product(
+    return _then(_$_Product(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -484,17 +436,17 @@ class _$_Product extends _Product {
   final BasicTextField<String?> name;
   @override
   final BasicTextField<String?> description;
-  @JsonKey()
   @override
+  @JsonKey()
   final KtList<UploadableMedia> photos;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isActive;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isFavorite;
-  @JsonKey()
   @override
+  @JsonKey()
   final DealStatus dealStatus;
   @override
   final BasicTextField<String?> lga;
@@ -528,7 +480,7 @@ class _$_Product extends _Product {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Product &&
+            other is _$_Product &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality()
@@ -579,70 +531,71 @@ class _$_Product extends _Product {
 
   @JsonKey(ignore: true)
   @override
-  _$ProductCopyWith<_Product> get copyWith =>
-      __$ProductCopyWithImpl<_Product>(this, _$identity);
+  _$$_ProductCopyWith<_$_Product> get copyWith =>
+      __$$_ProductCopyWithImpl<_$_Product>(this, _$identity);
 }
 
 abstract class _Product extends Product {
   const factory _Product(
-      {required UniqueId<String?> id,
-      required BasicTextField<String?> name,
-      required BasicTextField<String?> description,
-      KtList<UploadableMedia> photos,
-      bool isActive,
-      bool isFavorite,
-      DealStatus dealStatus,
-      required BasicTextField<String?> lga,
-      required BasicTextField<String?> state,
-      User? vendor,
-      Deal? deal,
-      Country? country,
-      DealCategory? category,
-      BrandInformation? brandInformation,
-      ShippingInformation? shippingInformation,
-      TermsInformation? termsInformation,
-      DateTime? createdAt,
-      DateTime? updatedAt}) = _$_Product;
+      {required final UniqueId<String?> id,
+      required final BasicTextField<String?> name,
+      required final BasicTextField<String?> description,
+      final KtList<UploadableMedia> photos,
+      final bool isActive,
+      final bool isFavorite,
+      final DealStatus dealStatus,
+      required final BasicTextField<String?> lga,
+      required final BasicTextField<String?> state,
+      final User? vendor,
+      final Deal? deal,
+      final Country? country,
+      final DealCategory? category,
+      final BrandInformation? brandInformation,
+      final ShippingInformation? shippingInformation,
+      final TermsInformation? termsInformation,
+      final DateTime? createdAt,
+      final DateTime? updatedAt}) = _$_Product;
   const _Product._() : super._();
 
   @override
-  UniqueId<String?> get id;
+  UniqueId<String?> get id => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get name;
+  BasicTextField<String?> get name => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get description;
+  BasicTextField<String?> get description => throw _privateConstructorUsedError;
   @override
-  KtList<UploadableMedia> get photos;
+  KtList<UploadableMedia> get photos => throw _privateConstructorUsedError;
   @override
-  bool get isActive;
+  bool get isActive => throw _privateConstructorUsedError;
   @override
-  bool get isFavorite;
+  bool get isFavorite => throw _privateConstructorUsedError;
   @override
-  DealStatus get dealStatus;
+  DealStatus get dealStatus => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get lga;
+  BasicTextField<String?> get lga => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get state;
+  BasicTextField<String?> get state => throw _privateConstructorUsedError;
   @override
-  User? get vendor;
+  User? get vendor => throw _privateConstructorUsedError;
   @override
-  Deal? get deal;
+  Deal? get deal => throw _privateConstructorUsedError;
   @override
-  Country? get country;
+  Country? get country => throw _privateConstructorUsedError;
   @override
-  DealCategory? get category;
+  DealCategory? get category => throw _privateConstructorUsedError;
   @override
-  BrandInformation? get brandInformation;
+  BrandInformation? get brandInformation => throw _privateConstructorUsedError;
   @override
-  ShippingInformation? get shippingInformation;
+  ShippingInformation? get shippingInformation =>
+      throw _privateConstructorUsedError;
   @override
-  TermsInformation? get termsInformation;
+  TermsInformation? get termsInformation => throw _privateConstructorUsedError;
   @override
-  DateTime? get createdAt;
+  DateTime? get createdAt => throw _privateConstructorUsedError;
   @override
-  DateTime? get updatedAt;
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ProductCopyWith<_Product> get copyWith =>
+  _$$_ProductCopyWith<_$_Product> get copyWith =>
       throw _privateConstructorUsedError;
 }

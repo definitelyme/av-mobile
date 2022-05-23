@@ -12,38 +12,11 @@ part of social_user_dto.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 SocialUserDTO _$SocialUserDTOFromJson(Map<String, dynamic> json) {
   return _SocialUserDTO.fromJson(json);
 }
-
-/// @nodoc
-class _$SocialUserDTOTearOff {
-  const _$SocialUserDTOTearOff();
-
-  _SocialUserDTO call(
-      {String? status,
-      @IntegerSerializer() int? code,
-      String? message,
-      UserDTO? data,
-      UserDTO? user}) {
-    return _SocialUserDTO(
-      status: status,
-      code: code,
-      message: message,
-      data: data,
-      user: user,
-    );
-  }
-
-  SocialUserDTO fromJson(Map<String, Object?> json) {
-    return SocialUserDTO.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $SocialUserDTO = _$SocialUserDTOTearOff();
 
 /// @nodoc
 mixin _$SocialUserDTO {
@@ -141,11 +114,11 @@ class _$SocialUserDTOCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$SocialUserDTOCopyWith<$Res>
+abstract class _$$_SocialUserDTOCopyWith<$Res>
     implements $SocialUserDTOCopyWith<$Res> {
-  factory _$SocialUserDTOCopyWith(
-          _SocialUserDTO value, $Res Function(_SocialUserDTO) then) =
-      __$SocialUserDTOCopyWithImpl<$Res>;
+  factory _$$_SocialUserDTOCopyWith(
+          _$_SocialUserDTO value, $Res Function(_$_SocialUserDTO) then) =
+      __$$_SocialUserDTOCopyWithImpl<$Res>;
   @override
   $Res call(
       {String? status,
@@ -161,15 +134,15 @@ abstract class _$SocialUserDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$SocialUserDTOCopyWithImpl<$Res>
+class __$$_SocialUserDTOCopyWithImpl<$Res>
     extends _$SocialUserDTOCopyWithImpl<$Res>
-    implements _$SocialUserDTOCopyWith<$Res> {
-  __$SocialUserDTOCopyWithImpl(
-      _SocialUserDTO _value, $Res Function(_SocialUserDTO) _then)
-      : super(_value, (v) => _then(v as _SocialUserDTO));
+    implements _$$_SocialUserDTOCopyWith<$Res> {
+  __$$_SocialUserDTOCopyWithImpl(
+      _$_SocialUserDTO _value, $Res Function(_$_SocialUserDTO) _then)
+      : super(_value, (v) => _then(v as _$_SocialUserDTO));
 
   @override
-  _SocialUserDTO get _value => super._value as _SocialUserDTO;
+  _$_SocialUserDTO get _value => super._value as _$_SocialUserDTO;
 
   @override
   $Res call({
@@ -179,7 +152,7 @@ class __$SocialUserDTOCopyWithImpl<$Res>
     Object? data = freezed,
     Object? user = freezed,
   }) {
-    return _then(_SocialUserDTO(
+    return _then(_$_SocialUserDTO(
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -239,7 +212,7 @@ class _$_SocialUserDTO extends _SocialUserDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _SocialUserDTO &&
+            other is _$_SocialUserDTO &&
             const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality().equals(other.code, code) &&
             const DeepCollectionEquality().equals(other.message, message) &&
@@ -247,6 +220,7 @@ class _$_SocialUserDTO extends _SocialUserDTO {
             const DeepCollectionEquality().equals(other.user, user));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -258,8 +232,8 @@ class _$_SocialUserDTO extends _SocialUserDTO {
 
   @JsonKey(ignore: true)
   @override
-  _$SocialUserDTOCopyWith<_SocialUserDTO> get copyWith =>
-      __$SocialUserDTOCopyWithImpl<_SocialUserDTO>(this, _$identity);
+  _$$_SocialUserDTOCopyWith<_$_SocialUserDTO> get copyWith =>
+      __$$_SocialUserDTOCopyWithImpl<_$_SocialUserDTO>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -269,29 +243,29 @@ class _$_SocialUserDTO extends _SocialUserDTO {
 
 abstract class _SocialUserDTO extends SocialUserDTO {
   const factory _SocialUserDTO(
-      {String? status,
-      @IntegerSerializer() int? code,
-      String? message,
-      UserDTO? data,
-      UserDTO? user}) = _$_SocialUserDTO;
+      {final String? status,
+      @IntegerSerializer() final int? code,
+      final String? message,
+      final UserDTO? data,
+      final UserDTO? user}) = _$_SocialUserDTO;
   const _SocialUserDTO._() : super._();
 
   factory _SocialUserDTO.fromJson(Map<String, dynamic> json) =
       _$_SocialUserDTO.fromJson;
 
   @override
-  String? get status;
+  String? get status => throw _privateConstructorUsedError;
   @override
   @IntegerSerializer()
-  int? get code;
+  int? get code => throw _privateConstructorUsedError;
   @override
-  String? get message;
+  String? get message => throw _privateConstructorUsedError;
   @override
-  UserDTO? get data;
+  UserDTO? get data => throw _privateConstructorUsedError;
   @override
-  UserDTO? get user;
+  UserDTO? get user => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$SocialUserDTOCopyWith<_SocialUserDTO> get copyWith =>
+  _$$_SocialUserDTOCopyWith<_$_SocialUserDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }

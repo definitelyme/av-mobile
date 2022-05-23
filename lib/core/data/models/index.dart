@@ -6,3 +6,4 @@ export 'generic/generic_object.dart';
 export 'generic/generic_paginated_list.dart';
 export 'callbacks/progress_callbacks.dart';
 export 'meta/meta.dataclass.dart';
+export 'user/user_dto.dart';

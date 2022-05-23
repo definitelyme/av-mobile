@@ -12,48 +12,11 @@ part of review_dto.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 ReviewDTO _$ReviewDTOFromJson(Map<String, dynamic> json) {
   return _ReviewDTO.fromJson(json);
 }
-
-/// @nodoc
-class _$ReviewDTOTearOff {
-  const _$ReviewDTOTearOff();
-
-  _ReviewDTO call(
-      {String? id,
-      String? review,
-      @DoubleSerializer() double? delivery,
-      @DoubleSerializer() double? quality,
-      @DoubleSerializer() double? responsiveness,
-      @DoubleSerializer() double? reliability,
-      @DoubleSerializer() double? rating,
-      UserDTO? user,
-      @TimestampConverter() DateTime? createdAt,
-      @TimestampConverter() DateTime? updatedAt}) {
-    return _ReviewDTO(
-      id: id,
-      review: review,
-      delivery: delivery,
-      quality: quality,
-      responsiveness: responsiveness,
-      reliability: reliability,
-      rating: rating,
-      user: user,
-      createdAt: createdAt,
-      updatedAt: updatedAt,
-    );
-  }
-
-  ReviewDTO fromJson(Map<String, Object?> json) {
-    return ReviewDTO.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $ReviewDTO = _$ReviewDTOTearOff();
 
 /// @nodoc
 mixin _$ReviewDTO {
@@ -178,10 +141,10 @@ class _$ReviewDTOCopyWithImpl<$Res> implements $ReviewDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$ReviewDTOCopyWith<$Res> implements $ReviewDTOCopyWith<$Res> {
-  factory _$ReviewDTOCopyWith(
-          _ReviewDTO value, $Res Function(_ReviewDTO) then) =
-      __$ReviewDTOCopyWithImpl<$Res>;
+abstract class _$$_ReviewDTOCopyWith<$Res> implements $ReviewDTOCopyWith<$Res> {
+  factory _$$_ReviewDTOCopyWith(
+          _$_ReviewDTO value, $Res Function(_$_ReviewDTO) then) =
+      __$$_ReviewDTOCopyWithImpl<$Res>;
   @override
   $Res call(
       {String? id,
@@ -200,13 +163,14 @@ abstract class _$ReviewDTOCopyWith<$Res> implements $ReviewDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$ReviewDTOCopyWithImpl<$Res> extends _$ReviewDTOCopyWithImpl<$Res>
-    implements _$ReviewDTOCopyWith<$Res> {
-  __$ReviewDTOCopyWithImpl(_ReviewDTO _value, $Res Function(_ReviewDTO) _then)
-      : super(_value, (v) => _then(v as _ReviewDTO));
+class __$$_ReviewDTOCopyWithImpl<$Res> extends _$ReviewDTOCopyWithImpl<$Res>
+    implements _$$_ReviewDTOCopyWith<$Res> {
+  __$$_ReviewDTOCopyWithImpl(
+      _$_ReviewDTO _value, $Res Function(_$_ReviewDTO) _then)
+      : super(_value, (v) => _then(v as _$_ReviewDTO));
 
   @override
-  _ReviewDTO get _value => super._value as _ReviewDTO;
+  _$_ReviewDTO get _value => super._value as _$_ReviewDTO;
 
   @override
   $Res call({
@@ -221,7 +185,7 @@ class __$ReviewDTOCopyWithImpl<$Res> extends _$ReviewDTOCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(_ReviewDTO(
+    return _then(_$_ReviewDTO(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -322,7 +286,7 @@ class _$_ReviewDTO extends _ReviewDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ReviewDTO &&
+            other is _$_ReviewDTO &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.review, review) &&
             const DeepCollectionEquality().equals(other.delivery, delivery) &&
@@ -337,6 +301,7 @@ class _$_ReviewDTO extends _ReviewDTO {
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -353,8 +318,8 @@ class _$_ReviewDTO extends _ReviewDTO {
 
   @JsonKey(ignore: true)
   @override
-  _$ReviewDTOCopyWith<_ReviewDTO> get copyWith =>
-      __$ReviewDTOCopyWithImpl<_ReviewDTO>(this, _$identity);
+  _$$_ReviewDTOCopyWith<_$_ReviewDTO> get copyWith =>
+      __$$_ReviewDTOCopyWithImpl<_$_ReviewDTO>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -364,50 +329,50 @@ class _$_ReviewDTO extends _ReviewDTO {
 
 abstract class _ReviewDTO extends ReviewDTO {
   const factory _ReviewDTO(
-      {String? id,
-      String? review,
-      @DoubleSerializer() double? delivery,
-      @DoubleSerializer() double? quality,
-      @DoubleSerializer() double? responsiveness,
-      @DoubleSerializer() double? reliability,
-      @DoubleSerializer() double? rating,
-      UserDTO? user,
-      @TimestampConverter() DateTime? createdAt,
-      @TimestampConverter() DateTime? updatedAt}) = _$_ReviewDTO;
+      {final String? id,
+      final String? review,
+      @DoubleSerializer() final double? delivery,
+      @DoubleSerializer() final double? quality,
+      @DoubleSerializer() final double? responsiveness,
+      @DoubleSerializer() final double? reliability,
+      @DoubleSerializer() final double? rating,
+      final UserDTO? user,
+      @TimestampConverter() final DateTime? createdAt,
+      @TimestampConverter() final DateTime? updatedAt}) = _$_ReviewDTO;
   const _ReviewDTO._() : super._();
 
   factory _ReviewDTO.fromJson(Map<String, dynamic> json) =
       _$_ReviewDTO.fromJson;
 
   @override
-  String? get id;
+  String? get id => throw _privateConstructorUsedError;
   @override
-  String? get review;
-  @override
-  @DoubleSerializer()
-  double? get delivery;
+  String? get review => throw _privateConstructorUsedError;
   @override
   @DoubleSerializer()
-  double? get quality;
+  double? get delivery => throw _privateConstructorUsedError;
   @override
   @DoubleSerializer()
-  double? get responsiveness;
+  double? get quality => throw _privateConstructorUsedError;
   @override
   @DoubleSerializer()
-  double? get reliability;
+  double? get responsiveness => throw _privateConstructorUsedError;
   @override
   @DoubleSerializer()
-  double? get rating;
+  double? get reliability => throw _privateConstructorUsedError;
   @override
-  UserDTO? get user;
+  @DoubleSerializer()
+  double? get rating => throw _privateConstructorUsedError;
+  @override
+  UserDTO? get user => throw _privateConstructorUsedError;
   @override
   @TimestampConverter()
-  DateTime? get createdAt;
+  DateTime? get createdAt => throw _privateConstructorUsedError;
   @override
   @TimestampConverter()
-  DateTime? get updatedAt;
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ReviewDTOCopyWith<_ReviewDTO> get copyWith =>
+  _$$_ReviewDTOCopyWith<_$_ReviewDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }

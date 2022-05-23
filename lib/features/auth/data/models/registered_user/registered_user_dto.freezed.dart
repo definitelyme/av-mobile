@@ -12,34 +12,11 @@ part of registered_user_dto.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 RegisteredUserDTO _$RegisteredUserDTOFromJson(Map<String, dynamic> json) {
   return _RegisteredUserDTO.fromJson(json);
 }
-
-/// @nodoc
-class _$RegisteredUserDTOTearOff {
-  const _$RegisteredUserDTOTearOff();
-
-  _RegisteredUserDTO call(
-      {@JsonKey(includeIfNull: false) String? status,
-      @JsonKey(includeIfNull: false) UserDTO? data,
-      @JsonKey(includeIfNull: false) UserDTO? user}) {
-    return _RegisteredUserDTO(
-      status: status,
-      data: data,
-      user: user,
-    );
-  }
-
-  RegisteredUserDTO fromJson(Map<String, Object?> json) {
-    return RegisteredUserDTO.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $RegisteredUserDTO = _$RegisteredUserDTOTearOff();
 
 /// @nodoc
 mixin _$RegisteredUserDTO {
@@ -125,11 +102,11 @@ class _$RegisteredUserDTOCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$RegisteredUserDTOCopyWith<$Res>
+abstract class _$$_RegisteredUserDTOCopyWith<$Res>
     implements $RegisteredUserDTOCopyWith<$Res> {
-  factory _$RegisteredUserDTOCopyWith(
-          _RegisteredUserDTO value, $Res Function(_RegisteredUserDTO) then) =
-      __$RegisteredUserDTOCopyWithImpl<$Res>;
+  factory _$$_RegisteredUserDTOCopyWith(_$_RegisteredUserDTO value,
+          $Res Function(_$_RegisteredUserDTO) then) =
+      __$$_RegisteredUserDTOCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(includeIfNull: false) String? status,
@@ -143,15 +120,15 @@ abstract class _$RegisteredUserDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$RegisteredUserDTOCopyWithImpl<$Res>
+class __$$_RegisteredUserDTOCopyWithImpl<$Res>
     extends _$RegisteredUserDTOCopyWithImpl<$Res>
-    implements _$RegisteredUserDTOCopyWith<$Res> {
-  __$RegisteredUserDTOCopyWithImpl(
-      _RegisteredUserDTO _value, $Res Function(_RegisteredUserDTO) _then)
-      : super(_value, (v) => _then(v as _RegisteredUserDTO));
+    implements _$$_RegisteredUserDTOCopyWith<$Res> {
+  __$$_RegisteredUserDTOCopyWithImpl(
+      _$_RegisteredUserDTO _value, $Res Function(_$_RegisteredUserDTO) _then)
+      : super(_value, (v) => _then(v as _$_RegisteredUserDTO));
 
   @override
-  _RegisteredUserDTO get _value => super._value as _RegisteredUserDTO;
+  _$_RegisteredUserDTO get _value => super._value as _$_RegisteredUserDTO;
 
   @override
   $Res call({
@@ -159,7 +136,7 @@ class __$RegisteredUserDTOCopyWithImpl<$Res>
     Object? data = freezed,
     Object? user = freezed,
   }) {
-    return _then(_RegisteredUserDTO(
+    return _then(_$_RegisteredUserDTO(
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -207,12 +184,13 @@ class _$_RegisteredUserDTO extends _RegisteredUserDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RegisteredUserDTO &&
+            other is _$_RegisteredUserDTO &&
             const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality().equals(other.data, data) &&
             const DeepCollectionEquality().equals(other.user, user));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -222,8 +200,9 @@ class _$_RegisteredUserDTO extends _RegisteredUserDTO {
 
   @JsonKey(ignore: true)
   @override
-  _$RegisteredUserDTOCopyWith<_RegisteredUserDTO> get copyWith =>
-      __$RegisteredUserDTOCopyWithImpl<_RegisteredUserDTO>(this, _$identity);
+  _$$_RegisteredUserDTOCopyWith<_$_RegisteredUserDTO> get copyWith =>
+      __$$_RegisteredUserDTOCopyWithImpl<_$_RegisteredUserDTO>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -233,9 +212,10 @@ class _$_RegisteredUserDTO extends _RegisteredUserDTO {
 
 abstract class _RegisteredUserDTO extends RegisteredUserDTO {
   const factory _RegisteredUserDTO(
-      {@JsonKey(includeIfNull: false) String? status,
-      @JsonKey(includeIfNull: false) UserDTO? data,
-      @JsonKey(includeIfNull: false) UserDTO? user}) = _$_RegisteredUserDTO;
+          {@JsonKey(includeIfNull: false) final String? status,
+          @JsonKey(includeIfNull: false) final UserDTO? data,
+          @JsonKey(includeIfNull: false) final UserDTO? user}) =
+      _$_RegisteredUserDTO;
   const _RegisteredUserDTO._() : super._();
 
   factory _RegisteredUserDTO.fromJson(Map<String, dynamic> json) =
@@ -243,15 +223,15 @@ abstract class _RegisteredUserDTO extends RegisteredUserDTO {
 
   @override
   @JsonKey(includeIfNull: false)
-  String? get status;
+  String? get status => throw _privateConstructorUsedError;
   @override
   @JsonKey(includeIfNull: false)
-  UserDTO? get data;
+  UserDTO? get data => throw _privateConstructorUsedError;
   @override
   @JsonKey(includeIfNull: false)
-  UserDTO? get user;
+  UserDTO? get user => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$RegisteredUserDTOCopyWith<_RegisteredUserDTO> get copyWith =>
+  _$$_RegisteredUserDTOCopyWith<_$_RegisteredUserDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }

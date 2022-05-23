@@ -12,34 +12,7 @@ part of shipping_information.entity.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$ShippingInformationTearOff {
-  const _$ShippingInformationTearOff();
-
-  _ShippingInformation call(
-      {required BasicTextField<double?> width,
-      required BasicTextField<double?> weight,
-      required BasicTextField<double?> height,
-      required BasicTextField<double?> length,
-      required BasicTextField<String?> description,
-      required BasicTextField<String?> deliveryPeriod,
-      bool isPickup = false}) {
-    return _ShippingInformation(
-      width: width,
-      weight: weight,
-      height: height,
-      length: length,
-      description: description,
-      deliveryPeriod: deliveryPeriod,
-      isPickup: isPickup,
-    );
-  }
-}
-
-/// @nodoc
-const $ShippingInformation = _$ShippingInformationTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$ShippingInformation {
@@ -125,11 +98,11 @@ class _$ShippingInformationCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$ShippingInformationCopyWith<$Res>
+abstract class _$$_ShippingInformationCopyWith<$Res>
     implements $ShippingInformationCopyWith<$Res> {
-  factory _$ShippingInformationCopyWith(_ShippingInformation value,
-          $Res Function(_ShippingInformation) then) =
-      __$ShippingInformationCopyWithImpl<$Res>;
+  factory _$$_ShippingInformationCopyWith(_$_ShippingInformation value,
+          $Res Function(_$_ShippingInformation) then) =
+      __$$_ShippingInformationCopyWithImpl<$Res>;
   @override
   $Res call(
       {BasicTextField<double?> width,
@@ -142,15 +115,15 @@ abstract class _$ShippingInformationCopyWith<$Res>
 }
 
 /// @nodoc
-class __$ShippingInformationCopyWithImpl<$Res>
+class __$$_ShippingInformationCopyWithImpl<$Res>
     extends _$ShippingInformationCopyWithImpl<$Res>
-    implements _$ShippingInformationCopyWith<$Res> {
-  __$ShippingInformationCopyWithImpl(
-      _ShippingInformation _value, $Res Function(_ShippingInformation) _then)
-      : super(_value, (v) => _then(v as _ShippingInformation));
+    implements _$$_ShippingInformationCopyWith<$Res> {
+  __$$_ShippingInformationCopyWithImpl(_$_ShippingInformation _value,
+      $Res Function(_$_ShippingInformation) _then)
+      : super(_value, (v) => _then(v as _$_ShippingInformation));
 
   @override
-  _ShippingInformation get _value => super._value as _ShippingInformation;
+  _$_ShippingInformation get _value => super._value as _$_ShippingInformation;
 
   @override
   $Res call({
@@ -162,7 +135,7 @@ class __$ShippingInformationCopyWithImpl<$Res>
     Object? deliveryPeriod = freezed,
     Object? isPickup = freezed,
   }) {
-    return _then(_ShippingInformation(
+    return _then(_$_ShippingInformation(
       width: width == freezed
           ? _value.width
           : width // ignore: cast_nullable_to_non_nullable
@@ -220,8 +193,8 @@ class _$_ShippingInformation extends _ShippingInformation {
   final BasicTextField<String?> description;
   @override
   final BasicTextField<String?> deliveryPeriod;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isPickup;
 
   @override
@@ -233,7 +206,7 @@ class _$_ShippingInformation extends _ShippingInformation {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ShippingInformation &&
+            other is _$_ShippingInformation &&
             const DeepCollectionEquality().equals(other.width, width) &&
             const DeepCollectionEquality().equals(other.weight, weight) &&
             const DeepCollectionEquality().equals(other.height, height) &&
@@ -258,38 +231,39 @@ class _$_ShippingInformation extends _ShippingInformation {
 
   @JsonKey(ignore: true)
   @override
-  _$ShippingInformationCopyWith<_ShippingInformation> get copyWith =>
-      __$ShippingInformationCopyWithImpl<_ShippingInformation>(
+  _$$_ShippingInformationCopyWith<_$_ShippingInformation> get copyWith =>
+      __$$_ShippingInformationCopyWithImpl<_$_ShippingInformation>(
           this, _$identity);
 }
 
 abstract class _ShippingInformation extends ShippingInformation {
   const factory _ShippingInformation(
-      {required BasicTextField<double?> width,
-      required BasicTextField<double?> weight,
-      required BasicTextField<double?> height,
-      required BasicTextField<double?> length,
-      required BasicTextField<String?> description,
-      required BasicTextField<String?> deliveryPeriod,
-      bool isPickup}) = _$_ShippingInformation;
+      {required final BasicTextField<double?> width,
+      required final BasicTextField<double?> weight,
+      required final BasicTextField<double?> height,
+      required final BasicTextField<double?> length,
+      required final BasicTextField<String?> description,
+      required final BasicTextField<String?> deliveryPeriod,
+      final bool isPickup}) = _$_ShippingInformation;
   const _ShippingInformation._() : super._();
 
   @override
-  BasicTextField<double?> get width;
+  BasicTextField<double?> get width => throw _privateConstructorUsedError;
   @override
-  BasicTextField<double?> get weight;
+  BasicTextField<double?> get weight => throw _privateConstructorUsedError;
   @override
-  BasicTextField<double?> get height;
+  BasicTextField<double?> get height => throw _privateConstructorUsedError;
   @override
-  BasicTextField<double?> get length;
+  BasicTextField<double?> get length => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get description;
+  BasicTextField<String?> get description => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get deliveryPeriod;
+  BasicTextField<String?> get deliveryPeriod =>
+      throw _privateConstructorUsedError;
   @override
-  bool get isPickup;
+  bool get isPickup => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ShippingInformationCopyWith<_ShippingInformation> get copyWith =>
+  _$$_ShippingInformationCopyWith<_$_ShippingInformation> get copyWith =>
       throw _privateConstructorUsedError;
 }

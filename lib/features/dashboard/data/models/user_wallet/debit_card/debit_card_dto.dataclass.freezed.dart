@@ -12,31 +12,11 @@ part of debit_card_dto.dataclass.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 DebitCardDTO _$DebitCardDTOFromJson(Map<String, dynamic> json) {
   return _DebitCardDTO.fromJson(json);
 }
-
-/// @nodoc
-class _$DebitCardDTOTearOff {
-  const _$DebitCardDTOTearOff();
-
-  _DebitCardDTO call(
-      {@JsonKey(name: '_meta') MetaDTO? meta, required DebitCardDTOData data}) {
-    return _DebitCardDTO(
-      meta: meta,
-      data: data,
-    );
-  }
-
-  DebitCardDTO fromJson(Map<String, Object?> json) {
-    return DebitCardDTO.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $DebitCardDTO = _$DebitCardDTOTearOff();
 
 /// @nodoc
 mixin _$DebitCardDTO {
@@ -106,11 +86,11 @@ class _$DebitCardDTOCopyWithImpl<$Res> implements $DebitCardDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$DebitCardDTOCopyWith<$Res>
+abstract class _$$_DebitCardDTOCopyWith<$Res>
     implements $DebitCardDTOCopyWith<$Res> {
-  factory _$DebitCardDTOCopyWith(
-          _DebitCardDTO value, $Res Function(_DebitCardDTO) then) =
-      __$DebitCardDTOCopyWithImpl<$Res>;
+  factory _$$_DebitCardDTOCopyWith(
+          _$_DebitCardDTO value, $Res Function(_$_DebitCardDTO) then) =
+      __$$_DebitCardDTOCopyWithImpl<$Res>;
   @override
   $Res call({@JsonKey(name: '_meta') MetaDTO? meta, DebitCardDTOData data});
 
@@ -121,21 +101,22 @@ abstract class _$DebitCardDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$DebitCardDTOCopyWithImpl<$Res> extends _$DebitCardDTOCopyWithImpl<$Res>
-    implements _$DebitCardDTOCopyWith<$Res> {
-  __$DebitCardDTOCopyWithImpl(
-      _DebitCardDTO _value, $Res Function(_DebitCardDTO) _then)
-      : super(_value, (v) => _then(v as _DebitCardDTO));
+class __$$_DebitCardDTOCopyWithImpl<$Res>
+    extends _$DebitCardDTOCopyWithImpl<$Res>
+    implements _$$_DebitCardDTOCopyWith<$Res> {
+  __$$_DebitCardDTOCopyWithImpl(
+      _$_DebitCardDTO _value, $Res Function(_$_DebitCardDTO) _then)
+      : super(_value, (v) => _then(v as _$_DebitCardDTO));
 
   @override
-  _DebitCardDTO get _value => super._value as _DebitCardDTO;
+  _$_DebitCardDTO get _value => super._value as _$_DebitCardDTO;
 
   @override
   $Res call({
     Object? meta = freezed,
     Object? data = freezed,
   }) {
-    return _then(_DebitCardDTO(
+    return _then(_$_DebitCardDTO(
       meta: meta == freezed
           ? _value.meta
           : meta // ignore: cast_nullable_to_non_nullable
@@ -172,11 +153,12 @@ class _$_DebitCardDTO extends _DebitCardDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _DebitCardDTO &&
+            other is _$_DebitCardDTO &&
             const DeepCollectionEquality().equals(other.meta, meta) &&
             const DeepCollectionEquality().equals(other.data, data));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -185,8 +167,8 @@ class _$_DebitCardDTO extends _DebitCardDTO {
 
   @JsonKey(ignore: true)
   @override
-  _$DebitCardDTOCopyWith<_DebitCardDTO> get copyWith =>
-      __$DebitCardDTOCopyWithImpl<_DebitCardDTO>(this, _$identity);
+  _$$_DebitCardDTOCopyWith<_$_DebitCardDTO> get copyWith =>
+      __$$_DebitCardDTOCopyWithImpl<_$_DebitCardDTO>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -196,8 +178,8 @@ class _$_DebitCardDTO extends _DebitCardDTO {
 
 abstract class _DebitCardDTO extends DebitCardDTO {
   const factory _DebitCardDTO(
-      {@JsonKey(name: '_meta') MetaDTO? meta,
-      required DebitCardDTOData data}) = _$_DebitCardDTO;
+      {@JsonKey(name: '_meta') final MetaDTO? meta,
+      required final DebitCardDTOData data}) = _$_DebitCardDTO;
   const _DebitCardDTO._() : super._();
 
   factory _DebitCardDTO.fromJson(Map<String, dynamic> json) =
@@ -205,57 +187,18 @@ abstract class _DebitCardDTO extends DebitCardDTO {
 
   @override
   @JsonKey(name: '_meta')
-  MetaDTO? get meta;
+  MetaDTO? get meta => throw _privateConstructorUsedError;
   @override
-  DebitCardDTOData get data;
+  DebitCardDTOData get data => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$DebitCardDTOCopyWith<_DebitCardDTO> get copyWith =>
+  _$$_DebitCardDTOCopyWith<_$_DebitCardDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 DebitCardDTOData _$DebitCardDTODataFromJson(Map<String, dynamic> json) {
   return _DebitCardDTOData.fromJson(json);
 }
-
-/// @nodoc
-class _$DebitCardDTODataTearOff {
-  const _$DebitCardDTODataTearOff();
-
-  _DebitCardDTOData call(
-      {@JsonKey(name: '_id') String? uid,
-      @BooleanSerializer() bool? cardAdded,
-      @BooleanSerializer() bool? pinAdded,
-      String? email,
-      @DebitCardBrandSerializer() DebitCardBrand? cardType,
-      @JsonKey(name: 'card') String? cardNumber,
-      String? cvv,
-      String? expiry,
-      String? maskedCard,
-      @TimestampConverter() DateTime? createdAt,
-      @TimestampConverter() DateTime? updatedAt}) {
-    return _DebitCardDTOData(
-      uid: uid,
-      cardAdded: cardAdded,
-      pinAdded: pinAdded,
-      email: email,
-      cardType: cardType,
-      cardNumber: cardNumber,
-      cvv: cvv,
-      expiry: expiry,
-      maskedCard: maskedCard,
-      createdAt: createdAt,
-      updatedAt: updatedAt,
-    );
-  }
-
-  DebitCardDTOData fromJson(Map<String, Object?> json) {
-    return DebitCardDTOData.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $DebitCardDTOData = _$DebitCardDTODataTearOff();
 
 /// @nodoc
 mixin _$DebitCardDTOData {
@@ -376,11 +319,11 @@ class _$DebitCardDTODataCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$DebitCardDTODataCopyWith<$Res>
+abstract class _$$_DebitCardDTODataCopyWith<$Res>
     implements $DebitCardDTODataCopyWith<$Res> {
-  factory _$DebitCardDTODataCopyWith(
-          _DebitCardDTOData value, $Res Function(_DebitCardDTOData) then) =
-      __$DebitCardDTODataCopyWithImpl<$Res>;
+  factory _$$_DebitCardDTODataCopyWith(
+          _$_DebitCardDTOData value, $Res Function(_$_DebitCardDTOData) then) =
+      __$$_DebitCardDTODataCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: '_id') String? uid,
@@ -397,15 +340,15 @@ abstract class _$DebitCardDTODataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$DebitCardDTODataCopyWithImpl<$Res>
+class __$$_DebitCardDTODataCopyWithImpl<$Res>
     extends _$DebitCardDTODataCopyWithImpl<$Res>
-    implements _$DebitCardDTODataCopyWith<$Res> {
-  __$DebitCardDTODataCopyWithImpl(
-      _DebitCardDTOData _value, $Res Function(_DebitCardDTOData) _then)
-      : super(_value, (v) => _then(v as _DebitCardDTOData));
+    implements _$$_DebitCardDTODataCopyWith<$Res> {
+  __$$_DebitCardDTODataCopyWithImpl(
+      _$_DebitCardDTOData _value, $Res Function(_$_DebitCardDTOData) _then)
+      : super(_value, (v) => _then(v as _$_DebitCardDTOData));
 
   @override
-  _DebitCardDTOData get _value => super._value as _DebitCardDTOData;
+  _$_DebitCardDTOData get _value => super._value as _$_DebitCardDTOData;
 
   @override
   $Res call({
@@ -421,7 +364,7 @@ class __$DebitCardDTODataCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(_DebitCardDTOData(
+    return _then(_$_DebitCardDTOData(
       uid: uid == freezed
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
@@ -529,7 +472,7 @@ class _$_DebitCardDTOData extends _DebitCardDTOData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _DebitCardDTOData &&
+            other is _$_DebitCardDTOData &&
             const DeepCollectionEquality().equals(other.uid, uid) &&
             const DeepCollectionEquality().equals(other.cardAdded, cardAdded) &&
             const DeepCollectionEquality().equals(other.pinAdded, pinAdded) &&
@@ -545,6 +488,7 @@ class _$_DebitCardDTOData extends _DebitCardDTOData {
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -562,8 +506,8 @@ class _$_DebitCardDTOData extends _DebitCardDTOData {
 
   @JsonKey(ignore: true)
   @override
-  _$DebitCardDTODataCopyWith<_DebitCardDTOData> get copyWith =>
-      __$DebitCardDTODataCopyWithImpl<_DebitCardDTOData>(this, _$identity);
+  _$$_DebitCardDTODataCopyWith<_$_DebitCardDTOData> get copyWith =>
+      __$$_DebitCardDTODataCopyWithImpl<_$_DebitCardDTOData>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -573,17 +517,17 @@ class _$_DebitCardDTOData extends _DebitCardDTOData {
 
 abstract class _DebitCardDTOData extends DebitCardDTOData {
   const factory _DebitCardDTOData(
-      {@JsonKey(name: '_id') String? uid,
-      @BooleanSerializer() bool? cardAdded,
-      @BooleanSerializer() bool? pinAdded,
-      String? email,
-      @DebitCardBrandSerializer() DebitCardBrand? cardType,
-      @JsonKey(name: 'card') String? cardNumber,
-      String? cvv,
-      String? expiry,
-      String? maskedCard,
-      @TimestampConverter() DateTime? createdAt,
-      @TimestampConverter() DateTime? updatedAt}) = _$_DebitCardDTOData;
+      {@JsonKey(name: '_id') final String? uid,
+      @BooleanSerializer() final bool? cardAdded,
+      @BooleanSerializer() final bool? pinAdded,
+      final String? email,
+      @DebitCardBrandSerializer() final DebitCardBrand? cardType,
+      @JsonKey(name: 'card') final String? cardNumber,
+      final String? cvv,
+      final String? expiry,
+      final String? maskedCard,
+      @TimestampConverter() final DateTime? createdAt,
+      @TimestampConverter() final DateTime? updatedAt}) = _$_DebitCardDTOData;
   const _DebitCardDTOData._() : super._();
 
   factory _DebitCardDTOData.fromJson(Map<String, dynamic> json) =
@@ -591,63 +535,42 @@ abstract class _DebitCardDTOData extends DebitCardDTOData {
 
   @override
   @JsonKey(name: '_id')
-  String? get uid;
+  String? get uid => throw _privateConstructorUsedError;
   @override
   @BooleanSerializer()
-  bool? get cardAdded;
+  bool? get cardAdded => throw _privateConstructorUsedError;
   @override
   @BooleanSerializer()
-  bool? get pinAdded;
+  bool? get pinAdded => throw _privateConstructorUsedError;
   @override
-  String? get email;
+  String? get email => throw _privateConstructorUsedError;
   @override
   @DebitCardBrandSerializer()
-  DebitCardBrand? get cardType;
+  DebitCardBrand? get cardType => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'card')
-  String? get cardNumber;
+  String? get cardNumber => throw _privateConstructorUsedError;
   @override
-  String? get cvv;
+  String? get cvv => throw _privateConstructorUsedError;
   @override
-  String? get expiry;
+  String? get expiry => throw _privateConstructorUsedError;
   @override
-  String? get maskedCard;
-  @override
-  @TimestampConverter()
-  DateTime? get createdAt;
+  String? get maskedCard => throw _privateConstructorUsedError;
   @override
   @TimestampConverter()
-  DateTime? get updatedAt;
+  DateTime? get createdAt => throw _privateConstructorUsedError;
+  @override
+  @TimestampConverter()
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$DebitCardDTODataCopyWith<_DebitCardDTOData> get copyWith =>
+  _$$_DebitCardDTODataCopyWith<_$_DebitCardDTOData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 DebitCardListDTO _$DebitCardListDTOFromJson(Map<String, dynamic> json) {
   return _DebitCardListDTO.fromJson(json);
 }
-
-/// @nodoc
-class _$DebitCardListDTOTearOff {
-  const _$DebitCardListDTOTearOff();
-
-  _DebitCardListDTO call(
-      {@JsonKey(name: '_meta') MetaDTO? meta,
-      List<DebitCardDTOData> data = const []}) {
-    return _DebitCardListDTO(
-      meta: meta,
-      data: data,
-    );
-  }
-
-  DebitCardListDTO fromJson(Map<String, Object?> json) {
-    return DebitCardListDTO.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $DebitCardListDTO = _$DebitCardListDTOTearOff();
 
 /// @nodoc
 mixin _$DebitCardListDTO {
@@ -711,11 +634,11 @@ class _$DebitCardListDTOCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$DebitCardListDTOCopyWith<$Res>
+abstract class _$$_DebitCardListDTOCopyWith<$Res>
     implements $DebitCardListDTOCopyWith<$Res> {
-  factory _$DebitCardListDTOCopyWith(
-          _DebitCardListDTO value, $Res Function(_DebitCardListDTO) then) =
-      __$DebitCardListDTOCopyWithImpl<$Res>;
+  factory _$$_DebitCardListDTOCopyWith(
+          _$_DebitCardListDTO value, $Res Function(_$_DebitCardListDTO) then) =
+      __$$_DebitCardListDTOCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: '_meta') MetaDTO? meta, List<DebitCardDTOData> data});
@@ -725,28 +648,28 @@ abstract class _$DebitCardListDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$DebitCardListDTOCopyWithImpl<$Res>
+class __$$_DebitCardListDTOCopyWithImpl<$Res>
     extends _$DebitCardListDTOCopyWithImpl<$Res>
-    implements _$DebitCardListDTOCopyWith<$Res> {
-  __$DebitCardListDTOCopyWithImpl(
-      _DebitCardListDTO _value, $Res Function(_DebitCardListDTO) _then)
-      : super(_value, (v) => _then(v as _DebitCardListDTO));
+    implements _$$_DebitCardListDTOCopyWith<$Res> {
+  __$$_DebitCardListDTOCopyWithImpl(
+      _$_DebitCardListDTO _value, $Res Function(_$_DebitCardListDTO) _then)
+      : super(_value, (v) => _then(v as _$_DebitCardListDTO));
 
   @override
-  _DebitCardListDTO get _value => super._value as _DebitCardListDTO;
+  _$_DebitCardListDTO get _value => super._value as _$_DebitCardListDTO;
 
   @override
   $Res call({
     Object? meta = freezed,
     Object? data = freezed,
   }) {
-    return _then(_DebitCardListDTO(
+    return _then(_$_DebitCardListDTO(
       meta: meta == freezed
           ? _value.meta
           : meta // ignore: cast_nullable_to_non_nullable
               as MetaDTO?,
       data: data == freezed
-          ? _value.data
+          ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
               as List<DebitCardDTOData>,
     ));
@@ -757,8 +680,10 @@ class __$DebitCardListDTOCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_DebitCardListDTO extends _DebitCardListDTO {
   const _$_DebitCardListDTO(
-      {@JsonKey(name: '_meta') this.meta, this.data = const []})
-      : super._();
+      {@JsonKey(name: '_meta') this.meta,
+      final List<DebitCardDTOData> data = const []})
+      : _data = data,
+        super._();
 
   factory _$_DebitCardListDTO.fromJson(Map<String, dynamic> json) =>
       _$$_DebitCardListDTOFromJson(json);
@@ -766,9 +691,13 @@ class _$_DebitCardListDTO extends _DebitCardListDTO {
   @override
   @JsonKey(name: '_meta')
   final MetaDTO? meta;
-  @JsonKey()
+  final List<DebitCardDTOData> _data;
   @override
-  final List<DebitCardDTOData> data;
+  @JsonKey()
+  List<DebitCardDTOData> get data {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_data);
+  }
 
   @override
   String toString() {
@@ -779,21 +708,22 @@ class _$_DebitCardListDTO extends _DebitCardListDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _DebitCardListDTO &&
+            other is _$_DebitCardListDTO &&
             const DeepCollectionEquality().equals(other.meta, meta) &&
-            const DeepCollectionEquality().equals(other.data, data));
+            const DeepCollectionEquality().equals(other._data, _data));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(meta),
-      const DeepCollectionEquality().hash(data));
+      const DeepCollectionEquality().hash(_data));
 
   @JsonKey(ignore: true)
   @override
-  _$DebitCardListDTOCopyWith<_DebitCardListDTO> get copyWith =>
-      __$DebitCardListDTOCopyWithImpl<_DebitCardListDTO>(this, _$identity);
+  _$$_DebitCardListDTOCopyWith<_$_DebitCardListDTO> get copyWith =>
+      __$$_DebitCardListDTOCopyWithImpl<_$_DebitCardListDTO>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -803,8 +733,8 @@ class _$_DebitCardListDTO extends _DebitCardListDTO {
 
 abstract class _DebitCardListDTO extends DebitCardListDTO {
   const factory _DebitCardListDTO(
-      {@JsonKey(name: '_meta') MetaDTO? meta,
-      List<DebitCardDTOData> data}) = _$_DebitCardListDTO;
+      {@JsonKey(name: '_meta') final MetaDTO? meta,
+      final List<DebitCardDTOData> data}) = _$_DebitCardListDTO;
   const _DebitCardListDTO._() : super._();
 
   factory _DebitCardListDTO.fromJson(Map<String, dynamic> json) =
@@ -812,11 +742,11 @@ abstract class _DebitCardListDTO extends DebitCardListDTO {
 
   @override
   @JsonKey(name: '_meta')
-  MetaDTO? get meta;
+  MetaDTO? get meta => throw _privateConstructorUsedError;
   @override
-  List<DebitCardDTOData> get data;
+  List<DebitCardDTOData> get data => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$DebitCardListDTOCopyWith<_DebitCardListDTO> get copyWith =>
+  _$$_DebitCardListDTOCopyWith<_$_DebitCardListDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }

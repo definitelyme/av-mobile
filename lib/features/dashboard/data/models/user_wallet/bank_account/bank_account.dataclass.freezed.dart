@@ -12,32 +12,11 @@ part of bank_account.dataclass.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 BankAccountDTO _$BankAccountDTOFromJson(Map<String, dynamic> json) {
   return _BankAccountDTO.fromJson(json);
 }
-
-/// @nodoc
-class _$BankAccountDTOTearOff {
-  const _$BankAccountDTOTearOff();
-
-  _BankAccountDTO call(
-      {String? status, String? message, _BankAccountData? data}) {
-    return _BankAccountDTO(
-      status: status,
-      message: message,
-      data: data,
-    );
-  }
-
-  BankAccountDTO fromJson(Map<String, Object?> json) {
-    return BankAccountDTO.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $BankAccountDTO = _$BankAccountDTOTearOff();
 
 /// @nodoc
 mixin _$BankAccountDTO {
@@ -105,11 +84,11 @@ class _$BankAccountDTOCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$BankAccountDTOCopyWith<$Res>
+abstract class _$$_BankAccountDTOCopyWith<$Res>
     implements $BankAccountDTOCopyWith<$Res> {
-  factory _$BankAccountDTOCopyWith(
-          _BankAccountDTO value, $Res Function(_BankAccountDTO) then) =
-      __$BankAccountDTOCopyWithImpl<$Res>;
+  factory _$$_BankAccountDTOCopyWith(
+          _$_BankAccountDTO value, $Res Function(_$_BankAccountDTO) then) =
+      __$$_BankAccountDTOCopyWithImpl<$Res>;
   @override
   $Res call({String? status, String? message, _BankAccountData? data});
 
@@ -118,15 +97,15 @@ abstract class _$BankAccountDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$BankAccountDTOCopyWithImpl<$Res>
+class __$$_BankAccountDTOCopyWithImpl<$Res>
     extends _$BankAccountDTOCopyWithImpl<$Res>
-    implements _$BankAccountDTOCopyWith<$Res> {
-  __$BankAccountDTOCopyWithImpl(
-      _BankAccountDTO _value, $Res Function(_BankAccountDTO) _then)
-      : super(_value, (v) => _then(v as _BankAccountDTO));
+    implements _$$_BankAccountDTOCopyWith<$Res> {
+  __$$_BankAccountDTOCopyWithImpl(
+      _$_BankAccountDTO _value, $Res Function(_$_BankAccountDTO) _then)
+      : super(_value, (v) => _then(v as _$_BankAccountDTO));
 
   @override
-  _BankAccountDTO get _value => super._value as _BankAccountDTO;
+  _$_BankAccountDTO get _value => super._value as _$_BankAccountDTO;
 
   @override
   $Res call({
@@ -134,7 +113,7 @@ class __$BankAccountDTOCopyWithImpl<$Res>
     Object? message = freezed,
     Object? data = freezed,
   }) {
-    return _then(_BankAccountDTO(
+    return _then(_$_BankAccountDTO(
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -175,12 +154,13 @@ class _$_BankAccountDTO extends _BankAccountDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _BankAccountDTO &&
+            other is _$_BankAccountDTO &&
             const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality().equals(other.message, message) &&
             const DeepCollectionEquality().equals(other.data, data));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -190,8 +170,8 @@ class _$_BankAccountDTO extends _BankAccountDTO {
 
   @JsonKey(ignore: true)
   @override
-  _$BankAccountDTOCopyWith<_BankAccountDTO> get copyWith =>
-      __$BankAccountDTOCopyWithImpl<_BankAccountDTO>(this, _$identity);
+  _$$_BankAccountDTOCopyWith<_$_BankAccountDTO> get copyWith =>
+      __$$_BankAccountDTOCopyWithImpl<_$_BankAccountDTO>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -201,50 +181,29 @@ class _$_BankAccountDTO extends _BankAccountDTO {
 
 abstract class _BankAccountDTO extends BankAccountDTO {
   const factory _BankAccountDTO(
-      {String? status,
-      String? message,
-      _BankAccountData? data}) = _$_BankAccountDTO;
+      {final String? status,
+      final String? message,
+      final _BankAccountData? data}) = _$_BankAccountDTO;
   const _BankAccountDTO._() : super._();
 
   factory _BankAccountDTO.fromJson(Map<String, dynamic> json) =
       _$_BankAccountDTO.fromJson;
 
   @override
-  String? get status;
+  String? get status => throw _privateConstructorUsedError;
   @override
-  String? get message;
+  String? get message => throw _privateConstructorUsedError;
   @override
-  _BankAccountData? get data;
+  _BankAccountData? get data => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$BankAccountDTOCopyWith<_BankAccountDTO> get copyWith =>
+  _$$_BankAccountDTOCopyWith<_$_BankAccountDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 _BankAccountData _$_BankAccountDataFromJson(Map<String, dynamic> json) {
   return __BankAccountData.fromJson(json);
 }
-
-/// @nodoc
-class _$_BankAccountDataTearOff {
-  const _$_BankAccountDataTearOff();
-
-  __BankAccountData call(
-      {@JsonKey(name: 'account_name') String? accountName,
-      @JsonKey(name: 'account_number') String? accountNumber}) {
-    return __BankAccountData(
-      accountName: accountName,
-      accountNumber: accountNumber,
-    );
-  }
-
-  _BankAccountData fromJson(Map<String, Object?> json) {
-    return _BankAccountData.fromJson(json);
-  }
-}
-
-/// @nodoc
-const _$BankAccountData = _$_BankAccountDataTearOff();
 
 /// @nodoc
 mixin _$_BankAccountData {
@@ -297,11 +256,11 @@ class __$BankAccountDataCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$_BankAccountDataCopyWith<$Res>
+abstract class _$$__BankAccountDataCopyWith<$Res>
     implements _$BankAccountDataCopyWith<$Res> {
-  factory _$_BankAccountDataCopyWith(
-          __BankAccountData value, $Res Function(__BankAccountData) then) =
-      __$_BankAccountDataCopyWithImpl<$Res>;
+  factory _$$__BankAccountDataCopyWith(
+          _$__BankAccountData value, $Res Function(_$__BankAccountData) then) =
+      __$$__BankAccountDataCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: 'account_name') String? accountName,
@@ -309,22 +268,22 @@ abstract class _$_BankAccountDataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$_BankAccountDataCopyWithImpl<$Res>
+class __$$__BankAccountDataCopyWithImpl<$Res>
     extends __$BankAccountDataCopyWithImpl<$Res>
-    implements _$_BankAccountDataCopyWith<$Res> {
-  __$_BankAccountDataCopyWithImpl(
-      __BankAccountData _value, $Res Function(__BankAccountData) _then)
-      : super(_value, (v) => _then(v as __BankAccountData));
+    implements _$$__BankAccountDataCopyWith<$Res> {
+  __$$__BankAccountDataCopyWithImpl(
+      _$__BankAccountData _value, $Res Function(_$__BankAccountData) _then)
+      : super(_value, (v) => _then(v as _$__BankAccountData));
 
   @override
-  __BankAccountData get _value => super._value as __BankAccountData;
+  _$__BankAccountData get _value => super._value as _$__BankAccountData;
 
   @override
   $Res call({
     Object? accountName = freezed,
     Object? accountNumber = freezed,
   }) {
-    return _then(__BankAccountData(
+    return _then(_$__BankAccountData(
       accountName: accountName == freezed
           ? _value.accountName
           : accountName // ignore: cast_nullable_to_non_nullable
@@ -364,13 +323,14 @@ class _$__BankAccountData extends __BankAccountData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is __BankAccountData &&
+            other is _$__BankAccountData &&
             const DeepCollectionEquality()
                 .equals(other.accountName, accountName) &&
             const DeepCollectionEquality()
                 .equals(other.accountNumber, accountNumber));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -379,8 +339,8 @@ class _$__BankAccountData extends __BankAccountData {
 
   @JsonKey(ignore: true)
   @override
-  _$_BankAccountDataCopyWith<__BankAccountData> get copyWith =>
-      __$_BankAccountDataCopyWithImpl<__BankAccountData>(this, _$identity);
+  _$$__BankAccountDataCopyWith<_$__BankAccountData> get copyWith =>
+      __$$__BankAccountDataCopyWithImpl<_$__BankAccountData>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -390,8 +350,8 @@ class _$__BankAccountData extends __BankAccountData {
 
 abstract class __BankAccountData extends _BankAccountData {
   const factory __BankAccountData(
-          {@JsonKey(name: 'account_name') String? accountName,
-          @JsonKey(name: 'account_number') String? accountNumber}) =
+          {@JsonKey(name: 'account_name') final String? accountName,
+          @JsonKey(name: 'account_number') final String? accountNumber}) =
       _$__BankAccountData;
   const __BankAccountData._() : super._();
 
@@ -400,12 +360,12 @@ abstract class __BankAccountData extends _BankAccountData {
 
   @override
   @JsonKey(name: 'account_name')
-  String? get accountName;
+  String? get accountName => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'account_number')
-  String? get accountNumber;
+  String? get accountNumber => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$_BankAccountDataCopyWith<__BankAccountData> get copyWith =>
+  _$$__BankAccountDataCopyWith<_$__BankAccountData> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -12,36 +12,7 @@ part of country.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$CountryTearOff {
-  const _$CountryTearOff();
-
-  _Country call(
-      {UniqueId<String?>? id,
-      required BasicTextField<String?> name,
-      required BasicTextField<String?> iso,
-      required BasicTextField<String?> dialCode,
-      required BasicTextField<String?> flag,
-      required BasicTextField<String?> currencyIcon,
-      String? locale = 'en',
-      CurrencyType? type}) {
-    return _Country(
-      id: id,
-      name: name,
-      iso: iso,
-      dialCode: dialCode,
-      flag: flag,
-      currencyIcon: currencyIcon,
-      locale: locale,
-      type: type,
-    );
-  }
-}
-
-/// @nodoc
-const $Country = _$CountryTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$Country {
@@ -131,9 +102,10 @@ class _$CountryCopyWithImpl<$Res> implements $CountryCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$CountryCopyWith<$Res> implements $CountryCopyWith<$Res> {
-  factory _$CountryCopyWith(_Country value, $Res Function(_Country) then) =
-      __$CountryCopyWithImpl<$Res>;
+abstract class _$$_CountryCopyWith<$Res> implements $CountryCopyWith<$Res> {
+  factory _$$_CountryCopyWith(
+          _$_Country value, $Res Function(_$_Country) then) =
+      __$$_CountryCopyWithImpl<$Res>;
   @override
   $Res call(
       {UniqueId<String?>? id,
@@ -147,13 +119,13 @@ abstract class _$CountryCopyWith<$Res> implements $CountryCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$CountryCopyWithImpl<$Res> extends _$CountryCopyWithImpl<$Res>
-    implements _$CountryCopyWith<$Res> {
-  __$CountryCopyWithImpl(_Country _value, $Res Function(_Country) _then)
-      : super(_value, (v) => _then(v as _Country));
+class __$$_CountryCopyWithImpl<$Res> extends _$CountryCopyWithImpl<$Res>
+    implements _$$_CountryCopyWith<$Res> {
+  __$$_CountryCopyWithImpl(_$_Country _value, $Res Function(_$_Country) _then)
+      : super(_value, (v) => _then(v as _$_Country));
 
   @override
-  _Country get _value => super._value as _Country;
+  _$_Country get _value => super._value as _$_Country;
 
   @override
   $Res call({
@@ -166,7 +138,7 @@ class __$CountryCopyWithImpl<$Res> extends _$CountryCopyWithImpl<$Res>
     Object? locale = freezed,
     Object? type = freezed,
   }) {
-    return _then(_Country(
+    return _then(_$_Country(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -229,8 +201,8 @@ class _$_Country extends _Country {
   final BasicTextField<String?> flag;
   @override
   final BasicTextField<String?> currencyIcon;
-  @JsonKey()
   @override
+  @JsonKey()
   final String? locale;
   @override
   final CurrencyType? type;
@@ -244,7 +216,7 @@ class _$_Country extends _Country {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Country &&
+            other is _$_Country &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.iso, iso) &&
@@ -270,40 +242,41 @@ class _$_Country extends _Country {
 
   @JsonKey(ignore: true)
   @override
-  _$CountryCopyWith<_Country> get copyWith =>
-      __$CountryCopyWithImpl<_Country>(this, _$identity);
+  _$$_CountryCopyWith<_$_Country> get copyWith =>
+      __$$_CountryCopyWithImpl<_$_Country>(this, _$identity);
 }
 
 abstract class _Country extends Country {
   const factory _Country(
-      {UniqueId<String?>? id,
-      required BasicTextField<String?> name,
-      required BasicTextField<String?> iso,
-      required BasicTextField<String?> dialCode,
-      required BasicTextField<String?> flag,
-      required BasicTextField<String?> currencyIcon,
-      String? locale,
-      CurrencyType? type}) = _$_Country;
+      {final UniqueId<String?>? id,
+      required final BasicTextField<String?> name,
+      required final BasicTextField<String?> iso,
+      required final BasicTextField<String?> dialCode,
+      required final BasicTextField<String?> flag,
+      required final BasicTextField<String?> currencyIcon,
+      final String? locale,
+      final CurrencyType? type}) = _$_Country;
   const _Country._() : super._();
 
   @override
-  UniqueId<String?>? get id;
+  UniqueId<String?>? get id => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get name;
+  BasicTextField<String?> get name => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get iso;
+  BasicTextField<String?> get iso => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get dialCode;
+  BasicTextField<String?> get dialCode => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get flag;
+  BasicTextField<String?> get flag => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get currencyIcon;
+  BasicTextField<String?> get currencyIcon =>
+      throw _privateConstructorUsedError;
   @override
-  String? get locale;
+  String? get locale => throw _privateConstructorUsedError;
   @override
-  CurrencyType? get type;
+  CurrencyType? get type => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$CountryCopyWith<_Country> get copyWith =>
+  _$$_CountryCopyWith<_$_Country> get copyWith =>
       throw _privateConstructorUsedError;
 }

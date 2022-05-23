@@ -12,76 +12,7 @@ part of deal.entity.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$DealTearOff {
-  const _$DealTearOff();
-
-  _Deal call(
-      {required UniqueId<String?> id,
-      required AmountField<double> basePrice,
-      required AmountField<double> lastPriceOffered,
-      bool isPrivate = false,
-      bool isSponsored = false,
-      bool hasWish = false,
-      required AmountField<double?> admittanceFee,
-      required BasicTextField<int?> dealPriority,
-      required BasicTextField<String?> address,
-      required BasicTextField<int?> clicks,
-      BidStatus bidStatus = defaultBidStatus,
-      bool isClosing = false,
-      bool isActive = false,
-      DealStatus status = defaultDealStatus,
-      DealType type = defaultDealType,
-      OfferType offerType = defaultOfferType,
-      DealPlanType dealPlan = defaultDealPlanType,
-      QuantityType quantity = defaultQuantityType,
-      BiddingType biddingType = defaultBiddingType,
-      User? user,
-      User? vendor,
-      User? lastBidder,
-      Product? product,
-      Country? country,
-      required DateTimeField startDate,
-      required DateTimeField endDate,
-      DateTime? createdAt,
-      DateTime? updatedAt}) {
-    return _Deal(
-      id: id,
-      basePrice: basePrice,
-      lastPriceOffered: lastPriceOffered,
-      isPrivate: isPrivate,
-      isSponsored: isSponsored,
-      hasWish: hasWish,
-      admittanceFee: admittanceFee,
-      dealPriority: dealPriority,
-      address: address,
-      clicks: clicks,
-      bidStatus: bidStatus,
-      isClosing: isClosing,
-      isActive: isActive,
-      status: status,
-      type: type,
-      offerType: offerType,
-      dealPlan: dealPlan,
-      quantity: quantity,
-      biddingType: biddingType,
-      user: user,
-      vendor: vendor,
-      lastBidder: lastBidder,
-      product: product,
-      country: country,
-      startDate: startDate,
-      endDate: endDate,
-      createdAt: createdAt,
-      updatedAt: updatedAt,
-    );
-  }
-}
-
-/// @nodoc
-const $Deal = _$DealTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$Deal {
@@ -373,9 +304,9 @@ class _$DealCopyWithImpl<$Res> implements $DealCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$DealCopyWith<$Res> implements $DealCopyWith<$Res> {
-  factory _$DealCopyWith(_Deal value, $Res Function(_Deal) then) =
-      __$DealCopyWithImpl<$Res>;
+abstract class _$$_DealCopyWith<$Res> implements $DealCopyWith<$Res> {
+  factory _$$_DealCopyWith(_$_Deal value, $Res Function(_$_Deal) then) =
+      __$$_DealCopyWithImpl<$Res>;
   @override
   $Res call(
       {UniqueId<String?> id,
@@ -420,13 +351,13 @@ abstract class _$DealCopyWith<$Res> implements $DealCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$DealCopyWithImpl<$Res> extends _$DealCopyWithImpl<$Res>
-    implements _$DealCopyWith<$Res> {
-  __$DealCopyWithImpl(_Deal _value, $Res Function(_Deal) _then)
-      : super(_value, (v) => _then(v as _Deal));
+class __$$_DealCopyWithImpl<$Res> extends _$DealCopyWithImpl<$Res>
+    implements _$$_DealCopyWith<$Res> {
+  __$$_DealCopyWithImpl(_$_Deal _value, $Res Function(_$_Deal) _then)
+      : super(_value, (v) => _then(v as _$_Deal));
 
   @override
-  _Deal get _value => super._value as _Deal;
+  _$_Deal get _value => super._value as _$_Deal;
 
   @override
   $Res call({
@@ -459,7 +390,7 @@ class __$DealCopyWithImpl<$Res> extends _$DealCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(_Deal(
+    return _then(_$_Deal(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -616,14 +547,14 @@ class _$_Deal extends _Deal {
   final AmountField<double> basePrice;
   @override
   final AmountField<double> lastPriceOffered;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isPrivate;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isSponsored;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool hasWish;
   @override
   final AmountField<double?> admittanceFee;
@@ -633,32 +564,32 @@ class _$_Deal extends _Deal {
   final BasicTextField<String?> address;
   @override
   final BasicTextField<int?> clicks;
-  @JsonKey()
   @override
+  @JsonKey()
   final BidStatus bidStatus;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isClosing;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isActive;
-  @JsonKey()
   @override
+  @JsonKey()
   final DealStatus status;
-  @JsonKey()
   @override
+  @JsonKey()
   final DealType type;
-  @JsonKey()
   @override
+  @JsonKey()
   final OfferType offerType;
-  @JsonKey()
   @override
+  @JsonKey()
   final DealPlanType dealPlan;
-  @JsonKey()
   @override
+  @JsonKey()
   final QuantityType quantity;
-  @JsonKey()
   @override
+  @JsonKey()
   final BiddingType biddingType;
   @override
   final User? user;
@@ -670,7 +601,8 @@ class _$_Deal extends _Deal {
   final Product? product;
   @override
   final Country? country;
-  @override // DealCategory? category,
+// DealCategory? category,
+  @override
   final DateTimeField startDate;
   @override
   final DateTimeField endDate;
@@ -688,7 +620,7 @@ class _$_Deal extends _Deal {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Deal &&
+            other is _$_Deal &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.basePrice, basePrice) &&
             const DeepCollectionEquality()
@@ -760,99 +692,100 @@ class _$_Deal extends _Deal {
 
   @JsonKey(ignore: true)
   @override
-  _$DealCopyWith<_Deal> get copyWith =>
-      __$DealCopyWithImpl<_Deal>(this, _$identity);
+  _$$_DealCopyWith<_$_Deal> get copyWith =>
+      __$$_DealCopyWithImpl<_$_Deal>(this, _$identity);
 }
 
 abstract class _Deal extends Deal {
   const factory _Deal(
-      {required UniqueId<String?> id,
-      required AmountField<double> basePrice,
-      required AmountField<double> lastPriceOffered,
-      bool isPrivate,
-      bool isSponsored,
-      bool hasWish,
-      required AmountField<double?> admittanceFee,
-      required BasicTextField<int?> dealPriority,
-      required BasicTextField<String?> address,
-      required BasicTextField<int?> clicks,
-      BidStatus bidStatus,
-      bool isClosing,
-      bool isActive,
-      DealStatus status,
-      DealType type,
-      OfferType offerType,
-      DealPlanType dealPlan,
-      QuantityType quantity,
-      BiddingType biddingType,
-      User? user,
-      User? vendor,
-      User? lastBidder,
-      Product? product,
-      Country? country,
-      required DateTimeField startDate,
-      required DateTimeField endDate,
-      DateTime? createdAt,
-      DateTime? updatedAt}) = _$_Deal;
+      {required final UniqueId<String?> id,
+      required final AmountField<double> basePrice,
+      required final AmountField<double> lastPriceOffered,
+      final bool isPrivate,
+      final bool isSponsored,
+      final bool hasWish,
+      required final AmountField<double?> admittanceFee,
+      required final BasicTextField<int?> dealPriority,
+      required final BasicTextField<String?> address,
+      required final BasicTextField<int?> clicks,
+      final BidStatus bidStatus,
+      final bool isClosing,
+      final bool isActive,
+      final DealStatus status,
+      final DealType type,
+      final OfferType offerType,
+      final DealPlanType dealPlan,
+      final QuantityType quantity,
+      final BiddingType biddingType,
+      final User? user,
+      final User? vendor,
+      final User? lastBidder,
+      final Product? product,
+      final Country? country,
+      required final DateTimeField startDate,
+      required final DateTimeField endDate,
+      final DateTime? createdAt,
+      final DateTime? updatedAt}) = _$_Deal;
   const _Deal._() : super._();
 
   @override
-  UniqueId<String?> get id;
+  UniqueId<String?> get id => throw _privateConstructorUsedError;
   @override
-  AmountField<double> get basePrice;
+  AmountField<double> get basePrice => throw _privateConstructorUsedError;
   @override
-  AmountField<double> get lastPriceOffered;
+  AmountField<double> get lastPriceOffered =>
+      throw _privateConstructorUsedError;
   @override
-  bool get isPrivate;
+  bool get isPrivate => throw _privateConstructorUsedError;
   @override
-  bool get isSponsored;
+  bool get isSponsored => throw _privateConstructorUsedError;
   @override
-  bool get hasWish;
+  bool get hasWish => throw _privateConstructorUsedError;
   @override
-  AmountField<double?> get admittanceFee;
+  AmountField<double?> get admittanceFee => throw _privateConstructorUsedError;
   @override
-  BasicTextField<int?> get dealPriority;
+  BasicTextField<int?> get dealPriority => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get address;
+  BasicTextField<String?> get address => throw _privateConstructorUsedError;
   @override
-  BasicTextField<int?> get clicks;
+  BasicTextField<int?> get clicks => throw _privateConstructorUsedError;
   @override
-  BidStatus get bidStatus;
+  BidStatus get bidStatus => throw _privateConstructorUsedError;
   @override
-  bool get isClosing;
+  bool get isClosing => throw _privateConstructorUsedError;
   @override
-  bool get isActive;
+  bool get isActive => throw _privateConstructorUsedError;
   @override
-  DealStatus get status;
+  DealStatus get status => throw _privateConstructorUsedError;
   @override
-  DealType get type;
+  DealType get type => throw _privateConstructorUsedError;
   @override
-  OfferType get offerType;
+  OfferType get offerType => throw _privateConstructorUsedError;
   @override
-  DealPlanType get dealPlan;
+  DealPlanType get dealPlan => throw _privateConstructorUsedError;
   @override
-  QuantityType get quantity;
+  QuantityType get quantity => throw _privateConstructorUsedError;
   @override
-  BiddingType get biddingType;
+  BiddingType get biddingType => throw _privateConstructorUsedError;
   @override
-  User? get user;
+  User? get user => throw _privateConstructorUsedError;
   @override
-  User? get vendor;
+  User? get vendor => throw _privateConstructorUsedError;
   @override
-  User? get lastBidder;
+  User? get lastBidder => throw _privateConstructorUsedError;
   @override
-  Product? get product;
+  Product? get product => throw _privateConstructorUsedError;
   @override
-  Country? get country;
+  Country? get country => throw _privateConstructorUsedError;
   @override // DealCategory? category,
-  DateTimeField get startDate;
+  DateTimeField get startDate => throw _privateConstructorUsedError;
   @override
-  DateTimeField get endDate;
+  DateTimeField get endDate => throw _privateConstructorUsedError;
   @override
-  DateTime? get createdAt;
+  DateTime? get createdAt => throw _privateConstructorUsedError;
   @override
-  DateTime? get updatedAt;
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$DealCopyWith<_Deal> get copyWith => throw _privateConstructorUsedError;
+  _$$_DealCopyWith<_$_Deal> get copyWith => throw _privateConstructorUsedError;
 }

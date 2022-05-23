@@ -12,31 +12,11 @@ part of deal_dto.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 DealDTO _$DealDTOFromJson(Map<String, dynamic> json) {
   return _DealDTO.fromJson(json);
 }
-
-/// @nodoc
-class _$DealDTOTearOff {
-  const _$DealDTOTearOff();
-
-  _DealDTO call(
-      {@JsonKey(name: '_meta') MetaDTO? meta, required DealDTOData data}) {
-    return _DealDTO(
-      meta: meta,
-      data: data,
-    );
-  }
-
-  DealDTO fromJson(Map<String, Object?> json) {
-    return DealDTO.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $DealDTO = _$DealDTOTearOff();
 
 /// @nodoc
 mixin _$DealDTO {
@@ -104,9 +84,10 @@ class _$DealDTOCopyWithImpl<$Res> implements $DealDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$DealDTOCopyWith<$Res> implements $DealDTOCopyWith<$Res> {
-  factory _$DealDTOCopyWith(_DealDTO value, $Res Function(_DealDTO) then) =
-      __$DealDTOCopyWithImpl<$Res>;
+abstract class _$$_DealDTOCopyWith<$Res> implements $DealDTOCopyWith<$Res> {
+  factory _$$_DealDTOCopyWith(
+          _$_DealDTO value, $Res Function(_$_DealDTO) then) =
+      __$$_DealDTOCopyWithImpl<$Res>;
   @override
   $Res call({@JsonKey(name: '_meta') MetaDTO? meta, DealDTOData data});
 
@@ -117,20 +98,20 @@ abstract class _$DealDTOCopyWith<$Res> implements $DealDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$DealDTOCopyWithImpl<$Res> extends _$DealDTOCopyWithImpl<$Res>
-    implements _$DealDTOCopyWith<$Res> {
-  __$DealDTOCopyWithImpl(_DealDTO _value, $Res Function(_DealDTO) _then)
-      : super(_value, (v) => _then(v as _DealDTO));
+class __$$_DealDTOCopyWithImpl<$Res> extends _$DealDTOCopyWithImpl<$Res>
+    implements _$$_DealDTOCopyWith<$Res> {
+  __$$_DealDTOCopyWithImpl(_$_DealDTO _value, $Res Function(_$_DealDTO) _then)
+      : super(_value, (v) => _then(v as _$_DealDTO));
 
   @override
-  _DealDTO get _value => super._value as _DealDTO;
+  _$_DealDTO get _value => super._value as _$_DealDTO;
 
   @override
   $Res call({
     Object? meta = freezed,
     Object? data = freezed,
   }) {
-    return _then(_DealDTO(
+    return _then(_$_DealDTO(
       meta: meta == freezed
           ? _value.meta
           : meta // ignore: cast_nullable_to_non_nullable
@@ -167,11 +148,12 @@ class _$_DealDTO extends _DealDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _DealDTO &&
+            other is _$_DealDTO &&
             const DeepCollectionEquality().equals(other.meta, meta) &&
             const DeepCollectionEquality().equals(other.data, data));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -180,8 +162,8 @@ class _$_DealDTO extends _DealDTO {
 
   @JsonKey(ignore: true)
   @override
-  _$DealDTOCopyWith<_DealDTO> get copyWith =>
-      __$DealDTOCopyWithImpl<_DealDTO>(this, _$identity);
+  _$$_DealDTOCopyWith<_$_DealDTO> get copyWith =>
+      __$$_DealDTOCopyWithImpl<_$_DealDTO>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -191,132 +173,26 @@ class _$_DealDTO extends _DealDTO {
 
 abstract class _DealDTO extends DealDTO {
   const factory _DealDTO(
-      {@JsonKey(name: '_meta') MetaDTO? meta,
-      required DealDTOData data}) = _$_DealDTO;
+      {@JsonKey(name: '_meta') final MetaDTO? meta,
+      required final DealDTOData data}) = _$_DealDTO;
   const _DealDTO._() : super._();
 
   factory _DealDTO.fromJson(Map<String, dynamic> json) = _$_DealDTO.fromJson;
 
   @override
   @JsonKey(name: '_meta')
-  MetaDTO? get meta;
+  MetaDTO? get meta => throw _privateConstructorUsedError;
   @override
-  DealDTOData get data;
+  DealDTOData get data => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$DealDTOCopyWith<_DealDTO> get copyWith =>
+  _$$_DealDTOCopyWith<_$_DealDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 DealDTOData _$DealDTODataFromJson(Map<String, dynamic> json) {
   return _DealDTOData.fromJson(json);
 }
-
-/// @nodoc
-class _$DealDTODataTearOff {
-  const _$DealDTODataTearOff();
-
-  _DealDTOData call(
-      {@JsonKey(name: '_id')
-          String? id,
-      @StringSerializer()
-          String? basePrice,
-      @StringSerializer()
-          String? amount,
-      @StringSerializer()
-          String? country,
-      @BooleanSerializer()
-          bool? isPrivate,
-      @JsonKey(name: 'isFavorite')
-      @BooleanSerializer()
-          bool? isFavorite,
-      @JsonKey(name: 'status', toJson: DealStatusSerializer.toJsonString)
-      @DealStatusSerializer()
-          DealStatus? dealStatus,
-      @BooleanSerializer()
-          bool? sponsored,
-      @JsonKey(name: 'plan', toJson: DealPlanTypeSerializer.toJsonString)
-      @DealPlanTypeSerializer()
-          DealPlanType? dealPlan,
-      @DoubleSerializer()
-          double? admittanceFee,
-      @JsonKey(name: 'address')
-          String? address,
-      @IntegerSerializer()
-          int? clicks,
-      @IntegerSerializer()
-          int? dealPriority,
-      @JsonKey(toJson: BidStatusSerializer.toJsonString)
-      @BidStatusSerializer()
-          BidStatus? bidStatus,
-      @BooleanSerializer()
-          bool? isClosing,
-      @BooleanSerializer()
-          bool? active,
-      @DoubleSerializer()
-          double? lastPriceOffered,
-      @JsonKey(toJson: OfferTypeSerializer.toJsonString)
-      @OfferTypeSerializer()
-          OfferType? offerType,
-      @TimestampConverter()
-          DateTime? startDate,
-      @TimestampConverter()
-          DateTime? endDate,
-      @JsonKey(toJson: DealTypeSerializer.toJsonString)
-      @DealTypeSerializer()
-          DealType? type,
-      @JsonKey(toJson: QuantityTypeSerializer.toJsonString)
-      @QuantityTypeSerializer()
-          QuantityType? quantity,
-      @JsonKey(toJson: BiddingTypeSerializer.toJsonString)
-      @BiddingTypeSerializer()
-          BiddingType? biddingType,
-      UserDTO? user,
-      UserDTO? vendor,
-      ProductDTOData? product,
-      @TimestampConverter()
-          DateTime? createdAt,
-      @TimestampConverter()
-          DateTime? updatedAt}) {
-    return _DealDTOData(
-      id: id,
-      basePrice: basePrice,
-      amount: amount,
-      country: country,
-      isPrivate: isPrivate,
-      isFavorite: isFavorite,
-      dealStatus: dealStatus,
-      sponsored: sponsored,
-      dealPlan: dealPlan,
-      admittanceFee: admittanceFee,
-      address: address,
-      clicks: clicks,
-      dealPriority: dealPriority,
-      bidStatus: bidStatus,
-      isClosing: isClosing,
-      active: active,
-      lastPriceOffered: lastPriceOffered,
-      offerType: offerType,
-      startDate: startDate,
-      endDate: endDate,
-      type: type,
-      quantity: quantity,
-      biddingType: biddingType,
-      user: user,
-      vendor: vendor,
-      product: product,
-      createdAt: createdAt,
-      updatedAt: updatedAt,
-    );
-  }
-
-  DealDTOData fromJson(Map<String, Object?> json) {
-    return DealDTOData.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $DealDTOData = _$DealDTODataTearOff();
 
 /// @nodoc
 mixin _$DealDTOData {
@@ -653,11 +529,11 @@ class _$DealDTODataCopyWithImpl<$Res> implements $DealDTODataCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$DealDTODataCopyWith<$Res>
+abstract class _$$_DealDTODataCopyWith<$Res>
     implements $DealDTODataCopyWith<$Res> {
-  factory _$DealDTODataCopyWith(
-          _DealDTOData value, $Res Function(_DealDTOData) then) =
-      __$DealDTODataCopyWithImpl<$Res>;
+  factory _$$_DealDTODataCopyWith(
+          _$_DealDTOData value, $Res Function(_$_DealDTOData) then) =
+      __$$_DealDTODataCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: '_id')
@@ -731,14 +607,14 @@ abstract class _$DealDTODataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$DealDTODataCopyWithImpl<$Res> extends _$DealDTODataCopyWithImpl<$Res>
-    implements _$DealDTODataCopyWith<$Res> {
-  __$DealDTODataCopyWithImpl(
-      _DealDTOData _value, $Res Function(_DealDTOData) _then)
-      : super(_value, (v) => _then(v as _DealDTOData));
+class __$$_DealDTODataCopyWithImpl<$Res> extends _$DealDTODataCopyWithImpl<$Res>
+    implements _$$_DealDTODataCopyWith<$Res> {
+  __$$_DealDTODataCopyWithImpl(
+      _$_DealDTOData _value, $Res Function(_$_DealDTOData) _then)
+      : super(_value, (v) => _then(v as _$_DealDTOData));
 
   @override
-  _DealDTOData get _value => super._value as _DealDTOData;
+  _$_DealDTOData get _value => super._value as _$_DealDTOData;
 
   @override
   $Res call({
@@ -771,7 +647,7 @@ class __$DealDTODataCopyWithImpl<$Res> extends _$DealDTODataCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(_DealDTOData(
+    return _then(_$_DealDTOData(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -1039,9 +915,11 @@ class _$_DealDTOData extends _DealDTOData {
   final UserDTO? user;
   @override
   final UserDTO? vendor;
-  @override // UserDTO? lastBidder,
+// UserDTO? lastBidder,
+  @override
   final ProductDTOData? product;
-  @override // CategoryDTOData? category,
+// CategoryDTOData? category,
+  @override
   @TimestampConverter()
   final DateTime? createdAt;
   @override
@@ -1057,7 +935,7 @@ class _$_DealDTOData extends _DealDTOData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _DealDTOData &&
+            other is _$_DealDTOData &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.basePrice, basePrice) &&
             const DeepCollectionEquality().equals(other.amount, amount) &&
@@ -1094,6 +972,7 @@ class _$_DealDTOData extends _DealDTOData {
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
@@ -1129,8 +1008,8 @@ class _$_DealDTOData extends _DealDTOData {
 
   @JsonKey(ignore: true)
   @override
-  _$DealDTODataCopyWith<_DealDTOData> get copyWith =>
-      __$DealDTODataCopyWithImpl<_DealDTOData>(this, _$identity);
+  _$$_DealDTODataCopyWith<_$_DealDTOData> get copyWith =>
+      __$$_DealDTODataCopyWithImpl<_$_DealDTOData>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -1141,66 +1020,66 @@ class _$_DealDTOData extends _DealDTOData {
 abstract class _DealDTOData extends DealDTOData {
   const factory _DealDTOData(
       {@JsonKey(name: '_id')
-          String? id,
+          final String? id,
       @StringSerializer()
-          String? basePrice,
+          final String? basePrice,
       @StringSerializer()
-          String? amount,
+          final String? amount,
       @StringSerializer()
-          String? country,
+          final String? country,
       @BooleanSerializer()
-          bool? isPrivate,
+          final bool? isPrivate,
       @JsonKey(name: 'isFavorite')
       @BooleanSerializer()
-          bool? isFavorite,
+          final bool? isFavorite,
       @JsonKey(name: 'status', toJson: DealStatusSerializer.toJsonString)
       @DealStatusSerializer()
-          DealStatus? dealStatus,
+          final DealStatus? dealStatus,
       @BooleanSerializer()
-          bool? sponsored,
+          final bool? sponsored,
       @JsonKey(name: 'plan', toJson: DealPlanTypeSerializer.toJsonString)
       @DealPlanTypeSerializer()
-          DealPlanType? dealPlan,
+          final DealPlanType? dealPlan,
       @DoubleSerializer()
-          double? admittanceFee,
+          final double? admittanceFee,
       @JsonKey(name: 'address')
-          String? address,
+          final String? address,
       @IntegerSerializer()
-          int? clicks,
+          final int? clicks,
       @IntegerSerializer()
-          int? dealPriority,
+          final int? dealPriority,
       @JsonKey(toJson: BidStatusSerializer.toJsonString)
       @BidStatusSerializer()
-          BidStatus? bidStatus,
+          final BidStatus? bidStatus,
       @BooleanSerializer()
-          bool? isClosing,
+          final bool? isClosing,
       @BooleanSerializer()
-          bool? active,
+          final bool? active,
       @DoubleSerializer()
-          double? lastPriceOffered,
+          final double? lastPriceOffered,
       @JsonKey(toJson: OfferTypeSerializer.toJsonString)
       @OfferTypeSerializer()
-          OfferType? offerType,
+          final OfferType? offerType,
       @TimestampConverter()
-          DateTime? startDate,
+          final DateTime? startDate,
       @TimestampConverter()
-          DateTime? endDate,
+          final DateTime? endDate,
       @JsonKey(toJson: DealTypeSerializer.toJsonString)
       @DealTypeSerializer()
-          DealType? type,
+          final DealType? type,
       @JsonKey(toJson: QuantityTypeSerializer.toJsonString)
       @QuantityTypeSerializer()
-          QuantityType? quantity,
+          final QuantityType? quantity,
       @JsonKey(toJson: BiddingTypeSerializer.toJsonString)
       @BiddingTypeSerializer()
-          BiddingType? biddingType,
-      UserDTO? user,
-      UserDTO? vendor,
-      ProductDTOData? product,
+          final BiddingType? biddingType,
+      final UserDTO? user,
+      final UserDTO? vendor,
+      final ProductDTOData? product,
       @TimestampConverter()
-          DateTime? createdAt,
+          final DateTime? createdAt,
       @TimestampConverter()
-          DateTime? updatedAt}) = _$_DealDTOData;
+          final DateTime? updatedAt}) = _$_DealDTOData;
   const _DealDTOData._() : super._();
 
   factory _DealDTOData.fromJson(Map<String, dynamic> json) =
@@ -1208,123 +1087,102 @@ abstract class _DealDTOData extends DealDTOData {
 
   @override
   @JsonKey(name: '_id')
-  String? get id;
+  String? get id => throw _privateConstructorUsedError;
   @override
   @StringSerializer()
-  String? get basePrice;
+  String? get basePrice => throw _privateConstructorUsedError;
   @override
   @StringSerializer()
-  String? get amount;
+  String? get amount => throw _privateConstructorUsedError;
   @override
   @StringSerializer()
-  String? get country;
+  String? get country => throw _privateConstructorUsedError;
   @override
   @BooleanSerializer()
-  bool? get isPrivate;
+  bool? get isPrivate => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'isFavorite')
   @BooleanSerializer()
-  bool? get isFavorite;
+  bool? get isFavorite => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'status', toJson: DealStatusSerializer.toJsonString)
   @DealStatusSerializer()
-  DealStatus? get dealStatus;
+  DealStatus? get dealStatus => throw _privateConstructorUsedError;
   @override
   @BooleanSerializer()
-  bool? get sponsored;
+  bool? get sponsored => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'plan', toJson: DealPlanTypeSerializer.toJsonString)
   @DealPlanTypeSerializer()
-  DealPlanType? get dealPlan;
+  DealPlanType? get dealPlan => throw _privateConstructorUsedError;
   @override
   @DoubleSerializer()
-  double? get admittanceFee;
+  double? get admittanceFee => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'address')
-  String? get address;
+  String? get address => throw _privateConstructorUsedError;
   @override
   @IntegerSerializer()
-  int? get clicks;
+  int? get clicks => throw _privateConstructorUsedError;
   @override
   @IntegerSerializer()
-  int? get dealPriority;
+  int? get dealPriority => throw _privateConstructorUsedError;
   @override
   @JsonKey(toJson: BidStatusSerializer.toJsonString)
   @BidStatusSerializer()
-  BidStatus? get bidStatus;
+  BidStatus? get bidStatus => throw _privateConstructorUsedError;
   @override
   @BooleanSerializer()
-  bool? get isClosing;
+  bool? get isClosing => throw _privateConstructorUsedError;
   @override
   @BooleanSerializer()
-  bool? get active;
+  bool? get active => throw _privateConstructorUsedError;
   @override
   @DoubleSerializer()
-  double? get lastPriceOffered;
+  double? get lastPriceOffered => throw _privateConstructorUsedError;
   @override
   @JsonKey(toJson: OfferTypeSerializer.toJsonString)
   @OfferTypeSerializer()
-  OfferType? get offerType;
+  OfferType? get offerType => throw _privateConstructorUsedError;
   @override
   @TimestampConverter()
-  DateTime? get startDate;
+  DateTime? get startDate => throw _privateConstructorUsedError;
   @override
   @TimestampConverter()
-  DateTime? get endDate;
+  DateTime? get endDate => throw _privateConstructorUsedError;
   @override
   @JsonKey(toJson: DealTypeSerializer.toJsonString)
   @DealTypeSerializer()
-  DealType? get type;
+  DealType? get type => throw _privateConstructorUsedError;
   @override
   @JsonKey(toJson: QuantityTypeSerializer.toJsonString)
   @QuantityTypeSerializer()
-  QuantityType? get quantity;
+  QuantityType? get quantity => throw _privateConstructorUsedError;
   @override
   @JsonKey(toJson: BiddingTypeSerializer.toJsonString)
   @BiddingTypeSerializer()
-  BiddingType? get biddingType;
+  BiddingType? get biddingType => throw _privateConstructorUsedError;
   @override
-  UserDTO? get user;
+  UserDTO? get user => throw _privateConstructorUsedError;
   @override
-  UserDTO? get vendor;
+  UserDTO? get vendor => throw _privateConstructorUsedError;
   @override // UserDTO? lastBidder,
-  ProductDTOData? get product;
+  ProductDTOData? get product => throw _privateConstructorUsedError;
   @override // CategoryDTOData? category,
   @TimestampConverter()
-  DateTime? get createdAt;
+  DateTime? get createdAt => throw _privateConstructorUsedError;
   @override
   @TimestampConverter()
-  DateTime? get updatedAt;
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$DealDTODataCopyWith<_DealDTOData> get copyWith =>
+  _$$_DealDTODataCopyWith<_$_DealDTOData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 DealListDTO _$DealListDTOFromJson(Map<String, dynamic> json) {
   return _DealListDTO.fromJson(json);
 }
-
-/// @nodoc
-class _$DealListDTOTearOff {
-  const _$DealListDTOTearOff();
-
-  _DealListDTO call(
-      {@JsonKey(name: '_meta') MetaDTO? meta,
-      List<DealDTOData> data = const []}) {
-    return _DealListDTO(
-      meta: meta,
-      data: data,
-    );
-  }
-
-  DealListDTO fromJson(Map<String, Object?> json) {
-    return DealListDTO.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $DealListDTO = _$DealListDTOTearOff();
 
 /// @nodoc
 mixin _$DealListDTO {
@@ -1386,11 +1244,11 @@ class _$DealListDTOCopyWithImpl<$Res> implements $DealListDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$DealListDTOCopyWith<$Res>
+abstract class _$$_DealListDTOCopyWith<$Res>
     implements $DealListDTOCopyWith<$Res> {
-  factory _$DealListDTOCopyWith(
-          _DealListDTO value, $Res Function(_DealListDTO) then) =
-      __$DealListDTOCopyWithImpl<$Res>;
+  factory _$$_DealListDTOCopyWith(
+          _$_DealListDTO value, $Res Function(_$_DealListDTO) then) =
+      __$$_DealListDTOCopyWithImpl<$Res>;
   @override
   $Res call({@JsonKey(name: '_meta') MetaDTO? meta, List<DealDTOData> data});
 
@@ -1399,27 +1257,27 @@ abstract class _$DealListDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$DealListDTOCopyWithImpl<$Res> extends _$DealListDTOCopyWithImpl<$Res>
-    implements _$DealListDTOCopyWith<$Res> {
-  __$DealListDTOCopyWithImpl(
-      _DealListDTO _value, $Res Function(_DealListDTO) _then)
-      : super(_value, (v) => _then(v as _DealListDTO));
+class __$$_DealListDTOCopyWithImpl<$Res> extends _$DealListDTOCopyWithImpl<$Res>
+    implements _$$_DealListDTOCopyWith<$Res> {
+  __$$_DealListDTOCopyWithImpl(
+      _$_DealListDTO _value, $Res Function(_$_DealListDTO) _then)
+      : super(_value, (v) => _then(v as _$_DealListDTO));
 
   @override
-  _DealListDTO get _value => super._value as _DealListDTO;
+  _$_DealListDTO get _value => super._value as _$_DealListDTO;
 
   @override
   $Res call({
     Object? meta = freezed,
     Object? data = freezed,
   }) {
-    return _then(_DealListDTO(
+    return _then(_$_DealListDTO(
       meta: meta == freezed
           ? _value.meta
           : meta // ignore: cast_nullable_to_non_nullable
               as MetaDTO?,
       data: data == freezed
-          ? _value.data
+          ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
               as List<DealDTOData>,
     ));
@@ -1430,8 +1288,10 @@ class __$DealListDTOCopyWithImpl<$Res> extends _$DealListDTOCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_DealListDTO extends _DealListDTO {
   const _$_DealListDTO(
-      {@JsonKey(name: '_meta') this.meta, this.data = const []})
-      : super._();
+      {@JsonKey(name: '_meta') this.meta,
+      final List<DealDTOData> data = const []})
+      : _data = data,
+        super._();
 
   factory _$_DealListDTO.fromJson(Map<String, dynamic> json) =>
       _$$_DealListDTOFromJson(json);
@@ -1439,9 +1299,13 @@ class _$_DealListDTO extends _DealListDTO {
   @override
   @JsonKey(name: '_meta')
   final MetaDTO? meta;
-  @JsonKey()
+  final List<DealDTOData> _data;
   @override
-  final List<DealDTOData> data;
+  @JsonKey()
+  List<DealDTOData> get data {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_data);
+  }
 
   @override
   String toString() {
@@ -1452,21 +1316,22 @@ class _$_DealListDTO extends _DealListDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _DealListDTO &&
+            other is _$_DealListDTO &&
             const DeepCollectionEquality().equals(other.meta, meta) &&
-            const DeepCollectionEquality().equals(other.data, data));
+            const DeepCollectionEquality().equals(other._data, _data));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(meta),
-      const DeepCollectionEquality().hash(data));
+      const DeepCollectionEquality().hash(_data));
 
   @JsonKey(ignore: true)
   @override
-  _$DealListDTOCopyWith<_DealListDTO> get copyWith =>
-      __$DealListDTOCopyWithImpl<_DealListDTO>(this, _$identity);
+  _$$_DealListDTOCopyWith<_$_DealListDTO> get copyWith =>
+      __$$_DealListDTOCopyWithImpl<_$_DealListDTO>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -1476,8 +1341,8 @@ class _$_DealListDTO extends _DealListDTO {
 
 abstract class _DealListDTO extends DealListDTO {
   const factory _DealListDTO(
-      {@JsonKey(name: '_meta') MetaDTO? meta,
-      List<DealDTOData> data}) = _$_DealListDTO;
+      {@JsonKey(name: '_meta') final MetaDTO? meta,
+      final List<DealDTOData> data}) = _$_DealListDTO;
   const _DealListDTO._() : super._();
 
   factory _DealListDTO.fromJson(Map<String, dynamic> json) =
@@ -1485,11 +1350,11 @@ abstract class _DealListDTO extends DealListDTO {
 
   @override
   @JsonKey(name: '_meta')
-  MetaDTO? get meta;
+  MetaDTO? get meta => throw _privateConstructorUsedError;
   @override
-  List<DealDTOData> get data;
+  List<DealDTOData> get data => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$DealListDTOCopyWith<_DealListDTO> get copyWith =>
+  _$$_DealListDTOCopyWith<_$_DealListDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }

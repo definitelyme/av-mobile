@@ -12,81 +12,10 @@ part of search_bloc.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$SearchEventTearOff {
-  const _$SearchEventTearOff();
-
-  _RefreshModelHistoryEvent refresh(SearchModel model,
-      {AwaitCallback? callback}) {
-    return _RefreshModelHistoryEvent(
-      model,
-      callback: callback,
-    );
-  }
-
-  ___SearchEvent search(String query,
-      {SearchModel? model,
-      int? perPage,
-      bool nextPage = false,
-      AwaitCallback? callback}) {
-    return ___SearchEvent(
-      query,
-      model: model,
-      perPage: perPage,
-      nextPage: nextPage,
-      callback: callback,
-    );
-  }
-
-  _ClearHistoryEvent clear([SearchModel? model]) {
-    return _ClearHistoryEvent(
-      model,
-    );
-  }
-}
-
-/// @nodoc
-const $SearchEvent = _$SearchEventTearOff();
-
-/// @nodoc
-mixin _$SearchEvent {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(SearchModel model, AwaitCallback? callback)
-        refresh,
-    required TResult Function(String query, SearchModel? model, int? perPage,
-            bool nextPage, AwaitCallback? callback)
-        search,
-    required TResult Function(SearchModel? model) clear,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(SearchModel model, AwaitCallback? callback)? refresh,
-    TResult Function(String query, SearchModel? model, int? perPage,
-            bool nextPage, AwaitCallback? callback)?
-        search,
-    TResult Function(SearchModel? model)? clear,
-  }) =>
-      throw _privateConstructorUsedError;
-
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_RefreshModelHistoryEvent value) refresh,
-    required TResult Function(___SearchEvent value) search,
-    required TResult Function(_ClearHistoryEvent value) clear,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_RefreshModelHistoryEvent value)? refresh,
-    TResult Function(___SearchEvent value)? search,
-    TResult Function(_ClearHistoryEvent value)? clear,
-  }) =>
-      throw _privateConstructorUsedError;
-}
+mixin _$SearchEvent {}
 
 /// @nodoc
 abstract class $SearchEventCopyWith<$Res> {
@@ -105,31 +34,32 @@ class _$SearchEventCopyWithImpl<$Res> implements $SearchEventCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$RefreshModelHistoryEventCopyWith<$Res> {
-  factory _$RefreshModelHistoryEventCopyWith(_RefreshModelHistoryEvent value,
-          $Res Function(_RefreshModelHistoryEvent) then) =
-      __$RefreshModelHistoryEventCopyWithImpl<$Res>;
+abstract class _$$_RefreshModelHistoryEventCopyWith<$Res> {
+  factory _$$_RefreshModelHistoryEventCopyWith(
+          _$_RefreshModelHistoryEvent value,
+          $Res Function(_$_RefreshModelHistoryEvent) then) =
+      __$$_RefreshModelHistoryEventCopyWithImpl<$Res>;
   $Res call({SearchModel model, AwaitCallback? callback});
 }
 
 /// @nodoc
-class __$RefreshModelHistoryEventCopyWithImpl<$Res>
+class __$$_RefreshModelHistoryEventCopyWithImpl<$Res>
     extends _$SearchEventCopyWithImpl<$Res>
-    implements _$RefreshModelHistoryEventCopyWith<$Res> {
-  __$RefreshModelHistoryEventCopyWithImpl(_RefreshModelHistoryEvent _value,
-      $Res Function(_RefreshModelHistoryEvent) _then)
-      : super(_value, (v) => _then(v as _RefreshModelHistoryEvent));
+    implements _$$_RefreshModelHistoryEventCopyWith<$Res> {
+  __$$_RefreshModelHistoryEventCopyWithImpl(_$_RefreshModelHistoryEvent _value,
+      $Res Function(_$_RefreshModelHistoryEvent) _then)
+      : super(_value, (v) => _then(v as _$_RefreshModelHistoryEvent));
 
   @override
-  _RefreshModelHistoryEvent get _value =>
-      super._value as _RefreshModelHistoryEvent;
+  _$_RefreshModelHistoryEvent get _value =>
+      super._value as _$_RefreshModelHistoryEvent;
 
   @override
   $Res call({
     Object? model = freezed,
     Object? callback = freezed,
   }) {
-    return _then(_RefreshModelHistoryEvent(
+    return _then(_$_RefreshModelHistoryEvent(
       model == freezed
           ? _value.model
           : model // ignore: cast_nullable_to_non_nullable
@@ -161,7 +91,7 @@ class _$_RefreshModelHistoryEvent implements _RefreshModelHistoryEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RefreshModelHistoryEvent &&
+            other is _$_RefreshModelHistoryEvent &&
             const DeepCollectionEquality().equals(other.model, model) &&
             (identical(other.callback, callback) ||
                 other.callback == callback));
@@ -173,72 +103,27 @@ class _$_RefreshModelHistoryEvent implements _RefreshModelHistoryEvent {
 
   @JsonKey(ignore: true)
   @override
-  _$RefreshModelHistoryEventCopyWith<_RefreshModelHistoryEvent> get copyWith =>
-      __$RefreshModelHistoryEventCopyWithImpl<_RefreshModelHistoryEvent>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(SearchModel model, AwaitCallback? callback)
-        refresh,
-    required TResult Function(String query, SearchModel? model, int? perPage,
-            bool nextPage, AwaitCallback? callback)
-        search,
-    required TResult Function(SearchModel? model) clear,
-  }) {
-    return refresh(model, callback);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(SearchModel model, AwaitCallback? callback)? refresh,
-    TResult Function(String query, SearchModel? model, int? perPage,
-            bool nextPage, AwaitCallback? callback)?
-        search,
-    TResult Function(SearchModel? model)? clear,
-  }) {
-    return refresh?.call(model, callback);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_RefreshModelHistoryEvent value) refresh,
-    required TResult Function(___SearchEvent value) search,
-    required TResult Function(_ClearHistoryEvent value) clear,
-  }) {
-    return refresh(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_RefreshModelHistoryEvent value)? refresh,
-    TResult Function(___SearchEvent value)? search,
-    TResult Function(_ClearHistoryEvent value)? clear,
-  }) {
-    return refresh?.call(this);
-  }
+  _$$_RefreshModelHistoryEventCopyWith<_$_RefreshModelHistoryEvent>
+      get copyWith => __$$_RefreshModelHistoryEventCopyWithImpl<
+          _$_RefreshModelHistoryEvent>(this, _$identity);
 }
 
 abstract class _RefreshModelHistoryEvent implements SearchEvent {
-  const factory _RefreshModelHistoryEvent(SearchModel model,
-      {AwaitCallback? callback}) = _$_RefreshModelHistoryEvent;
+  const factory _RefreshModelHistoryEvent(final SearchModel model,
+      {final AwaitCallback? callback}) = _$_RefreshModelHistoryEvent;
 
-  SearchModel get model;
-  AwaitCallback? get callback;
+  SearchModel get model => throw _privateConstructorUsedError;
+  AwaitCallback? get callback => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$RefreshModelHistoryEventCopyWith<_RefreshModelHistoryEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_RefreshModelHistoryEventCopyWith<_$_RefreshModelHistoryEvent>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$__SearchEventCopyWith<$Res> {
-  factory _$__SearchEventCopyWith(
-          ___SearchEvent value, $Res Function(___SearchEvent) then) =
-      __$__SearchEventCopyWithImpl<$Res>;
+abstract class _$$___SearchEventCopyWith<$Res> {
+  factory _$$___SearchEventCopyWith(
+          _$___SearchEvent value, $Res Function(_$___SearchEvent) then) =
+      __$$___SearchEventCopyWithImpl<$Res>;
   $Res call(
       {String query,
       SearchModel? model,
@@ -248,14 +133,15 @@ abstract class _$__SearchEventCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$__SearchEventCopyWithImpl<$Res> extends _$SearchEventCopyWithImpl<$Res>
-    implements _$__SearchEventCopyWith<$Res> {
-  __$__SearchEventCopyWithImpl(
-      ___SearchEvent _value, $Res Function(___SearchEvent) _then)
-      : super(_value, (v) => _then(v as ___SearchEvent));
+class __$$___SearchEventCopyWithImpl<$Res>
+    extends _$SearchEventCopyWithImpl<$Res>
+    implements _$$___SearchEventCopyWith<$Res> {
+  __$$___SearchEventCopyWithImpl(
+      _$___SearchEvent _value, $Res Function(_$___SearchEvent) _then)
+      : super(_value, (v) => _then(v as _$___SearchEvent));
 
   @override
-  ___SearchEvent get _value => super._value as ___SearchEvent;
+  _$___SearchEvent get _value => super._value as _$___SearchEvent;
 
   @override
   $Res call({
@@ -265,7 +151,7 @@ class __$__SearchEventCopyWithImpl<$Res> extends _$SearchEventCopyWithImpl<$Res>
     Object? nextPage = freezed,
     Object? callback = freezed,
   }) {
-    return _then(___SearchEvent(
+    return _then(_$___SearchEvent(
       query == freezed
           ? _value.query
           : query // ignore: cast_nullable_to_non_nullable
@@ -302,8 +188,8 @@ class _$___SearchEvent implements ___SearchEvent {
   final SearchModel? model;
   @override
   final int? perPage;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool nextPage;
   @override
   final AwaitCallback? callback;
@@ -317,7 +203,7 @@ class _$___SearchEvent implements ___SearchEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ___SearchEvent &&
+            other is _$___SearchEvent &&
             const DeepCollectionEquality().equals(other.query, query) &&
             const DeepCollectionEquality().equals(other.model, model) &&
             const DeepCollectionEquality().equals(other.perPage, perPage) &&
@@ -337,96 +223,51 @@ class _$___SearchEvent implements ___SearchEvent {
 
   @JsonKey(ignore: true)
   @override
-  _$__SearchEventCopyWith<___SearchEvent> get copyWith =>
-      __$__SearchEventCopyWithImpl<___SearchEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(SearchModel model, AwaitCallback? callback)
-        refresh,
-    required TResult Function(String query, SearchModel? model, int? perPage,
-            bool nextPage, AwaitCallback? callback)
-        search,
-    required TResult Function(SearchModel? model) clear,
-  }) {
-    return search(query, model, perPage, nextPage, callback);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(SearchModel model, AwaitCallback? callback)? refresh,
-    TResult Function(String query, SearchModel? model, int? perPage,
-            bool nextPage, AwaitCallback? callback)?
-        search,
-    TResult Function(SearchModel? model)? clear,
-  }) {
-    return search?.call(query, model, perPage, nextPage, callback);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_RefreshModelHistoryEvent value) refresh,
-    required TResult Function(___SearchEvent value) search,
-    required TResult Function(_ClearHistoryEvent value) clear,
-  }) {
-    return search(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_RefreshModelHistoryEvent value)? refresh,
-    TResult Function(___SearchEvent value)? search,
-    TResult Function(_ClearHistoryEvent value)? clear,
-  }) {
-    return search?.call(this);
-  }
+  _$$___SearchEventCopyWith<_$___SearchEvent> get copyWith =>
+      __$$___SearchEventCopyWithImpl<_$___SearchEvent>(this, _$identity);
 }
 
 abstract class ___SearchEvent implements SearchEvent {
-  const factory ___SearchEvent(String query,
-      {SearchModel? model,
-      int? perPage,
-      bool nextPage,
-      AwaitCallback? callback}) = _$___SearchEvent;
+  const factory ___SearchEvent(final String query,
+      {final SearchModel? model,
+      final int? perPage,
+      final bool nextPage,
+      final AwaitCallback? callback}) = _$___SearchEvent;
 
-  String get query;
-  SearchModel? get model;
-  int? get perPage;
-  bool get nextPage;
-  AwaitCallback? get callback;
+  String get query => throw _privateConstructorUsedError;
+  SearchModel? get model => throw _privateConstructorUsedError;
+  int? get perPage => throw _privateConstructorUsedError;
+  bool get nextPage => throw _privateConstructorUsedError;
+  AwaitCallback? get callback => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$__SearchEventCopyWith<___SearchEvent> get copyWith =>
+  _$$___SearchEventCopyWith<_$___SearchEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$ClearHistoryEventCopyWith<$Res> {
-  factory _$ClearHistoryEventCopyWith(
-          _ClearHistoryEvent value, $Res Function(_ClearHistoryEvent) then) =
-      __$ClearHistoryEventCopyWithImpl<$Res>;
+abstract class _$$_ClearHistoryEventCopyWith<$Res> {
+  factory _$$_ClearHistoryEventCopyWith(_$_ClearHistoryEvent value,
+          $Res Function(_$_ClearHistoryEvent) then) =
+      __$$_ClearHistoryEventCopyWithImpl<$Res>;
   $Res call({SearchModel? model});
 }
 
 /// @nodoc
-class __$ClearHistoryEventCopyWithImpl<$Res>
+class __$$_ClearHistoryEventCopyWithImpl<$Res>
     extends _$SearchEventCopyWithImpl<$Res>
-    implements _$ClearHistoryEventCopyWith<$Res> {
-  __$ClearHistoryEventCopyWithImpl(
-      _ClearHistoryEvent _value, $Res Function(_ClearHistoryEvent) _then)
-      : super(_value, (v) => _then(v as _ClearHistoryEvent));
+    implements _$$_ClearHistoryEventCopyWith<$Res> {
+  __$$_ClearHistoryEventCopyWithImpl(
+      _$_ClearHistoryEvent _value, $Res Function(_$_ClearHistoryEvent) _then)
+      : super(_value, (v) => _then(v as _$_ClearHistoryEvent));
 
   @override
-  _ClearHistoryEvent get _value => super._value as _ClearHistoryEvent;
+  _$_ClearHistoryEvent get _value => super._value as _$_ClearHistoryEvent;
 
   @override
   $Res call({
     Object? model = freezed,
   }) {
-    return _then(_ClearHistoryEvent(
+    return _then(_$_ClearHistoryEvent(
       model == freezed
           ? _value.model
           : model // ignore: cast_nullable_to_non_nullable
@@ -452,7 +293,7 @@ class _$_ClearHistoryEvent implements _ClearHistoryEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ClearHistoryEvent &&
+            other is _$_ClearHistoryEvent &&
             const DeepCollectionEquality().equals(other.model, model));
   }
 
@@ -462,88 +303,20 @@ class _$_ClearHistoryEvent implements _ClearHistoryEvent {
 
   @JsonKey(ignore: true)
   @override
-  _$ClearHistoryEventCopyWith<_ClearHistoryEvent> get copyWith =>
-      __$ClearHistoryEventCopyWithImpl<_ClearHistoryEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(SearchModel model, AwaitCallback? callback)
-        refresh,
-    required TResult Function(String query, SearchModel? model, int? perPage,
-            bool nextPage, AwaitCallback? callback)
-        search,
-    required TResult Function(SearchModel? model) clear,
-  }) {
-    return clear(model);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(SearchModel model, AwaitCallback? callback)? refresh,
-    TResult Function(String query, SearchModel? model, int? perPage,
-            bool nextPage, AwaitCallback? callback)?
-        search,
-    TResult Function(SearchModel? model)? clear,
-  }) {
-    return clear?.call(model);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_RefreshModelHistoryEvent value) refresh,
-    required TResult Function(___SearchEvent value) search,
-    required TResult Function(_ClearHistoryEvent value) clear,
-  }) {
-    return clear(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_RefreshModelHistoryEvent value)? refresh,
-    TResult Function(___SearchEvent value)? search,
-    TResult Function(_ClearHistoryEvent value)? clear,
-  }) {
-    return clear?.call(this);
-  }
+  _$$_ClearHistoryEventCopyWith<_$_ClearHistoryEvent> get copyWith =>
+      __$$_ClearHistoryEventCopyWithImpl<_$_ClearHistoryEvent>(
+          this, _$identity);
 }
 
 abstract class _ClearHistoryEvent implements SearchEvent {
-  const factory _ClearHistoryEvent([SearchModel? model]) = _$_ClearHistoryEvent;
+  const factory _ClearHistoryEvent([final SearchModel? model]) =
+      _$_ClearHistoryEvent;
 
-  SearchModel? get model;
+  SearchModel? get model => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$ClearHistoryEventCopyWith<_ClearHistoryEvent> get copyWith =>
+  _$$_ClearHistoryEventCopyWith<_$_ClearHistoryEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$SearchStateTearOff {
-  const _$SearchStateTearOff();
-
-  _SearchState call(
-      {bool isSearching = false,
-      String? searchQuery,
-      SearchModel model = SearchModel.product,
-      KtList<User> users = const KtList.empty(),
-      KtList<Product> products = const KtList.empty(),
-      Option<AppHttpResponse?> status = const None()}) {
-    return _SearchState(
-      isSearching: isSearching,
-      searchQuery: searchQuery,
-      model: model,
-      users: users,
-      products: products,
-      status: status,
-    );
-  }
-}
-
-/// @nodoc
-const $SearchState = _$SearchStateTearOff();
 
 /// @nodoc
 mixin _$SearchState {
@@ -620,11 +393,11 @@ class _$SearchStateCopyWithImpl<$Res> implements $SearchStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$SearchStateCopyWith<$Res>
+abstract class _$$_SearchStateCopyWith<$Res>
     implements $SearchStateCopyWith<$Res> {
-  factory _$SearchStateCopyWith(
-          _SearchState value, $Res Function(_SearchState) then) =
-      __$SearchStateCopyWithImpl<$Res>;
+  factory _$$_SearchStateCopyWith(
+          _$_SearchState value, $Res Function(_$_SearchState) then) =
+      __$$_SearchStateCopyWithImpl<$Res>;
   @override
   $Res call(
       {bool isSearching,
@@ -636,14 +409,14 @@ abstract class _$SearchStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$SearchStateCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
-    implements _$SearchStateCopyWith<$Res> {
-  __$SearchStateCopyWithImpl(
-      _SearchState _value, $Res Function(_SearchState) _then)
-      : super(_value, (v) => _then(v as _SearchState));
+class __$$_SearchStateCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
+    implements _$$_SearchStateCopyWith<$Res> {
+  __$$_SearchStateCopyWithImpl(
+      _$_SearchState _value, $Res Function(_$_SearchState) _then)
+      : super(_value, (v) => _then(v as _$_SearchState));
 
   @override
-  _SearchState get _value => super._value as _SearchState;
+  _$_SearchState get _value => super._value as _$_SearchState;
 
   @override
   $Res call({
@@ -654,7 +427,7 @@ class __$SearchStateCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
     Object? products = freezed,
     Object? status = freezed,
   }) {
-    return _then(_SearchState(
+    return _then(_$_SearchState(
       isSearching: isSearching == freezed
           ? _value.isSearching
           : isSearching // ignore: cast_nullable_to_non_nullable
@@ -695,22 +468,24 @@ class _$_SearchState extends _SearchState {
       this.status = const None()})
       : super._();
 
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isSearching;
   @override
   final String? searchQuery;
-  @JsonKey()
   @override
+  @JsonKey()
   final SearchModel model;
-  @JsonKey()
-  @override //
-  final KtList<User> users;
-  @JsonKey()
+//
   @override
-  final KtList<Product> products;
   @JsonKey()
-  @override //
+  final KtList<User> users;
+  @override
+  @JsonKey()
+  final KtList<Product> products;
+//
+  @override
+  @JsonKey()
   final Option<AppHttpResponse?> status;
 
   @override
@@ -722,7 +497,7 @@ class _$_SearchState extends _SearchState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _SearchState &&
+            other is _$_SearchState &&
             const DeepCollectionEquality()
                 .equals(other.isSearching, isSearching) &&
             const DeepCollectionEquality()
@@ -745,34 +520,34 @@ class _$_SearchState extends _SearchState {
 
   @JsonKey(ignore: true)
   @override
-  _$SearchStateCopyWith<_SearchState> get copyWith =>
-      __$SearchStateCopyWithImpl<_SearchState>(this, _$identity);
+  _$$_SearchStateCopyWith<_$_SearchState> get copyWith =>
+      __$$_SearchStateCopyWithImpl<_$_SearchState>(this, _$identity);
 }
 
 abstract class _SearchState extends SearchState {
   const factory _SearchState(
-      {bool isSearching,
-      String? searchQuery,
-      SearchModel model,
-      KtList<User> users,
-      KtList<Product> products,
-      Option<AppHttpResponse?> status}) = _$_SearchState;
+      {final bool isSearching,
+      final String? searchQuery,
+      final SearchModel model,
+      final KtList<User> users,
+      final KtList<Product> products,
+      final Option<AppHttpResponse?> status}) = _$_SearchState;
   const _SearchState._() : super._();
 
   @override
-  bool get isSearching;
+  bool get isSearching => throw _privateConstructorUsedError;
   @override
-  String? get searchQuery;
+  String? get searchQuery => throw _privateConstructorUsedError;
   @override
-  SearchModel get model;
+  SearchModel get model => throw _privateConstructorUsedError;
   @override //
-  KtList<User> get users;
+  KtList<User> get users => throw _privateConstructorUsedError;
   @override
-  KtList<Product> get products;
+  KtList<Product> get products => throw _privateConstructorUsedError;
   @override //
-  Option<AppHttpResponse?> get status;
+  Option<AppHttpResponse?> get status => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$SearchStateCopyWith<_SearchState> get copyWith =>
+  _$$_SearchStateCopyWith<_$_SearchState> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -12,49 +12,12 @@ part of shipping_information_dto.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 ShippingInformationDTO _$ShippingInformationDTOFromJson(
     Map<String, dynamic> json) {
   return _ShippingInformationDTO.fromJson(json);
 }
-
-/// @nodoc
-class _$ShippingInformationDTOTearOff {
-  const _$ShippingInformationDTOTearOff();
-
-  _ShippingInformationDTO call(
-      {@DoubleSerializer()
-          double? width,
-      @DoubleSerializer()
-          double? weight,
-      @DoubleSerializer()
-          double? height,
-      @DoubleSerializer()
-          double? length,
-      String? deliveryPeriod,
-      @JsonKey(toJson: BooleanSerializer.toJsonString)
-      @BooleanSerializer()
-          bool? pickUpAvailable,
-      String? description}) {
-    return _ShippingInformationDTO(
-      width: width,
-      weight: weight,
-      height: height,
-      length: length,
-      deliveryPeriod: deliveryPeriod,
-      pickUpAvailable: pickUpAvailable,
-      description: description,
-    );
-  }
-
-  ShippingInformationDTO fromJson(Map<String, Object?> json) {
-    return ShippingInformationDTO.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $ShippingInformationDTO = _$ShippingInformationDTOTearOff();
 
 /// @nodoc
 mixin _$ShippingInformationDTO {
@@ -152,11 +115,11 @@ class _$ShippingInformationDTOCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$ShippingInformationDTOCopyWith<$Res>
+abstract class _$$_ShippingInformationDTOCopyWith<$Res>
     implements $ShippingInformationDTOCopyWith<$Res> {
-  factory _$ShippingInformationDTOCopyWith(_ShippingInformationDTO value,
-          $Res Function(_ShippingInformationDTO) then) =
-      __$ShippingInformationDTOCopyWithImpl<$Res>;
+  factory _$$_ShippingInformationDTOCopyWith(_$_ShippingInformationDTO value,
+          $Res Function(_$_ShippingInformationDTO) then) =
+      __$$_ShippingInformationDTOCopyWithImpl<$Res>;
   @override
   $Res call(
       {@DoubleSerializer()
@@ -175,15 +138,16 @@ abstract class _$ShippingInformationDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$ShippingInformationDTOCopyWithImpl<$Res>
+class __$$_ShippingInformationDTOCopyWithImpl<$Res>
     extends _$ShippingInformationDTOCopyWithImpl<$Res>
-    implements _$ShippingInformationDTOCopyWith<$Res> {
-  __$ShippingInformationDTOCopyWithImpl(_ShippingInformationDTO _value,
-      $Res Function(_ShippingInformationDTO) _then)
-      : super(_value, (v) => _then(v as _ShippingInformationDTO));
+    implements _$$_ShippingInformationDTOCopyWith<$Res> {
+  __$$_ShippingInformationDTOCopyWithImpl(_$_ShippingInformationDTO _value,
+      $Res Function(_$_ShippingInformationDTO) _then)
+      : super(_value, (v) => _then(v as _$_ShippingInformationDTO));
 
   @override
-  _ShippingInformationDTO get _value => super._value as _ShippingInformationDTO;
+  _$_ShippingInformationDTO get _value =>
+      super._value as _$_ShippingInformationDTO;
 
   @override
   $Res call({
@@ -195,7 +159,7 @@ class __$ShippingInformationDTOCopyWithImpl<$Res>
     Object? pickUpAvailable = freezed,
     Object? description = freezed,
   }) {
-    return _then(_ShippingInformationDTO(
+    return _then(_$_ShippingInformationDTO(
       width: width == freezed
           ? _value.width
           : width // ignore: cast_nullable_to_non_nullable
@@ -280,7 +244,7 @@ class _$_ShippingInformationDTO extends _ShippingInformationDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ShippingInformationDTO &&
+            other is _$_ShippingInformationDTO &&
             const DeepCollectionEquality().equals(other.width, width) &&
             const DeepCollectionEquality().equals(other.weight, weight) &&
             const DeepCollectionEquality().equals(other.height, height) &&
@@ -293,6 +257,7 @@ class _$_ShippingInformationDTO extends _ShippingInformationDTO {
                 .equals(other.description, description));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -306,8 +271,8 @@ class _$_ShippingInformationDTO extends _ShippingInformationDTO {
 
   @JsonKey(ignore: true)
   @override
-  _$ShippingInformationDTOCopyWith<_ShippingInformationDTO> get copyWith =>
-      __$ShippingInformationDTOCopyWithImpl<_ShippingInformationDTO>(
+  _$$_ShippingInformationDTOCopyWith<_$_ShippingInformationDTO> get copyWith =>
+      __$$_ShippingInformationDTOCopyWithImpl<_$_ShippingInformationDTO>(
           this, _$identity);
 
   @override
@@ -319,18 +284,18 @@ class _$_ShippingInformationDTO extends _ShippingInformationDTO {
 abstract class _ShippingInformationDTO extends ShippingInformationDTO {
   factory _ShippingInformationDTO(
       {@DoubleSerializer()
-          double? width,
+          final double? width,
       @DoubleSerializer()
-          double? weight,
+          final double? weight,
       @DoubleSerializer()
-          double? height,
+          final double? height,
       @DoubleSerializer()
-          double? length,
-      String? deliveryPeriod,
+          final double? length,
+      final String? deliveryPeriod,
       @JsonKey(toJson: BooleanSerializer.toJsonString)
       @BooleanSerializer()
-          bool? pickUpAvailable,
-      String? description}) = _$_ShippingInformationDTO;
+          final bool? pickUpAvailable,
+      final String? description}) = _$_ShippingInformationDTO;
   _ShippingInformationDTO._() : super._();
 
   factory _ShippingInformationDTO.fromJson(Map<String, dynamic> json) =
@@ -338,26 +303,26 @@ abstract class _ShippingInformationDTO extends ShippingInformationDTO {
 
   @override
   @DoubleSerializer()
-  double? get width;
+  double? get width => throw _privateConstructorUsedError;
   @override
   @DoubleSerializer()
-  double? get weight;
+  double? get weight => throw _privateConstructorUsedError;
   @override
   @DoubleSerializer()
-  double? get height;
+  double? get height => throw _privateConstructorUsedError;
   @override
   @DoubleSerializer()
-  double? get length;
+  double? get length => throw _privateConstructorUsedError;
   @override
-  String? get deliveryPeriod;
+  String? get deliveryPeriod => throw _privateConstructorUsedError;
   @override
   @JsonKey(toJson: BooleanSerializer.toJsonString)
   @BooleanSerializer()
-  bool? get pickUpAvailable;
+  bool? get pickUpAvailable => throw _privateConstructorUsedError;
   @override
-  String? get description;
+  String? get description => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ShippingInformationDTOCopyWith<_ShippingInformationDTO> get copyWith =>
+  _$$_ShippingInformationDTOCopyWith<_$_ShippingInformationDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }

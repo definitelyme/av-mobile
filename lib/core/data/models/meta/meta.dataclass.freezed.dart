@@ -12,36 +12,11 @@ part of meta.dataclass.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 MetaDTO _$MetaDTOFromJson(Map<String, dynamic> json) {
   return _MetaDTO.fromJson(json);
 }
-
-/// @nodoc
-class _$MetaDTOTearOff {
-  const _$MetaDTOTearOff();
-
-  _MetaDTO call(
-      {int? statusCode,
-      bool? status,
-      String? message,
-      PaginationDTO? pagination}) {
-    return _MetaDTO(
-      statusCode: statusCode,
-      status: status,
-      message: message,
-      pagination: pagination,
-    );
-  }
-
-  MetaDTO fromJson(Map<String, Object?> json) {
-    return MetaDTO.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $MetaDTO = _$MetaDTOTearOff();
 
 /// @nodoc
 mixin _$MetaDTO {
@@ -116,9 +91,10 @@ class _$MetaDTOCopyWithImpl<$Res> implements $MetaDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$MetaDTOCopyWith<$Res> implements $MetaDTOCopyWith<$Res> {
-  factory _$MetaDTOCopyWith(_MetaDTO value, $Res Function(_MetaDTO) then) =
-      __$MetaDTOCopyWithImpl<$Res>;
+abstract class _$$_MetaDTOCopyWith<$Res> implements $MetaDTOCopyWith<$Res> {
+  factory _$$_MetaDTOCopyWith(
+          _$_MetaDTO value, $Res Function(_$_MetaDTO) then) =
+      __$$_MetaDTOCopyWithImpl<$Res>;
   @override
   $Res call(
       {int? statusCode,
@@ -131,13 +107,13 @@ abstract class _$MetaDTOCopyWith<$Res> implements $MetaDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$MetaDTOCopyWithImpl<$Res> extends _$MetaDTOCopyWithImpl<$Res>
-    implements _$MetaDTOCopyWith<$Res> {
-  __$MetaDTOCopyWithImpl(_MetaDTO _value, $Res Function(_MetaDTO) _then)
-      : super(_value, (v) => _then(v as _MetaDTO));
+class __$$_MetaDTOCopyWithImpl<$Res> extends _$MetaDTOCopyWithImpl<$Res>
+    implements _$$_MetaDTOCopyWith<$Res> {
+  __$$_MetaDTOCopyWithImpl(_$_MetaDTO _value, $Res Function(_$_MetaDTO) _then)
+      : super(_value, (v) => _then(v as _$_MetaDTO));
 
   @override
-  _MetaDTO get _value => super._value as _MetaDTO;
+  _$_MetaDTO get _value => super._value as _$_MetaDTO;
 
   @override
   $Res call({
@@ -146,7 +122,7 @@ class __$MetaDTOCopyWithImpl<$Res> extends _$MetaDTOCopyWithImpl<$Res>
     Object? message = freezed,
     Object? pagination = freezed,
   }) {
-    return _then(_MetaDTO(
+    return _then(_$_MetaDTO(
       statusCode: statusCode == freezed
           ? _value.statusCode
           : statusCode // ignore: cast_nullable_to_non_nullable
@@ -195,7 +171,7 @@ class _$_MetaDTO extends _MetaDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MetaDTO &&
+            other is _$_MetaDTO &&
             const DeepCollectionEquality()
                 .equals(other.statusCode, statusCode) &&
             const DeepCollectionEquality().equals(other.status, status) &&
@@ -204,6 +180,7 @@ class _$_MetaDTO extends _MetaDTO {
                 .equals(other.pagination, pagination));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -214,8 +191,8 @@ class _$_MetaDTO extends _MetaDTO {
 
   @JsonKey(ignore: true)
   @override
-  _$MetaDTOCopyWith<_MetaDTO> get copyWith =>
-      __$MetaDTOCopyWithImpl<_MetaDTO>(this, _$identity);
+  _$$_MetaDTOCopyWith<_$_MetaDTO> get copyWith =>
+      __$$_MetaDTOCopyWithImpl<_$_MetaDTO>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -225,24 +202,24 @@ class _$_MetaDTO extends _MetaDTO {
 
 abstract class _MetaDTO extends MetaDTO {
   const factory _MetaDTO(
-      {int? statusCode,
-      bool? status,
-      String? message,
-      PaginationDTO? pagination}) = _$_MetaDTO;
+      {final int? statusCode,
+      final bool? status,
+      final String? message,
+      final PaginationDTO? pagination}) = _$_MetaDTO;
   const _MetaDTO._() : super._();
 
   factory _MetaDTO.fromJson(Map<String, dynamic> json) = _$_MetaDTO.fromJson;
 
   @override
-  int? get statusCode;
+  int? get statusCode => throw _privateConstructorUsedError;
   @override
-  bool? get status;
+  bool? get status => throw _privateConstructorUsedError;
   @override
-  String? get message;
+  String? get message => throw _privateConstructorUsedError;
   @override
-  PaginationDTO? get pagination;
+  PaginationDTO? get pagination => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$MetaDTOCopyWith<_MetaDTO> get copyWith =>
+  _$$_MetaDTOCopyWith<_$_MetaDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }

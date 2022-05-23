@@ -12,7 +12,7 @@ part of any_response.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 AnyResponse _$AnyResponseFromJson(Map<String, dynamic> json) {
   switch (json['status']) {
@@ -27,65 +27,6 @@ AnyResponse _$AnyResponseFromJson(Map<String, dynamic> json) {
 }
 
 /// @nodoc
-class _$AnyResponseTearOff {
-  const _$AnyResponseTearOff();
-
-  ErrorResponse error(
-      {@JsonKey(name: 'statusCode') int? code,
-      bool? status,
-      @JsonKey(includeIfNull: false, name: 'message') String? messageTxt,
-      @JsonKey(ignore: true) String? details,
-      ServerFieldErrors? errors,
-      @JsonKey(ignore: true) bool pop = false,
-      @JsonKey(ignore: true) bool show = true,
-      @JsonKey(ignore: true) Exception? exception}) {
-    return ErrorResponse(
-      code: code,
-      status: status,
-      messageTxt: messageTxt,
-      details: details,
-      errors: errors,
-      pop: pop,
-      show: show,
-      exception: exception,
-    );
-  }
-
-  InfoResponseType info(
-      {bool? status,
-      @JsonKey(includeIfNull: false, name: 'message') String? messageTxt,
-      @JsonKey(ignore: true) String? details,
-      @JsonKey(ignore: true) bool pop = false}) {
-    return InfoResponseType(
-      status: status,
-      messageTxt: messageTxt,
-      details: details,
-      pop: pop,
-    );
-  }
-
-  SuccessfulResponse success(
-      {bool? status,
-      @JsonKey(includeIfNull: false, name: 'message') String? messageTxt,
-      @JsonKey(ignore: true) String? details,
-      @JsonKey(ignore: true) bool pop = false}) {
-    return SuccessfulResponse(
-      status: status,
-      messageTxt: messageTxt,
-      details: details,
-      pop: pop,
-    );
-  }
-
-  AnyResponse fromJson(Map<String, Object?> json) {
-    return AnyResponse.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $AnyResponse = _$AnyResponseTearOff();
-
-/// @nodoc
 mixin _$AnyResponse {
   bool? get status => throw _privateConstructorUsedError;
   @JsonKey(includeIfNull: false, name: 'message')
@@ -94,7 +35,6 @@ mixin _$AnyResponse {
   String? get details => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   bool get pop => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
@@ -147,7 +87,33 @@ mixin _$AnyResponse {
         success,
   }) =>
       throw _privateConstructorUsedError;
-
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            @JsonKey(name: 'statusCode') int? code,
+            bool? status,
+            @JsonKey(includeIfNull: false, name: 'message') String? messageTxt,
+            @JsonKey(ignore: true) String? details,
+            ServerFieldErrors? errors,
+            @JsonKey(ignore: true) bool pop,
+            @JsonKey(ignore: true) bool show,
+            @JsonKey(ignore: true) Exception? exception)?
+        error,
+    TResult Function(
+            bool? status,
+            @JsonKey(includeIfNull: false, name: 'message') String? messageTxt,
+            @JsonKey(ignore: true) String? details,
+            @JsonKey(ignore: true) bool pop)?
+        info,
+    TResult Function(
+            bool? status,
+            @JsonKey(includeIfNull: false, name: 'message') String? messageTxt,
+            @JsonKey(ignore: true) String? details,
+            @JsonKey(ignore: true) bool pop)?
+        success,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ErrorResponse value) error,
@@ -225,11 +191,11 @@ class _$AnyResponseCopyWithImpl<$Res> implements $AnyResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class $ErrorResponseCopyWith<$Res>
+abstract class _$$ErrorResponseCopyWith<$Res>
     implements $AnyResponseCopyWith<$Res> {
-  factory $ErrorResponseCopyWith(
-          ErrorResponse value, $Res Function(ErrorResponse) then) =
-      _$ErrorResponseCopyWithImpl<$Res>;
+  factory _$$ErrorResponseCopyWith(
+          _$ErrorResponse value, $Res Function(_$ErrorResponse) then) =
+      __$$ErrorResponseCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: 'statusCode') int? code,
@@ -245,14 +211,15 @@ abstract class $ErrorResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class _$ErrorResponseCopyWithImpl<$Res> extends _$AnyResponseCopyWithImpl<$Res>
-    implements $ErrorResponseCopyWith<$Res> {
-  _$ErrorResponseCopyWithImpl(
-      ErrorResponse _value, $Res Function(ErrorResponse) _then)
-      : super(_value, (v) => _then(v as ErrorResponse));
+class __$$ErrorResponseCopyWithImpl<$Res>
+    extends _$AnyResponseCopyWithImpl<$Res>
+    implements _$$ErrorResponseCopyWith<$Res> {
+  __$$ErrorResponseCopyWithImpl(
+      _$ErrorResponse _value, $Res Function(_$ErrorResponse) _then)
+      : super(_value, (v) => _then(v as _$ErrorResponse));
 
   @override
-  ErrorResponse get _value => super._value as ErrorResponse;
+  _$ErrorResponse get _value => super._value as _$ErrorResponse;
 
   @override
   $Res call({
@@ -265,7 +232,7 @@ class _$ErrorResponseCopyWithImpl<$Res> extends _$AnyResponseCopyWithImpl<$Res>
     Object? show = freezed,
     Object? exception = freezed,
   }) {
-    return _then(ErrorResponse(
+    return _then(_$ErrorResponse(
       code: code == freezed
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -315,7 +282,6 @@ class _$ErrorResponseCopyWithImpl<$Res> extends _$AnyResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-@With<Failure>()
 class _$ErrorResponse extends ErrorResponse with Failure {
   const _$ErrorResponse(
       {@JsonKey(name: 'statusCode') this.code,
@@ -363,7 +329,7 @@ class _$ErrorResponse extends ErrorResponse with Failure {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ErrorResponse &&
+            other is _$ErrorResponse &&
             const DeepCollectionEquality().equals(other.code, code) &&
             const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality()
@@ -375,6 +341,7 @@ class _$ErrorResponse extends ErrorResponse with Failure {
             const DeepCollectionEquality().equals(other.exception, exception));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -389,8 +356,8 @@ class _$ErrorResponse extends ErrorResponse with Failure {
 
   @JsonKey(ignore: true)
   @override
-  $ErrorResponseCopyWith<ErrorResponse> get copyWith =>
-      _$ErrorResponseCopyWithImpl<ErrorResponse>(this, _$identity);
+  _$$ErrorResponseCopyWith<_$ErrorResponse> get copyWith =>
+      __$$ErrorResponseCopyWithImpl<_$ErrorResponse>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -454,6 +421,40 @@ class _$ErrorResponse extends ErrorResponse with Failure {
 
   @override
   @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            @JsonKey(name: 'statusCode') int? code,
+            bool? status,
+            @JsonKey(includeIfNull: false, name: 'message') String? messageTxt,
+            @JsonKey(ignore: true) String? details,
+            ServerFieldErrors? errors,
+            @JsonKey(ignore: true) bool pop,
+            @JsonKey(ignore: true) bool show,
+            @JsonKey(ignore: true) Exception? exception)?
+        error,
+    TResult Function(
+            bool? status,
+            @JsonKey(includeIfNull: false, name: 'message') String? messageTxt,
+            @JsonKey(ignore: true) String? details,
+            @JsonKey(ignore: true) bool pop)?
+        info,
+    TResult Function(
+            bool? status,
+            @JsonKey(includeIfNull: false, name: 'message') String? messageTxt,
+            @JsonKey(ignore: true) String? details,
+            @JsonKey(ignore: true) bool pop)?
+        success,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(
+          code, status, messageTxt, details, errors, pop, show, exception);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ErrorResponse value) error,
     required TResult Function(InfoResponseType value) info,
@@ -494,49 +495,49 @@ class _$ErrorResponse extends ErrorResponse with Failure {
 
 abstract class ErrorResponse extends AnyResponse implements Failure {
   const factory ErrorResponse(
-      {@JsonKey(name: 'statusCode') int? code,
-      bool? status,
-      @JsonKey(includeIfNull: false, name: 'message') String? messageTxt,
-      @JsonKey(ignore: true) String? details,
-      ServerFieldErrors? errors,
-      @JsonKey(ignore: true) bool pop,
-      @JsonKey(ignore: true) bool show,
-      @JsonKey(ignore: true) Exception? exception}) = _$ErrorResponse;
+      {@JsonKey(name: 'statusCode') final int? code,
+      final bool? status,
+      @JsonKey(includeIfNull: false, name: 'message') final String? messageTxt,
+      @JsonKey(ignore: true) final String? details,
+      final ServerFieldErrors? errors,
+      @JsonKey(ignore: true) final bool pop,
+      @JsonKey(ignore: true) final bool show,
+      @JsonKey(ignore: true) final Exception? exception}) = _$ErrorResponse;
   const ErrorResponse._() : super._();
 
   factory ErrorResponse.fromJson(Map<String, dynamic> json) =
       _$ErrorResponse.fromJson;
 
   @JsonKey(name: 'statusCode')
-  int? get code;
+  int? get code => throw _privateConstructorUsedError;
   @override
-  bool? get status;
+  bool? get status => throw _privateConstructorUsedError;
   @override
   @JsonKey(includeIfNull: false, name: 'message')
-  String? get messageTxt;
+  String? get messageTxt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  String? get details;
-  ServerFieldErrors? get errors;
+  String? get details => throw _privateConstructorUsedError;
+  ServerFieldErrors? get errors => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  bool get pop;
+  bool get pop => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  bool get show;
+  bool get show => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  Exception? get exception;
+  Exception? get exception => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $ErrorResponseCopyWith<ErrorResponse> get copyWith =>
+  _$$ErrorResponseCopyWith<_$ErrorResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $InfoResponseTypeCopyWith<$Res>
+abstract class _$$InfoResponseTypeCopyWith<$Res>
     implements $AnyResponseCopyWith<$Res> {
-  factory $InfoResponseTypeCopyWith(
-          InfoResponseType value, $Res Function(InfoResponseType) then) =
-      _$InfoResponseTypeCopyWithImpl<$Res>;
+  factory _$$InfoResponseTypeCopyWith(
+          _$InfoResponseType value, $Res Function(_$InfoResponseType) then) =
+      __$$InfoResponseTypeCopyWithImpl<$Res>;
   @override
   $Res call(
       {bool? status,
@@ -546,15 +547,15 @@ abstract class $InfoResponseTypeCopyWith<$Res>
 }
 
 /// @nodoc
-class _$InfoResponseTypeCopyWithImpl<$Res>
+class __$$InfoResponseTypeCopyWithImpl<$Res>
     extends _$AnyResponseCopyWithImpl<$Res>
-    implements $InfoResponseTypeCopyWith<$Res> {
-  _$InfoResponseTypeCopyWithImpl(
-      InfoResponseType _value, $Res Function(InfoResponseType) _then)
-      : super(_value, (v) => _then(v as InfoResponseType));
+    implements _$$InfoResponseTypeCopyWith<$Res> {
+  __$$InfoResponseTypeCopyWithImpl(
+      _$InfoResponseType _value, $Res Function(_$InfoResponseType) _then)
+      : super(_value, (v) => _then(v as _$InfoResponseType));
 
   @override
-  InfoResponseType get _value => super._value as InfoResponseType;
+  _$InfoResponseType get _value => super._value as _$InfoResponseType;
 
   @override
   $Res call({
@@ -563,7 +564,7 @@ class _$InfoResponseTypeCopyWithImpl<$Res>
     Object? details = freezed,
     Object? pop = freezed,
   }) {
-    return _then(InfoResponseType(
+    return _then(_$InfoResponseType(
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -586,7 +587,6 @@ class _$InfoResponseTypeCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-@With<Info>()
 class _$InfoResponseType extends InfoResponseType with Info {
   const _$InfoResponseType(
       {this.status,
@@ -619,7 +619,7 @@ class _$InfoResponseType extends InfoResponseType with Info {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is InfoResponseType &&
+            other is _$InfoResponseType &&
             const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality()
                 .equals(other.messageTxt, messageTxt) &&
@@ -627,6 +627,7 @@ class _$InfoResponseType extends InfoResponseType with Info {
             const DeepCollectionEquality().equals(other.pop, pop));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -637,8 +638,8 @@ class _$InfoResponseType extends InfoResponseType with Info {
 
   @JsonKey(ignore: true)
   @override
-  $InfoResponseTypeCopyWith<InfoResponseType> get copyWith =>
-      _$InfoResponseTypeCopyWithImpl<InfoResponseType>(this, _$identity);
+  _$$InfoResponseTypeCopyWith<_$InfoResponseType> get copyWith =>
+      __$$InfoResponseTypeCopyWithImpl<_$InfoResponseType>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -700,6 +701,39 @@ class _$InfoResponseType extends InfoResponseType with Info {
 
   @override
   @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            @JsonKey(name: 'statusCode') int? code,
+            bool? status,
+            @JsonKey(includeIfNull: false, name: 'message') String? messageTxt,
+            @JsonKey(ignore: true) String? details,
+            ServerFieldErrors? errors,
+            @JsonKey(ignore: true) bool pop,
+            @JsonKey(ignore: true) bool show,
+            @JsonKey(ignore: true) Exception? exception)?
+        error,
+    TResult Function(
+            bool? status,
+            @JsonKey(includeIfNull: false, name: 'message') String? messageTxt,
+            @JsonKey(ignore: true) String? details,
+            @JsonKey(ignore: true) bool pop)?
+        info,
+    TResult Function(
+            bool? status,
+            @JsonKey(includeIfNull: false, name: 'message') String? messageTxt,
+            @JsonKey(ignore: true) String? details,
+            @JsonKey(ignore: true) bool pop)?
+        success,
+    required TResult orElse(),
+  }) {
+    if (info != null) {
+      return info(status, messageTxt, details, pop);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ErrorResponse value) error,
     required TResult Function(InfoResponseType value) info,
@@ -740,38 +774,38 @@ class _$InfoResponseType extends InfoResponseType with Info {
 
 abstract class InfoResponseType extends AnyResponse implements Info {
   const factory InfoResponseType(
-      {bool? status,
-      @JsonKey(includeIfNull: false, name: 'message') String? messageTxt,
-      @JsonKey(ignore: true) String? details,
-      @JsonKey(ignore: true) bool pop}) = _$InfoResponseType;
+      {final bool? status,
+      @JsonKey(includeIfNull: false, name: 'message') final String? messageTxt,
+      @JsonKey(ignore: true) final String? details,
+      @JsonKey(ignore: true) final bool pop}) = _$InfoResponseType;
   const InfoResponseType._() : super._();
 
   factory InfoResponseType.fromJson(Map<String, dynamic> json) =
       _$InfoResponseType.fromJson;
 
   @override
-  bool? get status;
+  bool? get status => throw _privateConstructorUsedError;
   @override
   @JsonKey(includeIfNull: false, name: 'message')
-  String? get messageTxt;
+  String? get messageTxt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  String? get details;
+  String? get details => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  bool get pop;
+  bool get pop => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $InfoResponseTypeCopyWith<InfoResponseType> get copyWith =>
+  _$$InfoResponseTypeCopyWith<_$InfoResponseType> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SuccessfulResponseCopyWith<$Res>
+abstract class _$$SuccessfulResponseCopyWith<$Res>
     implements $AnyResponseCopyWith<$Res> {
-  factory $SuccessfulResponseCopyWith(
-          SuccessfulResponse value, $Res Function(SuccessfulResponse) then) =
-      _$SuccessfulResponseCopyWithImpl<$Res>;
+  factory _$$SuccessfulResponseCopyWith(_$SuccessfulResponse value,
+          $Res Function(_$SuccessfulResponse) then) =
+      __$$SuccessfulResponseCopyWithImpl<$Res>;
   @override
   $Res call(
       {bool? status,
@@ -781,15 +815,15 @@ abstract class $SuccessfulResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class _$SuccessfulResponseCopyWithImpl<$Res>
+class __$$SuccessfulResponseCopyWithImpl<$Res>
     extends _$AnyResponseCopyWithImpl<$Res>
-    implements $SuccessfulResponseCopyWith<$Res> {
-  _$SuccessfulResponseCopyWithImpl(
-      SuccessfulResponse _value, $Res Function(SuccessfulResponse) _then)
-      : super(_value, (v) => _then(v as SuccessfulResponse));
+    implements _$$SuccessfulResponseCopyWith<$Res> {
+  __$$SuccessfulResponseCopyWithImpl(
+      _$SuccessfulResponse _value, $Res Function(_$SuccessfulResponse) _then)
+      : super(_value, (v) => _then(v as _$SuccessfulResponse));
 
   @override
-  SuccessfulResponse get _value => super._value as SuccessfulResponse;
+  _$SuccessfulResponse get _value => super._value as _$SuccessfulResponse;
 
   @override
   $Res call({
@@ -798,7 +832,7 @@ class _$SuccessfulResponseCopyWithImpl<$Res>
     Object? details = freezed,
     Object? pop = freezed,
   }) {
-    return _then(SuccessfulResponse(
+    return _then(_$SuccessfulResponse(
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -821,7 +855,6 @@ class _$SuccessfulResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-@With<Success>()
 class _$SuccessfulResponse extends SuccessfulResponse with Success {
   const _$SuccessfulResponse(
       {this.status,
@@ -854,7 +887,7 @@ class _$SuccessfulResponse extends SuccessfulResponse with Success {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is SuccessfulResponse &&
+            other is _$SuccessfulResponse &&
             const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality()
                 .equals(other.messageTxt, messageTxt) &&
@@ -862,6 +895,7 @@ class _$SuccessfulResponse extends SuccessfulResponse with Success {
             const DeepCollectionEquality().equals(other.pop, pop));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -872,8 +906,9 @@ class _$SuccessfulResponse extends SuccessfulResponse with Success {
 
   @JsonKey(ignore: true)
   @override
-  $SuccessfulResponseCopyWith<SuccessfulResponse> get copyWith =>
-      _$SuccessfulResponseCopyWithImpl<SuccessfulResponse>(this, _$identity);
+  _$$SuccessfulResponseCopyWith<_$SuccessfulResponse> get copyWith =>
+      __$$SuccessfulResponseCopyWithImpl<_$SuccessfulResponse>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -935,6 +970,39 @@ class _$SuccessfulResponse extends SuccessfulResponse with Success {
 
   @override
   @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            @JsonKey(name: 'statusCode') int? code,
+            bool? status,
+            @JsonKey(includeIfNull: false, name: 'message') String? messageTxt,
+            @JsonKey(ignore: true) String? details,
+            ServerFieldErrors? errors,
+            @JsonKey(ignore: true) bool pop,
+            @JsonKey(ignore: true) bool show,
+            @JsonKey(ignore: true) Exception? exception)?
+        error,
+    TResult Function(
+            bool? status,
+            @JsonKey(includeIfNull: false, name: 'message') String? messageTxt,
+            @JsonKey(ignore: true) String? details,
+            @JsonKey(ignore: true) bool pop)?
+        info,
+    TResult Function(
+            bool? status,
+            @JsonKey(includeIfNull: false, name: 'message') String? messageTxt,
+            @JsonKey(ignore: true) String? details,
+            @JsonKey(ignore: true) bool pop)?
+        success,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success(status, messageTxt, details, pop);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ErrorResponse value) error,
     required TResult Function(InfoResponseType value) info,
@@ -975,28 +1043,28 @@ class _$SuccessfulResponse extends SuccessfulResponse with Success {
 
 abstract class SuccessfulResponse extends AnyResponse implements Success {
   const factory SuccessfulResponse(
-      {bool? status,
-      @JsonKey(includeIfNull: false, name: 'message') String? messageTxt,
-      @JsonKey(ignore: true) String? details,
-      @JsonKey(ignore: true) bool pop}) = _$SuccessfulResponse;
+      {final bool? status,
+      @JsonKey(includeIfNull: false, name: 'message') final String? messageTxt,
+      @JsonKey(ignore: true) final String? details,
+      @JsonKey(ignore: true) final bool pop}) = _$SuccessfulResponse;
   const SuccessfulResponse._() : super._();
 
   factory SuccessfulResponse.fromJson(Map<String, dynamic> json) =
       _$SuccessfulResponse.fromJson;
 
   @override
-  bool? get status;
+  bool? get status => throw _privateConstructorUsedError;
   @override
   @JsonKey(includeIfNull: false, name: 'message')
-  String? get messageTxt;
+  String? get messageTxt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  String? get details;
+  String? get details => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  bool get pop;
+  bool get pop => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $SuccessfulResponseCopyWith<SuccessfulResponse> get copyWith =>
+  _$$SuccessfulResponseCopyWith<_$SuccessfulResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }

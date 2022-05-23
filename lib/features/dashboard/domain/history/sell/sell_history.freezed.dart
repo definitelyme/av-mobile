@@ -12,28 +12,7 @@ part of sell_history.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$SellHistoryTearOff {
-  const _$SellHistoryTearOff();
-
-  _SellHistory call(
-      {required AmountField<double> totalProducts,
-      required AmountField<double> totalSold,
-      required AmountField<double> revenue,
-      KtList<Deal> deals = const KtList.empty()}) {
-    return _SellHistory(
-      totalProducts: totalProducts,
-      totalSold: totalSold,
-      revenue: revenue,
-      deals: deals,
-    );
-  }
-}
-
-/// @nodoc
-const $SellHistory = _$SellHistoryTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$SellHistory {
@@ -96,11 +75,11 @@ class _$SellHistoryCopyWithImpl<$Res> implements $SellHistoryCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$SellHistoryCopyWith<$Res>
+abstract class _$$_SellHistoryCopyWith<$Res>
     implements $SellHistoryCopyWith<$Res> {
-  factory _$SellHistoryCopyWith(
-          _SellHistory value, $Res Function(_SellHistory) then) =
-      __$SellHistoryCopyWithImpl<$Res>;
+  factory _$$_SellHistoryCopyWith(
+          _$_SellHistory value, $Res Function(_$_SellHistory) then) =
+      __$$_SellHistoryCopyWithImpl<$Res>;
   @override
   $Res call(
       {AmountField<double> totalProducts,
@@ -110,14 +89,14 @@ abstract class _$SellHistoryCopyWith<$Res>
 }
 
 /// @nodoc
-class __$SellHistoryCopyWithImpl<$Res> extends _$SellHistoryCopyWithImpl<$Res>
-    implements _$SellHistoryCopyWith<$Res> {
-  __$SellHistoryCopyWithImpl(
-      _SellHistory _value, $Res Function(_SellHistory) _then)
-      : super(_value, (v) => _then(v as _SellHistory));
+class __$$_SellHistoryCopyWithImpl<$Res> extends _$SellHistoryCopyWithImpl<$Res>
+    implements _$$_SellHistoryCopyWith<$Res> {
+  __$$_SellHistoryCopyWithImpl(
+      _$_SellHistory _value, $Res Function(_$_SellHistory) _then)
+      : super(_value, (v) => _then(v as _$_SellHistory));
 
   @override
-  _SellHistory get _value => super._value as _SellHistory;
+  _$_SellHistory get _value => super._value as _$_SellHistory;
 
   @override
   $Res call({
@@ -126,7 +105,7 @@ class __$SellHistoryCopyWithImpl<$Res> extends _$SellHistoryCopyWithImpl<$Res>
     Object? revenue = freezed,
     Object? deals = freezed,
   }) {
-    return _then(_SellHistory(
+    return _then(_$_SellHistory(
       totalProducts: totalProducts == freezed
           ? _value.totalProducts
           : totalProducts // ignore: cast_nullable_to_non_nullable
@@ -163,8 +142,8 @@ class _$_SellHistory extends _SellHistory {
   final AmountField<double> totalSold;
   @override
   final AmountField<double> revenue;
-  @JsonKey()
   @override
+  @JsonKey()
   final KtList<Deal> deals;
 
   @override
@@ -176,7 +155,7 @@ class _$_SellHistory extends _SellHistory {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _SellHistory &&
+            other is _$_SellHistory &&
             const DeepCollectionEquality()
                 .equals(other.totalProducts, totalProducts) &&
             const DeepCollectionEquality().equals(other.totalSold, totalSold) &&
@@ -194,28 +173,28 @@ class _$_SellHistory extends _SellHistory {
 
   @JsonKey(ignore: true)
   @override
-  _$SellHistoryCopyWith<_SellHistory> get copyWith =>
-      __$SellHistoryCopyWithImpl<_SellHistory>(this, _$identity);
+  _$$_SellHistoryCopyWith<_$_SellHistory> get copyWith =>
+      __$$_SellHistoryCopyWithImpl<_$_SellHistory>(this, _$identity);
 }
 
 abstract class _SellHistory extends SellHistory {
   const factory _SellHistory(
-      {required AmountField<double> totalProducts,
-      required AmountField<double> totalSold,
-      required AmountField<double> revenue,
-      KtList<Deal> deals}) = _$_SellHistory;
+      {required final AmountField<double> totalProducts,
+      required final AmountField<double> totalSold,
+      required final AmountField<double> revenue,
+      final KtList<Deal> deals}) = _$_SellHistory;
   const _SellHistory._() : super._();
 
   @override
-  AmountField<double> get totalProducts;
+  AmountField<double> get totalProducts => throw _privateConstructorUsedError;
   @override
-  AmountField<double> get totalSold;
+  AmountField<double> get totalSold => throw _privateConstructorUsedError;
   @override
-  AmountField<double> get revenue;
+  AmountField<double> get revenue => throw _privateConstructorUsedError;
   @override
-  KtList<Deal> get deals;
+  KtList<Deal> get deals => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$SellHistoryCopyWith<_SellHistory> get copyWith =>
+  _$$_SellHistoryCopyWith<_$_SellHistory> get copyWith =>
       throw _privateConstructorUsedError;
 }

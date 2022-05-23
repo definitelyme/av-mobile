@@ -12,26 +12,7 @@ part of address_component.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$AddressComponentTearOff {
-  const _$AddressComponentTearOff();
-
-  _AddressComponent call(
-      {required BasicTextField<String?> longName,
-      required BasicTextField<String?> shortName,
-      KtList<AddressComponentType> types = const KtList.empty()}) {
-    return _AddressComponent(
-      longName: longName,
-      shortName: shortName,
-      types: types,
-    );
-  }
-}
-
-/// @nodoc
-const $AddressComponent = _$AddressComponentTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$AddressComponent {
@@ -88,11 +69,11 @@ class _$AddressComponentCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$AddressComponentCopyWith<$Res>
+abstract class _$$_AddressComponentCopyWith<$Res>
     implements $AddressComponentCopyWith<$Res> {
-  factory _$AddressComponentCopyWith(
-          _AddressComponent value, $Res Function(_AddressComponent) then) =
-      __$AddressComponentCopyWithImpl<$Res>;
+  factory _$$_AddressComponentCopyWith(
+          _$_AddressComponent value, $Res Function(_$_AddressComponent) then) =
+      __$$_AddressComponentCopyWithImpl<$Res>;
   @override
   $Res call(
       {BasicTextField<String?> longName,
@@ -101,15 +82,15 @@ abstract class _$AddressComponentCopyWith<$Res>
 }
 
 /// @nodoc
-class __$AddressComponentCopyWithImpl<$Res>
+class __$$_AddressComponentCopyWithImpl<$Res>
     extends _$AddressComponentCopyWithImpl<$Res>
-    implements _$AddressComponentCopyWith<$Res> {
-  __$AddressComponentCopyWithImpl(
-      _AddressComponent _value, $Res Function(_AddressComponent) _then)
-      : super(_value, (v) => _then(v as _AddressComponent));
+    implements _$$_AddressComponentCopyWith<$Res> {
+  __$$_AddressComponentCopyWithImpl(
+      _$_AddressComponent _value, $Res Function(_$_AddressComponent) _then)
+      : super(_value, (v) => _then(v as _$_AddressComponent));
 
   @override
-  _AddressComponent get _value => super._value as _AddressComponent;
+  _$_AddressComponent get _value => super._value as _$_AddressComponent;
 
   @override
   $Res call({
@@ -117,7 +98,7 @@ class __$AddressComponentCopyWithImpl<$Res>
     Object? shortName = freezed,
     Object? types = freezed,
   }) {
-    return _then(_AddressComponent(
+    return _then(_$_AddressComponent(
       longName: longName == freezed
           ? _value.longName
           : longName // ignore: cast_nullable_to_non_nullable
@@ -147,8 +128,8 @@ class _$_AddressComponent extends _AddressComponent {
   final BasicTextField<String?> longName;
   @override
   final BasicTextField<String?> shortName;
-  @JsonKey()
   @override
+  @JsonKey()
   final KtList<AddressComponentType> types;
 
   @override
@@ -160,7 +141,7 @@ class _$_AddressComponent extends _AddressComponent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AddressComponent &&
+            other is _$_AddressComponent &&
             const DeepCollectionEquality().equals(other.longName, longName) &&
             const DeepCollectionEquality().equals(other.shortName, shortName) &&
             const DeepCollectionEquality().equals(other.types, types));
@@ -175,25 +156,25 @@ class _$_AddressComponent extends _AddressComponent {
 
   @JsonKey(ignore: true)
   @override
-  _$AddressComponentCopyWith<_AddressComponent> get copyWith =>
-      __$AddressComponentCopyWithImpl<_AddressComponent>(this, _$identity);
+  _$$_AddressComponentCopyWith<_$_AddressComponent> get copyWith =>
+      __$$_AddressComponentCopyWithImpl<_$_AddressComponent>(this, _$identity);
 }
 
 abstract class _AddressComponent extends AddressComponent {
   const factory _AddressComponent(
-      {required BasicTextField<String?> longName,
-      required BasicTextField<String?> shortName,
-      KtList<AddressComponentType> types}) = _$_AddressComponent;
+      {required final BasicTextField<String?> longName,
+      required final BasicTextField<String?> shortName,
+      final KtList<AddressComponentType> types}) = _$_AddressComponent;
   const _AddressComponent._() : super._();
 
   @override
-  BasicTextField<String?> get longName;
+  BasicTextField<String?> get longName => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get shortName;
+  BasicTextField<String?> get shortName => throw _privateConstructorUsedError;
   @override
-  KtList<AddressComponentType> get types;
+  KtList<AddressComponentType> get types => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AddressComponentCopyWith<_AddressComponent> get copyWith =>
+  _$$_AddressComponentCopyWith<_$_AddressComponent> get copyWith =>
       throw _privateConstructorUsedError;
 }

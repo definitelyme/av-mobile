@@ -1,5 +1,3 @@
-import 'package:auctionvillage/utils/utils.dart';
-import 'package:floor/floor.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 class TimestampConverter implements JsonConverter<DateTime?, String?> {
@@ -10,16 +8,4 @@ class TimestampConverter implements JsonConverter<DateTime?, String?> {
 
   @override
   String? toJson(DateTime? instance) => instance?.toIso8601String();
-}
-
-class TimestampFloorConverter extends TypeConverter<DateTime?, int?> {
-  @override
-  DateTime? decode(int? databaseValue) {
-    return databaseValue?.let((it) => DateTime.fromMillisecondsSinceEpoch(it));
-  }
-
-  @override
-  int? encode(DateTime? value) {
-    return value?.millisecondsSinceEpoch;
-  }
 }

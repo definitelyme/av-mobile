@@ -12,34 +12,7 @@ part of deal_plan.entity.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$DealPlanTearOff {
-  const _$DealPlanTearOff();
-
-  _DealPlan call(
-      {required UniqueId<String?> id,
-      required AmountField<double> amount,
-      required BasicTextField<int?> priority,
-      KtList<String?> features = const KtList.empty(),
-      DealPlanType name = DealPlanType.free,
-      DateTime? createdAt,
-      DateTime? updatedAt}) {
-    return _DealPlan(
-      id: id,
-      amount: amount,
-      priority: priority,
-      features: features,
-      name: name,
-      createdAt: createdAt,
-      updatedAt: updatedAt,
-    );
-  }
-}
-
-/// @nodoc
-const $DealPlan = _$DealPlanTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$DealPlan {
@@ -122,9 +95,10 @@ class _$DealPlanCopyWithImpl<$Res> implements $DealPlanCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$DealPlanCopyWith<$Res> implements $DealPlanCopyWith<$Res> {
-  factory _$DealPlanCopyWith(_DealPlan value, $Res Function(_DealPlan) then) =
-      __$DealPlanCopyWithImpl<$Res>;
+abstract class _$$_DealPlanCopyWith<$Res> implements $DealPlanCopyWith<$Res> {
+  factory _$$_DealPlanCopyWith(
+          _$_DealPlan value, $Res Function(_$_DealPlan) then) =
+      __$$_DealPlanCopyWithImpl<$Res>;
   @override
   $Res call(
       {UniqueId<String?> id,
@@ -137,13 +111,14 @@ abstract class _$DealPlanCopyWith<$Res> implements $DealPlanCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$DealPlanCopyWithImpl<$Res> extends _$DealPlanCopyWithImpl<$Res>
-    implements _$DealPlanCopyWith<$Res> {
-  __$DealPlanCopyWithImpl(_DealPlan _value, $Res Function(_DealPlan) _then)
-      : super(_value, (v) => _then(v as _DealPlan));
+class __$$_DealPlanCopyWithImpl<$Res> extends _$DealPlanCopyWithImpl<$Res>
+    implements _$$_DealPlanCopyWith<$Res> {
+  __$$_DealPlanCopyWithImpl(
+      _$_DealPlan _value, $Res Function(_$_DealPlan) _then)
+      : super(_value, (v) => _then(v as _$_DealPlan));
 
   @override
-  _DealPlan get _value => super._value as _DealPlan;
+  _$_DealPlan get _value => super._value as _$_DealPlan;
 
   @override
   $Res call({
@@ -155,7 +130,7 @@ class __$DealPlanCopyWithImpl<$Res> extends _$DealPlanCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(_DealPlan(
+    return _then(_$_DealPlan(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -207,11 +182,11 @@ class _$_DealPlan extends _DealPlan {
   final AmountField<double> amount;
   @override
   final BasicTextField<int?> priority;
-  @JsonKey()
   @override
+  @JsonKey()
   final KtList<String?> features;
-  @JsonKey()
   @override
+  @JsonKey()
   final DealPlanType name;
   @override
   final DateTime? createdAt;
@@ -227,7 +202,7 @@ class _$_DealPlan extends _DealPlan {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _DealPlan &&
+            other is _$_DealPlan &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.amount, amount) &&
             const DeepCollectionEquality().equals(other.priority, priority) &&
@@ -250,37 +225,37 @@ class _$_DealPlan extends _DealPlan {
 
   @JsonKey(ignore: true)
   @override
-  _$DealPlanCopyWith<_DealPlan> get copyWith =>
-      __$DealPlanCopyWithImpl<_DealPlan>(this, _$identity);
+  _$$_DealPlanCopyWith<_$_DealPlan> get copyWith =>
+      __$$_DealPlanCopyWithImpl<_$_DealPlan>(this, _$identity);
 }
 
 abstract class _DealPlan extends DealPlan {
   const factory _DealPlan(
-      {required UniqueId<String?> id,
-      required AmountField<double> amount,
-      required BasicTextField<int?> priority,
-      KtList<String?> features,
-      DealPlanType name,
-      DateTime? createdAt,
-      DateTime? updatedAt}) = _$_DealPlan;
+      {required final UniqueId<String?> id,
+      required final AmountField<double> amount,
+      required final BasicTextField<int?> priority,
+      final KtList<String?> features,
+      final DealPlanType name,
+      final DateTime? createdAt,
+      final DateTime? updatedAt}) = _$_DealPlan;
   const _DealPlan._() : super._();
 
   @override
-  UniqueId<String?> get id;
+  UniqueId<String?> get id => throw _privateConstructorUsedError;
   @override
-  AmountField<double> get amount;
+  AmountField<double> get amount => throw _privateConstructorUsedError;
   @override
-  BasicTextField<int?> get priority;
+  BasicTextField<int?> get priority => throw _privateConstructorUsedError;
   @override
-  KtList<String?> get features;
+  KtList<String?> get features => throw _privateConstructorUsedError;
   @override
-  DealPlanType get name;
+  DealPlanType get name => throw _privateConstructorUsedError;
   @override
-  DateTime? get createdAt;
+  DateTime? get createdAt => throw _privateConstructorUsedError;
   @override
-  DateTime? get updatedAt;
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$DealPlanCopyWith<_DealPlan> get copyWith =>
+  _$$_DealPlanCopyWith<_$_DealPlan> get copyWith =>
       throw _privateConstructorUsedError;
 }

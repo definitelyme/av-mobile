@@ -12,34 +12,7 @@ part of brand_information.entity.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$BrandInformationTearOff {
-  const _$BrandInformationTearOff();
-
-  _BrandInformation call(
-      {required BasicTextField<String?> brand,
-      required BasicTextField<String?> brandModel,
-      required BasicTextField<String?> transmission,
-      ItemCondition condition = ItemCondition.brand_new,
-      required BasicTextField<String?> description,
-      ColorField? color,
-      required BasicTextField<String?> yearOfManufacture}) {
-    return _BrandInformation(
-      brand: brand,
-      brandModel: brandModel,
-      transmission: transmission,
-      condition: condition,
-      description: description,
-      color: color,
-      yearOfManufacture: yearOfManufacture,
-    );
-  }
-}
-
-/// @nodoc
-const $BrandInformation = _$BrandInformationTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$BrandInformation {
@@ -126,11 +99,11 @@ class _$BrandInformationCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$BrandInformationCopyWith<$Res>
+abstract class _$$_BrandInformationCopyWith<$Res>
     implements $BrandInformationCopyWith<$Res> {
-  factory _$BrandInformationCopyWith(
-          _BrandInformation value, $Res Function(_BrandInformation) then) =
-      __$BrandInformationCopyWithImpl<$Res>;
+  factory _$$_BrandInformationCopyWith(
+          _$_BrandInformation value, $Res Function(_$_BrandInformation) then) =
+      __$$_BrandInformationCopyWithImpl<$Res>;
   @override
   $Res call(
       {BasicTextField<String?> brand,
@@ -143,15 +116,15 @@ abstract class _$BrandInformationCopyWith<$Res>
 }
 
 /// @nodoc
-class __$BrandInformationCopyWithImpl<$Res>
+class __$$_BrandInformationCopyWithImpl<$Res>
     extends _$BrandInformationCopyWithImpl<$Res>
-    implements _$BrandInformationCopyWith<$Res> {
-  __$BrandInformationCopyWithImpl(
-      _BrandInformation _value, $Res Function(_BrandInformation) _then)
-      : super(_value, (v) => _then(v as _BrandInformation));
+    implements _$$_BrandInformationCopyWith<$Res> {
+  __$$_BrandInformationCopyWithImpl(
+      _$_BrandInformation _value, $Res Function(_$_BrandInformation) _then)
+      : super(_value, (v) => _then(v as _$_BrandInformation));
 
   @override
-  _BrandInformation get _value => super._value as _BrandInformation;
+  _$_BrandInformation get _value => super._value as _$_BrandInformation;
 
   @override
   $Res call({
@@ -163,7 +136,7 @@ class __$BrandInformationCopyWithImpl<$Res>
     Object? color = freezed,
     Object? yearOfManufacture = freezed,
   }) {
-    return _then(_BrandInformation(
+    return _then(_$_BrandInformation(
       brand: brand == freezed
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
@@ -215,8 +188,8 @@ class _$_BrandInformation extends _BrandInformation {
   final BasicTextField<String?> brandModel;
   @override
   final BasicTextField<String?> transmission;
-  @JsonKey()
   @override
+  @JsonKey()
   final ItemCondition condition;
   @override
   final BasicTextField<String?> description;
@@ -234,7 +207,7 @@ class _$_BrandInformation extends _BrandInformation {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _BrandInformation &&
+            other is _$_BrandInformation &&
             const DeepCollectionEquality().equals(other.brand, brand) &&
             const DeepCollectionEquality()
                 .equals(other.brandModel, brandModel) &&
@@ -261,38 +234,40 @@ class _$_BrandInformation extends _BrandInformation {
 
   @JsonKey(ignore: true)
   @override
-  _$BrandInformationCopyWith<_BrandInformation> get copyWith =>
-      __$BrandInformationCopyWithImpl<_BrandInformation>(this, _$identity);
+  _$$_BrandInformationCopyWith<_$_BrandInformation> get copyWith =>
+      __$$_BrandInformationCopyWithImpl<_$_BrandInformation>(this, _$identity);
 }
 
 abstract class _BrandInformation extends BrandInformation {
   const factory _BrandInformation(
-          {required BasicTextField<String?> brand,
-          required BasicTextField<String?> brandModel,
-          required BasicTextField<String?> transmission,
-          ItemCondition condition,
-          required BasicTextField<String?> description,
-          ColorField? color,
-          required BasicTextField<String?> yearOfManufacture}) =
+          {required final BasicTextField<String?> brand,
+          required final BasicTextField<String?> brandModel,
+          required final BasicTextField<String?> transmission,
+          final ItemCondition condition,
+          required final BasicTextField<String?> description,
+          final ColorField? color,
+          required final BasicTextField<String?> yearOfManufacture}) =
       _$_BrandInformation;
   const _BrandInformation._() : super._();
 
   @override
-  BasicTextField<String?> get brand;
+  BasicTextField<String?> get brand => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get brandModel;
+  BasicTextField<String?> get brandModel => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get transmission;
+  BasicTextField<String?> get transmission =>
+      throw _privateConstructorUsedError;
   @override
-  ItemCondition get condition;
+  ItemCondition get condition => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get description;
+  BasicTextField<String?> get description => throw _privateConstructorUsedError;
   @override
-  ColorField? get color;
+  ColorField? get color => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get yearOfManufacture;
+  BasicTextField<String?> get yearOfManufacture =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$BrandInformationCopyWith<_BrandInformation> get copyWith =>
+  _$$_BrandInformationCopyWith<_$_BrandInformation> get copyWith =>
       throw _privateConstructorUsedError;
 }

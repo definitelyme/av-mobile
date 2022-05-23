@@ -12,30 +12,11 @@ part of country_list.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 CountryDTOList _$CountryDTOListFromJson(Map<String, dynamic> json) {
   return _CountryDTOList.fromJson(json);
 }
-
-/// @nodoc
-class _$CountryDTOListTearOff {
-  const _$CountryDTOListTearOff();
-
-  _CountryDTOList call(
-      {@JsonKey(includeIfNull: false) List<CountryDTO> data = const []}) {
-    return _CountryDTOList(
-      data: data,
-    );
-  }
-
-  CountryDTOList fromJson(Map<String, Object?> json) {
-    return CountryDTOList.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $CountryDTOList = _$CountryDTOListTearOff();
 
 /// @nodoc
 mixin _$CountryDTOList {
@@ -79,33 +60,33 @@ class _$CountryDTOListCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$CountryDTOListCopyWith<$Res>
+abstract class _$$_CountryDTOListCopyWith<$Res>
     implements $CountryDTOListCopyWith<$Res> {
-  factory _$CountryDTOListCopyWith(
-          _CountryDTOList value, $Res Function(_CountryDTOList) then) =
-      __$CountryDTOListCopyWithImpl<$Res>;
+  factory _$$_CountryDTOListCopyWith(
+          _$_CountryDTOList value, $Res Function(_$_CountryDTOList) then) =
+      __$$_CountryDTOListCopyWithImpl<$Res>;
   @override
   $Res call({@JsonKey(includeIfNull: false) List<CountryDTO> data});
 }
 
 /// @nodoc
-class __$CountryDTOListCopyWithImpl<$Res>
+class __$$_CountryDTOListCopyWithImpl<$Res>
     extends _$CountryDTOListCopyWithImpl<$Res>
-    implements _$CountryDTOListCopyWith<$Res> {
-  __$CountryDTOListCopyWithImpl(
-      _CountryDTOList _value, $Res Function(_CountryDTOList) _then)
-      : super(_value, (v) => _then(v as _CountryDTOList));
+    implements _$$_CountryDTOListCopyWith<$Res> {
+  __$$_CountryDTOListCopyWithImpl(
+      _$_CountryDTOList _value, $Res Function(_$_CountryDTOList) _then)
+      : super(_value, (v) => _then(v as _$_CountryDTOList));
 
   @override
-  _CountryDTOList get _value => super._value as _CountryDTOList;
+  _$_CountryDTOList get _value => super._value as _$_CountryDTOList;
 
   @override
   $Res call({
     Object? data = freezed,
   }) {
-    return _then(_CountryDTOList(
+    return _then(_$_CountryDTOList(
       data: data == freezed
-          ? _value.data
+          ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
               as List<CountryDTO>,
     ));
@@ -115,15 +96,21 @@ class __$CountryDTOListCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_CountryDTOList extends _CountryDTOList {
-  const _$_CountryDTOList({@JsonKey(includeIfNull: false) this.data = const []})
-      : super._();
+  const _$_CountryDTOList(
+      {@JsonKey(includeIfNull: false) final List<CountryDTO> data = const []})
+      : _data = data,
+        super._();
 
   factory _$_CountryDTOList.fromJson(Map<String, dynamic> json) =>
       _$$_CountryDTOListFromJson(json);
 
+  final List<CountryDTO> _data;
   @override
   @JsonKey(includeIfNull: false)
-  final List<CountryDTO> data;
+  List<CountryDTO> get data {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_data);
+  }
 
   @override
   String toString() {
@@ -134,18 +121,19 @@ class _$_CountryDTOList extends _CountryDTOList {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _CountryDTOList &&
-            const DeepCollectionEquality().equals(other.data, data));
+            other is _$_CountryDTOList &&
+            const DeepCollectionEquality().equals(other._data, _data));
   }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
-  _$CountryDTOListCopyWith<_CountryDTOList> get copyWith =>
-      __$CountryDTOListCopyWithImpl<_CountryDTOList>(this, _$identity);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_CountryDTOListCopyWith<_$_CountryDTOList> get copyWith =>
+      __$$_CountryDTOListCopyWithImpl<_$_CountryDTOList>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -155,7 +143,7 @@ class _$_CountryDTOList extends _CountryDTOList {
 
 abstract class _CountryDTOList extends CountryDTOList {
   const factory _CountryDTOList(
-          {@JsonKey(includeIfNull: false) List<CountryDTO> data}) =
+          {@JsonKey(includeIfNull: false) final List<CountryDTO> data}) =
       _$_CountryDTOList;
   const _CountryDTOList._() : super._();
 
@@ -164,9 +152,9 @@ abstract class _CountryDTOList extends CountryDTOList {
 
   @override
   @JsonKey(includeIfNull: false)
-  List<CountryDTO> get data;
+  List<CountryDTO> get data => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$CountryDTOListCopyWith<_CountryDTOList> get copyWith =>
+  _$$_CountryDTOListCopyWith<_$_CountryDTOList> get copyWith =>
       throw _privateConstructorUsedError;
 }

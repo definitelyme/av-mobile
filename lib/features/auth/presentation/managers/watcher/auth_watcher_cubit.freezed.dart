@@ -12,40 +12,7 @@ part of 'auth_watcher_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$AuthWatcherStateTearOff {
-  const _$AuthWatcherStateTearOff();
-
-  _AuthWatcherState call(
-      {bool isLoading = false,
-      bool isLoggingOut = false,
-      bool isAuthenticated = false,
-      bool isListeningForAuthChanges = false,
-      bool isListeningForUserChanges = false,
-      User? user,
-      UserWallet? wallet,
-      KtList<Country> countries = const KtList.empty(),
-      Option<User?> option = const None(),
-      Option<AppHttpResponse?> status = const None()}) {
-    return _AuthWatcherState(
-      isLoading: isLoading,
-      isLoggingOut: isLoggingOut,
-      isAuthenticated: isAuthenticated,
-      isListeningForAuthChanges: isListeningForAuthChanges,
-      isListeningForUserChanges: isListeningForUserChanges,
-      user: user,
-      wallet: wallet,
-      countries: countries,
-      option: option,
-      status: status,
-    );
-  }
-}
-
-/// @nodoc
-const $AuthWatcherState = _$AuthWatcherStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$AuthWatcherState {
@@ -176,11 +143,11 @@ class _$AuthWatcherStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$AuthWatcherStateCopyWith<$Res>
+abstract class _$$_AuthWatcherStateCopyWith<$Res>
     implements $AuthWatcherStateCopyWith<$Res> {
-  factory _$AuthWatcherStateCopyWith(
-          _AuthWatcherState value, $Res Function(_AuthWatcherState) then) =
-      __$AuthWatcherStateCopyWithImpl<$Res>;
+  factory _$$_AuthWatcherStateCopyWith(
+          _$_AuthWatcherState value, $Res Function(_$_AuthWatcherState) then) =
+      __$$_AuthWatcherStateCopyWithImpl<$Res>;
   @override
   $Res call(
       {bool isLoading,
@@ -201,15 +168,15 @@ abstract class _$AuthWatcherStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$AuthWatcherStateCopyWithImpl<$Res>
+class __$$_AuthWatcherStateCopyWithImpl<$Res>
     extends _$AuthWatcherStateCopyWithImpl<$Res>
-    implements _$AuthWatcherStateCopyWith<$Res> {
-  __$AuthWatcherStateCopyWithImpl(
-      _AuthWatcherState _value, $Res Function(_AuthWatcherState) _then)
-      : super(_value, (v) => _then(v as _AuthWatcherState));
+    implements _$$_AuthWatcherStateCopyWith<$Res> {
+  __$$_AuthWatcherStateCopyWithImpl(
+      _$_AuthWatcherState _value, $Res Function(_$_AuthWatcherState) _then)
+      : super(_value, (v) => _then(v as _$_AuthWatcherState));
 
   @override
-  _AuthWatcherState get _value => super._value as _AuthWatcherState;
+  _$_AuthWatcherState get _value => super._value as _$_AuthWatcherState;
 
   @override
   $Res call({
@@ -224,7 +191,7 @@ class __$AuthWatcherStateCopyWithImpl<$Res>
     Object? option = freezed,
     Object? status = freezed,
   }) {
-    return _then(_AuthWatcherState(
+    return _then(_$_AuthWatcherState(
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -285,33 +252,33 @@ class _$_AuthWatcherState extends _AuthWatcherState {
       this.status = const None()})
       : super._();
 
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isLoading;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isLoggingOut;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isAuthenticated;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isListeningForAuthChanges;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isListeningForUserChanges;
   @override
   final User? user;
   @override
   final UserWallet? wallet;
-  @JsonKey()
   @override
+  @JsonKey()
   final KtList<Country> countries;
-  @JsonKey()
   @override
+  @JsonKey()
   final Option<User?> option;
-  @JsonKey()
   @override
+  @JsonKey()
   final Option<AppHttpResponse?> status;
 
   @override
@@ -323,7 +290,7 @@ class _$_AuthWatcherState extends _AuthWatcherState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AuthWatcherState &&
+            other is _$_AuthWatcherState &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality()
                 .equals(other.isLoggingOut, isLoggingOut) &&
@@ -356,46 +323,46 @@ class _$_AuthWatcherState extends _AuthWatcherState {
 
   @JsonKey(ignore: true)
   @override
-  _$AuthWatcherStateCopyWith<_AuthWatcherState> get copyWith =>
-      __$AuthWatcherStateCopyWithImpl<_AuthWatcherState>(this, _$identity);
+  _$$_AuthWatcherStateCopyWith<_$_AuthWatcherState> get copyWith =>
+      __$$_AuthWatcherStateCopyWithImpl<_$_AuthWatcherState>(this, _$identity);
 }
 
 abstract class _AuthWatcherState extends AuthWatcherState {
   const factory _AuthWatcherState(
-      {bool isLoading,
-      bool isLoggingOut,
-      bool isAuthenticated,
-      bool isListeningForAuthChanges,
-      bool isListeningForUserChanges,
-      User? user,
-      UserWallet? wallet,
-      KtList<Country> countries,
-      Option<User?> option,
-      Option<AppHttpResponse?> status}) = _$_AuthWatcherState;
+      {final bool isLoading,
+      final bool isLoggingOut,
+      final bool isAuthenticated,
+      final bool isListeningForAuthChanges,
+      final bool isListeningForUserChanges,
+      final User? user,
+      final UserWallet? wallet,
+      final KtList<Country> countries,
+      final Option<User?> option,
+      final Option<AppHttpResponse?> status}) = _$_AuthWatcherState;
   const _AuthWatcherState._() : super._();
 
   @override
-  bool get isLoading;
+  bool get isLoading => throw _privateConstructorUsedError;
   @override
-  bool get isLoggingOut;
+  bool get isLoggingOut => throw _privateConstructorUsedError;
   @override
-  bool get isAuthenticated;
+  bool get isAuthenticated => throw _privateConstructorUsedError;
   @override
-  bool get isListeningForAuthChanges;
+  bool get isListeningForAuthChanges => throw _privateConstructorUsedError;
   @override
-  bool get isListeningForUserChanges;
+  bool get isListeningForUserChanges => throw _privateConstructorUsedError;
   @override
-  User? get user;
+  User? get user => throw _privateConstructorUsedError;
   @override
-  UserWallet? get wallet;
+  UserWallet? get wallet => throw _privateConstructorUsedError;
   @override
-  KtList<Country> get countries;
+  KtList<Country> get countries => throw _privateConstructorUsedError;
   @override
-  Option<User?> get option;
+  Option<User?> get option => throw _privateConstructorUsedError;
   @override
-  Option<AppHttpResponse?> get status;
+  Option<AppHttpResponse?> get status => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AuthWatcherStateCopyWith<_AuthWatcherState> get copyWith =>
+  _$$_AuthWatcherStateCopyWith<_$_AuthWatcherState> get copyWith =>
       throw _privateConstructorUsedError;
 }

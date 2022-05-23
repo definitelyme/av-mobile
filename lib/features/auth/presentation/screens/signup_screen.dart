@@ -44,7 +44,8 @@ class SignupScreen extends StatelessWidget with AutoRouteWrapper {
         implyLeading: false,
         cupertinoImplyLeading: false,
         backgroundColor: Palette.accentColor,
-        showCustomLeading: false,
+        showCupertinoCustomLeading: false,
+        showMaterialCustomLeading: false,
         overlayStyle: App.customSystemOverlay(
           ctx: context,
           ios: Brightness.dark,

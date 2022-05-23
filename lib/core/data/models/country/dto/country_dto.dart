@@ -4,7 +4,6 @@ import 'dart:convert';
 
 import 'package:auctionvillage/core/domain/entities/entities.dart';
 import 'package:auctionvillage/utils/utils.dart';
-import 'package:floor/floor.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kt_dart/kt.dart';
@@ -61,14 +60,6 @@ class CountryDTO with _$CountryDTO {
     );
     return countries;
   }
-}
-
-class CountryDTOFloorConverter extends TypeConverter<CountryDTO?, String> {
-  @override
-  CountryDTO? decode(String databaseValue) => CountryDTO.fromJson(jsonDecode(databaseValue) as Map<String, dynamic>);
-
-  @override
-  String encode(CountryDTO? value) => jsonEncode(value?.toJson());
 }
 
 extension CountryDTOListX on List<CountryDTO> {

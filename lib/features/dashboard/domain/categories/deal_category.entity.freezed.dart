@@ -12,44 +12,7 @@ part of deal_category.entity.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$DealCategoryTearOff {
-  const _$DealCategoryTearOff();
-
-  _DealCategory call(
-      {required UniqueId<String?> id,
-      required MediaField asset,
-      bool isActive = false,
-      required BasicTextField<String?> name,
-      required BasicTextField<String?> slug,
-      required BasicTextField<String?> description,
-      required BasicTextField<double?> charge,
-      required BasicTextField<double?> percentageIncrease,
-      required BasicTextField<int> productsAssigned,
-      Deal? deal,
-      DateTime? createdAt,
-      DateTime? updatedAt}) {
-    return _DealCategory(
-      id: id,
-      asset: asset,
-      isActive: isActive,
-      name: name,
-      slug: slug,
-      description: description,
-      charge: charge,
-      percentageIncrease: percentageIncrease,
-      productsAssigned: productsAssigned,
-      deal: deal,
-      createdAt: createdAt,
-      updatedAt: updatedAt,
-    );
-  }
-}
-
-/// @nodoc
-const $DealCategory = _$DealCategoryTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$DealCategory {
@@ -183,11 +146,11 @@ class _$DealCategoryCopyWithImpl<$Res> implements $DealCategoryCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$DealCategoryCopyWith<$Res>
+abstract class _$$_DealCategoryCopyWith<$Res>
     implements $DealCategoryCopyWith<$Res> {
-  factory _$DealCategoryCopyWith(
-          _DealCategory value, $Res Function(_DealCategory) then) =
-      __$DealCategoryCopyWithImpl<$Res>;
+  factory _$$_DealCategoryCopyWith(
+          _$_DealCategory value, $Res Function(_$_DealCategory) then) =
+      __$$_DealCategoryCopyWithImpl<$Res>;
   @override
   $Res call(
       {UniqueId<String?> id,
@@ -208,14 +171,15 @@ abstract class _$DealCategoryCopyWith<$Res>
 }
 
 /// @nodoc
-class __$DealCategoryCopyWithImpl<$Res> extends _$DealCategoryCopyWithImpl<$Res>
-    implements _$DealCategoryCopyWith<$Res> {
-  __$DealCategoryCopyWithImpl(
-      _DealCategory _value, $Res Function(_DealCategory) _then)
-      : super(_value, (v) => _then(v as _DealCategory));
+class __$$_DealCategoryCopyWithImpl<$Res>
+    extends _$DealCategoryCopyWithImpl<$Res>
+    implements _$$_DealCategoryCopyWith<$Res> {
+  __$$_DealCategoryCopyWithImpl(
+      _$_DealCategory _value, $Res Function(_$_DealCategory) _then)
+      : super(_value, (v) => _then(v as _$_DealCategory));
 
   @override
-  _DealCategory get _value => super._value as _DealCategory;
+  _$_DealCategory get _value => super._value as _$_DealCategory;
 
   @override
   $Res call({
@@ -232,7 +196,7 @@ class __$DealCategoryCopyWithImpl<$Res> extends _$DealCategoryCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(_DealCategory(
+    return _then(_$_DealCategory(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -307,8 +271,8 @@ class _$_DealCategory extends _DealCategory {
   final UniqueId<String?> id;
   @override
   final MediaField asset;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isActive;
   @override
   final BasicTextField<String?> name;
@@ -338,7 +302,7 @@ class _$_DealCategory extends _DealCategory {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _DealCategory &&
+            other is _$_DealCategory &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.asset, asset) &&
             const DeepCollectionEquality().equals(other.isActive, isActive) &&
@@ -374,52 +338,54 @@ class _$_DealCategory extends _DealCategory {
 
   @JsonKey(ignore: true)
   @override
-  _$DealCategoryCopyWith<_DealCategory> get copyWith =>
-      __$DealCategoryCopyWithImpl<_DealCategory>(this, _$identity);
+  _$$_DealCategoryCopyWith<_$_DealCategory> get copyWith =>
+      __$$_DealCategoryCopyWithImpl<_$_DealCategory>(this, _$identity);
 }
 
 abstract class _DealCategory extends DealCategory {
   const factory _DealCategory(
-      {required UniqueId<String?> id,
-      required MediaField asset,
-      bool isActive,
-      required BasicTextField<String?> name,
-      required BasicTextField<String?> slug,
-      required BasicTextField<String?> description,
-      required BasicTextField<double?> charge,
-      required BasicTextField<double?> percentageIncrease,
-      required BasicTextField<int> productsAssigned,
-      Deal? deal,
-      DateTime? createdAt,
-      DateTime? updatedAt}) = _$_DealCategory;
+      {required final UniqueId<String?> id,
+      required final MediaField asset,
+      final bool isActive,
+      required final BasicTextField<String?> name,
+      required final BasicTextField<String?> slug,
+      required final BasicTextField<String?> description,
+      required final BasicTextField<double?> charge,
+      required final BasicTextField<double?> percentageIncrease,
+      required final BasicTextField<int> productsAssigned,
+      final Deal? deal,
+      final DateTime? createdAt,
+      final DateTime? updatedAt}) = _$_DealCategory;
   const _DealCategory._() : super._();
 
   @override
-  UniqueId<String?> get id;
+  UniqueId<String?> get id => throw _privateConstructorUsedError;
   @override
-  MediaField get asset;
+  MediaField get asset => throw _privateConstructorUsedError;
   @override
-  bool get isActive;
+  bool get isActive => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get name;
+  BasicTextField<String?> get name => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get slug;
+  BasicTextField<String?> get slug => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get description;
+  BasicTextField<String?> get description => throw _privateConstructorUsedError;
   @override
-  BasicTextField<double?> get charge;
+  BasicTextField<double?> get charge => throw _privateConstructorUsedError;
   @override
-  BasicTextField<double?> get percentageIncrease;
+  BasicTextField<double?> get percentageIncrease =>
+      throw _privateConstructorUsedError;
   @override
-  BasicTextField<int> get productsAssigned;
+  BasicTextField<int> get productsAssigned =>
+      throw _privateConstructorUsedError;
   @override
-  Deal? get deal;
+  Deal? get deal => throw _privateConstructorUsedError;
   @override
-  DateTime? get createdAt;
+  DateTime? get createdAt => throw _privateConstructorUsedError;
   @override
-  DateTime? get updatedAt;
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$DealCategoryCopyWith<_DealCategory> get copyWith =>
+  _$$_DealCategoryCopyWith<_$_DealCategory> get copyWith =>
       throw _privateConstructorUsedError;
 }

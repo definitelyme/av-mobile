@@ -61,7 +61,7 @@ class _WithdrawalScreenState extends State<WithdrawalScreen> {
   void ensureHasSetupPin() async {
     final hasSetupPin = await context.read<WalletCubit>().hasSetupPin();
     if (hasSetupPin == null || !hasSetupPin) {
-      unawaited(WidgetsBinding.instance?.endOfFrame.then((_) {
+      unawaited(WidgetsBinding.instance.endOfFrame.then((_) {
         navigator.popAndPush(TransactionPinSetupRoute());
       }));
     }

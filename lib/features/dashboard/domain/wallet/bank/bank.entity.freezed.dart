@@ -12,30 +12,7 @@ part of bank.entity.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$BankTearOff {
-  const _$BankTearOff();
-
-  _Bank call(
-      {required UniqueId<String?> id,
-      required BasicTextField<String?> code,
-      required BasicTextField<String?> bankName,
-      DateTime? createdAt,
-      DateTime? updatedAt}) {
-    return _Bank(
-      id: id,
-      code: code,
-      bankName: bankName,
-      createdAt: createdAt,
-      updatedAt: updatedAt,
-    );
-  }
-}
-
-/// @nodoc
-const $Bank = _$BankTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$Bank {
@@ -103,9 +80,9 @@ class _$BankCopyWithImpl<$Res> implements $BankCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$BankCopyWith<$Res> implements $BankCopyWith<$Res> {
-  factory _$BankCopyWith(_Bank value, $Res Function(_Bank) then) =
-      __$BankCopyWithImpl<$Res>;
+abstract class _$$_BankCopyWith<$Res> implements $BankCopyWith<$Res> {
+  factory _$$_BankCopyWith(_$_Bank value, $Res Function(_$_Bank) then) =
+      __$$_BankCopyWithImpl<$Res>;
   @override
   $Res call(
       {UniqueId<String?> id,
@@ -116,13 +93,13 @@ abstract class _$BankCopyWith<$Res> implements $BankCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$BankCopyWithImpl<$Res> extends _$BankCopyWithImpl<$Res>
-    implements _$BankCopyWith<$Res> {
-  __$BankCopyWithImpl(_Bank _value, $Res Function(_Bank) _then)
-      : super(_value, (v) => _then(v as _Bank));
+class __$$_BankCopyWithImpl<$Res> extends _$BankCopyWithImpl<$Res>
+    implements _$$_BankCopyWith<$Res> {
+  __$$_BankCopyWithImpl(_$_Bank _value, $Res Function(_$_Bank) _then)
+      : super(_value, (v) => _then(v as _$_Bank));
 
   @override
-  _Bank get _value => super._value as _Bank;
+  _$_Bank get _value => super._value as _$_Bank;
 
   @override
   $Res call({
@@ -132,7 +109,7 @@ class __$BankCopyWithImpl<$Res> extends _$BankCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(_Bank(
+    return _then(_$_Bank(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -188,7 +165,7 @@ class _$_Bank extends _Bank {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Bank &&
+            other is _$_Bank &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.code, code) &&
             const DeepCollectionEquality().equals(other.bankName, bankName) &&
@@ -207,30 +184,30 @@ class _$_Bank extends _Bank {
 
   @JsonKey(ignore: true)
   @override
-  _$BankCopyWith<_Bank> get copyWith =>
-      __$BankCopyWithImpl<_Bank>(this, _$identity);
+  _$$_BankCopyWith<_$_Bank> get copyWith =>
+      __$$_BankCopyWithImpl<_$_Bank>(this, _$identity);
 }
 
 abstract class _Bank extends Bank {
   const factory _Bank(
-      {required UniqueId<String?> id,
-      required BasicTextField<String?> code,
-      required BasicTextField<String?> bankName,
-      DateTime? createdAt,
-      DateTime? updatedAt}) = _$_Bank;
+      {required final UniqueId<String?> id,
+      required final BasicTextField<String?> code,
+      required final BasicTextField<String?> bankName,
+      final DateTime? createdAt,
+      final DateTime? updatedAt}) = _$_Bank;
   const _Bank._() : super._();
 
   @override
-  UniqueId<String?> get id;
+  UniqueId<String?> get id => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get code;
+  BasicTextField<String?> get code => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get bankName;
+  BasicTextField<String?> get bankName => throw _privateConstructorUsedError;
   @override
-  DateTime? get createdAt;
+  DateTime? get createdAt => throw _privateConstructorUsedError;
   @override
-  DateTime? get updatedAt;
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$BankCopyWith<_Bank> get copyWith => throw _privateConstructorUsedError;
+  _$$_BankCopyWith<_$_Bank> get copyWith => throw _privateConstructorUsedError;
 }

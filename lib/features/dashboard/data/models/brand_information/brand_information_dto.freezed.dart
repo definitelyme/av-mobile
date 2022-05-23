@@ -12,44 +12,11 @@ part of brand_information_dto.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 BrandInformationDTO _$BrandInformationDTOFromJson(Map<String, dynamic> json) {
   return _BrandInformationDTO.fromJson(json);
 }
-
-/// @nodoc
-class _$BrandInformationDTOTearOff {
-  const _$BrandInformationDTOTearOff();
-
-  _BrandInformationDTO call(
-      {String? brand,
-      String? brandModel,
-      String? transmission,
-      int? yearOfManufacturer,
-      String? color,
-      @JsonKey(toJson: ItemConditionSerializer.toJsonString)
-      @ItemConditionSerializer()
-          ItemCondition? condition,
-      String? description}) {
-    return _BrandInformationDTO(
-      brand: brand,
-      brandModel: brandModel,
-      transmission: transmission,
-      yearOfManufacturer: yearOfManufacturer,
-      color: color,
-      condition: condition,
-      description: description,
-    );
-  }
-
-  BrandInformationDTO fromJson(Map<String, Object?> json) {
-    return BrandInformationDTO.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $BrandInformationDTO = _$BrandInformationDTOTearOff();
 
 /// @nodoc
 mixin _$BrandInformationDTO {
@@ -139,11 +106,11 @@ class _$BrandInformationDTOCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$BrandInformationDTOCopyWith<$Res>
+abstract class _$$_BrandInformationDTOCopyWith<$Res>
     implements $BrandInformationDTOCopyWith<$Res> {
-  factory _$BrandInformationDTOCopyWith(_BrandInformationDTO value,
-          $Res Function(_BrandInformationDTO) then) =
-      __$BrandInformationDTOCopyWithImpl<$Res>;
+  factory _$$_BrandInformationDTOCopyWith(_$_BrandInformationDTO value,
+          $Res Function(_$_BrandInformationDTO) then) =
+      __$$_BrandInformationDTOCopyWithImpl<$Res>;
   @override
   $Res call(
       {String? brand,
@@ -158,15 +125,15 @@ abstract class _$BrandInformationDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$BrandInformationDTOCopyWithImpl<$Res>
+class __$$_BrandInformationDTOCopyWithImpl<$Res>
     extends _$BrandInformationDTOCopyWithImpl<$Res>
-    implements _$BrandInformationDTOCopyWith<$Res> {
-  __$BrandInformationDTOCopyWithImpl(
-      _BrandInformationDTO _value, $Res Function(_BrandInformationDTO) _then)
-      : super(_value, (v) => _then(v as _BrandInformationDTO));
+    implements _$$_BrandInformationDTOCopyWith<$Res> {
+  __$$_BrandInformationDTOCopyWithImpl(_$_BrandInformationDTO _value,
+      $Res Function(_$_BrandInformationDTO) _then)
+      : super(_value, (v) => _then(v as _$_BrandInformationDTO));
 
   @override
-  _BrandInformationDTO get _value => super._value as _BrandInformationDTO;
+  _$_BrandInformationDTO get _value => super._value as _$_BrandInformationDTO;
 
   @override
   $Res call({
@@ -178,7 +145,7 @@ class __$BrandInformationDTOCopyWithImpl<$Res>
     Object? condition = freezed,
     Object? description = freezed,
   }) {
-    return _then(_BrandInformationDTO(
+    return _then(_$_BrandInformationDTO(
       brand: brand == freezed
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
@@ -255,7 +222,7 @@ class _$_BrandInformationDTO extends _BrandInformationDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _BrandInformationDTO &&
+            other is _$_BrandInformationDTO &&
             const DeepCollectionEquality().equals(other.brand, brand) &&
             const DeepCollectionEquality()
                 .equals(other.brandModel, brandModel) &&
@@ -269,6 +236,7 @@ class _$_BrandInformationDTO extends _BrandInformationDTO {
                 .equals(other.description, description));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -282,8 +250,8 @@ class _$_BrandInformationDTO extends _BrandInformationDTO {
 
   @JsonKey(ignore: true)
   @override
-  _$BrandInformationDTOCopyWith<_BrandInformationDTO> get copyWith =>
-      __$BrandInformationDTOCopyWithImpl<_BrandInformationDTO>(
+  _$$_BrandInformationDTOCopyWith<_$_BrandInformationDTO> get copyWith =>
+      __$$_BrandInformationDTOCopyWithImpl<_$_BrandInformationDTO>(
           this, _$identity);
 
   @override
@@ -294,38 +262,38 @@ class _$_BrandInformationDTO extends _BrandInformationDTO {
 
 abstract class _BrandInformationDTO extends BrandInformationDTO {
   factory _BrandInformationDTO(
-      {String? brand,
-      String? brandModel,
-      String? transmission,
-      int? yearOfManufacturer,
-      String? color,
+      {final String? brand,
+      final String? brandModel,
+      final String? transmission,
+      final int? yearOfManufacturer,
+      final String? color,
       @JsonKey(toJson: ItemConditionSerializer.toJsonString)
       @ItemConditionSerializer()
-          ItemCondition? condition,
-      String? description}) = _$_BrandInformationDTO;
+          final ItemCondition? condition,
+      final String? description}) = _$_BrandInformationDTO;
   _BrandInformationDTO._() : super._();
 
   factory _BrandInformationDTO.fromJson(Map<String, dynamic> json) =
       _$_BrandInformationDTO.fromJson;
 
   @override
-  String? get brand;
+  String? get brand => throw _privateConstructorUsedError;
   @override
-  String? get brandModel;
+  String? get brandModel => throw _privateConstructorUsedError;
   @override
-  String? get transmission;
+  String? get transmission => throw _privateConstructorUsedError;
   @override
-  int? get yearOfManufacturer;
+  int? get yearOfManufacturer => throw _privateConstructorUsedError;
   @override
-  String? get color;
+  String? get color => throw _privateConstructorUsedError;
   @override
   @JsonKey(toJson: ItemConditionSerializer.toJsonString)
   @ItemConditionSerializer()
-  ItemCondition? get condition;
+  ItemCondition? get condition => throw _privateConstructorUsedError;
   @override
-  String? get description;
+  String? get description => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$BrandInformationDTOCopyWith<_BrandInformationDTO> get copyWith =>
+  _$$_BrandInformationDTOCopyWith<_$_BrandInformationDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }

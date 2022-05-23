@@ -12,30 +12,7 @@ part of info_response.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$InfoResponseTearOff {
-  const _$InfoResponseTearOff();
-
-  _InfoResponse call(
-      {bool? status,
-      String? details,
-      InfoType type = InfoType.any,
-      required String message,
-      @JsonKey(ignore: true) bool pop = false}) {
-    return _InfoResponse(
-      status: status,
-      details: details,
-      type: type,
-      message: message,
-      pop: pop,
-    );
-  }
-}
-
-/// @nodoc
-const $InfoResponse = _$InfoResponseTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$InfoResponse {
@@ -106,11 +83,11 @@ class _$InfoResponseCopyWithImpl<$Res> implements $InfoResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$InfoResponseCopyWith<$Res>
+abstract class _$$_InfoResponseCopyWith<$Res>
     implements $InfoResponseCopyWith<$Res> {
-  factory _$InfoResponseCopyWith(
-          _InfoResponse value, $Res Function(_InfoResponse) then) =
-      __$InfoResponseCopyWithImpl<$Res>;
+  factory _$$_InfoResponseCopyWith(
+          _$_InfoResponse value, $Res Function(_$_InfoResponse) then) =
+      __$$_InfoResponseCopyWithImpl<$Res>;
   @override
   $Res call(
       {bool? status,
@@ -121,14 +98,15 @@ abstract class _$InfoResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$InfoResponseCopyWithImpl<$Res> extends _$InfoResponseCopyWithImpl<$Res>
-    implements _$InfoResponseCopyWith<$Res> {
-  __$InfoResponseCopyWithImpl(
-      _InfoResponse _value, $Res Function(_InfoResponse) _then)
-      : super(_value, (v) => _then(v as _InfoResponse));
+class __$$_InfoResponseCopyWithImpl<$Res>
+    extends _$InfoResponseCopyWithImpl<$Res>
+    implements _$$_InfoResponseCopyWith<$Res> {
+  __$$_InfoResponseCopyWithImpl(
+      _$_InfoResponse _value, $Res Function(_$_InfoResponse) _then)
+      : super(_value, (v) => _then(v as _$_InfoResponse));
 
   @override
-  _InfoResponse get _value => super._value as _InfoResponse;
+  _$_InfoResponse get _value => super._value as _$_InfoResponse;
 
   @override
   $Res call({
@@ -138,7 +116,7 @@ class __$InfoResponseCopyWithImpl<$Res> extends _$InfoResponseCopyWithImpl<$Res>
     Object? message = freezed,
     Object? pop = freezed,
   }) {
-    return _then(_InfoResponse(
+    return _then(_$_InfoResponse(
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -178,8 +156,8 @@ class _$_InfoResponse extends _InfoResponse {
   final bool? status;
   @override
   final String? details;
-  @JsonKey()
   @override
+  @JsonKey()
   final InfoType type;
   @override
   final String message;
@@ -196,7 +174,7 @@ class _$_InfoResponse extends _InfoResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _InfoResponse &&
+            other is _$_InfoResponse &&
             const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality().equals(other.details, details) &&
             const DeepCollectionEquality().equals(other.type, type) &&
@@ -215,32 +193,32 @@ class _$_InfoResponse extends _InfoResponse {
 
   @JsonKey(ignore: true)
   @override
-  _$InfoResponseCopyWith<_InfoResponse> get copyWith =>
-      __$InfoResponseCopyWithImpl<_InfoResponse>(this, _$identity);
+  _$$_InfoResponseCopyWith<_$_InfoResponse> get copyWith =>
+      __$$_InfoResponseCopyWithImpl<_$_InfoResponse>(this, _$identity);
 }
 
 abstract class _InfoResponse extends InfoResponse {
   const factory _InfoResponse(
-      {bool? status,
-      String? details,
-      InfoType type,
-      required String message,
-      @JsonKey(ignore: true) bool pop}) = _$_InfoResponse;
+      {final bool? status,
+      final String? details,
+      final InfoType type,
+      required final String message,
+      @JsonKey(ignore: true) final bool pop}) = _$_InfoResponse;
   const _InfoResponse._() : super._();
 
   @override
-  bool? get status;
+  bool? get status => throw _privateConstructorUsedError;
   @override
-  String? get details;
+  String? get details => throw _privateConstructorUsedError;
   @override
-  InfoType get type;
+  InfoType get type => throw _privateConstructorUsedError;
   @override
-  String get message;
-  @override
-  @JsonKey(ignore: true)
-  bool get pop;
+  String get message => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$InfoResponseCopyWith<_InfoResponse> get copyWith =>
+  bool get pop => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$$_InfoResponseCopyWith<_$_InfoResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }

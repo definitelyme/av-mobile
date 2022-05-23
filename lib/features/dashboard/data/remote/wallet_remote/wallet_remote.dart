@@ -24,10 +24,7 @@ abstract class WalletRemote {
   Future<AppHttpResponse> addCard(@Path() String id, @Body() DebitCardDTOData card);
 
   @POST(EndPoints.FUND_WALLET)
-  Future<AppHttpResponse> fundWallet(
-    @Field('amount') String amount, {
-    @Field('pin') required String cardPin,
-  });
+  Future<AppHttpResponse> fundWallet(@Field('amount') String amount);
 
   @POST(EndPoints.WITHDRAW_WALLET)
   Future<AppHttpResponse> withdraw(

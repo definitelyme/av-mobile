@@ -12,32 +12,11 @@ part of bid_history_dto.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 BidHistoryDTO _$BidHistoryDTOFromJson(Map<String, dynamic> json) {
   return _BidHistoryDTO.fromJson(json);
 }
-
-/// @nodoc
-class _$BidHistoryDTOTearOff {
-  const _$BidHistoryDTOTearOff();
-
-  _BidHistoryDTO call(
-      {@JsonKey(name: '_meta') MetaDTO? meta,
-      required _BidHistoryDTOData data}) {
-    return _BidHistoryDTO(
-      meta: meta,
-      data: data,
-    );
-  }
-
-  BidHistoryDTO fromJson(Map<String, Object?> json) {
-    return BidHistoryDTO.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $BidHistoryDTO = _$BidHistoryDTOTearOff();
 
 /// @nodoc
 mixin _$BidHistoryDTO {
@@ -108,11 +87,11 @@ class _$BidHistoryDTOCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$BidHistoryDTOCopyWith<$Res>
+abstract class _$$_BidHistoryDTOCopyWith<$Res>
     implements $BidHistoryDTOCopyWith<$Res> {
-  factory _$BidHistoryDTOCopyWith(
-          _BidHistoryDTO value, $Res Function(_BidHistoryDTO) then) =
-      __$BidHistoryDTOCopyWithImpl<$Res>;
+  factory _$$_BidHistoryDTOCopyWith(
+          _$_BidHistoryDTO value, $Res Function(_$_BidHistoryDTO) then) =
+      __$$_BidHistoryDTOCopyWithImpl<$Res>;
   @override
   $Res call({@JsonKey(name: '_meta') MetaDTO? meta, _BidHistoryDTOData data});
 
@@ -123,22 +102,22 @@ abstract class _$BidHistoryDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$BidHistoryDTOCopyWithImpl<$Res>
+class __$$_BidHistoryDTOCopyWithImpl<$Res>
     extends _$BidHistoryDTOCopyWithImpl<$Res>
-    implements _$BidHistoryDTOCopyWith<$Res> {
-  __$BidHistoryDTOCopyWithImpl(
-      _BidHistoryDTO _value, $Res Function(_BidHistoryDTO) _then)
-      : super(_value, (v) => _then(v as _BidHistoryDTO));
+    implements _$$_BidHistoryDTOCopyWith<$Res> {
+  __$$_BidHistoryDTOCopyWithImpl(
+      _$_BidHistoryDTO _value, $Res Function(_$_BidHistoryDTO) _then)
+      : super(_value, (v) => _then(v as _$_BidHistoryDTO));
 
   @override
-  _BidHistoryDTO get _value => super._value as _BidHistoryDTO;
+  _$_BidHistoryDTO get _value => super._value as _$_BidHistoryDTO;
 
   @override
   $Res call({
     Object? meta = freezed,
     Object? data = freezed,
   }) {
-    return _then(_BidHistoryDTO(
+    return _then(_$_BidHistoryDTO(
       meta: meta == freezed
           ? _value.meta
           : meta // ignore: cast_nullable_to_non_nullable
@@ -176,11 +155,12 @@ class _$_BidHistoryDTO extends _BidHistoryDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _BidHistoryDTO &&
+            other is _$_BidHistoryDTO &&
             const DeepCollectionEquality().equals(other.meta, meta) &&
             const DeepCollectionEquality().equals(other.data, data));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -189,8 +169,8 @@ class _$_BidHistoryDTO extends _BidHistoryDTO {
 
   @JsonKey(ignore: true)
   @override
-  _$BidHistoryDTOCopyWith<_BidHistoryDTO> get copyWith =>
-      __$BidHistoryDTOCopyWithImpl<_BidHistoryDTO>(this, _$identity);
+  _$$_BidHistoryDTOCopyWith<_$_BidHistoryDTO> get copyWith =>
+      __$$_BidHistoryDTOCopyWithImpl<_$_BidHistoryDTO>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -200,8 +180,8 @@ class _$_BidHistoryDTO extends _BidHistoryDTO {
 
 abstract class _BidHistoryDTO extends BidHistoryDTO {
   const factory _BidHistoryDTO(
-      {@JsonKey(name: '_meta') MetaDTO? meta,
-      required _BidHistoryDTOData data}) = _$_BidHistoryDTO;
+      {@JsonKey(name: '_meta') final MetaDTO? meta,
+      required final _BidHistoryDTOData data}) = _$_BidHistoryDTO;
   const _BidHistoryDTO._() : super._();
 
   factory _BidHistoryDTO.fromJson(Map<String, dynamic> json) =
@@ -209,43 +189,18 @@ abstract class _BidHistoryDTO extends BidHistoryDTO {
 
   @override
   @JsonKey(name: '_meta')
-  MetaDTO? get meta;
+  MetaDTO? get meta => throw _privateConstructorUsedError;
   @override
-  _BidHistoryDTOData get data;
+  _BidHistoryDTOData get data => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$BidHistoryDTOCopyWith<_BidHistoryDTO> get copyWith =>
+  _$$_BidHistoryDTOCopyWith<_$_BidHistoryDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 _BidHistoryDTOData _$_BidHistoryDTODataFromJson(Map<String, dynamic> json) {
   return __BidHistoryDTOData.fromJson(json);
 }
-
-/// @nodoc
-class _$_BidHistoryDTODataTearOff {
-  const _$_BidHistoryDTODataTearOff();
-
-  __BidHistoryDTOData call(
-      {@IntegerSerializer() double? totalAuctionsParticipated,
-      @IntegerSerializer() double? totalWinningBid,
-      @IntegerSerializer() double? totalAmountSpent,
-      List<DealDTOData> dealHistory = const []}) {
-    return __BidHistoryDTOData(
-      totalAuctionsParticipated: totalAuctionsParticipated,
-      totalWinningBid: totalWinningBid,
-      totalAmountSpent: totalAmountSpent,
-      dealHistory: dealHistory,
-    );
-  }
-
-  _BidHistoryDTOData fromJson(Map<String, Object?> json) {
-    return _BidHistoryDTOData.fromJson(json);
-  }
-}
-
-/// @nodoc
-const _$BidHistoryDTOData = _$_BidHistoryDTODataTearOff();
 
 /// @nodoc
 mixin _$_BidHistoryDTOData {
@@ -313,11 +268,11 @@ class __$BidHistoryDTODataCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$_BidHistoryDTODataCopyWith<$Res>
+abstract class _$$__BidHistoryDTODataCopyWith<$Res>
     implements _$BidHistoryDTODataCopyWith<$Res> {
-  factory _$_BidHistoryDTODataCopyWith(
-          __BidHistoryDTOData value, $Res Function(__BidHistoryDTOData) then) =
-      __$_BidHistoryDTODataCopyWithImpl<$Res>;
+  factory _$$__BidHistoryDTODataCopyWith(_$__BidHistoryDTOData value,
+          $Res Function(_$__BidHistoryDTOData) then) =
+      __$$__BidHistoryDTODataCopyWithImpl<$Res>;
   @override
   $Res call(
       {@IntegerSerializer() double? totalAuctionsParticipated,
@@ -327,15 +282,15 @@ abstract class _$_BidHistoryDTODataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$_BidHistoryDTODataCopyWithImpl<$Res>
+class __$$__BidHistoryDTODataCopyWithImpl<$Res>
     extends __$BidHistoryDTODataCopyWithImpl<$Res>
-    implements _$_BidHistoryDTODataCopyWith<$Res> {
-  __$_BidHistoryDTODataCopyWithImpl(
-      __BidHistoryDTOData _value, $Res Function(__BidHistoryDTOData) _then)
-      : super(_value, (v) => _then(v as __BidHistoryDTOData));
+    implements _$$__BidHistoryDTODataCopyWith<$Res> {
+  __$$__BidHistoryDTODataCopyWithImpl(
+      _$__BidHistoryDTOData _value, $Res Function(_$__BidHistoryDTOData) _then)
+      : super(_value, (v) => _then(v as _$__BidHistoryDTOData));
 
   @override
-  __BidHistoryDTOData get _value => super._value as __BidHistoryDTOData;
+  _$__BidHistoryDTOData get _value => super._value as _$__BidHistoryDTOData;
 
   @override
   $Res call({
@@ -344,7 +299,7 @@ class __$_BidHistoryDTODataCopyWithImpl<$Res>
     Object? totalAmountSpent = freezed,
     Object? dealHistory = freezed,
   }) {
-    return _then(__BidHistoryDTOData(
+    return _then(_$__BidHistoryDTOData(
       totalAuctionsParticipated: totalAuctionsParticipated == freezed
           ? _value.totalAuctionsParticipated
           : totalAuctionsParticipated // ignore: cast_nullable_to_non_nullable
@@ -358,7 +313,7 @@ class __$_BidHistoryDTODataCopyWithImpl<$Res>
           : totalAmountSpent // ignore: cast_nullable_to_non_nullable
               as double?,
       dealHistory: dealHistory == freezed
-          ? _value.dealHistory
+          ? _value._dealHistory
           : dealHistory // ignore: cast_nullable_to_non_nullable
               as List<DealDTOData>,
     ));
@@ -372,8 +327,9 @@ class _$__BidHistoryDTOData extends __BidHistoryDTOData {
       {@IntegerSerializer() this.totalAuctionsParticipated,
       @IntegerSerializer() this.totalWinningBid,
       @IntegerSerializer() this.totalAmountSpent,
-      this.dealHistory = const []})
-      : super._();
+      final List<DealDTOData> dealHistory = const []})
+      : _dealHistory = dealHistory,
+        super._();
 
   factory _$__BidHistoryDTOData.fromJson(Map<String, dynamic> json) =>
       _$$__BidHistoryDTODataFromJson(json);
@@ -387,9 +343,13 @@ class _$__BidHistoryDTOData extends __BidHistoryDTOData {
   @override
   @IntegerSerializer()
   final double? totalAmountSpent;
-  @JsonKey()
+  final List<DealDTOData> _dealHistory;
   @override
-  final List<DealDTOData> dealHistory;
+  @JsonKey()
+  List<DealDTOData> get dealHistory {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_dealHistory);
+  }
 
   @override
   String toString() {
@@ -400,7 +360,7 @@ class _$__BidHistoryDTOData extends __BidHistoryDTOData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is __BidHistoryDTOData &&
+            other is _$__BidHistoryDTOData &&
             const DeepCollectionEquality().equals(
                 other.totalAuctionsParticipated, totalAuctionsParticipated) &&
             const DeepCollectionEquality()
@@ -408,21 +368,23 @@ class _$__BidHistoryDTOData extends __BidHistoryDTOData {
             const DeepCollectionEquality()
                 .equals(other.totalAmountSpent, totalAmountSpent) &&
             const DeepCollectionEquality()
-                .equals(other.dealHistory, dealHistory));
+                .equals(other._dealHistory, _dealHistory));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(totalAuctionsParticipated),
       const DeepCollectionEquality().hash(totalWinningBid),
       const DeepCollectionEquality().hash(totalAmountSpent),
-      const DeepCollectionEquality().hash(dealHistory));
+      const DeepCollectionEquality().hash(_dealHistory));
 
   @JsonKey(ignore: true)
   @override
-  _$_BidHistoryDTODataCopyWith<__BidHistoryDTOData> get copyWith =>
-      __$_BidHistoryDTODataCopyWithImpl<__BidHistoryDTOData>(this, _$identity);
+  _$$__BidHistoryDTODataCopyWith<_$__BidHistoryDTOData> get copyWith =>
+      __$$__BidHistoryDTODataCopyWithImpl<_$__BidHistoryDTOData>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -432,10 +394,10 @@ class _$__BidHistoryDTOData extends __BidHistoryDTOData {
 
 abstract class __BidHistoryDTOData extends _BidHistoryDTOData {
   const factory __BidHistoryDTOData(
-      {@IntegerSerializer() double? totalAuctionsParticipated,
-      @IntegerSerializer() double? totalWinningBid,
-      @IntegerSerializer() double? totalAmountSpent,
-      List<DealDTOData> dealHistory}) = _$__BidHistoryDTOData;
+      {@IntegerSerializer() final double? totalAuctionsParticipated,
+      @IntegerSerializer() final double? totalWinningBid,
+      @IntegerSerializer() final double? totalAmountSpent,
+      final List<DealDTOData> dealHistory}) = _$__BidHistoryDTOData;
   const __BidHistoryDTOData._() : super._();
 
   factory __BidHistoryDTOData.fromJson(Map<String, dynamic> json) =
@@ -443,17 +405,17 @@ abstract class __BidHistoryDTOData extends _BidHistoryDTOData {
 
   @override
   @IntegerSerializer()
-  double? get totalAuctionsParticipated;
+  double? get totalAuctionsParticipated => throw _privateConstructorUsedError;
   @override
   @IntegerSerializer()
-  double? get totalWinningBid;
+  double? get totalWinningBid => throw _privateConstructorUsedError;
   @override
   @IntegerSerializer()
-  double? get totalAmountSpent;
+  double? get totalAmountSpent => throw _privateConstructorUsedError;
   @override
-  List<DealDTOData> get dealHistory;
+  List<DealDTOData> get dealHistory => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$_BidHistoryDTODataCopyWith<__BidHistoryDTOData> get copyWith =>
+  _$$__BidHistoryDTODataCopyWith<_$__BidHistoryDTOData> get copyWith =>
       throw _privateConstructorUsedError;
 }

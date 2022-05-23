@@ -12,38 +12,7 @@ part of promotion.entity.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$PromotionTearOff {
-  const _$PromotionTearOff();
-
-  _Promotion call(
-      {required UniqueId<String?> id,
-      required MediaField url,
-      required AttachmentMime mime,
-      required MediaField streamUrl,
-      required BasicTextField<String?> description,
-      DateTime? stopShowingAt,
-      DateTime? createdAt,
-      DateTime? updatedAt,
-      DateTime? deletedAt}) {
-    return _Promotion(
-      id: id,
-      url: url,
-      mime: mime,
-      streamUrl: streamUrl,
-      description: description,
-      stopShowingAt: stopShowingAt,
-      createdAt: createdAt,
-      updatedAt: updatedAt,
-      deletedAt: deletedAt,
-    );
-  }
-}
-
-/// @nodoc
-const $Promotion = _$PromotionTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$Promotion {
@@ -140,10 +109,10 @@ class _$PromotionCopyWithImpl<$Res> implements $PromotionCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$PromotionCopyWith<$Res> implements $PromotionCopyWith<$Res> {
-  factory _$PromotionCopyWith(
-          _Promotion value, $Res Function(_Promotion) then) =
-      __$PromotionCopyWithImpl<$Res>;
+abstract class _$$_PromotionCopyWith<$Res> implements $PromotionCopyWith<$Res> {
+  factory _$$_PromotionCopyWith(
+          _$_Promotion value, $Res Function(_$_Promotion) then) =
+      __$$_PromotionCopyWithImpl<$Res>;
   @override
   $Res call(
       {UniqueId<String?> id,
@@ -158,13 +127,14 @@ abstract class _$PromotionCopyWith<$Res> implements $PromotionCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$PromotionCopyWithImpl<$Res> extends _$PromotionCopyWithImpl<$Res>
-    implements _$PromotionCopyWith<$Res> {
-  __$PromotionCopyWithImpl(_Promotion _value, $Res Function(_Promotion) _then)
-      : super(_value, (v) => _then(v as _Promotion));
+class __$$_PromotionCopyWithImpl<$Res> extends _$PromotionCopyWithImpl<$Res>
+    implements _$$_PromotionCopyWith<$Res> {
+  __$$_PromotionCopyWithImpl(
+      _$_Promotion _value, $Res Function(_$_Promotion) _then)
+      : super(_value, (v) => _then(v as _$_Promotion));
 
   @override
-  _Promotion get _value => super._value as _Promotion;
+  _$_Promotion get _value => super._value as _$_Promotion;
 
   @override
   $Res call({
@@ -178,7 +148,7 @@ class __$PromotionCopyWithImpl<$Res> extends _$PromotionCopyWithImpl<$Res>
     Object? updatedAt = freezed,
     Object? deletedAt = freezed,
   }) {
-    return _then(_Promotion(
+    return _then(_$_Promotion(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -262,7 +232,7 @@ class _$_Promotion extends _Promotion {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Promotion &&
+            other is _$_Promotion &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.url, url) &&
             const DeepCollectionEquality().equals(other.mime, mime) &&
@@ -291,43 +261,43 @@ class _$_Promotion extends _Promotion {
 
   @JsonKey(ignore: true)
   @override
-  _$PromotionCopyWith<_Promotion> get copyWith =>
-      __$PromotionCopyWithImpl<_Promotion>(this, _$identity);
+  _$$_PromotionCopyWith<_$_Promotion> get copyWith =>
+      __$$_PromotionCopyWithImpl<_$_Promotion>(this, _$identity);
 }
 
 abstract class _Promotion extends Promotion {
   const factory _Promotion(
-      {required UniqueId<String?> id,
-      required MediaField url,
-      required AttachmentMime mime,
-      required MediaField streamUrl,
-      required BasicTextField<String?> description,
-      DateTime? stopShowingAt,
-      DateTime? createdAt,
-      DateTime? updatedAt,
-      DateTime? deletedAt}) = _$_Promotion;
+      {required final UniqueId<String?> id,
+      required final MediaField url,
+      required final AttachmentMime mime,
+      required final MediaField streamUrl,
+      required final BasicTextField<String?> description,
+      final DateTime? stopShowingAt,
+      final DateTime? createdAt,
+      final DateTime? updatedAt,
+      final DateTime? deletedAt}) = _$_Promotion;
   const _Promotion._() : super._();
 
   @override
-  UniqueId<String?> get id;
+  UniqueId<String?> get id => throw _privateConstructorUsedError;
   @override
-  MediaField get url;
+  MediaField get url => throw _privateConstructorUsedError;
   @override
-  AttachmentMime get mime;
+  AttachmentMime get mime => throw _privateConstructorUsedError;
   @override
-  MediaField get streamUrl;
+  MediaField get streamUrl => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get description;
+  BasicTextField<String?> get description => throw _privateConstructorUsedError;
   @override
-  DateTime? get stopShowingAt;
+  DateTime? get stopShowingAt => throw _privateConstructorUsedError;
   @override
-  DateTime? get createdAt;
+  DateTime? get createdAt => throw _privateConstructorUsedError;
   @override
-  DateTime? get updatedAt;
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
   @override
-  DateTime? get deletedAt;
+  DateTime? get deletedAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$PromotionCopyWith<_Promotion> get copyWith =>
+  _$$_PromotionCopyWith<_$_Promotion> get copyWith =>
       throw _privateConstructorUsedError;
 }

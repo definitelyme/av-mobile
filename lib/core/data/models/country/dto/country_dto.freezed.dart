@@ -12,44 +12,11 @@ part of country_dto.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 CountryDTO _$CountryDTOFromJson(Map<String, dynamic> json) {
   return _CountryDTO.fromJson(json);
 }
-
-/// @nodoc
-class _$CountryDTOTearOff {
-  const _$CountryDTOTearOff();
-
-  _CountryDTO call(
-      {String? id,
-      String? name,
-      @JsonKey(name: 'isoCode') String? iso,
-      @JsonKey(name: 'dialCode') String? dialCode,
-      @JsonKey(name: 'flag') String? flagUrl,
-      @CurrencyTypeSerializer() CurrencyType? currency,
-      @JsonKey(name: 'currency_icon') String? currencyIcon,
-      String? locale}) {
-    return _CountryDTO(
-      id: id,
-      name: name,
-      iso: iso,
-      dialCode: dialCode,
-      flagUrl: flagUrl,
-      currency: currency,
-      currencyIcon: currencyIcon,
-      locale: locale,
-    );
-  }
-
-  CountryDTO fromJson(Map<String, Object?> json) {
-    return CountryDTO.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $CountryDTO = _$CountryDTOTearOff();
 
 /// @nodoc
 mixin _$CountryDTO {
@@ -146,10 +113,11 @@ class _$CountryDTOCopyWithImpl<$Res> implements $CountryDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$CountryDTOCopyWith<$Res> implements $CountryDTOCopyWith<$Res> {
-  factory _$CountryDTOCopyWith(
-          _CountryDTO value, $Res Function(_CountryDTO) then) =
-      __$CountryDTOCopyWithImpl<$Res>;
+abstract class _$$_CountryDTOCopyWith<$Res>
+    implements $CountryDTOCopyWith<$Res> {
+  factory _$$_CountryDTOCopyWith(
+          _$_CountryDTO value, $Res Function(_$_CountryDTO) then) =
+      __$$_CountryDTOCopyWithImpl<$Res>;
   @override
   $Res call(
       {String? id,
@@ -163,14 +131,14 @@ abstract class _$CountryDTOCopyWith<$Res> implements $CountryDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$CountryDTOCopyWithImpl<$Res> extends _$CountryDTOCopyWithImpl<$Res>
-    implements _$CountryDTOCopyWith<$Res> {
-  __$CountryDTOCopyWithImpl(
-      _CountryDTO _value, $Res Function(_CountryDTO) _then)
-      : super(_value, (v) => _then(v as _CountryDTO));
+class __$$_CountryDTOCopyWithImpl<$Res> extends _$CountryDTOCopyWithImpl<$Res>
+    implements _$$_CountryDTOCopyWith<$Res> {
+  __$$_CountryDTOCopyWithImpl(
+      _$_CountryDTO _value, $Res Function(_$_CountryDTO) _then)
+      : super(_value, (v) => _then(v as _$_CountryDTO));
 
   @override
-  _CountryDTO get _value => super._value as _CountryDTO;
+  _$_CountryDTO get _value => super._value as _$_CountryDTO;
 
   @override
   $Res call({
@@ -183,7 +151,7 @@ class __$CountryDTOCopyWithImpl<$Res> extends _$CountryDTOCopyWithImpl<$Res>
     Object? currencyIcon = freezed,
     Object? locale = freezed,
   }) {
-    return _then(_CountryDTO(
+    return _then(_$_CountryDTO(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -268,7 +236,7 @@ class _$_CountryDTO extends _CountryDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _CountryDTO &&
+            other is _$_CountryDTO &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.iso, iso) &&
@@ -280,6 +248,7 @@ class _$_CountryDTO extends _CountryDTO {
             const DeepCollectionEquality().equals(other.locale, locale));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -294,8 +263,8 @@ class _$_CountryDTO extends _CountryDTO {
 
   @JsonKey(ignore: true)
   @override
-  _$CountryDTOCopyWith<_CountryDTO> get copyWith =>
-      __$CountryDTOCopyWithImpl<_CountryDTO>(this, _$identity);
+  _$$_CountryDTOCopyWith<_$_CountryDTO> get copyWith =>
+      __$$_CountryDTOCopyWithImpl<_$_CountryDTO>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -305,42 +274,42 @@ class _$_CountryDTO extends _CountryDTO {
 
 abstract class _CountryDTO extends CountryDTO {
   const factory _CountryDTO(
-      {String? id,
-      String? name,
-      @JsonKey(name: 'isoCode') String? iso,
-      @JsonKey(name: 'dialCode') String? dialCode,
-      @JsonKey(name: 'flag') String? flagUrl,
-      @CurrencyTypeSerializer() CurrencyType? currency,
-      @JsonKey(name: 'currency_icon') String? currencyIcon,
-      String? locale}) = _$_CountryDTO;
+      {final String? id,
+      final String? name,
+      @JsonKey(name: 'isoCode') final String? iso,
+      @JsonKey(name: 'dialCode') final String? dialCode,
+      @JsonKey(name: 'flag') final String? flagUrl,
+      @CurrencyTypeSerializer() final CurrencyType? currency,
+      @JsonKey(name: 'currency_icon') final String? currencyIcon,
+      final String? locale}) = _$_CountryDTO;
   const _CountryDTO._() : super._();
 
   factory _CountryDTO.fromJson(Map<String, dynamic> json) =
       _$_CountryDTO.fromJson;
 
   @override
-  String? get id;
+  String? get id => throw _privateConstructorUsedError;
   @override
-  String? get name;
+  String? get name => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'isoCode')
-  String? get iso;
+  String? get iso => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'dialCode')
-  String? get dialCode;
+  String? get dialCode => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'flag')
-  String? get flagUrl;
+  String? get flagUrl => throw _privateConstructorUsedError;
   @override
   @CurrencyTypeSerializer()
-  CurrencyType? get currency;
+  CurrencyType? get currency => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'currency_icon')
-  String? get currencyIcon;
+  String? get currencyIcon => throw _privateConstructorUsedError;
   @override
-  String? get locale;
+  String? get locale => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$CountryDTOCopyWith<_CountryDTO> get copyWith =>
+  _$$_CountryDTOCopyWith<_$_CountryDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -12,21 +12,7 @@ part of preference_repository.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$PreferenceRepositoryTearOff {
-  const _$PreferenceRepositoryTearOff();
-
-  _PreferenceRepository call(SharedPreferences preferences) {
-    return _PreferenceRepository(
-      preferences,
-    );
-  }
-}
-
-/// @nodoc
-const $PreferenceRepository = _$PreferenceRepositoryTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$PreferenceRepository {
@@ -68,31 +54,31 @@ class _$PreferenceRepositoryCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$PreferenceRepositoryCopyWith<$Res>
+abstract class _$$_PreferenceRepositoryCopyWith<$Res>
     implements $PreferenceRepositoryCopyWith<$Res> {
-  factory _$PreferenceRepositoryCopyWith(_PreferenceRepository value,
-          $Res Function(_PreferenceRepository) then) =
-      __$PreferenceRepositoryCopyWithImpl<$Res>;
+  factory _$$_PreferenceRepositoryCopyWith(_$_PreferenceRepository value,
+          $Res Function(_$_PreferenceRepository) then) =
+      __$$_PreferenceRepositoryCopyWithImpl<$Res>;
   @override
   $Res call({SharedPreferences preferences});
 }
 
 /// @nodoc
-class __$PreferenceRepositoryCopyWithImpl<$Res>
+class __$$_PreferenceRepositoryCopyWithImpl<$Res>
     extends _$PreferenceRepositoryCopyWithImpl<$Res>
-    implements _$PreferenceRepositoryCopyWith<$Res> {
-  __$PreferenceRepositoryCopyWithImpl(
-      _PreferenceRepository _value, $Res Function(_PreferenceRepository) _then)
-      : super(_value, (v) => _then(v as _PreferenceRepository));
+    implements _$$_PreferenceRepositoryCopyWith<$Res> {
+  __$$_PreferenceRepositoryCopyWithImpl(_$_PreferenceRepository _value,
+      $Res Function(_$_PreferenceRepository) _then)
+      : super(_value, (v) => _then(v as _$_PreferenceRepository));
 
   @override
-  _PreferenceRepository get _value => super._value as _PreferenceRepository;
+  _$_PreferenceRepository get _value => super._value as _$_PreferenceRepository;
 
   @override
   $Res call({
     Object? preferences = freezed,
   }) {
-    return _then(_PreferenceRepository(
+    return _then(_$_PreferenceRepository(
       preferences == freezed
           ? _value.preferences
           : preferences // ignore: cast_nullable_to_non_nullable
@@ -128,7 +114,7 @@ class _$_PreferenceRepository extends _PreferenceRepository
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PreferenceRepository &&
+            other is _$_PreferenceRepository &&
             const DeepCollectionEquality()
                 .equals(other.preferences, preferences));
   }
@@ -139,20 +125,20 @@ class _$_PreferenceRepository extends _PreferenceRepository
 
   @JsonKey(ignore: true)
   @override
-  _$PreferenceRepositoryCopyWith<_PreferenceRepository> get copyWith =>
-      __$PreferenceRepositoryCopyWithImpl<_PreferenceRepository>(
+  _$$_PreferenceRepositoryCopyWith<_$_PreferenceRepository> get copyWith =>
+      __$$_PreferenceRepositoryCopyWithImpl<_$_PreferenceRepository>(
           this, _$identity);
 }
 
 abstract class _PreferenceRepository extends PreferenceRepository {
-  const factory _PreferenceRepository(SharedPreferences preferences) =
+  const factory _PreferenceRepository(final SharedPreferences preferences) =
       _$_PreferenceRepository;
   const _PreferenceRepository._() : super._();
 
   @override
-  SharedPreferences get preferences;
+  SharedPreferences get preferences => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$PreferenceRepositoryCopyWith<_PreferenceRepository> get copyWith =>
+  _$$_PreferenceRepositoryCopyWith<_$_PreferenceRepository> get copyWith =>
       throw _privateConstructorUsedError;
 }

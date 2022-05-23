@@ -1,46 +1,55 @@
-part of app_database.dart;
+library user_dto.dart;
+
+import 'package:auctionvillage/core/data/models/index.dart';
+import 'package:auctionvillage/core/domain/entities/entities.dart';
+import 'package:auctionvillage/manager/serializer/serializers.dart';
+import 'package:auctionvillage/utils/utils.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:kt_dart/kt.dart';
+
+part 'user_dto.freezed.dart';
+part 'user_dto.g.dart';
+part 'user_dto.hive.dart';
 
 UserDTO deserializeUserDTO(Map<String, dynamic> json) => UserDTO.fromJson(json);
 Map<String, dynamic> serializeUserDTO(UserDTO object) => object.toJson();
 
-@freezed
-@immutable
-class UserDTO with _$UserDTO {
-  static const String tableName = 'users';
-
-  @Entity(tableName: UserDTO.tableName)
-  const factory UserDTO({
-    @primaryKey @JsonKey(name: '_id') String? id,
-    String? token,
-    String? firstName,
-    String? lastName,
-    String? fullName,
-    @BooleanSerializer() bool? isPrivate,
-    String? email,
-    @JsonKey(name: 'mobile') String? phone,
-    String? password,
-    @JsonKey(name: 'current_password') String? oldPassword,
-    @JsonKey(name: 'password_confirmation') String? confirmation,
-    @JsonKey(name: 'country') String? countryName,
-    String? platform,
-    String? avatar,
+@unfreezed
+class UserDTO extends HiveObject with _$UserDTO {
+  @HiveType(typeId: 1, adapterName: 'UserDTOAdapter')
+  factory UserDTO({
+    @HiveField(1) @JsonKey(name: '_id') @StringSerializer() String? id,
+    @HiveField(2) String? token,
+    @HiveField(3) String? firstName,
+    @HiveField(4) String? lastName,
+    @HiveField(5) String? fullName,
+    @HiveField(6) @BooleanSerializer() bool? isPrivate,
+    @HiveField(7) String? email,
+    @HiveField(8) @JsonKey(name: 'mobile') String? phone,
+    @HiveField(9) String? password,
+    @HiveField(10) @JsonKey(name: 'current_password') String? oldPassword,
+    @HiveField(11) @JsonKey(name: 'password_confirmation') String? confirmation,
+    @HiveField(12) @JsonKey(name: 'country') String? countryName,
+    @HiveField(13) String? platform,
+    @HiveField(14) String? avatar,
     //
-    @ignore @BooleanSerializer() bool? favAthlete,
-    @ignore @BooleanSerializer() bool? favPlace,
-    @ignore @BooleanSerializer() bool? locality,
+    @HiveField(15) @BooleanSerializer() bool? favAthlete,
+    @HiveField(16) @BooleanSerializer() bool? favPlace,
+    @HiveField(17) @BooleanSerializer() bool? locality,
     //
-    @BooleanSerializer() bool? active,
-    @BooleanSerializer() bool? accountVerified,
-    @AuthProviderSerializer() AuthProvider? provider,
-    @TimestampConverter() DateTime? createdBy,
-    @TimestampConverter() DateTime? updatedBy,
-    @TimestampConverter() DateTime? deletedBy,
-    @TimestampConverter() DateTime? createdAt,
-    @TimestampConverter() DateTime? updatedAt,
-    @TimestampConverter() DateTime? deletedAt,
+    @HiveField(18) @BooleanSerializer() bool? active,
+    @HiveField(19) @BooleanSerializer() bool? accountVerified,
+    @HiveField(20) @AuthProviderSerializer() AuthProvider? provider,
+    @HiveField(21) @TimestampConverter() DateTime? createdBy,
+    @HiveField(22) @TimestampConverter() DateTime? updatedBy,
+    @HiveField(23) @TimestampConverter() DateTime? deletedBy,
+    @HiveField(24) @TimestampConverter() DateTime? createdAt,
+    @HiveField(25) @TimestampConverter() DateTime? updatedAt,
+    @HiveField(26) @TimestampConverter() DateTime? deletedAt,
   }) = _UserDTO;
 
-  const UserDTO._();
+  UserDTO._();
 
   factory UserDTO.fromDomain(User? instance) => UserDTO(
         firstName: instance?.firstName.valueOrNull,
@@ -86,37 +95,13 @@ class UserDTO with _$UserDTO {
         deletedAt: deletedAt,
       );
 
-  _$_UserDTO get floor => _$_UserDTO(
-        id: id,
-        token: token,
-        fullName: fullName,
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        password: password,
-        oldPassword: oldPassword,
-        confirmation: confirmation,
-        phone: phone,
-        avatar: avatar,
-        provider: provider,
-        isPrivate: isPrivate,
-        active: active,
-        platform: platform,
-        countryName: countryName,
-        accountVerified: accountVerified,
-        createdBy: createdBy,
-        updatedBy: updatedBy,
-        deletedBy: deletedBy,
-        createdAt: createdAt,
-        updatedAt: updatedAt,
-        deletedAt: deletedAt,
-      );
-
   static bool? isEmailVerifiedFromJson(dynamic dateTime) {
     if (dateTime == null) return false;
     if (dateTime is bool) return dateTime;
     return (dateTime as String?) != null && dateTime!.isNotEmpty;
   }
+
+  static void registerAdapter() => Hive.registerAdapter(UserDTOAdapter());
 }
 
 UserListDTO deserializeUserListDTO(Map<String, dynamic> json) => UserListDTO.fromJson(json);
@@ -137,22 +122,4 @@ class UserListDTO with _$UserListDTO {
 
   /// Maps the Data Transfer Object to a KtList<DomainEntity> Object.
   KtList<User> get domain => KtList.from(data.map((e) => e.domain));
-}
-
-@dao
-abstract class UserDAO extends BaseDAO<_$_UserDTO> {
-  @Query('SELECT * FROM ${UserDTO.tableName}')
-  Stream<List<_$_UserDTO?>> watchUsers();
-
-  @Query('SELECT * FROM ${UserDTO.tableName}')
-  Future<List<_$_UserDTO?>> allUsers();
-
-  @Query('SELECT * FROM ${UserDTO.tableName} WHERE id = :id')
-  Future<_$_UserDTO?> findUser(int id);
-
-  @Query('DELETE FROM ${UserDTO.tableName}')
-  Future<void> removeUsers();
-
-  @Query('SELECT * FROM ${UserDTO.tableName} ORDER BY ID DESC LIMIT 1')
-  Future<_$_UserDTO?> lastUser();
 }

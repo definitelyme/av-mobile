@@ -12,32 +12,11 @@ part of sell_history_dto.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 SellHistoryDTO _$SellHistoryDTOFromJson(Map<String, dynamic> json) {
   return _SellHistoryDTO.fromJson(json);
 }
-
-/// @nodoc
-class _$SellHistoryDTOTearOff {
-  const _$SellHistoryDTOTearOff();
-
-  _SellHistoryDTO call(
-      {@JsonKey(name: '_meta') MetaDTO? meta,
-      required _SellHistoryDTOData data}) {
-    return _SellHistoryDTO(
-      meta: meta,
-      data: data,
-    );
-  }
-
-  SellHistoryDTO fromJson(Map<String, Object?> json) {
-    return SellHistoryDTO.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $SellHistoryDTO = _$SellHistoryDTOTearOff();
 
 /// @nodoc
 mixin _$SellHistoryDTO {
@@ -108,11 +87,11 @@ class _$SellHistoryDTOCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$SellHistoryDTOCopyWith<$Res>
+abstract class _$$_SellHistoryDTOCopyWith<$Res>
     implements $SellHistoryDTOCopyWith<$Res> {
-  factory _$SellHistoryDTOCopyWith(
-          _SellHistoryDTO value, $Res Function(_SellHistoryDTO) then) =
-      __$SellHistoryDTOCopyWithImpl<$Res>;
+  factory _$$_SellHistoryDTOCopyWith(
+          _$_SellHistoryDTO value, $Res Function(_$_SellHistoryDTO) then) =
+      __$$_SellHistoryDTOCopyWithImpl<$Res>;
   @override
   $Res call({@JsonKey(name: '_meta') MetaDTO? meta, _SellHistoryDTOData data});
 
@@ -123,22 +102,22 @@ abstract class _$SellHistoryDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$SellHistoryDTOCopyWithImpl<$Res>
+class __$$_SellHistoryDTOCopyWithImpl<$Res>
     extends _$SellHistoryDTOCopyWithImpl<$Res>
-    implements _$SellHistoryDTOCopyWith<$Res> {
-  __$SellHistoryDTOCopyWithImpl(
-      _SellHistoryDTO _value, $Res Function(_SellHistoryDTO) _then)
-      : super(_value, (v) => _then(v as _SellHistoryDTO));
+    implements _$$_SellHistoryDTOCopyWith<$Res> {
+  __$$_SellHistoryDTOCopyWithImpl(
+      _$_SellHistoryDTO _value, $Res Function(_$_SellHistoryDTO) _then)
+      : super(_value, (v) => _then(v as _$_SellHistoryDTO));
 
   @override
-  _SellHistoryDTO get _value => super._value as _SellHistoryDTO;
+  _$_SellHistoryDTO get _value => super._value as _$_SellHistoryDTO;
 
   @override
   $Res call({
     Object? meta = freezed,
     Object? data = freezed,
   }) {
-    return _then(_SellHistoryDTO(
+    return _then(_$_SellHistoryDTO(
       meta: meta == freezed
           ? _value.meta
           : meta // ignore: cast_nullable_to_non_nullable
@@ -176,11 +155,12 @@ class _$_SellHistoryDTO extends _SellHistoryDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _SellHistoryDTO &&
+            other is _$_SellHistoryDTO &&
             const DeepCollectionEquality().equals(other.meta, meta) &&
             const DeepCollectionEquality().equals(other.data, data));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -189,8 +169,8 @@ class _$_SellHistoryDTO extends _SellHistoryDTO {
 
   @JsonKey(ignore: true)
   @override
-  _$SellHistoryDTOCopyWith<_SellHistoryDTO> get copyWith =>
-      __$SellHistoryDTOCopyWithImpl<_SellHistoryDTO>(this, _$identity);
+  _$$_SellHistoryDTOCopyWith<_$_SellHistoryDTO> get copyWith =>
+      __$$_SellHistoryDTOCopyWithImpl<_$_SellHistoryDTO>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -200,8 +180,8 @@ class _$_SellHistoryDTO extends _SellHistoryDTO {
 
 abstract class _SellHistoryDTO extends SellHistoryDTO {
   const factory _SellHistoryDTO(
-      {@JsonKey(name: '_meta') MetaDTO? meta,
-      required _SellHistoryDTOData data}) = _$_SellHistoryDTO;
+      {@JsonKey(name: '_meta') final MetaDTO? meta,
+      required final _SellHistoryDTOData data}) = _$_SellHistoryDTO;
   const _SellHistoryDTO._() : super._();
 
   factory _SellHistoryDTO.fromJson(Map<String, dynamic> json) =
@@ -209,43 +189,18 @@ abstract class _SellHistoryDTO extends SellHistoryDTO {
 
   @override
   @JsonKey(name: '_meta')
-  MetaDTO? get meta;
+  MetaDTO? get meta => throw _privateConstructorUsedError;
   @override
-  _SellHistoryDTOData get data;
+  _SellHistoryDTOData get data => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$SellHistoryDTOCopyWith<_SellHistoryDTO> get copyWith =>
+  _$$_SellHistoryDTOCopyWith<_$_SellHistoryDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 _SellHistoryDTOData _$_SellHistoryDTODataFromJson(Map<String, dynamic> json) {
   return __SellHistoryDTOData.fromJson(json);
 }
-
-/// @nodoc
-class _$_SellHistoryDTODataTearOff {
-  const _$_SellHistoryDTODataTearOff();
-
-  __SellHistoryDTOData call(
-      {@IntegerSerializer() double? totalProducts,
-      @IntegerSerializer() double? totalSold,
-      @IntegerSerializer() double? revenue,
-      List<DealDTOData> deals = const []}) {
-    return __SellHistoryDTOData(
-      totalProducts: totalProducts,
-      totalSold: totalSold,
-      revenue: revenue,
-      deals: deals,
-    );
-  }
-
-  _SellHistoryDTOData fromJson(Map<String, Object?> json) {
-    return _SellHistoryDTOData.fromJson(json);
-  }
-}
-
-/// @nodoc
-const _$SellHistoryDTOData = _$_SellHistoryDTODataTearOff();
 
 /// @nodoc
 mixin _$_SellHistoryDTOData {
@@ -313,11 +268,11 @@ class __$SellHistoryDTODataCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$_SellHistoryDTODataCopyWith<$Res>
+abstract class _$$__SellHistoryDTODataCopyWith<$Res>
     implements _$SellHistoryDTODataCopyWith<$Res> {
-  factory _$_SellHistoryDTODataCopyWith(__SellHistoryDTOData value,
-          $Res Function(__SellHistoryDTOData) then) =
-      __$_SellHistoryDTODataCopyWithImpl<$Res>;
+  factory _$$__SellHistoryDTODataCopyWith(_$__SellHistoryDTOData value,
+          $Res Function(_$__SellHistoryDTOData) then) =
+      __$$__SellHistoryDTODataCopyWithImpl<$Res>;
   @override
   $Res call(
       {@IntegerSerializer() double? totalProducts,
@@ -327,15 +282,15 @@ abstract class _$_SellHistoryDTODataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$_SellHistoryDTODataCopyWithImpl<$Res>
+class __$$__SellHistoryDTODataCopyWithImpl<$Res>
     extends __$SellHistoryDTODataCopyWithImpl<$Res>
-    implements _$_SellHistoryDTODataCopyWith<$Res> {
-  __$_SellHistoryDTODataCopyWithImpl(
-      __SellHistoryDTOData _value, $Res Function(__SellHistoryDTOData) _then)
-      : super(_value, (v) => _then(v as __SellHistoryDTOData));
+    implements _$$__SellHistoryDTODataCopyWith<$Res> {
+  __$$__SellHistoryDTODataCopyWithImpl(_$__SellHistoryDTOData _value,
+      $Res Function(_$__SellHistoryDTOData) _then)
+      : super(_value, (v) => _then(v as _$__SellHistoryDTOData));
 
   @override
-  __SellHistoryDTOData get _value => super._value as __SellHistoryDTOData;
+  _$__SellHistoryDTOData get _value => super._value as _$__SellHistoryDTOData;
 
   @override
   $Res call({
@@ -344,7 +299,7 @@ class __$_SellHistoryDTODataCopyWithImpl<$Res>
     Object? revenue = freezed,
     Object? deals = freezed,
   }) {
-    return _then(__SellHistoryDTOData(
+    return _then(_$__SellHistoryDTOData(
       totalProducts: totalProducts == freezed
           ? _value.totalProducts
           : totalProducts // ignore: cast_nullable_to_non_nullable
@@ -358,7 +313,7 @@ class __$_SellHistoryDTODataCopyWithImpl<$Res>
           : revenue // ignore: cast_nullable_to_non_nullable
               as double?,
       deals: deals == freezed
-          ? _value.deals
+          ? _value._deals
           : deals // ignore: cast_nullable_to_non_nullable
               as List<DealDTOData>,
     ));
@@ -372,8 +327,9 @@ class _$__SellHistoryDTOData extends __SellHistoryDTOData {
       {@IntegerSerializer() this.totalProducts,
       @IntegerSerializer() this.totalSold,
       @IntegerSerializer() this.revenue,
-      this.deals = const []})
-      : super._();
+      final List<DealDTOData> deals = const []})
+      : _deals = deals,
+        super._();
 
   factory _$__SellHistoryDTOData.fromJson(Map<String, dynamic> json) =>
       _$$__SellHistoryDTODataFromJson(json);
@@ -387,9 +343,13 @@ class _$__SellHistoryDTOData extends __SellHistoryDTOData {
   @override
   @IntegerSerializer()
   final double? revenue;
-  @JsonKey()
+  final List<DealDTOData> _deals;
   @override
-  final List<DealDTOData> deals;
+  @JsonKey()
+  List<DealDTOData> get deals {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_deals);
+  }
 
   @override
   String toString() {
@@ -400,26 +360,27 @@ class _$__SellHistoryDTOData extends __SellHistoryDTOData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is __SellHistoryDTOData &&
+            other is _$__SellHistoryDTOData &&
             const DeepCollectionEquality()
                 .equals(other.totalProducts, totalProducts) &&
             const DeepCollectionEquality().equals(other.totalSold, totalSold) &&
             const DeepCollectionEquality().equals(other.revenue, revenue) &&
-            const DeepCollectionEquality().equals(other.deals, deals));
+            const DeepCollectionEquality().equals(other._deals, _deals));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(totalProducts),
       const DeepCollectionEquality().hash(totalSold),
       const DeepCollectionEquality().hash(revenue),
-      const DeepCollectionEquality().hash(deals));
+      const DeepCollectionEquality().hash(_deals));
 
   @JsonKey(ignore: true)
   @override
-  _$_SellHistoryDTODataCopyWith<__SellHistoryDTOData> get copyWith =>
-      __$_SellHistoryDTODataCopyWithImpl<__SellHistoryDTOData>(
+  _$$__SellHistoryDTODataCopyWith<_$__SellHistoryDTOData> get copyWith =>
+      __$$__SellHistoryDTODataCopyWithImpl<_$__SellHistoryDTOData>(
           this, _$identity);
 
   @override
@@ -430,10 +391,10 @@ class _$__SellHistoryDTOData extends __SellHistoryDTOData {
 
 abstract class __SellHistoryDTOData extends _SellHistoryDTOData {
   const factory __SellHistoryDTOData(
-      {@IntegerSerializer() double? totalProducts,
-      @IntegerSerializer() double? totalSold,
-      @IntegerSerializer() double? revenue,
-      List<DealDTOData> deals}) = _$__SellHistoryDTOData;
+      {@IntegerSerializer() final double? totalProducts,
+      @IntegerSerializer() final double? totalSold,
+      @IntegerSerializer() final double? revenue,
+      final List<DealDTOData> deals}) = _$__SellHistoryDTOData;
   const __SellHistoryDTOData._() : super._();
 
   factory __SellHistoryDTOData.fromJson(Map<String, dynamic> json) =
@@ -441,17 +402,17 @@ abstract class __SellHistoryDTOData extends _SellHistoryDTOData {
 
   @override
   @IntegerSerializer()
-  double? get totalProducts;
+  double? get totalProducts => throw _privateConstructorUsedError;
   @override
   @IntegerSerializer()
-  double? get totalSold;
+  double? get totalSold => throw _privateConstructorUsedError;
   @override
   @IntegerSerializer()
-  double? get revenue;
+  double? get revenue => throw _privateConstructorUsedError;
   @override
-  List<DealDTOData> get deals;
+  List<DealDTOData> get deals => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$_SellHistoryDTODataCopyWith<__SellHistoryDTOData> get copyWith =>
+  _$$__SellHistoryDTODataCopyWith<_$__SellHistoryDTOData> get copyWith =>
       throw _privateConstructorUsedError;
 }

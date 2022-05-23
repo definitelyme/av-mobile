@@ -12,32 +12,7 @@ part of rating.entity.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$RatingTearOff {
-  const _$RatingTearOff();
-
-  _Rating call(
-      {required BasicTextField<double> delivery,
-      required BasicTextField<double> responsiveness,
-      required BasicTextField<double> quality,
-      required BasicTextField<double> reliability,
-      required BasicTextField<double> rating,
-      KtList<Review> reviews = const KtList.empty()}) {
-    return _Rating(
-      delivery: delivery,
-      responsiveness: responsiveness,
-      quality: quality,
-      reliability: reliability,
-      rating: rating,
-      reviews: reviews,
-    );
-  }
-}
-
-/// @nodoc
-const $Rating = _$RatingTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$Rating {
@@ -113,9 +88,9 @@ class _$RatingCopyWithImpl<$Res> implements $RatingCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$RatingCopyWith<$Res> implements $RatingCopyWith<$Res> {
-  factory _$RatingCopyWith(_Rating value, $Res Function(_Rating) then) =
-      __$RatingCopyWithImpl<$Res>;
+abstract class _$$_RatingCopyWith<$Res> implements $RatingCopyWith<$Res> {
+  factory _$$_RatingCopyWith(_$_Rating value, $Res Function(_$_Rating) then) =
+      __$$_RatingCopyWithImpl<$Res>;
   @override
   $Res call(
       {BasicTextField<double> delivery,
@@ -127,13 +102,13 @@ abstract class _$RatingCopyWith<$Res> implements $RatingCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$RatingCopyWithImpl<$Res> extends _$RatingCopyWithImpl<$Res>
-    implements _$RatingCopyWith<$Res> {
-  __$RatingCopyWithImpl(_Rating _value, $Res Function(_Rating) _then)
-      : super(_value, (v) => _then(v as _Rating));
+class __$$_RatingCopyWithImpl<$Res> extends _$RatingCopyWithImpl<$Res>
+    implements _$$_RatingCopyWith<$Res> {
+  __$$_RatingCopyWithImpl(_$_Rating _value, $Res Function(_$_Rating) _then)
+      : super(_value, (v) => _then(v as _$_Rating));
 
   @override
-  _Rating get _value => super._value as _Rating;
+  _$_Rating get _value => super._value as _$_Rating;
 
   @override
   $Res call({
@@ -144,7 +119,7 @@ class __$RatingCopyWithImpl<$Res> extends _$RatingCopyWithImpl<$Res>
     Object? rating = freezed,
     Object? reviews = freezed,
   }) {
-    return _then(_Rating(
+    return _then(_$_Rating(
       delivery: delivery == freezed
           ? _value.delivery
           : delivery // ignore: cast_nullable_to_non_nullable
@@ -195,8 +170,8 @@ class _$_Rating extends _Rating {
   final BasicTextField<double> reliability;
   @override
   final BasicTextField<double> rating;
-  @JsonKey()
   @override
+  @JsonKey()
   final KtList<Review> reviews;
 
   @override
@@ -208,7 +183,7 @@ class _$_Rating extends _Rating {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Rating &&
+            other is _$_Rating &&
             const DeepCollectionEquality().equals(other.delivery, delivery) &&
             const DeepCollectionEquality()
                 .equals(other.responsiveness, responsiveness) &&
@@ -231,69 +206,38 @@ class _$_Rating extends _Rating {
 
   @JsonKey(ignore: true)
   @override
-  _$RatingCopyWith<_Rating> get copyWith =>
-      __$RatingCopyWithImpl<_Rating>(this, _$identity);
+  _$$_RatingCopyWith<_$_Rating> get copyWith =>
+      __$$_RatingCopyWithImpl<_$_Rating>(this, _$identity);
 }
 
 abstract class _Rating extends Rating {
   const factory _Rating(
-      {required BasicTextField<double> delivery,
-      required BasicTextField<double> responsiveness,
-      required BasicTextField<double> quality,
-      required BasicTextField<double> reliability,
-      required BasicTextField<double> rating,
-      KtList<Review> reviews}) = _$_Rating;
+      {required final BasicTextField<double> delivery,
+      required final BasicTextField<double> responsiveness,
+      required final BasicTextField<double> quality,
+      required final BasicTextField<double> reliability,
+      required final BasicTextField<double> rating,
+      final KtList<Review> reviews}) = _$_Rating;
   const _Rating._() : super._();
 
   @override
-  BasicTextField<double> get delivery;
+  BasicTextField<double> get delivery => throw _privateConstructorUsedError;
   @override
-  BasicTextField<double> get responsiveness;
+  BasicTextField<double> get responsiveness =>
+      throw _privateConstructorUsedError;
   @override
-  BasicTextField<double> get quality;
+  BasicTextField<double> get quality => throw _privateConstructorUsedError;
   @override
-  BasicTextField<double> get reliability;
+  BasicTextField<double> get reliability => throw _privateConstructorUsedError;
   @override
-  BasicTextField<double> get rating;
+  BasicTextField<double> get rating => throw _privateConstructorUsedError;
   @override
-  KtList<Review> get reviews;
+  KtList<Review> get reviews => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$RatingCopyWith<_Rating> get copyWith => throw _privateConstructorUsedError;
+  _$$_RatingCopyWith<_$_Rating> get copyWith =>
+      throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$ReviewTearOff {
-  const _$ReviewTearOff();
-
-  _Review call(
-      {required UniqueId<String?> id,
-      required BasicTextField<double> delivery,
-      required BasicTextField<double> quality,
-      required BasicTextField<double> responsiveness,
-      required BasicTextField<double> reliability,
-      required BasicTextField<double> rating,
-      required BasicTextField<String?> review,
-      User? user,
-      DateTime? createdAt,
-      DateTime? updatedAt}) {
-    return _Review(
-      id: id,
-      delivery: delivery,
-      quality: quality,
-      responsiveness: responsiveness,
-      reliability: reliability,
-      rating: rating,
-      review: review,
-      user: user,
-      createdAt: createdAt,
-      updatedAt: updatedAt,
-    );
-  }
-}
-
-/// @nodoc
-const $Review = _$ReviewTearOff();
 
 /// @nodoc
 mixin _$Review {
@@ -410,9 +354,9 @@ class _$ReviewCopyWithImpl<$Res> implements $ReviewCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$ReviewCopyWith<$Res> implements $ReviewCopyWith<$Res> {
-  factory _$ReviewCopyWith(_Review value, $Res Function(_Review) then) =
-      __$ReviewCopyWithImpl<$Res>;
+abstract class _$$_ReviewCopyWith<$Res> implements $ReviewCopyWith<$Res> {
+  factory _$$_ReviewCopyWith(_$_Review value, $Res Function(_$_Review) then) =
+      __$$_ReviewCopyWithImpl<$Res>;
   @override
   $Res call(
       {UniqueId<String?> id,
@@ -431,13 +375,13 @@ abstract class _$ReviewCopyWith<$Res> implements $ReviewCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$ReviewCopyWithImpl<$Res> extends _$ReviewCopyWithImpl<$Res>
-    implements _$ReviewCopyWith<$Res> {
-  __$ReviewCopyWithImpl(_Review _value, $Res Function(_Review) _then)
-      : super(_value, (v) => _then(v as _Review));
+class __$$_ReviewCopyWithImpl<$Res> extends _$ReviewCopyWithImpl<$Res>
+    implements _$$_ReviewCopyWith<$Res> {
+  __$$_ReviewCopyWithImpl(_$_Review _value, $Res Function(_$_Review) _then)
+      : super(_value, (v) => _then(v as _$_Review));
 
   @override
-  _Review get _value => super._value as _Review;
+  _$_Review get _value => super._value as _$_Review;
 
   @override
   $Res call({
@@ -452,7 +396,7 @@ class __$ReviewCopyWithImpl<$Res> extends _$ReviewCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(_Review(
+    return _then(_$_Review(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -543,7 +487,7 @@ class _$_Review extends _Review {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Review &&
+            other is _$_Review &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.delivery, delivery) &&
             const DeepCollectionEquality().equals(other.quality, quality) &&
@@ -574,45 +518,47 @@ class _$_Review extends _Review {
 
   @JsonKey(ignore: true)
   @override
-  _$ReviewCopyWith<_Review> get copyWith =>
-      __$ReviewCopyWithImpl<_Review>(this, _$identity);
+  _$$_ReviewCopyWith<_$_Review> get copyWith =>
+      __$$_ReviewCopyWithImpl<_$_Review>(this, _$identity);
 }
 
 abstract class _Review extends Review {
   const factory _Review(
-      {required UniqueId<String?> id,
-      required BasicTextField<double> delivery,
-      required BasicTextField<double> quality,
-      required BasicTextField<double> responsiveness,
-      required BasicTextField<double> reliability,
-      required BasicTextField<double> rating,
-      required BasicTextField<String?> review,
-      User? user,
-      DateTime? createdAt,
-      DateTime? updatedAt}) = _$_Review;
+      {required final UniqueId<String?> id,
+      required final BasicTextField<double> delivery,
+      required final BasicTextField<double> quality,
+      required final BasicTextField<double> responsiveness,
+      required final BasicTextField<double> reliability,
+      required final BasicTextField<double> rating,
+      required final BasicTextField<String?> review,
+      final User? user,
+      final DateTime? createdAt,
+      final DateTime? updatedAt}) = _$_Review;
   const _Review._() : super._();
 
   @override
-  UniqueId<String?> get id;
+  UniqueId<String?> get id => throw _privateConstructorUsedError;
   @override
-  BasicTextField<double> get delivery;
+  BasicTextField<double> get delivery => throw _privateConstructorUsedError;
   @override
-  BasicTextField<double> get quality;
+  BasicTextField<double> get quality => throw _privateConstructorUsedError;
   @override
-  BasicTextField<double> get responsiveness;
+  BasicTextField<double> get responsiveness =>
+      throw _privateConstructorUsedError;
   @override
-  BasicTextField<double> get reliability;
+  BasicTextField<double> get reliability => throw _privateConstructorUsedError;
   @override
-  BasicTextField<double> get rating;
+  BasicTextField<double> get rating => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get review;
+  BasicTextField<String?> get review => throw _privateConstructorUsedError;
   @override
-  User? get user;
+  User? get user => throw _privateConstructorUsedError;
   @override
-  DateTime? get createdAt;
+  DateTime? get createdAt => throw _privateConstructorUsedError;
   @override
-  DateTime? get updatedAt;
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ReviewCopyWith<_Review> get copyWith => throw _privateConstructorUsedError;
+  _$$_ReviewCopyWith<_$_Review> get copyWith =>
+      throw _privateConstructorUsedError;
 }

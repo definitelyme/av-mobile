@@ -9,18 +9,16 @@ import 'package:injectable/injectable.dart';
 @singleton
 class AuthLocalDatasource {
   final AccessTokenManager _manager;
-  final AppDatabase _database;
+  final HiveClient _hiveClient;
 
-  AuthLocalDatasource(this._manager, this._database);
+  static const _$authenticated = '_authenticated_';
 
-  Future<void> cacheAuthenticatedUser(UserDTO user) async {
-    await _database.userDAO.insertItem(user.floor);
-  }
+  AuthLocalDatasource(this._manager, this._hiveClient);
+
+  Future<void> cacheAuthenticatedUser(UserDTO user) async => await _hiveClient.userDTOBox.put(_$authenticated, user);
 
   Future<Option<UserDTO?>> getUser() async {
-    final dao = _database.userDAO;
-
-    final _result = await dao.lastUser();
+    final _result = _hiveClient.userDTOBox.get(_$authenticated);
 
     return optionOf(_result);
   }
@@ -29,17 +27,14 @@ class AuthLocalDatasource {
     final json = response as Map<String, dynamic>;
 
     if (json.containsKey('_meta')) {
-      await _manager.save(
-          response:
-              TokenResponse.fromJson(json['_meta'] as Map<String, dynamic>));
+      await _manager.save(response: TokenResponse.fromJson(json['_meta'] as Map<String, dynamic>));
+    } else {
+      await _manager.save(response: TokenResponse.fromJson(response));
     }
   }
 
-  Future<void> signOut({
-    bool clearUser = true,
-    bool clearAccessToken = true,
-  }) async {
-    if (clearUser) await _database.userDAO.removeUsers();
+  Future<void> signOut({bool clearUser = true, bool clearAccessToken = true}) async {
+    if (clearUser) await _hiveClient.userDTOBox.clear();
 
     if (clearAccessToken) await _manager.delete();
   }

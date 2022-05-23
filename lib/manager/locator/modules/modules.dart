@@ -29,6 +29,7 @@ abstract class FirebaseModules {
   FirebaseAnalytics get firebaseAnalytics => FirebaseAnalytics.instance..logAppOpen();
 
   @preResolve
+  @singleton
   Future<FirebaseApp> get firebaseApp => Firebase.initializeApp();
 
   @lazySingleton
@@ -49,19 +50,15 @@ abstract class AppModules {
   @lazySingleton
   AccessTokenManager get accessTokenManager => AccessTokenManager();
 
-  @preResolve
-  Future<AppDatabase> get database => $FloorAppDatabase.databaseBuilder(Const.database).build();
-  // await $FloorAppDatabase.inMemoryDatabaseBuilder().build();
-
   @singleton
   AppHttpClient get httpClient => _HttpClients._clientv2();
 
+  @preResolve
   @singleton
-  AppRouter get router => AppRouter(
-        authGuard: AuthGuard(),
-        guestGuard: GuestGuard(),
-        // incompleteKYCGuard: IncompleteKYCGuard(),
-      );
+  Future<HiveClient> get hiveClient => HiveClient.initialize();
+
+  @singleton
+  AppRouter get router => AppRouter(authGuard: AuthGuard(), guestGuard: GuestGuard());
 }
 
 @module

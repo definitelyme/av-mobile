@@ -12,34 +12,7 @@ part of product_brand.entity.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$ProductBrandTearOff {
-  const _$ProductBrandTearOff();
-
-  _ProductBrand call(
-      {required UniqueId<String?> id,
-      bool isActive = false,
-      required BasicTextField<String?> name,
-      required BasicTextField<String?> description,
-      required BasicTextField<String?> slug,
-      DateTime? createdAt,
-      DateTime? updatedAt}) {
-    return _ProductBrand(
-      id: id,
-      isActive: isActive,
-      name: name,
-      description: description,
-      slug: slug,
-      createdAt: createdAt,
-      updatedAt: updatedAt,
-    );
-  }
-}
-
-/// @nodoc
-const $ProductBrand = _$ProductBrandTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$ProductBrand {
@@ -123,11 +96,11 @@ class _$ProductBrandCopyWithImpl<$Res> implements $ProductBrandCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$ProductBrandCopyWith<$Res>
+abstract class _$$_ProductBrandCopyWith<$Res>
     implements $ProductBrandCopyWith<$Res> {
-  factory _$ProductBrandCopyWith(
-          _ProductBrand value, $Res Function(_ProductBrand) then) =
-      __$ProductBrandCopyWithImpl<$Res>;
+  factory _$$_ProductBrandCopyWith(
+          _$_ProductBrand value, $Res Function(_$_ProductBrand) then) =
+      __$$_ProductBrandCopyWithImpl<$Res>;
   @override
   $Res call(
       {UniqueId<String?> id,
@@ -140,14 +113,15 @@ abstract class _$ProductBrandCopyWith<$Res>
 }
 
 /// @nodoc
-class __$ProductBrandCopyWithImpl<$Res> extends _$ProductBrandCopyWithImpl<$Res>
-    implements _$ProductBrandCopyWith<$Res> {
-  __$ProductBrandCopyWithImpl(
-      _ProductBrand _value, $Res Function(_ProductBrand) _then)
-      : super(_value, (v) => _then(v as _ProductBrand));
+class __$$_ProductBrandCopyWithImpl<$Res>
+    extends _$ProductBrandCopyWithImpl<$Res>
+    implements _$$_ProductBrandCopyWith<$Res> {
+  __$$_ProductBrandCopyWithImpl(
+      _$_ProductBrand _value, $Res Function(_$_ProductBrand) _then)
+      : super(_value, (v) => _then(v as _$_ProductBrand));
 
   @override
-  _ProductBrand get _value => super._value as _ProductBrand;
+  _$_ProductBrand get _value => super._value as _$_ProductBrand;
 
   @override
   $Res call({
@@ -159,7 +133,7 @@ class __$ProductBrandCopyWithImpl<$Res> extends _$ProductBrandCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(_ProductBrand(
+    return _then(_$_ProductBrand(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -207,8 +181,8 @@ class _$_ProductBrand extends _ProductBrand {
 
   @override
   final UniqueId<String?> id;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isActive;
   @override
   final BasicTextField<String?> name;
@@ -230,7 +204,7 @@ class _$_ProductBrand extends _ProductBrand {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ProductBrand &&
+            other is _$_ProductBrand &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.isActive, isActive) &&
             const DeepCollectionEquality().equals(other.name, name) &&
@@ -254,37 +228,37 @@ class _$_ProductBrand extends _ProductBrand {
 
   @JsonKey(ignore: true)
   @override
-  _$ProductBrandCopyWith<_ProductBrand> get copyWith =>
-      __$ProductBrandCopyWithImpl<_ProductBrand>(this, _$identity);
+  _$$_ProductBrandCopyWith<_$_ProductBrand> get copyWith =>
+      __$$_ProductBrandCopyWithImpl<_$_ProductBrand>(this, _$identity);
 }
 
 abstract class _ProductBrand extends ProductBrand {
   const factory _ProductBrand(
-      {required UniqueId<String?> id,
-      bool isActive,
-      required BasicTextField<String?> name,
-      required BasicTextField<String?> description,
-      required BasicTextField<String?> slug,
-      DateTime? createdAt,
-      DateTime? updatedAt}) = _$_ProductBrand;
+      {required final UniqueId<String?> id,
+      final bool isActive,
+      required final BasicTextField<String?> name,
+      required final BasicTextField<String?> description,
+      required final BasicTextField<String?> slug,
+      final DateTime? createdAt,
+      final DateTime? updatedAt}) = _$_ProductBrand;
   const _ProductBrand._() : super._();
 
   @override
-  UniqueId<String?> get id;
+  UniqueId<String?> get id => throw _privateConstructorUsedError;
   @override
-  bool get isActive;
+  bool get isActive => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get name;
+  BasicTextField<String?> get name => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get description;
+  BasicTextField<String?> get description => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get slug;
+  BasicTextField<String?> get slug => throw _privateConstructorUsedError;
   @override
-  DateTime? get createdAt;
+  DateTime? get createdAt => throw _privateConstructorUsedError;
   @override
-  DateTime? get updatedAt;
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ProductBrandCopyWith<_ProductBrand> get copyWith =>
+  _$$_ProductBrandCopyWith<_$_ProductBrand> get copyWith =>
       throw _privateConstructorUsedError;
 }

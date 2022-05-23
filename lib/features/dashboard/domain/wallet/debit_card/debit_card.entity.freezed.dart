@@ -12,44 +12,7 @@ part of debit_card.entity.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$DebitCardTearOff {
-  const _$DebitCardTearOff();
-
-  _DebitCard call(
-      {required UniqueId<String?> id,
-      bool cardAdded = false,
-      bool pinAdded = false,
-      required EmailAddress email,
-      DebitCardBrand brand = DebitCardBrand.none,
-      required DebitCardName cardName,
-      required DebitCardNumber cardNumber,
-      required DebitCardExpiryDate cardExpiryDate,
-      required DebitCardCVV cardCVV,
-      required BasicTextField<String?> masked,
-      DateTime? createdAt,
-      DateTime? updatedAt}) {
-    return _DebitCard(
-      id: id,
-      cardAdded: cardAdded,
-      pinAdded: pinAdded,
-      email: email,
-      brand: brand,
-      cardName: cardName,
-      cardNumber: cardNumber,
-      cardExpiryDate: cardExpiryDate,
-      cardCVV: cardCVV,
-      masked: masked,
-      createdAt: createdAt,
-      updatedAt: updatedAt,
-    );
-  }
-}
-
-/// @nodoc
-const $DebitCard = _$DebitCardTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$DebitCard {
@@ -167,10 +130,10 @@ class _$DebitCardCopyWithImpl<$Res> implements $DebitCardCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$DebitCardCopyWith<$Res> implements $DebitCardCopyWith<$Res> {
-  factory _$DebitCardCopyWith(
-          _DebitCard value, $Res Function(_DebitCard) then) =
-      __$DebitCardCopyWithImpl<$Res>;
+abstract class _$$_DebitCardCopyWith<$Res> implements $DebitCardCopyWith<$Res> {
+  factory _$$_DebitCardCopyWith(
+          _$_DebitCard value, $Res Function(_$_DebitCard) then) =
+      __$$_DebitCardCopyWithImpl<$Res>;
   @override
   $Res call(
       {UniqueId<String?> id,
@@ -188,13 +151,14 @@ abstract class _$DebitCardCopyWith<$Res> implements $DebitCardCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$DebitCardCopyWithImpl<$Res> extends _$DebitCardCopyWithImpl<$Res>
-    implements _$DebitCardCopyWith<$Res> {
-  __$DebitCardCopyWithImpl(_DebitCard _value, $Res Function(_DebitCard) _then)
-      : super(_value, (v) => _then(v as _DebitCard));
+class __$$_DebitCardCopyWithImpl<$Res> extends _$DebitCardCopyWithImpl<$Res>
+    implements _$$_DebitCardCopyWith<$Res> {
+  __$$_DebitCardCopyWithImpl(
+      _$_DebitCard _value, $Res Function(_$_DebitCard) _then)
+      : super(_value, (v) => _then(v as _$_DebitCard));
 
   @override
-  _DebitCard get _value => super._value as _DebitCard;
+  _$_DebitCard get _value => super._value as _$_DebitCard;
 
   @override
   $Res call({
@@ -211,7 +175,7 @@ class __$DebitCardCopyWithImpl<$Res> extends _$DebitCardCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(_DebitCard(
+    return _then(_$_DebitCard(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -284,16 +248,16 @@ class _$_DebitCard extends _DebitCard {
 
   @override
   final UniqueId<String?> id;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool cardAdded;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool pinAdded;
   @override
   final EmailAddress email;
-  @JsonKey()
   @override
+  @JsonKey()
   final DebitCardBrand brand;
   @override
   final DebitCardName cardName;
@@ -319,7 +283,7 @@ class _$_DebitCard extends _DebitCard {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _DebitCard &&
+            other is _$_DebitCard &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.cardAdded, cardAdded) &&
             const DeepCollectionEquality().equals(other.pinAdded, pinAdded) &&
@@ -354,52 +318,52 @@ class _$_DebitCard extends _DebitCard {
 
   @JsonKey(ignore: true)
   @override
-  _$DebitCardCopyWith<_DebitCard> get copyWith =>
-      __$DebitCardCopyWithImpl<_DebitCard>(this, _$identity);
+  _$$_DebitCardCopyWith<_$_DebitCard> get copyWith =>
+      __$$_DebitCardCopyWithImpl<_$_DebitCard>(this, _$identity);
 }
 
 abstract class _DebitCard extends DebitCard {
   const factory _DebitCard(
-      {required UniqueId<String?> id,
-      bool cardAdded,
-      bool pinAdded,
-      required EmailAddress email,
-      DebitCardBrand brand,
-      required DebitCardName cardName,
-      required DebitCardNumber cardNumber,
-      required DebitCardExpiryDate cardExpiryDate,
-      required DebitCardCVV cardCVV,
-      required BasicTextField<String?> masked,
-      DateTime? createdAt,
-      DateTime? updatedAt}) = _$_DebitCard;
+      {required final UniqueId<String?> id,
+      final bool cardAdded,
+      final bool pinAdded,
+      required final EmailAddress email,
+      final DebitCardBrand brand,
+      required final DebitCardName cardName,
+      required final DebitCardNumber cardNumber,
+      required final DebitCardExpiryDate cardExpiryDate,
+      required final DebitCardCVV cardCVV,
+      required final BasicTextField<String?> masked,
+      final DateTime? createdAt,
+      final DateTime? updatedAt}) = _$_DebitCard;
   const _DebitCard._() : super._();
 
   @override
-  UniqueId<String?> get id;
+  UniqueId<String?> get id => throw _privateConstructorUsedError;
   @override
-  bool get cardAdded;
+  bool get cardAdded => throw _privateConstructorUsedError;
   @override
-  bool get pinAdded;
+  bool get pinAdded => throw _privateConstructorUsedError;
   @override
-  EmailAddress get email;
+  EmailAddress get email => throw _privateConstructorUsedError;
   @override
-  DebitCardBrand get brand;
+  DebitCardBrand get brand => throw _privateConstructorUsedError;
   @override
-  DebitCardName get cardName;
+  DebitCardName get cardName => throw _privateConstructorUsedError;
   @override
-  DebitCardNumber get cardNumber;
+  DebitCardNumber get cardNumber => throw _privateConstructorUsedError;
   @override
-  DebitCardExpiryDate get cardExpiryDate;
+  DebitCardExpiryDate get cardExpiryDate => throw _privateConstructorUsedError;
   @override
-  DebitCardCVV get cardCVV;
+  DebitCardCVV get cardCVV => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get masked;
+  BasicTextField<String?> get masked => throw _privateConstructorUsedError;
   @override
-  DateTime? get createdAt;
+  DateTime? get createdAt => throw _privateConstructorUsedError;
   @override
-  DateTime? get updatedAt;
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$DebitCardCopyWith<_DebitCard> get copyWith =>
+  _$$_DebitCardCopyWith<_$_DebitCard> get copyWith =>
       throw _privateConstructorUsedError;
 }

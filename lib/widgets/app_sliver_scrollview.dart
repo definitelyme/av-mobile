@@ -1,6 +1,5 @@
 library app_sliver_scrollview.dart;
 
-import 'package:enough_platform_widgets/platform.dart';
 import 'package:flutter/material.dart';
 import 'package:auctionvillage/utils/utils.dart';
 import 'package:auctionvillage/widgets/widgets.dart';
@@ -32,7 +31,8 @@ class AppSliverScrollView extends StatelessWidget {
   final bool isPaginated;
   final bool enablePullDown;
   final bool enablePullUp;
-  final bool? showCustomLeading;
+  final bool? showCupertinoCustomLeading;
+  final bool? showMaterialCustomLeading;
   final Widget? customLeading;
   final SystemUiOverlayStyle? scaffoldOverlayStyle;
   final SystemUiOverlayStyle? toolbarOverlayStyle;
@@ -72,7 +72,8 @@ class AppSliverScrollView extends StatelessWidget {
     this.isPaginated = false,
     this.enablePullDown = true,
     this.enablePullUp = false,
-    this.showCustomLeading,
+    this.showCupertinoCustomLeading,
+    this.showMaterialCustomLeading,
     this.customLeading,
     this.onRefresh,
     this.onLoading,
@@ -115,7 +116,8 @@ class AppSliverScrollView extends StatelessWidget {
     this.isPaginated = false,
     this.enablePullDown = true,
     this.enablePullUp = false,
-    this.showCustomLeading,
+    this.showCupertinoCustomLeading,
+    this.showMaterialCustomLeading,
     this.customLeading,
     this.onRefresh,
     this.onLoading,
@@ -185,7 +187,7 @@ class AppSliverScrollView extends StatelessWidget {
         ? AdaptiveScaffold(
             backgroundColor: scaffoldBackgroundColor,
             overlayStyle: scaffoldOverlayStyle,
-            cupertino: (_, __) => CupertinoPageScaffoldData(
+            cupertino: (data) => data.copyWith(
               resizeToAvoidBottomInsetTab: resizeToAvoidBottomInsetTab,
               resizeToAvoidBottomInset: resizeToAvoidBottomInset,
             ),
@@ -195,7 +197,8 @@ class AppSliverScrollView extends StatelessWidget {
                     title: title,
                     centerTitle: false,
                     implyLeading: autoImplyLeading ?? true,
-                    showCustomLeading: showCustomLeading,
+                    showCupertinoCustomLeading: showCupertinoCustomLeading,
+                    showMaterialCustomLeading: showMaterialCustomLeading,
                     leadingIcon: customLeading,
                     cupertinoImplyLeading: cupertinoAutoImplyLeading ?? App.platform.isIOS,
                     actions: actions,

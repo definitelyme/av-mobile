@@ -57,7 +57,6 @@ class BuildEnvironment implements Secrets {
   static String domain([BuildFlavor? value]) => (value ?? env.flavor).fold(
         dev: () => '${EndPoints.APP_DEV_DOMAIN}',
         prod: () => kDebugMode ? '${EndPoints.APP_DEV_DOMAIN}' : '${EndPoints.APP_PROD_DOMAIN}',
-        // prod: () => '${EndPoints.APP_PROD_DOMAIN}',
       );
 
   int get connectTimeout => 16000;

@@ -12,36 +12,7 @@ part of user_wallet.entity.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$UserWalletTearOff {
-  const _$UserWalletTearOff();
-
-  _UserWallet call(
-      {required UniqueId<String?> id,
-      required AmountField<double> balance,
-      required AmountField<double> revenue,
-      required AmountField<double> expense,
-      required AmountField<double> expendingExpense,
-      bool isActive = false,
-      DateTime? createdAt,
-      DateTime? updatedAt}) {
-    return _UserWallet(
-      id: id,
-      balance: balance,
-      revenue: revenue,
-      expense: expense,
-      expendingExpense: expendingExpense,
-      isActive: isActive,
-      createdAt: createdAt,
-      updatedAt: updatedAt,
-    );
-  }
-}
-
-/// @nodoc
-const $UserWallet = _$UserWalletTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$UserWallet {
@@ -133,10 +104,11 @@ class _$UserWalletCopyWithImpl<$Res> implements $UserWalletCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$UserWalletCopyWith<$Res> implements $UserWalletCopyWith<$Res> {
-  factory _$UserWalletCopyWith(
-          _UserWallet value, $Res Function(_UserWallet) then) =
-      __$UserWalletCopyWithImpl<$Res>;
+abstract class _$$_UserWalletCopyWith<$Res>
+    implements $UserWalletCopyWith<$Res> {
+  factory _$$_UserWalletCopyWith(
+          _$_UserWallet value, $Res Function(_$_UserWallet) then) =
+      __$$_UserWalletCopyWithImpl<$Res>;
   @override
   $Res call(
       {UniqueId<String?> id,
@@ -150,14 +122,14 @@ abstract class _$UserWalletCopyWith<$Res> implements $UserWalletCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$UserWalletCopyWithImpl<$Res> extends _$UserWalletCopyWithImpl<$Res>
-    implements _$UserWalletCopyWith<$Res> {
-  __$UserWalletCopyWithImpl(
-      _UserWallet _value, $Res Function(_UserWallet) _then)
-      : super(_value, (v) => _then(v as _UserWallet));
+class __$$_UserWalletCopyWithImpl<$Res> extends _$UserWalletCopyWithImpl<$Res>
+    implements _$$_UserWalletCopyWith<$Res> {
+  __$$_UserWalletCopyWithImpl(
+      _$_UserWallet _value, $Res Function(_$_UserWallet) _then)
+      : super(_value, (v) => _then(v as _$_UserWallet));
 
   @override
-  _UserWallet get _value => super._value as _UserWallet;
+  _$_UserWallet get _value => super._value as _$_UserWallet;
 
   @override
   $Res call({
@@ -170,7 +142,7 @@ class __$UserWalletCopyWithImpl<$Res> extends _$UserWalletCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(_UserWallet(
+    return _then(_$_UserWallet(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -231,8 +203,8 @@ class _$_UserWallet extends _UserWallet {
   final AmountField<double> expense;
   @override
   final AmountField<double> expendingExpense;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isActive;
   @override
   final DateTime? createdAt;
@@ -248,7 +220,7 @@ class _$_UserWallet extends _UserWallet {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _UserWallet &&
+            other is _$_UserWallet &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.balance, balance) &&
             const DeepCollectionEquality().equals(other.revenue, revenue) &&
@@ -274,40 +246,41 @@ class _$_UserWallet extends _UserWallet {
 
   @JsonKey(ignore: true)
   @override
-  _$UserWalletCopyWith<_UserWallet> get copyWith =>
-      __$UserWalletCopyWithImpl<_UserWallet>(this, _$identity);
+  _$$_UserWalletCopyWith<_$_UserWallet> get copyWith =>
+      __$$_UserWalletCopyWithImpl<_$_UserWallet>(this, _$identity);
 }
 
 abstract class _UserWallet extends UserWallet {
   const factory _UserWallet(
-      {required UniqueId<String?> id,
-      required AmountField<double> balance,
-      required AmountField<double> revenue,
-      required AmountField<double> expense,
-      required AmountField<double> expendingExpense,
-      bool isActive,
-      DateTime? createdAt,
-      DateTime? updatedAt}) = _$_UserWallet;
+      {required final UniqueId<String?> id,
+      required final AmountField<double> balance,
+      required final AmountField<double> revenue,
+      required final AmountField<double> expense,
+      required final AmountField<double> expendingExpense,
+      final bool isActive,
+      final DateTime? createdAt,
+      final DateTime? updatedAt}) = _$_UserWallet;
   const _UserWallet._() : super._();
 
   @override
-  UniqueId<String?> get id;
+  UniqueId<String?> get id => throw _privateConstructorUsedError;
   @override
-  AmountField<double> get balance;
+  AmountField<double> get balance => throw _privateConstructorUsedError;
   @override
-  AmountField<double> get revenue;
+  AmountField<double> get revenue => throw _privateConstructorUsedError;
   @override
-  AmountField<double> get expense;
+  AmountField<double> get expense => throw _privateConstructorUsedError;
   @override
-  AmountField<double> get expendingExpense;
+  AmountField<double> get expendingExpense =>
+      throw _privateConstructorUsedError;
   @override
-  bool get isActive;
+  bool get isActive => throw _privateConstructorUsedError;
   @override
-  DateTime? get createdAt;
+  DateTime? get createdAt => throw _privateConstructorUsedError;
   @override
-  DateTime? get updatedAt;
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$UserWalletCopyWith<_UserWallet> get copyWith =>
+  _$$_UserWalletCopyWith<_$_UserWallet> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -12,21 +12,7 @@ part of 'field_object_exception.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$FieldObjectExceptionTearOff {
-  const _$FieldObjectExceptionTearOff();
-
-  _FieldObjectException<T> call<T>({required String message}) {
-    return _FieldObjectException<T>(
-      message: message,
-    );
-  }
-}
-
-/// @nodoc
-const $FieldObjectException = _$FieldObjectExceptionTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$FieldObjectException<T> {
@@ -68,32 +54,32 @@ class _$FieldObjectExceptionCopyWithImpl<T, $Res>
 }
 
 /// @nodoc
-abstract class _$FieldObjectExceptionCopyWith<T, $Res>
+abstract class _$$_FieldObjectExceptionCopyWith<T, $Res>
     implements $FieldObjectExceptionCopyWith<T, $Res> {
-  factory _$FieldObjectExceptionCopyWith(_FieldObjectException<T> value,
-          $Res Function(_FieldObjectException<T>) then) =
-      __$FieldObjectExceptionCopyWithImpl<T, $Res>;
+  factory _$$_FieldObjectExceptionCopyWith(_$_FieldObjectException<T> value,
+          $Res Function(_$_FieldObjectException<T>) then) =
+      __$$_FieldObjectExceptionCopyWithImpl<T, $Res>;
   @override
   $Res call({String message});
 }
 
 /// @nodoc
-class __$FieldObjectExceptionCopyWithImpl<T, $Res>
+class __$$_FieldObjectExceptionCopyWithImpl<T, $Res>
     extends _$FieldObjectExceptionCopyWithImpl<T, $Res>
-    implements _$FieldObjectExceptionCopyWith<T, $Res> {
-  __$FieldObjectExceptionCopyWithImpl(_FieldObjectException<T> _value,
-      $Res Function(_FieldObjectException<T>) _then)
-      : super(_value, (v) => _then(v as _FieldObjectException<T>));
+    implements _$$_FieldObjectExceptionCopyWith<T, $Res> {
+  __$$_FieldObjectExceptionCopyWithImpl(_$_FieldObjectException<T> _value,
+      $Res Function(_$_FieldObjectException<T>) _then)
+      : super(_value, (v) => _then(v as _$_FieldObjectException<T>));
 
   @override
-  _FieldObjectException<T> get _value =>
-      super._value as _FieldObjectException<T>;
+  _$_FieldObjectException<T> get _value =>
+      super._value as _$_FieldObjectException<T>;
 
   @override
   $Res call({
     Object? message = freezed,
   }) {
-    return _then(_FieldObjectException<T>(
+    return _then(_$_FieldObjectException<T>(
       message: message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -129,7 +115,7 @@ class _$_FieldObjectException<T>
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _FieldObjectException<T> &&
+            other is _$_FieldObjectException<T> &&
             const DeepCollectionEquality().equals(other.message, message));
   }
 
@@ -139,19 +125,20 @@ class _$_FieldObjectException<T>
 
   @JsonKey(ignore: true)
   @override
-  _$FieldObjectExceptionCopyWith<T, _FieldObjectException<T>> get copyWith =>
-      __$FieldObjectExceptionCopyWithImpl<T, _FieldObjectException<T>>(
-          this, _$identity);
+  _$$_FieldObjectExceptionCopyWith<T, _$_FieldObjectException<T>>
+      get copyWith =>
+          __$$_FieldObjectExceptionCopyWithImpl<T, _$_FieldObjectException<T>>(
+              this, _$identity);
 }
 
 abstract class _FieldObjectException<T> implements FieldObjectException<T> {
-  const factory _FieldObjectException({required String message}) =
+  const factory _FieldObjectException({required final String message}) =
       _$_FieldObjectException<T>;
 
   @override
-  String get message;
+  String get message => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$FieldObjectExceptionCopyWith<T, _FieldObjectException<T>> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_FieldObjectExceptionCopyWith<T, _$_FieldObjectException<T>>
+      get copyWith => throw _privateConstructorUsedError;
 }

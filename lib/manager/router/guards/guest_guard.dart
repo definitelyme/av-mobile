@@ -13,7 +13,7 @@ class GuestGuard extends AutoRouteGuard {
       final authenticated = BlocProvider.of<AuthWatcherCubit>(context).state.isAuthenticated;
 
       if (authenticated) {
-        WidgetsBinding.instance?.endOfFrame.then((_) {
+        WidgetsBinding.instance.endOfFrame.then((_) {
           if (App.currentRoute != DashboardRoute.name) router.replaceAll([const DashboardRoute()]);
         });
       } else

@@ -48,6 +48,18 @@ class _DealDetailScreenState extends State<DealDetailScreen> {
         title: widget.deal.type.when(auction: () => 'Live Auction', buy_Now: () => 'For Sale'),
         centerTitle: false,
         cupertinoTitleAlignment: Alignment.centerLeft,
+        actions: [
+          BlocSelector<DealCubit, DealState, bool>(
+            selector: (s) => s.isLoading,
+            builder: (c, isLoading) => AnimatedVisibility(
+              visible: isLoading,
+              child: Padding(
+                padding: EdgeInsets.only(right: App.sidePadding),
+                child: const Center(child: CircularProgressBar.adaptive(width: 20, height: 20, strokeWidth: 2)),
+              ),
+            ),
+          ),
+        ],
       ),
       body: BlocBuilder<DealCubit, DealState>(
         builder: (c, s) {

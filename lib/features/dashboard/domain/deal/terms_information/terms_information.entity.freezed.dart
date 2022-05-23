@@ -12,30 +12,7 @@ part of terms_information.entity.dart;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$TermsInformationTearOff {
-  const _$TermsInformationTearOff();
-
-  _TermsInformation call(
-      {required BasicTextField<String?> yearOfPurchase,
-      bool hasRepairHistory = false,
-      bool hasRefundPolicy = false,
-      required BasicTextField<String?> warranty,
-      required BasicTextField<String?> otherInformation}) {
-    return _TermsInformation(
-      yearOfPurchase: yearOfPurchase,
-      hasRepairHistory: hasRepairHistory,
-      hasRefundPolicy: hasRefundPolicy,
-      warranty: warranty,
-      otherInformation: otherInformation,
-    );
-  }
-}
-
-/// @nodoc
-const $TermsInformation = _$TermsInformationTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$TermsInformation {
@@ -108,11 +85,11 @@ class _$TermsInformationCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$TermsInformationCopyWith<$Res>
+abstract class _$$_TermsInformationCopyWith<$Res>
     implements $TermsInformationCopyWith<$Res> {
-  factory _$TermsInformationCopyWith(
-          _TermsInformation value, $Res Function(_TermsInformation) then) =
-      __$TermsInformationCopyWithImpl<$Res>;
+  factory _$$_TermsInformationCopyWith(
+          _$_TermsInformation value, $Res Function(_$_TermsInformation) then) =
+      __$$_TermsInformationCopyWithImpl<$Res>;
   @override
   $Res call(
       {BasicTextField<String?> yearOfPurchase,
@@ -123,15 +100,15 @@ abstract class _$TermsInformationCopyWith<$Res>
 }
 
 /// @nodoc
-class __$TermsInformationCopyWithImpl<$Res>
+class __$$_TermsInformationCopyWithImpl<$Res>
     extends _$TermsInformationCopyWithImpl<$Res>
-    implements _$TermsInformationCopyWith<$Res> {
-  __$TermsInformationCopyWithImpl(
-      _TermsInformation _value, $Res Function(_TermsInformation) _then)
-      : super(_value, (v) => _then(v as _TermsInformation));
+    implements _$$_TermsInformationCopyWith<$Res> {
+  __$$_TermsInformationCopyWithImpl(
+      _$_TermsInformation _value, $Res Function(_$_TermsInformation) _then)
+      : super(_value, (v) => _then(v as _$_TermsInformation));
 
   @override
-  _TermsInformation get _value => super._value as _TermsInformation;
+  _$_TermsInformation get _value => super._value as _$_TermsInformation;
 
   @override
   $Res call({
@@ -141,7 +118,7 @@ class __$TermsInformationCopyWithImpl<$Res>
     Object? warranty = freezed,
     Object? otherInformation = freezed,
   }) {
-    return _then(_TermsInformation(
+    return _then(_$_TermsInformation(
       yearOfPurchase: yearOfPurchase == freezed
           ? _value.yearOfPurchase
           : yearOfPurchase // ignore: cast_nullable_to_non_nullable
@@ -179,11 +156,11 @@ class _$_TermsInformation extends _TermsInformation {
 
   @override
   final BasicTextField<String?> yearOfPurchase;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool hasRepairHistory;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool hasRefundPolicy;
   @override
   final BasicTextField<String?> warranty;
@@ -199,7 +176,7 @@ class _$_TermsInformation extends _TermsInformation {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _TermsInformation &&
+            other is _$_TermsInformation &&
             const DeepCollectionEquality()
                 .equals(other.yearOfPurchase, yearOfPurchase) &&
             const DeepCollectionEquality()
@@ -222,31 +199,34 @@ class _$_TermsInformation extends _TermsInformation {
 
   @JsonKey(ignore: true)
   @override
-  _$TermsInformationCopyWith<_TermsInformation> get copyWith =>
-      __$TermsInformationCopyWithImpl<_TermsInformation>(this, _$identity);
+  _$$_TermsInformationCopyWith<_$_TermsInformation> get copyWith =>
+      __$$_TermsInformationCopyWithImpl<_$_TermsInformation>(this, _$identity);
 }
 
 abstract class _TermsInformation extends TermsInformation {
   const factory _TermsInformation(
-      {required BasicTextField<String?> yearOfPurchase,
-      bool hasRepairHistory,
-      bool hasRefundPolicy,
-      required BasicTextField<String?> warranty,
-      required BasicTextField<String?> otherInformation}) = _$_TermsInformation;
+          {required final BasicTextField<String?> yearOfPurchase,
+          final bool hasRepairHistory,
+          final bool hasRefundPolicy,
+          required final BasicTextField<String?> warranty,
+          required final BasicTextField<String?> otherInformation}) =
+      _$_TermsInformation;
   const _TermsInformation._() : super._();
 
   @override
-  BasicTextField<String?> get yearOfPurchase;
+  BasicTextField<String?> get yearOfPurchase =>
+      throw _privateConstructorUsedError;
   @override
-  bool get hasRepairHistory;
+  bool get hasRepairHistory => throw _privateConstructorUsedError;
   @override
-  bool get hasRefundPolicy;
+  bool get hasRefundPolicy => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get warranty;
+  BasicTextField<String?> get warranty => throw _privateConstructorUsedError;
   @override
-  BasicTextField<String?> get otherInformation;
+  BasicTextField<String?> get otherInformation =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$TermsInformationCopyWith<_TermsInformation> get copyWith =>
+  _$$_TermsInformationCopyWith<_$_TermsInformation> get copyWith =>
       throw _privateConstructorUsedError;
 }

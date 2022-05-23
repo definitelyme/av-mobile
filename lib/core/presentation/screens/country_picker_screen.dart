@@ -186,8 +186,8 @@ class _CountryPickerState extends State<CountryPicker> {
         padding: widget._view.when(none: () => EdgeInsets.zero),
         minimumSize: widget._view.when(none: () => Size.zero),
         maximumSize: widget._view.when(
-          flagAndCode: () => const Size(60, 0),
-          none: () => const Size(60, 0),
+          flagAndCode: () => const Size.fromWidth(80),
+          none: () => const Size.fromWidth(60),
         ),
       ),
       child: Center(
@@ -358,7 +358,7 @@ class _DialCodeView extends StatelessWidget {
       maxLines: maxLines ?? 1,
       minFontSize: minFontSize ?? 12,
       fontSize: fontSize ?? 16.sp,
-      maxFontSize: maxFontSize ?? 17,
+      maxFontSize: maxFontSize ?? 16,
       softWrap: softWrap ?? true,
       wrapWords: wrapWords ?? true,
       fontWeight: fontWeight ?? FontWeight.w500,
@@ -390,9 +390,9 @@ class _FlagAndCodeView extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Flexible(child: _flagSVG(country!.flag.getOrNull!, width: _flagWidth, label: '${country!.name.getOrNull}')),
-        const SizedBox(width: 5),
-        Flexible(child: _DialCodeView(country)),
+        Flexible(flex: 10, child: _flagSVG(country!.flag.getOrNull!, width: _flagWidth, label: '${country!.name.getOrNull}')),
+        const SizedBox(width: 4),
+        Flexible(flex: 9, child: _DialCodeView(country)),
       ],
     );
   }

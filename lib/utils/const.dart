@@ -24,7 +24,7 @@ mixin Const {
 
   static const double maxImageUploadSize = 1e+7;
   static const double maxVideoUploadSize = 1e+7;
-  static const int kPerPage = 5;
+  static const int kPerPage = 7;
 
   //
   static const String kDebitCardsCollection = 'debit_cards';

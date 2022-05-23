@@ -53,15 +53,15 @@ class WalletRepository extends BaseRepository {
     );
   }
 
-  Future<AppHttpResponse> fundWallet({required double amount, required String cardPin}) async {
+  Future<AppHttpResponse?> fundWallet(double amount) async {
     final _conn = await checkConnectivity();
 
     return _conn.fold(
       (f) => f,
       (_) async {
         try {
-          await _remote.fundWallet('$amount', cardPin: '$cardPin');
-          return AppHttpResponse.successful('You have successfully funded your wallet', pop: true);
+          await _remote.fundWallet('$amount');
+          return null;
         } on AppHttpResponse catch (e) {
           return e;
         } on AppNetworkException catch (e) {
