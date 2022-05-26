@@ -17,8 +17,7 @@ void main() async {
 
   // Add Google Fonts Licensing
   LicenseRegistry.addLicense(() async* {
-    final license =
-        await rootBundle.loadString('assets/fonts/google_fonts/OFL.txt');
+    final license = await rootBundle.loadString('assets/fonts/google_fonts/OFL.txt');
     yield LicenseEntryWithLineBreaks(['google_fonts'], license);
   });
 
@@ -31,8 +30,7 @@ void main() async {
   }
 
   // Initialize Hydrated storage
-  final storage =
-      await HydratedStorage.build(storageDirectory: await Utils.cacheDir);
+  final storage = await HydratedStorage.build(storageDirectory: await Utils.cacheDir);
 
   await HydratedBlocOverrides.runZoned(
     () async => await runZonedGuarded(
@@ -44,8 +42,7 @@ void main() async {
         );
 
         // Setup Environmental variables & Service provider
-        await BuildEnvironment.init(
-            flavor: const BuildFlavor(BuildFlavor.prod));
+        await BuildEnvironment.init(flavor: BuildFlavor.prod);
 
         // Pass all uncaught errors from the framework to Crashlytics.
         FlutterError.onError = getIt<FirebaseCrashlytics>().recordFlutterError;

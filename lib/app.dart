@@ -58,7 +58,7 @@ class AuctionVillageApp extends StatelessWidget {
             _router,
             navigatorObservers: () => <NavigatorObserver>[
               // Register the Firebase Analytics observer
-              if (env.flavor.name == BuildFlavor.prod) FirebaseAnalyticsObserver(analytics: getIt<FirebaseAnalytics>()),
+              if (env.flavor == BuildFlavor.prod) FirebaseAnalyticsObserver(analytics: getIt<FirebaseAnalytics>()),
             ],
           ),
           builder: (_, widget) => ScreenUtilInit(

@@ -75,7 +75,8 @@ class Utils {
   static const double labelLetterSpacing = 0.60;
   static const double letterSpacing = 0.8;
   static Logger logger = Logger(
-    filter: env.flavor == const BuildFlavor(BuildFlavor.dev) ? DevelopmentFilter() : ProductionFilter(),
+    level: kReleaseMode ? Level.nothing : null,
+    filter: env.flavor == BuildFlavor.dev ? DevelopmentFilter() : ProductionFilter(),
     printer: HybridPrinter(PrettyPrinter(
       methodCount: 3, // number of method calls to be displayed
       errorMethodCount: 10, // number of method calls if stacktrace is provided

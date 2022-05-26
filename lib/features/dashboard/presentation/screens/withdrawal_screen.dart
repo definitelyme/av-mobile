@@ -1,7 +1,5 @@
 library withdrawal_screen.dart;
 
-import 'dart:async';
-
 import 'package:auctionvillage/core/domain/entities/entities.dart';
 import 'package:auctionvillage/core/presentation/index.dart';
 import 'package:auctionvillage/features/dashboard/domain/index.dart';

@@ -5,7 +5,6 @@ import 'package:auctionvillage/core/domain/entities/entities.dart';
 import 'package:auctionvillage/core/domain/response/index.dart';
 import 'package:auctionvillage/features/auth/domain/index.dart';
 import 'package:auctionvillage/features/dashboard/data/repositories/utilities_repository.dart';
-import 'package:auctionvillage/features/dashboard/domain/index.dart';
 import 'package:auctionvillage/utils/utils.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';

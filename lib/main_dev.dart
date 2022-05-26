@@ -20,8 +20,7 @@ void main() async {
   }
 
   // Initialize Hydrated storage
-  final storage =
-      await HydratedStorage.build(storageDirectory: await Utils.cacheDir);
+  final storage = await HydratedStorage.build(storageDirectory: await Utils.cacheDir);
 
   await HydratedBlocOverrides.runZoned(
     () async => await runZonedGuarded(
@@ -33,7 +32,7 @@ void main() async {
         );
 
         // Setup Environmental variables & Service provider
-        await BuildEnvironment.init(flavor: const BuildFlavor(BuildFlavor.dev));
+        await BuildEnvironment.init(flavor: BuildFlavor.dev);
 
         runApp(const AuctionVillageApp());
       },

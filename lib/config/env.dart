@@ -14,19 +14,19 @@ class BuildFlavor {
   const BuildFlavor(this.name);
 
   /// preset of common env name 'dev'
-  static const dev = 'dev';
+  static const dev = BuildFlavor('dev');
 
   /// preset of common env name 'staging'
-  static const staging = 'staging';
+  static const staging = BuildFlavor('staging');
 
   /// preset of common env name 'isolate'
-  static const isolate = 'isolate';
+  static const isolate = BuildFlavor('isolate');
 
   /// preset of common env name 'prod'
-  static const prod = 'prod';
+  static const prod = BuildFlavor('prod');
 
   /// preset of common env name 'test'
-  static const test = 'test';
+  static const test = BuildFlavor('test');
 
   @override
   bool operator ==(other) {
@@ -50,7 +50,7 @@ class BuildEnvironment implements Secrets {
 
   factory BuildEnvironment.factory({required BuildFlavor flavor, Uri? uri}) => BuildEnvironment._(flavor: flavor, baseUri: uri);
 
-  BuildEnvironment._({this.flavor = const BuildFlavor(BuildFlavor.dev), this.baseUri});
+  BuildEnvironment._({this.flavor = BuildFlavor.dev, this.baseUri});
 
   String get appApiKey => 'AuctionDevKey';
 
@@ -111,11 +111,11 @@ class BuildEnvironment implements Secrets {
 
     await flavor.fold(
       dev: () async {
-        await locator(BuildFlavor.dev);
+        await locator(BuildFlavor.dev.name);
         await getIt<FirebaseCrashlytics>().setCrashlyticsCollectionEnabled(!kDebugMode);
       },
       prod: () async {
-        await locator(BuildFlavor.prod);
+        await locator(BuildFlavor.prod.name);
         await getIt<FirebaseCrashlytics>().setCrashlyticsCollectionEnabled(!kDebugMode);
       },
     );
@@ -129,17 +129,10 @@ extension XBuildFlavor on BuildFlavor {
     U Function()? isolate,
     required U Function() prod,
   }) {
-    switch (name) {
-      case BuildFlavor.dev:
-        return dev?.call() ?? staging?.call() ?? prod.call();
-      case BuildFlavor.staging:
-        return staging?.call() ?? prod.call();
-      case BuildFlavor.isolate:
-        return isolate?.call() ?? prod.call();
-      case BuildFlavor.prod:
-      default:
-        return prod.call();
-    }
+    if (this == BuildFlavor.dev) return dev?.call() ?? staging?.call() ?? prod.call();
+    if (this == BuildFlavor.staging) return staging?.call() ?? prod.call();
+    if (this == BuildFlavor.isolate) return isolate?.call() ?? prod.call();
+    return prod.call();
   }
 
   U maybeWhen<U>({
@@ -149,17 +142,10 @@ extension XBuildFlavor on BuildFlavor {
     U Function()? prod,
     required U Function() orElse,
   }) {
-    switch (name) {
-      case BuildFlavor.dev:
-        return dev?.call() ?? orElse.call();
-      case BuildFlavor.staging:
-        return staging?.call() ?? orElse.call();
-      case BuildFlavor.isolate:
-        return isolate?.call() ?? orElse.call();
-      case BuildFlavor.prod:
-        return prod?.call() ?? orElse.call();
-    }
-
+    if (this == BuildFlavor.dev) return dev?.call() ?? orElse.call();
+    if (this == BuildFlavor.staging) return staging?.call() ?? orElse.call();
+    if (this == BuildFlavor.isolate) return isolate?.call() ?? orElse.call();
+    if (this == BuildFlavor.prod) return prod?.call() ?? orElse.call();
     return orElse.call();
   }
 }

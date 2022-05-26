@@ -218,7 +218,7 @@ class _FormLayout extends StatelessWidget {
               child: AppButton(
                 text: 'Login',
                 isLoading: isLoading,
-                disabled: (!c.watch<AuthCubit>().isDirty || isLoading) && env.flavor != const BuildFlavor(BuildFlavor.dev),
+                disabled: (!c.watch<AuthCubit>().isDirty || isLoading) && env.flavor != BuildFlavor.dev,
                 onPressed: () {
                   TextInput.finishAutofillContext();
                   c.read<AuthCubit>().login();
