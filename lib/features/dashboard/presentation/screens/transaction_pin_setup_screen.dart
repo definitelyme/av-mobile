@@ -29,7 +29,9 @@ class TransactionPinSetupScreen extends StatefulWidget with AutoRouteWrapper {
   @override
   Widget wrappedRoute(BuildContext context) {
     return MultiBlocProvider(
-      providers: [BlocProvider(create: (_) => getIt<WalletCubit>())],
+      providers: [
+        BlocProvider.value(value: blocMaybeOf(context, orElse: () => getIt<WalletCubit>())),
+      ],
       child: BlocListener<WalletCubit, WalletState>(
         listenWhen: (p, c) =>
             p.status.getOrElse(() => null) != c.status.getOrElse(() => null) ||

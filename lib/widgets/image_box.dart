@@ -216,7 +216,7 @@ class _ImageBoxState extends State<ImageBox> with AutomaticKeepAliveClientMixin<
                         context,
                         previousRouteName: navigator.current.name,
                         useRootNavigator: true,
-                        dismissDirection: DismissibleDirection.down,
+                        dismissDirection: DismissibleDirection.vertical,
                         child: ImageFullscreen(imageProvider: provider, heroTag: _heroTag),
                       )
                   : widget.onPressed != null

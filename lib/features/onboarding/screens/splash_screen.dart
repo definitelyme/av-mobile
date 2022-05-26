@@ -42,42 +42,53 @@ class SplashScreen extends StatelessWidget {
     return AdaptiveScaffold(
       backgroundColor: Palette.accentColor,
       overlayStyle: App.customSystemOverlay(ctx: context, android: Brightness.light, ios: Brightness.dark),
-      body: Center(
-        child: FutureBuilder(
-          future: _memoizer.runOnce(
-            () => Future.delayed(
-              env.splashDuration,
-              () async {
-                await BlocProvider.of<AuthWatcherCubit>(App.context).subscribeToAuthChanges(
-                  (either) => either.fold(
-                    (_) => SplashScreen.navigateIfNotAuthenticated(),
-                    (option) {
-                      WidgetsBinding.instance.addPostFrameCallback(
-                        (_) async => await Future.delayed(
-                          env.greetingDuration,
-                          () {
-                            if (App.currentRoute != DashboardRoute.name) {
-                              navigator.replaceAll([const DashboardRoute()]);
-                              // "email": "jamesjay@forx.anonaddy.com",
-                              // "email": "brendan.me@gmail.com",
-                            }
-                          },
-                        ),
-                      );
-                    },
-                  ),
-                );
-              },
+      body: FutureBuilder(
+        future: _memoizer.runOnce(
+          () => Future.delayed(
+            env.splashDuration,
+            () async {
+              await BlocProvider.of<AuthWatcherCubit>(App.context).subscribeToAuthChanges(
+                (either) => either.fold(
+                  (_) => SplashScreen.navigateIfNotAuthenticated(),
+                  (option) {
+                    WidgetsBinding.instance.addPostFrameCallback(
+                      (_) async => await Future.delayed(
+                        env.greetingDuration,
+                        () {
+                          if (App.currentRoute != DashboardRoute.name) {
+                            navigator.replaceAll([const DashboardRoute()]);
+                            // "email": "jamesjay@forx.anonaddy.com",
+                            // "email": "brendan.me@gmail.com",
+                          }
+                        },
+                      ),
+                    );
+                  },
+                ),
+              );
+            },
+          ),
+        ),
+        builder: (_, snapshot) => Stack(
+          children: [
+            Center(
+              child: ImageBox.asset(
+                photo: AppAssets.logo,
+                elevation: 0.0,
+                width: 0.4.w,
+                borderRadius: BorderRadius.zero,
+                useDefaultRadius: false,
+                fit: BoxFit.contain,
+              ),
             ),
-          ),
-          builder: (_, snapshot) => ImageBox.asset(
-            photo: AppAssets.logo,
-            elevation: 0.0,
-            width: 0.4.w,
-            borderRadius: BorderRadius.zero,
-            useDefaultRadius: false,
-            fit: BoxFit.contain,
-          ),
+            //
+            Positioned(
+              left: 0.0,
+              right: 0.0,
+              bottom: 1.h * 0.05,
+              child: const Center(child: SpinKitLoader(color: Colors.white)),
+            ),
+          ],
         ),
       ),
     );

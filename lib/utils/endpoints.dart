@@ -1,6 +1,6 @@
 mixin EndPoints {
   static const String APP_DEV_DOMAIN = 'auction-backend-api.herokuapp.com';
-  static const String APP_PROD_DOMAIN = '54.227.61.36:7000';
+  static const String APP_PROD_DOMAIN = 'api.auctionsvillage.com';
   static const String API_ENDPOINT = '/api/v1';
   static const String PUSHER_AUTH_URL = '/broadcasting/auth';
   static const String SLEEP = '/sleep';

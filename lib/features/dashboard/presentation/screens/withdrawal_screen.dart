@@ -26,7 +26,7 @@ class WithdrawalScreen extends StatefulWidget with AutoRouteWrapper {
   Widget wrappedRoute(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => blocMaybeOf(context, orElse: () => getIt<WalletCubit>())),
+        BlocProvider.value(value: blocMaybeOf(context, orElse: () => getIt<WalletCubit>())),
       ],
       child: BlocListener<WalletCubit, WalletState>(
         listenWhen: (p, c) =>

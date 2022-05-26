@@ -270,53 +270,56 @@ class _PageBuilderState extends State<_PageBuilder> {
           top: false,
           left: false,
           right: false,
-          child: Column(
-            // mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              widget.item.page,
-              //
-              if (widget.currentIndex != 2)
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: App.sidePadding),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      0.04.verticalh,
-                      //
-                      AnimatedVisibility(
-                        visible: !_bloc.isLast(_ProductPager.items, widget.currentIndex),
-                        replacement: AppButton(
-                          text: 'Finish'.toUpperCase(),
-                          onPressed: () {
-                            _bloc.add(const ProductSyncEvent.validate(true));
-                            final canFinish = _bloc.state.product.failure.isNone() && !_bloc.state.product.photos.isEmpty();
-                            if (canFinish) navigator.navigate(PricingPlanRoute(product: _bloc.state.product));
-                          },
-                        ),
-                        child: AppButton(
-                          text: 'Next'.toUpperCase(),
-                          onPressed: () => _bloc.add(ProductPageControllerEvent.next(_ProductPager.items, widget.currentIndex)),
-                        ),
-                      ),
-                      //
-                      0.02.verticalh,
-                      //
-                      if (!_bloc.isFirst(widget.currentIndex)) ...[
-                        AppButton(
-                          text: 'Previous'.toUpperCase(),
-                          backgroundColor: Colors.transparent,
-                          textColor: App.resolveColor(Palette.accentColor, dark: Colors.white),
-                          splashColor: App.resolveColor(Colors.black12, dark: Colors.grey.shade800),
-                          onPressed: () => _bloc.add(const ProductPageControllerEvent.prev()),
+          child: WidgetFocus(
+            unfocus: false,
+            child: Column(
+              // mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                widget.item.page,
+                //
+                if (widget.currentIndex != 2)
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: App.sidePadding),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        0.04.verticalh,
+                        //
+                        AnimatedVisibility(
+                          visible: !_bloc.isLast(_ProductPager.items, widget.currentIndex),
+                          replacement: AppButton(
+                            text: 'Finish'.toUpperCase(),
+                            onPressed: () {
+                              _bloc.add(const ProductSyncEvent.validate(true));
+                              final canFinish = _bloc.state.product.failure.isNone() && !_bloc.state.product.photos.isEmpty();
+                              if (canFinish) navigator.navigate(PricingPlanRoute(product: _bloc.state.product));
+                            },
+                          ),
+                          child: AppButton(
+                            text: 'Next'.toUpperCase(),
+                            onPressed: () => _bloc.add(ProductPageControllerEvent.next(_ProductPager.items, widget.currentIndex)),
+                          ),
                         ),
                         //
                         0.02.verticalh,
+                        //
+                        if (!_bloc.isFirst(widget.currentIndex)) ...[
+                          AppButton(
+                            text: 'Previous'.toUpperCase(),
+                            backgroundColor: Colors.transparent,
+                            textColor: App.resolveColor(Palette.accentColor, dark: Colors.white),
+                            splashColor: App.resolveColor(Colors.black12, dark: Colors.grey.shade800),
+                            onPressed: () => _bloc.add(const ProductPageControllerEvent.prev()),
+                          ),
+                          //
+                          0.02.verticalh,
+                        ],
                       ],
-                    ],
+                    ),
                   ),
-                ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

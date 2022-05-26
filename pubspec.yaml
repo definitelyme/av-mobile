@@ -3,7 +3,7 @@ description: An application for foodies
 
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.0+14
+version: 1.0.1+15
 
 environment:
   sdk: ">=2.17.0-69.2.beta <3.0.0"
@@ -193,7 +193,10 @@ dependencies:
   extended_nested_scroll_view: ^5.1.0
   # Photo View provides a gesture sensitive zoomable widget.
   # Photo View is largely used to show interactive images and other stuff such as SVG.
-  photo_view: ^0.13.0
+  photo_view:
+    git:
+      url: https://github.com/bluefireteam/photo_view.git
+      ref: 8156907eecfa812b181a5a729d790f6d399f311b
   # A date time picker for flutter, you can choose date / time / date&time in English Dutch and Chinese,
   # and you can also custom your own picker content
   flutter_datetime_picker: ^1.5.1
@@ -218,7 +221,7 @@ dependencies:
       url: https://github.com/definitelyme/flutter_standard.git
       ref: fix-exception
   # Dartlang port of socket.io-client for web, flutter, dartvm to use
-  socket_io_client: ^1.0.2
+  socket_io_client: ^2.0.0-beta.4-nullsafety.0
   dismissible_page: ^0.7.2
 
 dependency_overrides:

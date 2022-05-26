@@ -44,94 +44,96 @@ class LoginScreen extends StatelessWidget with AutoRouteWrapper {
         ios: Brightness.dark,
         android: Brightness.light,
       ),
-      body: SingleChildScrollView(
-        physics: Utils.physics,
-        child: SizedBox(
-          height: 1.h,
-          child: SafeArea(
-            left: false,
-            right: false,
-            bottom: false,
-            child: Stack(
-              clipBehavior: Clip.none,
-              fit: StackFit.expand,
-              children: [
-                Positioned(
-                  top: 0.14.h,
-                  right: 0,
-                  child: AppAssets.hammerBig,
-                ),
-                //
-                Positioned(
-                  top: 0.22.h,
-                  left: 0,
-                  right: 0.2.w,
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: App.sidePadding),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        AdaptiveText(
-                          'Welcome to Login',
-                          maxLines: 1,
-                          textColor: Colors.white,
-                          fontSize: 26.sp,
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: Utils.letterSpacing,
-                        ),
-                        //
-                        0.01.verticalh,
-                        //
-                        BlocSelector<AuthCubit, AuthState, bool>(
-                          selector: (s) => s.isLoading || s.isAppleAuthLoading || s.isGoogleAuthLoading,
-                          builder: (c, isLoading) => Disabled(
-                            disabled: isLoading,
-                            child: GestureDetector(
-                              onTap: () => navigator.navigate(const SignupRoute()),
-                              child: AdaptiveText.rich(
-                                const TextSpan(children: [
-                                  TextSpan(text: 'Please fill in your E-mail & Password to login'),
-                                  TextSpan(text: ' OR ', style: TextStyle(fontWeight: FontWeight.bold)),
-                                  TextSpan(
-                                    text: 'Sign Up',
-                                    style: TextStyle(
-                                      color: Palette.accentYellow,
-                                      decoration: TextDecoration.underline,
+      body: WidgetFocus(
+        child: SingleChildScrollView(
+          physics: Utils.physics,
+          child: SizedBox(
+            height: 1.h,
+            child: SafeArea(
+              left: false,
+              right: false,
+              bottom: false,
+              child: Stack(
+                clipBehavior: Clip.none,
+                fit: StackFit.expand,
+                children: [
+                  Positioned(
+                    top: 0.14.h,
+                    right: 0,
+                    child: AppAssets.hammerBig,
+                  ),
+                  //
+                  Positioned(
+                    top: 0.22.h,
+                    left: 0,
+                    right: 0.2.w,
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: App.sidePadding),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          AdaptiveText(
+                            'Welcome to Login',
+                            maxLines: 1,
+                            textColor: Colors.white,
+                            fontSize: 26.sp,
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: Utils.letterSpacing,
+                          ),
+                          //
+                          0.01.verticalh,
+                          //
+                          BlocSelector<AuthCubit, AuthState, bool>(
+                            selector: (s) => s.isLoading || s.isAppleAuthLoading || s.isGoogleAuthLoading,
+                            builder: (c, isLoading) => Disabled(
+                              disabled: isLoading,
+                              child: GestureDetector(
+                                onTap: () => navigator.navigate(const SignupRoute()),
+                                child: AdaptiveText.rich(
+                                  const TextSpan(children: [
+                                    TextSpan(text: 'Please fill in your E-mail & Password to login'),
+                                    TextSpan(text: ' OR ', style: TextStyle(fontWeight: FontWeight.bold)),
+                                    TextSpan(
+                                      text: 'Sign Up',
+                                      style: TextStyle(
+                                        color: Palette.accentYellow,
+                                        decoration: TextDecoration.underline,
+                                      ),
                                     ),
-                                  ),
-                                ]),
-                                fontSize: 18.sp,
-                                textColor: Colors.white,
-                                fontWeight: FontWeight.w400,
+                                  ]),
+                                  fontSize: 18.sp,
+                                  textColor: Colors.white,
+                                  fontWeight: FontWeight.w400,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                //
-                Positioned(
-                  top: 0.38.h,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  child: Material(
-                    color: App.resolveColor(Palette.cardColorLight, dark: Palette.cardColorDark),
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(32),
-                      topRight: Radius.circular(32),
-                    ),
-                    child: const SafeArea(
-                      top: false,
-                      left: false,
-                      right: false,
-                      child: _FormLayout(),
+                  //
+                  Positioned(
+                    top: 0.38.h,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    child: Material(
+                      color: App.resolveColor(Palette.cardColorLight, dark: Palette.cardColorDark),
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(32),
+                        topRight: Radius.circular(32),
+                      ),
+                      child: const SafeArea(
+                        top: false,
+                        left: false,
+                        right: false,
+                        child: _FormLayout(),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

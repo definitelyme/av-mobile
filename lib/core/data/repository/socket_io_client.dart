@@ -1,5 +1,6 @@
 library socket_io_client.dart;
 
+import 'package:auctionvillage/utils/utils.dart';
 import 'package:injectable/injectable.dart';
 import 'package:socket_io_client/socket_io_client.dart' as io;
 
@@ -24,9 +25,16 @@ class SocketIOClient {
 
   @factoryMethod
   static SocketIOClient intance() {
+    final url = BuildEnvironment.https.trim();
     final socket = io.io(
-      'http://localhost:3000',
-      io.OptionBuilder().setTransports(['websocket']).disableAutoConnect().enableForceNewConnection().build(),
+      url,
+      io.OptionBuilder()
+          .setTransports(['websocket'])
+          .disableAutoConnect()
+          .enableReconnection()
+          .enableForceNew()
+          .enableForceNewConnection()
+          .build(),
     );
 
     return SocketIOClient._(socket);

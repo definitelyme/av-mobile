@@ -240,7 +240,7 @@ class WalletRepository extends BaseRepository {
     );
   }
 
-  Future<Either<AppHttpResponse, UserWallet>> getWallet() async {
+  Future<Either<AppHttpResponse, UserWallet?>> getWallet() async {
     final _conn = await checkConnectivity();
 
     return _conn.fold(

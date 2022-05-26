@@ -24,7 +24,7 @@ class FundWalletScreen extends StatefulWidget with AutoRouteWrapper {
   Widget wrappedRoute(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => getIt<WalletCubit>()),
+        BlocProvider.value(value: blocMaybeOf(context, orElse: () => getIt<WalletCubit>())),
       ],
       child: BlocListener<WalletCubit, WalletState>(
         listenWhen: (p, c) =>
@@ -54,6 +54,12 @@ class FundWalletScreen extends StatefulWidget with AutoRouteWrapper {
 }
 
 class _FundWalletScreenState extends State<FundWalletScreen> {
+  @override
+  void dispose() {
+    navigator.navigatorKey.currentContext?.let((it) => it.read<WalletCubit>().disposeSocketIO());
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return AppSliverScrollView.scaffold(

@@ -11,6 +11,7 @@ class CircularProgressBar extends StatelessWidget {
   final double? height;
   final double? width;
   final Color? color;
+  final Color? colorDark;
   final Color? background;
   final double? value;
   final double strokeWidth;
@@ -29,6 +30,7 @@ class CircularProgressBar extends StatelessWidget {
     this.width,
     this.height,
     this.color = Palette.accentColor,
+    this.colorDark = Palette.accentColor,
     this.value,
     this.strokeWidth = 4.0,
     this.background,
@@ -41,6 +43,7 @@ class CircularProgressBar extends StatelessWidget {
     this.width,
     this.height,
     this.color = Palette.accentColor,
+    this.colorDark = Palette.accentColor,
     this.value,
     this.strokeWidth = 4.0,
     this.background,
@@ -54,15 +57,23 @@ class CircularProgressBar extends StatelessWidget {
     return SizedBox(
       width: width,
       height: height,
-      child: _progressIndicator(),
+      child: _progressIndicator(context),
     );
   }
 
-  Widget _progressIndicator() {
+  Widget _progressIndicator(BuildContext c) {
     if (_type == _CircularProgressBarType.adaptive && (Platform.isIOS || forceShowIOS)) {
+      if (value != null) {
+        return CupertinoActivityIndicator.partiallyRevealed(
+          progress: value!,
+          radius: radius,
+          color: App.resolveColor(color, dark: colorDark, context: c),
+        );
+      }
       return CupertinoActivityIndicator(
         animating: isAnimating,
         radius: radius,
+        color: App.resolveColor(color, dark: colorDark, context: c),
       );
     }
     return CircularProgressIndicator(
@@ -71,7 +82,7 @@ class CircularProgressBar extends StatelessWidget {
       backgroundColor: background,
       strokeWidth: strokeWidth,
       semanticsLabel: 'Progress Indicator',
-      semanticsValue: value != null ? '$value% completed.' : null,
+      semanticsValue: '1% completed.',
     );
   }
 }

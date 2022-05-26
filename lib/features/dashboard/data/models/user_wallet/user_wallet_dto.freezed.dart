@@ -21,8 +21,10 @@ UserWalletDTO _$UserWalletDTOFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$UserWalletDTO {
   @JsonKey(name: '_meta')
-  MetaDTO? get meta => throw _privateConstructorUsedError;
-  _UserWalletDTOData get data => throw _privateConstructorUsedError;
+  MetaDTO? get meta =>
+      throw _privateConstructorUsedError; // required _UserWalletDTOData data,
+  _UserWalletDTOData? get data => throw _privateConstructorUsedError;
+  _UserWalletDTOData? get wallet => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,10 +37,14 @@ abstract class $UserWalletDTOCopyWith<$Res> {
   factory $UserWalletDTOCopyWith(
           UserWalletDTO value, $Res Function(UserWalletDTO) then) =
       _$UserWalletDTOCopyWithImpl<$Res>;
-  $Res call({@JsonKey(name: '_meta') MetaDTO? meta, _UserWalletDTOData data});
+  $Res call(
+      {@JsonKey(name: '_meta') MetaDTO? meta,
+      _UserWalletDTOData? data,
+      _UserWalletDTOData? wallet});
 
   $MetaDTOCopyWith<$Res>? get meta;
-  _$UserWalletDTODataCopyWith<$Res> get data;
+  _$UserWalletDTODataCopyWith<$Res>? get data;
+  _$UserWalletDTODataCopyWith<$Res>? get wallet;
 }
 
 /// @nodoc
@@ -54,6 +60,7 @@ class _$UserWalletDTOCopyWithImpl<$Res>
   $Res call({
     Object? meta = freezed,
     Object? data = freezed,
+    Object? wallet = freezed,
   }) {
     return _then(_value.copyWith(
       meta: meta == freezed
@@ -63,7 +70,11 @@ class _$UserWalletDTOCopyWithImpl<$Res>
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as _UserWalletDTOData,
+              as _UserWalletDTOData?,
+      wallet: wallet == freezed
+          ? _value.wallet
+          : wallet // ignore: cast_nullable_to_non_nullable
+              as _UserWalletDTOData?,
     ));
   }
 
@@ -79,9 +90,24 @@ class _$UserWalletDTOCopyWithImpl<$Res>
   }
 
   @override
-  _$UserWalletDTODataCopyWith<$Res> get data {
-    return _$UserWalletDTODataCopyWith<$Res>(_value.data, (value) {
+  _$UserWalletDTODataCopyWith<$Res>? get data {
+    if (_value.data == null) {
+      return null;
+    }
+
+    return _$UserWalletDTODataCopyWith<$Res>(_value.data!, (value) {
       return _then(_value.copyWith(data: value));
+    });
+  }
+
+  @override
+  _$UserWalletDTODataCopyWith<$Res>? get wallet {
+    if (_value.wallet == null) {
+      return null;
+    }
+
+    return _$UserWalletDTODataCopyWith<$Res>(_value.wallet!, (value) {
+      return _then(_value.copyWith(wallet: value));
     });
   }
 }
@@ -93,12 +119,17 @@ abstract class _$$_UserWalletDTOCopyWith<$Res>
           _$_UserWalletDTO value, $Res Function(_$_UserWalletDTO) then) =
       __$$_UserWalletDTOCopyWithImpl<$Res>;
   @override
-  $Res call({@JsonKey(name: '_meta') MetaDTO? meta, _UserWalletDTOData data});
+  $Res call(
+      {@JsonKey(name: '_meta') MetaDTO? meta,
+      _UserWalletDTOData? data,
+      _UserWalletDTOData? wallet});
 
   @override
   $MetaDTOCopyWith<$Res>? get meta;
   @override
-  _$UserWalletDTODataCopyWith<$Res> get data;
+  _$UserWalletDTODataCopyWith<$Res>? get data;
+  @override
+  _$UserWalletDTODataCopyWith<$Res>? get wallet;
 }
 
 /// @nodoc
@@ -116,6 +147,7 @@ class __$$_UserWalletDTOCopyWithImpl<$Res>
   $Res call({
     Object? meta = freezed,
     Object? data = freezed,
+    Object? wallet = freezed,
   }) {
     return _then(_$_UserWalletDTO(
       meta: meta == freezed
@@ -125,7 +157,11 @@ class __$$_UserWalletDTOCopyWithImpl<$Res>
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as _UserWalletDTOData,
+              as _UserWalletDTOData?,
+      wallet: wallet == freezed
+          ? _value.wallet
+          : wallet // ignore: cast_nullable_to_non_nullable
+              as _UserWalletDTOData?,
     ));
   }
 }
@@ -134,7 +170,7 @@ class __$$_UserWalletDTOCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_UserWalletDTO extends _UserWalletDTO {
   const _$_UserWalletDTO(
-      {@JsonKey(name: '_meta') this.meta, required this.data})
+      {@JsonKey(name: '_meta') this.meta, this.data, this.wallet})
       : super._();
 
   factory _$_UserWalletDTO.fromJson(Map<String, dynamic> json) =>
@@ -143,12 +179,15 @@ class _$_UserWalletDTO extends _UserWalletDTO {
   @override
   @JsonKey(name: '_meta')
   final MetaDTO? meta;
+// required _UserWalletDTOData data,
   @override
-  final _UserWalletDTOData data;
+  final _UserWalletDTOData? data;
+  @override
+  final _UserWalletDTOData? wallet;
 
   @override
   String toString() {
-    return 'UserWalletDTO(meta: $meta, data: $data)';
+    return 'UserWalletDTO(meta: $meta, data: $data, wallet: $wallet)';
   }
 
   @override
@@ -157,7 +196,8 @@ class _$_UserWalletDTO extends _UserWalletDTO {
         (other.runtimeType == runtimeType &&
             other is _$_UserWalletDTO &&
             const DeepCollectionEquality().equals(other.meta, meta) &&
-            const DeepCollectionEquality().equals(other.data, data));
+            const DeepCollectionEquality().equals(other.data, data) &&
+            const DeepCollectionEquality().equals(other.wallet, wallet));
   }
 
   @JsonKey(ignore: true)
@@ -165,7 +205,8 @@ class _$_UserWalletDTO extends _UserWalletDTO {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(meta),
-      const DeepCollectionEquality().hash(data));
+      const DeepCollectionEquality().hash(data),
+      const DeepCollectionEquality().hash(wallet));
 
   @JsonKey(ignore: true)
   @override
@@ -181,7 +222,8 @@ class _$_UserWalletDTO extends _UserWalletDTO {
 abstract class _UserWalletDTO extends UserWalletDTO {
   const factory _UserWalletDTO(
       {@JsonKey(name: '_meta') final MetaDTO? meta,
-      required final _UserWalletDTOData data}) = _$_UserWalletDTO;
+      final _UserWalletDTOData? data,
+      final _UserWalletDTOData? wallet}) = _$_UserWalletDTO;
   const _UserWalletDTO._() : super._();
 
   factory _UserWalletDTO.fromJson(Map<String, dynamic> json) =
@@ -190,8 +232,10 @@ abstract class _UserWalletDTO extends UserWalletDTO {
   @override
   @JsonKey(name: '_meta')
   MetaDTO? get meta => throw _privateConstructorUsedError;
+  @override // required _UserWalletDTOData data,
+  _UserWalletDTOData? get data => throw _privateConstructorUsedError;
   @override
-  _UserWalletDTOData get data => throw _privateConstructorUsedError;
+  _UserWalletDTOData? get wallet => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_UserWalletDTOCopyWith<_$_UserWalletDTO> get copyWith =>

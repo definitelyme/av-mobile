@@ -59,6 +59,10 @@ class BuildEnvironment implements Secrets {
         prod: () => kDebugMode ? '${EndPoints.APP_DEV_DOMAIN}' : '${EndPoints.APP_PROD_DOMAIN}',
       );
 
+  static String get http => Uri.http(domain(), '').toString();
+
+  static String get https => Uri.https(domain(), '').toString();
+
   int get connectTimeout => 16000;
 
   int get receiveTimeout => 16000;
