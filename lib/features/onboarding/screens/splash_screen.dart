@@ -44,29 +44,24 @@ class SplashScreen extends StatelessWidget {
       overlayStyle: App.customSystemOverlay(ctx: context, android: Brightness.light, ios: Brightness.dark),
       body: FutureBuilder(
         future: _memoizer.runOnce(
-          () => Future.delayed(
-            env.splashDuration,
-            () async {
-              await BlocProvider.of<AuthWatcherCubit>(App.context).subscribeToAuthChanges(
-                (either) => either.fold(
-                  (_) => SplashScreen.navigateIfNotAuthenticated(),
-                  (option) {
-                    WidgetsBinding.instance.addPostFrameCallback(
-                      (_) async => await Future.delayed(
-                        env.greetingDuration,
-                        () {
-                          if (App.currentRoute != DashboardRoute.name) {
-                            navigator.replaceAll([const DashboardRoute()]);
-                            // "email": "jamesjay@forx.anonaddy.com",
-                            // "email": "brendan.me@gmail.com",
-                          }
-                        },
-                      ),
-                    );
-                  },
-                ),
-              );
-            },
+          () => BlocProvider.of<AuthWatcherCubit>(App.context).subscribeToAuthChanges(
+            (either) => either.fold(
+              (_) => SplashScreen.navigateIfNotAuthenticated(),
+              (option) {
+                WidgetsBinding.instance.addPostFrameCallback(
+                  (_) async => await Future.delayed(
+                    env.greetingDuration,
+                    () {
+                      if (App.currentRoute != DashboardRoute.name) {
+                        navigator.replaceAll([const DashboardRoute()]);
+                        // "email": "jamesjay@forx.anonaddy.com",
+                        // "email": "brendan.me@gmail.com",
+                      }
+                    },
+                  ),
+                );
+              },
+            ),
           ),
         ),
         builder: (_, snapshot) => Stack(

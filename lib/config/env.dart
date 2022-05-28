@@ -95,7 +95,7 @@ class BuildEnvironment implements Secrets {
 
   /// Sets up the top-level [env] getter on the first call only.
   static Future<void> init({required BuildFlavor flavor}) async {
-    _env ??= BuildEnvironment.factory(flavor: flavor, uri: Uri.https(domain(flavor), EndPoints.API_ENDPOINT));
+    _env ??= BuildEnvironment.factory(flavor: flavor, uri: Uri.https(domain(flavor), kDebugMode ? EndPoints.API_ENDPOINT : ''));
 
     // This app is designed only to work vertically, so we limit
     // orientations to portrait up and down.

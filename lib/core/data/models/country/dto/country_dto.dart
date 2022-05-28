@@ -1,5 +1,6 @@
 library country_dto.dart;
 
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:auctionvillage/core/domain/entities/entities.dart';
@@ -54,10 +55,10 @@ class CountryDTO with _$CountryDTO {
     final data = await DefaultAssetBundle.of(context).loadString(AppAssets.countries);
     final json = jsonDecode(data) as List<dynamic>;
     final countries = json.map((e) => CountryDTO.fromJson((e as Map).mapToStringDynamic)).toList();
-    await Utils.precacheNetworkSVGs(
+    unawaited(Utils.precacheNetworkSVGs(
       context,
       countries.where((e) => e.flagUrl != null && e.flagUrl!.isNotEmpty).map((e) => e.flagUrl!).toList(),
-    );
+    ));
     return countries;
   }
 }
