@@ -19,6 +19,7 @@ mixin AppAssets {
   static const String DASHBOARD_SVG_DIR = '$SVG_DIR/dashboard';
   static const String DASHBOARD_LOGO_DIR = '$DASHBOARD_SVG_DIR/logos';
   static const String QUICK_ACTIONS_DIR = '$DASHBOARD_IMAGES_DIR/quick_actions';
+  static const String ONBOARDING_SVG_DIR = '$SVG_DIR/onboarding';
 
   /////////////////////////////////////////////////////
   /////////////////////////////////////////////////////
@@ -26,6 +27,9 @@ mixin AppAssets {
   static const String logo = '$IMAGES_DIR/logo/logo.png';
   static const String launchIcon = '$IMAGES_DIR/logo/launch_icon.png';
   static const String _logoSVG = '$SVG_DIR/logo/logo.svg';
+
+  // ONBOARDING
+  static const String getStarted = '$ONBOARDING_SVG_DIR/get_started.svg';
 
   // Lottie Json
   static const String checkAnimation = '$RAW_DIR/check_anim.json';

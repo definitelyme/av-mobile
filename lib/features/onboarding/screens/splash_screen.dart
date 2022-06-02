@@ -15,7 +15,7 @@ class SplashScreen extends StatelessWidget {
 
   static void navigateIfNotAuthenticated() {
     if (navigator.current.name == DashboardRoute.name)
-      navigator.replaceAll([const LoginRoute()]);
+      navigator.replaceAll([const GetStartedRoute()]);
     else {
       _navigateUser(App.context);
     }
@@ -23,15 +23,21 @@ class SplashScreen extends StatelessWidget {
 
   static void _navigateUser(BuildContext c) {
     final option = c.read<AuthWatcherCubit>().state.status;
-    final _authRoutes = [LoginRoute.name, SignupRoute.name, ForgotPasswordRoute.name, PasswordResetRoute.name];
+    final stack = navigator.stack.map((e) => e.name).where((i) => !guestRoutes.contains(i));
 
     option.fold(
-      () => null,
+      () {
+        if (App.currentRoute != GetStartedRoute.name) navigator.replaceAll([const GetStartedRoute()]);
+      },
       (o) {
-        if (o != null) {
-          if (!_authRoutes.contains(App.currentRoute)) navigator.replaceAll([const LoginRoute()]);
+        if (o != null && App.currentRoute != GetStartedRoute.name) {
+          navigator.replaceAll([const GetStartedRoute()]);
         } else {
-          if (App.currentRoute != DashboardRoute.name) navigator.replaceAll([const DashboardRoute()]);
+          if (stack.isNotEmpty) {
+            navigator.popUntil((e) => e.settings.name == stack.last);
+          } else {
+            if (App.currentRoute != DashboardRoute.name) navigator.replaceAll([const DashboardRoute()]);
+          }
         }
       },
     );
@@ -47,20 +53,18 @@ class SplashScreen extends StatelessWidget {
           () => BlocProvider.of<AuthWatcherCubit>(App.context).subscribeToAuthChanges(
             (either) => either.fold(
               (_) => SplashScreen.navigateIfNotAuthenticated(),
-              (option) {
-                WidgetsBinding.instance.addPostFrameCallback(
-                  (_) async => await Future.delayed(
-                    env.greetingDuration,
-                    () {
-                      if (App.currentRoute != DashboardRoute.name) {
-                        navigator.replaceAll([const DashboardRoute()]);
-                        // "email": "jamesjay@forx.anonaddy.com",
-                        // "email": "brendan.me@gmail.com",
-                      }
-                    },
-                  ),
-                );
-              },
+              (option) => option.fold(
+                () => SplashScreen.navigateIfNotAuthenticated(),
+                (_) {
+                  final stack = navigator.stack.map((e) => e.name).where((i) => !guestRoutes.contains(i));
+
+                  if (stack.isNotEmpty) {
+                    navigator.popUntil((e) => e.settings.name == stack.last);
+                  } else {
+                    WidgetsBinding.instance.endOfFrame.then((_) => navigator.replaceAll([const DashboardRoute()]));
+                  }
+                },
+              ),
             ),
           ),
         ),

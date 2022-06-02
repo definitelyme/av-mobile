@@ -47,9 +47,8 @@ class OAuthWidgets extends StatelessWidget {
                     ),
                     icon: AppAssets.emailRegular(Palette.accentColor),
                     onPressed: () async {
-                      await BlocProvider.of<AuthWatcherCubit>(context)
-                          .signOut();
-                      unawaited(navigator.push(const LoginRoute()));
+                      await BlocProvider.of<AuthWatcherCubit>(context).signOut();
+                      unawaited(navigator.push(LoginRoute()));
                     },
                   ),
                 ),

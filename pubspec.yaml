@@ -3,7 +3,7 @@ description: An application for foodies
 
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.1+17
+version: 1.0.2+18
 
 environment:
   sdk: ">=2.17.0-69.2.beta <3.0.0"
@@ -52,7 +52,7 @@ dependencies:
   # and configure themselves accordingly.
   connectivity_plus: ^2.2.0
   # Check Internet connectivity
-  internet_connection_checker: ^0.0.1+4
+  internet_connection_checker: ^0.0.1+3
   # Service locator
   get_it: ^7.2.0
   # Useful platform aware widgets to bring a Material app to Cupertino.
@@ -136,7 +136,7 @@ dependencies:
   intl_phone_number_input: ^0.7.0+2
   # A flutter library to show images from the internet
   # and keep them in the cache directory.
-  cached_network_image: ^3.2.1
+  cached_network_image: ^3.2.0
   # Approximate how your app looks and performs on another device.
   # device_preview: ^1.0.0-alpha.15
   # A flutter package which provides a simple way to Showcase/Highlight your widgets step by step.
@@ -190,7 +190,7 @@ dependencies:
   # Badges can be used for an additional marker for any widget, e.g. show a number of items in a shopping cart.
   badges: ^2.0.2
   # extended nested scroll view to fix pinned header and inner scrollables sync issues.
-  extended_nested_scroll_view: ^5.1.0
+  extended_nested_scroll_view: ^5.0.0
   # Photo View provides a gesture sensitive zoomable widget.
   # Photo View is largely used to show interactive images and other stuff such as SVG.
   photo_view:
@@ -275,6 +275,7 @@ flutter:
     - assets/svgs/auth/
     - assets/svgs/logo/
     - assets/svgs/dashboard/
+    - assets/svgs/onboarding/
     - assets/raw/
 
   fonts:

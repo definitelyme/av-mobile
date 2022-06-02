@@ -103,7 +103,7 @@ class AuthWatcherCubit extends Cubit<AuthWatcherState> {
   Future<void> signOut() async {
     toggleLogoutLoading(true);
 
-    await _facade.signOut();
+    await _facade.signOut(notify: false);
 
     toggleLogoutLoading(false);
 

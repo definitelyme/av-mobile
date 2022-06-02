@@ -1,5 +1,7 @@
 mixin Const {
   static const String appName = 'Auction Village';
+  static const String appDescription = 'A peer to peer auction marketplace. '
+      'Participate in auctions, clearance and private room sales from different businesses and vendors.';
   static const String database = 'acution_village.db';
   static const String packageName = 'com.mobile.app.auctionvillage';
   static const String packageNameDev = 'com.mobile.app.auctionvillage.dev';

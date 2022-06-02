@@ -44,10 +44,12 @@ class PricingPlanScreen extends StatefulWidget with AutoRouteWrapper {
 }
 
 class _PricingPlanScreenState extends State<PricingPlanScreen> {
+  late ProductBloc _bloc;
+
   @override
   void initState() {
     super.initState();
-    context.read<ProductBloc>().add(const ProductGetEvent.getDealPlans());
+    _bloc = context.read<ProductBloc>()..add(const ProductGetEvent.getDealPlans());
   }
 
   User? get _autheticatedUser => context.read<AuthWatcherCubit>().state.user;
@@ -116,8 +118,8 @@ class _PricingPlanScreenState extends State<PricingPlanScreen> {
                                 ),
                           borderRadius: 6.br,
                           child: AdaptiveInkWell(
-                            onTap: () => c.read<ProductBloc>().add(ProductSyncEvent.dealPlanChanged(plan)),
-                            onLongPress: () => c.read<ProductBloc>().add(ProductSyncEvent.dealPlanChanged(plan)),
+                            onTap: () => _bloc.add(ProductSyncEvent.dealPlanChanged(plan)),
+                            onLongPress: () => _bloc.add(ProductSyncEvent.dealPlanChanged(plan)),
                             borderRadius: 6.br,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -256,18 +258,25 @@ class _PricingPlanScreenState extends State<PricingPlanScreen> {
                   text: 'Submit'.toUpperCase(),
                   disabled: s.isLoading || s.isSavingState || s.isCreatingProduct,
                   isLoading: s.isCreatingProduct,
-                  onPressed: () => c.read<ProductBloc>().add(
-                        ProductStructEvent.store(
-                          _autheticatedUser,
-                          callback: (v) {
-                            if (v) {
-                              c.read<ProductBloc>().add(const ProductSyncEvent.clearForm());
-                              navigator.popUntilRoot();
-                              c.read<ProductBloc>().add(const ProductSyncEvent.clearForm());
-                            }
-                          },
-                        ),
-                      ),
+                  onPressed: () {
+                    if (!c.read<AuthWatcherCubit>().state.isAuthenticated) {
+                      Utils.popupIfNoAuth(c, msg: 'Login to complete this action!');
+                      return;
+                    } else if (_bloc.state.product.category == null) {
+                      PopupDialog.error(message: 'Please select a category to proceed.').render(c);
+                    }
+
+                    _bloc.add(ProductStructEvent.store(
+                      _autheticatedUser,
+                      callback: (v) {
+                        if (v) {
+                          _bloc.add(const ProductSyncEvent.clearForm());
+                          navigator.popUntilRoot();
+                          _bloc.add(const ProductSyncEvent.clearForm());
+                        }
+                      },
+                    ));
+                  },
                 ),
               ]),
             ),

@@ -121,6 +121,20 @@ T blocMaybeOf<T extends StateStreamableSource<Object?>>(
   }
 }
 
+BlocProvider blocProviderMaybeOf<T extends StateStreamableSource<Object?>>(
+  BuildContext context, {
+  Widget? child,
+  bool lazy = true,
+  bool listen = false,
+  required T Function() orElse,
+}) {
+  try {
+    return BlocProvider.value(value: blocMaybeOf(context, orElse: orElse), child: child);
+  } on ProviderNotFoundException catch (_) {
+    return BlocProvider(create: (_) => orElse(), lazy: lazy, child: child);
+  }
+}
+
 extension MapX on Map<dynamic, dynamic> {
   Map<String, dynamic> _convertMap(Map<dynamic, dynamic> map) {
     for (var key in map.keys) {

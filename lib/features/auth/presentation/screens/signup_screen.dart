@@ -99,7 +99,7 @@ class SignupScreen extends StatelessWidget with AutoRouteWrapper {
                             builder: (c, isLoading) => Disabled(
                               disabled: isLoading,
                               child: GestureDetector(
-                                onTap: () => navigator.navigate(const LoginRoute()),
+                                onTap: () => navigator.navigate(LoginRoute()),
                                 child: AdaptiveText.rich(
                                   const TextSpan(children: [
                                     TextSpan(text: 'Already have an account? '),

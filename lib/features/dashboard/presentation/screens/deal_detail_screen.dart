@@ -1,6 +1,7 @@
 library product_detail_screen.dart;
 
 import 'package:auctionvillage/core/domain/entities/entities.dart';
+import 'package:auctionvillage/features/auth/presentation/managers/managers.dart';
 import 'package:auctionvillage/features/dashboard/domain/index.dart';
 import 'package:auctionvillage/features/dashboard/presentation/managers/index.dart';
 import 'package:auctionvillage/features/dashboard/presentation/widgets/index.dart';
@@ -39,6 +40,15 @@ class _DealDetailScreenState extends State<DealDetailScreen> {
   void initState() {
     _cubit = context.read<DealCubit>();
     super.initState();
+  }
+
+  void placeBidOrBuyNow() {
+    if (!context.read<AuthWatcherCubit>().state.isAuthenticated) {
+      Utils.popupIfNoAuth(context, msg: 'You have to be logged in to bid or buy.');
+      return;
+    } else {
+      _cubit.sendBid();
+    }
   }
 
   @override
@@ -506,13 +516,13 @@ class _DealDetailScreenState extends State<DealDetailScreen> {
                         text: 'BID NOW',
                         isLoading: s.isBidding,
                         disabled: s.isLoading || s.isBidding || s.bidAmount.getOrNull <= s.currentDeal.lastPriceOffered.getOrNull,
-                        onPressed: c.read<DealCubit>().sendBid,
+                        onPressed: placeBidOrBuyNow,
                       ),
                       buy_Now: () => AppButton(
                         text: 'BUY NOW',
                         isLoading: s.isBidding,
                         disabled: s.isLoading || s.isBidding,
-                        onPressed: c.read<DealCubit>().sendBid,
+                        onPressed: placeBidOrBuyNow,
                       ),
                     ),
                     //

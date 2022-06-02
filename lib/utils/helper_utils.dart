@@ -52,6 +52,14 @@ void throwIfNot(bool condition, Object error) {
   if (!condition) throw error;
 }
 
+List<String> guestRoutes = [
+  SplashRoute.name,
+  GetStartedRoute.name,
+  LoginRoute.name,
+  SignupRoute.name,
+  ForgotPasswordRoute.name,
+];
+
 class Utils {
   /// Create Singleton start ///
   static final Utils _singleton = Utils._();
@@ -108,6 +116,25 @@ class Utils {
   static Future<Directory> get cacheDir async => kIsWeb ? HydratedStorage.webStorageDirectory : await getTemporaryDirectory();
   static Future<Directory> get documentsDir async => await getApplicationDocumentsDirectory();
   // End ////
+
+  static void popupIfNoAuth(BuildContext ctx, {String? msg}) {
+    PopupDialog.info(
+      message: msg ?? 'Login to perform this action!',
+      duration: const Duration(seconds: 5),
+      button: AppButton(
+        width: 0.2.w,
+        height: 0.045.h,
+        cupertinoWidth: 0.2.w,
+        cupertinoHeight: 0.045.h,
+        fontWeight: FontWeight.w600,
+        text: 'Login',
+        onPressed: () {
+          // navigator.popUntilRoot();
+          navigator.push(LoginRoute());
+        },
+      ),
+    ).render(ctx);
+  }
 
   Color? get backgroundOverlayColor => App.theme.primaryColor.withOpacity(0.91);
 

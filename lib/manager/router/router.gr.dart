@@ -43,10 +43,18 @@ class AppRouter extends _i6.RootStackRouter {
       return _i6.AdaptivePage<dynamic>(
           routeData: routeData, child: _i1.SplashScreen(key: args.key));
     },
-    LoginRoute.name: (routeData) {
+    GetStartedRoute.name: (routeData) {
       return _i6.AdaptivePage<dynamic>(
           routeData: routeData,
-          child: _i6.WrappedRoute(child: const _i2.LoginScreen()),
+          child: const _i1.GetStartedScreen(),
+          title: 'Get Started');
+    },
+    LoginRoute.name: (routeData) {
+      final args = routeData.argsAs<LoginRouteArgs>(
+          orElse: () => const LoginRouteArgs());
+      return _i6.AdaptivePage<dynamic>(
+          routeData: routeData,
+          child: _i2.LoginScreen(key: args.key, btnHeroTag: args.btnHeroTag),
           title: 'Login');
     },
     SignupRoute.name: (routeData) {
@@ -251,6 +259,8 @@ class AppRouter extends _i6.RootStackRouter {
   List<_i6.RouteConfig> get routes => [
         _i6.RouteConfig(SplashRoute.name,
             path: '/', fullMatch: true, usesPathAsKey: true),
+        _i6.RouteConfig(GetStartedRoute.name,
+            path: '/get-started-screen', fullMatch: true, usesPathAsKey: true),
         _i6.RouteConfig(LoginRoute.name,
             path: '/login-screen',
             fullMatch: true,
@@ -278,9 +288,6 @@ class AppRouter extends _i6.RootStackRouter {
         _i6.RouteConfig(DashboardRoute.name,
             path: 'bottom-navigation',
             fullMatch: true,
-            guards: [
-              authGuard
-            ],
             children: [
               _i6.RouteConfig(HomeRouter.name,
                   path: 'empty-router-page',
@@ -338,31 +345,55 @@ class AppRouter extends _i6.RootStackRouter {
         _i6.RouteConfig(ProductListRoute.name,
             path: '/product-list-screen', fullMatch: true, usesPathAsKey: true),
         _i6.RouteConfig(FundWalletRoute.name,
-            path: '/fund-wallet-screen', fullMatch: true, usesPathAsKey: true),
+            path: '/fund-wallet-screen',
+            fullMatch: true,
+            usesPathAsKey: true,
+            guards: [authGuard]),
         _i6.RouteConfig(WithdrawalRoute.name,
-            path: '/withdrawal-screen', fullMatch: true, usesPathAsKey: true),
+            path: '/withdrawal-screen',
+            fullMatch: true,
+            usesPathAsKey: true,
+            guards: [authGuard]),
         _i6.RouteConfig(TransactionPinSetupRoute.name,
             path: '/transaction-pin-setup-screen',
             fullMatch: true,
-            usesPathAsKey: true),
+            usesPathAsKey: true,
+            guards: [authGuard]),
         _i6.RouteConfig(ForgotTransactionPinRoute.name,
             path: '/forgot-transaction-pin-screen',
             fullMatch: true,
-            usesPathAsKey: true),
+            usesPathAsKey: true,
+            guards: [authGuard]),
         _i6.RouteConfig(WalletHistoryRoute.name,
             path: '/wallet-history-screen',
             fullMatch: true,
-            usesPathAsKey: true),
+            usesPathAsKey: true,
+            guards: [authGuard]),
         _i6.RouteConfig(MyBidsRoute.name,
-            path: '/my-bids-screen', fullMatch: true, usesPathAsKey: true),
+            path: '/my-bids-screen',
+            fullMatch: true,
+            usesPathAsKey: true,
+            guards: [authGuard]),
         _i6.RouteConfig(MySellingsRoute.name,
-            path: '/my-sellings-screen', fullMatch: true, usesPathAsKey: true),
+            path: '/my-sellings-screen',
+            fullMatch: true,
+            usesPathAsKey: true,
+            guards: [authGuard]),
         _i6.RouteConfig(MyWishlistRoute.name,
-            path: '/my-wishlist-screen', fullMatch: true, usesPathAsKey: true),
+            path: '/my-wishlist-screen',
+            fullMatch: true,
+            usesPathAsKey: true,
+            guards: [authGuard]),
         _i6.RouteConfig(MyReviewsRoute.name,
-            path: '/my-reviews-screen', fullMatch: true, usesPathAsKey: true),
+            path: '/my-reviews-screen',
+            fullMatch: true,
+            usesPathAsKey: true,
+            guards: [authGuard]),
         _i6.RouteConfig(EditProfileRoute.name,
-            path: '/edit-profile-screen', fullMatch: true, usesPathAsKey: true),
+            path: '/edit-profile-screen',
+            fullMatch: true,
+            usesPathAsKey: true,
+            guards: [authGuard]),
         _i6.RouteConfig(PricingPlanRoute.name,
             path: '/pricing-plan-screen', fullMatch: true, usesPathAsKey: true),
         _i6.RouteConfig(SuccessRoute.name,
@@ -395,11 +426,36 @@ class SplashRouteArgs {
 }
 
 /// generated route for
+/// [_i1.GetStartedScreen]
+class GetStartedRoute extends _i6.PageRouteInfo<void> {
+  const GetStartedRoute()
+      : super(GetStartedRoute.name, path: '/get-started-screen');
+
+  static const String name = 'GetStartedRoute';
+}
+
+/// generated route for
 /// [_i2.LoginScreen]
-class LoginRoute extends _i6.PageRouteInfo<void> {
-  const LoginRoute() : super(LoginRoute.name, path: '/login-screen');
+class LoginRoute extends _i6.PageRouteInfo<LoginRouteArgs> {
+  LoginRoute({_i8.Key? key, Object? btnHeroTag})
+      : super(LoginRoute.name,
+            path: '/login-screen',
+            args: LoginRouteArgs(key: key, btnHeroTag: btnHeroTag));
 
   static const String name = 'LoginRoute';
+}
+
+class LoginRouteArgs {
+  const LoginRouteArgs({this.key, this.btnHeroTag});
+
+  final _i8.Key? key;
+
+  final Object? btnHeroTag;
+
+  @override
+  String toString() {
+    return 'LoginRouteArgs{key: $key, btnHeroTag: $btnHeroTag}';
+  }
 }
 
 /// generated route for
