@@ -27,7 +27,7 @@ class DealDetailScreen extends StatefulWidget with AutoRouteWrapper {
   @override
   Widget wrappedRoute(BuildContext context) {
     return BlocProvider.value(
-      value: blocMaybeOf(context, orElse: () => getIt<DealCubit>())..showDeal(deal),
+      value: blocMaybeOf(context, orElse: () => getIt<DealCubit>()),
       child: this,
     );
   }
@@ -38,7 +38,7 @@ class _DealDetailScreenState extends State<DealDetailScreen> {
 
   @override
   void initState() {
-    _cubit = context.read<DealCubit>();
+    _cubit = context.read<DealCubit>()..showDeal(widget.deal);
     super.initState();
   }
 
@@ -64,7 +64,7 @@ class _DealDetailScreenState extends State<DealDetailScreen> {
             builder: (c, isLoading) => AnimatedVisibility(
               visible: isLoading,
               child: Padding(
-                padding: EdgeInsets.only(right: App.sidePadding),
+                padding: EdgeInsets.only(right: App.sidePadding, left: 4),
                 child: const Center(child: CircularProgressBar.adaptive(width: 20, height: 20, strokeWidth: 2)),
               ),
             ),

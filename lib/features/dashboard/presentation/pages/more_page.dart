@@ -1,7 +1,6 @@
 library more_page.dart;
 
 import 'package:auctionvillage/core/domain/entities/entities.dart';
-import 'package:auctionvillage/core/presentation/index.dart';
 import 'package:auctionvillage/features/auth/presentation/managers/managers.dart';
 import 'package:auctionvillage/features/auth/presentation/widgets/login_layout.dart';
 import 'package:auctionvillage/features/dashboard/domain/index.dart';
@@ -23,13 +22,12 @@ class MorePage extends StatefulWidget {
 }
 
 class _MorePageState extends State<MorePage> with AutomaticKeepAliveClientMixin<MorePage> {
-  // ignore: unused_field
   late WalletCubit _walletCubit;
 
   @override
   void initState() {
-    if (context.read<AuthWatcherCubit>().state.isAuthenticated)
-      _walletCubit = blocMaybeOf(context, orElse: () => getIt<WalletCubit>())..getWallet();
+    _walletCubit = blocMaybeOf(context, orElse: () => getIt<WalletCubit>());
+    if (context.read<AuthWatcherCubit>().state.isAuthenticated) _walletCubit.getWallet();
     super.initState();
   }
 
@@ -40,211 +38,206 @@ class _MorePageState extends State<MorePage> with AutomaticKeepAliveClientMixin<
   Widget build(BuildContext context) {
     super.build(context);
 
-    return MultiBlocProvider(
-      providers: [
-        blocProviderMaybeOf(context, orElse: () => getIt<AuthWatcherCubit>()),
-      ],
-      child: BlocListener<AuthWatcherCubit, AuthWatcherState>(
-        listenWhen: (p, c) => c.user != null,
-        listener: (_, __) => _walletCubit.getWallet(),
-        child: Builder(
-          builder: (c) => Visibility(
-            visible: c.watch<AuthWatcherCubit>().state.isAuthenticated,
-            replacement: BlocProvider(
-              create: (_) => getIt<AuthCubit>(),
-              child: BlocListener<AuthCubit, AuthState>(
-                listenWhen: (p, c) =>
-                    p.status.getOrElse(() => null) != c.status.getOrElse(() => null) ||
-                    (c.status.getOrElse(() => null) != null && (c.status.getOrElse(() => null)!.fold(orElse: () => false))),
-                listener: (c, s) => s.status.fold(
-                  () => null,
-                  (it) => it?.response.mapOrNull(
-                    info: (i) => PopupDialog.info(message: i.message).render(c),
-                    error: (f) => PopupDialog.error(message: f.message, show: f.show).render(c),
-                    success: (s) => PopupDialog.success(message: s.message).render(c),
-                  ),
+    return BlocListener<AuthWatcherCubit, AuthWatcherState>(
+      listenWhen: (p, c) => c.user != null,
+      listener: (_, __) => _walletCubit.getWallet(),
+      child: Builder(
+        builder: (c) => Visibility(
+          visible: c.watch<AuthWatcherCubit>().state.isAuthenticated,
+          replacement: BlocProvider(
+            create: (_) => getIt<AuthCubit>(),
+            child: BlocListener<AuthCubit, AuthState>(
+              listenWhen: (p, c) =>
+                  p.status.getOrElse(() => null) != c.status.getOrElse(() => null) ||
+                  (c.status.getOrElse(() => null) != null && (c.status.getOrElse(() => null)!.fold(orElse: () => false))),
+              listener: (c, s) => s.status.fold(
+                () => null,
+                (it) => it?.response.mapOrNull(
+                  info: (i) => PopupDialog.info(message: i.message).render(c),
+                  error: (f) => PopupDialog.error(message: f.message, show: f.show).render(c),
+                  success: (s) => PopupDialog.success(message: s.message).render(c),
                 ),
-                child: const LoginLayout(),
               ),
+              child: const LoginLayout(),
             ),
-            child: AdaptiveScaffold(
-              backgroundColor: Palette.accentColor,
-              overlayStyle: App.customSystemOverlay(ctx: c, android: Brightness.light, ios: Brightness.light),
-              body: CustomScrollView(
-                slivers: [
-                  SliverSafeArea(
-                    left: false,
-                    right: false,
-                    bottom: false,
-                    sliver: SliverPadding(
-                      padding: EdgeInsets.all(App.sidePadding),
-                      sliver: SliverToBoxAdapter(
-                        child: GestureDetector(
-                          onTap: () => navigator.navigate(EditProfileRoute(user: c.read<AuthWatcherCubit>().state.user)),
-                          child: Row(
-                            children: [
-                              BlocSelector<AuthWatcherCubit, AuthWatcherState, User?>(
-                                selector: (s) => s.user,
-                                builder: (c, user) => ImageBox.network(
-                                  heroTag: Const.profilePhotoHeroTag,
-                                  photo: user?.photo.image.valueOrNull,
-                                  width: 50,
-                                  height: 50,
-                                  fit: BoxFit.cover,
-                                  borderRadius: 100.br,
-                                  expandsFullscreen: true,
-                                  boxBorder: Border.all(color: Colors.white, width: 0.5),
-                                  replacement: Image.asset(AppAssets.unnamed, fit: BoxFit.cover, width: 50, height: 50),
-                                ),
-                              ),
-                              //
-                              0.03.horizontalw,
-                              //
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  BlocSelector<AuthWatcherCubit, AuthWatcherState, User?>(
-                                    selector: (s) => s.user,
-                                    builder: (c, user) => AdaptiveText(
-                                      '${user?.fullName.getOrEmpty}',
-                                      fontSize: 18.sp,
-                                      textColor: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  //
-                                  0.002.verticalh,
-                                  //
-                                  Row(
-                                    children: [
-                                      AdaptiveText(
-                                        'Edit Profile',
-                                        fontSize: 14.sp,
-                                        textColor: Colors.white,
-                                        fontWeight: FontWeight.w400,
-                                        // decoration: TextDecoration.underline,
-                                      ),
-                                      //
-                                      0.01.horizontalw,
-                                      //
-                                      Icon(
-                                        Utils.platform_(material: Icons.edit, cupertino: CupertinoIcons.pencil),
-                                        color: Colors.white,
-                                        size: 11.sp,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  //
-                  SliverFillRemaining(
-                    child: Material(
-                      color: App.resolveColor(Palette.cardColorLight, dark: Palette.secondaryColor),
-                      child: Padding(
-                        padding: EdgeInsets.all(App.sidePadding),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
+          ),
+          child: AdaptiveScaffold(
+            backgroundColor: Palette.accentColor,
+            overlayStyle: App.customSystemOverlay(ctx: c, android: Brightness.light, ios: Brightness.light),
+            body: CustomScrollView(
+              slivers: [
+                SliverSafeArea(
+                  left: false,
+                  right: false,
+                  bottom: false,
+                  sliver: SliverPadding(
+                    padding: EdgeInsets.all(App.sidePadding),
+                    sliver: SliverToBoxAdapter(
+                      child: GestureDetector(
+                        onTap: () => navigator.navigate(EditProfileRoute(user: c.read<AuthWatcherCubit>().state.user)),
+                        child: Row(
                           children: [
-                            BlocSelector<WalletCubit, WalletState, UserWallet?>(
-                              selector: (s) => s.wallet,
-                              builder: (c, wallet) => WalletBalanceCard(balance: '${wallet?.balance.getOrNull ?? 0}'),
+                            BlocSelector<AuthWatcherCubit, AuthWatcherState, User?>(
+                              selector: (s) => s.user,
+                              builder: (c, user) => ImageBox.network(
+                                heroTag: Const.profilePhotoHeroTag,
+                                photo: user?.photo.image.valueOrNull,
+                                width: 50,
+                                height: 50,
+                                fit: BoxFit.cover,
+                                borderRadius: 100.br,
+                                expandsFullscreen: true,
+                                boxBorder: Border.all(color: Colors.white, width: 0.5),
+                                replacement: Image.asset(AppAssets.unnamed, fit: BoxFit.cover, width: 50, height: 50),
+                              ),
                             ),
                             //
-                            // 0.018.verticalh,
-                            // //
-                            // AdaptiveInkWell(
-                            //   onTap: () => navigator.navigate(const WalletHistoryRoute()),
-                            //   borderRadius: 5.br,
-                            //   child: Center(
-                            //     child: Padding(
-                            //       padding: EdgeInsets.symmetric(vertical: 0.015.h),
-                            //       child: AdaptiveText(
-                            //         'See wallet history',
-                            //         maxLines: 1,
-                            //         softWrap: true,
-                            //         fontSize: 17.sp,
-                            //         textColor: Palette.accentColor,
-                            //         fontWeight: FontWeight.w600,
-                            //         letterSpacing: Utils.letterSpacing,
-                            //       ),
-                            //     ),
-                            //   ),
-                            // ),
+                            0.03.horizontalw,
                             //
-                            GridView.builder(
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                mainAxisExtent: 0.15.h,
-                                mainAxisSpacing: 0.05.w,
-                                crossAxisSpacing: 0.05.w,
-                              ),
-                              itemCount: _Action.list.length,
-                              itemBuilder: (_, i) => Material(
-                                type: MaterialType.transparency,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: 5.br,
-                                  side: const BorderSide(color: Color(0xffE7E7E7)),
-                                ),
-                                child: AdaptiveInkWell(
-                                  onTap: _Action.list.elementAt(i).onPressed,
-                                  borderRadius: 5.br,
-                                  child: Center(
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        _Action.list.elementAt(i).asset,
-                                        //
-                                        0.01.verticalh,
-                                        //
-                                        AdaptiveText(
-                                          '${_Action.list.elementAt(i).title}',
-                                          fontSize: 17.sp,
-                                          textColor: App.resolveColor(Palette.accentColor, dark: Colors.white70),
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ],
-                                    ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                BlocSelector<AuthWatcherCubit, AuthWatcherState, User?>(
+                                  selector: (s) => s.user,
+                                  builder: (c, user) => AdaptiveText(
+                                    '${user?.fullName.getOrEmpty}',
+                                    fontSize: 18.sp,
+                                    textColor: Colors.white,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                              ),
-                            ),
-                            //
-                            0.03.verticalh,
-                            //
-                            BlocSelector<AuthWatcherCubit, AuthWatcherState, bool>(
-                              selector: (s) => s.isLoggingOut,
-                              builder: (c, isLoading) {
-                                return AppOutlinedButton(
-                                  text: 'LOGOUT',
-                                  isLoading: isLoading,
-                                  fontWeight: FontWeight.w600,
-                                  textColor: Palette.errorRed,
-                                  borderColor: Palette.errorRed,
-                                  borderColorDark: Palette.errorRed,
-                                  onPressed: () async {
-                                    // Signout the authenticated rider
-                                    await c.read<AuthWatcherCubit>().signOut();
-                                    // Reset current Index to 0
-                                    c.read<TabNavigationCubit>().reset();
-                                  },
-                                );
-                              },
+                                //
+                                0.002.verticalh,
+                                //
+                                Row(
+                                  children: [
+                                    AdaptiveText(
+                                      'Edit Profile',
+                                      fontSize: 14.sp,
+                                      textColor: Colors.white,
+                                      fontWeight: FontWeight.w400,
+                                      // decoration: TextDecoration.underline,
+                                    ),
+                                    //
+                                    0.01.horizontalw,
+                                    //
+                                    Icon(
+                                      Utils.platform_(material: Icons.edit, cupertino: CupertinoIcons.pencil),
+                                      color: Colors.white,
+                                      size: 11.sp,
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           ],
                         ),
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+                //
+                SliverFillRemaining(
+                  child: Material(
+                    color: App.resolveColor(Palette.cardColorLight, dark: Palette.secondaryColor),
+                    child: Padding(
+                      padding: EdgeInsets.all(App.sidePadding),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          BlocSelector<WalletCubit, WalletState, UserWallet?>(
+                            selector: (s) => s.wallet,
+                            builder: (c, wallet) => WalletBalanceCard(balance: '${wallet?.balance.getOrNull ?? 0}'),
+                          ),
+                          //
+                          // 0.018.verticalh,
+                          // //
+                          // AdaptiveInkWell(
+                          //   onTap: () => navigator.navigate(const WalletHistoryRoute()),
+                          //   borderRadius: 5.br,
+                          //   child: Center(
+                          //     child: Padding(
+                          //       padding: EdgeInsets.symmetric(vertical: 0.015.h),
+                          //       child: AdaptiveText(
+                          //         'See wallet history',
+                          //         maxLines: 1,
+                          //         softWrap: true,
+                          //         fontSize: 17.sp,
+                          //         textColor: Palette.accentColor,
+                          //         fontWeight: FontWeight.w600,
+                          //         letterSpacing: Utils.letterSpacing,
+                          //       ),
+                          //     ),
+                          //   ),
+                          // ),
+                          //
+                          GridView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              mainAxisExtent: 0.15.h,
+                              mainAxisSpacing: 0.05.w,
+                              crossAxisSpacing: 0.05.w,
+                            ),
+                            itemCount: _Action.list.length,
+                            itemBuilder: (_, i) => Material(
+                              type: MaterialType.transparency,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: 5.br,
+                                side: const BorderSide(color: Color(0xffE7E7E7)),
+                              ),
+                              child: AdaptiveInkWell(
+                                onTap: _Action.list.elementAt(i).onPressed,
+                                borderRadius: 5.br,
+                                child: Center(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      _Action.list.elementAt(i).asset,
+                                      //
+                                      0.01.verticalh,
+                                      //
+                                      AdaptiveText(
+                                        '${_Action.list.elementAt(i).title}',
+                                        fontSize: 17.sp,
+                                        textColor: App.resolveColor(Palette.accentColor, dark: Colors.white70),
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          //
+                          0.03.verticalh,
+                          //
+                          BlocSelector<AuthWatcherCubit, AuthWatcherState, bool>(
+                            selector: (s) => s.isLoggingOut,
+                            builder: (c, isLoading) {
+                              return AppOutlinedButton(
+                                text: 'LOGOUT',
+                                isLoading: isLoading,
+                                fontWeight: FontWeight.w600,
+                                textColor: Palette.errorRed,
+                                borderColor: Palette.errorRed,
+                                borderColorDark: Palette.errorRed,
+                                onPressed: () async {
+                                  // Signout the authenticated rider
+                                  await c.read<AuthWatcherCubit>().signOut();
+                                  // Reset current Index to 0
+                                  c.read<BottomNavigationCubit>().reset();
+                                },
+                              );
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),

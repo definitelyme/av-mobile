@@ -29,7 +29,7 @@ class AuctionVillageApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => getIt<ThemeCubit>()),
         BlocProvider(create: (_) => getIt<AuthWatcherCubit>()),
-        BlocProvider(create: (_) => getIt<TabNavigationCubit>()),
+        BlocProvider(create: (_) => getIt<BottomNavigationCubit>()),
         BlocProvider(create: (_) => getIt<DealCubit>()),
         BlocProvider(create: (_) => getIt<WalletCubit>()),
       ],

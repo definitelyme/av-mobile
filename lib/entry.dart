@@ -23,6 +23,7 @@ class _EntryState extends State<Entry> {
   @override
   void initState() {
     context.read<AuthWatcherCubit>().getCountries(context);
+    context.read<BottomNavigationCubit>().initAutoTabRouter();
     super.initState();
   }
 
@@ -40,7 +41,7 @@ class _EntryState extends State<Entry> {
               info: (i) => PopupDialog.info(message: i.message, show: i.message.isNotEmpty).render(
                 widget.router.navigatorKey.currentContext ?? context,
               ),
-              error: (f) => PopupDialog.error(message: f.message, show: f.show && f.message.isNotEmpty).render(
+              error: (f) => PopupDialog.error(message: f.message, show: f.show && f.message.isNotEmpty && f.code != 401).render(
                 widget.router.navigatorKey.currentContext ?? context,
               ),
             ),

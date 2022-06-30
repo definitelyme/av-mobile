@@ -9,16 +9,15 @@ import 'package:injectable/injectable.dart';
 @singleton
 class AuthLocalDatasource {
   final AccessTokenManager _manager;
-  final HiveClient _hiveClient;
 
   static const _$authenticated = '_authenticated_';
 
-  AuthLocalDatasource(this._manager, this._hiveClient);
+  AuthLocalDatasource(this._manager);
 
-  Future<void> cacheAuthenticatedUser(UserDTO user) async => await _hiveClient.userDTOBox.put(_$authenticated, user);
+  Future<void> cacheAuthenticatedUser(UserDTO user) async => await HiveClient.userDTOBox?.put(_$authenticated, user);
 
   Future<Option<UserDTO?>> getUser() async {
-    final _result = _hiveClient.userDTOBox.get(_$authenticated);
+    final _result = HiveClient.userDTOBox?.get(_$authenticated);
 
     return optionOf(_result);
   }
@@ -34,7 +33,7 @@ class AuthLocalDatasource {
   }
 
   Future<void> signOut({bool clearUser = true, bool clearAccessToken = true}) async {
-    if (clearUser) await _hiveClient.userDTOBox.clear();
+    if (clearUser) await HiveClient.userDTOBox?.clear();
 
     if (clearAccessToken) await _manager.delete();
   }

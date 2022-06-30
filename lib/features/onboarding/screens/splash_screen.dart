@@ -32,7 +32,18 @@ class SplashScreen extends StatelessWidget {
       (o) {
         if (o != null && App.currentRoute != GetStartedRoute.name) {
           navigator.replaceAll([const GetStartedRoute()]);
-        } else {
+        }
+        // if (o != null) {
+        //   o.fold(
+        //     is401: () {
+        //       if (App.currentRoute != LoginRoute.name) navigator.replaceAll([LoginRoute()]);
+        //     },
+        //     orElse: () {
+        //       if (App.currentRoute != GetStartedRoute.name) navigator.replaceAll([const GetStartedRoute()]);
+        //     },
+        //   );
+        // }
+        else {
           if (stack.isNotEmpty) {
             navigator.popUntil((e) => e.settings.name == stack.last);
           } else {

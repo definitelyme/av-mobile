@@ -312,7 +312,7 @@ class WalletCubit extends Cubit<WalletState> with BaseCubit {
     final response = await _repository.forgotSecurityAnswer(pop);
 
     emit(state.copyWith(
-      requestedPINReset: response.response.maybeMap(orElse: () => false, info: (_) => true),
+      requestedPINReset: response.response.maybeMap(orElse: () => false, success: (_) => true),
       status: optionOf(response),
       isLoading: false,
     ));

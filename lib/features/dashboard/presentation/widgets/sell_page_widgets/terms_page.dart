@@ -67,7 +67,7 @@ class _TermsPageState extends State<TermsPage> with AutomaticKeepAliveClientMixi
           BlocBuilder<ProductBloc, ProductState>(
             builder: (c, s) => AdaptiveDropdown<String?>(
               hint: '-- Select --',
-              items: ProductState.periods,
+              items: ProductState.warrantyPeriod,
               text: (it) => it,
               validate: s.validate,
               disabled: s.isLoading || s.isSavingState || s.isCreatingProduct,

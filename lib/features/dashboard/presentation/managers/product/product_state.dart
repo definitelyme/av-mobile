@@ -1,6 +1,5 @@
 part of product_bloc.dart;
 
-@immutable
 @Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class ProductState extends BaseBlocState with _$ProductState {
   static FocusNode itemNameFocus = FocusNode();
@@ -23,13 +22,18 @@ class ProductState extends BaseBlocState with _$ProductState {
   static FocusNode addressFocus = FocusNode();
   static const int kInitialPage = 0;
   static List<String> periods = [
-    '1-3 days',
+    'Today',
+    '1-2 days',
+    '3-5 days',
+    ...List.generate(2, (i) => '${i + 1} Week'.pluralize(i + 1)),
+  ];
+  static List<String> warrantyPeriod = [
     ...List.generate(3, (i) => '${i + 1} Week'.pluralize(i + 1)),
     ...List.generate(50, (i) => '${i + 1} Month'.pluralize(i + 1)),
   ];
 
   static List<String> years = List.generate(
-    DateTime.now().year - 1900,
+    (DateTime.now().year + 1) - 1900,
     (i) => '${i + 1900}',
   );
 

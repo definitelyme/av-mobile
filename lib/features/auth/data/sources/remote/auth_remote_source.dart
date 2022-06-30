@@ -42,7 +42,7 @@ class AuthRemoteDatasource {
 
   Future<Response<dynamic>> resendPhoneVerification(String? phone) {
     // Generate Form Data for request
-    final data = FormData.fromMap(UserDTO(phone: phone?.trim().removeNewLines().trimWhiteSpaces()).toJson());
+    final data = UserDTO(phone: phone?.trim().removeNewLines().trimWhiteSpaces()).toJson();
     // Perform POST request based on role / user_type
     return _dio.post(EndPoints.RESEND_PHONE_VERIFICATION, data: data);
   }
@@ -53,24 +53,20 @@ class AuthRemoteDatasource {
   }) async {
     // Convert data to DTO
     final dto = UserDTO(phone: phone?.trim().removeNewLines().trimWhiteSpaces(), token: token);
-    // Generate Form Data for request
-    final data = FormData.fromMap(dto.toJson());
     // Perform POST request based on role / user_type
-    return _dio.post(EndPoints.CONFIRM_PHONE_VERIFICATION, data: data);
+    return _dio.post(EndPoints.CONFIRM_PHONE_VERIFICATION, data: dto.toJson());
   }
 
   Future<Response<dynamic>> sendPasswordResetMessage(String? phone) async {
     // Generate Form Data for request
-    final data = FormData.fromMap(UserDTO(phone: phone?.trim().removeNewLines().trimWhiteSpaces()).toJson());
+    final data = UserDTO(phone: phone?.trim().removeNewLines().trimWhiteSpaces()).toJson();
     // Perform request to send password reset email
     return _dio.post(EndPoints.SEND_PASSWORD_RESET_MESSAGE, data: data);
   }
 
   Future<Response<dynamic>> confirmPasswordReset(UserDTO dto) async {
-    // Generate Form Data for request
-    final data = FormData.fromMap(dto.toJson());
     // Perform request to reset user's password
-    return _dio.post(EndPoints.CONFIRM_PASSWORD_RESET, data: data);
+    return _dio.post(EndPoints.CONFIRM_PASSWORD_RESET, data: dto.toJson());
   }
 
   Future<Response<dynamic>> updateProfile(UserDTO? dto) async {
@@ -81,7 +77,7 @@ class AuthRemoteDatasource {
 
   Future<Response<dynamic>> updatePhoneNumber(String? phone) {
     // Generate Form Data for request
-    final _data = FormData.fromMap(UserDTO(phone: phone?.trim().removeNewLines().trimWhiteSpaces()).toJson());
+    final _data = UserDTO(phone: phone?.trim().removeNewLines().trimWhiteSpaces()).toJson();
     // Perform PUT request to update user's profile
     return _dio.post(EndPoints.UPDATE_PHONE, data: _data);
   }

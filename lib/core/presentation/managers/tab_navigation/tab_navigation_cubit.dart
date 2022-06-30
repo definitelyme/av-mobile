@@ -1,8 +1,6 @@
 library tab_navigation_cubit.dart;
 
-import 'package:auctionvillage/features/dashboard/presentation/pages/index.dart';
 import 'package:auctionvillage/utils/utils.dart' as util;
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
@@ -12,43 +10,10 @@ part 'tab_navigation_cubit.freezed.dart';
 part 'tab_navigation_state.dart';
 
 @injectable
-class TabNavigationCubit extends HydratedCubit<TabNavigationState> {
-  static const String _kTabPersistKey = 'persisted-tab';
+class TabNavigationCubit extends Cubit<TabNavigationState> {
   bool attachDefaultListener = true;
 
   TabNavigationCubit() : super(TabNavigationState.initial());
-
-  @override
-  TabNavigationState? fromJson(Map<String, dynamic> json) {
-    try {
-      final _index = json[_kTabPersistKey] as int;
-      return state.copyWith(currentIndex: _index, previousIndex: _index);
-    } catch (_) {
-      return null;
-    }
-  }
-
-  @override
-  Map<String, dynamic>? toJson(TabNavigationState state) {
-    if (state != TabNavigationState.initial())
-      return <String, dynamic>{_kTabPersistKey: state.currentIndex};
-    else
-      return null;
-  }
-
-  void init(BuildContext context) {
-    emit(state.copyWith(isInit: false));
-    context.tabsRouter.setActiveIndex(state.currentIndex);
-  }
-
-  void setPreviousIndex(int index) => emit(state.copyWith(previousIndex: index));
-
-  void setCurrentIndex(BuildContext context, [int index = 0]) {
-    emit(state.copyWith(currentIndex: index, previousIndex: state.currentIndex));
-    context.tabsRouter.setActiveIndex(index);
-  }
-
-  void updateTabsRouter(TabsRouter? router) => emit(state.copyWith(tabRouter: router ?? state.tabRouter));
 
   TabNavigationCubit initTabbar(TickerProvider ticker, {required int length}) {
     if (state.tabController == null) {
@@ -101,8 +66,6 @@ class TabNavigationCubit extends HydratedCubit<TabNavigationState> {
     emit(state.copyWith(selectedTab: index));
     callback?.call(index);
   }
-
-  void reset() => emit(state.copyWith(currentIndex: 0, previousIndex: 0));
 
   @override
   Future<void> close() {

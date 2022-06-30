@@ -86,8 +86,7 @@ class AppRouter extends _i6.RootStackRouter {
     },
     DashboardRoute.name: (routeData) {
       return _i6.AdaptivePage<dynamic>(
-          routeData: routeData,
-          child: _i6.WrappedRoute(child: const _i3.DashboardScreen()));
+          routeData: routeData, child: const _i3.DashboardScreen());
     },
     DealDetailRoute.name: (routeData) {
       final args = routeData.argsAs<DealDetailRouteArgs>();

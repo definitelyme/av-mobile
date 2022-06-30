@@ -43,17 +43,17 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
   }
 
   void onRefresh(DragToRefreshState refresh) async {
-    if (!_cubit.state.isLoading) {
-      if (_cubit.state.categories.isEmpty()) unawaited(_cubit.getCategories());
+    // if (!_cubit.state.isLoading) {
+    if (_cubit.state.categories.isEmpty()) unawaited(_cubit.getCategories());
 
-      await _cubit.fetchLiveDeals(
-        isHomePage: true,
-        endOfList: () => refresh.loadNoData(),
-        callback: (_) => refresh.refreshCompleted(resetFooterState: true),
-      );
+    await _cubit.fetchLiveDeals(
+      isHomePage: true,
+      endOfList: () => refresh.loadNoData(),
+      callback: (_) => refresh.refreshCompleted(resetFooterState: true),
+    );
 
-      unawaited(_cubit.sponsoredDeals(sponsored: true, sortBy: '-dealPriority', perPage: 20));
-    }
+    unawaited(_cubit.sponsoredDeals(sponsored: true, sortBy: '-dealPriority', perPage: 20));
+    // }
   }
 
   @override
@@ -66,8 +66,8 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
     return AdaptiveScaffold(
       backgroundColor: Palette.accentColor,
       overlayStyle: App.customSystemOverlay(ctx: context, android: Brightness.light, ios: Brightness.dark),
-      body: BlocProvider(
-        create: (_) => _cubit,
+      body: BlocProvider.value(
+        value: _cubit,
         child: AdaptiveScaffoldBody(
           body: Stack(
             children: [
@@ -118,6 +118,8 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
                                       '${item.product!.photos.get(0).image.getOrNull}',
                                       fit: BoxFit.cover,
                                     ),
+                                    progressIndicatorColor: Colors.white,
+                                    progressIndicatorColorDark: Colors.white,
                                     stackChildren: (image) => [
                                       image,
                                       //
