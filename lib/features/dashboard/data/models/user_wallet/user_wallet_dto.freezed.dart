@@ -215,7 +215,9 @@ class _$_UserWalletDTO extends _UserWalletDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserWalletDTOToJson(this);
+    return _$$_UserWalletDTOToJson(
+      this,
+    );
   }
 }
 
@@ -231,11 +233,11 @@ abstract class _UserWalletDTO extends UserWalletDTO {
 
   @override
   @JsonKey(name: '_meta')
-  MetaDTO? get meta => throw _privateConstructorUsedError;
+  MetaDTO? get meta;
   @override // required _UserWalletDTOData data,
-  _UserWalletDTOData? get data => throw _privateConstructorUsedError;
+  _UserWalletDTOData? get data;
   @override
-  _UserWalletDTOData? get wallet => throw _privateConstructorUsedError;
+  _UserWalletDTOData? get wallet;
   @override
   @JsonKey(ignore: true)
   _$$_UserWalletDTOCopyWith<_$_UserWalletDTO> get copyWith =>
@@ -505,7 +507,9 @@ class _$__UserWalletDTOData extends __UserWalletDTOData {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$__UserWalletDTODataToJson(this);
+    return _$$__UserWalletDTODataToJson(
+      this,
+    );
   }
 }
 
@@ -526,28 +530,28 @@ abstract class __UserWalletDTOData extends _UserWalletDTOData {
 
   @override
   @JsonKey(name: '_id')
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
   @DoubleSerializer()
-  double? get balance => throw _privateConstructorUsedError;
+  double? get balance;
   @override
   @DoubleSerializer()
-  double? get revenue => throw _privateConstructorUsedError;
+  double? get revenue;
   @override
   @DoubleSerializer()
-  double? get expense => throw _privateConstructorUsedError;
+  double? get expense;
   @override
   @DoubleSerializer()
-  double? get expendingExpense => throw _privateConstructorUsedError;
+  double? get expendingExpense;
   @override
   @BooleanSerializer()
-  bool? get active => throw _privateConstructorUsedError;
+  bool? get active;
   @override
   @TimestampConverter()
-  DateTime? get createdAt => throw _privateConstructorUsedError;
+  DateTime? get createdAt;
   @override
   @TimestampConverter()
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$__UserWalletDTODataCopyWith<_$__UserWalletDTOData> get copyWith =>
@@ -714,7 +718,9 @@ class _$_UserWalletListDTO extends _UserWalletListDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserWalletListDTOToJson(this);
+    return _$$_UserWalletListDTOToJson(
+      this,
+    );
   }
 }
 
@@ -729,9 +735,9 @@ abstract class _UserWalletListDTO extends UserWalletListDTO {
 
   @override
   @JsonKey(name: '_meta')
-  MetaDTO? get meta => throw _privateConstructorUsedError;
+  MetaDTO? get meta;
   @override
-  List<_UserWalletDTOData> get data => throw _privateConstructorUsedError;
+  List<_UserWalletDTOData> get data;
   @override
   @JsonKey(ignore: true)
   _$$_UserWalletListDTOCopyWith<_$_UserWalletListDTO> get copyWith =>

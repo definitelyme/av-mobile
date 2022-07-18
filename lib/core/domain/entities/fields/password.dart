@@ -3,15 +3,14 @@ import 'package:auctionvillage/core/domain/response/field_object/field_object_ex
 import 'package:auctionvillage/core/domain/validator/validator.dart';
 import 'package:dartz/dartz.dart';
 
-class Password extends FieldObject<String?> {
+class Password extends StringFieldObject {
   static const Password DEFAULT = Password._(Right(''));
   static const String kPlaceholder = 'secret';
 
   @override
   final Either<FieldObjectException<String>, String?> value;
 
-  factory Password(String? password) =>
-      Password._(Validator.passwordValidator(password));
+  factory Password(String? password) => Password._(Validator.passwordValidator(password));
 
   const Password._(this.value);
 

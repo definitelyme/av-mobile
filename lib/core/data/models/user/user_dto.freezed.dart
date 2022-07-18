@@ -110,56 +110,62 @@ mixin _$UserDTO {
   set locality(bool? value) => throw _privateConstructorUsedError; //
   @HiveField(18)
   @BooleanSerializer()
-  bool? get active => throw _privateConstructorUsedError; //
+  bool? get forceUpdate => throw _privateConstructorUsedError; //
   @HiveField(18)
   @BooleanSerializer()
-  set active(bool? value) => throw _privateConstructorUsedError;
+  set forceUpdate(bool? value) => throw _privateConstructorUsedError;
   @HiveField(19)
+  @BooleanSerializer()
+  bool? get active => throw _privateConstructorUsedError;
+  @HiveField(19)
+  @BooleanSerializer()
+  set active(bool? value) => throw _privateConstructorUsedError;
+  @HiveField(20)
   @BooleanSerializer()
   bool? get accountVerified => throw _privateConstructorUsedError;
-  @HiveField(19)
+  @HiveField(20)
   @BooleanSerializer()
   set accountVerified(bool? value) => throw _privateConstructorUsedError;
-  @HiveField(20)
+  @HiveField(21)
   @AuthProviderSerializer()
   AuthProvider? get provider => throw _privateConstructorUsedError;
-  @HiveField(20)
+  @HiveField(21)
   @AuthProviderSerializer()
   set provider(AuthProvider? value) => throw _privateConstructorUsedError;
-  @HiveField(21)
+  @HiveField(22)
   @TimestampConverter()
   DateTime? get createdBy => throw _privateConstructorUsedError;
-  @HiveField(21)
+  @HiveField(22)
   @TimestampConverter()
   set createdBy(DateTime? value) => throw _privateConstructorUsedError;
-  @HiveField(22)
+  @HiveField(23)
   @TimestampConverter()
   DateTime? get updatedBy => throw _privateConstructorUsedError;
-  @HiveField(22)
+  @HiveField(23)
   @TimestampConverter()
   set updatedBy(DateTime? value) => throw _privateConstructorUsedError;
-  @HiveField(23)
+  @HiveField(24)
   @TimestampConverter()
   DateTime? get deletedBy => throw _privateConstructorUsedError;
-  @HiveField(23)
+  @HiveField(24)
   @TimestampConverter()
   set deletedBy(DateTime? value) => throw _privateConstructorUsedError;
-  @HiveField(24)
+  @HiveField(25)
   @TimestampConverter()
   DateTime? get createdAt => throw _privateConstructorUsedError;
-  @HiveField(24)
+  @HiveField(25)
   @TimestampConverter()
   set createdAt(DateTime? value) => throw _privateConstructorUsedError;
-  @HiveField(25)
+  @HiveField(26)
   @TimestampConverter()
   DateTime? get updatedAt => throw _privateConstructorUsedError;
-  @HiveField(25)
+  @HiveField(26)
   @TimestampConverter()
   set updatedAt(DateTime? value) => throw _privateConstructorUsedError;
-  @HiveField(26)
+  @HiveField(27)
   @TimestampConverter()
   DateTime? get deletedAt => throw _privateConstructorUsedError;
-  @HiveField(26)
+  @HiveField(27)
   @TimestampConverter()
   set deletedAt(DateTime? value) => throw _privateConstructorUsedError;
 
@@ -219,29 +225,32 @@ abstract class $UserDTOCopyWith<$Res> {
           bool? locality,
       @HiveField(18)
       @BooleanSerializer()
-          bool? active,
+          bool? forceUpdate,
       @HiveField(19)
       @BooleanSerializer()
-          bool? accountVerified,
+          bool? active,
       @HiveField(20)
+      @BooleanSerializer()
+          bool? accountVerified,
+      @HiveField(21)
       @AuthProviderSerializer()
           AuthProvider? provider,
-      @HiveField(21)
-      @TimestampConverter()
-          DateTime? createdBy,
       @HiveField(22)
       @TimestampConverter()
-          DateTime? updatedBy,
+          DateTime? createdBy,
       @HiveField(23)
       @TimestampConverter()
-          DateTime? deletedBy,
+          DateTime? updatedBy,
       @HiveField(24)
       @TimestampConverter()
-          DateTime? createdAt,
+          DateTime? deletedBy,
       @HiveField(25)
       @TimestampConverter()
-          DateTime? updatedAt,
+          DateTime? createdAt,
       @HiveField(26)
+      @TimestampConverter()
+          DateTime? updatedAt,
+      @HiveField(27)
       @TimestampConverter()
           DateTime? deletedAt});
 }
@@ -273,6 +282,7 @@ class _$UserDTOCopyWithImpl<$Res> implements $UserDTOCopyWith<$Res> {
     Object? favAthlete = freezed,
     Object? favPlace = freezed,
     Object? locality = freezed,
+    Object? forceUpdate = freezed,
     Object? active = freezed,
     Object? accountVerified = freezed,
     Object? provider = freezed,
@@ -351,6 +361,10 @@ class _$UserDTOCopyWithImpl<$Res> implements $UserDTOCopyWith<$Res> {
       locality: locality == freezed
           ? _value.locality
           : locality // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      forceUpdate: forceUpdate == freezed
+          ? _value.forceUpdate
+          : forceUpdate // ignore: cast_nullable_to_non_nullable
               as bool?,
       active: active == freezed
           ? _value.active
@@ -445,29 +459,32 @@ abstract class _$$_UserDTOCopyWith<$Res> implements $UserDTOCopyWith<$Res> {
           bool? locality,
       @HiveField(18)
       @BooleanSerializer()
-          bool? active,
+          bool? forceUpdate,
       @HiveField(19)
       @BooleanSerializer()
-          bool? accountVerified,
+          bool? active,
       @HiveField(20)
+      @BooleanSerializer()
+          bool? accountVerified,
+      @HiveField(21)
       @AuthProviderSerializer()
           AuthProvider? provider,
-      @HiveField(21)
-      @TimestampConverter()
-          DateTime? createdBy,
       @HiveField(22)
       @TimestampConverter()
-          DateTime? updatedBy,
+          DateTime? createdBy,
       @HiveField(23)
       @TimestampConverter()
-          DateTime? deletedBy,
+          DateTime? updatedBy,
       @HiveField(24)
       @TimestampConverter()
-          DateTime? createdAt,
+          DateTime? deletedBy,
       @HiveField(25)
       @TimestampConverter()
-          DateTime? updatedAt,
+          DateTime? createdAt,
       @HiveField(26)
+      @TimestampConverter()
+          DateTime? updatedAt,
+      @HiveField(27)
       @TimestampConverter()
           DateTime? deletedAt});
 }
@@ -500,6 +517,7 @@ class __$$_UserDTOCopyWithImpl<$Res> extends _$UserDTOCopyWithImpl<$Res>
     Object? favAthlete = freezed,
     Object? favPlace = freezed,
     Object? locality = freezed,
+    Object? forceUpdate = freezed,
     Object? active = freezed,
     Object? accountVerified = freezed,
     Object? provider = freezed,
@@ -579,6 +597,10 @@ class __$$_UserDTOCopyWithImpl<$Res> extends _$UserDTOCopyWithImpl<$Res>
           ? _value.locality
           : locality // ignore: cast_nullable_to_non_nullable
               as bool?,
+      forceUpdate: forceUpdate == freezed
+          ? _value.forceUpdate
+          : forceUpdate // ignore: cast_nullable_to_non_nullable
+              as bool?,
       active: active == freezed
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
@@ -641,15 +663,16 @@ class _$_UserDTO extends _UserDTO {
       @HiveField(15) @BooleanSerializer() this.favAthlete,
       @HiveField(16) @BooleanSerializer() this.favPlace,
       @HiveField(17) @BooleanSerializer() this.locality,
-      @HiveField(18) @BooleanSerializer() this.active,
-      @HiveField(19) @BooleanSerializer() this.accountVerified,
-      @HiveField(20) @AuthProviderSerializer() this.provider,
-      @HiveField(21) @TimestampConverter() this.createdBy,
-      @HiveField(22) @TimestampConverter() this.updatedBy,
-      @HiveField(23) @TimestampConverter() this.deletedBy,
-      @HiveField(24) @TimestampConverter() this.createdAt,
-      @HiveField(25) @TimestampConverter() this.updatedAt,
-      @HiveField(26) @TimestampConverter() this.deletedAt})
+      @HiveField(18) @BooleanSerializer() this.forceUpdate,
+      @HiveField(19) @BooleanSerializer() this.active,
+      @HiveField(20) @BooleanSerializer() this.accountVerified,
+      @HiveField(21) @AuthProviderSerializer() this.provider,
+      @HiveField(22) @TimestampConverter() this.createdBy,
+      @HiveField(23) @TimestampConverter() this.updatedBy,
+      @HiveField(24) @TimestampConverter() this.deletedBy,
+      @HiveField(25) @TimestampConverter() this.createdAt,
+      @HiveField(26) @TimestampConverter() this.updatedAt,
+      @HiveField(27) @TimestampConverter() this.deletedAt})
       : super._();
 
   factory _$_UserDTO.fromJson(Map<String, dynamic> json) =>
@@ -721,43 +744,47 @@ class _$_UserDTO extends _UserDTO {
   @override
   @HiveField(18)
   @BooleanSerializer()
-  bool? active;
+  bool? forceUpdate;
   @override
   @HiveField(19)
   @BooleanSerializer()
-  bool? accountVerified;
+  bool? active;
   @override
   @HiveField(20)
+  @BooleanSerializer()
+  bool? accountVerified;
+  @override
+  @HiveField(21)
   @AuthProviderSerializer()
   AuthProvider? provider;
   @override
-  @HiveField(21)
+  @HiveField(22)
   @TimestampConverter()
   DateTime? createdBy;
   @override
-  @HiveField(22)
+  @HiveField(23)
   @TimestampConverter()
   DateTime? updatedBy;
   @override
-  @HiveField(23)
+  @HiveField(24)
   @TimestampConverter()
   DateTime? deletedBy;
   @override
-  @HiveField(24)
+  @HiveField(25)
   @TimestampConverter()
   DateTime? createdAt;
   @override
-  @HiveField(25)
+  @HiveField(26)
   @TimestampConverter()
   DateTime? updatedAt;
   @override
-  @HiveField(26)
+  @HiveField(27)
   @TimestampConverter()
   DateTime? deletedAt;
 
   @override
   String toString() {
-    return 'UserDTO(id: $id, token: $token, firstName: $firstName, lastName: $lastName, fullName: $fullName, isPrivate: $isPrivate, email: $email, phone: $phone, password: $password, oldPassword: $oldPassword, confirmation: $confirmation, countryName: $countryName, platform: $platform, avatar: $avatar, favAthlete: $favAthlete, favPlace: $favPlace, locality: $locality, active: $active, accountVerified: $accountVerified, provider: $provider, createdBy: $createdBy, updatedBy: $updatedBy, deletedBy: $deletedBy, createdAt: $createdAt, updatedAt: $updatedAt, deletedAt: $deletedAt)';
+    return 'UserDTO(id: $id, token: $token, firstName: $firstName, lastName: $lastName, fullName: $fullName, isPrivate: $isPrivate, email: $email, phone: $phone, password: $password, oldPassword: $oldPassword, confirmation: $confirmation, countryName: $countryName, platform: $platform, avatar: $avatar, favAthlete: $favAthlete, favPlace: $favPlace, locality: $locality, forceUpdate: $forceUpdate, active: $active, accountVerified: $accountVerified, provider: $provider, createdBy: $createdBy, updatedBy: $updatedBy, deletedBy: $deletedBy, createdAt: $createdAt, updatedAt: $updatedAt, deletedAt: $deletedAt)';
   }
 
   @JsonKey(ignore: true)
@@ -767,7 +794,9 @@ class _$_UserDTO extends _UserDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserDTOToJson(this);
+    return _$$_UserDTOToJson(
+      this,
+    );
   }
 }
 
@@ -819,29 +848,32 @@ abstract class _UserDTO extends UserDTO {
           bool? locality,
       @HiveField(18)
       @BooleanSerializer()
-          bool? active,
+          bool? forceUpdate,
       @HiveField(19)
       @BooleanSerializer()
-          bool? accountVerified,
+          bool? active,
       @HiveField(20)
+      @BooleanSerializer()
+          bool? accountVerified,
+      @HiveField(21)
       @AuthProviderSerializer()
           AuthProvider? provider,
-      @HiveField(21)
-      @TimestampConverter()
-          DateTime? createdBy,
       @HiveField(22)
       @TimestampConverter()
-          DateTime? updatedBy,
+          DateTime? createdBy,
       @HiveField(23)
       @TimestampConverter()
-          DateTime? deletedBy,
+          DateTime? updatedBy,
       @HiveField(24)
       @TimestampConverter()
-          DateTime? createdAt,
+          DateTime? deletedBy,
       @HiveField(25)
       @TimestampConverter()
-          DateTime? updatedAt,
+          DateTime? createdAt,
       @HiveField(26)
+      @TimestampConverter()
+          DateTime? updatedAt,
+      @HiveField(27)
       @TimestampConverter()
           DateTime? deletedAt}) = _$_UserDTO;
   _UserDTO._() : super._();
@@ -852,99 +884,177 @@ abstract class _UserDTO extends UserDTO {
   @HiveField(1)
   @JsonKey(name: '_id')
   @StringSerializer()
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
+  @HiveField(1)
+  @JsonKey(name: '_id')
+  @StringSerializer()
+  set id(String? value);
   @override
   @HiveField(2)
-  String? get token => throw _privateConstructorUsedError;
+  String? get token;
+  @HiveField(2)
+  set token(String? value);
   @override
   @HiveField(3)
-  String? get firstName => throw _privateConstructorUsedError;
+  String? get firstName;
+  @HiveField(3)
+  set firstName(String? value);
   @override
   @HiveField(4)
-  String? get lastName => throw _privateConstructorUsedError;
+  String? get lastName;
+  @HiveField(4)
+  set lastName(String? value);
   @override
   @HiveField(5)
-  String? get fullName => throw _privateConstructorUsedError;
+  String? get fullName;
+  @HiveField(5)
+  set fullName(String? value);
   @override
   @HiveField(6)
   @BooleanSerializer()
-  bool? get isPrivate => throw _privateConstructorUsedError;
+  bool? get isPrivate;
+  @HiveField(6)
+  @BooleanSerializer()
+  set isPrivate(bool? value);
   @override
   @HiveField(7)
-  String? get email => throw _privateConstructorUsedError;
+  String? get email;
+  @HiveField(7)
+  set email(String? value);
   @override
   @HiveField(8)
   @JsonKey(name: 'mobile')
-  String? get phone => throw _privateConstructorUsedError;
+  String? get phone;
+  @HiveField(8)
+  @JsonKey(name: 'mobile')
+  set phone(String? value);
   @override
   @HiveField(9)
-  String? get password => throw _privateConstructorUsedError;
+  String? get password;
+  @HiveField(9)
+  set password(String? value);
   @override
   @HiveField(10)
   @JsonKey(name: 'current_password')
-  String? get oldPassword => throw _privateConstructorUsedError;
+  String? get oldPassword;
+  @HiveField(10)
+  @JsonKey(name: 'current_password')
+  set oldPassword(String? value);
   @override
   @HiveField(11)
   @JsonKey(name: 'password_confirmation')
-  String? get confirmation => throw _privateConstructorUsedError;
+  String? get confirmation;
+  @HiveField(11)
+  @JsonKey(name: 'password_confirmation')
+  set confirmation(String? value);
   @override
   @HiveField(12)
   @JsonKey(name: 'country')
-  String? get countryName => throw _privateConstructorUsedError;
+  String? get countryName;
+  @HiveField(12)
+  @JsonKey(name: 'country')
+  set countryName(String? value);
   @override
   @HiveField(13)
-  String? get platform => throw _privateConstructorUsedError;
+  String? get platform;
+  @HiveField(13)
+  set platform(String? value);
   @override
   @HiveField(14)
-  String? get avatar => throw _privateConstructorUsedError;
+  String? get avatar;
+  @HiveField(14)
+  set avatar(String? value);
   @override //
   @HiveField(15)
   @BooleanSerializer()
-  bool? get favAthlete => throw _privateConstructorUsedError;
+  bool? get favAthlete; //
+  @HiveField(15)
+  @BooleanSerializer()
+  set favAthlete(bool? value);
   @override
   @HiveField(16)
   @BooleanSerializer()
-  bool? get favPlace => throw _privateConstructorUsedError;
+  bool? get favPlace;
+  @HiveField(16)
+  @BooleanSerializer()
+  set favPlace(bool? value);
   @override
   @HiveField(17)
   @BooleanSerializer()
-  bool? get locality => throw _privateConstructorUsedError;
+  bool? get locality;
+  @HiveField(17)
+  @BooleanSerializer()
+  set locality(bool? value);
   @override //
   @HiveField(18)
   @BooleanSerializer()
-  bool? get active => throw _privateConstructorUsedError;
+  bool? get forceUpdate; //
+  @HiveField(18)
+  @BooleanSerializer()
+  set forceUpdate(bool? value);
   @override
   @HiveField(19)
   @BooleanSerializer()
-  bool? get accountVerified => throw _privateConstructorUsedError;
+  bool? get active;
+  @HiveField(19)
+  @BooleanSerializer()
+  set active(bool? value);
   @override
   @HiveField(20)
-  @AuthProviderSerializer()
-  AuthProvider? get provider => throw _privateConstructorUsedError;
+  @BooleanSerializer()
+  bool? get accountVerified;
+  @HiveField(20)
+  @BooleanSerializer()
+  set accountVerified(bool? value);
   @override
   @HiveField(21)
-  @TimestampConverter()
-  DateTime? get createdBy => throw _privateConstructorUsedError;
+  @AuthProviderSerializer()
+  AuthProvider? get provider;
+  @HiveField(21)
+  @AuthProviderSerializer()
+  set provider(AuthProvider? value);
   @override
   @HiveField(22)
   @TimestampConverter()
-  DateTime? get updatedBy => throw _privateConstructorUsedError;
+  DateTime? get createdBy;
+  @HiveField(22)
+  @TimestampConverter()
+  set createdBy(DateTime? value);
   @override
   @HiveField(23)
   @TimestampConverter()
-  DateTime? get deletedBy => throw _privateConstructorUsedError;
+  DateTime? get updatedBy;
+  @HiveField(23)
+  @TimestampConverter()
+  set updatedBy(DateTime? value);
   @override
   @HiveField(24)
   @TimestampConverter()
-  DateTime? get createdAt => throw _privateConstructorUsedError;
+  DateTime? get deletedBy;
+  @HiveField(24)
+  @TimestampConverter()
+  set deletedBy(DateTime? value);
   @override
   @HiveField(25)
   @TimestampConverter()
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get createdAt;
+  @HiveField(25)
+  @TimestampConverter()
+  set createdAt(DateTime? value);
   @override
   @HiveField(26)
   @TimestampConverter()
-  DateTime? get deletedAt => throw _privateConstructorUsedError;
+  DateTime? get updatedAt;
+  @HiveField(26)
+  @TimestampConverter()
+  set updatedAt(DateTime? value);
+  @override
+  @HiveField(27)
+  @TimestampConverter()
+  DateTime? get deletedAt;
+  @HiveField(27)
+  @TimestampConverter()
+  set deletedAt(DateTime? value);
   @override
   @JsonKey(ignore: true)
   _$$_UserDTOCopyWith<_$_UserDTO> get copyWith =>
@@ -1103,7 +1213,9 @@ class _$_UserListDTO extends _UserListDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserListDTOToJson(this);
+    return _$$_UserListDTOToJson(
+      this,
+    );
   }
 }
 
@@ -1116,9 +1228,9 @@ abstract class _UserListDTO extends UserListDTO {
       _$_UserListDTO.fromJson;
 
   @override
-  List<UserDTO> get data => throw _privateConstructorUsedError;
+  List<UserDTO> get data;
   @override
-  MetaDTO? get meta => throw _privateConstructorUsedError;
+  MetaDTO? get meta;
   @override
   @JsonKey(ignore: true)
   _$$_UserListDTOCopyWith<_$_UserListDTO> get copyWith =>

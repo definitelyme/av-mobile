@@ -6,16 +6,18 @@ class _HttpClients {
   static final BaseOptions _options = BaseOptions(
     baseUrl: env.baseUri.toString(),
     contentType: 'application/json',
+    connectTimeout: env.connectTimeout,
+    receiveTimeout: env.receiveTimeout,
     headers: {
       'content-type': 'application/json',
       'x-api-key': env.appApiKey,
     },
   );
 
-  static List<Interceptor> get interceptors {
-    var interceptors = <Interceptor>[];
+  static List<Interceptor> _interceptors(Dio dio) {
+    final list = <Interceptor>[];
 
-    final cacheOptions = CacheOptions(
+    final _cacheOptions = CacheOptions(
       // A default store is required for interceptor.
       store: MemCacheStore(),
       // Default.
@@ -34,11 +36,10 @@ class _HttpClients {
     );
 
     // Attach cache interceptor
-    interceptors.add(DioCacheInterceptor(options: cacheOptions));
+    list.add(DioCacheInterceptor(options: _cacheOptions));
 
-    // if (env.flavor == BuildFlavor.dev)
-    interceptors.add(
-      PrettyDioLogger(
+    if (kDebugMode)
+      list.add(PrettyDioLogger(
         request: false,
         requestHeader: true,
         requestBody: true,
@@ -47,44 +48,20 @@ class _HttpClients {
         error: true,
         compact: true,
         maxWidth: 100,
-      ),
-    );
+      ));
 
-    interceptors.add(InterceptorsWrapper(
-      onRequest: (options, handler) async {
-        final result = getIt<AccessTokenManager>().get();
-        options.headers.putIfAbsent('Authorization', () => result.accessToken.getOrEmpty);
-        return handler.next(options);
-      },
-    ));
+    list.add(AuthorizationInterceptor());
 
-    return interceptors;
+    return list;
   }
 
   static AppHttpClient _clientv2() {
-    var client = AppHttpClient(
-      client: _dio(),
-      mapper: AppHttpResponse.fromDioResponse,
-    );
+    final dio = Dio(_options);
 
-    client.options.connectTimeout = 16000;
+    dio.interceptors.addAll(_interceptors(dio));
 
-    client.options.receiveTimeout = 16000;
-
-    client.interceptors.addAll(interceptors);
+    final client = AppHttpClient(client: dio, mapper: AppHttpResponse.fromDioResponse);
 
     return client;
-  }
-
-  static Dio _dio() {
-    var dio = Dio(_options);
-
-    dio.options.connectTimeout = 16000;
-
-    dio.options.receiveTimeout = 16000;
-
-    dio.interceptors.addAll(interceptors);
-
-    return dio;
   }
 }

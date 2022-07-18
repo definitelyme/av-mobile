@@ -16,13 +16,12 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ShippingInformation {
-  BasicTextField<double?> get width => throw _privateConstructorUsedError;
-  BasicTextField<double?> get weight => throw _privateConstructorUsedError;
-  BasicTextField<double?> get height => throw _privateConstructorUsedError;
-  BasicTextField<double?> get length => throw _privateConstructorUsedError;
-  BasicTextField<String?> get description => throw _privateConstructorUsedError;
-  BasicTextField<String?> get deliveryPeriod =>
-      throw _privateConstructorUsedError;
+  NumField<double?> get width => throw _privateConstructorUsedError;
+  NumField<double?> get weight => throw _privateConstructorUsedError;
+  NumField<double?> get height => throw _privateConstructorUsedError;
+  NumField<double?> get length => throw _privateConstructorUsedError;
+  BasicTextField get description => throw _privateConstructorUsedError;
+  BasicTextField get deliveryPeriod => throw _privateConstructorUsedError;
   bool get isPickup => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -36,12 +35,12 @@ abstract class $ShippingInformationCopyWith<$Res> {
           ShippingInformation value, $Res Function(ShippingInformation) then) =
       _$ShippingInformationCopyWithImpl<$Res>;
   $Res call(
-      {BasicTextField<double?> width,
-      BasicTextField<double?> weight,
-      BasicTextField<double?> height,
-      BasicTextField<double?> length,
-      BasicTextField<String?> description,
-      BasicTextField<String?> deliveryPeriod,
+      {NumField<double?> width,
+      NumField<double?> weight,
+      NumField<double?> height,
+      NumField<double?> length,
+      BasicTextField description,
+      BasicTextField deliveryPeriod,
       bool isPickup});
 }
 
@@ -68,27 +67,27 @@ class _$ShippingInformationCopyWithImpl<$Res>
       width: width == freezed
           ? _value.width
           : width // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double?>,
+              as NumField<double?>,
       weight: weight == freezed
           ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double?>,
+              as NumField<double?>,
       height: height == freezed
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double?>,
+              as NumField<double?>,
       length: length == freezed
           ? _value.length
           : length // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double?>,
+              as NumField<double?>,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       deliveryPeriod: deliveryPeriod == freezed
           ? _value.deliveryPeriod
           : deliveryPeriod // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       isPickup: isPickup == freezed
           ? _value.isPickup
           : isPickup // ignore: cast_nullable_to_non_nullable
@@ -105,12 +104,12 @@ abstract class _$$_ShippingInformationCopyWith<$Res>
       __$$_ShippingInformationCopyWithImpl<$Res>;
   @override
   $Res call(
-      {BasicTextField<double?> width,
-      BasicTextField<double?> weight,
-      BasicTextField<double?> height,
-      BasicTextField<double?> length,
-      BasicTextField<String?> description,
-      BasicTextField<String?> deliveryPeriod,
+      {NumField<double?> width,
+      NumField<double?> weight,
+      NumField<double?> height,
+      NumField<double?> length,
+      BasicTextField description,
+      BasicTextField deliveryPeriod,
       bool isPickup});
 }
 
@@ -139,27 +138,27 @@ class __$$_ShippingInformationCopyWithImpl<$Res>
       width: width == freezed
           ? _value.width
           : width // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double?>,
+              as NumField<double?>,
       weight: weight == freezed
           ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double?>,
+              as NumField<double?>,
       height: height == freezed
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double?>,
+              as NumField<double?>,
       length: length == freezed
           ? _value.length
           : length // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double?>,
+              as NumField<double?>,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       deliveryPeriod: deliveryPeriod == freezed
           ? _value.deliveryPeriod
           : deliveryPeriod // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       isPickup: isPickup == freezed
           ? _value.isPickup
           : isPickup // ignore: cast_nullable_to_non_nullable
@@ -182,17 +181,17 @@ class _$_ShippingInformation extends _ShippingInformation {
       : super._();
 
   @override
-  final BasicTextField<double?> width;
+  final NumField<double?> width;
   @override
-  final BasicTextField<double?> weight;
+  final NumField<double?> weight;
   @override
-  final BasicTextField<double?> height;
+  final NumField<double?> height;
   @override
-  final BasicTextField<double?> length;
+  final NumField<double?> length;
   @override
-  final BasicTextField<String?> description;
+  final BasicTextField description;
   @override
-  final BasicTextField<String?> deliveryPeriod;
+  final BasicTextField deliveryPeriod;
   @override
   @JsonKey()
   final bool isPickup;
@@ -238,30 +237,29 @@ class _$_ShippingInformation extends _ShippingInformation {
 
 abstract class _ShippingInformation extends ShippingInformation {
   const factory _ShippingInformation(
-      {required final BasicTextField<double?> width,
-      required final BasicTextField<double?> weight,
-      required final BasicTextField<double?> height,
-      required final BasicTextField<double?> length,
-      required final BasicTextField<String?> description,
-      required final BasicTextField<String?> deliveryPeriod,
+      {required final NumField<double?> width,
+      required final NumField<double?> weight,
+      required final NumField<double?> height,
+      required final NumField<double?> length,
+      required final BasicTextField description,
+      required final BasicTextField deliveryPeriod,
       final bool isPickup}) = _$_ShippingInformation;
   const _ShippingInformation._() : super._();
 
   @override
-  BasicTextField<double?> get width => throw _privateConstructorUsedError;
+  NumField<double?> get width;
   @override
-  BasicTextField<double?> get weight => throw _privateConstructorUsedError;
+  NumField<double?> get weight;
   @override
-  BasicTextField<double?> get height => throw _privateConstructorUsedError;
+  NumField<double?> get height;
   @override
-  BasicTextField<double?> get length => throw _privateConstructorUsedError;
+  NumField<double?> get length;
   @override
-  BasicTextField<String?> get description => throw _privateConstructorUsedError;
+  BasicTextField get description;
   @override
-  BasicTextField<String?> get deliveryPeriod =>
-      throw _privateConstructorUsedError;
+  BasicTextField get deliveryPeriod;
   @override
-  bool get isPickup => throw _privateConstructorUsedError;
+  bool get isPickup;
   @override
   @JsonKey(ignore: true)
   _$$_ShippingInformationCopyWith<_$_ShippingInformation> get copyWith =>

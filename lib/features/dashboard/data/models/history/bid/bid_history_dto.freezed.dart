@@ -174,7 +174,9 @@ class _$_BidHistoryDTO extends _BidHistoryDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_BidHistoryDTOToJson(this);
+    return _$$_BidHistoryDTOToJson(
+      this,
+    );
   }
 }
 
@@ -189,9 +191,9 @@ abstract class _BidHistoryDTO extends BidHistoryDTO {
 
   @override
   @JsonKey(name: '_meta')
-  MetaDTO? get meta => throw _privateConstructorUsedError;
+  MetaDTO? get meta;
   @override
-  _BidHistoryDTOData get data => throw _privateConstructorUsedError;
+  _BidHistoryDTOData get data;
   @override
   @JsonKey(ignore: true)
   _$$_BidHistoryDTOCopyWith<_$_BidHistoryDTO> get copyWith =>
@@ -388,7 +390,9 @@ class _$__BidHistoryDTOData extends __BidHistoryDTOData {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$__BidHistoryDTODataToJson(this);
+    return _$$__BidHistoryDTODataToJson(
+      this,
+    );
   }
 }
 
@@ -405,15 +409,15 @@ abstract class __BidHistoryDTOData extends _BidHistoryDTOData {
 
   @override
   @IntegerSerializer()
-  double? get totalAuctionsParticipated => throw _privateConstructorUsedError;
+  double? get totalAuctionsParticipated;
   @override
   @IntegerSerializer()
-  double? get totalWinningBid => throw _privateConstructorUsedError;
+  double? get totalWinningBid;
   @override
   @IntegerSerializer()
-  double? get totalAmountSpent => throw _privateConstructorUsedError;
+  double? get totalAmountSpent;
   @override
-  List<DealDTOData> get dealHistory => throw _privateConstructorUsedError;
+  List<DealDTOData> get dealHistory;
   @override
   @JsonKey(ignore: true)
   _$$__BidHistoryDTODataCopyWith<_$__BidHistoryDTOData> get copyWith =>

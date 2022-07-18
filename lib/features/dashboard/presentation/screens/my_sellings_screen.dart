@@ -115,7 +115,7 @@ class _MySellingsScreenState extends State<MySellingsScreen> {
                 children: [
                   if (history != null) ...[
                     UpDownIndicator.up(
-                      value: '${history.totalProducts.getOrNull.ceil()}',
+                      value: '${history.totalProducts.getExact().ceil()}',
                       description: 'No of Items',
                       onPressed: () {},
                     ),
@@ -123,7 +123,7 @@ class _MySellingsScreenState extends State<MySellingsScreen> {
                     0.04.horizontalw,
                     //
                     UpDownIndicator.down(
-                      value: '${history.totalSold.getOrNull.ceil()}',
+                      value: '${history.totalSold.getExact().ceil()}',
                       description: 'Items sold',
                       onPressed: () {},
                     ),

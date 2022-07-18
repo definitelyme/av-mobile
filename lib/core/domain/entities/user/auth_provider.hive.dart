@@ -8,7 +8,7 @@ part of auth_provider.dart;
 
 class AuthProviderAdapter extends TypeAdapter<AuthProvider> {
   @override
-  final int typeId = 3;
+  final int typeId = 2;
 
   @override
   AuthProvider read(BinaryReader reader) {

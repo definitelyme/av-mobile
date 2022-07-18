@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$WalletState {
   bool get isLoading => throw _privateConstructorUsedError;
+  bool get isFetchingWalletBalance => throw _privateConstructorUsedError;
   bool get isFundingWallet => throw _privateConstructorUsedError;
   bool get validate => throw _privateConstructorUsedError;
   bool get isConfiguringPin => throw _privateConstructorUsedError;
@@ -26,9 +27,8 @@ mixin _$WalletState {
   SecurityQuestion get securityQuestion => throw _privateConstructorUsedError;
   MoneyMaskedTextController get amountTextController =>
       throw _privateConstructorUsedError;
-  AmountField<double> get amount => throw _privateConstructorUsedError;
-  BasicTextField<String?> get securityAnswer =>
-      throw _privateConstructorUsedError;
+  NumField<double> get amount => throw _privateConstructorUsedError;
+  BasicTextField get securityAnswer => throw _privateConstructorUsedError;
   OTPCode get otpCode => throw _privateConstructorUsedError;
   BankAccount? get bankAccount => throw _privateConstructorUsedError;
   UserWallet? get wallet => throw _privateConstructorUsedError;
@@ -53,6 +53,7 @@ abstract class $WalletStateCopyWith<$Res> {
       _$WalletStateCopyWithImpl<$Res>;
   $Res call(
       {bool isLoading,
+      bool isFetchingWalletBalance,
       bool isFundingWallet,
       bool validate,
       bool isConfiguringPin,
@@ -61,8 +62,8 @@ abstract class $WalletStateCopyWith<$Res> {
       bool requestedPINReset,
       SecurityQuestion securityQuestion,
       MoneyMaskedTextController amountTextController,
-      AmountField<double> amount,
-      BasicTextField<String?> securityAnswer,
+      NumField<double> amount,
+      BasicTextField securityAnswer,
       OTPCode otpCode,
       BankAccount? bankAccount,
       UserWallet? wallet,
@@ -89,6 +90,7 @@ class _$WalletStateCopyWithImpl<$Res> implements $WalletStateCopyWith<$Res> {
   @override
   $Res call({
     Object? isLoading = freezed,
+    Object? isFetchingWalletBalance = freezed,
     Object? isFundingWallet = freezed,
     Object? validate = freezed,
     Object? isConfiguringPin = freezed,
@@ -114,6 +116,10 @@ class _$WalletStateCopyWithImpl<$Res> implements $WalletStateCopyWith<$Res> {
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isFetchingWalletBalance: isFetchingWalletBalance == freezed
+          ? _value.isFetchingWalletBalance
+          : isFetchingWalletBalance // ignore: cast_nullable_to_non_nullable
               as bool,
       isFundingWallet: isFundingWallet == freezed
           ? _value.isFundingWallet
@@ -150,11 +156,11 @@ class _$WalletStateCopyWithImpl<$Res> implements $WalletStateCopyWith<$Res> {
       amount: amount == freezed
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
-              as AmountField<double>,
+              as NumField<double>,
       securityAnswer: securityAnswer == freezed
           ? _value.securityAnswer
           : securityAnswer // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       otpCode: otpCode == freezed
           ? _value.otpCode
           : otpCode // ignore: cast_nullable_to_non_nullable
@@ -230,6 +236,7 @@ abstract class _$$_WalletStateCopyWith<$Res>
   @override
   $Res call(
       {bool isLoading,
+      bool isFetchingWalletBalance,
       bool isFundingWallet,
       bool validate,
       bool isConfiguringPin,
@@ -238,8 +245,8 @@ abstract class _$$_WalletStateCopyWith<$Res>
       bool requestedPINReset,
       SecurityQuestion securityQuestion,
       MoneyMaskedTextController amountTextController,
-      AmountField<double> amount,
-      BasicTextField<String?> securityAnswer,
+      NumField<double> amount,
+      BasicTextField securityAnswer,
       OTPCode otpCode,
       BankAccount? bankAccount,
       UserWallet? wallet,
@@ -270,6 +277,7 @@ class __$$_WalletStateCopyWithImpl<$Res> extends _$WalletStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = freezed,
+    Object? isFetchingWalletBalance = freezed,
     Object? isFundingWallet = freezed,
     Object? validate = freezed,
     Object? isConfiguringPin = freezed,
@@ -295,6 +303,10 @@ class __$$_WalletStateCopyWithImpl<$Res> extends _$WalletStateCopyWithImpl<$Res>
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isFetchingWalletBalance: isFetchingWalletBalance == freezed
+          ? _value.isFetchingWalletBalance
+          : isFetchingWalletBalance // ignore: cast_nullable_to_non_nullable
               as bool,
       isFundingWallet: isFundingWallet == freezed
           ? _value.isFundingWallet
@@ -331,11 +343,11 @@ class __$$_WalletStateCopyWithImpl<$Res> extends _$WalletStateCopyWithImpl<$Res>
       amount: amount == freezed
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
-              as AmountField<double>,
+              as NumField<double>,
       securityAnswer: securityAnswer == freezed
           ? _value.securityAnswer
           : securityAnswer // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       otpCode: otpCode == freezed
           ? _value.otpCode
           : otpCode // ignore: cast_nullable_to_non_nullable
@@ -385,6 +397,7 @@ class __$$_WalletStateCopyWithImpl<$Res> extends _$WalletStateCopyWithImpl<$Res>
 class _$_WalletState implements _WalletState {
   const _$_WalletState(
       {this.isLoading = false,
+      this.isFetchingWalletBalance = false,
       this.isFundingWallet = false,
       this.validate = false,
       this.isConfiguringPin = false,
@@ -411,6 +424,9 @@ class _$_WalletState implements _WalletState {
   final bool isLoading;
   @override
   @JsonKey()
+  final bool isFetchingWalletBalance;
+  @override
+  @JsonKey()
   final bool isFundingWallet;
   @override
   @JsonKey()
@@ -433,9 +449,9 @@ class _$_WalletState implements _WalletState {
   @override
   final MoneyMaskedTextController amountTextController;
   @override
-  final AmountField<double> amount;
+  final NumField<double> amount;
   @override
-  final BasicTextField<String?> securityAnswer;
+  final BasicTextField securityAnswer;
   @override
   final OTPCode otpCode;
   @override
@@ -463,7 +479,7 @@ class _$_WalletState implements _WalletState {
 
   @override
   String toString() {
-    return 'WalletState(isLoading: $isLoading, isFundingWallet: $isFundingWallet, validate: $validate, isConfiguringPin: $isConfiguringPin, isWithdrawing: $isWithdrawing, isResolvingAccount: $isResolvingAccount, requestedPINReset: $requestedPINReset, securityQuestion: $securityQuestion, amountTextController: $amountTextController, amount: $amount, securityAnswer: $securityAnswer, otpCode: $otpCode, bankAccount: $bankAccount, wallet: $wallet, accountNameController: $accountNameController, paymentStatus: $paymentStatus, paymentMethod: $paymentMethod, withdrawalPin: $withdrawalPin, confirmWithdrawalPin: $confirmWithdrawalPin, banks: $banks, status: $status)';
+    return 'WalletState(isLoading: $isLoading, isFetchingWalletBalance: $isFetchingWalletBalance, isFundingWallet: $isFundingWallet, validate: $validate, isConfiguringPin: $isConfiguringPin, isWithdrawing: $isWithdrawing, isResolvingAccount: $isResolvingAccount, requestedPINReset: $requestedPINReset, securityQuestion: $securityQuestion, amountTextController: $amountTextController, amount: $amount, securityAnswer: $securityAnswer, otpCode: $otpCode, bankAccount: $bankAccount, wallet: $wallet, accountNameController: $accountNameController, paymentStatus: $paymentStatus, paymentMethod: $paymentMethod, withdrawalPin: $withdrawalPin, confirmWithdrawalPin: $confirmWithdrawalPin, banks: $banks, status: $status)';
   }
 
   @override
@@ -472,6 +488,8 @@ class _$_WalletState implements _WalletState {
         (other.runtimeType == runtimeType &&
             other is _$_WalletState &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
+            const DeepCollectionEquality().equals(
+                other.isFetchingWalletBalance, isFetchingWalletBalance) &&
             const DeepCollectionEquality()
                 .equals(other.isFundingWallet, isFundingWallet) &&
             const DeepCollectionEquality().equals(other.validate, validate) &&
@@ -512,6 +530,7 @@ class _$_WalletState implements _WalletState {
   int get hashCode => Object.hashAll([
         runtimeType,
         const DeepCollectionEquality().hash(isLoading),
+        const DeepCollectionEquality().hash(isFetchingWalletBalance),
         const DeepCollectionEquality().hash(isFundingWallet),
         const DeepCollectionEquality().hash(validate),
         const DeepCollectionEquality().hash(isConfiguringPin),
@@ -543,6 +562,7 @@ class _$_WalletState implements _WalletState {
 abstract class _WalletState implements WalletState {
   const factory _WalletState(
       {final bool isLoading,
+      final bool isFetchingWalletBalance,
       final bool isFundingWallet,
       final bool validate,
       final bool isConfiguringPin,
@@ -551,8 +571,8 @@ abstract class _WalletState implements WalletState {
       final bool requestedPINReset,
       final SecurityQuestion securityQuestion,
       required final MoneyMaskedTextController amountTextController,
-      required final AmountField<double> amount,
-      required final BasicTextField<String?> securityAnswer,
+      required final NumField<double> amount,
+      required final BasicTextField securityAnswer,
       required final OTPCode otpCode,
       final BankAccount? bankAccount,
       final UserWallet? wallet,
@@ -565,50 +585,49 @@ abstract class _WalletState implements WalletState {
       final Option<AppHttpResponse?> status}) = _$_WalletState;
 
   @override
-  bool get isLoading => throw _privateConstructorUsedError;
+  bool get isLoading;
   @override
-  bool get isFundingWallet => throw _privateConstructorUsedError;
+  bool get isFetchingWalletBalance;
   @override
-  bool get validate => throw _privateConstructorUsedError;
+  bool get isFundingWallet;
   @override
-  bool get isConfiguringPin => throw _privateConstructorUsedError;
+  bool get validate;
   @override
-  bool get isWithdrawing => throw _privateConstructorUsedError;
+  bool get isConfiguringPin;
   @override
-  bool get isResolvingAccount => throw _privateConstructorUsedError;
+  bool get isWithdrawing;
   @override
-  bool get requestedPINReset => throw _privateConstructorUsedError;
+  bool get isResolvingAccount;
   @override
-  SecurityQuestion get securityQuestion => throw _privateConstructorUsedError;
+  bool get requestedPINReset;
   @override
-  MoneyMaskedTextController get amountTextController =>
-      throw _privateConstructorUsedError;
+  SecurityQuestion get securityQuestion;
   @override
-  AmountField<double> get amount => throw _privateConstructorUsedError;
+  MoneyMaskedTextController get amountTextController;
   @override
-  BasicTextField<String?> get securityAnswer =>
-      throw _privateConstructorUsedError;
+  NumField<double> get amount;
   @override
-  OTPCode get otpCode => throw _privateConstructorUsedError;
+  BasicTextField get securityAnswer;
   @override
-  BankAccount? get bankAccount => throw _privateConstructorUsedError;
+  OTPCode get otpCode;
   @override
-  UserWallet? get wallet => throw _privateConstructorUsedError;
+  BankAccount? get bankAccount;
   @override
-  TextEditingController get accountNameController =>
-      throw _privateConstructorUsedError;
+  UserWallet? get wallet;
   @override
-  PaymentStatus get paymentStatus => throw _privateConstructorUsedError;
+  TextEditingController get accountNameController;
   @override
-  PaymentMethod get paymentMethod => throw _privateConstructorUsedError;
+  PaymentStatus get paymentStatus;
   @override
-  OTPCode get withdrawalPin => throw _privateConstructorUsedError;
+  PaymentMethod get paymentMethod;
   @override
-  OTPCode get confirmWithdrawalPin => throw _privateConstructorUsedError;
+  OTPCode get withdrawalPin;
   @override
-  KtList<Bank> get banks => throw _privateConstructorUsedError;
+  OTPCode get confirmWithdrawalPin;
   @override
-  Option<AppHttpResponse?> get status => throw _privateConstructorUsedError;
+  KtList<Bank> get banks;
+  @override
+  Option<AppHttpResponse?> get status;
   @override
   @JsonKey(ignore: true)
   _$$_WalletStateCopyWith<_$_WalletState> get copyWith =>

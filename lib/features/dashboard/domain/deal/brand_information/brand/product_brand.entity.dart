@@ -13,9 +13,9 @@ class ProductBrand extends BaseEntity with _$ProductBrand {
   const factory ProductBrand({
     required UniqueId<String?> id,
     @Default(false) bool isActive,
-    required BasicTextField<String?> name,
-    required BasicTextField<String?> description,
-    required BasicTextField<String?> slug,
+    required BasicTextField name,
+    required BasicTextField description,
+    required BasicTextField slug,
     DateTime? createdAt,
     DateTime? updatedAt,
   }) = _ProductBrand;

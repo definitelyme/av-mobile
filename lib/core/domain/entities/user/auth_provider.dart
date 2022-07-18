@@ -5,7 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 part 'auth_provider.hive.dart';
 
-@HiveType(typeId: 3)
+@HiveType(typeId: 2)
 class AuthProvider {
   static const AuthProvider apple = _$apple;
   static const AuthProvider facebook = _$facebook;

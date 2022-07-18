@@ -1,3 +1,5 @@
+library base_bloc.dart;
+
 import 'package:auctionvillage/core/data/response/index.dart';
 import 'package:auctionvillage/core/domain/response/index.dart';
 import 'package:auctionvillage/manager/locator/locator.dart';
@@ -26,10 +28,6 @@ Future<Option<AppHttpResponse?>> _connection() async {
   return none();
 }
 
-abstract class BaseBlocEvent {
-  const BaseBlocEvent();
-}
-
 abstract class BaseBlocState {
   const BaseBlocState();
 
@@ -37,7 +35,7 @@ abstract class BaseBlocState {
   bool get validate;
 }
 
-mixin BaseBloc<Event extends BaseBlocEvent, State extends BaseBlocState> on Bloc<Event, State> {
+mixin BaseBloc<Event, State extends BaseBlocState> on Bloc<Event, State> {
   EventTransformer<Evt> debounce<Evt>(Duration duration) => (events, transform) => events.debounceTime(duration).switchMap(transform);
 
   Future<Option<AppHttpResponse?>> connection() => _connection();

@@ -7,7 +7,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 abstract class FieldObject<T> {
   const FieldObject();
 
-  Either<FieldObjectException<String>, T> get value;
+  Either<FieldObjectException<String>, T?> get value;
 
   bool compare(T? other) => identical(getOrNull, other) || const DeepCollectionEquality().equals(getOrNull, other);
 
@@ -39,10 +39,9 @@ abstract class FieldObject<T> {
         throw UnExpectedFailure(message: f.message);
       }, id);
 
-  T? get valueOrNull => value.fold((_) => null, id);
+  T? get getOrNull => value.fold((_) => null, id);
 
-  T get getOrNull => value.fold((_) => getOrEmpty as T, id);
-  // T get getOrNull => value.fold((_) => null as T, (it) => it as T);
+  T getExact([T? orElse]) => value.fold((_) => orElse ?? getOrEmpty as T, (i) => i!);
 
   T? get getOrEmpty {
     return value.fold((_) {
@@ -61,7 +60,7 @@ abstract class FieldObject<T> {
 
   @override
   bool operator ==(o) {
-    return identical(this, o) && (o is FieldObject<T> && o.valueOrNull == valueOrNull);
+    return o is FieldObject<T> && const DeepCollectionEquality().equals(getOrNull, o.getOrNull);
   }
 
   @override
@@ -69,4 +68,14 @@ abstract class FieldObject<T> {
 
   @override
   String toString() => 'FieldObject<$T>($getOrEmpty)';
+}
+
+abstract class StringFieldObject extends FieldObject<String> {
+  const StringFieldObject();
+
+  @override
+  Either<FieldObjectException<String>, String?> get value;
+
+  @override
+  String get getOrEmpty => value.fold((_) => '', (it) => it!);
 }

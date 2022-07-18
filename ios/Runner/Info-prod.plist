@@ -88,5 +88,9 @@
 		<false/>
 		<key>UIStatusBarHidden</key>
 		<false/>
+		<key>FDMaximumConcurrentTasks</key>
+		<integer>5</integer>
+		<key>FDAllFilesDownloadedMessage</key>
+		<string>File(s) download complete.</string>
 	</dict>
 </plist>

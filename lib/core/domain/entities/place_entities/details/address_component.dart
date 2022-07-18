@@ -15,23 +15,18 @@ class AddressComponent with _$AddressComponent {
   const AddressComponent._();
 
   const factory AddressComponent({
-    required BasicTextField<String?> longName,
-    required BasicTextField<String?> shortName,
+    required BasicTextField longName,
+    required BasicTextField shortName,
     @Default(KtList.empty()) KtList<AddressComponentType> types,
   }) = _AddressComponent;
 }
 
 class AddressComponentType extends EnumClass {
-  static const AddressComponentType administrative_area_level_1 =
-      _$administrative_area_level_1;
-  static const AddressComponentType administrative_area_level_2 =
-      _$administrative_area_level_2;
-  static const AddressComponentType administrative_area_level_3 =
-      _$administrative_area_level_3;
-  static const AddressComponentType administrative_area_level_4 =
-      _$administrative_area_level_4;
-  static const AddressComponentType administrative_area_level_5 =
-      _$administrative_area_level_5;
+  static const AddressComponentType administrative_area_level_1 = _$administrative_area_level_1;
+  static const AddressComponentType administrative_area_level_2 = _$administrative_area_level_2;
+  static const AddressComponentType administrative_area_level_3 = _$administrative_area_level_3;
+  static const AddressComponentType administrative_area_level_4 = _$administrative_area_level_4;
+  static const AddressComponentType administrative_area_level_5 = _$administrative_area_level_5;
   static const AddressComponentType country = _$country;
   static const AddressComponentType geocode = _$geocode;
   static const AddressComponentType landmark = _$landmark;
@@ -60,8 +55,7 @@ class AddressComponentType extends EnumClass {
 
   static BuiltSet<AddressComponentType> get values => _$values;
 
-  static KtList<AddressComponentType> get list =>
-      KtList.from(values.toBuiltList().toList());
+  static KtList<AddressComponentType> get list => KtList.from(values.toBuiltList().toList());
 
   static AddressComponentType valueOf(String name) => _$valueOf(name);
 }

@@ -6,14 +6,15 @@ import 'package:auctionvillage/core/data/repository/socket_io_client.dart';
 import 'package:auctionvillage/core/data/response/index.dart';
 import 'package:auctionvillage/core/domain/entities/entities.dart';
 import 'package:auctionvillage/core/presentation/index.dart';
+import 'package:auctionvillage/features/auth/presentation/managers/managers.dart';
 import 'package:auctionvillage/features/dashboard/data/models/user_wallet/user_wallet_dto.dart';
 import 'package:auctionvillage/features/dashboard/data/repositories/wallet_repository.dart';
 import 'package:auctionvillage/features/dashboard/domain/index.dart';
 import 'package:auctionvillage/utils/utils.dart';
-import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:flutter_paystack/flutter_paystack.dart';
 import 'package:flutterwave_standard/flutterwave.dart';
@@ -27,7 +28,7 @@ part 'wallet_state.dart';
 enum _TransactionType { cr, dr }
 
 @injectable
-class WalletCubit extends Cubit<WalletState> with BaseCubit {
+class WalletCubit extends BaseCubit<WalletState> {
   static const int ACCOUNT_NUMBER_LENGTH = 10;
   static const int MINIMUM_WITHDRAWAL_AMOUNT = 100;
 
@@ -51,15 +52,17 @@ class WalletCubit extends Cubit<WalletState> with BaseCubit {
     _socketIOClient.close();
     _socketIOClient.dispose();
     state.amountTextController.clear();
-    emit(state.copyWith(isFundingWallet: false, amount: AmountField(0)));
+    emit(state.copyWith(isFundingWallet: false, amount: NumField(0)));
   }
+
+  Country? get currencyIcon => navigator.navigatorKey.currentContext?.let((it) => it.read<AuthWatcherCubit>().state.user?.country);
 
   bool get accountNameIsValid => state.bankAccount?.accountName.getOrNull != null;
   bool get accountNumberIsValid =>
       state.bankAccount?.accountNumber.getOrNull != null && state.bankAccount?.accountNumber.getOrNull?.length == ACCOUNT_NUMBER_LENGTH;
 
   bool get canWithdraw {
-    return state.amount.getOrNull >= MINIMUM_WITHDRAWAL_AMOUNT &&
+    return state.amount.getExact() >= MINIMUM_WITHDRAWAL_AMOUNT &&
         state.bankAccount != null &&
         (state.bankAccount!.bank != null && accountNumberIsValid && accountNameIsValid) &&
         state.withdrawalPin.isValid;
@@ -69,7 +72,7 @@ class WalletCubit extends Cubit<WalletState> with BaseCubit {
     final name = user?.fullName.getOrEmpty;
     final email = user?.email.getOrEmpty;
     final phone = user?.phone.getOrNull;
-    final _amount = env.flavor.fold(prod: () => state.amount.getOrNull, dev: () => 5);
+    final _amount = env.flavor.fold(prod: () => state.amount.getExact(), dev: () => 5);
     final _currency = user?.phone.country?.type?.name ?? 'NGN';
 
     final _style = FlutterwaveStyle(
@@ -81,19 +84,19 @@ class WalletCubit extends Cubit<WalletState> with BaseCubit {
       buttonColor: Palette.accentColor,
       appBarIcon: Icon(
         Icons.keyboard_backspace_rounded,
-        color: App.resolveColor(Colors.black87, dark: Palette.iconDark, context: ctx),
+        color: App.resolveColor(Colors.black87, dark: Palette.iconDark, ctx: ctx),
       ),
       buttonTextStyle: TextStyle(
         color: Palette.cardColorLight,
         fontSize: 18.sp,
       ),
-      appBarColor: App.resolveColor(Palette.primaryColor, dark: Palette.secondaryColor.shade400, context: ctx),
+      appBarColor: App.resolveColor(Palette.primaryColor, dark: Palette.secondaryColor.shade400, ctx: ctx),
       dialogCancelTextStyle: TextStyle(
-        color: App.resolveColor(Palette.text100, dark: Palette.text100Dark, context: ctx),
+        color: App.resolveColor(Palette.text100, dark: Palette.text100Dark, ctx: ctx),
         fontSize: 18.sp,
       ),
       dialogContinueTextStyle: TextStyle(
-        color: App.resolveColor(Palette.accentColor, context: ctx),
+        color: App.resolveColor(Palette.accentColor, ctx: ctx),
         fontSize: 18.sp,
       ),
     );
@@ -200,7 +203,7 @@ class WalletCubit extends Cubit<WalletState> with BaseCubit {
     final name = user?.fullName.getOrEmpty;
     final email = user?.email.getOrEmpty;
     final phone = user?.phone.getOrNull;
-    final _amount = env.flavor.fold(prod: () => state.amount.getOrNull * 100, dev: () => 500);
+    final _amount = env.flavor.fold(prod: () => state.amount.getExact() * 100, dev: () => 500);
     final _currency = user?.phone.country?.type?.name ?? 'NGN';
 
     var _charge = Charge()
@@ -255,7 +258,7 @@ class WalletCubit extends Cubit<WalletState> with BaseCubit {
 
   void amountChanged() {
     final value = state.amountTextController.numberValue;
-    emit(state.copyWith(amount: AmountField((value ?? 0).toDouble())));
+    emit(state.copyWith(amount: NumField((value ?? 0).toDouble())));
   }
 
   void answerChanged(String value) => emit(state.copyWith(securityAnswer: BasicTextField(value)));
@@ -338,18 +341,19 @@ class WalletCubit extends Cubit<WalletState> with BaseCubit {
         );
 
         state.amountTextController.clear();
-        emit(state.copyWith(amount: AmountField(0)));
+        emit(state.copyWith(amount: NumField(0)));
       },
       (f) async => emit(state.copyWith(status: optionOf(f), isFundingWallet: false)),
     );
   }
 
   Future<void> getWallet() async {
+    emit(state.copyWith(isFetchingWalletBalance: true, status: none()));
     final result = await _repository.getWallet();
 
     emit(result.fold(
-      (e) => state.copyWith(status: optionOf(e)),
-      (wallet) => state.copyWith(wallet: wallet),
+      (e) => state.copyWith(status: optionOf(e), isFetchingWalletBalance: false),
+      (wallet) => state.copyWith(wallet: wallet, isFetchingWalletBalance: false),
     ));
   }
 
@@ -454,10 +458,10 @@ class WalletCubit extends Cubit<WalletState> with BaseCubit {
 
   void withdraw(void Function(bool) onDone) async {
     emit(state.copyWith(isWithdrawing: true, validate: true, status: none()));
-    if (state.amount.getOrNull < MINIMUM_WITHDRAWAL_AMOUNT) {
+    if (state.amount.getExact() < MINIMUM_WITHDRAWAL_AMOUNT) {
       emit(state.copyWith(
         isWithdrawing: false,
-        status: some(AppHttpResponse.failure('Minimum withdrawal amount is ${Utils.currency}$MINIMUM_WITHDRAWAL_AMOUNT')),
+        status: some(AppHttpResponse.failure('Minimum withdrawal amount is ${currencyIcon?.symbolPadded}$MINIMUM_WITHDRAWAL_AMOUNT')),
       ));
       onDone(false);
       return;
@@ -472,9 +476,9 @@ class WalletCubit extends Cubit<WalletState> with BaseCubit {
     }
 
     if (state.bankAccount != null) {
-      if (state.amount.getOrNull >= MINIMUM_WITHDRAWAL_AMOUNT && accountNumberIsValid && state.withdrawalPin.isValid) {
+      if (state.amount.getExact() >= MINIMUM_WITHDRAWAL_AMOUNT && accountNumberIsValid && state.withdrawalPin.isValid) {
         final response = await _repository.withdraw(
-          state.amount.getOrNull,
+          state.amount.getExact(),
           account: state.bankAccount?.accountNumber.getOrEmpty,
           bank: state.bankAccount?.bank?.bankName.getOrNull,
           pin: state.withdrawalPin.getOrNull!,

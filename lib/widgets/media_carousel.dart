@@ -222,7 +222,7 @@ class _MediaCarouselState<U> extends State<MediaCarousel<U>> {
                               type: WormType.thin,
                               radius: 100.0,
                               spacing: 6.0,
-                              dotHeight: App.height * 0.006,
+                              dotHeight: 1.h * 0.006,
                               dotWidth: 6.0,
                               dotColor: Colors.white38,
                             ),

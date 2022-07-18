@@ -171,7 +171,9 @@ class _$_ProductDTO extends _ProductDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ProductDTOToJson(this);
+    return _$$_ProductDTOToJson(
+      this,
+    );
   }
 }
 
@@ -186,9 +188,9 @@ abstract class _ProductDTO extends ProductDTO {
 
   @override
   @JsonKey(name: '_meta')
-  MetaDTO? get meta => throw _privateConstructorUsedError;
+  MetaDTO? get meta;
   @override
-  ProductDTOData get data => throw _privateConstructorUsedError;
+  ProductDTOData get data;
   @override
   @JsonKey(ignore: true)
   _$$_ProductDTOCopyWith<_$_ProductDTO> get copyWith =>
@@ -792,7 +794,9 @@ class _$_ProductDTOData extends _ProductDTOData {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ProductDTODataToJson(this);
+    return _$$_ProductDTODataToJson(
+      this,
+    );
   }
 }
 
@@ -830,53 +834,50 @@ abstract class _ProductDTOData extends ProductDTOData {
       _$_ProductDTOData.fromJson;
 
   @override
-  BrandInformationDTO? get brandInformation =>
-      throw _privateConstructorUsedError;
+  BrandInformationDTO? get brandInformation;
   @override
-  ShippingInformationDTO? get shippingInformation =>
-      throw _privateConstructorUsedError;
+  ShippingInformationDTO? get shippingInformation;
   @override
-  TermsInformationDTO? get termsInformation =>
-      throw _privateConstructorUsedError;
+  TermsInformationDTO? get termsInformation;
   @override
-  CategoryDTOData? get category => throw _privateConstructorUsedError;
+  CategoryDTOData? get category;
   @override
-  UserDTO? get user => throw _privateConstructorUsedError;
+  UserDTO? get user;
   @override
-  UserDTO? get vendor => throw _privateConstructorUsedError;
+  UserDTO? get vendor;
   @override
   @BooleanSerializer()
-  bool? get isFavorite => throw _privateConstructorUsedError;
+  bool? get isFavorite;
   @override
-  List<String> get photos => throw _privateConstructorUsedError;
+  List<String> get photos;
   @override
   @BooleanSerializer()
-  bool? get active => throw _privateConstructorUsedError;
+  bool? get active;
   @override
   @JsonKey(name: '_id')
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
   @override
   @JsonKey(toJson: DealStatusSerializer.toJsonString)
   @DealStatusSerializer()
-  DealStatus? get status => throw _privateConstructorUsedError;
+  DealStatus? get status;
   @override
-  DealDTOData? get deal => throw _privateConstructorUsedError;
+  DealDTOData? get deal;
   @override
-  String? get lga => throw _privateConstructorUsedError;
+  String? get lga;
   @override
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
-  String? get state => throw _privateConstructorUsedError;
+  String? get state;
   @override
-  String? get country => throw _privateConstructorUsedError;
-  @override
-  @TimestampConverter()
-  DateTime? get createdAt => throw _privateConstructorUsedError;
+  String? get country;
   @override
   @TimestampConverter()
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get createdAt;
+  @override
+  @TimestampConverter()
+  DateTime? get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$_ProductDTODataCopyWith<_$_ProductDTOData> get copyWith =>
@@ -1040,7 +1041,9 @@ class _$_ProductListDTO extends _ProductListDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ProductListDTOToJson(this);
+    return _$$_ProductListDTOToJson(
+      this,
+    );
   }
 }
 
@@ -1055,9 +1058,9 @@ abstract class _ProductListDTO extends ProductListDTO {
 
   @override
   @JsonKey(name: '_meta')
-  MetaDTO? get meta => throw _privateConstructorUsedError;
+  MetaDTO? get meta;
   @override
-  List<ProductDTOData> get data => throw _privateConstructorUsedError;
+  List<ProductDTOData> get data;
   @override
   @JsonKey(ignore: true)
   _$$_ProductListDTOCopyWith<_$_ProductListDTO> get copyWith =>

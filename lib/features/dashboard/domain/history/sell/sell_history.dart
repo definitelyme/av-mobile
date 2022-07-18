@@ -14,9 +14,9 @@ class SellHistory with _$SellHistory {
   const SellHistory._();
 
   const factory SellHistory({
-    required AmountField<double> totalProducts,
-    required AmountField<double> totalSold,
-    required AmountField<double> revenue,
+    required NumField<double> totalProducts,
+    required NumField<double> totalSold,
+    required NumField<double> revenue,
     @Default(KtList.empty()) KtList<Deal> deals,
   }) = _SellHistory;
 
@@ -37,16 +37,16 @@ class SellHistory with _$SellHistory {
     KtList<Deal> history = const KtList.empty(),
   }) =>
       SellHistory(
-        revenue: AmountField(revenue ?? 0),
-        totalProducts: AmountField(totalProducts ?? 0),
-        totalSold: AmountField(totalSold ?? 0),
+        revenue: NumField(revenue ?? 0),
+        totalProducts: NumField(totalProducts ?? 0),
+        totalSold: NumField(totalSold ?? 0),
         deals: history,
       );
 
   SellHistory merge(SellHistory? other, {bool nextPage = false}) => SellHistory(
-        totalProducts: other?.totalProducts.isNotNull((it) => it as AmountField<double>, orElse: (_) => totalProducts) ?? totalProducts,
-        totalSold: other?.totalSold.isNotNull((it) => it as AmountField<double>, orElse: (_) => totalSold) ?? totalSold,
-        revenue: other?.revenue.isNotNull((it) => it as AmountField<double>, orElse: (_) => revenue) ?? revenue,
+        totalProducts: other?.totalProducts.isNotNull((it) => it as NumField<double>, orElse: (_) => totalProducts) ?? totalProducts,
+        totalSold: other?.totalSold.isNotNull((it) => it as NumField<double>, orElse: (_) => totalSold) ?? totalSold,
+        revenue: other?.revenue.isNotNull((it) => it as NumField<double>, orElse: (_) => revenue) ?? revenue,
         deals: other != null ? (!nextPage ? other.deals : deals.plusIfAbsent(other.deals)) : deals,
       );
 }

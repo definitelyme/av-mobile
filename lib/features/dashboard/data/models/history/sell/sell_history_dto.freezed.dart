@@ -174,7 +174,9 @@ class _$_SellHistoryDTO extends _SellHistoryDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SellHistoryDTOToJson(this);
+    return _$$_SellHistoryDTOToJson(
+      this,
+    );
   }
 }
 
@@ -189,9 +191,9 @@ abstract class _SellHistoryDTO extends SellHistoryDTO {
 
   @override
   @JsonKey(name: '_meta')
-  MetaDTO? get meta => throw _privateConstructorUsedError;
+  MetaDTO? get meta;
   @override
-  _SellHistoryDTOData get data => throw _privateConstructorUsedError;
+  _SellHistoryDTOData get data;
   @override
   @JsonKey(ignore: true)
   _$$_SellHistoryDTOCopyWith<_$_SellHistoryDTO> get copyWith =>
@@ -385,7 +387,9 @@ class _$__SellHistoryDTOData extends __SellHistoryDTOData {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$__SellHistoryDTODataToJson(this);
+    return _$$__SellHistoryDTODataToJson(
+      this,
+    );
   }
 }
 
@@ -402,15 +406,15 @@ abstract class __SellHistoryDTOData extends _SellHistoryDTOData {
 
   @override
   @IntegerSerializer()
-  double? get totalProducts => throw _privateConstructorUsedError;
+  double? get totalProducts;
   @override
   @IntegerSerializer()
-  double? get totalSold => throw _privateConstructorUsedError;
+  double? get totalSold;
   @override
   @IntegerSerializer()
-  double? get revenue => throw _privateConstructorUsedError;
+  double? get revenue;
   @override
-  List<DealDTOData> get deals => throw _privateConstructorUsedError;
+  List<DealDTOData> get deals;
   @override
   @JsonKey(ignore: true)
   _$$__SellHistoryDTODataCopyWith<_$__SellHistoryDTOData> get copyWith =>

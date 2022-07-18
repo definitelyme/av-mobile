@@ -2,6 +2,7 @@ part of product_bloc.dart;
 
 @Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class ProductState extends BaseBlocState with _$ProductState {
+  static List<Country> countries = Country.countries.asList();
   static FocusNode itemNameFocus = FocusNode();
   static FocusNode stateFocus = FocusNode();
   static FocusNode townFocus = FocusNode();

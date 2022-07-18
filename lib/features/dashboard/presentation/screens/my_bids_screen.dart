@@ -115,7 +115,7 @@ class _MyBidsScreenState extends State<MyBidsScreen> {
                 children: [
                   if (history != null) ...[
                     UpDownIndicator.up(
-                      value: '${history.totalAuctionsParticipated.getOrNull.ceil()}',
+                      value: '${history.totalAuctionsParticipated.getExact().ceil()}',
                       description: 'Auctions participated',
                       onPressed: () {},
                     ),
@@ -123,7 +123,7 @@ class _MyBidsScreenState extends State<MyBidsScreen> {
                     0.04.horizontalw,
                     //
                     UpDownIndicator.down(
-                      value: '${history.totalWinningBid.getOrNull.ceil()}',
+                      value: '${history.totalWinningBid.getExact().ceil()}',
                       description: 'Winning Bids',
                       onPressed: () {},
                     ),

@@ -17,14 +17,14 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$Product {
   UniqueId<String?> get id => throw _privateConstructorUsedError;
-  BasicTextField<String?> get name => throw _privateConstructorUsedError;
-  BasicTextField<String?> get description => throw _privateConstructorUsedError;
+  BasicTextField get name => throw _privateConstructorUsedError;
+  BasicTextField get description => throw _privateConstructorUsedError;
   KtList<UploadableMedia> get photos => throw _privateConstructorUsedError;
   bool get isActive => throw _privateConstructorUsedError;
   bool get isFavorite => throw _privateConstructorUsedError;
   DealStatus get dealStatus => throw _privateConstructorUsedError;
-  BasicTextField<String?> get lga => throw _privateConstructorUsedError;
-  BasicTextField<String?> get state => throw _privateConstructorUsedError;
+  BasicTextField get lga => throw _privateConstructorUsedError;
+  BasicTextField get state => throw _privateConstructorUsedError;
   User? get vendor => throw _privateConstructorUsedError;
   Deal? get deal => throw _privateConstructorUsedError;
   Country? get country => throw _privateConstructorUsedError;
@@ -46,14 +46,14 @@ abstract class $ProductCopyWith<$Res> {
       _$ProductCopyWithImpl<$Res>;
   $Res call(
       {UniqueId<String?> id,
-      BasicTextField<String?> name,
-      BasicTextField<String?> description,
+      BasicTextField name,
+      BasicTextField description,
       KtList<UploadableMedia> photos,
       bool isActive,
       bool isFavorite,
       DealStatus dealStatus,
-      BasicTextField<String?> lga,
-      BasicTextField<String?> state,
+      BasicTextField lga,
+      BasicTextField state,
       User? vendor,
       Deal? deal,
       Country? country,
@@ -110,11 +110,11 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       photos: photos == freezed
           ? _value.photos
           : photos // ignore: cast_nullable_to_non_nullable
@@ -134,11 +134,11 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
       lga: lga == freezed
           ? _value.lga
           : lga // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       state: state == freezed
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       vendor: vendor == freezed
           ? _value.vendor
           : vendor // ignore: cast_nullable_to_non_nullable
@@ -265,14 +265,14 @@ abstract class _$$_ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
   @override
   $Res call(
       {UniqueId<String?> id,
-      BasicTextField<String?> name,
-      BasicTextField<String?> description,
+      BasicTextField name,
+      BasicTextField description,
       KtList<UploadableMedia> photos,
       bool isActive,
       bool isFavorite,
       DealStatus dealStatus,
-      BasicTextField<String?> lga,
-      BasicTextField<String?> state,
+      BasicTextField lga,
+      BasicTextField state,
       User? vendor,
       Deal? deal,
       Country? country,
@@ -337,11 +337,11 @@ class __$$_ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       photos: photos == freezed
           ? _value.photos
           : photos // ignore: cast_nullable_to_non_nullable
@@ -361,11 +361,11 @@ class __$$_ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
       lga: lga == freezed
           ? _value.lga
           : lga // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       state: state == freezed
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       vendor: vendor == freezed
           ? _value.vendor
           : vendor // ignore: cast_nullable_to_non_nullable
@@ -433,9 +433,9 @@ class _$_Product extends _Product {
   @override
   final UniqueId<String?> id;
   @override
-  final BasicTextField<String?> name;
+  final BasicTextField name;
   @override
-  final BasicTextField<String?> description;
+  final BasicTextField description;
   @override
   @JsonKey()
   final KtList<UploadableMedia> photos;
@@ -449,9 +449,9 @@ class _$_Product extends _Product {
   @JsonKey()
   final DealStatus dealStatus;
   @override
-  final BasicTextField<String?> lga;
+  final BasicTextField lga;
   @override
-  final BasicTextField<String?> state;
+  final BasicTextField state;
   @override
   final User? vendor;
   @override
@@ -538,14 +538,14 @@ class _$_Product extends _Product {
 abstract class _Product extends Product {
   const factory _Product(
       {required final UniqueId<String?> id,
-      required final BasicTextField<String?> name,
-      required final BasicTextField<String?> description,
+      required final BasicTextField name,
+      required final BasicTextField description,
       final KtList<UploadableMedia> photos,
       final bool isActive,
       final bool isFavorite,
       final DealStatus dealStatus,
-      required final BasicTextField<String?> lga,
-      required final BasicTextField<String?> state,
+      required final BasicTextField lga,
+      required final BasicTextField state,
       final User? vendor,
       final Deal? deal,
       final Country? country,
@@ -558,42 +558,41 @@ abstract class _Product extends Product {
   const _Product._() : super._();
 
   @override
-  UniqueId<String?> get id => throw _privateConstructorUsedError;
+  UniqueId<String?> get id;
   @override
-  BasicTextField<String?> get name => throw _privateConstructorUsedError;
+  BasicTextField get name;
   @override
-  BasicTextField<String?> get description => throw _privateConstructorUsedError;
+  BasicTextField get description;
   @override
-  KtList<UploadableMedia> get photos => throw _privateConstructorUsedError;
+  KtList<UploadableMedia> get photos;
   @override
-  bool get isActive => throw _privateConstructorUsedError;
+  bool get isActive;
   @override
-  bool get isFavorite => throw _privateConstructorUsedError;
+  bool get isFavorite;
   @override
-  DealStatus get dealStatus => throw _privateConstructorUsedError;
+  DealStatus get dealStatus;
   @override
-  BasicTextField<String?> get lga => throw _privateConstructorUsedError;
+  BasicTextField get lga;
   @override
-  BasicTextField<String?> get state => throw _privateConstructorUsedError;
+  BasicTextField get state;
   @override
-  User? get vendor => throw _privateConstructorUsedError;
+  User? get vendor;
   @override
-  Deal? get deal => throw _privateConstructorUsedError;
+  Deal? get deal;
   @override
-  Country? get country => throw _privateConstructorUsedError;
+  Country? get country;
   @override
-  DealCategory? get category => throw _privateConstructorUsedError;
+  DealCategory? get category;
   @override
-  BrandInformation? get brandInformation => throw _privateConstructorUsedError;
+  BrandInformation? get brandInformation;
   @override
-  ShippingInformation? get shippingInformation =>
-      throw _privateConstructorUsedError;
+  ShippingInformation? get shippingInformation;
   @override
-  TermsInformation? get termsInformation => throw _privateConstructorUsedError;
+  TermsInformation? get termsInformation;
   @override
-  DateTime? get createdAt => throw _privateConstructorUsedError;
+  DateTime? get createdAt;
   @override
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$_ProductCopyWith<_$_Product> get copyWith =>

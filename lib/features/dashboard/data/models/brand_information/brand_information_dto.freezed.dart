@@ -256,7 +256,9 @@ class _$_BrandInformationDTO extends _BrandInformationDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_BrandInformationDTOToJson(this);
+    return _$$_BrandInformationDTOToJson(
+      this,
+    );
   }
 }
 
@@ -277,21 +279,21 @@ abstract class _BrandInformationDTO extends BrandInformationDTO {
       _$_BrandInformationDTO.fromJson;
 
   @override
-  String? get brand => throw _privateConstructorUsedError;
+  String? get brand;
   @override
-  String? get brandModel => throw _privateConstructorUsedError;
+  String? get brandModel;
   @override
-  String? get transmission => throw _privateConstructorUsedError;
+  String? get transmission;
   @override
-  int? get yearOfManufacturer => throw _privateConstructorUsedError;
+  int? get yearOfManufacturer;
   @override
-  String? get color => throw _privateConstructorUsedError;
+  String? get color;
   @override
   @JsonKey(toJson: ItemConditionSerializer.toJsonString)
   @ItemConditionSerializer()
-  ItemCondition? get condition => throw _privateConstructorUsedError;
+  ItemCondition? get condition;
   @override
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
   @override
   @JsonKey(ignore: true)
   _$$_BrandInformationDTOCopyWith<_$_BrandInformationDTO> get copyWith =>

@@ -121,7 +121,7 @@ class SignupScreen extends StatelessWidget with AutoRouteWrapper {
                   ),
                   //
                   Positioned(
-                    top: App.longest * 0.13,
+                    top: 1.sh * 0.13,
                     left: 0,
                     right: 0,
                     bottom: 0,

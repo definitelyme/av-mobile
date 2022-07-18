@@ -27,7 +27,7 @@ class _MorePageState extends State<MorePage> with AutomaticKeepAliveClientMixin<
   @override
   void initState() {
     _walletCubit = blocMaybeOf(context, orElse: () => getIt<WalletCubit>());
-    if (context.read<AuthWatcherCubit>().state.isAuthenticated) _walletCubit.getWallet();
+    if (context.read<AuthWatcherCubit>().isAuthenticated) _walletCubit.getWallet();
     super.initState();
   }
 
@@ -39,11 +39,12 @@ class _MorePageState extends State<MorePage> with AutomaticKeepAliveClientMixin<
     super.build(context);
 
     return BlocListener<AuthWatcherCubit, AuthWatcherState>(
+      // listenWhen: (p, c) => c.user != null && p.user != c.user,
       listenWhen: (p, c) => c.user != null,
       listener: (_, __) => _walletCubit.getWallet(),
       child: Builder(
         builder: (c) => Visibility(
-          visible: c.watch<AuthWatcherCubit>().state.isAuthenticated,
+          visible: c.watch<AuthWatcherCubit>().isAuthenticated,
           replacement: BlocProvider(
             create: (_) => getIt<AuthCubit>(),
             child: BlocListener<AuthCubit, AuthState>(
@@ -63,7 +64,7 @@ class _MorePageState extends State<MorePage> with AutomaticKeepAliveClientMixin<
           ),
           child: AdaptiveScaffold(
             backgroundColor: Palette.accentColor,
-            overlayStyle: App.customSystemOverlay(ctx: c, android: Brightness.light, ios: Brightness.light),
+            overlayStyle: App.customSystemOverlay(ctx: c, android: Brightness.light, ios: Brightness.dark),
             body: CustomScrollView(
               slivers: [
                 SliverSafeArea(
@@ -81,7 +82,7 @@ class _MorePageState extends State<MorePage> with AutomaticKeepAliveClientMixin<
                               selector: (s) => s.user,
                               builder: (c, user) => ImageBox.network(
                                 heroTag: Const.profilePhotoHeroTag,
-                                photo: user?.photo.image.valueOrNull,
+                                photo: user?.photo.image.getOrNull,
                                 width: 50,
                                 height: 50,
                                 fit: BoxFit.cover,
@@ -129,6 +130,28 @@ class _MorePageState extends State<MorePage> with AutomaticKeepAliveClientMixin<
                                   ],
                                 ),
                               ],
+                            ),
+                            //
+                            const Spacer(),
+                            //
+                            Material(
+                              type: MaterialType.transparency,
+                              borderRadius: 100.br,
+                              child: AdaptiveInkWell(
+                                onTap: () => navigator.navigate(const AppearanceRoute()),
+                                borderRadius: 100.br,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Icon(
+                                    Utils.foldTheme(
+                                      context: context,
+                                      light: () => CupertinoIcons.moon_stars_fill,
+                                      dark: () => Utils.platform_(material: Icons.light_mode_rounded, cupertino: CupertinoIcons.light_max),
+                                    ),
+                                    color: Palette.cardColorLight,
+                                  ),
+                                ),
+                              ),
                             ),
                           ],
                         ),

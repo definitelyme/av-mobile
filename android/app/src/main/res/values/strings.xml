@@ -2,4 +2,13 @@
 <resources>
     <string name="app_name">Auction Village</string>
     <string name="default_channel">fcm_default_channel_name</string>
+    <string name="flutter_downloader_notification_started">Download started</string>
+    <string name="flutter_downloader_notification_in_progress">Download in progress</string>
+    <string name="flutter_downloader_notification_canceled">Download canceled</string>
+    <string name="flutter_downloader_notification_failed">Download failed</string>
+    <string name="flutter_downloader_notification_complete">Download complete</string>
+    <string name="flutter_downloader_notification_paused">Download paused</string>
+    <!--  -->
+    <string name="flutter_downloader_notification_channel_name">Downloads</string>
+    <string name="flutter_downloader_notification_channel_description">Display file download progress</string>
 </resources>

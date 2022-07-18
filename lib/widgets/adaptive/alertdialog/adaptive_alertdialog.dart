@@ -320,7 +320,7 @@ class AdaptiveAlertdialog<B extends Object?> extends StatelessWidget {
               )
             : Theme(
                 data: Utils.platform_(
-                  cupertino: App.isDarkMode(context) ? ThemeData.dark() : ThemeData.light(),
+                  cupertino: Utils.isDarkMode(context) ? ThemeData.dark() : ThemeData.light(),
                   material: context.read<ThemeCubit>().state.themeData(),
                 )!,
                 child: PlatformAlertDialog(

@@ -29,7 +29,7 @@ class DealDTO with _$DealDTO {
   factory DealDTO.fromJson(Map<String, dynamic> json) => _$DealDTOFromJson(json);
 
   /// Maps the Data Transfer Object to a Deal Object.
-  Deal domain([KtList<Country>? countries]) => data.domain(countries);
+  Deal get domain => data.domain;
 }
 
 DealDTOData deserializeDealDTOData(Map<String, dynamic> json) => DealDTOData.fromJson(json);
@@ -76,26 +76,26 @@ class DealDTOData with _$DealDTOData {
   /// Maps Deal to a Data Transfer Object.
   factory DealDTOData.fromDomain(Deal? instance) => DealDTOData(
         // id: instance?.id.value,
-        basePrice: '${instance?.basePrice.valueOrNull?.roundToIntOrDouble ?? ''}',
-        amount: '${instance?.basePrice.valueOrNull?.roundToIntOrDouble ?? ''}',
+        basePrice: '${instance?.basePrice.getOrNull?.roundToIntOrDouble ?? ''}',
+        amount: '${instance?.basePrice.getOrNull?.roundToIntOrDouble ?? ''}',
         // isPrivate: instance?.isPrivate,
         // isFavorite: instance?.hasWish,
         // dealStatus: instance?.status,
         // sponsored: instance?.isSponsored,
         dealPlan: instance?.dealPlan,
-        // admittanceFee: instance?.admittanceFee.valueOrNull?,
-        address: instance?.address.valueOrNull,
-        // clicks: instance?.clicks.valueOrNull?,
-        // dealPriority: instance?.dealPriority.valueOrNull?,
+        // admittanceFee: instance?.admittanceFee.getOrNull?,
+        address: instance?.address.getOrNull,
+        // clicks: instance?.clicks.getOrNull?,
+        // dealPriority: instance?.dealPriority.getOrNull?,
         // bidStatus: instance?.bidStatus,
         // isClosing: instance?.isClosing,
         // active: instance?.isActive,
-        // lastPriceOffered: instance?.lastPriceOffered.valueOrNull?,
+        // lastPriceOffered: instance?.lastPriceOffered.getOrNull?,
         type: instance?.type,
         quantity: instance?.quantity,
         biddingType: instance?.biddingType,
-        startDate: instance?.startDate.valueOrNull,
-        endDate: instance?.endDate.valueOrNull,
+        startDate: instance?.startDate.getOrNull,
+        endDate: instance?.endDate.getOrNull,
         // product: ProductDTOData.fromDomain(instance?.product),
         offerType: instance?.offerType,
       );
@@ -103,7 +103,7 @@ class DealDTOData with _$DealDTOData {
   factory DealDTOData.fromJson(Map<String, dynamic> json) => _$DealDTODataFromJson(json);
 
   /// Maps the Data Transfer Object to a Deal Object.
-  Deal domain([KtList<Country>? countries]) => Deal.blank(
+  Deal get domain => Deal.blank(
         id: id,
         basePrice: const DoubleSerializer().fromJson(basePrice),
         isPrivate: isPrivate,
@@ -127,9 +127,9 @@ class DealDTOData with _$DealDTOData {
         type: type,
         user: user?.domain,
         vendor: vendor?.domain,
-        country: countries?.firstOrNull((e) => e.name.valueOrNull?.toLowerCase() == country?.toLowerCase()),
+        country: Country.fromName(country),
         // lastBidder: lastBidder?.domain,
-        product: product?.domain(countries),
+        product: product?.domain,
         // category: category?.domain,
         createdAt: createdAt,
         updatedAt: updatedAt,
@@ -153,5 +153,5 @@ class DealListDTO with _$DealListDTO {
   factory DealListDTO.fromJson(Map<String, dynamic> json) => _$DealListDTOFromJson(json);
 
   /// Maps the Data Transfer Object to a KtList<Deal> Object.
-  KtList<Deal> domain([KtList<Country>? countries]) => KtList.from(data.map((e) => e.domain(countries)));
+  KtList<Deal> get domain => KtList.from(data.map((e) => e.domain));
 }

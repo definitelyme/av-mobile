@@ -169,7 +169,9 @@ class _$_RatingDTO extends _RatingDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RatingDTOToJson(this);
+    return _$$_RatingDTOToJson(
+      this,
+    );
   }
 }
 
@@ -184,9 +186,9 @@ abstract class _RatingDTO extends RatingDTO {
 
   @override
   @JsonKey(name: '_meta')
-  MetaDTO? get meta => throw _privateConstructorUsedError;
+  MetaDTO? get meta;
   @override
-  _RatingDTOData get data => throw _privateConstructorUsedError;
+  _RatingDTOData get data;
   @override
   @JsonKey(ignore: true)
   _$$_RatingDTOCopyWith<_$_RatingDTO> get copyWith =>
@@ -352,7 +354,9 @@ class _$__RatingDTOData extends __RatingDTOData {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$__RatingDTODataToJson(this);
+    return _$$__RatingDTODataToJson(
+      this,
+    );
   }
 }
 
@@ -367,9 +371,9 @@ abstract class __RatingDTOData extends _RatingDTOData {
 
   @override
   @JsonKey(name: 'value')
-  List<ReviewDTO> get reviews => throw _privateConstructorUsedError;
+  List<ReviewDTO> get reviews;
   @override
-  ReviewDTO? get average => throw _privateConstructorUsedError;
+  ReviewDTO? get average;
   @override
   @JsonKey(ignore: true)
   _$$__RatingDTODataCopyWith<_$__RatingDTOData> get copyWith =>

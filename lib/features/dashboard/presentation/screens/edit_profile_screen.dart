@@ -43,7 +43,6 @@ class EditProfileScreen extends StatelessWidget with AutoRouteWrapper {
   void _pickImage(BuildContext c) async {
     await App.showAdaptiveBottomSheet(
       c,
-      radius: Radius.zero,
       builder: (_) => DocumentPickerSheet(
         pickers: [
           DocumentPicker(
@@ -76,7 +75,7 @@ class EditProfileScreen extends StatelessWidget with AutoRouteWrapper {
       actions: [
         BlocBuilder<AuthCubit, AuthState>(
           builder: (c, s) => AnimatedVisibility(
-            visible: s.user.email.valueOrNull == null && s.isLoading,
+            visible: s.user.email.getOrNull == null && s.isLoading,
             child: Padding(
               padding: const EdgeInsets.all(3).copyWith(right: App.sidePadding),
               child: Utils.circularLoader(color: Palette.accentColor, stroke: 2, height: 25, width: 25),
@@ -96,7 +95,7 @@ class EditProfileScreen extends StatelessWidget with AutoRouteWrapper {
                     clipBehavior: Clip.none,
                     children: [
                       ImageUploadWidget<AuthCubit, AuthState>(
-                        url: (s) => s.user.photo.image.valueOrNull,
+                        url: (s) => s.user.photo.image.getOrNull,
                         isLoading: (s) => s.isUploadingImage,
                         showLoading: false,
                         width: (s) => 0.3.sw,
@@ -106,7 +105,7 @@ class EditProfileScreen extends StatelessWidget with AutoRouteWrapper {
                         onGalleryClicked: (cubit, _) => cubit.pickGallery(),
                         onSelected: (s) => ImageBox.network(
                           heroTag: Const.profilePhotoHeroTag,
-                          photo: s.user.photo.image.valueOrNull,
+                          photo: s.user.photo.image.getOrNull,
                           width: 0.3.w,
                           height: 0.3.w,
                           fit: BoxFit.cover,
@@ -245,7 +244,7 @@ class EditProfileScreen extends StatelessWidget with AutoRouteWrapper {
               BlocBuilder<AuthCubit, AuthState>(
                 builder: (c, s) => AppButton(
                   text: 'SAVE CHANGES',
-                  isLoading: s.user.email.valueOrNull != null && s.isLoading,
+                  isLoading: s.user.email.getOrNull != null && s.isLoading,
                   disabled: !c.read<AuthCubit>().isDirty,
                   onPressed: c.read<AuthCubit>().updateProfile,
                 ),
@@ -265,6 +264,42 @@ class EditProfileScreen extends StatelessWidget with AutoRouteWrapper {
                   builder: (_) => const _PasswordUpdateBottomSheet(),
                 ),
               ),
+              //
+              0.03.verticalh,
+              //
+              AppButton(
+                  text: 'DELETE ACCOUNT',
+                  backgroundColor: Palette.errorRed,
+                  textColor: Colors.white,
+                  onPressed: () {
+                    Utils.showAlertDialog(
+                      context: context,
+                      builder: (_) => ReactiveAdaptiveAlertdialog<AuthCubit, AuthState>.value(
+                        bloc: getIt<AuthCubit>(),
+                        dialog: (c, s) => AdaptiveAlertdialog(
+                          title: 'Delete Account',
+                          titleHeight: 0.035.h,
+                          width: 0.8.w,
+                          contentFontSize: 18.sp,
+                          titleAlignment: Utils.platform_(material: Alignment.centerLeft, cupertino: Alignment.center)!,
+                          content: 'If you would like to reduce notifications, you can disable them instead.\n\n'
+                              'Deleted accounts cannot be recovered! Proceed?',
+                          contentTextAlignment: Utils.platform_(material: TextAlign.left, cupertino: TextAlign.center)!,
+                          secondButtonText: 'Cancel',
+                          firstButtonText: Utils.platform_(cupertino: 'Delete', material: 'Delete Account'),
+                          autoPopFirstButton: false,
+                          firstButtonIsLoading: s.isLoading,
+                          secondButtonDisabled: s.isLoading,
+                          isSecondDestructive: false,
+                          isFirstDestructive: true,
+                          isSecondDefaultAction: true,
+                          isFirstDefaultAction: false,
+                          firstButtonWidth: 0.4.w,
+                          onFirstPressed: c.read<AuthCubit>().deleteAccount,
+                        ),
+                      ),
+                    );
+                  }),
             ]),
           ),
         ),

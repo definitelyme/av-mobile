@@ -19,16 +19,26 @@ mixin Const {
   static const String walletBalanceCardTag = 'wallet-balance-card-hero-tag';
   static const String profilePhotoHeroTag = 'user=profile-photo-hero-tag';
 
+  // country constants
+  static const String countriesDownloadPath = 'countries';
+  static const String countriesDownloadUrl = 'https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries';
+  static const String defaultISO = 'NG';
+  static const String defaultLocale = 'en_NG';
+  static const String defaultCurrencyIcon = '₦';
+
   static const String kAccessTokenBoxKey = 'access-token-box-v1';
   static const String kAccessTokenKey = 'access-token-key';
   static const String kAccessTokenExpiryKey = 'access-token-expiry-key';
   static const String kPhoneNumberPrefKey = 'user-phone-number-pref-key';
+  static const String kEmailPrefKey = 'user-email-pref-key';
 
   static const double maxImageUploadSize = 1e+7;
   static const double maxVideoUploadSize = 1e+7;
+  static const double maxImageUploadWidth = 500;
+  static const double maxImageUploadHeight = 640;
+  static const int imageQuality = 40;
   static const int kPerPage = 7;
 
   //
-  static const String kDebitCardsCollection = 'debit_cards';
   static const String logoPng = 'https://res.cloudinary.com/auctionvillage/image/upload/v1652334118/mobile/Misc/launch_icon_b9oauw.png';
 }

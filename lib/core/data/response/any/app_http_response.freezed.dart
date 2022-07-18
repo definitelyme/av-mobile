@@ -203,7 +203,9 @@ class _$_AppHttpResponse extends _AppHttpResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AppHttpResponseToJson(this);
+    return _$$_AppHttpResponseToJson(
+      this,
+    );
   }
 }
 
@@ -224,17 +226,16 @@ abstract class _AppHttpResponse extends AppHttpResponse {
 
   @override
   @AnyResponseSerializer()
-  AnyResponse get response => throw _privateConstructorUsedError;
+  AnyResponse get response;
   @override
   @JsonKey(ignore: true)
-  dynamic get data => throw _privateConstructorUsedError;
+  dynamic get data;
   @override
   @JsonKey(ignore: true)
-  _d.DioError? get exception => throw _privateConstructorUsedError;
+  _d.DioError? get exception;
   @override
   @JsonKey(ignore: true)
-  AppNetworkExceptionReason? get failureReason =>
-      throw _privateConstructorUsedError;
+  AppNetworkExceptionReason? get failureReason;
   @override
   @JsonKey(ignore: true)
   _$$_AppHttpResponseCopyWith<_$_AppHttpResponse> get copyWith =>

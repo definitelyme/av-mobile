@@ -42,8 +42,7 @@ class Toolbar extends AppBar {
                           fontWeight: FontWeight.w600,
                           fontSize: fontSize,
                         )
-                      : const TextStyle(
-                          fontWeight: FontWeight.w600, color: Palette.text100),
+                      : const TextStyle(fontWeight: FontWeight.w600, color: Palette.text100),
               wrapWords: false,
               softWrap: false,
               maxLines: 1,
@@ -56,12 +55,7 @@ class Toolbar extends AppBar {
           elevation: elevation,
           backgroundColor: backgroundColor,
           actions: actions,
-          leading: leadingCondition ??
-                  getIt<AppRouter>()
-                      .navigatorKey
-                      .currentContext!
-                      .watchRouter
-                      .canPopSelfOrChildren
+          leading: leadingCondition ?? getIt<AppRouter>().navigatorKey.currentContext!.watchRouter.canPopSelfOrChildren
               ? Semantics.fromProperties(
                   properties: SemanticsProperties(
                     label: sematics,
@@ -71,14 +65,13 @@ class Toolbar extends AppBar {
                   child: Tooltip(
                     message: tooltip ?? 'Back',
                     child: IconButton(
-                      icon: leadingIcon ??
-                          const Icon(Icons.keyboard_backspace_rounded),
-                      onPressed: leadingAction ?? navigator.pop,
-                      color: buttonColor ??
-                          Utils.computeLuminance(
-                            Theme.of(App.context).scaffoldBackgroundColor,
-                          ),
-                    ),
+                        icon: leadingIcon ?? const Icon(Icons.keyboard_backspace_rounded),
+                        onPressed: leadingAction ?? navigator.pop,
+                        color: buttonColor ??
+                            getIt<AppRouter>()
+                                .navigatorKey
+                                .currentContext
+                                ?.let((it) => Theme.of(it).scaffoldBackgroundColor.invertLuminance)),
                   ),
                 )
               : null,

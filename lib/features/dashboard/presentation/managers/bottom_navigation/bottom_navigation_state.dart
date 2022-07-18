@@ -2,6 +2,7 @@ part of bottom_navigation_cubit.dart;
 
 @Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 class BottomNavigationState with _$BottomNavigationState {
+  static const homeIndex = 0;
   static const Set<Map<String, Widget>> tabs = {
     {'${util.HomePage.name}': HomePage()},
     {'${util.LivePage.name}': LivePage()},
@@ -9,9 +10,12 @@ class BottomNavigationState with _$BottomNavigationState {
     // {'${util.ChatPage.name}': ChatPage()},
     {'${util.MorePage.name}': MorePage()},
   };
+
   const factory BottomNavigationState({
-    @Default(0) int currentIndex,
-    @Default(0) int previousIndex,
+    TabsRouter? tabRouter,
+    @Default(BottomNavigationState.homeIndex) int currentIndex,
+    @Default(BottomNavigationState.homeIndex) int previousIndex,
+    @Default(false) bool hasActiveListener,
   }) = _BottomNavigationState;
 
   factory BottomNavigationState.initial() => const BottomNavigationState();

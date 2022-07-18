@@ -16,7 +16,7 @@ class Promotion extends MediaDecorator with _$Promotion implements BaseEntity {
     required MediaField url,
     required AttachmentMime mime,
     required MediaField streamUrl,
-    required BasicTextField<String?> description,
+    required BasicTextField description,
     DateTime? stopShowingAt,
     DateTime? createdAt,
     DateTime? updatedAt,
@@ -36,7 +36,6 @@ class Promotion extends MediaDecorator with _$Promotion implements BaseEntity {
         url: MediaField(AppAssets.homeCarousel, validate: false),
         mime: AttachmentMime.png,
         streamUrl: MediaField(AppAssets.homeCarousel, validate: false),
-        description: BasicTextField(
-            'Hp 15 AMD - 12GB RAM 1TB HDD Windows 10 Pro- 2.3GHz…'),
+        description: BasicTextField('Hp 15 AMD - 12GB RAM 1TB HDD Windows 10 Pro- 2.3GHz…'),
       );
 }

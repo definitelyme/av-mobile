@@ -1,15 +1,18 @@
 part of product_bloc.dart;
 
-abstract class ProductEvent extends BaseBlocEvent {
+typedef _StateUpdate = ProductState Function(ProductState);
+
+abstract class ProductEvent {
   const ProductEvent();
 }
 
-class _ProductEmiiterEvent extends ProductEvent {
-  final ProductState state;
+class ProductEmiiterEvent extends ProductEvent {
   final AwaitCallback? callback;
+  final _StateUpdate state;
 
-  // ignore: unused_element
-  const _ProductEmiiterEvent(this.state, {this.callback});
+  const ProductEmiiterEvent._(this.state, this.callback);
+
+  factory ProductEmiiterEvent.state(_StateUpdate state, {AwaitCallback? callback}) => ProductEmiiterEvent._(state, callback);
 }
 
 @immutable

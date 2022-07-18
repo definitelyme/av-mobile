@@ -7,7 +7,7 @@ import 'package:auctionvillage/widgets/widgets.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+// import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 class OAuthWidgets extends StatelessWidget {
   final AuthCubit cubit;
@@ -74,23 +74,23 @@ class OAuthWidgets extends StatelessWidget {
               if (Platform.isIOS || Platform.isMacOS) ...[
                 if (apple) HorizontalSpace(width: 0.07.sw),
                 //
-                Flexible(
-                  child: BlocSelector<AuthCubit, AuthState, bool>(
-                    selector: (s) => s.isAppleAuthLoading,
-                    builder: (c, isLoading) => AnimatedVisibility(
-                      visible: apple,
-                      child: AnimatedVisibility(
-                        visible: !isLoading,
-                        replacement: App.loadingSpinningLines(),
-                        child: SignInWithAppleButton(
-                          onPressed: context.read<AuthCubit>().appleAuth,
-                          borderRadius: Utils.buttonRadius.br,
-                          style: SignInWithAppleButtonStyle.black,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                // Flexible(
+                //   child: BlocSelector<AuthCubit, AuthState, bool>(
+                //     selector: (s) => s.isAppleAuthLoading,
+                //     builder: (c, isLoading) => AnimatedVisibility(
+                //       visible: apple,
+                //       child: AnimatedVisibility(
+                //         visible: !isLoading,
+                //         replacement: App.loadingSpinningLines(),
+                //         child: SignInWithAppleButton(
+                //           onPressed: context.read<AuthCubit>().appleAuth,
+                //           borderRadius: Utils.buttonRadius.br,
+                //           style: SignInWithAppleButtonStyle.black,
+                //         ),
+                //       ),
+                //     ),
+                //   ),
+                // ),
               ]
             ],
           ),

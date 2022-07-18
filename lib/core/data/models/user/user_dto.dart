@@ -3,7 +3,6 @@ library user_dto.dart;
 import 'package:auctionvillage/core/data/models/index.dart';
 import 'package:auctionvillage/core/domain/entities/entities.dart';
 import 'package:auctionvillage/manager/serializer/serializers.dart';
-import 'package:auctionvillage/utils/utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:kt_dart/kt.dart';
@@ -38,28 +37,29 @@ class UserDTO extends HiveObject with _$UserDTO {
     @HiveField(16) @BooleanSerializer() bool? favPlace,
     @HiveField(17) @BooleanSerializer() bool? locality,
     //
-    @HiveField(18) @BooleanSerializer() bool? active,
-    @HiveField(19) @BooleanSerializer() bool? accountVerified,
-    @HiveField(20) @AuthProviderSerializer() AuthProvider? provider,
-    @HiveField(21) @TimestampConverter() DateTime? createdBy,
-    @HiveField(22) @TimestampConverter() DateTime? updatedBy,
-    @HiveField(23) @TimestampConverter() DateTime? deletedBy,
-    @HiveField(24) @TimestampConverter() DateTime? createdAt,
-    @HiveField(25) @TimestampConverter() DateTime? updatedAt,
-    @HiveField(26) @TimestampConverter() DateTime? deletedAt,
+    @HiveField(18) @BooleanSerializer() bool? forceUpdate,
+    @HiveField(19) @BooleanSerializer() bool? active,
+    @HiveField(20) @BooleanSerializer() bool? accountVerified,
+    @HiveField(21) @AuthProviderSerializer() AuthProvider? provider,
+    @HiveField(22) @TimestampConverter() DateTime? createdBy,
+    @HiveField(23) @TimestampConverter() DateTime? updatedBy,
+    @HiveField(24) @TimestampConverter() DateTime? deletedBy,
+    @HiveField(25) @TimestampConverter() DateTime? createdAt,
+    @HiveField(26) @TimestampConverter() DateTime? updatedAt,
+    @HiveField(27) @TimestampConverter() DateTime? deletedAt,
   }) = _UserDTO;
 
   UserDTO._();
 
   factory UserDTO.fromDomain(User? instance) => UserDTO(
-        firstName: instance?.firstName.valueOrNull,
-        lastName: instance?.lastName.valueOrNull,
-        email: instance?.email.valueOrNull,
-        password: instance?.password.valueOrNull,
-        phone: instance?.phone.valueOrNull?.trim().removeNewLines().trimWhiteSpaces(),
-        countryName: (instance?.country?.name.valueOrNull ?? instance?.phone.country?.name.valueOrNull)?.toUpperCase(),
+        firstName: instance?.firstName.getOrNull,
+        lastName: instance?.lastName.getOrNull,
+        email: instance?.email.getOrNull,
+        password: instance?.password.getOrNull,
+        phone: instance?.phone.formatted?.getOrNull ?? instance?.phone.getOrNull,
+        countryName: (instance?.country?.name.getOrNull ?? instance?.phone.country?.name.getOrNull)?.toUpperCase(),
         platform: 'MOBILE',
-        avatar: instance?.photo.image.valueOrNull,
+        avatar: instance?.photo.image.getOrNull,
       );
 
   factory UserDTO.fromJson(Map<String, dynamic> json) => _$UserDTOFromJson(json);
@@ -90,6 +90,8 @@ class UserDTO extends HiveObject with _$UserDTO {
         provider: provider ?? AuthProvider.regular,
         active: active ?? false,
         accountVerified: accountVerified ?? false,
+        country: Country.fromName(countryName),
+        forceUpdate: forceUpdate,
         createdAt: createdAt,
         updatedAt: updatedAt,
         deletedAt: deletedAt,

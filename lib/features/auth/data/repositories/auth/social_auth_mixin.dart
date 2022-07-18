@@ -12,7 +12,6 @@ import 'package:dio/dio.dart' as _dio;
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 typedef SignInWithSocials = Future<_dio.Response<dynamic>> Function();
 
@@ -71,24 +70,27 @@ mixin SocialAuthMixin on AuthFacade {
       (f) => some(f),
       (_) async {
         try {
-          final credential = await SignInWithApple.getAppleIDCredential(
-            scopes: [AppleIDAuthorizationScopes.email, AppleIDAuthorizationScopes.fullName],
-          );
+          // final credential = await SignInWithApple.getAppleIDCredential(
+          //   scopes: [AppleIDAuthorizationScopes.email, AppleIDAuthorizationScopes.fullName],
+          // );
 
-          // Attempt to authenticate the user with apple credentials
-          return _authenticateUser(
-            () => remote.signInWithApple(credential.identityToken),
-            provider: AuthProvider.apple,
-          );
+          // // Attempt to authenticate the user with apple credentials
+          // return _authenticateUser(
+          //   () => remote.signInWithApple(credential.identityToken),
+          //   provider: AuthProvider.apple,
+          // );
+
+          return none();
         } on AppHttpResponse catch (e) {
           return some(e);
         } on AppNetworkException catch (e) {
           return some(e.asResponse());
-        } on SignInWithAppleNotSupportedException catch (e) {
-          return some(AppHttpResponse.failure('${e.message}'));
-        } on SignInWithAppleException catch (_) {
-          return some(AppHttpResponse.failure('${FailureResponse.aborted().message}'));
         }
+        // on SignInWithAppleNotSupportedException catch (e) {
+        //   return some(AppHttpResponse.failure('${e.message}'));
+        // } on SignInWithAppleException catch (_) {
+        //   return some(AppHttpResponse.failure('${FailureResponse.aborted().message}'));
+        // }
       },
     );
   }

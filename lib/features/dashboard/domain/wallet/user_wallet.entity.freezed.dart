@@ -17,11 +17,10 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$UserWallet {
   UniqueId<String?> get id => throw _privateConstructorUsedError;
-  AmountField<double> get balance => throw _privateConstructorUsedError;
-  AmountField<double> get revenue => throw _privateConstructorUsedError;
-  AmountField<double> get expense => throw _privateConstructorUsedError;
-  AmountField<double> get expendingExpense =>
-      throw _privateConstructorUsedError;
+  NumField<double> get balance => throw _privateConstructorUsedError;
+  NumField<double> get revenue => throw _privateConstructorUsedError;
+  NumField<double> get expense => throw _privateConstructorUsedError;
+  NumField<double> get expendingExpense => throw _privateConstructorUsedError;
   bool get isActive => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
   DateTime? get updatedAt => throw _privateConstructorUsedError;
@@ -38,10 +37,10 @@ abstract class $UserWalletCopyWith<$Res> {
       _$UserWalletCopyWithImpl<$Res>;
   $Res call(
       {UniqueId<String?> id,
-      AmountField<double> balance,
-      AmountField<double> revenue,
-      AmountField<double> expense,
-      AmountField<double> expendingExpense,
+      NumField<double> balance,
+      NumField<double> revenue,
+      NumField<double> expense,
+      NumField<double> expendingExpense,
       bool isActive,
       DateTime? createdAt,
       DateTime? updatedAt});
@@ -74,19 +73,19 @@ class _$UserWalletCopyWithImpl<$Res> implements $UserWalletCopyWith<$Res> {
       balance: balance == freezed
           ? _value.balance
           : balance // ignore: cast_nullable_to_non_nullable
-              as AmountField<double>,
+              as NumField<double>,
       revenue: revenue == freezed
           ? _value.revenue
           : revenue // ignore: cast_nullable_to_non_nullable
-              as AmountField<double>,
+              as NumField<double>,
       expense: expense == freezed
           ? _value.expense
           : expense // ignore: cast_nullable_to_non_nullable
-              as AmountField<double>,
+              as NumField<double>,
       expendingExpense: expendingExpense == freezed
           ? _value.expendingExpense
           : expendingExpense // ignore: cast_nullable_to_non_nullable
-              as AmountField<double>,
+              as NumField<double>,
       isActive: isActive == freezed
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
@@ -112,10 +111,10 @@ abstract class _$$_UserWalletCopyWith<$Res>
   @override
   $Res call(
       {UniqueId<String?> id,
-      AmountField<double> balance,
-      AmountField<double> revenue,
-      AmountField<double> expense,
-      AmountField<double> expendingExpense,
+      NumField<double> balance,
+      NumField<double> revenue,
+      NumField<double> expense,
+      NumField<double> expendingExpense,
       bool isActive,
       DateTime? createdAt,
       DateTime? updatedAt});
@@ -150,19 +149,19 @@ class __$$_UserWalletCopyWithImpl<$Res> extends _$UserWalletCopyWithImpl<$Res>
       balance: balance == freezed
           ? _value.balance
           : balance // ignore: cast_nullable_to_non_nullable
-              as AmountField<double>,
+              as NumField<double>,
       revenue: revenue == freezed
           ? _value.revenue
           : revenue // ignore: cast_nullable_to_non_nullable
-              as AmountField<double>,
+              as NumField<double>,
       expense: expense == freezed
           ? _value.expense
           : expense // ignore: cast_nullable_to_non_nullable
-              as AmountField<double>,
+              as NumField<double>,
       expendingExpense: expendingExpense == freezed
           ? _value.expendingExpense
           : expendingExpense // ignore: cast_nullable_to_non_nullable
-              as AmountField<double>,
+              as NumField<double>,
       isActive: isActive == freezed
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
@@ -196,13 +195,13 @@ class _$_UserWallet extends _UserWallet {
   @override
   final UniqueId<String?> id;
   @override
-  final AmountField<double> balance;
+  final NumField<double> balance;
   @override
-  final AmountField<double> revenue;
+  final NumField<double> revenue;
   @override
-  final AmountField<double> expense;
+  final NumField<double> expense;
   @override
-  final AmountField<double> expendingExpense;
+  final NumField<double> expendingExpense;
   @override
   @JsonKey()
   final bool isActive;
@@ -253,32 +252,31 @@ class _$_UserWallet extends _UserWallet {
 abstract class _UserWallet extends UserWallet {
   const factory _UserWallet(
       {required final UniqueId<String?> id,
-      required final AmountField<double> balance,
-      required final AmountField<double> revenue,
-      required final AmountField<double> expense,
-      required final AmountField<double> expendingExpense,
+      required final NumField<double> balance,
+      required final NumField<double> revenue,
+      required final NumField<double> expense,
+      required final NumField<double> expendingExpense,
       final bool isActive,
       final DateTime? createdAt,
       final DateTime? updatedAt}) = _$_UserWallet;
   const _UserWallet._() : super._();
 
   @override
-  UniqueId<String?> get id => throw _privateConstructorUsedError;
+  UniqueId<String?> get id;
   @override
-  AmountField<double> get balance => throw _privateConstructorUsedError;
+  NumField<double> get balance;
   @override
-  AmountField<double> get revenue => throw _privateConstructorUsedError;
+  NumField<double> get revenue;
   @override
-  AmountField<double> get expense => throw _privateConstructorUsedError;
+  NumField<double> get expense;
   @override
-  AmountField<double> get expendingExpense =>
-      throw _privateConstructorUsedError;
+  NumField<double> get expendingExpense;
   @override
-  bool get isActive => throw _privateConstructorUsedError;
+  bool get isActive;
   @override
-  DateTime? get createdAt => throw _privateConstructorUsedError;
+  DateTime? get createdAt;
   @override
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$_UserWalletCopyWith<_$_UserWallet> get copyWith =>

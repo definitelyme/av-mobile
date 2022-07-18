@@ -136,7 +136,7 @@ abstract class _PreferenceRepository extends PreferenceRepository {
   const _PreferenceRepository._() : super._();
 
   @override
-  SharedPreferences get preferences => throw _privateConstructorUsedError;
+  SharedPreferences get preferences;
   @override
   @JsonKey(ignore: true)
   _$$_PreferenceRepositoryCopyWith<_$_PreferenceRepository> get copyWith =>

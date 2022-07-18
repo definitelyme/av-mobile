@@ -20,19 +20,48 @@ CountryDTO _$CountryDTOFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CountryDTO {
+  @HiveField(1)
   String? get id => throw _privateConstructorUsedError;
+  @HiveField(1)
+  set id(String? value) => throw _privateConstructorUsedError;
+  @HiveField(2)
   String? get name => throw _privateConstructorUsedError;
+  @HiveField(2)
+  set name(String? value) => throw _privateConstructorUsedError;
+  @HiveField(3)
   @JsonKey(name: 'isoCode')
   String? get iso => throw _privateConstructorUsedError;
+  @HiveField(3)
+  @JsonKey(name: 'isoCode')
+  set iso(String? value) => throw _privateConstructorUsedError;
+  @HiveField(4)
   @JsonKey(name: 'dialCode')
   String? get dialCode => throw _privateConstructorUsedError;
+  @HiveField(4)
+  @JsonKey(name: 'dialCode')
+  set dialCode(String? value) => throw _privateConstructorUsedError;
+  @HiveField(5)
   @JsonKey(name: 'flag')
   String? get flagUrl => throw _privateConstructorUsedError;
+  @HiveField(5)
+  @JsonKey(name: 'flag')
+  set flagUrl(String? value) => throw _privateConstructorUsedError;
+  @HiveField(6)
   @CurrencyTypeSerializer()
   CurrencyType? get currency => throw _privateConstructorUsedError;
+  @HiveField(6)
+  @CurrencyTypeSerializer()
+  set currency(CurrencyType? value) => throw _privateConstructorUsedError;
+  @HiveField(7)
   @JsonKey(name: 'currency_icon')
   String? get currencyIcon => throw _privateConstructorUsedError;
+  @HiveField(7)
+  @JsonKey(name: 'currency_icon')
+  set currencyIcon(String? value) => throw _privateConstructorUsedError;
+  @HiveField(8)
   String? get locale => throw _privateConstructorUsedError;
+  @HiveField(8)
+  set locale(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,14 +75,14 @@ abstract class $CountryDTOCopyWith<$Res> {
           CountryDTO value, $Res Function(CountryDTO) then) =
       _$CountryDTOCopyWithImpl<$Res>;
   $Res call(
-      {String? id,
-      String? name,
-      @JsonKey(name: 'isoCode') String? iso,
-      @JsonKey(name: 'dialCode') String? dialCode,
-      @JsonKey(name: 'flag') String? flagUrl,
-      @CurrencyTypeSerializer() CurrencyType? currency,
-      @JsonKey(name: 'currency_icon') String? currencyIcon,
-      String? locale});
+      {@HiveField(1) String? id,
+      @HiveField(2) String? name,
+      @HiveField(3) @JsonKey(name: 'isoCode') String? iso,
+      @HiveField(4) @JsonKey(name: 'dialCode') String? dialCode,
+      @HiveField(5) @JsonKey(name: 'flag') String? flagUrl,
+      @HiveField(6) @CurrencyTypeSerializer() CurrencyType? currency,
+      @HiveField(7) @JsonKey(name: 'currency_icon') String? currencyIcon,
+      @HiveField(8) String? locale});
 }
 
 /// @nodoc
@@ -120,14 +149,14 @@ abstract class _$$_CountryDTOCopyWith<$Res>
       __$$_CountryDTOCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String? id,
-      String? name,
-      @JsonKey(name: 'isoCode') String? iso,
-      @JsonKey(name: 'dialCode') String? dialCode,
-      @JsonKey(name: 'flag') String? flagUrl,
-      @CurrencyTypeSerializer() CurrencyType? currency,
-      @JsonKey(name: 'currency_icon') String? currencyIcon,
-      String? locale});
+      {@HiveField(1) String? id,
+      @HiveField(2) String? name,
+      @HiveField(3) @JsonKey(name: 'isoCode') String? iso,
+      @HiveField(4) @JsonKey(name: 'dialCode') String? dialCode,
+      @HiveField(5) @JsonKey(name: 'flag') String? flagUrl,
+      @HiveField(6) @CurrencyTypeSerializer() CurrencyType? currency,
+      @HiveField(7) @JsonKey(name: 'currency_icon') String? currencyIcon,
+      @HiveField(8) String? locale});
 }
 
 /// @nodoc
@@ -190,76 +219,71 @@ class __$$_CountryDTOCopyWithImpl<$Res> extends _$CountryDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CountryDTO extends _CountryDTO {
-  const _$_CountryDTO(
-      {this.id,
-      this.name,
-      @JsonKey(name: 'isoCode') this.iso,
-      @JsonKey(name: 'dialCode') this.dialCode,
-      @JsonKey(name: 'flag') this.flagUrl,
-      @CurrencyTypeSerializer() this.currency,
-      @JsonKey(name: 'currency_icon') this.currencyIcon,
-      this.locale})
+@HiveType(typeId: 6, adapterName: 'CountryDTOAdapter')
+class _$_CountryDTO extends _CountryDTO with DiagnosticableTreeMixin {
+  _$_CountryDTO(
+      {@HiveField(1) this.id,
+      @HiveField(2) this.name,
+      @HiveField(3) @JsonKey(name: 'isoCode') this.iso,
+      @HiveField(4) @JsonKey(name: 'dialCode') this.dialCode,
+      @HiveField(5) @JsonKey(name: 'flag') this.flagUrl,
+      @HiveField(6) @CurrencyTypeSerializer() this.currency,
+      @HiveField(7) @JsonKey(name: 'currency_icon') this.currencyIcon,
+      @HiveField(8) this.locale})
       : super._();
 
   factory _$_CountryDTO.fromJson(Map<String, dynamic> json) =>
       _$$_CountryDTOFromJson(json);
 
   @override
-  final String? id;
+  @HiveField(1)
+  String? id;
   @override
-  final String? name;
+  @HiveField(2)
+  String? name;
   @override
+  @HiveField(3)
   @JsonKey(name: 'isoCode')
-  final String? iso;
+  String? iso;
   @override
+  @HiveField(4)
   @JsonKey(name: 'dialCode')
-  final String? dialCode;
+  String? dialCode;
   @override
+  @HiveField(5)
   @JsonKey(name: 'flag')
-  final String? flagUrl;
+  String? flagUrl;
   @override
+  @HiveField(6)
   @CurrencyTypeSerializer()
-  final CurrencyType? currency;
+  CurrencyType? currency;
   @override
+  @HiveField(7)
   @JsonKey(name: 'currency_icon')
-  final String? currencyIcon;
+  String? currencyIcon;
   @override
-  final String? locale;
+  @HiveField(8)
+  String? locale;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CountryDTO(id: $id, name: $name, iso: $iso, dialCode: $dialCode, flagUrl: $flagUrl, currency: $currency, currencyIcon: $currencyIcon, locale: $locale)';
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_CountryDTO &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.iso, iso) &&
-            const DeepCollectionEquality().equals(other.dialCode, dialCode) &&
-            const DeepCollectionEquality().equals(other.flagUrl, flagUrl) &&
-            const DeepCollectionEquality().equals(other.currency, currency) &&
-            const DeepCollectionEquality()
-                .equals(other.currencyIcon, currencyIcon) &&
-            const DeepCollectionEquality().equals(other.locale, locale));
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'CountryDTO'))
+      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('name', name))
+      ..add(DiagnosticsProperty('iso', iso))
+      ..add(DiagnosticsProperty('dialCode', dialCode))
+      ..add(DiagnosticsProperty('flagUrl', flagUrl))
+      ..add(DiagnosticsProperty('currency', currency))
+      ..add(DiagnosticsProperty('currencyIcon', currencyIcon))
+      ..add(DiagnosticsProperty('locale', locale));
   }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(iso),
-      const DeepCollectionEquality().hash(dialCode),
-      const DeepCollectionEquality().hash(flagUrl),
-      const DeepCollectionEquality().hash(currency),
-      const DeepCollectionEquality().hash(currencyIcon),
-      const DeepCollectionEquality().hash(locale));
 
   @JsonKey(ignore: true)
   @override
@@ -268,48 +292,234 @@ class _$_CountryDTO extends _CountryDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CountryDTOToJson(this);
+    return _$$_CountryDTOToJson(
+      this,
+    );
   }
 }
 
 abstract class _CountryDTO extends CountryDTO {
-  const factory _CountryDTO(
-      {final String? id,
-      final String? name,
-      @JsonKey(name: 'isoCode') final String? iso,
-      @JsonKey(name: 'dialCode') final String? dialCode,
-      @JsonKey(name: 'flag') final String? flagUrl,
-      @CurrencyTypeSerializer() final CurrencyType? currency,
-      @JsonKey(name: 'currency_icon') final String? currencyIcon,
-      final String? locale}) = _$_CountryDTO;
-  const _CountryDTO._() : super._();
+  factory _CountryDTO(
+      {@HiveField(1) String? id,
+      @HiveField(2) String? name,
+      @HiveField(3) @JsonKey(name: 'isoCode') String? iso,
+      @HiveField(4) @JsonKey(name: 'dialCode') String? dialCode,
+      @HiveField(5) @JsonKey(name: 'flag') String? flagUrl,
+      @HiveField(6) @CurrencyTypeSerializer() CurrencyType? currency,
+      @HiveField(7) @JsonKey(name: 'currency_icon') String? currencyIcon,
+      @HiveField(8) String? locale}) = _$_CountryDTO;
+  _CountryDTO._() : super._();
 
   factory _CountryDTO.fromJson(Map<String, dynamic> json) =
       _$_CountryDTO.fromJson;
 
   @override
-  String? get id => throw _privateConstructorUsedError;
+  @HiveField(1)
+  String? get id;
+  @HiveField(1)
+  set id(String? value);
   @override
-  String? get name => throw _privateConstructorUsedError;
+  @HiveField(2)
+  String? get name;
+  @HiveField(2)
+  set name(String? value);
   @override
+  @HiveField(3)
   @JsonKey(name: 'isoCode')
-  String? get iso => throw _privateConstructorUsedError;
+  String? get iso;
+  @HiveField(3)
+  @JsonKey(name: 'isoCode')
+  set iso(String? value);
   @override
+  @HiveField(4)
   @JsonKey(name: 'dialCode')
-  String? get dialCode => throw _privateConstructorUsedError;
+  String? get dialCode;
+  @HiveField(4)
+  @JsonKey(name: 'dialCode')
+  set dialCode(String? value);
   @override
+  @HiveField(5)
   @JsonKey(name: 'flag')
-  String? get flagUrl => throw _privateConstructorUsedError;
+  String? get flagUrl;
+  @HiveField(5)
+  @JsonKey(name: 'flag')
+  set flagUrl(String? value);
   @override
+  @HiveField(6)
   @CurrencyTypeSerializer()
-  CurrencyType? get currency => throw _privateConstructorUsedError;
+  CurrencyType? get currency;
+  @HiveField(6)
+  @CurrencyTypeSerializer()
+  set currency(CurrencyType? value);
   @override
+  @HiveField(7)
   @JsonKey(name: 'currency_icon')
-  String? get currencyIcon => throw _privateConstructorUsedError;
+  String? get currencyIcon;
+  @HiveField(7)
+  @JsonKey(name: 'currency_icon')
+  set currencyIcon(String? value);
   @override
-  String? get locale => throw _privateConstructorUsedError;
+  @HiveField(8)
+  String? get locale;
+  @HiveField(8)
+  set locale(String? value);
   @override
   @JsonKey(ignore: true)
   _$$_CountryDTOCopyWith<_$_CountryDTO> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+CountryDTOList _$CountryDTOListFromJson(Map<String, dynamic> json) {
+  return _CountryDTOList.fromJson(json);
+}
+
+/// @nodoc
+mixin _$CountryDTOList {
+  @JsonKey(includeIfNull: false)
+  List<CountryDTO> get data => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $CountryDTOListCopyWith<CountryDTOList> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CountryDTOListCopyWith<$Res> {
+  factory $CountryDTOListCopyWith(
+          CountryDTOList value, $Res Function(CountryDTOList) then) =
+      _$CountryDTOListCopyWithImpl<$Res>;
+  $Res call({@JsonKey(includeIfNull: false) List<CountryDTO> data});
+}
+
+/// @nodoc
+class _$CountryDTOListCopyWithImpl<$Res>
+    implements $CountryDTOListCopyWith<$Res> {
+  _$CountryDTOListCopyWithImpl(this._value, this._then);
+
+  final CountryDTOList _value;
+  // ignore: unused_field
+  final $Res Function(CountryDTOList) _then;
+
+  @override
+  $Res call({
+    Object? data = freezed,
+  }) {
+    return _then(_value.copyWith(
+      data: data == freezed
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<CountryDTO>,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$_CountryDTOListCopyWith<$Res>
+    implements $CountryDTOListCopyWith<$Res> {
+  factory _$$_CountryDTOListCopyWith(
+          _$_CountryDTOList value, $Res Function(_$_CountryDTOList) then) =
+      __$$_CountryDTOListCopyWithImpl<$Res>;
+  @override
+  $Res call({@JsonKey(includeIfNull: false) List<CountryDTO> data});
+}
+
+/// @nodoc
+class __$$_CountryDTOListCopyWithImpl<$Res>
+    extends _$CountryDTOListCopyWithImpl<$Res>
+    implements _$$_CountryDTOListCopyWith<$Res> {
+  __$$_CountryDTOListCopyWithImpl(
+      _$_CountryDTOList _value, $Res Function(_$_CountryDTOList) _then)
+      : super(_value, (v) => _then(v as _$_CountryDTOList));
+
+  @override
+  _$_CountryDTOList get _value => super._value as _$_CountryDTOList;
+
+  @override
+  $Res call({
+    Object? data = freezed,
+  }) {
+    return _then(_$_CountryDTOList(
+      data: data == freezed
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<CountryDTO>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_CountryDTOList extends _CountryDTOList with DiagnosticableTreeMixin {
+  const _$_CountryDTOList(
+      {@JsonKey(includeIfNull: false) final List<CountryDTO> data = const []})
+      : _data = data,
+        super._();
+
+  factory _$_CountryDTOList.fromJson(Map<String, dynamic> json) =>
+      _$$_CountryDTOListFromJson(json);
+
+  final List<CountryDTO> _data;
+  @override
+  @JsonKey(includeIfNull: false)
+  List<CountryDTO> get data {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_data);
+  }
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'CountryDTOList(data: $data)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'CountryDTOList'))
+      ..add(DiagnosticsProperty('data', data));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_CountryDTOList &&
+            const DeepCollectionEquality().equals(other._data, _data));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_CountryDTOListCopyWith<_$_CountryDTOList> get copyWith =>
+      __$$_CountryDTOListCopyWithImpl<_$_CountryDTOList>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_CountryDTOListToJson(
+      this,
+    );
+  }
+}
+
+abstract class _CountryDTOList extends CountryDTOList {
+  const factory _CountryDTOList(
+          {@JsonKey(includeIfNull: false) final List<CountryDTO> data}) =
+      _$_CountryDTOList;
+  const _CountryDTOList._() : super._();
+
+  factory _CountryDTOList.fromJson(Map<String, dynamic> json) =
+      _$_CountryDTOList.fromJson;
+
+  @override
+  @JsonKey(includeIfNull: false)
+  List<CountryDTO> get data;
+  @override
+  @JsonKey(ignore: true)
+  _$$_CountryDTOListCopyWith<_$_CountryDTOList> get copyWith =>
       throw _privateConstructorUsedError;
 }

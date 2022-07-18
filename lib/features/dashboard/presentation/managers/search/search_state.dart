@@ -9,7 +9,7 @@ class SearchState extends BaseSearchState with _$SearchState {
     @Default(SearchModel.product) SearchModel model,
     //
     @Default(KtList.empty()) KtList<User> users,
-    @Default(KtList.empty()) KtList<Product> products,
+    @Default(KtList.empty()) KtList<Deal> deals,
     //
     @Default(None()) Option<AppHttpResponse?> status,
   }) = _SearchState;

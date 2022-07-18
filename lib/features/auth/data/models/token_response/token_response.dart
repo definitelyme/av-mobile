@@ -1,6 +1,5 @@
 library token_response.dart;
 
-import 'package:auctionvillage/core/domain/entities/entities.dart';
 import 'package:auctionvillage/features/auth/domain/index.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -19,13 +18,8 @@ class TokenResponse with _$TokenResponse {
   }) = _TokenResponse;
 
   /// Maps the incoming Json to a Data Transfer Object (DTO).
-  factory TokenResponse.fromJson(Map<String, dynamic> json) =>
-      _$TokenResponseFromJson(json);
+  factory TokenResponse.fromJson(Map<String, dynamic> json) => _$TokenResponseFromJson(json);
 
   /// Maps the Data Transfer Object to a AccessToken Object.
-  AccessToken get domain => AccessToken(
-        accessToken: BasicTextField(accessToken),
-        tokenType: TokenType.parse(tokenType),
-        expiryDate: BasicTextField(expiryDate),
-      );
+  AccessToken get domain => AccessToken(accessToken: accessToken, tokenType: TokenType.parse(tokenType), expiryDate: expiryDate);
 }

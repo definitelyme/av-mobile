@@ -42,7 +42,7 @@ class AuthRemoteDatasource {
 
   Future<Response<dynamic>> resendPhoneVerification(String? phone) {
     // Generate Form Data for request
-    final data = UserDTO(phone: phone?.trim().removeNewLines().trimWhiteSpaces()).toJson();
+    final data = UserDTO(phone: phone?.trim().removeNewLines().removeAllBlankSpace()).toJson();
     // Perform POST request based on role / user_type
     return _dio.post(EndPoints.RESEND_PHONE_VERIFICATION, data: data);
   }
@@ -52,14 +52,14 @@ class AuthRemoteDatasource {
     required String? token,
   }) async {
     // Convert data to DTO
-    final dto = UserDTO(phone: phone?.trim().removeNewLines().trimWhiteSpaces(), token: token);
+    final dto = UserDTO(phone: phone?.trim().removeNewLines().removeAllBlankSpace(), token: token);
     // Perform POST request based on role / user_type
     return _dio.post(EndPoints.CONFIRM_PHONE_VERIFICATION, data: dto.toJson());
   }
 
   Future<Response<dynamic>> sendPasswordResetMessage(String? phone) async {
     // Generate Form Data for request
-    final data = UserDTO(phone: phone?.trim().removeNewLines().trimWhiteSpaces()).toJson();
+    final data = UserDTO(phone: phone?.trim().removeNewLines().removeAllBlankSpace()).toJson();
     // Perform request to send password reset email
     return _dio.post(EndPoints.SEND_PASSWORD_RESET_MESSAGE, data: data);
   }
@@ -77,7 +77,7 @@ class AuthRemoteDatasource {
 
   Future<Response<dynamic>> updatePhoneNumber(String? phone) {
     // Generate Form Data for request
-    final _data = UserDTO(phone: phone?.trim().removeNewLines().trimWhiteSpaces()).toJson();
+    final _data = UserDTO(phone: phone?.trim().removeNewLines().removeAllBlankSpace()).toJson();
     // Perform PUT request to update user's profile
     return _dio.post(EndPoints.UPDATE_PHONE, data: _data);
   }
@@ -112,7 +112,7 @@ class AuthRemoteDatasource {
 
   Future<Response<dynamic>> deleteAccount() async {
     // Perform request to reset user's password
-    return _dio.delete('EndPoints.DELETE_USER_ACCOUNT');
+    return _dio.delete(EndPoints.DELETE_USER_ACCOUNT);
   }
 
   Future<Either<AppHttpResponse, UserDTO?>> getUser([

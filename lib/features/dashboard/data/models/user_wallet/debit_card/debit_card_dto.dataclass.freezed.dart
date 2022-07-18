@@ -172,7 +172,9 @@ class _$_DebitCardDTO extends _DebitCardDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DebitCardDTOToJson(this);
+    return _$$_DebitCardDTOToJson(
+      this,
+    );
   }
 }
 
@@ -187,9 +189,9 @@ abstract class _DebitCardDTO extends DebitCardDTO {
 
   @override
   @JsonKey(name: '_meta')
-  MetaDTO? get meta => throw _privateConstructorUsedError;
+  MetaDTO? get meta;
   @override
-  DebitCardDTOData get data => throw _privateConstructorUsedError;
+  DebitCardDTOData get data;
   @override
   @JsonKey(ignore: true)
   _$$_DebitCardDTOCopyWith<_$_DebitCardDTO> get copyWith =>
@@ -511,7 +513,9 @@ class _$_DebitCardDTOData extends _DebitCardDTOData {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DebitCardDTODataToJson(this);
+    return _$$_DebitCardDTODataToJson(
+      this,
+    );
   }
 }
 
@@ -535,33 +539,33 @@ abstract class _DebitCardDTOData extends DebitCardDTOData {
 
   @override
   @JsonKey(name: '_id')
-  String? get uid => throw _privateConstructorUsedError;
+  String? get uid;
   @override
   @BooleanSerializer()
-  bool? get cardAdded => throw _privateConstructorUsedError;
+  bool? get cardAdded;
   @override
   @BooleanSerializer()
-  bool? get pinAdded => throw _privateConstructorUsedError;
+  bool? get pinAdded;
   @override
-  String? get email => throw _privateConstructorUsedError;
+  String? get email;
   @override
   @DebitCardBrandSerializer()
-  DebitCardBrand? get cardType => throw _privateConstructorUsedError;
+  DebitCardBrand? get cardType;
   @override
   @JsonKey(name: 'card')
-  String? get cardNumber => throw _privateConstructorUsedError;
+  String? get cardNumber;
   @override
-  String? get cvv => throw _privateConstructorUsedError;
+  String? get cvv;
   @override
-  String? get expiry => throw _privateConstructorUsedError;
+  String? get expiry;
   @override
-  String? get maskedCard => throw _privateConstructorUsedError;
-  @override
-  @TimestampConverter()
-  DateTime? get createdAt => throw _privateConstructorUsedError;
+  String? get maskedCard;
   @override
   @TimestampConverter()
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get createdAt;
+  @override
+  @TimestampConverter()
+  DateTime? get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$_DebitCardDTODataCopyWith<_$_DebitCardDTOData> get copyWith =>
@@ -727,7 +731,9 @@ class _$_DebitCardListDTO extends _DebitCardListDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DebitCardListDTOToJson(this);
+    return _$$_DebitCardListDTOToJson(
+      this,
+    );
   }
 }
 
@@ -742,9 +748,9 @@ abstract class _DebitCardListDTO extends DebitCardListDTO {
 
   @override
   @JsonKey(name: '_meta')
-  MetaDTO? get meta => throw _privateConstructorUsedError;
+  MetaDTO? get meta;
   @override
-  List<DebitCardDTOData> get data => throw _privateConstructorUsedError;
+  List<DebitCardDTOData> get data;
   @override
   @JsonKey(ignore: true)
   _$$_DebitCardListDTOCopyWith<_$_DebitCardListDTO> get copyWith =>

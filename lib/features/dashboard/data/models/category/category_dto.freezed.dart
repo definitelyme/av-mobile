@@ -171,7 +171,9 @@ class _$_CategoryDTO extends _CategoryDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CategoryDTOToJson(this);
+    return _$$_CategoryDTOToJson(
+      this,
+    );
   }
 }
 
@@ -186,9 +188,9 @@ abstract class _CategoryDTO extends CategoryDTO {
 
   @override
   @JsonKey(name: '_meta')
-  MetaDTO? get meta => throw _privateConstructorUsedError;
+  MetaDTO? get meta;
   @override
-  CategoryDTOData get data => throw _privateConstructorUsedError;
+  CategoryDTOData get data;
   @override
   @JsonKey(ignore: true)
   _$$_CategoryDTOCopyWith<_$_CategoryDTO> get copyWith =>
@@ -545,7 +547,9 @@ class _$_CategoryDTOData extends _CategoryDTOData {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CategoryDTODataToJson(this);
+    return _$$_CategoryDTODataToJson(
+      this,
+    );
   }
 }
 
@@ -570,35 +574,35 @@ abstract class _CategoryDTOData extends CategoryDTOData {
 
   @override
   @IntegerSerializer()
-  int? get productsAssigned => throw _privateConstructorUsedError;
+  int? get productsAssigned;
   @override
   @DoubleSerializer()
-  double? get percentageIncrease => throw _privateConstructorUsedError;
+  double? get percentageIncrease;
   @override
   @DoubleSerializer()
-  double? get charge => throw _privateConstructorUsedError;
+  double? get charge;
   @override
   @BooleanSerializer()
-  bool? get active => throw _privateConstructorUsedError;
+  bool? get active;
   @override
   @JsonKey(name: '_id')
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
-  String? get image => throw _privateConstructorUsedError;
+  String? get image;
   @override
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
   @override
-  String? get slug => throw _privateConstructorUsedError;
+  String? get slug;
   @override
-  DealDTOData? get deal => throw _privateConstructorUsedError;
-  @override
-  @TimestampConverter()
-  DateTime? get createdAt => throw _privateConstructorUsedError;
+  DealDTOData? get deal;
   @override
   @TimestampConverter()
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get createdAt;
+  @override
+  @TimestampConverter()
+  DateTime? get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$_CategoryDTODataCopyWith<_$_CategoryDTOData> get copyWith =>
@@ -764,7 +768,9 @@ class _$_CategoryListDTO extends _CategoryListDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CategoryListDTOToJson(this);
+    return _$$_CategoryListDTOToJson(
+      this,
+    );
   }
 }
 
@@ -779,9 +785,9 @@ abstract class _CategoryListDTO extends CategoryListDTO {
 
   @override
   @JsonKey(name: '_meta')
-  MetaDTO? get meta => throw _privateConstructorUsedError;
+  MetaDTO? get meta;
   @override
-  List<CategoryDTOData> get data => throw _privateConstructorUsedError;
+  List<CategoryDTOData> get data;
   @override
   @JsonKey(ignore: true)
   _$$_CategoryListDTOCopyWith<_$_CategoryListDTO> get copyWith =>

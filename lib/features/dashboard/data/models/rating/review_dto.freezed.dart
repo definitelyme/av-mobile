@@ -323,7 +323,9 @@ class _$_ReviewDTO extends _ReviewDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ReviewDTOToJson(this);
+    return _$$_ReviewDTOToJson(
+      this,
+    );
   }
 }
 
@@ -345,32 +347,32 @@ abstract class _ReviewDTO extends ReviewDTO {
       _$_ReviewDTO.fromJson;
 
   @override
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
-  String? get review => throw _privateConstructorUsedError;
-  @override
-  @DoubleSerializer()
-  double? get delivery => throw _privateConstructorUsedError;
+  String? get review;
   @override
   @DoubleSerializer()
-  double? get quality => throw _privateConstructorUsedError;
+  double? get delivery;
   @override
   @DoubleSerializer()
-  double? get responsiveness => throw _privateConstructorUsedError;
+  double? get quality;
   @override
   @DoubleSerializer()
-  double? get reliability => throw _privateConstructorUsedError;
+  double? get responsiveness;
   @override
   @DoubleSerializer()
-  double? get rating => throw _privateConstructorUsedError;
+  double? get reliability;
   @override
-  UserDTO? get user => throw _privateConstructorUsedError;
+  @DoubleSerializer()
+  double? get rating;
+  @override
+  UserDTO? get user;
   @override
   @TimestampConverter()
-  DateTime? get createdAt => throw _privateConstructorUsedError;
+  DateTime? get createdAt;
   @override
   @TimestampConverter()
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$_ReviewDTOCopyWith<_$_ReviewDTO> get copyWith =>

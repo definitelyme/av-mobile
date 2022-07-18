@@ -16,9 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$BankAccount {
-  BasicTextField<String?> get accountName => throw _privateConstructorUsedError;
-  BasicTextField<String?> get accountNumber =>
-      throw _privateConstructorUsedError;
+  BasicTextField get accountName => throw _privateConstructorUsedError;
+  BasicTextField get accountNumber => throw _privateConstructorUsedError;
   Bank? get bank => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -32,9 +31,7 @@ abstract class $BankAccountCopyWith<$Res> {
           BankAccount value, $Res Function(BankAccount) then) =
       _$BankAccountCopyWithImpl<$Res>;
   $Res call(
-      {BasicTextField<String?> accountName,
-      BasicTextField<String?> accountNumber,
-      Bank? bank});
+      {BasicTextField accountName, BasicTextField accountNumber, Bank? bank});
 
   $BankCopyWith<$Res>? get bank;
 }
@@ -57,11 +54,11 @@ class _$BankAccountCopyWithImpl<$Res> implements $BankAccountCopyWith<$Res> {
       accountName: accountName == freezed
           ? _value.accountName
           : accountName // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       accountNumber: accountNumber == freezed
           ? _value.accountNumber
           : accountNumber // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       bank: bank == freezed
           ? _value.bank
           : bank // ignore: cast_nullable_to_non_nullable
@@ -89,9 +86,7 @@ abstract class _$$_BankAccountCopyWith<$Res>
       __$$_BankAccountCopyWithImpl<$Res>;
   @override
   $Res call(
-      {BasicTextField<String?> accountName,
-      BasicTextField<String?> accountNumber,
-      Bank? bank});
+      {BasicTextField accountName, BasicTextField accountNumber, Bank? bank});
 
   @override
   $BankCopyWith<$Res>? get bank;
@@ -117,11 +112,11 @@ class __$$_BankAccountCopyWithImpl<$Res> extends _$BankAccountCopyWithImpl<$Res>
       accountName: accountName == freezed
           ? _value.accountName
           : accountName // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       accountNumber: accountNumber == freezed
           ? _value.accountNumber
           : accountNumber // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       bank: bank == freezed
           ? _value.bank
           : bank // ignore: cast_nullable_to_non_nullable
@@ -138,9 +133,9 @@ class _$_BankAccount extends _BankAccount {
       : super._();
 
   @override
-  final BasicTextField<String?> accountName;
+  final BasicTextField accountName;
   @override
-  final BasicTextField<String?> accountNumber;
+  final BasicTextField accountNumber;
   @override
   final Bank? bank;
 
@@ -176,18 +171,17 @@ class _$_BankAccount extends _BankAccount {
 
 abstract class _BankAccount extends BankAccount {
   const factory _BankAccount(
-      {required final BasicTextField<String?> accountName,
-      required final BasicTextField<String?> accountNumber,
+      {required final BasicTextField accountName,
+      required final BasicTextField accountNumber,
       final Bank? bank}) = _$_BankAccount;
   const _BankAccount._() : super._();
 
   @override
-  BasicTextField<String?> get accountName => throw _privateConstructorUsedError;
+  BasicTextField get accountName;
   @override
-  BasicTextField<String?> get accountNumber =>
-      throw _privateConstructorUsedError;
+  BasicTextField get accountNumber;
   @override
-  Bank? get bank => throw _privateConstructorUsedError;
+  Bank? get bank;
   @override
   @JsonKey(ignore: true)
   _$$_BankAccountCopyWith<_$_BankAccount> get copyWith =>

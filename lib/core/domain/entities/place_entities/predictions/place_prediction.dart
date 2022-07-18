@@ -14,7 +14,7 @@ class PlacePrediction with _$PlacePrediction {
   const factory PlacePrediction({
     required UniqueId<String?> placeId,
     required UniqueId<String?> reference,
-    required BasicTextField<String?> description,
+    required BasicTextField description,
     required ImmutableStrings types,
     required KtList<MatchedSubstrings?> matched,
   }) = _PlacePrediction;
@@ -34,7 +34,7 @@ class MatchedSubstrings with _$MatchedSubstrings {
   const MatchedSubstrings._();
 
   const factory MatchedSubstrings({
-    required BasicTextField<int?> length,
-    required BasicTextField<int?> offset,
+    required NumField<int?> length,
+    required NumField<int?> offset,
   }) = _MatchedSubstrings;
 }

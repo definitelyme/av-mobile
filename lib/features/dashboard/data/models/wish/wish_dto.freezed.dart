@@ -167,7 +167,9 @@ class _$_WishDTO extends _WishDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_WishDTOToJson(this);
+    return _$$_WishDTOToJson(
+      this,
+    );
   }
 }
 
@@ -181,9 +183,9 @@ abstract class _WishDTO extends WishDTO {
 
   @override
   @JsonKey(name: '_meta')
-  MetaDTO? get meta => throw _privateConstructorUsedError;
+  MetaDTO? get meta;
   @override
-  _WishDTOData get data => throw _privateConstructorUsedError;
+  _WishDTOData get data;
   @override
   @JsonKey(ignore: true)
   _$$_WishDTOCopyWith<_$_WishDTO> get copyWith =>
@@ -436,7 +438,9 @@ class _$__WishDTOData extends __WishDTOData {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$__WishDTODataToJson(this);
+    return _$$__WishDTODataToJson(
+      this,
+    );
   }
 }
 
@@ -455,20 +459,20 @@ abstract class __WishDTOData extends _WishDTOData {
 
   @override
   @JsonKey(name: '_id')
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
   @BooleanSerializer()
-  bool? get active => throw _privateConstructorUsedError;
+  bool? get active;
   @override
-  DealDTOData? get deal => throw _privateConstructorUsedError;
+  DealDTOData? get deal;
   @override
-  UserDTO? get user => throw _privateConstructorUsedError;
-  @override
-  @TimestampConverter()
-  DateTime? get createdAt => throw _privateConstructorUsedError;
+  UserDTO? get user;
   @override
   @TimestampConverter()
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get createdAt;
+  @override
+  @TimestampConverter()
+  DateTime? get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$__WishDTODataCopyWith<_$__WishDTOData> get copyWith =>
@@ -630,7 +634,9 @@ class _$_WishListDTO extends _WishListDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_WishListDTOToJson(this);
+    return _$$_WishListDTOToJson(
+      this,
+    );
   }
 }
 
@@ -645,9 +651,9 @@ abstract class _WishListDTO extends WishListDTO {
 
   @override
   @JsonKey(name: '_meta')
-  MetaDTO? get meta => throw _privateConstructorUsedError;
+  MetaDTO? get meta;
   @override
-  List<_WishDTOData> get data => throw _privateConstructorUsedError;
+  List<_WishDTOData> get data;
   @override
   @JsonKey(ignore: true)
   _$$_WishListDTOCopyWith<_$_WishListDTO> get copyWith =>

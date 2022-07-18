@@ -9,7 +9,6 @@ import 'package:auctionvillage/features/auth/data/repositories/auth/social_auth_
 import 'package:auctionvillage/features/auth/data/sources/local/auth_local_source.dart';
 import 'package:auctionvillage/features/auth/data/sources/remote/auth_remote_source.dart';
 import 'package:auctionvillage/features/auth/domain/index.dart';
-import 'package:auctionvillage/manager/settings/external/preference_repository.dart';
 import 'package:auctionvillage/utils/utils.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
@@ -33,14 +32,11 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
   final StreamController<Either<AppHttpResponse, Option<User?>>> __controller;
   final StreamController<Option<User?>> __userChagesController;
 
-  final PreferenceRepository preferences;
-
   AuthFacadeImpl(
     this.remote,
     this.local,
     this.googleSignIn,
     this.analytics,
-    this.preferences,
   )   : __controller = StreamController.broadcast(),
         __userChagesController = StreamController.broadcast();
 
@@ -49,6 +45,12 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
 
   @override
   Future<Either<AppHttpResponse, Option<User?>>> get currentUser async => retrieveAndCacheUpdatedUser(forceGetLocalCache: false);
+
+  @override
+  void cacheEmail(EmailAddress? email) => email?.let((it) => HiveClient.settingsBox?.put(Const.kEmailPrefKey, it.getOrNull));
+
+  @override
+  void cachePhone(Phone? phone) => phone?.let((it) => HiveClient.settingsBox?.put(Const.kPhoneNumberPrefKey, it.getOrNull));
 
   @override
   Future<AppHttpResponse> confirmPasswordReset({
@@ -67,14 +69,21 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
         confirmation: confirmation.getOrNull,
       );
 
-      final _response = await _conn.fold(
+      final result = await _conn.fold(
         // Re-Throw Exception
         (f) => throw f,
         // Attempt Authentication
         (r) async => remote.confirmPasswordReset(dto),
       );
 
-      return AppHttpResponse.fromJson(_response.data as Map<String, dynamic>);
+      final response = AppHttpResponse.fromJson(result.data as Map<String, dynamic>);
+
+      response.response.mapOrNull(success: (_) {
+        removePhone();
+        removeEmail();
+      });
+
+      return response;
     } on AppHttpResponse catch (ex, tr) {
       return handleFailure(e: ex, trace: tr, notify: false);
     } on AppNetworkException catch (ex, tr) {
@@ -112,7 +121,8 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
       // Get Data Access Object
       final _registered = RegisteredUserDTO.fromJson(_response.data as Map<String, dynamic>);
 
-      await phone.getOrEmpty?.let((it) async => await preferences.setString(key: Const.kPhoneNumberPrefKey, value: it));
+      cachePhone(phone);
+      cacheEmail(emailAddress);
 
       // Automatically Login new User
       return await login(
@@ -151,6 +161,12 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
       return await handleFailure(e: ex.asResponse(), trace: tr, notify: true);
     }
   }
+
+  @override
+  EmailAddress? getCacheEmail() => EmailAddress(HiveClient.settingsBox?.get(Const.kEmailPrefKey) as String?);
+
+  @override
+  Phone? getCachePhone() => Phone(HiveClient.settingsBox?.get(Const.kPhoneNumberPrefKey) as String?);
 
   @override
   Future<AppHttpResponse> login({
@@ -209,6 +225,12 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
   Stream<Option<User?>> get onUserChanges => __userChagesController.stream;
 
   @override
+  void removeEmail() => HiveClient.settingsBox?.delete(Const.kEmailPrefKey);
+
+  @override
+  void removePhone() => HiveClient.settingsBox?.delete(Const.kPhoneNumberPrefKey);
+
+  @override
   Future<Either<AppHttpResponse, Option<User?>>> retrieveAndCacheUpdatedUser({
     UserDTO? dto,
     bool shouldThrow = false,
@@ -227,10 +249,8 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
         is41101: () => left(failure),
         // Unverified phone number
         is4031: () async {
-          await preferences.setString(
-            key: Const.kPhoneNumberPrefKey,
-            value: failure.data?['phone'] as String? ?? '',
-          );
+          failure.data?['phone']?.let((it) => cachePhone(Phone(it as String?)));
+          failure.data?['email']?.let((it) => cacheEmail(EmailAddress(it as String?)));
           return left(failure);
         },
         // Else proceed with local fetch
@@ -278,14 +298,18 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
     try {
       final _conn = await checkInternetConnectivity();
 
-      final _response = await _conn.fold(
+      final result = await _conn.fold(
         // Re-Throw Exception
         (f) => throw f,
         // Attempt Authentication
-        (r) async => remote.sendPasswordResetMessage(phone.getOrEmpty?.trim().trimWhiteSpaces().removeNewLines()),
+        (r) async => remote.sendPasswordResetMessage(phone.getOrEmpty),
       );
 
-      return AppHttpResponse.fromJson(_response.data as Map<String, dynamic>);
+      final response = AppHttpResponse.fromJson(result.data as Map<String, dynamic>);
+
+      response.response.mapOrNull(success: (_) => cachePhone(phone));
+
+      return response;
     } on AppHttpResponse catch (ex, tr) {
       return handleFailure(e: ex, trace: tr, notify: false);
     } on AppNetworkException catch (ex, tr) {
@@ -301,7 +325,8 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
     bool apple = true,
   }) async {
     try {
-      if (regular) await preferences.remove(Const.kPhoneNumberPrefKey);
+      removePhone();
+      removeEmail();
 
       await Future.wait([
         if (google) googleSignIn.signOut(),
@@ -388,16 +413,12 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
 
       final _result = await _conn.fold(
         (f) => throw f,
-        (_) => remote.updatePhoneNumber(phone?.getOrNull?.trim().trimWhiteSpaces().removeNewLines()),
+        (_) => remote.updatePhoneNumber(phone?.getOrNull),
       );
 
       final _response = AppHttpResponse.fromJson(_result.data as Map<String, dynamic>);
 
-      await _response.response.mapOrNull(
-        success: (_) => phone?.getOrEmpty?.let(
-          (it) => preferences.setString(key: Const.kPhoneNumberPrefKey, value: it),
-        ),
-      );
+      _response.response.mapOrNull(success: (_) => cachePhone(phone));
 
       return _response;
     } on AppHttpResponse catch (ex, tr) {
@@ -500,18 +521,19 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
       // Check if device has good connection
       final _conn = await checkInternetConnectivity();
 
-      final _response = await _conn.fold(
+      final result = await _conn.fold(
         (f) => throw f,
         (_) => remote.verifyPhoneNumber(phone: phone.getOrNull, token: token.getOrNull),
       );
 
       // verification successful, fetch & cache fresh user data
-      final _return = AppHttpResponse.fromJson(_response.data as Map<String, dynamic>);
+      final response = AppHttpResponse.fromJson(result.data as Map<String, dynamic>);
 
-      await _return.response.mapOrNull(
+      await response.response.mapOrNull(
         success: (_) async {
           // Remove phone number from cache
-          await preferences.remove(Const.kPhoneNumberPrefKey);
+          removePhone();
+          removeEmail();
 
           final cached = await retrieveAndCacheUpdatedUser();
 
@@ -522,7 +544,7 @@ class AuthFacadeImpl extends AuthFacade with SocialAuthMixin {
         },
       );
 
-      return _return;
+      return response;
     } on AppHttpResponse catch (ex, tr) {
       return handleFailure(e: ex, trace: tr, notify: false);
     } on AppNetworkException catch (ex, tr) {

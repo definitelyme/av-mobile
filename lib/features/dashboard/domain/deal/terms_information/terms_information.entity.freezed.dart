@@ -16,13 +16,11 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$TermsInformation {
-  BasicTextField<String?> get yearOfPurchase =>
-      throw _privateConstructorUsedError;
+  BasicTextField get yearOfPurchase => throw _privateConstructorUsedError;
   bool get hasRepairHistory => throw _privateConstructorUsedError;
   bool get hasRefundPolicy => throw _privateConstructorUsedError;
-  BasicTextField<String?> get warranty => throw _privateConstructorUsedError;
-  BasicTextField<String?> get otherInformation =>
-      throw _privateConstructorUsedError;
+  BasicTextField get warranty => throw _privateConstructorUsedError;
+  BasicTextField get otherInformation => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TermsInformationCopyWith<TermsInformation> get copyWith =>
@@ -35,11 +33,11 @@ abstract class $TermsInformationCopyWith<$Res> {
           TermsInformation value, $Res Function(TermsInformation) then) =
       _$TermsInformationCopyWithImpl<$Res>;
   $Res call(
-      {BasicTextField<String?> yearOfPurchase,
+      {BasicTextField yearOfPurchase,
       bool hasRepairHistory,
       bool hasRefundPolicy,
-      BasicTextField<String?> warranty,
-      BasicTextField<String?> otherInformation});
+      BasicTextField warranty,
+      BasicTextField otherInformation});
 }
 
 /// @nodoc
@@ -63,7 +61,7 @@ class _$TermsInformationCopyWithImpl<$Res>
       yearOfPurchase: yearOfPurchase == freezed
           ? _value.yearOfPurchase
           : yearOfPurchase // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       hasRepairHistory: hasRepairHistory == freezed
           ? _value.hasRepairHistory
           : hasRepairHistory // ignore: cast_nullable_to_non_nullable
@@ -75,11 +73,11 @@ class _$TermsInformationCopyWithImpl<$Res>
       warranty: warranty == freezed
           ? _value.warranty
           : warranty // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       otherInformation: otherInformation == freezed
           ? _value.otherInformation
           : otherInformation // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
     ));
   }
 }
@@ -92,11 +90,11 @@ abstract class _$$_TermsInformationCopyWith<$Res>
       __$$_TermsInformationCopyWithImpl<$Res>;
   @override
   $Res call(
-      {BasicTextField<String?> yearOfPurchase,
+      {BasicTextField yearOfPurchase,
       bool hasRepairHistory,
       bool hasRefundPolicy,
-      BasicTextField<String?> warranty,
-      BasicTextField<String?> otherInformation});
+      BasicTextField warranty,
+      BasicTextField otherInformation});
 }
 
 /// @nodoc
@@ -122,7 +120,7 @@ class __$$_TermsInformationCopyWithImpl<$Res>
       yearOfPurchase: yearOfPurchase == freezed
           ? _value.yearOfPurchase
           : yearOfPurchase // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       hasRepairHistory: hasRepairHistory == freezed
           ? _value.hasRepairHistory
           : hasRepairHistory // ignore: cast_nullable_to_non_nullable
@@ -134,11 +132,11 @@ class __$$_TermsInformationCopyWithImpl<$Res>
       warranty: warranty == freezed
           ? _value.warranty
           : warranty // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       otherInformation: otherInformation == freezed
           ? _value.otherInformation
           : otherInformation // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
     ));
   }
 }
@@ -155,7 +153,7 @@ class _$_TermsInformation extends _TermsInformation {
       : super._();
 
   @override
-  final BasicTextField<String?> yearOfPurchase;
+  final BasicTextField yearOfPurchase;
   @override
   @JsonKey()
   final bool hasRepairHistory;
@@ -163,9 +161,9 @@ class _$_TermsInformation extends _TermsInformation {
   @JsonKey()
   final bool hasRefundPolicy;
   @override
-  final BasicTextField<String?> warranty;
+  final BasicTextField warranty;
   @override
-  final BasicTextField<String?> otherInformation;
+  final BasicTextField otherInformation;
 
   @override
   String toString() {
@@ -205,26 +203,23 @@ class _$_TermsInformation extends _TermsInformation {
 
 abstract class _TermsInformation extends TermsInformation {
   const factory _TermsInformation(
-          {required final BasicTextField<String?> yearOfPurchase,
-          final bool hasRepairHistory,
-          final bool hasRefundPolicy,
-          required final BasicTextField<String?> warranty,
-          required final BasicTextField<String?> otherInformation}) =
-      _$_TermsInformation;
+      {required final BasicTextField yearOfPurchase,
+      final bool hasRepairHistory,
+      final bool hasRefundPolicy,
+      required final BasicTextField warranty,
+      required final BasicTextField otherInformation}) = _$_TermsInformation;
   const _TermsInformation._() : super._();
 
   @override
-  BasicTextField<String?> get yearOfPurchase =>
-      throw _privateConstructorUsedError;
+  BasicTextField get yearOfPurchase;
   @override
-  bool get hasRepairHistory => throw _privateConstructorUsedError;
+  bool get hasRepairHistory;
   @override
-  bool get hasRefundPolicy => throw _privateConstructorUsedError;
+  bool get hasRefundPolicy;
   @override
-  BasicTextField<String?> get warranty => throw _privateConstructorUsedError;
+  BasicTextField get warranty;
   @override
-  BasicTextField<String?> get otherInformation =>
-      throw _privateConstructorUsedError;
+  BasicTextField get otherInformation;
   @override
   @JsonKey(ignore: true)
   _$$_TermsInformationCopyWith<_$_TermsInformation> get copyWith =>
