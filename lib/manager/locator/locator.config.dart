@@ -119,7 +119,7 @@ extension GetItInjectableX on _i1.GetIt {
         preResolve: true);
     gh.factory<_i24.SocketIOClient>(() => _i24.SocketIOClient.intance());
     gh.factory<_i25.TabNavigationCubit>(() => _i25.TabNavigationCubit());
-    gh.factory<_i26.ThemeCubit>(() => _i26.ThemeCubit());
+    gh.singleton<_i26.ThemeCubit>(_i26.ThemeCubit());
     gh.lazySingleton<_i27.WalletRemote>(
         () => _i27.WalletRemote(get<_i4.AppHttpClient>()));
     gh.factory<_i28.WalletRepository>(() => _i28.WalletRepository(

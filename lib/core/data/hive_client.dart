@@ -158,14 +158,13 @@ class HiveClient {
   }) {
     StreamSubscription<HiveClientStatus>? _subscription;
 
-    _subscription ??= _hiveStatusController.stream.listen((value) {
+    return _subscription ??= _hiveStatusController.stream.listen((value) {
       onUpdate(value);
+
       if (autoDispose && (value == HiveClientStatus.loaded || value == HiveClientStatus.error)) {
         _subscription?.cancel();
       }
     }, onError: onError, cancelOnError: autoDispose);
-
-    return _subscription;
   }
 
   @visibleForTesting

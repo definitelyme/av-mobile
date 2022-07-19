@@ -112,6 +112,8 @@ class GetStartedScreen extends StatelessWidget {
                                             text: 'Login',
                                             fontWeight: FontWeight.w600,
                                             textColor: Palette.accentColor,
+                                            textColorDark: Colors.white70,
+                                            borderColorDark: Colors.white70,
                                             onPressed: () => navigator.pushAndPopUntil(LoginRoute(), predicate: (_) => false),
                                           ),
                                         ),

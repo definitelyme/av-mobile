@@ -68,7 +68,7 @@ class _LivePageState extends State<LivePage> with AutomaticKeepAliveClientMixin<
         centerTitle: true,
         backgroundColor: App.platform.cupertino(Palette.accentColor),
         cupertinoImplyLeading: false,
-        overlayStyle: App.customSystemOverlay(ctx: context, android: context.androidOverlay, ios: Brightness.dark),
+        overlayStyle: App.customSystemOverlay(ctx: context, android: Brightness.light, ios: Brightness.dark),
       ),
       body: BlocProvider.value(
         value: _cubit,

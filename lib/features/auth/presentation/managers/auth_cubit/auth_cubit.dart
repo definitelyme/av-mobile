@@ -8,6 +8,7 @@ import 'package:auctionvillage/core/domain/entities/entities.dart';
 import 'package:auctionvillage/core/presentation/managers/managers.dart';
 import 'package:auctionvillage/features/auth/domain/index.dart';
 import 'package:auctionvillage/features/auth/presentation/managers/managers.dart';
+import 'package:auctionvillage/features/dashboard/presentation/managers/index.dart';
 import 'package:auctionvillage/utils/utils.dart';
 import 'package:cloudinary_public/cloudinary_public.dart';
 import 'package:dartz/dartz.dart';
@@ -465,7 +466,10 @@ class AuthCubit extends BaseCubit<AuthState> {
       final result = await _auth.deleteAccount();
       emit(state.copyWith(status: some(result)));
     } catch (e) {
-      await navigator.navigatorKey.currentContext?.let((it) => it.read<AuthWatcherCubit>().signOut());
+      await navigator.navigatorKey.currentContext?.let((it) async {
+        await it.read<AuthWatcherCubit>().signOut();
+        it.read<BottomNavigationCubit>().reset();
+      });
     }
 
     toggleLoading(false);

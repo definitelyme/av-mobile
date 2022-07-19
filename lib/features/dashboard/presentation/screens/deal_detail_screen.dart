@@ -106,6 +106,7 @@ class _DealDetailScreenState extends State<DealDetailScreen> {
                             expandsFullscreen: true,
                             heroTag: '${deal.product!.id}_${i}_${item.getOrNull}',
                             replacement: Image.asset('${item.getOrEmpty}', fit: BoxFit.cover),
+                            progressIndicatorColorDark: Colors.white,
                             stackChildren: (image) => [
                               image,
                               //

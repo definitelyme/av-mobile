@@ -256,6 +256,7 @@ class EditProfileScreen extends StatelessWidget with AutoRouteWrapper {
                 text: 'CHANGE PASSWORD',
                 backgroundColor: Palette.accentColor.withOpacity(0.1),
                 textColor: Palette.accentColor,
+                textColorDark: Colors.white70,
                 onPressed: () => App.showAdaptiveBottomSheet(
                   context,
                   elevation: 0,

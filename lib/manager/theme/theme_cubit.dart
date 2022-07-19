@@ -9,7 +9,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
-@injectable
+@singleton
 class ThemeCubit extends Cubit<AppTheme> with ActiveCubit<AppTheme> {
   static const String _themeKey = '${Const.packageName}-style';
   static const String _themeModeKey = '${Const.packageName}-theme-mode';

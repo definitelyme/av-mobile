@@ -22,7 +22,7 @@ import 'package:auctionvillage/features/onboarding/index.dart' as _i1;
 import 'package:auctionvillage/manager/router/guards/guards.dart' as _i10;
 import 'package:auctionvillage/widgets/widgets.dart' as _i5;
 import 'package:auto_route/auto_route.dart' as _i7;
-import 'package:flutter/cupertino.dart' as _i11;
+import 'package:flutter/foundation.dart' as _i11;
 import 'package:flutter/material.dart' as _i9;
 import 'package:kt_dart/collection.dart' as _i6;
 
@@ -714,13 +714,13 @@ class PricingPlanRoute extends _i7.PageRouteInfo<void> {
 class SuccessRoute extends _i7.PageRouteInfo<SuccessRouteArgs> {
   SuccessRoute(
       {_i11.Key? key,
-      _i11.Widget? svg,
-      _i11.Widget? image,
+      _i9.Widget? svg,
+      _i9.Widget? image,
       required String title,
       String? description,
       String? buttonText,
       Duration animationDuration = const Duration(milliseconds: 1600),
-      _i11.BoxFit fit = _i11.BoxFit.cover,
+      _i9.BoxFit fit = _i9.BoxFit.cover,
       double? width,
       double? height,
       void Function()? onButtonPressed,
@@ -755,7 +755,7 @@ class SuccessRouteArgs {
       this.description,
       this.buttonText,
       this.animationDuration = const Duration(milliseconds: 1600),
-      this.fit = _i11.BoxFit.cover,
+      this.fit = _i9.BoxFit.cover,
       this.width,
       this.height,
       this.onButtonPressed,
@@ -764,9 +764,9 @@ class SuccessRouteArgs {
 
   final _i11.Key? key;
 
-  final _i11.Widget? svg;
+  final _i9.Widget? svg;
 
-  final _i11.Widget? image;
+  final _i9.Widget? image;
 
   final String title;
 
@@ -776,7 +776,7 @@ class SuccessRouteArgs {
 
   final Duration animationDuration;
 
-  final _i11.BoxFit fit;
+  final _i9.BoxFit fit;
 
   final double? width;
 

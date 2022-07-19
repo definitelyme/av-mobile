@@ -250,7 +250,7 @@ class _MorePageState extends State<MorePage> with AutomaticKeepAliveClientMixin<
                                   // Signout the authenticated rider
                                   await c.read<AuthWatcherCubit>().signOut();
                                   // Reset current Index to 0
-                                  c.read<BottomNavigationCubit>().reset();
+                                  navigator.navigatorKey.currentContext?.read<BottomNavigationCubit>().reset();
                                 },
                               );
                             },
