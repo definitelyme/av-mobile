@@ -12,10 +12,10 @@ class UserWallet extends BaseEntity with _$UserWallet {
 
   const factory UserWallet({
     required UniqueId<String?> id,
-    required AmountField<double> balance,
-    required AmountField<double> revenue,
-    required AmountField<double> expense,
-    required AmountField<double> expendingExpense,
+    required NumField<double> balance,
+    required NumField<double> revenue,
+    required NumField<double> expense,
+    required NumField<double> expendingExpense,
     @Default(false) bool isActive,
     DateTime? createdAt,
     DateTime? updatedAt,
@@ -32,10 +32,10 @@ class UserWallet extends BaseEntity with _$UserWallet {
   }) =>
       UserWallet(
         id: UniqueId.fromExternal(id),
-        balance: AmountField(balance ?? 0),
-        revenue: AmountField(revenue ?? 0),
-        expense: AmountField(expense ?? 0),
-        expendingExpense: AmountField(expendingExpense ?? 0),
+        balance: NumField(balance ?? 0),
+        revenue: NumField(revenue ?? 0),
+        expense: NumField(expense ?? 0),
+        expendingExpense: NumField(expendingExpense ?? 0),
         createdAt: createdAt,
         updatedAt: updatedAt,
       );

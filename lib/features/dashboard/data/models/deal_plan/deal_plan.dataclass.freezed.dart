@@ -171,7 +171,9 @@ class _$_DealPlanDTO extends _DealPlanDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DealPlanDTOToJson(this);
+    return _$$_DealPlanDTOToJson(
+      this,
+    );
   }
 }
 
@@ -186,9 +188,9 @@ abstract class _DealPlanDTO extends DealPlanDTO {
 
   @override
   @JsonKey(name: '_meta')
-  MetaDTO? get meta => throw _privateConstructorUsedError;
+  MetaDTO? get meta;
   @override
-  DealPlanDTOData get data => throw _privateConstructorUsedError;
+  DealPlanDTOData get data;
   @override
   @JsonKey(ignore: true)
   _$$_DealPlanDTOCopyWith<_$_DealPlanDTO> get copyWith =>
@@ -464,7 +466,9 @@ class _$_DealPlanDTOData extends _DealPlanDTOData {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DealPlanDTODataToJson(this);
+    return _$$_DealPlanDTODataToJson(
+      this,
+    );
   }
 }
 
@@ -491,25 +495,25 @@ abstract class _DealPlanDTOData extends DealPlanDTOData {
 
   @override
   @JsonKey(name: '_id')
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
   @DoubleSerializer()
-  double? get amount => throw _privateConstructorUsedError;
+  double? get amount;
   @override
   @IntegerSerializer()
-  int? get priority => throw _privateConstructorUsedError;
+  int? get priority;
   @override
-  List<String> get features => throw _privateConstructorUsedError;
+  List<String> get features;
   @override
   @JsonKey(toJson: DealPlanTypeSerializer.toJsonString)
   @DealPlanTypeSerializer()
-  DealPlanType? get name => throw _privateConstructorUsedError;
+  DealPlanType? get name;
   @override
   @TimestampConverter()
-  DateTime? get createdAt => throw _privateConstructorUsedError;
+  DateTime? get createdAt;
   @override
   @TimestampConverter()
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$_DealPlanDTODataCopyWith<_$_DealPlanDTOData> get copyWith =>
@@ -675,7 +679,9 @@ class _$_DealPlanListDTO extends _DealPlanListDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DealPlanListDTOToJson(this);
+    return _$$_DealPlanListDTOToJson(
+      this,
+    );
   }
 }
 
@@ -690,9 +696,9 @@ abstract class _DealPlanListDTO extends DealPlanListDTO {
 
   @override
   @JsonKey(name: '_meta')
-  MetaDTO? get meta => throw _privateConstructorUsedError;
+  MetaDTO? get meta;
   @override
-  List<DealPlanDTOData> get data => throw _privateConstructorUsedError;
+  List<DealPlanDTOData> get data;
   @override
   @JsonKey(ignore: true)
   _$$_DealPlanListDTOCopyWith<_$_DealPlanListDTO> get copyWith =>

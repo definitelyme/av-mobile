@@ -3,12 +3,12 @@ library popup_dialog.dart;
 
 import 'dart:async';
 
-import 'package:auctionvillage/utils/utils.dart';
-import 'package:auctionvillage/widgets/widgets.dart';
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
-
 import 'package:flutter/material.dart';
+import 'package:auctionvillage/manager/locator/locator.dart';
+import 'package:auctionvillage/utils/utils.dart';
+import 'package:auctionvillage/widgets/widgets.dart';
 
 part 'popup_factory.dart';
 
@@ -141,10 +141,10 @@ class _$PopupDialog {
         alertStyle = alertStyle ?? PopupDialogStyle.floating,
         dismissDirection = dismissDirection ?? PopupDialogDismissDirection.horizontal;
 
-  Future<dynamic> render(BuildContext context) async {
-    // log.w('Is Showing ===> ${ModalRoute.of(context)?.overlayEntries.length}');
+  Future<dynamic> render([BuildContext? ctx]) async {
+    final context = ctx ?? navigator.navigatorKey.currentContext;
 
-    if (show)
+    if (show && ((message != null && messageWidget == null) || (message == null && messageWidget != null)))
       return await _type?.fold(
         flushbar: () async {
           final _bar = Flushbar(
@@ -152,10 +152,7 @@ class _$PopupDialog {
                 ? AdaptiveText(
                     title!,
                     style: TextStyle(
-                      color: App.resolveColor(
-                        Palette.text100,
-                        dark: Colors.white,
-                      ),
+                      color: App.resolveColor(Palette.text100, dark: Colors.white, ctx: context),
                     ).merge(titleStyle),
                     softWrap: true,
                     overflow: TextOverflow.ellipsis,
@@ -166,10 +163,7 @@ class _$PopupDialog {
                 ? AdaptiveText(
                     message!,
                     style: TextStyle(
-                      color: App.resolveColor(
-                        Palette.text100,
-                        dark: Colors.white,
-                      ),
+                      color: App.resolveColor(Palette.text100, dark: Colors.white, ctx: context),
                     ).merge(messageStyle),
                     softWrap: true,
                     overflow: TextOverflow.ellipsis,
@@ -186,6 +180,7 @@ class _$PopupDialog {
                 App.resolveColor(
                   Palette.primaryColor.shade400,
                   dark: Palette.secondaryColor.shade400,
+                  ctx: context,
                 )!,
             dismissDirection: dismissDirection!.direction,
             mainButton: mainButton,
@@ -201,18 +196,24 @@ class _$PopupDialog {
                   top: FlushbarPosition.TOP,
                   bottom: FlushbarPosition.BOTTOM,
                 ) ??
-                (MediaQuery.of(context).viewInsets.bottom == 0 ? FlushbarPosition.BOTTOM : FlushbarPosition.TOP),
+                (context != null
+                    ? (MediaQuery.of(context).viewInsets.bottom == 0 ? FlushbarPosition.BOTTOM : FlushbarPosition.TOP)
+                    : FlushbarPosition.BOTTOM),
             flushbarStyle: alertStyle!.fold(
               floating: FlushbarStyle.FLOATING,
               grounded: FlushbarStyle.GROUNDED,
             ),
           );
 
-          if (callbackOnShow != null)
-            return _bar.show(context).then((_) => callback?.call(_));
-          else {
-            callback?.call(null);
-            return _bar.show(context);
+          try {
+            if (callbackOnShow != null)
+              return context?.let((it) => _bar.show(it).then((_) => callback?.call(_)));
+            else {
+              callback?.call(null);
+              return context?.let((it) => _bar.show(it));
+            }
+          } catch (e, tr) {
+            await App.reportFlutterError(e, tr);
           }
         },
       );

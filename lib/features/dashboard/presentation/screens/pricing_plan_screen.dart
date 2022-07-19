@@ -2,9 +2,7 @@ library pricing_plan_screen.dart;
 
 import 'package:auctionvillage/core/domain/entities/entities.dart';
 import 'package:auctionvillage/features/auth/presentation/managers/managers.dart';
-import 'package:auctionvillage/features/dashboard/domain/index.dart';
 import 'package:auctionvillage/features/dashboard/presentation/managers/index.dart';
-import 'package:auctionvillage/manager/locator/locator.dart';
 import 'package:auctionvillage/utils/utils.dart';
 import 'package:auctionvillage/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
@@ -14,40 +12,37 @@ import 'package:kt_dart/collection.dart';
 
 /// A stateless widget to render PricingPlanScreen.
 class PricingPlanScreen extends StatefulWidget with AutoRouteWrapper {
-  final Product product;
+  // final Product product;
 
-  const PricingPlanScreen(this.product, {Key? key}) : super(key: key);
+  const PricingPlanScreen({Key? key}) : super(key: key);
 
   @override
   State<PricingPlanScreen> createState() => _PricingPlanScreenState();
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider(
-      create: (_) => getIt<ProductBloc>()..add(ProductSyncEvent.init(product: product)),
-      child: BlocListener<ProductBloc, ProductState>(
-        listenWhen: (p, c) =>
-            p.status.getOrElse(() => null) != c.status.getOrElse(() => null) ||
-            (c.status.getOrElse(() => null) != null && (c.status.getOrElse(() => null)!.response.maybeMap(orElse: () => false))),
-        listener: (c, s) => s.status.fold(
-          () => null,
-          (it) => it?.response.map(
-            info: (i) => PopupDialog.info(message: i.message, show: i.message.isNotEmpty).render(c),
-            error: (f) => PopupDialog.error(message: f.message, show: f.show && f.message.isNotEmpty).render(c),
-            success: (s) => PopupDialog.success(message: s.message, show: s.message.isNotEmpty).render(c),
-          ),
+    return BlocListener<ProductBloc, ProductState>(
+      listenWhen: (p, c) =>
+          p.status.getOrElse(() => null) != c.status.getOrElse(() => null) ||
+          (c.status.getOrElse(() => null) != null && (c.status.getOrElse(() => null)!.response.maybeMap(orElse: () => false))),
+      listener: (c, s) => s.status.fold(
+        () => null,
+        (it) => it?.response.mapOrNull(
+          success: (s) => PopupDialog.success(message: s.message, show: s.message.isNotEmpty).render(c),
         ),
-        child: this,
       ),
+      child: this,
     );
   }
 }
 
 class _PricingPlanScreenState extends State<PricingPlanScreen> {
+  late ProductBloc _bloc;
+
   @override
   void initState() {
     super.initState();
-    context.read<ProductBloc>().add(const ProductGetEvent.getDealPlans());
+    _bloc = context.read<ProductBloc>()..add(const ProductGetEvent.getDealPlans());
   }
 
   User? get _autheticatedUser => context.read<AuthWatcherCubit>().state.user;
@@ -116,8 +111,8 @@ class _PricingPlanScreenState extends State<PricingPlanScreen> {
                                 ),
                           borderRadius: 6.br,
                           child: AdaptiveInkWell(
-                            onTap: () => c.read<ProductBloc>().add(ProductSyncEvent.dealPlanChanged(plan)),
-                            onLongPress: () => c.read<ProductBloc>().add(ProductSyncEvent.dealPlanChanged(plan)),
+                            onTap: () => _bloc.add(ProductSyncEvent.dealPlanChanged(plan)),
+                            onLongPress: () => _bloc.add(ProductSyncEvent.dealPlanChanged(plan)),
                             borderRadius: 6.br,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -170,7 +165,7 @@ class _PricingPlanScreenState extends State<PricingPlanScreen> {
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           AdaptiveText(
-                                            '${plan.amount.getOrNull}'.asCurrency(currency: Utils.currency),
+                                            '${plan.amount.getOrNull}'.asCurrency(currency: _autheticatedUser?.country?.symbol),
                                             maxLines: 1,
                                             fontSize: 25.sp,
                                             maxFontSize: 25,
@@ -256,23 +251,30 @@ class _PricingPlanScreenState extends State<PricingPlanScreen> {
                   text: 'Submit'.toUpperCase(),
                   disabled: s.isLoading || s.isSavingState || s.isCreatingProduct,
                   isLoading: s.isCreatingProduct,
-                  onPressed: () => c.read<ProductBloc>().add(
-                        ProductStructEvent.store(
-                          _autheticatedUser,
-                          callback: (v) {
-                            if (v) {
-                              c.read<ProductBloc>().add(const ProductSyncEvent.clearForm());
-                              navigator.popUntilRoot();
-                              c.read<ProductBloc>().add(const ProductSyncEvent.clearForm());
-                            }
-                          },
-                        ),
-                      ),
+                  onPressed: () {
+                    if (!c.read<AuthWatcherCubit>().isAuthenticated) {
+                      Utils.popupIfNoAuth(c, msg: 'Login to complete this action!');
+                      return;
+                    } else if (_bloc.state.product.category == null) {
+                      PopupDialog.error(message: 'Please select a category to proceed.').render(c);
+                    }
+
+                    _bloc.add(ProductStructEvent.store(
+                      _autheticatedUser,
+                      callback: (v) {
+                        if (v) {
+                          _bloc.add(const ProductSyncEvent.clearForm());
+                          navigator.popUntilRoot();
+                          _bloc.add(const ProductSyncEvent.clearForm());
+                        }
+                      },
+                    ));
+                  },
                 ),
               ]),
             ),
           ),
-        ),
+        ).sliverSafeBottom,
       ],
     );
   }

@@ -195,7 +195,9 @@ class _$_SuccessResponse extends _SuccessResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SuccessResponseToJson(this);
+    return _$$_SuccessResponseToJson(
+      this,
+    );
   }
 }
 
@@ -212,16 +214,16 @@ abstract class _SuccessResponse extends SuccessResponse {
 
   @override
   @JsonKey(defaultValue: true)
-  bool? get status => throw _privateConstructorUsedError;
+  bool? get status;
   @override
   @JsonKey(defaultValue: '')
-  String get message => throw _privateConstructorUsedError;
+  String get message;
   @override
   @JsonKey(ignore: true)
-  String? get details => throw _privateConstructorUsedError;
+  String? get details;
   @override
   @JsonKey(ignore: true)
-  bool get pop => throw _privateConstructorUsedError;
+  bool get pop;
   @override
   @JsonKey(ignore: true)
   _$$_SuccessResponseCopyWith<_$_SuccessResponse> get copyWith =>

@@ -38,6 +38,8 @@ class ImageBox extends StatefulWidget {
   final StackFit stackFit;
   final bool useDefaultRadius;
   final double width;
+  final Color? progressIndicatorColor;
+  final Color? progressIndicatorColorDark;
 
   const ImageBox.asset({
     Key? key,
@@ -61,6 +63,8 @@ class ImageBox extends StatefulWidget {
     this.stackClip = Clip.hardEdge,
     this.materialInkWell,
     this.onPressed,
+    this.progressIndicatorColor,
+    this.progressIndicatorColorDark,
   })  : width = width ?? double.infinity,
         height = height ?? double.infinity,
         _type = _ImageType.asset,
@@ -92,6 +96,8 @@ class ImageBox extends StatefulWidget {
     this.stackClip = Clip.hardEdge,
     this.materialInkWell,
     this.onPressed,
+    this.progressIndicatorColor,
+    this.progressIndicatorColorDark,
   })  : width = width ?? double.infinity,
         height = height ?? double.infinity,
         _type = _ImageType.file,
@@ -122,6 +128,8 @@ class ImageBox extends StatefulWidget {
     this.stackClip = Clip.hardEdge,
     this.materialInkWell,
     this.onPressed,
+    this.progressIndicatorColor,
+    this.progressIndicatorColorDark,
   })  : width = width ?? double.infinity,
         height = height ?? double.infinity,
         _type = _ImageType.memory,
@@ -152,6 +160,8 @@ class ImageBox extends StatefulWidget {
     this.stackClip = Clip.hardEdge,
     this.materialInkWell,
     this.onPressed,
+    this.progressIndicatorColor,
+    this.progressIndicatorColorDark,
   })  : width = width ?? double.infinity,
         height = height ?? double.infinity,
         _type = _ImageType.network,
@@ -216,7 +226,7 @@ class _ImageBoxState extends State<ImageBox> with AutomaticKeepAliveClientMixin<
                         context,
                         previousRouteName: navigator.current.name,
                         useRootNavigator: true,
-                        dismissDirection: DismissibleDirection.down,
+                        dismissDirection: DismissibleDirection.vertical,
                         child: ImageFullscreen(imageProvider: provider, heroTag: _heroTag),
                       )
                   : widget.onPressed != null
@@ -263,6 +273,8 @@ class _ImageBoxState extends State<ImageBox> with AutomaticKeepAliveClientMixin<
                     strokeWidth: 2,
                     width: 25,
                     height: 25,
+                    color: widget.progressIndicatorColor,
+                    colorDark: widget.progressIndicatorColorDark,
                   ),
                 ),
               ),

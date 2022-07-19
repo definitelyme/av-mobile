@@ -418,7 +418,7 @@ class _CupertinoPickerState<Model> extends State<_CupertinoPicker<Model>> {
             right: 0,
             child: CupertinoButton(
               borderRadius: 8.br,
-              onPressed: () => navigator.pop(widget.items[_selectedItemIndex]),
+              onPressed: () => Navigator.pop(context, widget.items[_selectedItemIndex]),
               child: AdaptiveText(
                 'Done',
                 maxLines: 1,

@@ -248,17 +248,17 @@ abstract class _MyWish extends MyWish {
   const _MyWish._() : super._();
 
   @override
-  UniqueId<String?> get id => throw _privateConstructorUsedError;
+  UniqueId<String?> get id;
   @override
-  bool get active => throw _privateConstructorUsedError;
+  bool get active;
   @override
-  Deal? get deal => throw _privateConstructorUsedError;
+  Deal? get deal;
   @override
-  User? get user => throw _privateConstructorUsedError;
+  User? get user;
   @override
-  DateTime? get createdAt => throw _privateConstructorUsedError;
+  DateTime? get createdAt;
   @override
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$_MyWishCopyWith<_$_MyWish> get copyWith =>

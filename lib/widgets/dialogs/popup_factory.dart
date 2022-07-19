@@ -42,6 +42,7 @@ class PopupDialog extends _$PopupDialog {
           overlayColor: App.resolveColor(
             Palette.primaryColor,
             dark: Palette.secondaryColor.shade400,
+            ctx: getIt<AppRouter>().navigatorKey.currentContext,
           ),
           overlayOpacity: 0.4,
           alertStyle: alertStyle,
@@ -60,6 +61,7 @@ class PopupDialog extends _$PopupDialog {
     TextStyle? titleStyle,
     TextStyle? messageStyle,
     bool? show,
+    Widget? button,
     PopupDialogPosition? position,
     void Function(dynamic)? callbackOnShow,
     void Function(dynamic)? callback,
@@ -84,6 +86,7 @@ class PopupDialog extends _$PopupDialog {
           messageStyle: messageStyle,
           shouldIconPulse: false,
           position: position,
+          mainButton: button,
           flushbarListener: listener,
           dismissDirection: PopupDialogDismissDirection.vertical,
           leftBarIndicatorColor: Palette.infoBlue,

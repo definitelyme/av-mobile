@@ -16,6 +16,7 @@ class WalletState extends BaseState with _$WalletState {
 
   const factory WalletState({
     @Default(false) bool isLoading,
+    @Default(false) bool isFetchingWalletBalance,
     @Default(false) bool isFundingWallet,
     @Default(false) bool validate,
     @Default(false) bool isConfiguringPin,
@@ -24,8 +25,8 @@ class WalletState extends BaseState with _$WalletState {
     @Default(false) bool requestedPINReset,
     @Default(SecurityQuestion.locality) SecurityQuestion securityQuestion,
     required MoneyMaskedTextController amountTextController,
-    required AmountField<double> amount,
-    required BasicTextField<String?> securityAnswer,
+    required NumField<double> amount,
+    required BasicTextField securityAnswer,
     required OTPCode otpCode,
     BankAccount? bankAccount,
     UserWallet? wallet,
@@ -39,7 +40,7 @@ class WalletState extends BaseState with _$WalletState {
   }) = _WalletState;
 
   factory WalletState.initial() => WalletState(
-        amount: AmountField(0),
+        amount: NumField(0),
         withdrawalPin: OTPCode(null),
         confirmWithdrawalPin: OTPCode(null),
         securityAnswer: BasicTextField(null),

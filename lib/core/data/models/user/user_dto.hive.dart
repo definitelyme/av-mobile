@@ -34,22 +34,23 @@ class UserDTOAdapter extends TypeAdapter<_$_UserDTO> {
       favAthlete: fields[15] as bool?,
       favPlace: fields[16] as bool?,
       locality: fields[17] as bool?,
-      active: fields[18] as bool?,
-      accountVerified: fields[19] as bool?,
-      provider: fields[20] as AuthProvider?,
-      createdBy: fields[21] as DateTime?,
-      updatedBy: fields[22] as DateTime?,
-      deletedBy: fields[23] as DateTime?,
-      createdAt: fields[24] as DateTime?,
-      updatedAt: fields[25] as DateTime?,
-      deletedAt: fields[26] as DateTime?,
+      forceUpdate: fields[18] as bool?,
+      active: fields[19] as bool?,
+      accountVerified: fields[20] as bool?,
+      provider: fields[21] as AuthProvider?,
+      createdBy: fields[22] as DateTime?,
+      updatedBy: fields[23] as DateTime?,
+      deletedBy: fields[24] as DateTime?,
+      createdAt: fields[25] as DateTime?,
+      updatedAt: fields[26] as DateTime?,
+      deletedAt: fields[27] as DateTime?,
     );
   }
 
   @override
   void write(BinaryWriter writer, _$_UserDTO obj) {
     writer
-      ..writeByte(26)
+      ..writeByte(27)
       ..writeByte(1)
       ..write(obj.id)
       ..writeByte(2)
@@ -85,22 +86,24 @@ class UserDTOAdapter extends TypeAdapter<_$_UserDTO> {
       ..writeByte(17)
       ..write(obj.locality)
       ..writeByte(18)
-      ..write(obj.active)
+      ..write(obj.forceUpdate)
       ..writeByte(19)
-      ..write(obj.accountVerified)
+      ..write(obj.active)
       ..writeByte(20)
-      ..write(obj.provider)
+      ..write(obj.accountVerified)
       ..writeByte(21)
-      ..write(obj.createdBy)
+      ..write(obj.provider)
       ..writeByte(22)
-      ..write(obj.updatedBy)
+      ..write(obj.createdBy)
       ..writeByte(23)
-      ..write(obj.deletedBy)
+      ..write(obj.updatedBy)
       ..writeByte(24)
-      ..write(obj.createdAt)
+      ..write(obj.deletedBy)
       ..writeByte(25)
-      ..write(obj.updatedAt)
+      ..write(obj.createdAt)
       ..writeByte(26)
+      ..write(obj.updatedAt)
+      ..writeByte(27)
       ..write(obj.deletedAt);
   }
 

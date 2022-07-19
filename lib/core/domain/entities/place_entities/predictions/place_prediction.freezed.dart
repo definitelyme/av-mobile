@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$PlacePrediction {
   UniqueId<String?> get placeId => throw _privateConstructorUsedError;
   UniqueId<String?> get reference => throw _privateConstructorUsedError;
-  BasicTextField<String?> get description => throw _privateConstructorUsedError;
+  BasicTextField get description => throw _privateConstructorUsedError;
   ImmutableStrings get types => throw _privateConstructorUsedError;
   KtList<MatchedSubstrings?> get matched => throw _privateConstructorUsedError;
 
@@ -35,7 +35,7 @@ abstract class $PlacePredictionCopyWith<$Res> {
   $Res call(
       {UniqueId<String?> placeId,
       UniqueId<String?> reference,
-      BasicTextField<String?> description,
+      BasicTextField description,
       ImmutableStrings types,
       KtList<MatchedSubstrings?> matched});
 }
@@ -69,7 +69,7 @@ class _$PlacePredictionCopyWithImpl<$Res>
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       types: types == freezed
           ? _value.types
           : types // ignore: cast_nullable_to_non_nullable
@@ -92,7 +92,7 @@ abstract class _$$_PlacePredictionCopyWith<$Res>
   $Res call(
       {UniqueId<String?> placeId,
       UniqueId<String?> reference,
-      BasicTextField<String?> description,
+      BasicTextField description,
       ImmutableStrings types,
       KtList<MatchedSubstrings?> matched});
 }
@@ -128,7 +128,7 @@ class __$$_PlacePredictionCopyWithImpl<$Res>
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       types: types == freezed
           ? _value.types
           : types // ignore: cast_nullable_to_non_nullable
@@ -157,7 +157,7 @@ class _$_PlacePrediction extends _PlacePrediction {
   @override
   final UniqueId<String?> reference;
   @override
-  final BasicTextField<String?> description;
+  final BasicTextField description;
   @override
   final ImmutableStrings types;
   @override
@@ -200,21 +200,21 @@ abstract class _PlacePrediction extends PlacePrediction {
   const factory _PlacePrediction(
       {required final UniqueId<String?> placeId,
       required final UniqueId<String?> reference,
-      required final BasicTextField<String?> description,
+      required final BasicTextField description,
       required final ImmutableStrings types,
       required final KtList<MatchedSubstrings?> matched}) = _$_PlacePrediction;
   const _PlacePrediction._() : super._();
 
   @override
-  UniqueId<String?> get placeId => throw _privateConstructorUsedError;
+  UniqueId<String?> get placeId;
   @override
-  UniqueId<String?> get reference => throw _privateConstructorUsedError;
+  UniqueId<String?> get reference;
   @override
-  BasicTextField<String?> get description => throw _privateConstructorUsedError;
+  BasicTextField get description;
   @override
-  ImmutableStrings get types => throw _privateConstructorUsedError;
+  ImmutableStrings get types;
   @override
-  KtList<MatchedSubstrings?> get matched => throw _privateConstructorUsedError;
+  KtList<MatchedSubstrings?> get matched;
   @override
   @JsonKey(ignore: true)
   _$$_PlacePredictionCopyWith<_$_PlacePrediction> get copyWith =>
@@ -223,8 +223,8 @@ abstract class _PlacePrediction extends PlacePrediction {
 
 /// @nodoc
 mixin _$MatchedSubstrings {
-  BasicTextField<int?> get length => throw _privateConstructorUsedError;
-  BasicTextField<int?> get offset => throw _privateConstructorUsedError;
+  NumField<int?> get length => throw _privateConstructorUsedError;
+  NumField<int?> get offset => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MatchedSubstringsCopyWith<MatchedSubstrings> get copyWith =>
@@ -236,7 +236,7 @@ abstract class $MatchedSubstringsCopyWith<$Res> {
   factory $MatchedSubstringsCopyWith(
           MatchedSubstrings value, $Res Function(MatchedSubstrings) then) =
       _$MatchedSubstringsCopyWithImpl<$Res>;
-  $Res call({BasicTextField<int?> length, BasicTextField<int?> offset});
+  $Res call({NumField<int?> length, NumField<int?> offset});
 }
 
 /// @nodoc
@@ -257,11 +257,11 @@ class _$MatchedSubstringsCopyWithImpl<$Res>
       length: length == freezed
           ? _value.length
           : length // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<int?>,
+              as NumField<int?>,
       offset: offset == freezed
           ? _value.offset
           : offset // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<int?>,
+              as NumField<int?>,
     ));
   }
 }
@@ -273,7 +273,7 @@ abstract class _$$_MatchedSubstringsCopyWith<$Res>
           $Res Function(_$_MatchedSubstrings) then) =
       __$$_MatchedSubstringsCopyWithImpl<$Res>;
   @override
-  $Res call({BasicTextField<int?> length, BasicTextField<int?> offset});
+  $Res call({NumField<int?> length, NumField<int?> offset});
 }
 
 /// @nodoc
@@ -296,11 +296,11 @@ class __$$_MatchedSubstringsCopyWithImpl<$Res>
       length: length == freezed
           ? _value.length
           : length // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<int?>,
+              as NumField<int?>,
       offset: offset == freezed
           ? _value.offset
           : offset // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<int?>,
+              as NumField<int?>,
     ));
   }
 }
@@ -312,9 +312,9 @@ class _$_MatchedSubstrings extends _MatchedSubstrings {
       : super._();
 
   @override
-  final BasicTextField<int?> length;
+  final NumField<int?> length;
   @override
-  final BasicTextField<int?> offset;
+  final NumField<int?> offset;
 
   @override
   String toString() {
@@ -345,14 +345,14 @@ class _$_MatchedSubstrings extends _MatchedSubstrings {
 
 abstract class _MatchedSubstrings extends MatchedSubstrings {
   const factory _MatchedSubstrings(
-      {required final BasicTextField<int?> length,
-      required final BasicTextField<int?> offset}) = _$_MatchedSubstrings;
+      {required final NumField<int?> length,
+      required final NumField<int?> offset}) = _$_MatchedSubstrings;
   const _MatchedSubstrings._() : super._();
 
   @override
-  BasicTextField<int?> get length => throw _privateConstructorUsedError;
+  NumField<int?> get length;
   @override
-  BasicTextField<int?> get offset => throw _privateConstructorUsedError;
+  NumField<int?> get offset;
   @override
   @JsonKey(ignore: true)
   _$$_MatchedSubstringsCopyWith<_$_MatchedSubstrings> get copyWith =>

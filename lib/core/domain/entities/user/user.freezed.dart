@@ -26,6 +26,7 @@ mixin _$User {
   UploadableMedia get photo => throw _privateConstructorUsedError;
   Country? get country => throw _privateConstructorUsedError;
   bool get isPrivate => throw _privateConstructorUsedError;
+  bool? get forceUpdate => throw _privateConstructorUsedError;
   AuthProvider get provider => throw _privateConstructorUsedError;
   bool? get active => throw _privateConstructorUsedError;
   bool? get accountVerified => throw _privateConstructorUsedError;
@@ -53,6 +54,7 @@ abstract class $UserCopyWith<$Res> {
       UploadableMedia photo,
       Country? country,
       bool isPrivate,
+      bool? forceUpdate,
       AuthProvider provider,
       bool? active,
       bool? accountVerified,
@@ -84,6 +86,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
     Object? photo = freezed,
     Object? country = freezed,
     Object? isPrivate = freezed,
+    Object? forceUpdate = freezed,
     Object? provider = freezed,
     Object? active = freezed,
     Object? accountVerified = freezed,
@@ -133,6 +136,10 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
           ? _value.isPrivate
           : isPrivate // ignore: cast_nullable_to_non_nullable
               as bool,
+      forceUpdate: forceUpdate == freezed
+          ? _value.forceUpdate
+          : forceUpdate // ignore: cast_nullable_to_non_nullable
+              as bool?,
       provider: provider == freezed
           ? _value.provider
           : provider // ignore: cast_nullable_to_non_nullable
@@ -192,6 +199,7 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       UploadableMedia photo,
       Country? country,
       bool isPrivate,
+      bool? forceUpdate,
       AuthProvider provider,
       bool? active,
       bool? accountVerified,
@@ -225,6 +233,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object? photo = freezed,
     Object? country = freezed,
     Object? isPrivate = freezed,
+    Object? forceUpdate = freezed,
     Object? provider = freezed,
     Object? active = freezed,
     Object? accountVerified = freezed,
@@ -274,6 +283,10 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           ? _value.isPrivate
           : isPrivate // ignore: cast_nullable_to_non_nullable
               as bool,
+      forceUpdate: forceUpdate == freezed
+          ? _value.forceUpdate
+          : forceUpdate // ignore: cast_nullable_to_non_nullable
+              as bool?,
       provider: provider == freezed
           ? _value.provider
           : provider // ignore: cast_nullable_to_non_nullable
@@ -320,6 +333,7 @@ class _$_User extends _User with DiagnosticableTreeMixin {
       required this.photo,
       this.country,
       this.isPrivate = false,
+      this.forceUpdate,
       this.provider = AuthProvider.regular,
       this.active = false,
       this.accountVerified = false,
@@ -351,6 +365,8 @@ class _$_User extends _User with DiagnosticableTreeMixin {
   @JsonKey()
   final bool isPrivate;
   @override
+  final bool? forceUpdate;
+  @override
   @JsonKey()
   final AuthProvider provider;
   @override
@@ -370,7 +386,7 @@ class _$_User extends _User with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'User(id: $id, firstName: $firstName, lastName: $lastName, name: $name, email: $email, phone: $phone, password: $password, photo: $photo, country: $country, isPrivate: $isPrivate, provider: $provider, active: $active, accountVerified: $accountVerified, securityQuestion: $securityQuestion, createdAt: $createdAt, updatedAt: $updatedAt, deletedAt: $deletedAt)';
+    return 'User(id: $id, firstName: $firstName, lastName: $lastName, name: $name, email: $email, phone: $phone, password: $password, photo: $photo, country: $country, isPrivate: $isPrivate, forceUpdate: $forceUpdate, provider: $provider, active: $active, accountVerified: $accountVerified, securityQuestion: $securityQuestion, createdAt: $createdAt, updatedAt: $updatedAt, deletedAt: $deletedAt)';
   }
 
   @override
@@ -388,6 +404,7 @@ class _$_User extends _User with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('photo', photo))
       ..add(DiagnosticsProperty('country', country))
       ..add(DiagnosticsProperty('isPrivate', isPrivate))
+      ..add(DiagnosticsProperty('forceUpdate', forceUpdate))
       ..add(DiagnosticsProperty('provider', provider))
       ..add(DiagnosticsProperty('active', active))
       ..add(DiagnosticsProperty('accountVerified', accountVerified))
@@ -412,6 +429,8 @@ class _$_User extends _User with DiagnosticableTreeMixin {
             const DeepCollectionEquality().equals(other.photo, photo) &&
             const DeepCollectionEquality().equals(other.country, country) &&
             const DeepCollectionEquality().equals(other.isPrivate, isPrivate) &&
+            const DeepCollectionEquality()
+                .equals(other.forceUpdate, forceUpdate) &&
             const DeepCollectionEquality().equals(other.provider, provider) &&
             const DeepCollectionEquality().equals(other.active, active) &&
             const DeepCollectionEquality()
@@ -436,6 +455,7 @@ class _$_User extends _User with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(photo),
       const DeepCollectionEquality().hash(country),
       const DeepCollectionEquality().hash(isPrivate),
+      const DeepCollectionEquality().hash(forceUpdate),
       const DeepCollectionEquality().hash(provider),
       const DeepCollectionEquality().hash(active),
       const DeepCollectionEquality().hash(accountVerified),
@@ -462,6 +482,7 @@ abstract class _User extends User {
       required final UploadableMedia photo,
       final Country? country,
       final bool isPrivate,
+      final bool? forceUpdate,
       final AuthProvider provider,
       final bool? active,
       final bool? accountVerified,
@@ -472,39 +493,41 @@ abstract class _User extends User {
   const _User._() : super._();
 
   @override
-  UniqueId<String?> get id => throw _privateConstructorUsedError;
+  UniqueId<String?> get id;
   @override
-  DisplayName get firstName => throw _privateConstructorUsedError;
+  DisplayName get firstName;
   @override
-  DisplayName get lastName => throw _privateConstructorUsedError;
+  DisplayName get lastName;
   @override
-  DisplayName? get name => throw _privateConstructorUsedError;
+  DisplayName? get name;
   @override
-  EmailAddress get email => throw _privateConstructorUsedError;
+  EmailAddress get email;
   @override
-  Phone get phone => throw _privateConstructorUsedError;
+  Phone get phone;
   @override
-  Password get password => throw _privateConstructorUsedError;
+  Password get password;
   @override
-  UploadableMedia get photo => throw _privateConstructorUsedError;
+  UploadableMedia get photo;
   @override
-  Country? get country => throw _privateConstructorUsedError;
+  Country? get country;
   @override
-  bool get isPrivate => throw _privateConstructorUsedError;
+  bool get isPrivate;
   @override
-  AuthProvider get provider => throw _privateConstructorUsedError;
+  bool? get forceUpdate;
   @override
-  bool? get active => throw _privateConstructorUsedError;
+  AuthProvider get provider;
   @override
-  bool? get accountVerified => throw _privateConstructorUsedError;
+  bool? get active;
   @override
-  SecurityQuestion? get securityQuestion => throw _privateConstructorUsedError;
+  bool? get accountVerified;
   @override
-  DateTime? get createdAt => throw _privateConstructorUsedError;
+  SecurityQuestion? get securityQuestion;
   @override
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get createdAt;
   @override
-  DateTime? get deletedAt => throw _privateConstructorUsedError;
+  DateTime? get updatedAt;
+  @override
+  DateTime? get deletedAt;
   @override
   @JsonKey(ignore: true)
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;

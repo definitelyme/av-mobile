@@ -17,8 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$DealPlan {
   UniqueId<String?> get id => throw _privateConstructorUsedError;
-  AmountField<double> get amount => throw _privateConstructorUsedError;
-  BasicTextField<int?> get priority => throw _privateConstructorUsedError;
+  NumField<double> get amount => throw _privateConstructorUsedError;
+  NumField<int?> get priority => throw _privateConstructorUsedError;
   KtList<String?> get features => throw _privateConstructorUsedError;
   DealPlanType get name => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
@@ -35,8 +35,8 @@ abstract class $DealPlanCopyWith<$Res> {
       _$DealPlanCopyWithImpl<$Res>;
   $Res call(
       {UniqueId<String?> id,
-      AmountField<double> amount,
-      BasicTextField<int?> priority,
+      NumField<double> amount,
+      NumField<int?> priority,
       KtList<String?> features,
       DealPlanType name,
       DateTime? createdAt,
@@ -69,11 +69,11 @@ class _$DealPlanCopyWithImpl<$Res> implements $DealPlanCopyWith<$Res> {
       amount: amount == freezed
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
-              as AmountField<double>,
+              as NumField<double>,
       priority: priority == freezed
           ? _value.priority
           : priority // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<int?>,
+              as NumField<int?>,
       features: features == freezed
           ? _value.features
           : features // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ abstract class _$$_DealPlanCopyWith<$Res> implements $DealPlanCopyWith<$Res> {
   @override
   $Res call(
       {UniqueId<String?> id,
-      AmountField<double> amount,
-      BasicTextField<int?> priority,
+      NumField<double> amount,
+      NumField<int?> priority,
       KtList<String?> features,
       DealPlanType name,
       DateTime? createdAt,
@@ -138,11 +138,11 @@ class __$$_DealPlanCopyWithImpl<$Res> extends _$DealPlanCopyWithImpl<$Res>
       amount: amount == freezed
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
-              as AmountField<double>,
+              as NumField<double>,
       priority: priority == freezed
           ? _value.priority
           : priority // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<int?>,
+              as NumField<int?>,
       features: features == freezed
           ? _value.features
           : features // ignore: cast_nullable_to_non_nullable
@@ -179,9 +179,9 @@ class _$_DealPlan extends _DealPlan {
   @override
   final UniqueId<String?> id;
   @override
-  final AmountField<double> amount;
+  final NumField<double> amount;
   @override
-  final BasicTextField<int?> priority;
+  final NumField<int?> priority;
   @override
   @JsonKey()
   final KtList<String?> features;
@@ -232,8 +232,8 @@ class _$_DealPlan extends _DealPlan {
 abstract class _DealPlan extends DealPlan {
   const factory _DealPlan(
       {required final UniqueId<String?> id,
-      required final AmountField<double> amount,
-      required final BasicTextField<int?> priority,
+      required final NumField<double> amount,
+      required final NumField<int?> priority,
       final KtList<String?> features,
       final DealPlanType name,
       final DateTime? createdAt,
@@ -241,19 +241,19 @@ abstract class _DealPlan extends DealPlan {
   const _DealPlan._() : super._();
 
   @override
-  UniqueId<String?> get id => throw _privateConstructorUsedError;
+  UniqueId<String?> get id;
   @override
-  AmountField<double> get amount => throw _privateConstructorUsedError;
+  NumField<double> get amount;
   @override
-  BasicTextField<int?> get priority => throw _privateConstructorUsedError;
+  NumField<int?> get priority;
   @override
-  KtList<String?> get features => throw _privateConstructorUsedError;
+  KtList<String?> get features;
   @override
-  DealPlanType get name => throw _privateConstructorUsedError;
+  DealPlanType get name;
   @override
-  DateTime? get createdAt => throw _privateConstructorUsedError;
+  DateTime? get createdAt;
   @override
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$_DealPlanCopyWith<_$_DealPlan> get copyWith =>

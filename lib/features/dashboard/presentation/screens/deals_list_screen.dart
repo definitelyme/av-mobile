@@ -60,7 +60,8 @@ class DealsListScreen extends StatelessWidget with AutoRouteWrapper {
       adaptiveToolbar: AdaptiveToolbar(
         implyMiddle: false,
         title: title,
-        leadingIcon: App.platform.material(const Icon(Icons.keyboard_backspace_rounded, color: Colors.white)),
+        leadingIcon: App.platform.material(Icons.keyboard_backspace_rounded),
+        leadingIconColor: Colors.white,
         overlayStyle: App.customSystemOverlay(ctx: context, android: Brightness.light, ios: Brightness.dark),
         backgroundColor: App.platform.cupertino(Palette.accentColor),
         cupertinoImplyLeading: false,
@@ -72,63 +73,54 @@ class DealsListScreen extends StatelessWidget with AutoRouteWrapper {
           fontWeight: FontWeight.w600,
         ),
       ),
-      body: SafeArea(
-        left: false,
-        right: false,
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: App.sidePadding),
-              child: const SearchWidget(),
-            ),
-            //
-            0.02.verticalh,
-            //
-            Expanded(
-              child: Material(
-                color: App.resolveColor(Palette.cardColorLight, dark: Palette.cardColorDark),
-                child: DragToRefresh(
-                  initialRefresh: true,
-                  enablePullUp: true,
-                  onRefresh: (r) => onRefresh(context, r),
-                  onLoading: (r) => onLoadMore(context, r),
-                  child: CustomScrollView(
-                    primary: false,
-                    physics: Utils.physics,
-                    keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-                    slivers: [
-                      SliverSafeArea(
-                        top: false,
-                        left: false,
-                        right: false,
-                        sliver: BlocBuilder<DealCubit, DealState>(
-                          builder: (c, s) => SliverPadding(
-                            padding: EdgeInsets.symmetric(horizontal: App.sidePadding, vertical: App.sidePadding),
-                            sliver: SliverList(
-                              delegate: SliverChildBuilderDelegate(
-                                (_, i) => Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    if (s.dealsList.isNotEmpty()) ...[
-                                      ProductCard(s.dealsList.get(i), index: i),
-                                      //
-                                      if (i < s.dealsList.size - 1) 0.01.verticalh,
-                                    ],
-                                  ],
-                                ),
-                                childCount: s.dealsList.size,
-                              ),
+      body: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: App.sidePadding),
+            child: const SearchWidget(),
+          ).safeTop,
+          //
+          0.02.verticalh,
+          //
+          Expanded(
+            child: Material(
+              color: App.resolveColor(Palette.cardColorLight, dark: Palette.cardColorDark),
+              child: DragToRefresh(
+                initialRefresh: true,
+                enablePullUp: true,
+                onRefresh: (r) => onRefresh(context, r),
+                onLoading: (r) => onLoadMore(context, r),
+                child: CustomScrollView(
+                  primary: false,
+                  physics: Utils.physics,
+                  keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+                  slivers: [
+                    BlocBuilder<DealCubit, DealState>(
+                      builder: (c, s) => SliverPadding(
+                        padding: EdgeInsets.symmetric(horizontal: App.sidePadding, vertical: App.sidePadding),
+                        sliver: SliverList(
+                          delegate: SliverChildBuilderDelegate(
+                            (_, i) => Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                if (s.dealsList.isNotEmpty()) ...[
+                                  ProductCard(s.dealsList.get(i), index: i),
+                                  //
+                                  if (i < s.dealsList.size - 1) 0.01.verticalh,
+                                ],
+                              ],
                             ),
+                            childCount: s.dealsList.size,
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ).sliverSafeBottom,
+                  ],
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

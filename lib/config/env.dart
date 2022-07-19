@@ -1,7 +1,7 @@
+import 'package:auctionvillage/core/data/index.dart';
 import 'package:auctionvillage/manager/locator/locator.dart';
 import 'package:auctionvillage/utils/utils.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart';
 
 // enum BuildFlavor { prod, staging, isolate, dev }
@@ -14,19 +14,19 @@ class BuildFlavor {
   const BuildFlavor(this.name);
 
   /// preset of common env name 'dev'
-  static const dev = 'dev';
+  static const dev = BuildFlavor('dev');
 
   /// preset of common env name 'staging'
-  static const staging = 'staging';
+  static const staging = BuildFlavor('staging');
 
   /// preset of common env name 'isolate'
-  static const isolate = 'isolate';
+  static const isolate = BuildFlavor('isolate');
 
   /// preset of common env name 'prod'
-  static const prod = 'prod';
+  static const prod = BuildFlavor('prod');
 
   /// preset of common env name 'test'
-  static const test = 'test';
+  static const test = BuildFlavor('test');
 
   @override
   bool operator ==(other) {
@@ -50,14 +50,16 @@ class BuildEnvironment implements Secrets {
 
   factory BuildEnvironment.factory({required BuildFlavor flavor, Uri? uri}) => BuildEnvironment._(flavor: flavor, baseUri: uri);
 
-  BuildEnvironment._({this.flavor = const BuildFlavor(BuildFlavor.dev), this.baseUri});
+  BuildEnvironment._({this.flavor = BuildFlavor.dev, this.baseUri});
 
   String get appApiKey => 'AuctionDevKey';
 
-  static String domain([BuildFlavor? value]) => (value ?? env.flavor).fold(
-        dev: () => '${EndPoints.APP_DEV_DOMAIN}',
-        prod: () => kDebugMode ? '${EndPoints.APP_DEV_DOMAIN}' : '${EndPoints.APP_PROD_DOMAIN}',
-      );
+  static String domain([BuildFlavor? value]) =>
+      (value ?? env.flavor).fold(dev: () => '${EndPoints.APP_DEV_DOMAIN}', prod: () => '${EndPoints.APP_PROD_DOMAIN}');
+
+  static String get http => Uri.http(domain(), '').toString();
+
+  static String get https => Uri.https(domain(), '').toString();
 
   int get connectTimeout => 16000;
 
@@ -91,30 +93,16 @@ class BuildEnvironment implements Secrets {
 
   /// Sets up the top-level [env] getter on the first call only.
   static Future<void> init({required BuildFlavor flavor}) async {
-    _env ??= BuildEnvironment.factory(flavor: flavor, uri: Uri.https(domain(flavor), EndPoints.API_ENDPOINT));
+    _env ??= BuildEnvironment.factory(flavor: flavor, uri: Uri.https(domain(flavor), kDebugMode ? EndPoints.API_ENDPOINT : ''));
 
-    // This app is designed only to work vertically, so we limit
-    // orientations to portrait up and down.
-    await env.flavor.maybeWhen(
-      isolate: () => null,
-      orElse: () async {
-        await SystemChrome.setPreferredOrientations([
-          DeviceOrientation.portraitUp,
-          DeviceOrientation.portraitDown,
-        ]);
-      },
+    await env.flavor.fold(
+      dev: () => locator(BuildFlavor.dev.name),
+      prod: () => locator(BuildFlavor.prod.name),
     );
 
-    await flavor.fold(
-      dev: () async {
-        await locator(BuildFlavor.dev);
-        await getIt<FirebaseCrashlytics>().setCrashlyticsCollectionEnabled(!kDebugMode);
-      },
-      prod: () async {
-        await locator(BuildFlavor.prod);
-        await getIt<FirebaseCrashlytics>().setCrashlyticsCollectionEnabled(!kDebugMode);
-      },
-    );
+    await HiveClient.initialize();
+
+    await getIt<FirebaseCrashlytics>().setCrashlyticsCollectionEnabled(!kDebugMode);
   }
 }
 
@@ -125,17 +113,10 @@ extension XBuildFlavor on BuildFlavor {
     U Function()? isolate,
     required U Function() prod,
   }) {
-    switch (name) {
-      case BuildFlavor.dev:
-        return dev?.call() ?? staging?.call() ?? prod.call();
-      case BuildFlavor.staging:
-        return staging?.call() ?? prod.call();
-      case BuildFlavor.isolate:
-        return isolate?.call() ?? prod.call();
-      case BuildFlavor.prod:
-      default:
-        return prod.call();
-    }
+    if (this == BuildFlavor.dev) return dev?.call() ?? staging?.call() ?? prod.call();
+    if (this == BuildFlavor.staging) return staging?.call() ?? prod.call();
+    if (this == BuildFlavor.isolate) return isolate?.call() ?? prod.call();
+    return prod.call();
   }
 
   U maybeWhen<U>({
@@ -145,17 +126,10 @@ extension XBuildFlavor on BuildFlavor {
     U Function()? prod,
     required U Function() orElse,
   }) {
-    switch (name) {
-      case BuildFlavor.dev:
-        return dev?.call() ?? orElse.call();
-      case BuildFlavor.staging:
-        return staging?.call() ?? orElse.call();
-      case BuildFlavor.isolate:
-        return isolate?.call() ?? orElse.call();
-      case BuildFlavor.prod:
-        return prod?.call() ?? orElse.call();
-    }
-
+    if (this == BuildFlavor.dev) return dev?.call() ?? orElse.call();
+    if (this == BuildFlavor.staging) return staging?.call() ?? orElse.call();
+    if (this == BuildFlavor.isolate) return isolate?.call() ?? orElse.call();
+    if (this == BuildFlavor.prod) return prod?.call() ?? orElse.call();
     return orElse.call();
   }
 }

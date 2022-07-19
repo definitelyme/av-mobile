@@ -14,8 +14,8 @@ class DealPlan extends BaseEntity with _$DealPlan {
 
   const factory DealPlan({
     required UniqueId<String?> id,
-    required AmountField<double> amount,
-    required BasicTextField<int?> priority,
+    required NumField<double> amount,
+    required NumField<int?> priority,
     @Default(KtList.empty()) KtList<String?> features,
     @Default(DealPlanType.free) DealPlanType name,
     DateTime? createdAt,
@@ -35,8 +35,8 @@ class DealPlan extends BaseEntity with _$DealPlan {
   }) =>
       DealPlan(
         id: UniqueId.fromExternal(id),
-        amount: AmountField(amount ?? 0),
-        priority: BasicTextField(priority),
+        amount: NumField(amount ?? 0),
+        priority: NumField(priority),
         features: KtList.from(features),
         name: name ?? DealPlanType.free,
         createdAt: createdAt,

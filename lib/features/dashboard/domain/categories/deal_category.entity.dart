@@ -15,18 +15,18 @@ class DealCategory extends BaseEntity with _$DealCategory {
     required UniqueId<String?> id,
     required MediaField asset,
     @Default(false) bool isActive,
-    required BasicTextField<String?> name,
-    required BasicTextField<String?> slug,
-    required BasicTextField<String?> description,
-    required BasicTextField<double?> charge,
-    required BasicTextField<double?> percentageIncrease,
-    required BasicTextField<int> productsAssigned,
+    required BasicTextField name,
+    required BasicTextField slug,
+    required BasicTextField description,
+    required NumField<double?> charge,
+    required NumField<double?> percentageIncrease,
+    required NumField<int> productsAssigned,
     Deal? deal,
     DateTime? createdAt,
     DateTime? updatedAt,
   }) = _DealCategory;
 
-  bool get isValid => name.valueOrNull != null && name.getOrNull != '' && id.isValid;
+  bool get isValid => name.getOrNull != null && name.getOrNull != '' && id.isValid;
 
   factory DealCategory.blank({
     String? id,
@@ -49,9 +49,9 @@ class DealCategory extends BaseEntity with _$DealCategory {
         name: BasicTextField(name),
         slug: BasicTextField(slug),
         description: BasicTextField(description),
-        charge: BasicTextField(charge),
-        percentageIncrease: BasicTextField(percentageIncrease),
-        productsAssigned: BasicTextField(productsAssigned ?? 0),
+        charge: NumField(charge),
+        percentageIncrease: NumField(percentageIncrease),
+        productsAssigned: NumField(productsAssigned ?? 0),
         deal: deal,
         createdAt: createdAt,
         updatedAt: updatedAt,
@@ -61,14 +61,14 @@ class DealCategory extends BaseEntity with _$DealCategory {
         id: other?.id.value != null ? other!.id : id,
         asset: other?.asset.isNotNull((it) => it as MediaField, orElse: (_) => asset) ?? asset,
         isActive: other?.isActive ?? isActive,
-        name: other?.name.isNotNull((it) => it as BasicTextField<String?>, orElse: (_) => name) ?? name,
-        slug: other?.slug.isNotNull((it) => it as BasicTextField<String?>, orElse: (_) => slug) ?? slug,
-        description: other?.description.isNotNull((it) => it as BasicTextField<String?>, orElse: (_) => description) ?? description,
-        charge: other?.charge.isNotNull((it) => it as BasicTextField<double?>, orElse: (_) => charge) ?? charge,
-        percentageIncrease: other?.percentageIncrease.isNotNull((it) => it as BasicTextField<double?>, orElse: (_) => percentageIncrease) ??
-            percentageIncrease,
+        name: other?.name.isNotNull((it) => it as BasicTextField, orElse: (_) => name) ?? name,
+        slug: other?.slug.isNotNull((it) => it as BasicTextField, orElse: (_) => slug) ?? slug,
+        description: other?.description.isNotNull((it) => it as BasicTextField, orElse: (_) => description) ?? description,
+        charge: other?.charge.isNotNull((it) => it as NumField<double?>, orElse: (_) => charge) ?? charge,
+        percentageIncrease:
+            other?.percentageIncrease.isNotNull((it) => it as NumField<double?>, orElse: (_) => percentageIncrease) ?? percentageIncrease,
         productsAssigned:
-            other?.productsAssigned.isNotNull((it) => it as BasicTextField<int>, orElse: (_) => productsAssigned) ?? productsAssigned,
+            other?.productsAssigned.isNotNull((it) => it as NumField<int>, orElse: (_) => productsAssigned) ?? productsAssigned,
         deal: deal,
         createdAt: other?.createdAt ?? createdAt,
         updatedAt: other?.updatedAt ?? updatedAt,

@@ -234,7 +234,9 @@ class _$_TermsInformationDTO extends _TermsInformationDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TermsInformationDTOToJson(this);
+    return _$$_TermsInformationDTOToJson(
+      this,
+    );
   }
 }
 
@@ -257,19 +259,19 @@ abstract class _TermsInformationDTO extends TermsInformationDTO {
 
   @override
   @StringSerializer()
-  int? get yearOfPurchase => throw _privateConstructorUsedError;
+  int? get yearOfPurchase;
   @override
   @JsonKey(toJson: BooleanSerializer.toJsonString)
   @BooleanSerializer()
-  bool? get repairHistory => throw _privateConstructorUsedError;
+  bool? get repairHistory;
   @override
   @JsonKey(toJson: BooleanSerializer.toJsonString)
   @BooleanSerializer()
-  bool? get refundPolicy => throw _privateConstructorUsedError;
+  bool? get refundPolicy;
   @override
-  String? get warranty => throw _privateConstructorUsedError;
+  String? get warranty;
   @override
-  String? get otherInfo => throw _privateConstructorUsedError;
+  String? get otherInfo;
   @override
   @JsonKey(ignore: true)
   _$$_TermsInformationDTOCopyWith<_$_TermsInformationDTO> get copyWith =>

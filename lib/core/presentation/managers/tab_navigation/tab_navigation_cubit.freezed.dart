@@ -17,13 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$TabNavigationState {
   TabController? get tabController => throw _privateConstructorUsedError;
-  TabsRouter? get tabRouter => throw _privateConstructorUsedError;
-  int get currentIndex => throw _privateConstructorUsedError;
-  int get previousIndex => throw _privateConstructorUsedError;
   int get selectedTab => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
-  bool get isInit => throw _privateConstructorUsedError;
-  Set<Map<String, Widget>> get tabs => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TabNavigationStateCopyWith<TabNavigationState> get copyWith =>
@@ -35,15 +30,7 @@ abstract class $TabNavigationStateCopyWith<$Res> {
   factory $TabNavigationStateCopyWith(
           TabNavigationState value, $Res Function(TabNavigationState) then) =
       _$TabNavigationStateCopyWithImpl<$Res>;
-  $Res call(
-      {TabController? tabController,
-      TabsRouter? tabRouter,
-      int currentIndex,
-      int previousIndex,
-      int selectedTab,
-      bool isLoading,
-      bool isInit,
-      Set<Map<String, Widget>> tabs});
+  $Res call({TabController? tabController, int selectedTab, bool isLoading});
 }
 
 /// @nodoc
@@ -58,31 +45,14 @@ class _$TabNavigationStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? tabController = freezed,
-    Object? tabRouter = freezed,
-    Object? currentIndex = freezed,
-    Object? previousIndex = freezed,
     Object? selectedTab = freezed,
     Object? isLoading = freezed,
-    Object? isInit = freezed,
-    Object? tabs = freezed,
   }) {
     return _then(_value.copyWith(
       tabController: tabController == freezed
           ? _value.tabController
           : tabController // ignore: cast_nullable_to_non_nullable
               as TabController?,
-      tabRouter: tabRouter == freezed
-          ? _value.tabRouter
-          : tabRouter // ignore: cast_nullable_to_non_nullable
-              as TabsRouter?,
-      currentIndex: currentIndex == freezed
-          ? _value.currentIndex
-          : currentIndex // ignore: cast_nullable_to_non_nullable
-              as int,
-      previousIndex: previousIndex == freezed
-          ? _value.previousIndex
-          : previousIndex // ignore: cast_nullable_to_non_nullable
-              as int,
       selectedTab: selectedTab == freezed
           ? _value.selectedTab
           : selectedTab // ignore: cast_nullable_to_non_nullable
@@ -91,14 +61,6 @@ class _$TabNavigationStateCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      isInit: isInit == freezed
-          ? _value.isInit
-          : isInit // ignore: cast_nullable_to_non_nullable
-              as bool,
-      tabs: tabs == freezed
-          ? _value.tabs
-          : tabs // ignore: cast_nullable_to_non_nullable
-              as Set<Map<String, Widget>>,
     ));
   }
 }
@@ -110,15 +72,7 @@ abstract class _$$_TabNavigationStateCopyWith<$Res>
           $Res Function(_$_TabNavigationState) then) =
       __$$_TabNavigationStateCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {TabController? tabController,
-      TabsRouter? tabRouter,
-      int currentIndex,
-      int previousIndex,
-      int selectedTab,
-      bool isLoading,
-      bool isInit,
-      Set<Map<String, Widget>> tabs});
+  $Res call({TabController? tabController, int selectedTab, bool isLoading});
 }
 
 /// @nodoc
@@ -135,31 +89,14 @@ class __$$_TabNavigationStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? tabController = freezed,
-    Object? tabRouter = freezed,
-    Object? currentIndex = freezed,
-    Object? previousIndex = freezed,
     Object? selectedTab = freezed,
     Object? isLoading = freezed,
-    Object? isInit = freezed,
-    Object? tabs = freezed,
   }) {
     return _then(_$_TabNavigationState(
       tabController: tabController == freezed
           ? _value.tabController
           : tabController // ignore: cast_nullable_to_non_nullable
               as TabController?,
-      tabRouter: tabRouter == freezed
-          ? _value.tabRouter
-          : tabRouter // ignore: cast_nullable_to_non_nullable
-              as TabsRouter?,
-      currentIndex: currentIndex == freezed
-          ? _value.currentIndex
-          : currentIndex // ignore: cast_nullable_to_non_nullable
-              as int,
-      previousIndex: previousIndex == freezed
-          ? _value.previousIndex
-          : previousIndex // ignore: cast_nullable_to_non_nullable
-              as int,
       selectedTab: selectedTab == freezed
           ? _value.selectedTab
           : selectedTab // ignore: cast_nullable_to_non_nullable
@@ -168,14 +105,6 @@ class __$$_TabNavigationStateCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      isInit: isInit == freezed
-          ? _value.isInit
-          : isInit // ignore: cast_nullable_to_non_nullable
-              as bool,
-      tabs: tabs == freezed
-          ? _value._tabs
-          : tabs // ignore: cast_nullable_to_non_nullable
-              as Set<Map<String, Widget>>,
     ));
   }
 }
@@ -184,45 +113,20 @@ class __$$_TabNavigationStateCopyWithImpl<$Res>
 
 class _$_TabNavigationState implements _TabNavigationState {
   const _$_TabNavigationState(
-      {this.tabController,
-      this.tabRouter,
-      this.currentIndex = 0,
-      this.previousIndex = 0,
-      this.selectedTab = 0,
-      this.isLoading = false,
-      this.isInit = true,
-      required final Set<Map<String, Widget>> tabs})
-      : _tabs = tabs;
+      {this.tabController, this.selectedTab = 0, this.isLoading = false});
 
   @override
   final TabController? tabController;
-  @override
-  final TabsRouter? tabRouter;
-  @override
-  @JsonKey()
-  final int currentIndex;
-  @override
-  @JsonKey()
-  final int previousIndex;
   @override
   @JsonKey()
   final int selectedTab;
   @override
   @JsonKey()
   final bool isLoading;
-  @override
-  @JsonKey()
-  final bool isInit;
-  final Set<Map<String, Widget>> _tabs;
-  @override
-  Set<Map<String, Widget>> get tabs {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableSetView(_tabs);
-  }
 
   @override
   String toString() {
-    return 'TabNavigationState(tabController: $tabController, tabRouter: $tabRouter, currentIndex: $currentIndex, previousIndex: $previousIndex, selectedTab: $selectedTab, isLoading: $isLoading, isInit: $isInit, tabs: $tabs)';
+    return 'TabNavigationState(tabController: $tabController, selectedTab: $selectedTab, isLoading: $isLoading)';
   }
 
   @override
@@ -232,29 +136,17 @@ class _$_TabNavigationState implements _TabNavigationState {
             other is _$_TabNavigationState &&
             const DeepCollectionEquality()
                 .equals(other.tabController, tabController) &&
-            const DeepCollectionEquality().equals(other.tabRouter, tabRouter) &&
-            const DeepCollectionEquality()
-                .equals(other.currentIndex, currentIndex) &&
-            const DeepCollectionEquality()
-                .equals(other.previousIndex, previousIndex) &&
             const DeepCollectionEquality()
                 .equals(other.selectedTab, selectedTab) &&
-            const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
-            const DeepCollectionEquality().equals(other.isInit, isInit) &&
-            const DeepCollectionEquality().equals(other._tabs, _tabs));
+            const DeepCollectionEquality().equals(other.isLoading, isLoading));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(tabController),
-      const DeepCollectionEquality().hash(tabRouter),
-      const DeepCollectionEquality().hash(currentIndex),
-      const DeepCollectionEquality().hash(previousIndex),
       const DeepCollectionEquality().hash(selectedTab),
-      const DeepCollectionEquality().hash(isLoading),
-      const DeepCollectionEquality().hash(isInit),
-      const DeepCollectionEquality().hash(_tabs));
+      const DeepCollectionEquality().hash(isLoading));
 
   @JsonKey(ignore: true)
   @override
@@ -266,30 +158,15 @@ class _$_TabNavigationState implements _TabNavigationState {
 abstract class _TabNavigationState implements TabNavigationState {
   const factory _TabNavigationState(
       {final TabController? tabController,
-      final TabsRouter? tabRouter,
-      final int currentIndex,
-      final int previousIndex,
       final int selectedTab,
-      final bool isLoading,
-      final bool isInit,
-      required final Set<Map<String, Widget>> tabs}) = _$_TabNavigationState;
+      final bool isLoading}) = _$_TabNavigationState;
 
   @override
-  TabController? get tabController => throw _privateConstructorUsedError;
+  TabController? get tabController;
   @override
-  TabsRouter? get tabRouter => throw _privateConstructorUsedError;
+  int get selectedTab;
   @override
-  int get currentIndex => throw _privateConstructorUsedError;
-  @override
-  int get previousIndex => throw _privateConstructorUsedError;
-  @override
-  int get selectedTab => throw _privateConstructorUsedError;
-  @override
-  bool get isLoading => throw _privateConstructorUsedError;
-  @override
-  bool get isInit => throw _privateConstructorUsedError;
-  @override
-  Set<Map<String, Widget>> get tabs => throw _privateConstructorUsedError;
+  bool get isLoading;
   @override
   @JsonKey(ignore: true)
   _$$_TabNavigationStateCopyWith<_$_TabNavigationState> get copyWith =>

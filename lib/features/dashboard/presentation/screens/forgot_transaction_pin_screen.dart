@@ -17,8 +17,8 @@ class ForgotTransactionPinScreen extends StatelessWidget with AutoRouteWrapper {
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider(
-      create: (_) => getIt<WalletCubit>(),
+    return BlocProvider.value(
+      value: blocMaybeOf(context, orElse: () => getIt<WalletCubit>()),
       child: BlocListener<WalletCubit, WalletState>(
         listenWhen: (p, c) =>
             p.status.getOrElse(() => null) != c.status.getOrElse(() => null) ||

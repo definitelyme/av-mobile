@@ -20,7 +20,7 @@ mixin _$Promotion {
   MediaField get url => throw _privateConstructorUsedError;
   AttachmentMime get mime => throw _privateConstructorUsedError;
   MediaField get streamUrl => throw _privateConstructorUsedError;
-  BasicTextField<String?> get description => throw _privateConstructorUsedError;
+  BasicTextField get description => throw _privateConstructorUsedError;
   DateTime? get stopShowingAt => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
   DateTime? get updatedAt => throw _privateConstructorUsedError;
@@ -40,7 +40,7 @@ abstract class $PromotionCopyWith<$Res> {
       MediaField url,
       AttachmentMime mime,
       MediaField streamUrl,
-      BasicTextField<String?> description,
+      BasicTextField description,
       DateTime? stopShowingAt,
       DateTime? createdAt,
       DateTime? updatedAt,
@@ -87,7 +87,7 @@ class _$PromotionCopyWithImpl<$Res> implements $PromotionCopyWith<$Res> {
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       stopShowingAt: stopShowingAt == freezed
           ? _value.stopShowingAt
           : stopShowingAt // ignore: cast_nullable_to_non_nullable
@@ -119,7 +119,7 @@ abstract class _$$_PromotionCopyWith<$Res> implements $PromotionCopyWith<$Res> {
       MediaField url,
       AttachmentMime mime,
       MediaField streamUrl,
-      BasicTextField<String?> description,
+      BasicTextField description,
       DateTime? stopShowingAt,
       DateTime? createdAt,
       DateTime? updatedAt,
@@ -168,7 +168,7 @@ class __$$_PromotionCopyWithImpl<$Res> extends _$PromotionCopyWithImpl<$Res>
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       stopShowingAt: stopShowingAt == freezed
           ? _value.stopShowingAt
           : stopShowingAt // ignore: cast_nullable_to_non_nullable
@@ -213,7 +213,7 @@ class _$_Promotion extends _Promotion {
   @override
   final MediaField streamUrl;
   @override
-  final BasicTextField<String?> description;
+  final BasicTextField description;
   @override
   final DateTime? stopShowingAt;
   @override
@@ -271,7 +271,7 @@ abstract class _Promotion extends Promotion {
       required final MediaField url,
       required final AttachmentMime mime,
       required final MediaField streamUrl,
-      required final BasicTextField<String?> description,
+      required final BasicTextField description,
       final DateTime? stopShowingAt,
       final DateTime? createdAt,
       final DateTime? updatedAt,
@@ -279,23 +279,23 @@ abstract class _Promotion extends Promotion {
   const _Promotion._() : super._();
 
   @override
-  UniqueId<String?> get id => throw _privateConstructorUsedError;
+  UniqueId<String?> get id;
   @override
-  MediaField get url => throw _privateConstructorUsedError;
+  MediaField get url;
   @override
-  AttachmentMime get mime => throw _privateConstructorUsedError;
+  AttachmentMime get mime;
   @override
-  MediaField get streamUrl => throw _privateConstructorUsedError;
+  MediaField get streamUrl;
   @override
-  BasicTextField<String?> get description => throw _privateConstructorUsedError;
+  BasicTextField get description;
   @override
-  DateTime? get stopShowingAt => throw _privateConstructorUsedError;
+  DateTime? get stopShowingAt;
   @override
-  DateTime? get createdAt => throw _privateConstructorUsedError;
+  DateTime? get createdAt;
   @override
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get updatedAt;
   @override
-  DateTime? get deletedAt => throw _privateConstructorUsedError;
+  DateTime? get deletedAt;
   @override
   @JsonKey(ignore: true)
   _$$_PromotionCopyWith<_$_Promotion> get copyWith =>

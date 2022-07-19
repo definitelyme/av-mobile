@@ -1,6 +1,6 @@
 library splash_screen.dart;
 
-import 'package:async/async.dart';
+import 'package:auctionvillage/core/data/models/index.dart';
 import 'package:auctionvillage/features/auth/presentation/managers/managers.dart';
 import 'package:auctionvillage/utils/utils.dart';
 import 'package:auctionvillage/widgets/widgets.dart';
@@ -8,32 +8,72 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 /// A stateless widget to render SplashScreen.
-class SplashScreen extends StatelessWidget {
-  SplashScreen({Key? key}) : super(key: key);
-
-  final AsyncMemoizer<dynamic> _memoizer = AsyncMemoizer();
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({Key? key}) : super(key: key);
 
   static void navigateIfNotAuthenticated() {
     if (navigator.current.name == DashboardRoute.name)
-      navigator.replaceAll([const LoginRoute()]);
-    else {
-      _navigateUser(App.context);
-    }
+      navigator.replaceAll([const GetStartedRoute()]);
+    else
+      navigator.navigatorKey.currentContext?.let((it) => _navigateUser(it));
   }
 
   static void _navigateUser(BuildContext c) {
     final option = c.read<AuthWatcherCubit>().state.status;
-    final _authRoutes = [LoginRoute.name, SignupRoute.name, ForgotPasswordRoute.name, PasswordResetRoute.name];
+    final stack = navigator.stack.map((e) => e.name).where((i) => !guestRoutes.contains(i));
 
     option.fold(
-      () => null,
+      () {
+        if (App.currentRoute != GetStartedRoute.name) navigator.replaceAll([const GetStartedRoute()]);
+      },
       (o) {
-        if (o != null) {
-          if (!_authRoutes.contains(App.currentRoute)) navigator.replaceAll([const LoginRoute()]);
-        } else {
-          if (App.currentRoute != DashboardRoute.name) navigator.replaceAll([const DashboardRoute()]);
+        if (o != null)
+          o.maybeWhen(
+            is401: () {
+              if (!guestRoutes.contains(App.currentRoute)) navigator.replaceAll([LoginRoute()]);
+            },
+            orElse: () {
+              if (App.currentRoute != GetStartedRoute.name) navigator.replaceAll([const GetStartedRoute()]);
+            },
+          );
+        else {
+          if (stack.isNotEmpty) {
+            navigator.popUntil((e) => e.settings.name == stack.lastOrNull());
+          } else {
+            if (guestRoutes.contains(App.currentRoute)) navigator.replaceAll([const DashboardRoute()]);
+          }
         }
       },
+    );
+  }
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    PrecacheManager.precacheLocalAssets();
+    CountryDTO.persistCountries(context);
+
+    BlocProvider.of<AuthWatcherCubit>(context).subscribeToAuthChanges(
+      (either) => either.fold(
+        (_) => SplashScreen.navigateIfNotAuthenticated(),
+        (option) => option.fold(
+          () => SplashScreen.navigateIfNotAuthenticated(),
+          (_) {
+            final stack = navigator.stack.map((e) => e.name).where((i) => !guestRoutes.contains(i));
+
+            if (stack.isNotEmpty) {
+              navigator.popUntil((e) => e.settings.name == stack.last);
+            } else {
+              WidgetsBinding.instance.endOfFrame.then((_) => navigator.replaceAll([const DashboardRoute()]));
+            }
+          },
+        ),
+      ),
     );
   }
 
@@ -42,43 +82,26 @@ class SplashScreen extends StatelessWidget {
     return AdaptiveScaffold(
       backgroundColor: Palette.accentColor,
       overlayStyle: App.customSystemOverlay(ctx: context, android: Brightness.light, ios: Brightness.dark),
-      body: Center(
-        child: FutureBuilder(
-          future: _memoizer.runOnce(
-            () => Future.delayed(
-              env.splashDuration,
-              () async {
-                await BlocProvider.of<AuthWatcherCubit>(App.context).subscribeToAuthChanges(
-                  (either) => either.fold(
-                    (_) => SplashScreen.navigateIfNotAuthenticated(),
-                    (option) {
-                      WidgetsBinding.instance.addPostFrameCallback(
-                        (_) async => await Future.delayed(
-                          env.greetingDuration,
-                          () {
-                            if (App.currentRoute != DashboardRoute.name) {
-                              navigator.replaceAll([const DashboardRoute()]);
-                              // "email": "jamesjay@forx.anonaddy.com",
-                              // "email": "brendan.me@gmail.com",
-                            }
-                          },
-                        ),
-                      );
-                    },
-                  ),
-                );
-              },
+      body: Stack(
+        children: [
+          Center(
+            child: ImageBox.asset(
+              photo: AppAssets.logo,
+              elevation: 0.0,
+              width: 0.4.w,
+              borderRadius: BorderRadius.zero,
+              useDefaultRadius: false,
+              fit: BoxFit.contain,
             ),
           ),
-          builder: (_, snapshot) => ImageBox.asset(
-            photo: AppAssets.logo,
-            elevation: 0.0,
-            width: 0.4.w,
-            borderRadius: BorderRadius.zero,
-            useDefaultRadius: false,
-            fit: BoxFit.contain,
+          //
+          Positioned(
+            left: 0.0,
+            right: 0.0,
+            bottom: 1.h * 0.05,
+            child: const Center(child: SpinKitLoader(color: Colors.white)),
           ),
-        ),
+        ],
       ),
     );
   }

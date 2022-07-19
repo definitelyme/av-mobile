@@ -161,7 +161,9 @@ class _$_BankDTO extends _BankDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_BankDTOToJson(this);
+    return _$$_BankDTOToJson(
+      this,
+    );
   }
 }
 
@@ -175,11 +177,11 @@ abstract class _BankDTO extends BankDTO {
   factory _BankDTO.fromJson(Map<String, dynamic> json) = _$_BankDTO.fromJson;
 
   @override
-  String? get status => throw _privateConstructorUsedError;
+  String? get status;
   @override
-  String? get message => throw _privateConstructorUsedError;
+  String? get message;
   @override
-  List<BankDTOData> get data => throw _privateConstructorUsedError;
+  List<BankDTOData> get data;
   @override
   @JsonKey(ignore: true)
   _$$_BankDTOCopyWith<_$_BankDTO> get copyWith =>
@@ -343,7 +345,9 @@ class _$_BankDTOData extends _BankDTOData {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_BankDTODataToJson(this);
+    return _$$_BankDTODataToJson(
+      this,
+    );
   }
 }
 
@@ -359,12 +363,12 @@ abstract class _BankDTOData extends BankDTOData {
 
   @override
   @StringSerializer()
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
-  String? get code => throw _privateConstructorUsedError;
+  String? get code;
   @override
   @JsonKey(name: 'name')
-  String? get bank => throw _privateConstructorUsedError;
+  String? get bank;
   @override
   @JsonKey(ignore: true)
   _$$_BankDTODataCopyWith<_$_BankDTOData> get copyWith =>

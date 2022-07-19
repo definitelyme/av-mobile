@@ -1,7 +1,6 @@
 import 'package:auctionvillage/core/data/response/index.dart';
 import 'package:auctionvillage/core/domain/entities/entities.dart';
 import 'package:auctionvillage/core/domain/validator/validator.dart';
-import 'package:auctionvillage/core/presentation/index.dart';
 import 'package:auctionvillage/utils/utils.dart';
 import 'package:auctionvillage/widgets/widgets.dart';
 import 'package:dartz/dartz.dart';
@@ -93,6 +92,7 @@ class PhoneFormField<Reactive extends BlocBase<ReactiveState>, ReactiveState> ex
             ? null
             : CountryPicker.dialcode(
                 initialValue: initialCountryCode?.call(s),
+                countries: Country.countries,
                 selected: selectedCountry?.call(s),
                 onChanged: (value) => onCountryChanged?.call(c.read<Reactive>(), value),
               ),

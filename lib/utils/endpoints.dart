@@ -1,6 +1,6 @@
 mixin EndPoints {
   static const String APP_DEV_DOMAIN = 'auction-backend-api.herokuapp.com';
-  static const String APP_PROD_DOMAIN = '54.227.61.36:7000';
+  static const String APP_PROD_DOMAIN = 'api.auctionsvillage.com';
   static const String API_ENDPOINT = '/api/v1';
   static const String PUSHER_AUTH_URL = '/broadcasting/auth';
   static const String SLEEP = '/sleep';
@@ -16,6 +16,7 @@ mixin EndPoints {
   static const String SEND_PASSWORD_RESET_MESSAGE = '/auth/forgot-password';
   static const String CONFIRM_PASSWORD_RESET = '/auth/reset-password';
   static const String UPDATE_PASSWORD = '/auth/change-password'; // (POST)
+  static const String DELETE_USER_ACCOUNT = '/user/delete-account'; // (DELETE)
   // SOCIALS AUTH
   static const String GOOGLE_SIGNIN = '/auth/social/google';
   static const String FACEBOOK_SIGNIN = '/auth/social/facebook';
@@ -38,6 +39,7 @@ mixin EndPoints {
   static const String CONFIRM_SECURITY_ANSWER = '/check-user-answers';
   static const String FORGOT_SECURITY_ANSWER = '/user/sessions/get-otp';
   static const String RESET_WITHDRAWAL_PIN = '/user/sessions/verify-otp';
+  static const String SEARCH_FOR_ANYTHING = '/product/search';
   static const String GET_NG_BANKS_LIST = 'https://api.flutterwave.com/v3/banks/NG';
   static const String RESOLVE_BANK_ACCOUNT = 'https://api.flutterwave.com/v3/accounts/resolve';
 

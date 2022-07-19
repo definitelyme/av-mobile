@@ -73,7 +73,6 @@ class MediaTypePickerWidget extends StatelessWidget {
   void openChoiceBottomsheet(BuildContext ctx, SelectableMediaType type) async {
     await App.showAdaptiveBottomSheet(
       ctx,
-      radius: Radius.zero,
       elevation: 0,
       enableDrag: true,
       bounce: true,

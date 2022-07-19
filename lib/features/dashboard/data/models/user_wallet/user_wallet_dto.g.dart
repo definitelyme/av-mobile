@@ -11,7 +11,12 @@ _$_UserWalletDTO _$$_UserWalletDTOFromJson(Map<String, dynamic> json) =>
       meta: json['_meta'] == null
           ? null
           : MetaDTO.fromJson(json['_meta'] as Map<String, dynamic>),
-      data: _UserWalletDTOData.fromJson(json['data'] as Map<String, dynamic>),
+      data: json['data'] == null
+          ? null
+          : _UserWalletDTOData.fromJson(json['data'] as Map<String, dynamic>),
+      wallet: json['wallet'] == null
+          ? null
+          : _UserWalletDTOData.fromJson(json['wallet'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_UserWalletDTOToJson(_$_UserWalletDTO instance) {
@@ -24,7 +29,8 @@ Map<String, dynamic> _$$_UserWalletDTOToJson(_$_UserWalletDTO instance) {
   }
 
   writeNotNull('_meta', instance.meta?.toJson());
-  val['data'] = instance.data.toJson();
+  writeNotNull('data', instance.data?.toJson());
+  writeNotNull('wallet', instance.wallet?.toJson());
   return val;
 }
 

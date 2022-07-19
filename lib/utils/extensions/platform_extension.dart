@@ -1,4 +1,6 @@
-import 'package:flutter/foundation.dart';
+import 'package:auctionvillage/manager/theme/theme.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 extension PlatformX on TargetPlatform {
   T fold<T>({
@@ -76,4 +78,16 @@ extension PlatformX on TargetPlatform {
         return value as T;
     }
   }
+}
+
+extension ThemeCubitContext on BuildContext {
+  ThemeCubit get themeCubit => BlocProvider.of<ThemeCubit>(this);
+
+  Brightness get iosOverlay => themeCubit.iosOverlay;
+
+  Brightness get androidOverlay => themeCubit.androidOverlay;
+
+  Brightness get iosOverlayInverse => themeCubit.iosOverlay == Brightness.light ? Brightness.dark : themeCubit.iosOverlay;
+
+  Brightness get androidOverlayInverse => themeCubit.androidOverlay == Brightness.light ? Brightness.dark : themeCubit.androidOverlay;
 }

@@ -20,7 +20,7 @@ const Pattern symbolPattern = r"[-!$@%^&#*()_+|~=`{}\[\]:\;'<>?\\,.\/]";
 const Pattern onlyNumbersPattern = '^[0-9]*\$';
 const Pattern datePattern = r'(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)[0-9]{2}';
 
-enum FIELD_VALIDATION { NONE, BASIC, DEEP }
+enum FieldValidation { NONE, BASIC, DEEP }
 
 typedef StringValidator<U> = Either<FieldObjectException<String>, U>;
 
@@ -87,9 +87,9 @@ class Validator with _CreditCardValidator {
 
   static StringValidator<String?> phoneNumberValidator(
     String? phone, {
-    FIELD_VALIDATION? mode = FIELD_VALIDATION.DEEP,
+    FieldValidation? mode = FieldValidation.DEEP,
   }) {
-    if (mode == FIELD_VALIDATION.NONE) return right(phone);
+    if (mode == FieldValidation.NONE) return right(phone);
 
     if (phone == null) return left(FieldObjectException.empty());
 
@@ -98,12 +98,12 @@ class Validator with _CreditCardValidator {
     var formattedPhoneNumber = RegExp('$phonePattern').hasMatch(clean);
 
     switch (mode) {
-      case FIELD_VALIDATION.NONE:
+      case FieldValidation.NONE:
         break;
-      case FIELD_VALIDATION.BASIC:
+      case FieldValidation.BASIC:
         if (clean.isEmpty) return left(FieldObjectException.empty());
         break;
-      case FIELD_VALIDATION.DEEP:
+      case FieldValidation.DEEP:
       default:
         if (clean.isEmpty) return left(FieldObjectException.empty());
         if (!formattedPhoneNumber) return left(FieldObjectException.invalid(message: INVALID_PHONE));

@@ -27,7 +27,7 @@ class DebitCard extends BaseEntity with _$DebitCard {
     required DebitCardNumber cardNumber,
     required DebitCardExpiryDate cardExpiryDate,
     required DebitCardCVV cardCVV,
-    required BasicTextField<String?> masked,
+    required BasicTextField masked,
     DateTime? createdAt,
     DateTime? updatedAt,
   }) = _DebitCard;

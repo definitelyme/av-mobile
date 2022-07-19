@@ -44,7 +44,7 @@ class _ImageFullscreenState extends State<ImageFullscreen> {
     return PhotoView(
       imageProvider: widget.imageProvider,
       backgroundDecoration: BoxDecoration(
-        color: App.resolveColor(Colors.transparent, dark: Colors.black87.withOpacity(0.9), context: context),
+        color: App.resolveColor(Colors.transparent, dark: Colors.black87.withOpacity(0.9), ctx: context),
       ),
       initialScale: initialScale,
       disableGestures: false,

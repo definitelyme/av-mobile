@@ -38,15 +38,12 @@ abstract class BaseState {
   bool get validate;
 }
 
-mixin BaseCubit<State extends BaseState> on Cubit<State> {
+abstract class BaseCubit<State extends BaseState> extends Cubit<State> with ActiveCubit<State> {
+  BaseCubit(super.initialState);
+
   Future<Option<AppHttpResponse?>> connection() => _connection();
 
   String get reference => '${DateTime.now().toIso8601String()}-_key_-${UniqueId<String>.v4().value}';
-
-  @override
-  void emit(State state) {
-    if (!isClosed) super.emit(state);
-  }
 }
 
 abstract class BaseAddressState extends BaseState {
@@ -92,5 +89,12 @@ mixin BaseAddressCubit<State extends BaseAddressState> on Cubit<State> {
     _search$.close();
     _searchSubscription.cancel();
     return super.close();
+  }
+}
+
+mixin ActiveCubit<A> on Cubit<A> {
+  @override
+  void emit(A state) {
+    if (!isClosed) super.emit(state);
   }
 }

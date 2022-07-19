@@ -1,23 +1,33 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:json_annotation/json_annotation.dart';
+import 'package:auctionvillage/core/presentation/index.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-part 'currency_type.g.dart';
+part 'currency_type.hive.dart';
+part 'currency_type.gen.dart';
 
-class CurrencyType extends EnumClass {
+@HiveType(typeId: 5)
+class CurrencyType extends HiveEnumClass {
   @BuiltValueEnumConst(fallback: true)
   static const CurrencyType NGN = _$NGN;
   static const CurrencyType USD = _$USD;
   static const CurrencyType GBP = _$GBP;
 
-  const CurrencyType._(String name) : super(name);
+  factory CurrencyType(String name) => CurrencyType._(name);
+
+  const CurrencyType._(super.name);
 
   static BuiltSet<CurrencyType> get values => _$currencyTypeValues;
 
   static CurrencyType valueOf(String name) => _$currencyTypeValueOf(name);
 
   static Serializer<CurrencyType> get serializer => _$currencyTypeSerializer;
+
+  static void registerAdapter() => Hive.registerAdapter(CurrencyTypeAdapter());
 }
 
 class CurrencyTypeSerializer implements JsonConverter<CurrencyType?, String?> {

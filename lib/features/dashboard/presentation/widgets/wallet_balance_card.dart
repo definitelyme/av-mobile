@@ -1,16 +1,34 @@
 library wallet_balance_card.dart;
 
+import 'package:auctionvillage/core/domain/entities/entities.dart';
+import 'package:auctionvillage/features/auth/presentation/managers/managers.dart';
+import 'package:auctionvillage/features/dashboard/presentation/managers/index.dart';
 import 'package:auctionvillage/utils/utils.dart';
 import 'package:auctionvillage/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 /// A stateless widget to render WalletBalanceCard.
-class WalletBalanceCard extends StatelessWidget {
+class WalletBalanceCard extends StatefulWidget {
   final List<Widget> top;
   final List<Widget> bottom;
   final String balance;
+  final bool isLoading;
 
-  const WalletBalanceCard({Key? key, required this.balance, this.top = const [], this.bottom = const []}) : super(key: key);
+  const WalletBalanceCard({
+    Key? key,
+    required this.balance,
+    this.top = const [],
+    this.bottom = const [],
+    this.isLoading = false,
+  }) : super(key: key);
+
+  @override
+  State<WalletBalanceCard> createState() => _WalletBalanceCardState();
+}
+
+class _WalletBalanceCardState extends State<WalletBalanceCard> {
+  Country? get country => context.read<AuthWatcherCubit>().state.user?.country;
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +43,9 @@ class WalletBalanceCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            if (top.isNotEmpty) ...top,
+            if (widget.top.isNotEmpty) ...widget.top,
             //
-            if (top.isEmpty) ...[
+            if (widget.top.isEmpty) ...[
               Row(
                 children: [
                   AppAssets.creditCard,
@@ -49,25 +67,47 @@ class WalletBalanceCard extends StatelessWidget {
             //
             0.01.verticalh,
             //
-            AdaptiveText.rich(
-              TextSpan(children: [
-                TextSpan(
-                  text: '${Utils.currency} ',
-                  style: TextStyle(fontSize: 26.sp, fontWeight: FontWeight.bold),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                AdaptiveText.rich(
+                  TextSpan(children: [
+                    TextSpan(
+                      text: country?.symbolPadded,
+                      style: TextStyle(fontSize: 26.sp, fontWeight: FontWeight.bold),
+                    ),
+                    TextSpan(text: widget.balance.asCurrency(symbol: false)),
+                  ]),
+                  maxLines: 1,
+                  fontSize: 25.sp,
+                  softWrap: false,
+                  textColor: Colors.white,
+                  fontWeight: FontWeight.w700,
+                  letterSpacing: Utils.letterSpacing,
                 ),
-                TextSpan(text: balance.asCurrency(symbol: false)),
-              ]),
-              maxLines: 1,
-              fontSize: 25.sp,
-              softWrap: false,
-              textColor: Colors.white,
-              fontWeight: FontWeight.w700,
-              letterSpacing: Utils.letterSpacing,
+                //
+                0.05.horizontalw,
+                //
+                BlocSelector<WalletCubit, WalletState, bool>(
+                  selector: (s) => s.isFetchingWalletBalance,
+                  builder: (c, isLoading) => Visibility(
+                    visible: isLoading,
+                    child: const CircularProgressBar.adaptive(
+                      color: Colors.white,
+                      colorDark: Colors.white,
+                      width: 15,
+                      height: 15,
+                      strokeWidth: 1.5,
+                      radius: 11,
+                    ),
+                  ),
+                ),
+              ],
             ),
             //
-            if (bottom.isNotEmpty) ...bottom,
+            if (widget.bottom.isNotEmpty) ...widget.bottom,
             //
-            if (bottom.isEmpty) ...[
+            if (widget.bottom.isEmpty) ...[
               0.025.verticalh,
               //
               Flexible(

@@ -14,9 +14,9 @@ class ProductBrandModel extends BaseEntity with _$ProductBrandModel {
     required UniqueId<String?> id,
     required UniqueId<String?> brandId,
     @Default(false) bool isActive,
-    required BasicTextField<String?> name,
-    required BasicTextField<String?> description,
-    required BasicTextField<String?> slug,
+    required BasicTextField name,
+    required BasicTextField description,
+    required BasicTextField slug,
     DateTime? createdAt,
     DateTime? updatedAt,
   }) = _ProductBrandModel;

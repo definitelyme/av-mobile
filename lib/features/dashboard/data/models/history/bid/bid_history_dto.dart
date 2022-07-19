@@ -3,7 +3,6 @@
 library bid_history_dto.dart;
 
 import 'package:auctionvillage/core/data/models/index.dart';
-import 'package:auctionvillage/core/domain/entities/entities.dart';
 import 'package:auctionvillage/features/dashboard/data/models/models.dart';
 import 'package:auctionvillage/features/dashboard/domain/index.dart';
 import 'package:auctionvillage/manager/serializer/serializers.dart';
@@ -30,7 +29,7 @@ class BidHistoryDTO with _$BidHistoryDTO {
   factory BidHistoryDTO.fromJson(Map<String, dynamic> json) => _$BidHistoryDTOFromJson(json);
 
   /// Maps the Data Transfer Object to a BidHistory Object.
-  BidHistory domain([KtList<Country>? countries]) => data.domain(countries);
+  BidHistory get domain => data.domain;
 }
 
 @immutable
@@ -49,10 +48,10 @@ class _BidHistoryDTOData with _$_BidHistoryDTOData {
   factory _BidHistoryDTOData.fromJson(Map<String, dynamic> json) => _$_BidHistoryDTODataFromJson(json);
 
   /// Maps the Data Transfer Object to a BidHistory Object.
-  BidHistory domain([KtList<Country>? countries]) => BidHistory.blank(
+  BidHistory get domain => BidHistory.blank(
         totalAuctionsParticipated: totalAuctionsParticipated,
         totalWinningBid: totalWinningBid,
         totalAmountSpent: totalAmountSpent,
-        history: KtList.from(dealHistory.map((e) => e.domain(countries))),
+        history: KtList.from(dealHistory.map((e) => e.domain)),
       );
 }

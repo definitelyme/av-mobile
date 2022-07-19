@@ -136,7 +136,7 @@ abstract class _FieldObjectException<T> implements FieldObjectException<T> {
       _$_FieldObjectException<T>;
 
   @override
-  String get message => throw _privateConstructorUsedError;
+  String get message;
   @override
   @JsonKey(ignore: true)
   _$$_FieldObjectExceptionCopyWith<T, _$_FieldObjectException<T>>

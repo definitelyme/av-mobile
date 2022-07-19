@@ -18,11 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AuthWatcherState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get isLoggingOut => throw _privateConstructorUsedError;
-  bool get isAuthenticated => throw _privateConstructorUsedError;
-  bool get isListeningForAuthChanges => throw _privateConstructorUsedError;
-  bool get isListeningForUserChanges => throw _privateConstructorUsedError;
   User? get user => throw _privateConstructorUsedError;
-  KtList<Country> get countries => throw _privateConstructorUsedError;
   Option<User?> get option => throw _privateConstructorUsedError;
   Option<AppHttpResponse?> get status => throw _privateConstructorUsedError;
 
@@ -39,11 +35,7 @@ abstract class $AuthWatcherStateCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       bool isLoggingOut,
-      bool isAuthenticated,
-      bool isListeningForAuthChanges,
-      bool isListeningForUserChanges,
       User? user,
-      KtList<Country> countries,
       Option<User?> option,
       Option<AppHttpResponse?> status});
 
@@ -63,11 +55,7 @@ class _$AuthWatcherStateCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = freezed,
     Object? isLoggingOut = freezed,
-    Object? isAuthenticated = freezed,
-    Object? isListeningForAuthChanges = freezed,
-    Object? isListeningForUserChanges = freezed,
     Object? user = freezed,
-    Object? countries = freezed,
     Object? option = freezed,
     Object? status = freezed,
   }) {
@@ -80,26 +68,10 @@ class _$AuthWatcherStateCopyWithImpl<$Res>
           ? _value.isLoggingOut
           : isLoggingOut // ignore: cast_nullable_to_non_nullable
               as bool,
-      isAuthenticated: isAuthenticated == freezed
-          ? _value.isAuthenticated
-          : isAuthenticated // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isListeningForAuthChanges: isListeningForAuthChanges == freezed
-          ? _value.isListeningForAuthChanges
-          : isListeningForAuthChanges // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isListeningForUserChanges: isListeningForUserChanges == freezed
-          ? _value.isListeningForUserChanges
-          : isListeningForUserChanges // ignore: cast_nullable_to_non_nullable
-              as bool,
       user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User?,
-      countries: countries == freezed
-          ? _value.countries
-          : countries // ignore: cast_nullable_to_non_nullable
-              as KtList<Country>,
       option: option == freezed
           ? _value.option
           : option // ignore: cast_nullable_to_non_nullable
@@ -133,11 +105,7 @@ abstract class _$$_AuthWatcherStateCopyWith<$Res>
   $Res call(
       {bool isLoading,
       bool isLoggingOut,
-      bool isAuthenticated,
-      bool isListeningForAuthChanges,
-      bool isListeningForUserChanges,
       User? user,
-      KtList<Country> countries,
       Option<User?> option,
       Option<AppHttpResponse?> status});
 
@@ -160,11 +128,7 @@ class __$$_AuthWatcherStateCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = freezed,
     Object? isLoggingOut = freezed,
-    Object? isAuthenticated = freezed,
-    Object? isListeningForAuthChanges = freezed,
-    Object? isListeningForUserChanges = freezed,
     Object? user = freezed,
-    Object? countries = freezed,
     Object? option = freezed,
     Object? status = freezed,
   }) {
@@ -177,26 +141,10 @@ class __$$_AuthWatcherStateCopyWithImpl<$Res>
           ? _value.isLoggingOut
           : isLoggingOut // ignore: cast_nullable_to_non_nullable
               as bool,
-      isAuthenticated: isAuthenticated == freezed
-          ? _value.isAuthenticated
-          : isAuthenticated // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isListeningForAuthChanges: isListeningForAuthChanges == freezed
-          ? _value.isListeningForAuthChanges
-          : isListeningForAuthChanges // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isListeningForUserChanges: isListeningForUserChanges == freezed
-          ? _value.isListeningForUserChanges
-          : isListeningForUserChanges // ignore: cast_nullable_to_non_nullable
-              as bool,
       user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User?,
-      countries: countries == freezed
-          ? _value.countries
-          : countries // ignore: cast_nullable_to_non_nullable
-              as KtList<Country>,
       option: option == freezed
           ? _value.option
           : option // ignore: cast_nullable_to_non_nullable
@@ -215,11 +163,7 @@ class _$_AuthWatcherState extends _AuthWatcherState {
   const _$_AuthWatcherState(
       {this.isLoading = false,
       this.isLoggingOut = false,
-      this.isAuthenticated = false,
-      this.isListeningForAuthChanges = false,
-      this.isListeningForUserChanges = false,
       this.user,
-      this.countries = const KtList.empty(),
       this.option = const None(),
       this.status = const None()})
       : super._();
@@ -231,19 +175,7 @@ class _$_AuthWatcherState extends _AuthWatcherState {
   @JsonKey()
   final bool isLoggingOut;
   @override
-  @JsonKey()
-  final bool isAuthenticated;
-  @override
-  @JsonKey()
-  final bool isListeningForAuthChanges;
-  @override
-  @JsonKey()
-  final bool isListeningForUserChanges;
-  @override
   final User? user;
-  @override
-  @JsonKey()
-  final KtList<Country> countries;
   @override
   @JsonKey()
   final Option<User?> option;
@@ -253,7 +185,7 @@ class _$_AuthWatcherState extends _AuthWatcherState {
 
   @override
   String toString() {
-    return 'AuthWatcherState(isLoading: $isLoading, isLoggingOut: $isLoggingOut, isAuthenticated: $isAuthenticated, isListeningForAuthChanges: $isListeningForAuthChanges, isListeningForUserChanges: $isListeningForUserChanges, user: $user, countries: $countries, option: $option, status: $status)';
+    return 'AuthWatcherState(isLoading: $isLoading, isLoggingOut: $isLoggingOut, user: $user, option: $option, status: $status)';
   }
 
   @override
@@ -264,14 +196,7 @@ class _$_AuthWatcherState extends _AuthWatcherState {
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality()
                 .equals(other.isLoggingOut, isLoggingOut) &&
-            const DeepCollectionEquality()
-                .equals(other.isAuthenticated, isAuthenticated) &&
-            const DeepCollectionEquality().equals(
-                other.isListeningForAuthChanges, isListeningForAuthChanges) &&
-            const DeepCollectionEquality().equals(
-                other.isListeningForUserChanges, isListeningForUserChanges) &&
             const DeepCollectionEquality().equals(other.user, user) &&
-            const DeepCollectionEquality().equals(other.countries, countries) &&
             const DeepCollectionEquality().equals(other.option, option) &&
             const DeepCollectionEquality().equals(other.status, status));
   }
@@ -281,11 +206,7 @@ class _$_AuthWatcherState extends _AuthWatcherState {
       runtimeType,
       const DeepCollectionEquality().hash(isLoading),
       const DeepCollectionEquality().hash(isLoggingOut),
-      const DeepCollectionEquality().hash(isAuthenticated),
-      const DeepCollectionEquality().hash(isListeningForAuthChanges),
-      const DeepCollectionEquality().hash(isListeningForUserChanges),
       const DeepCollectionEquality().hash(user),
-      const DeepCollectionEquality().hash(countries),
       const DeepCollectionEquality().hash(option),
       const DeepCollectionEquality().hash(status));
 
@@ -299,33 +220,21 @@ abstract class _AuthWatcherState extends AuthWatcherState {
   const factory _AuthWatcherState(
       {final bool isLoading,
       final bool isLoggingOut,
-      final bool isAuthenticated,
-      final bool isListeningForAuthChanges,
-      final bool isListeningForUserChanges,
       final User? user,
-      final KtList<Country> countries,
       final Option<User?> option,
       final Option<AppHttpResponse?> status}) = _$_AuthWatcherState;
   const _AuthWatcherState._() : super._();
 
   @override
-  bool get isLoading => throw _privateConstructorUsedError;
+  bool get isLoading;
   @override
-  bool get isLoggingOut => throw _privateConstructorUsedError;
+  bool get isLoggingOut;
   @override
-  bool get isAuthenticated => throw _privateConstructorUsedError;
+  User? get user;
   @override
-  bool get isListeningForAuthChanges => throw _privateConstructorUsedError;
+  Option<User?> get option;
   @override
-  bool get isListeningForUserChanges => throw _privateConstructorUsedError;
-  @override
-  User? get user => throw _privateConstructorUsedError;
-  @override
-  KtList<Country> get countries => throw _privateConstructorUsedError;
-  @override
-  Option<User?> get option => throw _privateConstructorUsedError;
-  @override
-  Option<AppHttpResponse?> get status => throw _privateConstructorUsedError;
+  Option<AppHttpResponse?> get status;
   @override
   @JsonKey(ignore: true)
   _$$_AuthWatcherStateCopyWith<_$_AuthWatcherState> get copyWith =>

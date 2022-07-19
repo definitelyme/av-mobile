@@ -3,7 +3,6 @@
 library wishlist_dto.dart;
 
 import 'package:auctionvillage/core/data/index.dart';
-import 'package:auctionvillage/core/domain/entities/entities.dart';
 import 'package:auctionvillage/features/dashboard/data/models/models.dart';
 import 'package:auctionvillage/features/dashboard/domain/index.dart';
 import 'package:auctionvillage/manager/serializer/serializers.dart';
@@ -48,10 +47,10 @@ class _WishDTOData with _$_WishDTOData {
   factory _WishDTOData.fromJson(Map<String, dynamic> json) => _$_WishDTODataFromJson(json);
 
   /// Maps the Data Transfer Object to a MyWish Object.
-  MyWish domain([KtList<Country>? countries]) => MyWish.blank(
+  MyWish get domain => MyWish.blank(
         id: id,
         active: active!,
-        deal: deal?.domain(countries).copyWith(user: deal?.domain(countries).user ?? user?.domain),
+        deal: deal?.domain.copyWith(user: deal?.domain.user ?? user?.domain),
         user: user?.domain,
         createdAt: createdAt,
         updatedAt: updatedAt,
@@ -75,5 +74,5 @@ class WishListDTO with _$WishListDTO {
   factory WishListDTO.fromJson(Map<String, dynamic> json) => _$WishListDTOFromJson(json);
 
   /// Maps the Data Transfer Object to a KtList<Wishlist> Object.
-  KtList<MyWish> domain([KtList<Country>? countries]) => KtList.from(data.map((e) => e.domain(countries)));
+  KtList<MyWish> get domain => KtList.from(data.map((e) => e.domain));
 }

@@ -3,7 +3,7 @@ import 'package:auctionvillage/core/domain/response/field_object/field_object_ex
 import 'package:auctionvillage/core/domain/validator/validator.dart';
 import 'package:dartz/dartz.dart';
 
-class EmailAddress extends FieldObject<String?> {
+class EmailAddress extends StringFieldObject {
   static const EmailAddress DEFAULT = EmailAddress._(Right(''));
   static const String kPlaceholder = 'johndoe@email.com';
 

@@ -3,7 +3,7 @@ import 'package:auctionvillage/core/domain/response/field_object/field_object_ex
 import 'package:auctionvillage/core/domain/validator/validator.dart';
 import 'package:dartz/dartz.dart';
 
-class DisplayName extends FieldObject<String?> {
+class DisplayName extends StringFieldObject {
   static const DisplayName DEFAULT = DisplayName._(Right(''));
   static const String kPlaceholder = 'John Doe';
 

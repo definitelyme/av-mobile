@@ -188,8 +188,8 @@ extension StringX on String {
     String? currency,
     String? locale,
   }) {
-    final _currency = currency ?? '${Utils.currency} ';
-    final _locale = locale ?? 'en_NG';
+    final _currency = currency ?? Const.defaultCurrencyIcon;
+    final _locale = locale ?? Const.defaultLocale;
 
     if (this == 'null' || isEmpty) return '';
 
@@ -255,7 +255,9 @@ extension StringX on String {
 
   String removeNewLines() => replaceAll('\n', ' ');
 
-  String trimWhiteSpaces() => trim().replaceAll(" ", "");
+  String removeAllBlankSpace() => trim().replaceAll(' ', '');
+
+  String trimBlankSpaces() => trim().replaceAll(RegExp(r'\s{2,}'), ' ').trim();
 
   String get formatCardNumber {
     return "$this".split('').toImmutableList().foldIndexed(

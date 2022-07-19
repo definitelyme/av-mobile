@@ -21,14 +21,16 @@ class UserWalletDTO with _$UserWalletDTO {
 
   const factory UserWalletDTO({
     @JsonKey(name: '_meta') MetaDTO? meta,
-    required _UserWalletDTOData data,
+    // required _UserWalletDTOData data,
+    _UserWalletDTOData? data,
+    _UserWalletDTOData? wallet,
   }) = _UserWalletDTO;
 
   /// Maps the incoming Json to a Data Transfer Object (DTO).
   factory UserWalletDTO.fromJson(Map<String, dynamic> json) => _$UserWalletDTOFromJson(json);
 
   /// Maps the Data Transfer Object to a UserWallet Object.
-  UserWallet get domain => data.domain;
+  UserWallet? get domain => data?.domain;
 }
 
 @Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)

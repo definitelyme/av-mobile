@@ -4,12 +4,9 @@ import 'package:auctionvillage/core/data/models/index.dart';
 import 'package:auctionvillage/core/data/response/index.dart';
 import 'package:auctionvillage/core/domain/entities/entities.dart';
 import 'package:auctionvillage/core/presentation/index.dart';
-import 'package:auctionvillage/features/auth/presentation/managers/watcher/auth_watcher_cubit.dart';
 import 'package:auctionvillage/features/dashboard/data/repositories/deal_repository.dart';
 import 'package:auctionvillage/features/dashboard/domain/index.dart';
-import 'package:auctionvillage/manager/locator/locator.dart';
 import 'package:auctionvillage/utils/utils.dart';
-import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -19,15 +16,13 @@ part 'deal_cubit.freezed.dart';
 part 'deal_state.dart';
 
 @injectable
-class DealCubit extends Cubit<DealState> with BaseCubit {
+class DealCubit extends BaseCubit<DealState> {
   final DealRepository _repository;
 
   DealCubit(this._repository) : super(DealState.initial());
 
   void toggleLoading([bool? isLoading, Option<AppHttpResponse?>? status]) =>
       emit(state.copyWith(isLoading: isLoading ?? !state.isLoading, status: status ?? state.status));
-
-  KtList<Country> get _countries => getIt<AuthWatcherCubit>().state.countries;
 
   Future<void> fetchLiveDeals({
     int? perPage,
@@ -50,7 +45,6 @@ class DealCubit extends Cubit<DealState> with BaseCubit {
       sponsored: sponsored,
       isPrivate: isPrivate,
       sortBy: sortBy,
-      countries: _countries,
     );
 
     emit(response.fold(
@@ -91,7 +85,6 @@ class DealCubit extends Cubit<DealState> with BaseCubit {
       sortBy: sortBy,
       perPage: perPage,
       nextPage: nextPage,
-      countries: _countries,
     );
 
     emit(response.fold(
@@ -136,7 +129,6 @@ class DealCubit extends Cubit<DealState> with BaseCubit {
         sortBy: sortBy,
         perPage: perPage,
         nextPage: nextPage,
-        countries: _countries,
       );
     else
       response = await _repository.filterDealsByCategory(
@@ -145,7 +137,6 @@ class DealCubit extends Cubit<DealState> with BaseCubit {
         sponsored: sponsored,
         perPage: perPage,
         nextPage: nextPage,
-        countries: _countries,
       );
 
     emit(response.fold(
@@ -157,13 +148,13 @@ class DealCubit extends Cubit<DealState> with BaseCubit {
   }
 
   void bidChanged(String amount) {
-    final toDouble = double.tryParse(amount) ?? state.currentDeal.lastPriceOffered.getOrNull;
-    emit(state.copyWith(bidAmount: AmountField(toDouble)));
+    final toDouble = double.tryParse(amount) ?? state.currentDeal.lastPriceOffered.getExact();
+    emit(state.copyWith(bidAmount: NumField(toDouble)));
   }
 
   void increaseBid() {
     final percentage = state.currentDeal.product?.category?.percentageIncrease.getOrNull ?? 100;
-    final factor = ((percentage / 100) * state.currentDeal.lastPriceOffered.getOrNull).ceil();
+    final factor = ((percentage / 100) * state.currentDeal.lastPriceOffered.getExact()).ceil();
 
     // Add the factor to the current bid price
     // var bidAmount = state.bidAmount + factor;
@@ -181,13 +172,13 @@ class DealCubit extends Cubit<DealState> with BaseCubit {
 
   void decreaseBid() {
     final percentage = state.currentDeal.product?.category?.percentageIncrease.getOrNull ?? 100;
-    final factor = ((percentage / 100) * state.currentDeal.lastPriceOffered.getOrNull).ceilToDouble();
+    final factor = ((percentage / 100) * state.currentDeal.lastPriceOffered.getExact()).ceilToDouble();
     // Subtract the factor from the current bid price
     var bidAmount = state.bidAmount - factor;
     // Round to the nearest double
     // bidAmount = bidAmount.ceilToDouble();
 
-    if (bidAmount.getOrNull < state.currentDeal.lastPriceOffered.getOrNull) {
+    if (bidAmount.getExact() < state.currentDeal.lastPriceOffered.getExact()) {
       // If the bid is greater than the last price offered, decrement by 1
       bidAmount = state.currentDeal.lastPriceOffered;
     }
@@ -198,7 +189,7 @@ class DealCubit extends Cubit<DealState> with BaseCubit {
   Future<void> showDeal(Deal deal) async {
     emit(state.copyWith(currentDeal: deal, isLoading: true, status: none(), bidAmount: deal.lastPriceOffered));
 
-    final response = await _repository.getDeal(deal, countries: _countries);
+    final response = await _repository.getDeal(deal);
 
     emit(response.fold(
       (e) => state.copyWith(status: some(e), isLoading: false),
@@ -231,7 +222,7 @@ class DealCubit extends Cubit<DealState> with BaseCubit {
   void sendBid() async {
     emit(state.copyWith(isBidding: true, status: none()));
 
-    final response = await _repository.sendBid(state.currentDeal, state.bidAmount.getOrNull, countries: _countries);
+    final response = await _repository.sendBid(state.currentDeal, state.bidAmount.getExact());
     final newBidAmount = response.value2?.basePrice;
     final newLastPriceOffered = response.value2?.lastPriceOffered;
 
@@ -261,7 +252,7 @@ class DealCubit extends Cubit<DealState> with BaseCubit {
 
     toggleLoading(true, none());
 
-    final response = await _repository.bidHistory(user, perPage: perPage, nextPage: nextPage, countries: _countries);
+    final response = await _repository.bidHistory(user, perPage: perPage, nextPage: nextPage);
 
     emit(response.fold(
       (e) => state.copyWith(status: some(e), isLoading: false),
@@ -285,7 +276,7 @@ class DealCubit extends Cubit<DealState> with BaseCubit {
 
     toggleLoading(true, none());
 
-    final response = await _repository.sellHistory(user, perPage: perPage, nextPage: nextPage, countries: _countries);
+    final response = await _repository.sellHistory(user, perPage: perPage, nextPage: nextPage);
 
     emit(response.fold(
       (e) => state.copyWith(status: some(e), isLoading: false),
@@ -330,7 +321,7 @@ class DealCubit extends Cubit<DealState> with BaseCubit {
 
     toggleLoading(true, none());
 
-    final response = await _repository.wishlist(user, perPage: perPage, nextPage: nextPage, countries: _countries);
+    final response = await _repository.wishlist(user, perPage: perPage, nextPage: nextPage);
 
     emit(response.fold(
       (e) => state.copyWith(status: some(e), isLoading: false),

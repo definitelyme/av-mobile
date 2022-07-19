@@ -24,6 +24,7 @@ _$_UserDTO _$$_UserDTOFromJson(Map<String, dynamic> json) => _$_UserDTO(
       favAthlete: const BooleanSerializer().fromJson(json['favAthlete']),
       favPlace: const BooleanSerializer().fromJson(json['favPlace']),
       locality: const BooleanSerializer().fromJson(json['locality']),
+      forceUpdate: const BooleanSerializer().fromJson(json['forceUpdate']),
       active: const BooleanSerializer().fromJson(json['active']),
       accountVerified:
           const BooleanSerializer().fromJson(json['accountVerified']),
@@ -71,6 +72,8 @@ Map<String, dynamic> _$$_UserDTOToJson(_$_UserDTO instance) {
       'favAthlete', const BooleanSerializer().toJson(instance.favAthlete));
   writeNotNull('favPlace', const BooleanSerializer().toJson(instance.favPlace));
   writeNotNull('locality', const BooleanSerializer().toJson(instance.locality));
+  writeNotNull(
+      'forceUpdate', const BooleanSerializer().toJson(instance.forceUpdate));
   writeNotNull('active', const BooleanSerializer().toJson(instance.active));
   writeNotNull('accountVerified',
       const BooleanSerializer().toJson(instance.accountVerified));

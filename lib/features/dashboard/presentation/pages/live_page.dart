@@ -18,7 +18,7 @@ class LivePage extends StatefulWidget {
   _LivePageState createState() => _LivePageState();
 }
 
-class _LivePageState extends State<LivePage> {
+class _LivePageState extends State<LivePage> with AutomaticKeepAliveClientMixin<LivePage> {
   late DealCubit _cubit;
 
   @override
@@ -26,6 +26,9 @@ class _LivePageState extends State<LivePage> {
     _cubit = blocMaybeOf(context, orElse: () => getIt<DealCubit>());
     super.initState();
   }
+
+  @override
+  bool get wantKeepAlive => true;
 
   void onLoadMore(DragToRefreshState refresh) async {
     if (!_cubit.state.isLoading && _cubit.state.liveDeals.isNotEmpty())
@@ -51,6 +54,8 @@ class _LivePageState extends State<LivePage> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
+
     return AdaptiveScaffold(
       backgroundColor: Palette.accentColor,
       adaptiveToolbar: AdaptiveToolbar(
@@ -63,16 +68,10 @@ class _LivePageState extends State<LivePage> {
         centerTitle: true,
         backgroundColor: App.platform.cupertino(Palette.accentColor),
         cupertinoImplyLeading: false,
-        overlayStyle: App.customSystemOverlay(ctx: context, android: Brightness.light, ios: Brightness.light),
-        actions: [
-          // ...Utils.platform_(
-          //   cupertino: [Center(child: AdaptiveText('Live Action', maxLines: 1, style: App.titleStyle))],
-          //   material: [Utils.nothing],
-          // )!,
-        ],
+        overlayStyle: App.customSystemOverlay(ctx: context, android: Brightness.light, ios: Brightness.dark),
       ),
-      body: BlocProvider(
-        create: (_) => _cubit,
+      body: BlocProvider.value(
+        value: _cubit,
         child: Column(
           children: [
             SafeArea(

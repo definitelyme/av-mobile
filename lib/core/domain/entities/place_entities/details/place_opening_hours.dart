@@ -11,7 +11,7 @@ class PlaceOpeningHours with _$PlaceOpeningHours {
   const factory PlaceOpeningHours({
     bool? openNow,
     @Default(KtList.empty()) KtList<PlaceOpeningPeriod> periods,
-    @Default(KtList.empty()) KtList<BasicTextField<String?>?> weekdayText,
+    @Default(KtList.empty()) KtList<BasicTextField?> weekdayText,
   }) = _PlaceOpeningHours;
 }
 
@@ -28,7 +28,7 @@ class PlaceOpeningPeriod with _$PlaceOpeningPeriod {
 @immutable
 class PlaceHours with _$PlaceHours {
   const factory PlaceHours({
-    BasicTextField<int?>? day,
-    BasicTextField<String?>? time,
+    NumField<int?>? day,
+    BasicTextField? time,
   }) = _PlaceHours;
 }

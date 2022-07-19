@@ -26,7 +26,7 @@ class PlaceViewport with _$PlaceViewport {
 @immutable
 class PlaceCoordinate with _$PlaceCoordinate {
   const factory PlaceCoordinate({
-    required BasicTextField<double?> lat,
-    required BasicTextField<double?> lng,
+    required NumField<double?> lat,
+    required NumField<double?> lng,
   }) = _PlaceCoordinate;
 }

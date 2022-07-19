@@ -6,6 +6,7 @@ import 'package:auctionvillage/features/dashboard/presentation/pages/index.dart'
 import 'package:auctionvillage/features/dashboard/presentation/screens/index.dart';
 import 'package:auctionvillage/features/onboarding/index.dart';
 import 'package:auctionvillage/manager/router/guards/guards.dart';
+import 'package:auctionvillage/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
 
 @AdaptiveAutoRouter(
@@ -18,6 +19,14 @@ import 'package:auto_route/auto_route.dart';
       maintainState: true,
       usesPathAsKey: true,
       page: SplashScreen,
+    ),
+    //
+    AdaptiveRoute(
+      fullMatch: true,
+      maintainState: true,
+      usesPathAsKey: true,
+      page: GetStartedScreen,
+      cupertinoPageTitle: 'Get Started',
     ),
     //
     AdaptiveRoute(
@@ -97,6 +106,7 @@ import 'package:auto_route/auto_route.dart';
       usesPathAsKey: true,
       page: FundWalletScreen,
       cupertinoPageTitle: 'Fund Wallet',
+      guards: [AuthGuard],
     ),
     //
     AdaptiveRoute(
@@ -105,6 +115,7 @@ import 'package:auto_route/auto_route.dart';
       usesPathAsKey: true,
       page: WithdrawalScreen,
       cupertinoPageTitle: 'Withdraw to Account',
+      guards: [AuthGuard],
     ),
     //
     AdaptiveRoute(
@@ -113,6 +124,7 @@ import 'package:auto_route/auto_route.dart';
       usesPathAsKey: true,
       page: TransactionPinSetupScreen,
       cupertinoPageTitle: 'Withdraw PIN Setup',
+      guards: [AuthGuard],
     ),
     //
     AdaptiveRoute(
@@ -121,6 +133,7 @@ import 'package:auto_route/auto_route.dart';
       usesPathAsKey: true,
       page: ForgotTransactionPinScreen,
       cupertinoPageTitle: 'Forgot Transaction PIN',
+      guards: [AuthGuard],
     ),
     //
     AdaptiveRoute(
@@ -129,6 +142,7 @@ import 'package:auto_route/auto_route.dart';
       usesPathAsKey: true,
       cupertinoPageTitle: 'Wallet Activities',
       page: WalletHistoryScreen,
+      guards: [AuthGuard],
     ),
     //
     AdaptiveRoute(
@@ -137,6 +151,7 @@ import 'package:auto_route/auto_route.dart';
       usesPathAsKey: true,
       cupertinoPageTitle: 'Bidding Activities',
       page: MyBidsScreen,
+      guards: [AuthGuard],
     ),
     //
     AdaptiveRoute(
@@ -145,6 +160,7 @@ import 'package:auto_route/auto_route.dart';
       usesPathAsKey: true,
       cupertinoPageTitle: 'Selling Activities',
       page: MySellingsScreen,
+      guards: [AuthGuard],
     ),
     //
     AdaptiveRoute(
@@ -153,6 +169,7 @@ import 'package:auto_route/auto_route.dart';
       usesPathAsKey: true,
       cupertinoPageTitle: 'My Wishlist',
       page: MyWishlistScreen,
+      guards: [AuthGuard],
     ),
     //
     AdaptiveRoute(
@@ -161,6 +178,7 @@ import 'package:auto_route/auto_route.dart';
       usesPathAsKey: true,
       cupertinoPageTitle: 'My Reviews',
       page: MyReviewsScreen,
+      guards: [AuthGuard],
     ),
     //
     AdaptiveRoute(
@@ -169,6 +187,7 @@ import 'package:auto_route/auto_route.dart';
       usesPathAsKey: true,
       cupertinoPageTitle: 'Edit Profile',
       page: EditProfileScreen,
+      guards: [AuthGuard],
     ),
     //
     AdaptiveRoute(
@@ -195,6 +214,13 @@ import 'package:auto_route/auto_route.dart';
       fullscreenDialog: true,
       page: CountryPickerScreen,
     ),
+    //
+    AdaptiveRoute(
+      fullMatch: true,
+      maintainState: true,
+      usesPathAsKey: true,
+      page: AppearanceScreen,
+    ),
   ],
 )
 class $AppRouter {}
@@ -204,7 +230,6 @@ const dashboardRouter = AutoRoute(
   fullMatch: true,
   page: DashboardScreen,
   maintainState: true,
-  guards: [AuthGuard],
   children: [
     AutoRoute(
       name: 'HomeRouter',

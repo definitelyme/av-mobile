@@ -277,7 +277,9 @@ class _$_ShippingInformationDTO extends _ShippingInformationDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ShippingInformationDTOToJson(this);
+    return _$$_ShippingInformationDTOToJson(
+      this,
+    );
   }
 }
 
@@ -303,24 +305,24 @@ abstract class _ShippingInformationDTO extends ShippingInformationDTO {
 
   @override
   @DoubleSerializer()
-  double? get width => throw _privateConstructorUsedError;
+  double? get width;
   @override
   @DoubleSerializer()
-  double? get weight => throw _privateConstructorUsedError;
+  double? get weight;
   @override
   @DoubleSerializer()
-  double? get height => throw _privateConstructorUsedError;
+  double? get height;
   @override
   @DoubleSerializer()
-  double? get length => throw _privateConstructorUsedError;
+  double? get length;
   @override
-  String? get deliveryPeriod => throw _privateConstructorUsedError;
+  String? get deliveryPeriod;
   @override
   @JsonKey(toJson: BooleanSerializer.toJsonString)
   @BooleanSerializer()
-  bool? get pickUpAvailable => throw _privateConstructorUsedError;
+  bool? get pickUpAvailable;
   @override
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
   @override
   @JsonKey(ignore: true)
   _$$_ShippingInformationDTOCopyWith<_$_ShippingInformationDTO> get copyWith =>

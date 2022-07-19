@@ -1,6 +1,7 @@
 library product_detail_screen.dart;
 
 import 'package:auctionvillage/core/domain/entities/entities.dart';
+import 'package:auctionvillage/features/auth/presentation/managers/managers.dart';
 import 'package:auctionvillage/features/dashboard/domain/index.dart';
 import 'package:auctionvillage/features/dashboard/presentation/managers/index.dart';
 import 'package:auctionvillage/features/dashboard/presentation/widgets/index.dart';
@@ -26,7 +27,7 @@ class DealDetailScreen extends StatefulWidget with AutoRouteWrapper {
   @override
   Widget wrappedRoute(BuildContext context) {
     return BlocProvider.value(
-      value: blocMaybeOf(context, orElse: () => getIt<DealCubit>())..showDeal(deal),
+      value: blocMaybeOf(context, orElse: () => getIt<DealCubit>()),
       child: this,
     );
   }
@@ -37,8 +38,17 @@ class _DealDetailScreenState extends State<DealDetailScreen> {
 
   @override
   void initState() {
-    _cubit = context.read<DealCubit>();
+    _cubit = context.read<DealCubit>()..showDeal(widget.deal);
     super.initState();
+  }
+
+  void placeBidOrBuyNow() {
+    if (!context.read<AuthWatcherCubit>().isAuthenticated) {
+      Utils.popupIfNoAuth(context, msg: 'You have to be logged in to bid or buy.');
+      return;
+    } else {
+      _cubit.sendBid();
+    }
   }
 
   @override
@@ -54,7 +64,7 @@ class _DealDetailScreenState extends State<DealDetailScreen> {
             builder: (c, isLoading) => AnimatedVisibility(
               visible: isLoading,
               child: Padding(
-                padding: EdgeInsets.only(right: App.sidePadding),
+                padding: EdgeInsets.only(right: App.sidePadding, left: 4),
                 child: const Center(child: CircularProgressBar.adaptive(width: 20, height: 20, strokeWidth: 2)),
               ),
             ),
@@ -96,6 +106,7 @@ class _DealDetailScreenState extends State<DealDetailScreen> {
                             expandsFullscreen: true,
                             heroTag: '${deal.product!.id}_${i}_${item.getOrNull}',
                             replacement: Image.asset('${item.getOrEmpty}', fit: BoxFit.cover),
+                            progressIndicatorColorDark: Colors.white,
                             stackChildren: (image) => [
                               image,
                               //
@@ -350,10 +361,10 @@ class _DealDetailScreenState extends State<DealDetailScreen> {
                             AdaptiveText.rich(
                               TextSpan(children: [
                                 TextSpan(
-                                  text: '${Utils.currency} ',
+                                  text: deal.country?.symbolPadded,
                                   style: TextStyle(fontSize: 26.sp, color: Palette.accentGreen, fontWeight: FontWeight.bold),
                                 ),
-                                TextSpan(text: '${deal.lastPriceOffered.getOrNull}'.asCurrency(symbol: false)),
+                                TextSpan(text: '${deal.lastPriceOffered.getExact()}'.asCurrency(symbol: false)),
                               ]),
                               maxLines: 1,
                               fontSize: 25.sp,
@@ -413,7 +424,7 @@ class _DealDetailScreenState extends State<DealDetailScreen> {
                               color: App.resolveColor(Palette.neutralF4, dark: Palette.secondaryColor.shade800),
                               borderRadius: const BorderRadius.all(Radius.circular(4.0)),
                               child: Disabled(
-                                disabled: s.bidAmount.getOrNull <= s.currentDeal.lastPriceOffered.getOrNull || s.isLoading || s.isBidding,
+                                disabled: s.bidAmount.getExact() <= s.currentDeal.lastPriceOffered.getExact() || s.isLoading || s.isBidding,
                                 child: AdaptiveInkWell(
                                   onTap: _cubit.decreaseBid,
                                   splashColor: App.resolveColor(Colors.grey.shade300, dark: Colors.grey.shade800),
@@ -435,8 +446,8 @@ class _DealDetailScreenState extends State<DealDetailScreen> {
                             flex: 2,
                             child: AdaptiveText.rich(
                               TextSpan(children: [
-                                const TextSpan(text: '${Utils.currency} '),
-                                TextSpan(text: '${s.bidAmount.getOrNull.roundToIntOrDouble}'.asCurrency(symbol: false)),
+                                TextSpan(text: deal.country?.symbolPadded),
+                                TextSpan(text: '${s.bidAmount.getExact().roundToIntOrDouble}'.asCurrency(symbol: false)),
                               ]),
                               maxLines: 1,
                               fontSize: 26.sp,
@@ -505,14 +516,14 @@ class _DealDetailScreenState extends State<DealDetailScreen> {
                       auction: () => AppButton(
                         text: 'BID NOW',
                         isLoading: s.isBidding,
-                        disabled: s.isLoading || s.isBidding || s.bidAmount.getOrNull <= s.currentDeal.lastPriceOffered.getOrNull,
-                        onPressed: c.read<DealCubit>().sendBid,
+                        disabled: s.isLoading || s.isBidding || s.bidAmount.getExact() <= s.currentDeal.lastPriceOffered.getExact(),
+                        onPressed: placeBidOrBuyNow,
                       ),
                       buy_Now: () => AppButton(
                         text: 'BUY NOW',
                         isLoading: s.isBidding,
                         disabled: s.isLoading || s.isBidding,
-                        onPressed: c.read<DealCubit>().sendBid,
+                        onPressed: placeBidOrBuyNow,
                       ),
                     ),
                     //

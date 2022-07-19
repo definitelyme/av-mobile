@@ -27,6 +27,7 @@ class User extends BaseEntity with _$User {
     required UploadableMedia photo,
     Country? country,
     @Default(false) bool isPrivate,
+    bool? forceUpdate,
     @Default(AuthProvider.regular) AuthProvider provider,
     @Default(false) bool? active,
     @Default(false) bool? accountVerified,
@@ -42,7 +43,7 @@ class User extends BaseEntity with _$User {
         : lastName.getOrNull?.let((it) => DisplayName('${firstName.getOrEmpty} $it')) ?? DisplayName('${firstName.getOrEmpty}');
   }
 
-  String? get sharelink => fullName.isValid ? 'AmatNow.com/${fullName.getOrEmpty?.toLowerCase().trimWhiteSpaces()}' : null;
+  String? get sharelink => fullName.isValid ? 'AmatNow.com/${fullName.getOrEmpty.toLowerCase().removeAllBlankSpace()}' : null;
 
   bool get isEmptyObj => this == User.blank();
 

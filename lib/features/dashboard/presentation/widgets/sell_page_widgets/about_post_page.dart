@@ -2,7 +2,6 @@ library about_post_page.dart;
 
 import 'package:auctionvillage/core/domain/entities/entities.dart';
 import 'package:auctionvillage/core/presentation/index.dart';
-import 'package:auctionvillage/features/auth/presentation/managers/watcher/auth_watcher_cubit.dart';
 import 'package:auctionvillage/features/dashboard/domain/index.dart';
 import 'package:auctionvillage/features/dashboard/presentation/managers/index.dart';
 import 'package:auctionvillage/features/dashboard/presentation/widgets/index.dart';
@@ -28,7 +27,6 @@ class _AboutPostPageState extends State<AboutPostPage> with AutomaticKeepAliveCl
     if (!isLoading)
       await App.showAdaptiveBottomSheet(
         ctx,
-        radius: Radius.zero,
         builder: (_) => DocumentPickerSheet(
           pickers: [
             DocumentPicker(
@@ -85,12 +83,12 @@ class _AboutPostPageState extends State<AboutPostPage> with AutomaticKeepAliveCl
                   hint: '-- Select Category --',
                   disabledHint: 'Retrieving categories...Please wait',
                   disabled: s.isLoading || s.isFetchingCategories || s.isSavingState || s.isCreatingProduct,
-                  items: categories.map((p0) => p0.name.valueOrNull).asList(),
-                  selected: s.product.category?.name.valueOrNull,
+                  items: categories.map((p0) => p0.name.getOrNull).asList(),
+                  selected: s.product.category?.name.getOrNull,
                   text: (category) => category,
                   errorText: (category) => category == null ? 'Please select a Category' : null,
                   onChanged: (it) {
-                    final _category = categories.find((e) => e.name.valueOrNull == it);
+                    final _category = categories.find((e) => e.name.getOrNull == it);
                     c.read<ProductBloc>().add(ProductSyncEvent.categoryChanged(_category));
                   },
                 ),
@@ -121,7 +119,7 @@ class _AboutPostPageState extends State<AboutPostPage> with AutomaticKeepAliveCl
             // //
             // const TextFormInputLabel(text: 'Sub Category'),
             // //
-            // BlocSelector<ProductBloc, ProductState, BasicTextField<String?>>(
+            // BlocSelector<ProductBloc, ProductState, BasicTextField>(
             //   selector: (s) => s.product.itemSubCategory,
             //   builder: (c, category) => AdaptiveDropdown<String?>(
             //     hint: '-- Select Sub Category --',
@@ -179,7 +177,7 @@ class _AboutPostPageState extends State<AboutPostPage> with AutomaticKeepAliveCl
               hint: '-- Select Country --',
               disabledHint: 'Retrieving countries...Please wait',
               disabled: s.isLoading || s.isFetchingCategories || s.isSavingState || s.isCreatingProduct,
-              items: c.read<AuthWatcherCubit>().state.countries.asList(),
+              items: ProductState.countries,
               selected: s.product.country,
               text: (category) => category?.name.getOrNull,
               errorText: (category) => category == null ? 'Please select a Country' : null,
@@ -210,6 +208,8 @@ class _AboutPostPageState extends State<AboutPostPage> with AutomaticKeepAliveCl
                               onCameraClicked: (bloc, source) => bloc.add(ProductMediaEvents.pickCamera(i)),
                               onGalleryClicked: (bloc, source) => bloc.add(ProductMediaEvents.pickGallery(i)),
                               onClosePressed: (bloc) => bloc.add(ProductMediaEvents.removeMedia(i)),
+                              indicatorColorLight: Palette.accentColor,
+                              indicatorColorDark: Colors.white,
                               onSelected: (s) => ImageBox.network(
                                 heroTag: 'hero-tag-selected-photo-$i-${media?.image.getOrNull}',
                                 photo: media?.image.getOrNull,

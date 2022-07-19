@@ -16,8 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AddressComponent {
-  BasicTextField<String?> get longName => throw _privateConstructorUsedError;
-  BasicTextField<String?> get shortName => throw _privateConstructorUsedError;
+  BasicTextField get longName => throw _privateConstructorUsedError;
+  BasicTextField get shortName => throw _privateConstructorUsedError;
   KtList<AddressComponentType> get types => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -31,8 +31,8 @@ abstract class $AddressComponentCopyWith<$Res> {
           AddressComponent value, $Res Function(AddressComponent) then) =
       _$AddressComponentCopyWithImpl<$Res>;
   $Res call(
-      {BasicTextField<String?> longName,
-      BasicTextField<String?> shortName,
+      {BasicTextField longName,
+      BasicTextField shortName,
       KtList<AddressComponentType> types});
 }
 
@@ -55,11 +55,11 @@ class _$AddressComponentCopyWithImpl<$Res>
       longName: longName == freezed
           ? _value.longName
           : longName // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       shortName: shortName == freezed
           ? _value.shortName
           : shortName // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       types: types == freezed
           ? _value.types
           : types // ignore: cast_nullable_to_non_nullable
@@ -76,8 +76,8 @@ abstract class _$$_AddressComponentCopyWith<$Res>
       __$$_AddressComponentCopyWithImpl<$Res>;
   @override
   $Res call(
-      {BasicTextField<String?> longName,
-      BasicTextField<String?> shortName,
+      {BasicTextField longName,
+      BasicTextField shortName,
       KtList<AddressComponentType> types});
 }
 
@@ -102,11 +102,11 @@ class __$$_AddressComponentCopyWithImpl<$Res>
       longName: longName == freezed
           ? _value.longName
           : longName // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       shortName: shortName == freezed
           ? _value.shortName
           : shortName // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       types: types == freezed
           ? _value.types
           : types // ignore: cast_nullable_to_non_nullable
@@ -125,9 +125,9 @@ class _$_AddressComponent extends _AddressComponent {
       : super._();
 
   @override
-  final BasicTextField<String?> longName;
+  final BasicTextField longName;
   @override
-  final BasicTextField<String?> shortName;
+  final BasicTextField shortName;
   @override
   @JsonKey()
   final KtList<AddressComponentType> types;
@@ -162,17 +162,17 @@ class _$_AddressComponent extends _AddressComponent {
 
 abstract class _AddressComponent extends AddressComponent {
   const factory _AddressComponent(
-      {required final BasicTextField<String?> longName,
-      required final BasicTextField<String?> shortName,
+      {required final BasicTextField longName,
+      required final BasicTextField shortName,
       final KtList<AddressComponentType> types}) = _$_AddressComponent;
   const _AddressComponent._() : super._();
 
   @override
-  BasicTextField<String?> get longName => throw _privateConstructorUsedError;
+  BasicTextField get longName;
   @override
-  BasicTextField<String?> get shortName => throw _privateConstructorUsedError;
+  BasicTextField get shortName;
   @override
-  KtList<AddressComponentType> get types => throw _privateConstructorUsedError;
+  KtList<AddressComponentType> get types;
   @override
   @JsonKey(ignore: true)
   _$$_AddressComponentCopyWith<_$_AddressComponent> get copyWith =>

@@ -15,13 +15,13 @@ class BrandInformation with _$BrandInformation {
   const BrandInformation._();
 
   const factory BrandInformation({
-    required BasicTextField<String?> brand,
-    required BasicTextField<String?> brandModel,
-    required BasicTextField<String?> transmission,
+    required BasicTextField brand,
+    required BasicTextField brandModel,
+    required BasicTextField transmission,
     @Default(ItemCondition.brand_new) ItemCondition condition,
-    required BasicTextField<String?> description,
+    required BasicTextField description,
     ColorField? color,
-    required BasicTextField<String?> yearOfManufacture,
+    required BasicTextField yearOfManufacture,
   }) = _BrandInformation;
 
   factory BrandInformation.blank({
@@ -44,14 +44,14 @@ class BrandInformation with _$BrandInformation {
       );
 
   BrandInformation merge(BrandInformation? other) => copyWith(
-        brand: other?.brand.isNotNull((it) => it as BasicTextField<String?>, orElse: (_) => brand) ?? brand,
-        brandModel: other?.brandModel.isNotNull((it) => it as BasicTextField<String?>, orElse: (_) => brandModel) ?? brandModel,
-        transmission: other?.transmission.isNotNull((it) => it as BasicTextField<String?>, orElse: (_) => transmission) ?? transmission,
+        brand: other?.brand.isNotNull((it) => it as BasicTextField, orElse: (_) => brand) ?? brand,
+        brandModel: other?.brandModel.isNotNull((it) => it as BasicTextField, orElse: (_) => brandModel) ?? brandModel,
+        transmission: other?.transmission.isNotNull((it) => it as BasicTextField, orElse: (_) => transmission) ?? transmission,
         condition: other?.condition ?? condition,
-        description: other?.description.isNotNull((it) => it as BasicTextField<String?>, orElse: (_) => description) ?? description,
+        description: other?.description.isNotNull((it) => it as BasicTextField, orElse: (_) => description) ?? description,
         color: other?.color,
-        yearOfManufacture: other?.yearOfManufacture.isNotNull((it) => it as BasicTextField<String?>, orElse: (_) => yearOfManufacture) ??
-            yearOfManufacture,
+        yearOfManufacture:
+            other?.yearOfManufacture.isNotNull((it) => it as BasicTextField, orElse: (_) => yearOfManufacture) ?? yearOfManufacture,
       );
 
   Option<FieldObjectException<dynamic>> get failure => description.mapped.fold((f) => some(f), (_) => none());

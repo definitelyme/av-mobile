@@ -112,8 +112,8 @@ abstract class _RefreshModelHistoryEvent implements SearchEvent {
   const factory _RefreshModelHistoryEvent(final SearchModel model,
       {final AwaitCallback? callback}) = _$_RefreshModelHistoryEvent;
 
-  SearchModel get model => throw _privateConstructorUsedError;
-  AwaitCallback? get callback => throw _privateConstructorUsedError;
+  SearchModel get model;
+  AwaitCallback? get callback;
   @JsonKey(ignore: true)
   _$$_RefreshModelHistoryEventCopyWith<_$_RefreshModelHistoryEvent>
       get copyWith => throw _privateConstructorUsedError;
@@ -234,11 +234,11 @@ abstract class ___SearchEvent implements SearchEvent {
       final bool nextPage,
       final AwaitCallback? callback}) = _$___SearchEvent;
 
-  String get query => throw _privateConstructorUsedError;
-  SearchModel? get model => throw _privateConstructorUsedError;
-  int? get perPage => throw _privateConstructorUsedError;
-  bool get nextPage => throw _privateConstructorUsedError;
-  AwaitCallback? get callback => throw _privateConstructorUsedError;
+  String get query;
+  SearchModel? get model;
+  int? get perPage;
+  bool get nextPage;
+  AwaitCallback? get callback;
   @JsonKey(ignore: true)
   _$$___SearchEventCopyWith<_$___SearchEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -312,7 +312,7 @@ abstract class _ClearHistoryEvent implements SearchEvent {
   const factory _ClearHistoryEvent([final SearchModel? model]) =
       _$_ClearHistoryEvent;
 
-  SearchModel? get model => throw _privateConstructorUsedError;
+  SearchModel? get model;
   @JsonKey(ignore: true)
   _$$_ClearHistoryEventCopyWith<_$_ClearHistoryEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -324,7 +324,7 @@ mixin _$SearchState {
   String? get searchQuery => throw _privateConstructorUsedError;
   SearchModel get model => throw _privateConstructorUsedError; //
   KtList<User> get users => throw _privateConstructorUsedError;
-  KtList<Product> get products => throw _privateConstructorUsedError; //
+  KtList<Deal> get deals => throw _privateConstructorUsedError; //
   Option<AppHttpResponse?> get status => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -342,7 +342,7 @@ abstract class $SearchStateCopyWith<$Res> {
       String? searchQuery,
       SearchModel model,
       KtList<User> users,
-      KtList<Product> products,
+      KtList<Deal> deals,
       Option<AppHttpResponse?> status});
 }
 
@@ -360,7 +360,7 @@ class _$SearchStateCopyWithImpl<$Res> implements $SearchStateCopyWith<$Res> {
     Object? searchQuery = freezed,
     Object? model = freezed,
     Object? users = freezed,
-    Object? products = freezed,
+    Object? deals = freezed,
     Object? status = freezed,
   }) {
     return _then(_value.copyWith(
@@ -380,10 +380,10 @@ class _$SearchStateCopyWithImpl<$Res> implements $SearchStateCopyWith<$Res> {
           ? _value.users
           : users // ignore: cast_nullable_to_non_nullable
               as KtList<User>,
-      products: products == freezed
-          ? _value.products
-          : products // ignore: cast_nullable_to_non_nullable
-              as KtList<Product>,
+      deals: deals == freezed
+          ? _value.deals
+          : deals // ignore: cast_nullable_to_non_nullable
+              as KtList<Deal>,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -404,7 +404,7 @@ abstract class _$$_SearchStateCopyWith<$Res>
       String? searchQuery,
       SearchModel model,
       KtList<User> users,
-      KtList<Product> products,
+      KtList<Deal> deals,
       Option<AppHttpResponse?> status});
 }
 
@@ -424,7 +424,7 @@ class __$$_SearchStateCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
     Object? searchQuery = freezed,
     Object? model = freezed,
     Object? users = freezed,
-    Object? products = freezed,
+    Object? deals = freezed,
     Object? status = freezed,
   }) {
     return _then(_$_SearchState(
@@ -444,10 +444,10 @@ class __$$_SearchStateCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
           ? _value.users
           : users // ignore: cast_nullable_to_non_nullable
               as KtList<User>,
-      products: products == freezed
-          ? _value.products
-          : products // ignore: cast_nullable_to_non_nullable
-              as KtList<Product>,
+      deals: deals == freezed
+          ? _value.deals
+          : deals // ignore: cast_nullable_to_non_nullable
+              as KtList<Deal>,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -464,7 +464,7 @@ class _$_SearchState extends _SearchState {
       this.searchQuery,
       this.model = SearchModel.product,
       this.users = const KtList.empty(),
-      this.products = const KtList.empty(),
+      this.deals = const KtList.empty(),
       this.status = const None()})
       : super._();
 
@@ -482,7 +482,7 @@ class _$_SearchState extends _SearchState {
   final KtList<User> users;
   @override
   @JsonKey()
-  final KtList<Product> products;
+  final KtList<Deal> deals;
 //
   @override
   @JsonKey()
@@ -490,7 +490,7 @@ class _$_SearchState extends _SearchState {
 
   @override
   String toString() {
-    return 'SearchState(isSearching: $isSearching, searchQuery: $searchQuery, model: $model, users: $users, products: $products, status: $status)';
+    return 'SearchState(isSearching: $isSearching, searchQuery: $searchQuery, model: $model, users: $users, deals: $deals, status: $status)';
   }
 
   @override
@@ -504,7 +504,7 @@ class _$_SearchState extends _SearchState {
                 .equals(other.searchQuery, searchQuery) &&
             const DeepCollectionEquality().equals(other.model, model) &&
             const DeepCollectionEquality().equals(other.users, users) &&
-            const DeepCollectionEquality().equals(other.products, products) &&
+            const DeepCollectionEquality().equals(other.deals, deals) &&
             const DeepCollectionEquality().equals(other.status, status));
   }
 
@@ -515,7 +515,7 @@ class _$_SearchState extends _SearchState {
       const DeepCollectionEquality().hash(searchQuery),
       const DeepCollectionEquality().hash(model),
       const DeepCollectionEquality().hash(users),
-      const DeepCollectionEquality().hash(products),
+      const DeepCollectionEquality().hash(deals),
       const DeepCollectionEquality().hash(status));
 
   @JsonKey(ignore: true)
@@ -530,22 +530,22 @@ abstract class _SearchState extends SearchState {
       final String? searchQuery,
       final SearchModel model,
       final KtList<User> users,
-      final KtList<Product> products,
+      final KtList<Deal> deals,
       final Option<AppHttpResponse?> status}) = _$_SearchState;
   const _SearchState._() : super._();
 
   @override
-  bool get isSearching => throw _privateConstructorUsedError;
+  bool get isSearching;
   @override
-  String? get searchQuery => throw _privateConstructorUsedError;
+  String? get searchQuery;
   @override
-  SearchModel get model => throw _privateConstructorUsedError;
+  SearchModel get model;
   @override //
-  KtList<User> get users => throw _privateConstructorUsedError;
+  KtList<User> get users;
   @override
-  KtList<Product> get products => throw _privateConstructorUsedError;
+  KtList<Deal> get deals;
   @override //
-  Option<AppHttpResponse?> get status => throw _privateConstructorUsedError;
+  Option<AppHttpResponse?> get status;
   @override
   @JsonKey(ignore: true)
   _$$_SearchStateCopyWith<_$_SearchState> get copyWith =>

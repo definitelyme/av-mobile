@@ -19,24 +19,19 @@ mixin _$GoogleMapPlace {
   UniqueId<String?> get placeId => throw _privateConstructorUsedError;
   KtList<AddressComponent> get addressComponents =>
       throw _privateConstructorUsedError;
-  BasicTextField<String?> get formattedAddress =>
+  BasicTextField get formattedAddress => throw _privateConstructorUsedError;
+  BasicTextField get formattedPhoneNumber => throw _privateConstructorUsedError;
+  BasicTextField get icon => throw _privateConstructorUsedError;
+  BasicTextField get iconBackgroundColor => throw _privateConstructorUsedError;
+  BasicTextField get iconMaskBaseUri => throw _privateConstructorUsedError;
+  BasicTextField get internationalPhoneNumber =>
       throw _privateConstructorUsedError;
-  BasicTextField<String?> get formattedPhoneNumber =>
-      throw _privateConstructorUsedError;
-  BasicTextField<String?> get icon => throw _privateConstructorUsedError;
-  BasicTextField<String?> get iconBackgroundColor =>
-      throw _privateConstructorUsedError;
-  BasicTextField<String?> get iconMaskBaseUri =>
-      throw _privateConstructorUsedError;
-  BasicTextField<String?> get internationalPhoneNumber =>
-      throw _privateConstructorUsedError;
-  BasicTextField<String?> get name => throw _privateConstructorUsedError;
-  BasicTextField<double?> get rating => throw _privateConstructorUsedError;
-  BasicTextField<String?> get reference => throw _privateConstructorUsedError;
-  KtList<BasicTextField<String?>?> get types =>
-      throw _privateConstructorUsedError;
-  BasicTextField<String?> get url => throw _privateConstructorUsedError;
-  BasicTextField<String?> get website => throw _privateConstructorUsedError;
+  BasicTextField get name => throw _privateConstructorUsedError;
+  NumField<double?> get rating => throw _privateConstructorUsedError;
+  BasicTextField get reference => throw _privateConstructorUsedError;
+  KtList<BasicTextField?> get types => throw _privateConstructorUsedError;
+  BasicTextField get url => throw _privateConstructorUsedError;
+  BasicTextField get website => throw _privateConstructorUsedError;
   PlacePlusCode? get plusCode => throw _privateConstructorUsedError;
   PlaceGeometry? get geometry => throw _privateConstructorUsedError;
   PlaceOpeningHours? get openingHours => throw _privateConstructorUsedError;
@@ -55,18 +50,18 @@ abstract class $GoogleMapPlaceCopyWith<$Res> {
   $Res call(
       {UniqueId<String?> placeId,
       KtList<AddressComponent> addressComponents,
-      BasicTextField<String?> formattedAddress,
-      BasicTextField<String?> formattedPhoneNumber,
-      BasicTextField<String?> icon,
-      BasicTextField<String?> iconBackgroundColor,
-      BasicTextField<String?> iconMaskBaseUri,
-      BasicTextField<String?> internationalPhoneNumber,
-      BasicTextField<String?> name,
-      BasicTextField<double?> rating,
-      BasicTextField<String?> reference,
-      KtList<BasicTextField<String?>?> types,
-      BasicTextField<String?> url,
-      BasicTextField<String?> website,
+      BasicTextField formattedAddress,
+      BasicTextField formattedPhoneNumber,
+      BasicTextField icon,
+      BasicTextField iconBackgroundColor,
+      BasicTextField iconMaskBaseUri,
+      BasicTextField internationalPhoneNumber,
+      BasicTextField name,
+      NumField<double?> rating,
+      BasicTextField reference,
+      KtList<BasicTextField?> types,
+      BasicTextField url,
+      BasicTextField website,
       PlacePlusCode? plusCode,
       PlaceGeometry? geometry,
       PlaceOpeningHours? openingHours,
@@ -119,51 +114,51 @@ class _$GoogleMapPlaceCopyWithImpl<$Res>
       formattedAddress: formattedAddress == freezed
           ? _value.formattedAddress
           : formattedAddress // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       formattedPhoneNumber: formattedPhoneNumber == freezed
           ? _value.formattedPhoneNumber
           : formattedPhoneNumber // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       icon: icon == freezed
           ? _value.icon
           : icon // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       iconBackgroundColor: iconBackgroundColor == freezed
           ? _value.iconBackgroundColor
           : iconBackgroundColor // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       iconMaskBaseUri: iconMaskBaseUri == freezed
           ? _value.iconMaskBaseUri
           : iconMaskBaseUri // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       internationalPhoneNumber: internationalPhoneNumber == freezed
           ? _value.internationalPhoneNumber
           : internationalPhoneNumber // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       rating: rating == freezed
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double?>,
+              as NumField<double?>,
       reference: reference == freezed
           ? _value.reference
           : reference // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       types: types == freezed
           ? _value.types
           : types // ignore: cast_nullable_to_non_nullable
-              as KtList<BasicTextField<String?>?>,
+              as KtList<BasicTextField?>,
       url: url == freezed
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       website: website == freezed
           ? _value.website
           : website // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       plusCode: plusCode == freezed
           ? _value.plusCode
           : plusCode // ignore: cast_nullable_to_non_nullable
@@ -227,18 +222,18 @@ abstract class _$$_GoogleMapPlaceCopyWith<$Res>
   $Res call(
       {UniqueId<String?> placeId,
       KtList<AddressComponent> addressComponents,
-      BasicTextField<String?> formattedAddress,
-      BasicTextField<String?> formattedPhoneNumber,
-      BasicTextField<String?> icon,
-      BasicTextField<String?> iconBackgroundColor,
-      BasicTextField<String?> iconMaskBaseUri,
-      BasicTextField<String?> internationalPhoneNumber,
-      BasicTextField<String?> name,
-      BasicTextField<double?> rating,
-      BasicTextField<String?> reference,
-      KtList<BasicTextField<String?>?> types,
-      BasicTextField<String?> url,
-      BasicTextField<String?> website,
+      BasicTextField formattedAddress,
+      BasicTextField formattedPhoneNumber,
+      BasicTextField icon,
+      BasicTextField iconBackgroundColor,
+      BasicTextField iconMaskBaseUri,
+      BasicTextField internationalPhoneNumber,
+      BasicTextField name,
+      NumField<double?> rating,
+      BasicTextField reference,
+      KtList<BasicTextField?> types,
+      BasicTextField url,
+      BasicTextField website,
       PlacePlusCode? plusCode,
       PlaceGeometry? geometry,
       PlaceOpeningHours? openingHours,
@@ -296,51 +291,51 @@ class __$$_GoogleMapPlaceCopyWithImpl<$Res>
       formattedAddress: formattedAddress == freezed
           ? _value.formattedAddress
           : formattedAddress // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       formattedPhoneNumber: formattedPhoneNumber == freezed
           ? _value.formattedPhoneNumber
           : formattedPhoneNumber // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       icon: icon == freezed
           ? _value.icon
           : icon // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       iconBackgroundColor: iconBackgroundColor == freezed
           ? _value.iconBackgroundColor
           : iconBackgroundColor // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       iconMaskBaseUri: iconMaskBaseUri == freezed
           ? _value.iconMaskBaseUri
           : iconMaskBaseUri // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       internationalPhoneNumber: internationalPhoneNumber == freezed
           ? _value.internationalPhoneNumber
           : internationalPhoneNumber // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       rating: rating == freezed
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double?>,
+              as NumField<double?>,
       reference: reference == freezed
           ? _value.reference
           : reference // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       types: types == freezed
           ? _value.types
           : types // ignore: cast_nullable_to_non_nullable
-              as KtList<BasicTextField<String?>?>,
+              as KtList<BasicTextField?>,
       url: url == freezed
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       website: website == freezed
           ? _value.website
           : website // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       plusCode: plusCode == freezed
           ? _value.plusCode
           : plusCode // ignore: cast_nullable_to_non_nullable
@@ -391,30 +386,30 @@ class _$_GoogleMapPlace extends _GoogleMapPlace with DiagnosticableTreeMixin {
   @JsonKey()
   final KtList<AddressComponent> addressComponents;
   @override
-  final BasicTextField<String?> formattedAddress;
+  final BasicTextField formattedAddress;
   @override
-  final BasicTextField<String?> formattedPhoneNumber;
+  final BasicTextField formattedPhoneNumber;
   @override
-  final BasicTextField<String?> icon;
+  final BasicTextField icon;
   @override
-  final BasicTextField<String?> iconBackgroundColor;
+  final BasicTextField iconBackgroundColor;
   @override
-  final BasicTextField<String?> iconMaskBaseUri;
+  final BasicTextField iconMaskBaseUri;
   @override
-  final BasicTextField<String?> internationalPhoneNumber;
+  final BasicTextField internationalPhoneNumber;
   @override
-  final BasicTextField<String?> name;
+  final BasicTextField name;
   @override
-  final BasicTextField<double?> rating;
+  final NumField<double?> rating;
   @override
-  final BasicTextField<String?> reference;
+  final BasicTextField reference;
   @override
   @JsonKey()
-  final KtList<BasicTextField<String?>?> types;
+  final KtList<BasicTextField?> types;
   @override
-  final BasicTextField<String?> url;
+  final BasicTextField url;
   @override
-  final BasicTextField<String?> website;
+  final BasicTextField website;
   @override
   final PlacePlusCode? plusCode;
   @override
@@ -520,18 +515,18 @@ abstract class _GoogleMapPlace extends GoogleMapPlace {
   const factory _GoogleMapPlace(
       {required final UniqueId<String?> placeId,
       final KtList<AddressComponent> addressComponents,
-      required final BasicTextField<String?> formattedAddress,
-      required final BasicTextField<String?> formattedPhoneNumber,
-      required final BasicTextField<String?> icon,
-      required final BasicTextField<String?> iconBackgroundColor,
-      required final BasicTextField<String?> iconMaskBaseUri,
-      required final BasicTextField<String?> internationalPhoneNumber,
-      required final BasicTextField<String?> name,
-      required final BasicTextField<double?> rating,
-      required final BasicTextField<String?> reference,
-      final KtList<BasicTextField<String?>?> types,
-      required final BasicTextField<String?> url,
-      required final BasicTextField<String?> website,
+      required final BasicTextField formattedAddress,
+      required final BasicTextField formattedPhoneNumber,
+      required final BasicTextField icon,
+      required final BasicTextField iconBackgroundColor,
+      required final BasicTextField iconMaskBaseUri,
+      required final BasicTextField internationalPhoneNumber,
+      required final BasicTextField name,
+      required final NumField<double?> rating,
+      required final BasicTextField reference,
+      final KtList<BasicTextField?> types,
+      required final BasicTextField url,
+      required final BasicTextField website,
       final PlacePlusCode? plusCode,
       final PlaceGeometry? geometry,
       final PlaceOpeningHours? openingHours,
@@ -539,48 +534,41 @@ abstract class _GoogleMapPlace extends GoogleMapPlace {
   const _GoogleMapPlace._() : super._();
 
   @override
-  UniqueId<String?> get placeId => throw _privateConstructorUsedError;
+  UniqueId<String?> get placeId;
   @override
-  KtList<AddressComponent> get addressComponents =>
-      throw _privateConstructorUsedError;
+  KtList<AddressComponent> get addressComponents;
   @override
-  BasicTextField<String?> get formattedAddress =>
-      throw _privateConstructorUsedError;
+  BasicTextField get formattedAddress;
   @override
-  BasicTextField<String?> get formattedPhoneNumber =>
-      throw _privateConstructorUsedError;
+  BasicTextField get formattedPhoneNumber;
   @override
-  BasicTextField<String?> get icon => throw _privateConstructorUsedError;
+  BasicTextField get icon;
   @override
-  BasicTextField<String?> get iconBackgroundColor =>
-      throw _privateConstructorUsedError;
+  BasicTextField get iconBackgroundColor;
   @override
-  BasicTextField<String?> get iconMaskBaseUri =>
-      throw _privateConstructorUsedError;
+  BasicTextField get iconMaskBaseUri;
   @override
-  BasicTextField<String?> get internationalPhoneNumber =>
-      throw _privateConstructorUsedError;
+  BasicTextField get internationalPhoneNumber;
   @override
-  BasicTextField<String?> get name => throw _privateConstructorUsedError;
+  BasicTextField get name;
   @override
-  BasicTextField<double?> get rating => throw _privateConstructorUsedError;
+  NumField<double?> get rating;
   @override
-  BasicTextField<String?> get reference => throw _privateConstructorUsedError;
+  BasicTextField get reference;
   @override
-  KtList<BasicTextField<String?>?> get types =>
-      throw _privateConstructorUsedError;
+  KtList<BasicTextField?> get types;
   @override
-  BasicTextField<String?> get url => throw _privateConstructorUsedError;
+  BasicTextField get url;
   @override
-  BasicTextField<String?> get website => throw _privateConstructorUsedError;
+  BasicTextField get website;
   @override
-  PlacePlusCode? get plusCode => throw _privateConstructorUsedError;
+  PlacePlusCode? get plusCode;
   @override
-  PlaceGeometry? get geometry => throw _privateConstructorUsedError;
+  PlaceGeometry? get geometry;
   @override
-  PlaceOpeningHours? get openingHours => throw _privateConstructorUsedError;
+  PlaceOpeningHours? get openingHours;
   @override
-  PlaceStatus get status => throw _privateConstructorUsedError;
+  PlaceStatus get status;
   @override
   @JsonKey(ignore: true)
   _$$_GoogleMapPlaceCopyWith<_$_GoogleMapPlace> get copyWith =>
@@ -589,9 +577,8 @@ abstract class _GoogleMapPlace extends GoogleMapPlace {
 
 /// @nodoc
 mixin _$PlacePlusCode {
-  BasicTextField<String?>? get compoundCode =>
-      throw _privateConstructorUsedError;
-  BasicTextField<String?>? get globalCode => throw _privateConstructorUsedError;
+  BasicTextField? get compoundCode => throw _privateConstructorUsedError;
+  BasicTextField? get globalCode => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PlacePlusCodeCopyWith<PlacePlusCode> get copyWith =>
@@ -603,9 +590,7 @@ abstract class $PlacePlusCodeCopyWith<$Res> {
   factory $PlacePlusCodeCopyWith(
           PlacePlusCode value, $Res Function(PlacePlusCode) then) =
       _$PlacePlusCodeCopyWithImpl<$Res>;
-  $Res call(
-      {BasicTextField<String?>? compoundCode,
-      BasicTextField<String?>? globalCode});
+  $Res call({BasicTextField? compoundCode, BasicTextField? globalCode});
 }
 
 /// @nodoc
@@ -626,11 +611,11 @@ class _$PlacePlusCodeCopyWithImpl<$Res>
       compoundCode: compoundCode == freezed
           ? _value.compoundCode
           : compoundCode // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>?,
+              as BasicTextField?,
       globalCode: globalCode == freezed
           ? _value.globalCode
           : globalCode // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>?,
+              as BasicTextField?,
     ));
   }
 }
@@ -642,9 +627,7 @@ abstract class _$$_PlacePlusCodeCopyWith<$Res>
           _$_PlacePlusCode value, $Res Function(_$_PlacePlusCode) then) =
       __$$_PlacePlusCodeCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {BasicTextField<String?>? compoundCode,
-      BasicTextField<String?>? globalCode});
+  $Res call({BasicTextField? compoundCode, BasicTextField? globalCode});
 }
 
 /// @nodoc
@@ -667,11 +650,11 @@ class __$$_PlacePlusCodeCopyWithImpl<$Res>
       compoundCode: compoundCode == freezed
           ? _value.compoundCode
           : compoundCode // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>?,
+              as BasicTextField?,
       globalCode: globalCode == freezed
           ? _value.globalCode
           : globalCode // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>?,
+              as BasicTextField?,
     ));
   }
 }
@@ -682,9 +665,9 @@ class _$_PlacePlusCode with DiagnosticableTreeMixin implements _PlacePlusCode {
   const _$_PlacePlusCode({this.compoundCode, this.globalCode});
 
   @override
-  final BasicTextField<String?>? compoundCode;
+  final BasicTextField? compoundCode;
   @override
-  final BasicTextField<String?>? globalCode;
+  final BasicTextField? globalCode;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -725,14 +708,13 @@ class _$_PlacePlusCode with DiagnosticableTreeMixin implements _PlacePlusCode {
 
 abstract class _PlacePlusCode implements PlacePlusCode {
   const factory _PlacePlusCode(
-      {final BasicTextField<String?>? compoundCode,
-      final BasicTextField<String?>? globalCode}) = _$_PlacePlusCode;
+      {final BasicTextField? compoundCode,
+      final BasicTextField? globalCode}) = _$_PlacePlusCode;
 
   @override
-  BasicTextField<String?>? get compoundCode =>
-      throw _privateConstructorUsedError;
+  BasicTextField? get compoundCode;
   @override
-  BasicTextField<String?>? get globalCode => throw _privateConstructorUsedError;
+  BasicTextField? get globalCode;
   @override
   @JsonKey(ignore: true)
   _$$_PlacePlusCodeCopyWith<_$_PlacePlusCode> get copyWith =>

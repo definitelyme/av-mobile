@@ -237,7 +237,9 @@ class _$_SocialUserDTO extends _SocialUserDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SocialUserDTOToJson(this);
+    return _$$_SocialUserDTOToJson(
+      this,
+    );
   }
 }
 
@@ -254,16 +256,16 @@ abstract class _SocialUserDTO extends SocialUserDTO {
       _$_SocialUserDTO.fromJson;
 
   @override
-  String? get status => throw _privateConstructorUsedError;
+  String? get status;
   @override
   @IntegerSerializer()
-  int? get code => throw _privateConstructorUsedError;
+  int? get code;
   @override
-  String? get message => throw _privateConstructorUsedError;
+  String? get message;
   @override
-  UserDTO? get data => throw _privateConstructorUsedError;
+  UserDTO? get data;
   @override
-  UserDTO? get user => throw _privateConstructorUsedError;
+  UserDTO? get user;
   @override
   @JsonKey(ignore: true)
   _$$_SocialUserDTOCopyWith<_$_SocialUserDTO> get copyWith =>

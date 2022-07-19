@@ -22,7 +22,7 @@ class InfoResponse with _$InfoResponse implements Info {
 
   factory InfoResponse.processing() => const InfoResponse(message: 'Processing information..please wait!');
 
-  factory InfoResponse.endOfList([String? message]) => InfoResponse(message: message ?? "You've reached the end", type: InfoType.endOfList);
+  factory InfoResponse.endOfList([String? message]) => InfoResponse(message: message ?? '', type: InfoType.endOfList);
 }
 
 extension InfoTypeX on InfoType {

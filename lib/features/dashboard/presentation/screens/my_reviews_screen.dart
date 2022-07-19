@@ -86,7 +86,7 @@ class _MyReviewsScreenState extends State<MyReviewsScreen> {
                 children: [
                   if (rating != null) ...[
                     AdaptiveText(
-                      '${rating.rating.getOrNull.roundToIntOrDouble}',
+                      '${rating.rating.getExact().roundToIntOrDouble}',
                       fontSize: 37.sp,
                       textColor: const Color(0xff222222),
                       textColorDark: Palette.headingDark,
@@ -106,7 +106,7 @@ class _MyReviewsScreenState extends State<MyReviewsScreen> {
                             glow: false,
                             allowHalfRating: true,
                             tapOnlyMode: true,
-                            initialRating: rating.rating.getOrNull,
+                            initialRating: rating.rating.getExact(),
                             minRating: 1,
                             maxRating: 5,
                             itemSize: 0.05.sw,
@@ -148,28 +148,28 @@ class _MyReviewsScreenState extends State<MyReviewsScreen> {
                   //
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: App.sidePadding),
-                    child: GroupedRating(title: 'Delivery', rating: rating.delivery.getOrNull),
+                    child: GroupedRating(title: 'Delivery', rating: rating.delivery.getExact()),
                   ),
                   //
                   0.025.verticalh,
                   //
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: App.sidePadding),
-                    child: GroupedRating(title: 'Responsive', rating: rating.responsiveness.getOrNull),
+                    child: GroupedRating(title: 'Responsive', rating: rating.responsiveness.getExact()),
                   ),
                   //
                   0.025.verticalh,
                   //
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: App.sidePadding),
-                    child: GroupedRating(title: 'Reliable', rating: rating.reliability.getOrNull),
+                    child: GroupedRating(title: 'Reliable', rating: rating.reliability.getExact()),
                   ),
                   //
                   0.025.verticalh,
                   //
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: App.sidePadding),
-                    child: GroupedRating(title: 'Quality', rating: rating.quality.getOrNull),
+                    child: GroupedRating(title: 'Quality', rating: rating.quality.getExact()),
                   ),
                   //
                   Divider(thickness: 1.5, height: 35, indent: App.sidePadding * 0.7, endIndent: App.sidePadding * 0.7),
@@ -212,7 +212,7 @@ class _MyReviewsScreenState extends State<MyReviewsScreen> {
                                     glow: false,
                                     allowHalfRating: true,
                                     tapOnlyMode: true,
-                                    initialRating: value.rating.getOrNull,
+                                    initialRating: value.rating.getExact(),
                                     minRating: 1,
                                     maxRating: 5,
                                     itemSize: 0.05.sw,

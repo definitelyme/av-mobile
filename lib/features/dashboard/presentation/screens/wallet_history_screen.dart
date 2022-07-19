@@ -108,7 +108,7 @@ class WalletHistoryScreen extends StatelessWidget with AutoRouteWrapper {
                     ),
                     //
                     TransactionTile.up(
-                      title: '-18400000'.asCurrency(currency: ' ${Utils.currency}'),
+                      title: '-18400000'.asCurrency(currency: ' ${Const.defaultCurrencyIcon}'),
                       subtitle: '8974-8743',
                       createdAt: DateTime.now().subtract(const Duration(days: 3)),
                       status: TransactionStatus.pending,

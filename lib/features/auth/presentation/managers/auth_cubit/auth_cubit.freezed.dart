@@ -424,36 +424,35 @@ abstract class _AuthState extends AuthState {
   const _AuthState._() : super._();
 
   @override
-  bool get isLoading => throw _privateConstructorUsedError;
+  bool get isLoading;
   @override
-  bool get isUploadingImage => throw _privateConstructorUsedError;
+  bool get isUploadingImage;
   @override
-  bool get validate => throw _privateConstructorUsedError;
+  bool get validate;
   @override
-  bool get isPasswordHidden => throw _privateConstructorUsedError;
+  bool get isPasswordHidden;
   @override
-  bool get isOldPasswordHidden => throw _privateConstructorUsedError;
+  bool get isOldPasswordHidden;
   @override
-  bool get passwordMatches => throw _privateConstructorUsedError;
+  bool get passwordMatches;
   @override
-  bool get isGoogleAuthLoading => throw _privateConstructorUsedError;
+  bool get isGoogleAuthLoading;
   @override
-  bool get isAppleAuthLoading => throw _privateConstructorUsedError;
+  bool get isAppleAuthLoading;
   @override
-  Password get oldPassword => throw _privateConstructorUsedError;
+  Password get oldPassword;
   @override
-  Password get confirmPassword => throw _privateConstructorUsedError;
+  Password get confirmPassword;
   @override
-  OTPCode get code => throw _privateConstructorUsedError;
+  OTPCode get code;
   @override
-  User get user => throw _privateConstructorUsedError;
+  User get user;
   @override
-  TextEditingController get phoneTextController =>
-      throw _privateConstructorUsedError;
+  TextEditingController get phoneTextController;
   @override
-  bool get acceptedTerms => throw _privateConstructorUsedError;
+  bool get acceptedTerms;
   @override
-  Option<AppHttpResponse?> get status => throw _privateConstructorUsedError;
+  Option<AppHttpResponse?> get status;
   @override
   @JsonKey(ignore: true)
   _$$_AuthStateCopyWith<_$_AuthState> get copyWith =>

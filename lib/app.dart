@@ -1,6 +1,6 @@
 library app.dart;
 
-import 'package:auctionvillage/core/presentation/managers/managers.dart';
+import 'package:auctionvillage/core/presentation/index.dart';
 import 'package:auctionvillage/entry.dart';
 import 'package:auctionvillage/features/auth/presentation/managers/managers.dart';
 import 'package:auctionvillage/manager/locator/locator.dart';
@@ -27,44 +27,46 @@ class AuctionVillageApp extends StatelessWidget {
 
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (_) => getIt<RootCubit>()),
         BlocProvider(create: (_) => getIt<ThemeCubit>()),
         BlocProvider(create: (_) => getIt<AuthWatcherCubit>()),
-        BlocProvider(create: (_) => getIt<TabNavigationCubit>()),
         BlocProvider(create: (_) => getIt<DealCubit>()),
         BlocProvider(create: (_) => getIt<WalletCubit>()),
       ],
-      child: ScreenUtilInit(
-        designSize: const Size(375, 812),
-        minTextAdapt: true,
-        splitScreenMode: true,
-        builder: (_, __) => BlocBuilder<ThemeCubit, AppTheme>(
-          builder: (_, app) => PlatformApp.router(
-            title: Const.appName.capitalizeFirst(),
-            debugShowCheckedModeBanner: false,
-            material: (_, __) => MaterialAppRouterData(
-              theme: app.themeData(),
-              darkTheme: AppTheme.dark().themeData(),
-              themeMode: ThemeMode.system,
-            ),
-            cupertino: (_, __) => CupertinoAppRouterData(
-              theme: app.cupertinoThemeData(_),
-              color: Palette.accentColor,
-            ),
-            localizationsDelegates: [
-              RefreshLocalizations.delegate,
-              DefaultMaterialLocalizations.delegate,
-              DefaultWidgetsLocalizations.delegate,
-              DefaultCupertinoLocalizations.delegate,
+      child: BlocBuilder<ThemeCubit, AppTheme>(
+        builder: (_, app) => PlatformApp.router(
+          title: Const.appName.capitalizeFirst(),
+          debugShowCheckedModeBanner: false,
+          material: (_, __) => MaterialAppRouterData(
+            theme: app.themeData(),
+            darkTheme: AppTheme.dark().themeData(),
+            themeMode: ThemeMode.system,
+          ),
+          cupertino: (_, __) => CupertinoAppRouterData(
+            theme: app.cupertinoThemeData(_),
+            color: Palette.accentColor,
+          ),
+          localizationsDelegates: [
+            RefreshLocalizations.delegate,
+            DefaultMaterialLocalizations.delegate,
+            DefaultWidgetsLocalizations.delegate,
+            DefaultCupertinoLocalizations.delegate,
+          ],
+          routeInformationParser: _router.defaultRouteParser(),
+          useInheritedMediaQuery: true,
+          routerDelegate: AutoRouterDelegate(
+            _router,
+            navigatorObservers: () => <NavigatorObserver>[
+              // Register the Firebase Analytics observer
+              if (env.flavor == BuildFlavor.prod) FirebaseAnalyticsObserver(analytics: getIt<FirebaseAnalytics>()),
             ],
-            routeInformationParser: _router.defaultRouteParser(),
+          ),
+          builder: (_, widget) => ScreenUtilInit(
+            designSize: const Size(375, 812),
+            minTextAdapt: true,
+            splitScreenMode: true,
             useInheritedMediaQuery: true,
-            routerDelegate: AutoRouterDelegate(
-              _router,
-              navigatorObservers: () => <NavigatorObserver>[
-                // Register the Firebase Analytics observer
-                if (env.flavor.name == BuildFlavor.prod) FirebaseAnalyticsObserver(analytics: getIt<FirebaseAnalytics>()),
-              ],
-            ),
+            child: widget,
             builder: (_, child) => Entry(_router, child: child!),
           ),
         ),

@@ -1,8 +1,14 @@
 import 'package:auctionvillage/core/data/response/index.dart';
 
-mixin _BaseResponse {
+mixin BaseException implements Exception {
+  String get message;
+}
+
+mixin _BaseResponse implements BaseException {
   bool? get status;
   String? get details;
+
+  @override
   String get message;
 }
 

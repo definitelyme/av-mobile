@@ -1,262 +1,223 @@
 name: auctionvillage
-description: An application for foodies
+description: An application for auctions
 
-publish_to: "none" # Remove this line if you wish to publish to pub.dev
+publish_to: "none"
 
-version: 1.0.0+13
+version: 1.0.4+23
 
 environment:
-  sdk: ">=2.17.0-69.2.beta <3.0.0"
+  sdk: ">=2.17.0 <3.0.0"
+  flutter: ">=3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  equatable: any
-  # Contains utility classes in the style of
-  # dart:async to work with asynchronous computations.
-  # async: ^2.9.0
-  # Flutter package for generating palette colors from a source image.
-  palette_generator: ^0.3.1
-  # RxDart extends the capabilities of Dart Streams and StreamControllers.
-  rxdart: ^0.27.3
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.4
-  # Draw SVG files on a Flutter Widget.
-  flutter_svg: ^1.0.3
-  ###
-  ### Firebase Packages ###
-  ###
-  firebase_core: ^1.13.1
-  # A Flutter plugin to use the Google Analytics for Firebase API.
-  firebase_analytics: ^9.1.2
-  # Crashlytics helps you to collect analytics and
-  # details about crashes and errors that occur in your app.
-  firebase_crashlytics: ^2.5.3
-  # Flutter plugin for Firebase Cloud Messaging, a cross-platform
-  # messaging solution that lets you reliably deliver messages on Android and iOS.
-  firebase_messaging: ^11.2.8
-  # A complete solution to create Local Notifications and Push Notifications.
+  another_flushbar: ^1.10.28
+
+  auto_route: ^4.2.1
+
+  auto_size_text: ^3.0.0
+
   awesome_notifications: ^0.6.21
-  # Google services & Authentication
-  google_sign_in: ^5.2.4
-  # Flutter bridge to initiate Sign in with Apple (on iOS, macOS, and Android).
-  # Includes support for keychain entries as well as signing in with an Apple ID.
-  sign_in_with_apple: ^4.0.0
-  # Customize App font
-  google_fonts: ^3.0.0
-  # Permission plugin for Flutter.
-  # This plugin provides a cross-platform (iOS, Android) API to request and check permissions.
-  permission_handler: ^9.2.0
-  # This plugin allows Flutter apps to discover network connectivity
-  # and configure themselves accordingly.
-  connectivity_plus: ^2.2.0
-  # Check Internet connectivity
-  internet_connection_checker: ^0.0.1+4
-  # Service locator
-  get_it: ^7.2.0
-  # Useful platform aware widgets to bring a Material app to Cupertino.
-  enough_platform_widgets: ^0.4.0
-  # A powerful Http client for Dart, which supports Interceptors,
-  # Global configuration, FormData, Request Cancellation, File downloading, Timeout etc.
-  dio: ^4.0.4
-  # Pretty Dio logger is a Dio interceptor that logs network calls in a pretty, easy to read format.
-  pretty_dio_logger: ^1.1.1
-  # Dio HTTP cache interceptor with multiple stores respecting HTTP directives (or not).
-  dio_cache_interceptor: ^3.2.2
-  # Flutter BloC for state management
-  flutter_bloc: ^8.0.1
-  # Automatically persists and restores bloc states
-  hydrated_bloc: ^8.1.0
-  # Custom event transformers inspired by ember concurrency.
-  # Built to be used with the bloc state management package.
+
+  badges: ^2.0.2
+
   bloc_concurrency: ^0.2.0
-  # A lightweight and blazing fast key-value database written in pure Dart.
+
+  built_collection: ^5.1.1
+
+  built_value: ^8.4.0
+
+  cached_network_image: ^3.2.0
+
+  carousel_slider: ^4.0.0
+
+  cloudinary_public: ^0.11.0
+
+  connectivity_plus: ^2.3.6
+
+  cupertino_icons: ^1.0.4
+
+  cupertino_list_tile: ^0.2.1
+
+  dartz: ^0.10.1
+
+  date_format: ^2.0.5
+
+  dio: ^4.0.4
+
+  dio_cache_interceptor: ^3.3.0
+
+  dismissible_page: ^0.7.3
+
+  enough_platform_widgets: ^0.4.0
+
+  expandable: ^5.0.1
+
+  extended_nested_scroll_view: ^5.0.0
+
+  firebase_analytics: ^9.2.0
+
+  firebase_core: ^1.19.2
+
+  firebase_crashlytics: ^2.8.5
+
+  firebase_messaging: ^12.0.0
+
+  flutter_bloc: ^8.0.1
+
+  flutter_colorpicker: ^1.0.3
+
+  flutter_datetime_picker: ^1.5.1
+
+  flutter_downloader: ^1.8.1
+
+  flutter_masked_text2:
+    git:
+      url: https://github.com/Flutter-Fox/flutter_masked_text.git
+      ref: hotfix-0.9.1
+
+  flutter_multi_formatter: ^2.5.8
+
+  flutter_native_splash: ^2.2.5
+
+  flutter_paystack:
+    git:
+      url: https://github.com/definitelyme/flutter_paystack.git
+      ref: patch/1.0.5+2
+
+  flutter_rating_bar: ^4.0.0
+
+  flutter_screenutil: ^5.4.0
+
+  flutter_spinkit: ^5.1.0
+
+  flutter_svg: ^1.1.1+1
+
+  fluttertoast: ^8.0.8
+
+  flutterwave_standard:
+    git:
+      url: https://github.com/definitelyme/flutter_standard.git
+      ref: fix-exception
+
+  freezed_annotation: ^2.1.0
+
+  get_it: ^7.2.0
+
+  google_fonts: ^3.0.0
+
+  google_sign_in: ^5.4.0
+
   hive_flutter:
     git:
       url: https://github.com/Flutter-Fox/hive.git
       ref: master
       path: hive_flutter/
-  # Provides:
-  # - Immutable value types
-  # - EnumClass, classes that behave like enums
-  # - JSON serialization
-  built_value: ^8.1.4
-  # Provides: Immutable collections
-  built_collection: ^5.1.1
-  # Functional Programming
-  dartz: ^0.10.1
-  # For regular Unions
-  freezed_annotation: ^2.0.3
-  # For generating unique UUIDs
-  uuid: ^3.0.6
-  # Dart library for validating and sanitizing strings, especially those from user input.
-  string_validator: ^0.3.0
-  # Flutter widget that automatically resizes text to fit perfectly within its bounds
-  auto_size_text: ^3.0.0
-  # simplifies dependency injection
-  injectable: ^1.5.3
-  # provides internationalization
-  # and localization facilities
-  intl: ^0.17.0
-  # A declarative routing solution
-  auto_route: ^4.0.1
-  # A collection of loading indicators animated with flutter.
-  flutter_spinkit: ^5.1.0
-  # Shimmer Skeleton Library.
-  shimmer: ^2.0.0
-  # Now this toast library supports two kinds of toast messages:
-  # - one which requires BuildContext
-  # - other with No BuildContext
-  fluttertoast: ^8.0.8
-  # Wraps platform-specific persistent storage for simple data
-  shared_preferences: ^2.0.12
-  # A Flutter plugin for finding commonly used locations on the filesystem.
-  path_provider: ^2.0.8
-  # A port of Kotlin's Kotlin Standard library for Dart/Flutter projects.
-  kt_dart: ^0.10.0
-  # A port of the Rails/ActiveSupport inflector library to Dart.
-  inflection3: ^0.5.3+2
-  # Customizable animated page indicator with a set of built-in effects.
-  smooth_page_indicator: ^1.0.0+2
-  # Defines the annotations used by json_serializable
-  # to create code for JSON serialization and deserialization.
-  json_annotation: ^4.5.0
-  # retrofit.dart is a type conversion dio client generator
-  # using source_gen and inspired by Chopper and Retrofit.
-  retrofit: ^3.0.1+1
-  # A flutter package which will help you to
-  # generate pin code fields with beautiful design and animations.
-  pin_code_fields: ^7.3.0
-  # Use this package if you need more customization when notifying your user.
-  another_flushbar: ^1.10.28
-  # A simple API to format dates.
-  date_format: ^2.0.5
-  # in intl / international format uses Google's libphonenumber
-  intl_phone_number_input: ^0.7.0+2
-  # A flutter library to show images from the internet
-  # and keep them in the cache directory.
-  cached_network_image: ^3.2.1
-  # Approximate how your app looks and performs on another device.
-  # device_preview: ^1.0.0-alpha.15
-  # A flutter package which provides a simple way to Showcase/Highlight your widgets step by step.
-  showcaseview: ^1.1.5
-  # A flutter plugin for adapting screen and font size.Let your UI
-  # display a reasonable layout on different screen sizes!
-  flutter_screenutil: ^5.4.0
-  # A Flutter plugin for iOS and Android for picking images from the image library,
-  # and taking new pictures with the camera.
+
   image_picker: ^0.8.4+10
-  # Cupertino version of the stock Material ListTile in Flutter.
-  # PS: This is not a pixel perfect interpretation of the iOS Human Interface Guidelines.
-  cupertino_list_tile: ^0.2.1
-  # Create awesome and powerful modal bottom sheets.
+
+  in_app_update: ^3.0.0
+
+  inflection3: ^0.5.3+2
+
+  injectable: ^1.5.3
+
+  internet_connection_checker: ^0.0.1+3
+
+  intl: ^0.17.0
+
+  intl_phone_number_input: ^0.7.0+2
+
+  json_annotation: ^4.6.0
+
+  kt_dart: ^0.10.0
+
   modal_bottom_sheet: ^2.0.0
-  # A Flutter widget that can be expanded or collapsed by the user.
-  expandable: ^5.0.1
-  # Fast and easy way to build a custom search experience in you app.
-  search_page: ^2.0.0+1
-  # Customize Flutter's default white native splash screen with background color and splash image.
-  # Supports dark mode, full screen, and more.
-  flutter_native_splash: ^2.2.0+1
-  # Masked text input for flutter.
-  flutter_masked_text2:
+
+  new_version: ^0.3.1
+
+  path_provider: ^2.0.8
+
+  permission_handler: ^10.0.0
+
+  photo_view:
     git:
-      url: https://github.com/Flutter-Fox/flutter_masked_text.git
-      ref: hotfix-0.9.1
-  # Flutter plugin for sharing content via the platform share UI,6
-  # using the ACTION_SEND intent on Android and UIActivityViewController on iOS.
-  share_plus: ^4.0.4
-  # A simple yet fully customizable ratingbar for
-  # flutter which also include a rating bar indicator,
-  # supporting any fraction of rating.
-  flutter_rating_bar: ^4.0.0
-  # a widget provided to the flutter scroll component drop-down refresh and pull up load.
+      url: https://github.com/bluefireteam/photo_view.git
+      ref: 8156907eecfa812b181a5a729d790f6d399f311b
+
+  pretty_dio_logger: ^1.1.1
+
   pull_to_refresh: ^2.0.0
-  # Flutter plugin for launching a URL. Supports web, phone, SMS, and email schemes.
-  url_launcher: ^6.0.18
-  # A carousel slider widget, support infinite scroll and custom child widget.
-  carousel_slider: ^4.0.0
-  # Port of official Laravel Echo package for your Flutter apps.
-  laravel_echo: ^1.0.0-beta.1
-  # A Pusher Channels client plugin for Flutter targeting Android and iOS.
-  # It wraps pusher-websocket-java v2.2.5 and pusher-websocket-swift v8.0.0.
-  pusher_client:
-    git:
-      url: https://github.com/thijskuilman/pusher_client.git
-  # An abstraction for two-way communication channels based on the Dart Stream class.
+
+  retrofit: ^3.0.1+1
+
+  retry: ^3.1.0
+
+  rxdart: ^0.27.5
+
+  search_page: ^2.0.0+1
+
+  share_plus: ^4.0.4
+
+  shared_preferences: ^2.0.12
+
+  shimmer: ^2.0.0
+
+  showcaseview: ^1.1.7
+
+  # sign_in_with_apple: ^4.0.0
+
+  smooth_page_indicator: ^1.0.0+2
+
+  socket_io_client: ^2.0.0
+
   stream_channel: ^2.1.0
-  # A flutter package for creating badges.
-  # Badges can be used for an additional marker for any widget, e.g. show a number of items in a shopping cart.
-  badges: ^2.0.2
-  # extended nested scroll view to fix pinned header and inner scrollables sync issues.
-  extended_nested_scroll_view: ^5.1.0
-  # Photo View provides a gesture sensitive zoomable widget.
-  # Photo View is largely used to show interactive images and other stuff such as SVG.
-  photo_view: ^0.13.0
-  # A date time picker for flutter, you can choose date / time / date&time in English Dutch and Chinese,
-  # and you can also custom your own picker content
-  flutter_datetime_picker: ^1.5.1
-  # A package of formatters for international phone numbers, credit / debit cards and a masked formatter
-  flutter_multi_formatter: ^2.5.1
-  # A JSON file-based storage package provides a persistent repository for simple NoSQL database.
-  localstore: ^1.2.3
-  # NoSQL persistent embedded file system document-based database for Dart VM and Flutter with encryption support.
-  sembast: ^3.2.0
-  # This package allows you to upload media files directly to cloudinary, without exposing your apiKey or secretKey.
-  cloudinary_public: ^0.11.0
-  # HSV(HSB)/HSL/RGB/Material color picker inspired by all the good design for your amazing flutter apps.
-  flutter_colorpicker: ^1.0.3
-  # A Flutter plugin for making payments via Paystack Payment Gateway.
-  flutter_paystack:
-    git:
-      url: https://github.com/definitelyme/flutter_paystack.git
-      ref: patch/1.0.5+2
-  # Flutterwave official flutter library to accept payment via card, USSD, Mobile Money etc.
-  flutterwave_standard:
-    git:
-      url: https://github.com/definitelyme/flutter_standard.git
-      ref: fix-exception
-  # Dartlang port of socket.io-client for web, flutter, dartvm to use
-  socket_io_client: ^1.0.2
-  dismissible_page: ^0.7.2
+
+  string_validator: ^0.3.0
+
+  url_launcher: ^6.1.5
+
+  uuid: ^3.0.6
 
 dependency_overrides:
-  async: "2.9.0"
-  analyzer: ^4.0.0
-  dart_style: "2.2.3"
+  analyzer: ^4.2.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  # bloc_test: ^8.1.0
-  logger: ^1.0.0
-  flutter_launcher_icons: ^0.9.1
-  # Pedantic lints your whole project strictly
-  # Pedantic does a great job keeping the project with similar code styles
-  pedantic: ^1.11.1
-  # Code Generators
-  build_runner: ^2.1.11
-  freezed: ^2.0.3+1
-  injectable_generator: ^1.5.3
-  built_value_generator: ^8.1.4
-  auto_route_generator: ^4.0.0
-  retrofit_generator:
-    git:
-      url: https://github.com/Flutter-Fox/retrofit.dart.git
-      ref: ft/app_http_client
-      path: generator/
-  json_serializable: ^6.1.4
-  floor_generator:
-    git:
-      url: https://github.com/Flutter-Fox/floor.git
-      ref: ft/require-freezed
-      path: floor_generator/
+
+  auto_route_generator: ^4.2.0
+
+  build_runner: ^2.2.0
+
+  built_value_generator: ^8.4.0
+
+  flutter_launcher_icons: ^0.9.3
+
+  flutter_lints: ^2.0.0
+
+  freezed: ^2.1.0+1
+
   hive_generator:
     git:
       url: https://github.com/Flutter-Fox/hive.git
       ref: master
       path: hive_generator/
+
+  injectable_generator: ^1.5.4
+
+  json_serializable: ^6.3.1
+
+  logger: ^1.0.0
+
+  pedantic: ^1.11.1
+
+  retrofit_generator:
+    git:
+      url: https://github.com/Flutter-Fox/retrofit.dart.git
+      ref: ft/app_http_client
+      path: generator/
 
 flutter:
   uses-material-design: true
@@ -271,6 +232,7 @@ flutter:
     - assets/svgs/auth/
     - assets/svgs/logo/
     - assets/svgs/dashboard/
+    - assets/svgs/onboarding/
     - assets/raw/
 
   fonts:
@@ -280,3 +242,86 @@ flutter:
     - family: AVIcons
       fonts:
         - asset: assets/fonts/AVIcons.ttf
+    - family: SanFrancisco
+      fonts:
+        - asset: assets/fonts/san_francisco/SFNSDisplay-Bold.otf
+          weight: 700
+          style: normal
+        - asset: assets/fonts/san_francisco/SF-Pro-Display-BoldItalic.otf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/san_francisco/SFNSDisplay-Heavy.otf
+          weight: 700
+          style: normal
+        - asset: assets/fonts/san_francisco/SF-Pro-Display-HeavyItalic.otf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/san_francisco/SFNSDisplay-Light.otf
+          weight: 300
+          style: normal
+        - asset: assets/fonts/san_francisco/SF-Pro-Display-LightItalic.otf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/san_francisco/SFNSDisplay-Medium.otf
+          weight: 500
+          style: normal
+        - asset: assets/fonts/san_francisco/SF-Pro-Display-MediumItalic.otf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/san_francisco/SFNSDisplay-Regular.otf
+          weight: 400
+          style: normal
+        - asset: assets/fonts/san_francisco/SF-Pro-Display-RegularItalic.otf
+          weight: 400
+          style: italic
+        - asset: assets/fonts/san_francisco/SFNSDisplay-Semibold.otf
+          weight: 600
+          style: normal
+        - asset: assets/fonts/san_francisco/SF-Pro-Display-SemiboldItalic.otf
+          weight: 600
+          style: italic
+        - asset: assets/fonts/san_francisco/SFNSDisplay-Thin.otf
+          weight: 100
+          style: normal
+        - asset: assets/fonts/san_francisco/SF-Pro-Display-ThinItalic.otf
+          weight: 100
+          style: italic
+        - asset: assets/fonts/san_francisco/SFNSDisplay-Ultralight.otf
+          weight: 200
+          style: normal
+        - asset: assets/fonts/san_francisco/SF-Pro-Display-UltralightItalic.otf
+          weight: 200
+          style: italic
+        - asset: assets/fonts/san_francisco/SFNSText-Bold.otf
+          weight: 700
+          style: normal
+        - asset: assets/fonts/san_francisco/SFNSText-BoldItalic.otf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/san_francisco/SFNSText-Heavy.otf
+          weight: 700
+          style: normal
+        - asset: assets/fonts/san_francisco/SFNSText-HeavyItalic.otf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/san_francisco/SFNSText-Light.otf
+          weight: 300
+          style: normal
+        - asset: assets/fonts/san_francisco/SFNSText-LightItalic.otf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/san_francisco/SFNSText-Medium.otf
+          weight: 500
+          style: normal
+        - asset: assets/fonts/san_francisco/SFNSText-MediumItalic.otf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/san_francisco/SFNSText-Regular.otf
+          weight: 400
+          style: normal
+        - asset: assets/fonts/san_francisco/SFNSText-RegularItalic.otf
+          weight: 400
+          style: italic
+        - asset: assets/fonts/san_francisco/SFNSText-Semibold.otf
+          weight: 600
+          style: normal

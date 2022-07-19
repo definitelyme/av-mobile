@@ -1,67 +1,53 @@
 library access_token_manager.dart;
 
-import 'package:auctionvillage/core/domain/entities/entities.dart';
+import 'package:auctionvillage/core/data/index.dart';
 import 'package:auctionvillage/features/auth/data/models/index.dart';
 import 'package:auctionvillage/features/auth/domain/index.dart';
 import 'package:auctionvillage/utils/utils.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
 class AccessTokenManager {
-  AccessTokenManager();
+  AccessTokenManager._();
 
-  Box<String> get _box => Hive.box(Const.kAccessTokenBoxKey);
+  static final AccessTokenManager _instance = AccessTokenManager._();
 
-  AccessToken get() {
-    // Retrieve opened box
-    final _token = _box.get(Const.kAccessTokenKey);
-    final _expiry = _box.get(Const.kAccessTokenExpiryKey);
+  static AccessTokenManager get instance => _instance;
 
-    // return cached access token
-    return AccessToken(
-      accessToken: BasicTextField(_token),
-      tokenType: TokenType.parse(null),
-      expiryDate: BasicTextField(int.tryParse(_expiry ?? '')),
-    );
-  }
+  Future<void> delete() async => await HiveClient.accessTokenBox?.clear();
+
+  AccessToken? get() => HiveClient.accessTokenBox?.values.firstOrNone;
 
   AccessToken raw() {
     // Retrieve opened box
-    final _token = _box.get(Const.kAccessTokenKey);
-    final _expiry = _box.get(Const.kAccessTokenExpiryKey);
+    final _token = get()?.accessToken;
 
     // return cached access token
     return AccessToken(
-      accessToken: BasicTextField(_token?.replaceAll('Bearer ', '')),
-      tokenType: TokenType.parse(null),
-      expiryDate: BasicTextField(int.tryParse(_expiry ?? '')),
+      accessToken: _token?.replaceAll('Bearer ', ''),
+      tokenType: get()?.tokenType ?? TokenType.bearer,
+      expiryDate: get()?.expiryDate,
     );
   }
 
   Future<void> save({
-    String? token,
+    String? accessToken,
     required TokenResponse response,
     TokenType type = TokenType.bearer,
     Duration duration = const Duration(days: 365),
   }) async {
-    final _token = token ?? response.accessToken;
-    // Store expiry date
-    await _box.put(
-      Const.kAccessTokenExpiryKey,
-      response.expiryDate?.toString() ?? duration.inMilliseconds.toString(),
-    );
+    final token = accessToken ?? response.accessToken;
 
-    switch (type) {
-      case TokenType.bearer:
-        await _box.put(Const.kAccessTokenKey, 'Bearer $_token');
-        break;
-      default:
-        await _box.put(Const.kAccessTokenKey, '$_token');
+    final String tokenString;
+
+    if (type == TokenType.bearer) {
+      tokenString = 'Bearer $token';
+    } else {
+      tokenString = '$token';
     }
-  }
 
-  Future<void> delete() async {
-    await _box.delete(Const.kAccessTokenKey);
-    await _box.delete(Const.kAccessTokenExpiryKey);
-    await _box.clear();
+    await HiveClient.accessTokenBox?.add(AccessToken(
+      accessToken: tokenString,
+      tokenType: type,
+      expiryDate: int.tryParse(response.expiryDate?.toString() ?? duration.inMilliseconds.toString()),
+    ));
   }
 }

@@ -196,7 +196,9 @@ class _$_MetaDTO extends _MetaDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MetaDTOToJson(this);
+    return _$$_MetaDTOToJson(
+      this,
+    );
   }
 }
 
@@ -211,13 +213,13 @@ abstract class _MetaDTO extends MetaDTO {
   factory _MetaDTO.fromJson(Map<String, dynamic> json) = _$_MetaDTO.fromJson;
 
   @override
-  int? get statusCode => throw _privateConstructorUsedError;
+  int? get statusCode;
   @override
-  bool? get status => throw _privateConstructorUsedError;
+  bool? get status;
   @override
-  String? get message => throw _privateConstructorUsedError;
+  String? get message;
   @override
-  PaginationDTO? get pagination => throw _privateConstructorUsedError;
+  PaginationDTO? get pagination;
   @override
   @JsonKey(ignore: true)
   _$$_MetaDTOCopyWith<_$_MetaDTO> get copyWith =>

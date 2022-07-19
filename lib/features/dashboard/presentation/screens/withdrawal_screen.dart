@@ -1,7 +1,5 @@
 library withdrawal_screen.dart;
 
-import 'dart:async';
-
 import 'package:auctionvillage/core/domain/entities/entities.dart';
 import 'package:auctionvillage/core/presentation/index.dart';
 import 'package:auctionvillage/features/dashboard/domain/index.dart';
@@ -26,7 +24,7 @@ class WithdrawalScreen extends StatefulWidget with AutoRouteWrapper {
   Widget wrappedRoute(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => blocMaybeOf(context, orElse: () => getIt<WalletCubit>())),
+        BlocProvider.value(value: blocMaybeOf(context, orElse: () => getIt<WalletCubit>())),
       ],
       child: BlocListener<WalletCubit, WalletState>(
         listenWhen: (p, c) =>
@@ -122,7 +120,7 @@ class _WithdrawalScreenState extends State<WithdrawalScreen> {
                 validate: (s) => s.validate,
                 response: (s) => s.status,
                 onChanged: (cubit, _) => cubit.amountChanged(),
-                prefixIcon: (s) => const CurrencyPrefixWidget(Utils.currency),
+                prefixIcon: (s) => const CurrencyPrefixWidget(),
                 prefixMode: (s) => OverlayVisibilityMode.always,
                 inputFormatters: [
                   FilteringTextInputFormatter.digitsOnly,

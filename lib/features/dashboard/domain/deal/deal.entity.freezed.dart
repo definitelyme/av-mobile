@@ -17,16 +17,15 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$Deal {
   UniqueId<String?> get id => throw _privateConstructorUsedError;
-  AmountField<double> get basePrice => throw _privateConstructorUsedError;
-  AmountField<double> get lastPriceOffered =>
-      throw _privateConstructorUsedError;
+  NumField<double> get basePrice => throw _privateConstructorUsedError;
+  NumField<double> get lastPriceOffered => throw _privateConstructorUsedError;
   bool get isPrivate => throw _privateConstructorUsedError;
   bool get isSponsored => throw _privateConstructorUsedError;
   bool get hasWish => throw _privateConstructorUsedError;
-  AmountField<double?> get admittanceFee => throw _privateConstructorUsedError;
-  BasicTextField<int?> get dealPriority => throw _privateConstructorUsedError;
-  BasicTextField<String?> get address => throw _privateConstructorUsedError;
-  BasicTextField<int?> get clicks => throw _privateConstructorUsedError;
+  NumField<double?> get admittanceFee => throw _privateConstructorUsedError;
+  NumField<int?> get dealPriority => throw _privateConstructorUsedError;
+  BasicTextField get address => throw _privateConstructorUsedError;
+  NumField<int?> get clicks => throw _privateConstructorUsedError;
   BidStatus get bidStatus => throw _privateConstructorUsedError;
   bool get isClosing => throw _privateConstructorUsedError;
   bool get isActive => throw _privateConstructorUsedError;
@@ -57,15 +56,15 @@ abstract class $DealCopyWith<$Res> {
       _$DealCopyWithImpl<$Res>;
   $Res call(
       {UniqueId<String?> id,
-      AmountField<double> basePrice,
-      AmountField<double> lastPriceOffered,
+      NumField<double> basePrice,
+      NumField<double> lastPriceOffered,
       bool isPrivate,
       bool isSponsored,
       bool hasWish,
-      AmountField<double?> admittanceFee,
-      BasicTextField<int?> dealPriority,
-      BasicTextField<String?> address,
-      BasicTextField<int?> clicks,
+      NumField<double?> admittanceFee,
+      NumField<int?> dealPriority,
+      BasicTextField address,
+      NumField<int?> clicks,
       BidStatus bidStatus,
       bool isClosing,
       bool isActive,
@@ -139,11 +138,11 @@ class _$DealCopyWithImpl<$Res> implements $DealCopyWith<$Res> {
       basePrice: basePrice == freezed
           ? _value.basePrice
           : basePrice // ignore: cast_nullable_to_non_nullable
-              as AmountField<double>,
+              as NumField<double>,
       lastPriceOffered: lastPriceOffered == freezed
           ? _value.lastPriceOffered
           : lastPriceOffered // ignore: cast_nullable_to_non_nullable
-              as AmountField<double>,
+              as NumField<double>,
       isPrivate: isPrivate == freezed
           ? _value.isPrivate
           : isPrivate // ignore: cast_nullable_to_non_nullable
@@ -159,19 +158,19 @@ class _$DealCopyWithImpl<$Res> implements $DealCopyWith<$Res> {
       admittanceFee: admittanceFee == freezed
           ? _value.admittanceFee
           : admittanceFee // ignore: cast_nullable_to_non_nullable
-              as AmountField<double?>,
+              as NumField<double?>,
       dealPriority: dealPriority == freezed
           ? _value.dealPriority
           : dealPriority // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<int?>,
+              as NumField<int?>,
       address: address == freezed
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       clicks: clicks == freezed
           ? _value.clicks
           : clicks // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<int?>,
+              as NumField<int?>,
       bidStatus: bidStatus == freezed
           ? _value.bidStatus
           : bidStatus // ignore: cast_nullable_to_non_nullable
@@ -310,15 +309,15 @@ abstract class _$$_DealCopyWith<$Res> implements $DealCopyWith<$Res> {
   @override
   $Res call(
       {UniqueId<String?> id,
-      AmountField<double> basePrice,
-      AmountField<double> lastPriceOffered,
+      NumField<double> basePrice,
+      NumField<double> lastPriceOffered,
       bool isPrivate,
       bool isSponsored,
       bool hasWish,
-      AmountField<double?> admittanceFee,
-      BasicTextField<int?> dealPriority,
-      BasicTextField<String?> address,
-      BasicTextField<int?> clicks,
+      NumField<double?> admittanceFee,
+      NumField<int?> dealPriority,
+      BasicTextField address,
+      NumField<int?> clicks,
       BidStatus bidStatus,
       bool isClosing,
       bool isActive,
@@ -398,11 +397,11 @@ class __$$_DealCopyWithImpl<$Res> extends _$DealCopyWithImpl<$Res>
       basePrice: basePrice == freezed
           ? _value.basePrice
           : basePrice // ignore: cast_nullable_to_non_nullable
-              as AmountField<double>,
+              as NumField<double>,
       lastPriceOffered: lastPriceOffered == freezed
           ? _value.lastPriceOffered
           : lastPriceOffered // ignore: cast_nullable_to_non_nullable
-              as AmountField<double>,
+              as NumField<double>,
       isPrivate: isPrivate == freezed
           ? _value.isPrivate
           : isPrivate // ignore: cast_nullable_to_non_nullable
@@ -418,19 +417,19 @@ class __$$_DealCopyWithImpl<$Res> extends _$DealCopyWithImpl<$Res>
       admittanceFee: admittanceFee == freezed
           ? _value.admittanceFee
           : admittanceFee // ignore: cast_nullable_to_non_nullable
-              as AmountField<double?>,
+              as NumField<double?>,
       dealPriority: dealPriority == freezed
           ? _value.dealPriority
           : dealPriority // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<int?>,
+              as NumField<int?>,
       address: address == freezed
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       clicks: clicks == freezed
           ? _value.clicks
           : clicks // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<int?>,
+              as NumField<int?>,
       bidStatus: bidStatus == freezed
           ? _value.bidStatus
           : bidStatus // ignore: cast_nullable_to_non_nullable
@@ -544,9 +543,9 @@ class _$_Deal extends _Deal {
   @override
   final UniqueId<String?> id;
   @override
-  final AmountField<double> basePrice;
+  final NumField<double> basePrice;
   @override
-  final AmountField<double> lastPriceOffered;
+  final NumField<double> lastPriceOffered;
   @override
   @JsonKey()
   final bool isPrivate;
@@ -557,13 +556,13 @@ class _$_Deal extends _Deal {
   @JsonKey()
   final bool hasWish;
   @override
-  final AmountField<double?> admittanceFee;
+  final NumField<double?> admittanceFee;
   @override
-  final BasicTextField<int?> dealPriority;
+  final NumField<int?> dealPriority;
   @override
-  final BasicTextField<String?> address;
+  final BasicTextField address;
   @override
-  final BasicTextField<int?> clicks;
+  final NumField<int?> clicks;
   @override
   @JsonKey()
   final BidStatus bidStatus;
@@ -699,15 +698,15 @@ class _$_Deal extends _Deal {
 abstract class _Deal extends Deal {
   const factory _Deal(
       {required final UniqueId<String?> id,
-      required final AmountField<double> basePrice,
-      required final AmountField<double> lastPriceOffered,
+      required final NumField<double> basePrice,
+      required final NumField<double> lastPriceOffered,
       final bool isPrivate,
       final bool isSponsored,
       final bool hasWish,
-      required final AmountField<double?> admittanceFee,
-      required final BasicTextField<int?> dealPriority,
-      required final BasicTextField<String?> address,
-      required final BasicTextField<int?> clicks,
+      required final NumField<double?> admittanceFee,
+      required final NumField<int?> dealPriority,
+      required final BasicTextField address,
+      required final NumField<int?> clicks,
       final BidStatus bidStatus,
       final bool isClosing,
       final bool isActive,
@@ -729,62 +728,61 @@ abstract class _Deal extends Deal {
   const _Deal._() : super._();
 
   @override
-  UniqueId<String?> get id => throw _privateConstructorUsedError;
+  UniqueId<String?> get id;
   @override
-  AmountField<double> get basePrice => throw _privateConstructorUsedError;
+  NumField<double> get basePrice;
   @override
-  AmountField<double> get lastPriceOffered =>
-      throw _privateConstructorUsedError;
+  NumField<double> get lastPriceOffered;
   @override
-  bool get isPrivate => throw _privateConstructorUsedError;
+  bool get isPrivate;
   @override
-  bool get isSponsored => throw _privateConstructorUsedError;
+  bool get isSponsored;
   @override
-  bool get hasWish => throw _privateConstructorUsedError;
+  bool get hasWish;
   @override
-  AmountField<double?> get admittanceFee => throw _privateConstructorUsedError;
+  NumField<double?> get admittanceFee;
   @override
-  BasicTextField<int?> get dealPriority => throw _privateConstructorUsedError;
+  NumField<int?> get dealPriority;
   @override
-  BasicTextField<String?> get address => throw _privateConstructorUsedError;
+  BasicTextField get address;
   @override
-  BasicTextField<int?> get clicks => throw _privateConstructorUsedError;
+  NumField<int?> get clicks;
   @override
-  BidStatus get bidStatus => throw _privateConstructorUsedError;
+  BidStatus get bidStatus;
   @override
-  bool get isClosing => throw _privateConstructorUsedError;
+  bool get isClosing;
   @override
-  bool get isActive => throw _privateConstructorUsedError;
+  bool get isActive;
   @override
-  DealStatus get status => throw _privateConstructorUsedError;
+  DealStatus get status;
   @override
-  DealType get type => throw _privateConstructorUsedError;
+  DealType get type;
   @override
-  OfferType get offerType => throw _privateConstructorUsedError;
+  OfferType get offerType;
   @override
-  DealPlanType get dealPlan => throw _privateConstructorUsedError;
+  DealPlanType get dealPlan;
   @override
-  QuantityType get quantity => throw _privateConstructorUsedError;
+  QuantityType get quantity;
   @override
-  BiddingType get biddingType => throw _privateConstructorUsedError;
+  BiddingType get biddingType;
   @override
-  User? get user => throw _privateConstructorUsedError;
+  User? get user;
   @override
-  User? get vendor => throw _privateConstructorUsedError;
+  User? get vendor;
   @override
-  User? get lastBidder => throw _privateConstructorUsedError;
+  User? get lastBidder;
   @override
-  Product? get product => throw _privateConstructorUsedError;
+  Product? get product;
   @override
-  Country? get country => throw _privateConstructorUsedError;
+  Country? get country;
   @override // DealCategory? category,
-  DateTimeField get startDate => throw _privateConstructorUsedError;
+  DateTimeField get startDate;
   @override
-  DateTimeField get endDate => throw _privateConstructorUsedError;
+  DateTimeField get endDate;
   @override
-  DateTime? get createdAt => throw _privateConstructorUsedError;
+  DateTime? get createdAt;
   @override
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$_DealCopyWith<_$_Deal> get copyWith => throw _privateConstructorUsedError;
