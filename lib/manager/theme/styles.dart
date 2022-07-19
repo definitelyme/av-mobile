@@ -8,8 +8,8 @@ import 'package:auctionvillage/utils/utils.dart';
 
 part 'styles-adapter.dart';
 
-const String LIGHT_THEME_ID = 'Light-THEME-ID';
-const String DARK_THEME_ID = 'Dark-THEME-ID';
+const String lightThemeID = 'Light-THEME-ID';
+const String darkThemeID = 'Dark-THEME-ID';
 
 class AppTheme extends HiveObject {
   final Color? _accentColor;
@@ -86,12 +86,10 @@ class AppTheme extends HiveObject {
         _textSelectionThemeData = textSelectionThemeData,
         _textTheme = textTheme;
 
-  static TextStyle? cupertinoTextStyle(BuildContext ctx) => GoogleFonts.manrope(
+  static TextStyle? cupertinoTextStyle(BuildContext ctx) => TextStyle(
+        fontFamily: 'SanFrancisco',
         color: CupertinoDynamicColor.resolve(
-          const CupertinoDynamicColor.withBrightness(
-            color: Palette.text100,
-            darkColor: Palette.text100Dark,
-          ),
+          const CupertinoDynamicColor.withBrightness(color: Palette.text100, darkColor: Palette.text100Dark),
           ctx,
         ),
       );
@@ -135,8 +133,8 @@ class AppTheme extends HiveObject {
   /// Light Theme Configurations
   static AppTheme light() {
     return AppTheme._(
-      id: LIGHT_THEME_ID,
-      themeMode: ThemeMode.system,
+      id: lightThemeID,
+      themeMode: ThemeMode.light,
       brightness: Brightness.light,
       accentColorBrightness: Brightness.light,
       primaryColor: Palette.accentColor,
@@ -153,7 +151,7 @@ class AppTheme extends HiveObject {
       visualDensity: VisualDensity.adaptivePlatformDensity,
       textSelectionThemeData: TextSelectionThemeData(
         cursorColor: Palette.accentColor,
-        selectionColor: Palette.accent40,
+        selectionColor: Palette.accentColor.shade200,
         selectionHandleColor: Palette.accentColor.shade400,
       ),
       radioThemeData: RadioThemeData(
@@ -162,25 +160,40 @@ class AppTheme extends HiveObject {
       ),
       switchThemeData: SwitchThemeData(
         thumbColor: MaterialStateProperty.all(Palette.accentColor),
-        trackColor: MaterialStateProperty.all(Palette.accent20),
+        trackColor: MaterialStateProperty.all(Palette.accentColor.withOpacity(0.3)),
         materialTapTargetSize: MaterialTapTargetSize.padded,
       ),
       inputTheme: InputDecorationTheme(
-        alignLabelWithHint: lightInputDecoration.alignLabelWithHint!,
-        floatingLabelBehavior: lightInputDecoration.floatingLabelBehavior!,
-        isDense: lightInputDecoration.isDense!,
-        filled: lightInputDecoration.filled!,
-        hintStyle: lightInputDecoration.hintStyle!,
-        labelStyle: lightInputDecoration.labelStyle!,
-        errorStyle: lightInputDecoration.errorStyle!,
-        fillColor: lightInputDecoration.fillColor!,
-        contentPadding: lightInputDecoration.contentPadding!,
-        enabledBorder: lightInputDecoration.enabledBorder!,
-        disabledBorder: lightInputDecoration.disabledBorder!,
-        focusedBorder: lightInputDecoration.focusedBorder!,
-        focusedErrorBorder: lightInputDecoration.focusedErrorBorder!,
-        border: lightInputDecoration.border!,
-        errorBorder: lightInputDecoration.errorBorder!,
+        alignLabelWithHint: lightInputDecoration.alignLabelWithHint ?? false,
+        floatingLabelBehavior: lightInputDecoration.floatingLabelBehavior ?? FloatingLabelBehavior.auto,
+        isDense: lightInputDecoration.isDense ?? false,
+        filled: lightInputDecoration.filled ?? false,
+        hintStyle: lightInputDecoration.hintStyle,
+        labelStyle: lightInputDecoration.labelStyle,
+        errorStyle: lightInputDecoration.errorStyle,
+        fillColor: lightInputDecoration.fillColor,
+        contentPadding: lightInputDecoration.contentPadding,
+        focusedBorder: lightInputDecoration.focusedBorder,
+        focusedErrorBorder: lightInputDecoration.focusedErrorBorder,
+        enabledBorder: lightInputDecoration.enabledBorder,
+        disabledBorder: lightInputDecoration.disabledBorder,
+        border: lightInputDecoration.border,
+        errorBorder: lightInputDecoration.errorBorder,
+        constraints: lightInputDecoration.constraints,
+        counterStyle: lightInputDecoration.counterStyle,
+        errorMaxLines: lightInputDecoration.errorMaxLines,
+        floatingLabelAlignment: lightInputDecoration.floatingLabelAlignment ?? FloatingLabelAlignment.start,
+        floatingLabelStyle: lightInputDecoration.floatingLabelStyle,
+        focusColor: lightInputDecoration.focusColor,
+        helperMaxLines: lightInputDecoration.helperMaxLines,
+        helperStyle: lightInputDecoration.helperStyle,
+        hoverColor: lightInputDecoration.hoverColor,
+        iconColor: lightInputDecoration.iconColor,
+        isCollapsed: lightInputDecoration.isCollapsed,
+        prefixIconColor: lightInputDecoration.prefixIconColor,
+        prefixStyle: lightInputDecoration.prefixStyle,
+        suffixStyle: lightInputDecoration.suffixStyle,
+        suffixIconColor: lightInputDecoration.suffixIconColor,
       ),
       textTheme: const TextTheme(
         headline1: TextStyle(),
@@ -237,8 +250,8 @@ class AppTheme extends HiveObject {
   /// Dark Theme Configurations
   static AppTheme dark() {
     return AppTheme._(
-      id: DARK_THEME_ID,
-      themeMode: ThemeMode.system,
+      id: darkThemeID,
+      themeMode: ThemeMode.dark,
       brightness: Brightness.dark,
       accentColorBrightness: Brightness.dark,
       primaryColor: Palette.accentColor,
@@ -268,21 +281,36 @@ class AppTheme extends HiveObject {
         selectionHandleColor: Palette.accentColor,
       ),
       inputTheme: InputDecorationTheme(
-        alignLabelWithHint: darkInputDecoration.alignLabelWithHint!,
-        floatingLabelBehavior: darkInputDecoration.floatingLabelBehavior!,
-        isDense: darkInputDecoration.isDense!,
-        filled: darkInputDecoration.filled!,
-        hintStyle: darkInputDecoration.hintStyle!,
-        labelStyle: darkInputDecoration.labelStyle!,
-        errorStyle: darkInputDecoration.errorStyle!,
-        fillColor: darkInputDecoration.fillColor!,
-        contentPadding: darkInputDecoration.contentPadding!,
-        enabledBorder: darkInputDecoration.enabledBorder!,
-        disabledBorder: darkInputDecoration.disabledBorder!,
-        focusedBorder: darkInputDecoration.focusedBorder!,
-        focusedErrorBorder: darkInputDecoration.focusedErrorBorder!,
-        border: darkInputDecoration.border!,
-        errorBorder: darkInputDecoration.errorBorder!,
+        alignLabelWithHint: darkInputDecoration.alignLabelWithHint ?? false,
+        floatingLabelBehavior: darkInputDecoration.floatingLabelBehavior ?? FloatingLabelBehavior.auto,
+        isDense: darkInputDecoration.isDense ?? false,
+        filled: darkInputDecoration.filled ?? false,
+        hintStyle: darkInputDecoration.hintStyle,
+        labelStyle: darkInputDecoration.labelStyle,
+        errorStyle: darkInputDecoration.errorStyle,
+        fillColor: darkInputDecoration.fillColor,
+        contentPadding: darkInputDecoration.contentPadding,
+        focusedBorder: darkInputDecoration.focusedBorder,
+        focusedErrorBorder: darkInputDecoration.focusedErrorBorder,
+        enabledBorder: darkInputDecoration.enabledBorder,
+        disabledBorder: darkInputDecoration.disabledBorder,
+        border: darkInputDecoration.border,
+        errorBorder: darkInputDecoration.errorBorder,
+        constraints: darkInputDecoration.constraints,
+        counterStyle: darkInputDecoration.counterStyle,
+        errorMaxLines: darkInputDecoration.errorMaxLines,
+        floatingLabelAlignment: darkInputDecoration.floatingLabelAlignment ?? FloatingLabelAlignment.start,
+        floatingLabelStyle: darkInputDecoration.floatingLabelStyle,
+        focusColor: darkInputDecoration.focusColor,
+        helperMaxLines: darkInputDecoration.helperMaxLines,
+        helperStyle: darkInputDecoration.helperStyle,
+        hoverColor: darkInputDecoration.hoverColor,
+        iconColor: darkInputDecoration.iconColor,
+        isCollapsed: darkInputDecoration.isCollapsed,
+        prefixIconColor: darkInputDecoration.prefixIconColor,
+        prefixStyle: darkInputDecoration.prefixStyle,
+        suffixStyle: darkInputDecoration.suffixStyle,
+        suffixIconColor: darkInputDecoration.suffixIconColor,
       ),
       textTheme: const TextTheme(
         headline1: TextStyle(),
@@ -308,6 +336,7 @@ class AppTheme extends HiveObject {
       primaryColorDark: _primaryColorDark,
       primaryColorLight: _primaryColorLight,
       toggleableActiveColor: _toggleableActiveColor,
+      fontFamily: Utils.platform_(cupertino: 'SanFrancisco'),
       textSelectionTheme: _textSelectionThemeData,
       inputDecorationTheme: _textFieldTheme,
       colorScheme: _colorScheme,
@@ -320,7 +349,7 @@ class AppTheme extends HiveObject {
       buttonTheme: _buttonThemeData,
       radioTheme: _radioThemeData,
       switchTheme: _switchThemeData,
-      textTheme: GoogleFonts.nunitoSansTextTheme(_textTheme),
+      textTheme: Utils.platform_(material: GoogleFonts.nunitoSansTextTheme(_textTheme), cupertino: _textTheme),
     );
   }
 
@@ -330,7 +359,7 @@ class AppTheme extends HiveObject {
       primaryColor: CupertinoDynamicColor.resolve(
         const CupertinoDynamicColor.withBrightness(
           color: Palette.accentColor,
-          darkColor: Palette.accentDark,
+          darkColor: Palette.accentColor,
         ),
         ctx,
       ),
@@ -338,7 +367,7 @@ class AppTheme extends HiveObject {
         primaryColor: CupertinoDynamicColor.resolve(
           const CupertinoDynamicColor.withBrightness(
             color: Palette.accentColor,
-            darkColor: Palette.accentDark,
+            darkColor: Palette.accentColor,
           ),
           ctx,
         ),

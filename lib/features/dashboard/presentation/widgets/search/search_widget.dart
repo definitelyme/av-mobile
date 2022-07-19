@@ -4,6 +4,7 @@ import 'package:auctionvillage/core/domain/entities/entities.dart';
 import 'package:auctionvillage/core/presentation/managers/managers.dart';
 import 'package:auctionvillage/features/dashboard/domain/index.dart';
 import 'package:auctionvillage/features/dashboard/presentation/managers/index.dart';
+import 'package:auctionvillage/features/dashboard/presentation/widgets/index.dart';
 import 'package:auctionvillage/manager/locator/locator.dart';
 import 'package:auctionvillage/utils/utils.dart';
 import 'package:auctionvillage/widgets/widgets.dart';
@@ -101,23 +102,23 @@ class _SearchWidgetState extends State<SearchWidget> with TabbedSearchMixin {
           ),
         ),
         //
-        0.02.horizontalw,
-        //
-        AppIconButton(
-          backgroundColor: App.resolveColor(Palette.cardColorLight, dark: Palette.cardColorDark)!,
-          borderRadius: 5.br,
-          type: MaterialType.button,
-          elevation: 0,
-          cupertinoBackgroundColor: CupertinoColors.systemGrey4,
-          child: AppAssets.filter,
-          onPressed: () => App.showAdaptiveBottomSheet(
-            context,
-            elevation: 0,
-            enableDrag: true,
-            bounce: true,
-            builder: (_) => const _FilterBottomSheet(),
-          ),
-        ),
+        // 0.02.horizontalw,
+        // //
+        // AppIconButton(
+        //   backgroundColor: App.resolveColor(Palette.cardColorLight, dark: Palette.cardColorDark)!,
+        //   borderRadius: 5.br,
+        //   type: MaterialType.button,
+        //   elevation: 0,
+        //   cupertinoBackgroundColor: CupertinoColors.systemGrey4,
+        //   child: AppAssets.filter,
+        //   // onPressed: () => App.showAdaptiveBottomSheet(
+        //   //   context,
+        //   //   elevation: 0,
+        //   //   enableDrag: true,
+        //   //   bounce: true,
+        //   //   builder: (_) => const _FilterBottomSheet(),
+        //   // ),
+        // ),
       ],
     );
   }

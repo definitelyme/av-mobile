@@ -16,12 +16,11 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$Rating {
-  BasicTextField<double> get delivery => throw _privateConstructorUsedError;
-  BasicTextField<double> get responsiveness =>
-      throw _privateConstructorUsedError;
-  BasicTextField<double> get quality => throw _privateConstructorUsedError;
-  BasicTextField<double> get reliability => throw _privateConstructorUsedError;
-  BasicTextField<double> get rating => throw _privateConstructorUsedError;
+  NumField<double> get delivery => throw _privateConstructorUsedError;
+  NumField<double> get responsiveness => throw _privateConstructorUsedError;
+  NumField<double> get quality => throw _privateConstructorUsedError;
+  NumField<double> get reliability => throw _privateConstructorUsedError;
+  NumField<double> get rating => throw _privateConstructorUsedError;
   KtList<Review> get reviews => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -33,11 +32,11 @@ abstract class $RatingCopyWith<$Res> {
   factory $RatingCopyWith(Rating value, $Res Function(Rating) then) =
       _$RatingCopyWithImpl<$Res>;
   $Res call(
-      {BasicTextField<double> delivery,
-      BasicTextField<double> responsiveness,
-      BasicTextField<double> quality,
-      BasicTextField<double> reliability,
-      BasicTextField<double> rating,
+      {NumField<double> delivery,
+      NumField<double> responsiveness,
+      NumField<double> quality,
+      NumField<double> reliability,
+      NumField<double> rating,
       KtList<Review> reviews});
 }
 
@@ -62,23 +61,23 @@ class _$RatingCopyWithImpl<$Res> implements $RatingCopyWith<$Res> {
       delivery: delivery == freezed
           ? _value.delivery
           : delivery // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double>,
+              as NumField<double>,
       responsiveness: responsiveness == freezed
           ? _value.responsiveness
           : responsiveness // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double>,
+              as NumField<double>,
       quality: quality == freezed
           ? _value.quality
           : quality // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double>,
+              as NumField<double>,
       reliability: reliability == freezed
           ? _value.reliability
           : reliability // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double>,
+              as NumField<double>,
       rating: rating == freezed
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double>,
+              as NumField<double>,
       reviews: reviews == freezed
           ? _value.reviews
           : reviews // ignore: cast_nullable_to_non_nullable
@@ -93,11 +92,11 @@ abstract class _$$_RatingCopyWith<$Res> implements $RatingCopyWith<$Res> {
       __$$_RatingCopyWithImpl<$Res>;
   @override
   $Res call(
-      {BasicTextField<double> delivery,
-      BasicTextField<double> responsiveness,
-      BasicTextField<double> quality,
-      BasicTextField<double> reliability,
-      BasicTextField<double> rating,
+      {NumField<double> delivery,
+      NumField<double> responsiveness,
+      NumField<double> quality,
+      NumField<double> reliability,
+      NumField<double> rating,
       KtList<Review> reviews});
 }
 
@@ -123,23 +122,23 @@ class __$$_RatingCopyWithImpl<$Res> extends _$RatingCopyWithImpl<$Res>
       delivery: delivery == freezed
           ? _value.delivery
           : delivery // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double>,
+              as NumField<double>,
       responsiveness: responsiveness == freezed
           ? _value.responsiveness
           : responsiveness // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double>,
+              as NumField<double>,
       quality: quality == freezed
           ? _value.quality
           : quality // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double>,
+              as NumField<double>,
       reliability: reliability == freezed
           ? _value.reliability
           : reliability // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double>,
+              as NumField<double>,
       rating: rating == freezed
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double>,
+              as NumField<double>,
       reviews: reviews == freezed
           ? _value.reviews
           : reviews // ignore: cast_nullable_to_non_nullable
@@ -161,15 +160,15 @@ class _$_Rating extends _Rating {
       : super._();
 
   @override
-  final BasicTextField<double> delivery;
+  final NumField<double> delivery;
   @override
-  final BasicTextField<double> responsiveness;
+  final NumField<double> responsiveness;
   @override
-  final BasicTextField<double> quality;
+  final NumField<double> quality;
   @override
-  final BasicTextField<double> reliability;
+  final NumField<double> reliability;
   @override
-  final BasicTextField<double> rating;
+  final NumField<double> rating;
   @override
   @JsonKey()
   final KtList<Review> reviews;
@@ -212,27 +211,26 @@ class _$_Rating extends _Rating {
 
 abstract class _Rating extends Rating {
   const factory _Rating(
-      {required final BasicTextField<double> delivery,
-      required final BasicTextField<double> responsiveness,
-      required final BasicTextField<double> quality,
-      required final BasicTextField<double> reliability,
-      required final BasicTextField<double> rating,
+      {required final NumField<double> delivery,
+      required final NumField<double> responsiveness,
+      required final NumField<double> quality,
+      required final NumField<double> reliability,
+      required final NumField<double> rating,
       final KtList<Review> reviews}) = _$_Rating;
   const _Rating._() : super._();
 
   @override
-  BasicTextField<double> get delivery => throw _privateConstructorUsedError;
+  NumField<double> get delivery;
   @override
-  BasicTextField<double> get responsiveness =>
-      throw _privateConstructorUsedError;
+  NumField<double> get responsiveness;
   @override
-  BasicTextField<double> get quality => throw _privateConstructorUsedError;
+  NumField<double> get quality;
   @override
-  BasicTextField<double> get reliability => throw _privateConstructorUsedError;
+  NumField<double> get reliability;
   @override
-  BasicTextField<double> get rating => throw _privateConstructorUsedError;
+  NumField<double> get rating;
   @override
-  KtList<Review> get reviews => throw _privateConstructorUsedError;
+  KtList<Review> get reviews;
   @override
   @JsonKey(ignore: true)
   _$$_RatingCopyWith<_$_Rating> get copyWith =>
@@ -242,13 +240,12 @@ abstract class _Rating extends Rating {
 /// @nodoc
 mixin _$Review {
   UniqueId<String?> get id => throw _privateConstructorUsedError;
-  BasicTextField<double> get delivery => throw _privateConstructorUsedError;
-  BasicTextField<double> get quality => throw _privateConstructorUsedError;
-  BasicTextField<double> get responsiveness =>
-      throw _privateConstructorUsedError;
-  BasicTextField<double> get reliability => throw _privateConstructorUsedError;
-  BasicTextField<double> get rating => throw _privateConstructorUsedError;
-  BasicTextField<String?> get review => throw _privateConstructorUsedError;
+  NumField<double> get delivery => throw _privateConstructorUsedError;
+  NumField<double> get quality => throw _privateConstructorUsedError;
+  NumField<double> get responsiveness => throw _privateConstructorUsedError;
+  NumField<double> get reliability => throw _privateConstructorUsedError;
+  NumField<double> get rating => throw _privateConstructorUsedError;
+  BasicTextField get review => throw _privateConstructorUsedError;
   User? get user => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
   DateTime? get updatedAt => throw _privateConstructorUsedError;
@@ -263,12 +260,12 @@ abstract class $ReviewCopyWith<$Res> {
       _$ReviewCopyWithImpl<$Res>;
   $Res call(
       {UniqueId<String?> id,
-      BasicTextField<double> delivery,
-      BasicTextField<double> quality,
-      BasicTextField<double> responsiveness,
-      BasicTextField<double> reliability,
-      BasicTextField<double> rating,
-      BasicTextField<String?> review,
+      NumField<double> delivery,
+      NumField<double> quality,
+      NumField<double> responsiveness,
+      NumField<double> reliability,
+      NumField<double> rating,
+      BasicTextField review,
       User? user,
       DateTime? createdAt,
       DateTime? updatedAt});
@@ -305,27 +302,27 @@ class _$ReviewCopyWithImpl<$Res> implements $ReviewCopyWith<$Res> {
       delivery: delivery == freezed
           ? _value.delivery
           : delivery // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double>,
+              as NumField<double>,
       quality: quality == freezed
           ? _value.quality
           : quality // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double>,
+              as NumField<double>,
       responsiveness: responsiveness == freezed
           ? _value.responsiveness
           : responsiveness // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double>,
+              as NumField<double>,
       reliability: reliability == freezed
           ? _value.reliability
           : reliability // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double>,
+              as NumField<double>,
       rating: rating == freezed
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double>,
+              as NumField<double>,
       review: review == freezed
           ? _value.review
           : review // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -360,12 +357,12 @@ abstract class _$$_ReviewCopyWith<$Res> implements $ReviewCopyWith<$Res> {
   @override
   $Res call(
       {UniqueId<String?> id,
-      BasicTextField<double> delivery,
-      BasicTextField<double> quality,
-      BasicTextField<double> responsiveness,
-      BasicTextField<double> reliability,
-      BasicTextField<double> rating,
-      BasicTextField<String?> review,
+      NumField<double> delivery,
+      NumField<double> quality,
+      NumField<double> responsiveness,
+      NumField<double> reliability,
+      NumField<double> rating,
+      BasicTextField review,
       User? user,
       DateTime? createdAt,
       DateTime? updatedAt});
@@ -404,27 +401,27 @@ class __$$_ReviewCopyWithImpl<$Res> extends _$ReviewCopyWithImpl<$Res>
       delivery: delivery == freezed
           ? _value.delivery
           : delivery // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double>,
+              as NumField<double>,
       quality: quality == freezed
           ? _value.quality
           : quality // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double>,
+              as NumField<double>,
       responsiveness: responsiveness == freezed
           ? _value.responsiveness
           : responsiveness // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double>,
+              as NumField<double>,
       reliability: reliability == freezed
           ? _value.reliability
           : reliability // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double>,
+              as NumField<double>,
       rating: rating == freezed
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double>,
+              as NumField<double>,
       review: review == freezed
           ? _value.review
           : review // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -460,17 +457,17 @@ class _$_Review extends _Review {
   @override
   final UniqueId<String?> id;
   @override
-  final BasicTextField<double> delivery;
+  final NumField<double> delivery;
   @override
-  final BasicTextField<double> quality;
+  final NumField<double> quality;
   @override
-  final BasicTextField<double> responsiveness;
+  final NumField<double> responsiveness;
   @override
-  final BasicTextField<double> reliability;
+  final NumField<double> reliability;
   @override
-  final BasicTextField<double> rating;
+  final NumField<double> rating;
   @override
-  final BasicTextField<String?> review;
+  final BasicTextField review;
   @override
   final User? user;
   @override
@@ -525,38 +522,37 @@ class _$_Review extends _Review {
 abstract class _Review extends Review {
   const factory _Review(
       {required final UniqueId<String?> id,
-      required final BasicTextField<double> delivery,
-      required final BasicTextField<double> quality,
-      required final BasicTextField<double> responsiveness,
-      required final BasicTextField<double> reliability,
-      required final BasicTextField<double> rating,
-      required final BasicTextField<String?> review,
+      required final NumField<double> delivery,
+      required final NumField<double> quality,
+      required final NumField<double> responsiveness,
+      required final NumField<double> reliability,
+      required final NumField<double> rating,
+      required final BasicTextField review,
       final User? user,
       final DateTime? createdAt,
       final DateTime? updatedAt}) = _$_Review;
   const _Review._() : super._();
 
   @override
-  UniqueId<String?> get id => throw _privateConstructorUsedError;
+  UniqueId<String?> get id;
   @override
-  BasicTextField<double> get delivery => throw _privateConstructorUsedError;
+  NumField<double> get delivery;
   @override
-  BasicTextField<double> get quality => throw _privateConstructorUsedError;
+  NumField<double> get quality;
   @override
-  BasicTextField<double> get responsiveness =>
-      throw _privateConstructorUsedError;
+  NumField<double> get responsiveness;
   @override
-  BasicTextField<double> get reliability => throw _privateConstructorUsedError;
+  NumField<double> get reliability;
   @override
-  BasicTextField<double> get rating => throw _privateConstructorUsedError;
+  NumField<double> get rating;
   @override
-  BasicTextField<String?> get review => throw _privateConstructorUsedError;
+  BasicTextField get review;
   @override
-  User? get user => throw _privateConstructorUsedError;
+  User? get user;
   @override
-  DateTime? get createdAt => throw _privateConstructorUsedError;
+  DateTime? get createdAt;
   @override
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$_ReviewCopyWith<_$_Review> get copyWith =>

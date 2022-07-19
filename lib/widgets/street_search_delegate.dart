@@ -51,8 +51,7 @@ class StreetSearchDelegate extends MaterialFullSearch<GoogleMapPlace?> {
                     ),
                 replacement: AnimatedVisibility(
                   // visible: s.isTyping || s.isLoading,
-                  visible: !s.isLoadingMorePlaces &&
-                      (s.isLoading && s.places.isEmpty()),
+                  visible: !s.isLoadingMorePlaces && (s.isLoading && s.places.isEmpty()),
                   child: Center(
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -111,10 +110,7 @@ class StreetSearchDelegate extends MaterialFullSearch<GoogleMapPlace?> {
   Widget buildLeading(BuildContext context) {
     return IconButton(
       icon: Theme(
-        data: App.isDarkMode(context) ||
-                (MediaQuery.of(context).platformBrightness == Brightness.dark)
-            ? ThemeData.dark()
-            : ThemeData.light(),
+        data: Utils.isDarkMode(context) ? ThemeData.dark() : ThemeData.light(),
         child: const BackButtonIcon(),
       ),
       onPressed: () => close(
@@ -128,25 +124,16 @@ class StreetSearchDelegate extends MaterialFullSearch<GoogleMapPlace?> {
   ThemeData appBarTheme(BuildContext context) {
     return Theme.of(context).copyWith(
       textTheme: TextTheme(
-        bodyText1: TextStyle(
-            color:
-                App.resolveColor(Palette.text100, dark: Palette.text100Dark)),
-        bodyText2: TextStyle(
-            color:
-                App.resolveColor(Palette.text100, dark: Palette.text100Dark)),
-        subtitle1: TextStyle(
-            color:
-                App.resolveColor(Palette.text100, dark: Palette.text100Dark)),
+        bodyText1: TextStyle(color: App.resolveColor(Palette.text100, dark: Palette.text100Dark)),
+        bodyText2: TextStyle(color: App.resolveColor(Palette.text100, dark: Palette.text100Dark)),
+        subtitle1: TextStyle(color: App.resolveColor(Palette.text100, dark: Palette.text100Dark)),
       ),
       appBarTheme: Theme.of(context).appBarTheme.copyWith(
             elevation: 0,
-            backgroundColor: App.resolveColor(Palette.neutralF9,
-                dark: Palette.cardColorDark),
+            backgroundColor: App.resolveColor(Palette.neutralF9, dark: Palette.cardColorDark),
           ),
-      canvasColor: App.resolveColor(Palette.cardColorLight,
-          dark: Palette.secondaryColor),
-      scaffoldBackgroundColor: App.resolveColor(Palette.cardColorLight,
-          dark: Palette.secondaryColor),
+      canvasColor: App.resolveColor(Palette.cardColorLight, dark: Palette.secondaryColor),
+      scaffoldBackgroundColor: App.resolveColor(Palette.cardColorLight, dark: Palette.secondaryColor),
       inputDecorationTheme: InputDecorationTheme(
         hintStyle: TextStyle(
           color: App.resolveColor(Palette.text100, dark: Palette.text100Dark),
@@ -163,10 +150,7 @@ class StreetSearchDelegate extends MaterialFullSearch<GoogleMapPlace?> {
   }
 
   void onLoadMore(BuildContext ctx, DragToRefreshState refresh) async {
-    _cubit.sink(query,
-        ctx: ctx,
-        nextPage: true,
-        callback: () => refresh.controller.loadComplete());
+    _cubit.sink(query, ctx: ctx, nextPage: true, callback: () => refresh.controller.loadComplete());
   }
 
   @override
@@ -175,8 +159,7 @@ class StreetSearchDelegate extends MaterialFullSearch<GoogleMapPlace?> {
 
     return BlocProvider.value(
       value: _cubit,
-      child: BlocSelector<BaseAddressCubit, BaseAddressState,
-          KtList<GoogleMapPlace>>(
+      child: BlocSelector<BaseAddressCubit, BaseAddressState, KtList<GoogleMapPlace>>(
         selector: (s) => s.places,
         builder: (c, places) {
           final _clean = query.toLowerCase().trim();
@@ -186,8 +169,7 @@ class StreetSearchDelegate extends MaterialFullSearch<GoogleMapPlace?> {
                 // First we collect all [String] representation of each [item]
                 (item) => filter(item)
                     // Checks whether any coincide with the cleaned query
-                    .any((value) =>
-                        value?.caseInsensitiveContains(_clean) == true),
+                    .any((value) => value?.caseInsensitiveContains(_clean) == true),
               )
               .toList();
 
@@ -197,8 +179,7 @@ class StreetSearchDelegate extends MaterialFullSearch<GoogleMapPlace?> {
                   : Stack(
                       children: [
                         ListView.custom(
-                          keyboardDismissBehavior:
-                              ScrollViewKeyboardDismissBehavior.onDrag,
+                          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
                           childrenDelegate: SliverChildBuilderDelegate(
                             (_, i) => _itemBuilder(_, i, _items),
                             childCount: recentSearches.length,
@@ -209,9 +190,7 @@ class StreetSearchDelegate extends MaterialFullSearch<GoogleMapPlace?> {
                           top: 0,
                           right: 0,
                           child: AnimatedVisibility(
-                            visible: recentSearches.isNotEmpty &&
-                                c.select(
-                                    (BaseAddressCubit v) => v.state.isLoading),
+                            visible: recentSearches.isNotEmpty && c.select((BaseAddressCubit v) => v.state.isLoading),
                             child: Padding(
                               padding: const EdgeInsets.all(10.0),
                               child: CircularProgressBar.adaptive(
@@ -235,8 +214,7 @@ class StreetSearchDelegate extends MaterialFullSearch<GoogleMapPlace?> {
                           enablePullUp: true,
                           onLoading: (refresh) => onLoadMore(c, refresh),
                           child: ListView.custom(
-                            keyboardDismissBehavior:
-                                ScrollViewKeyboardDismissBehavior.onDrag,
+                            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
                             childrenDelegate: SliverChildBuilderDelegate(
                               (_, i) => _itemBuilder(_, i, _items),
                               childCount: _items.length,
@@ -248,9 +226,7 @@ class StreetSearchDelegate extends MaterialFullSearch<GoogleMapPlace?> {
                           top: 0,
                           right: 0,
                           child: AnimatedVisibility(
-                            visible: _items.isNotEmpty &&
-                                c.select(
-                                    (BaseAddressCubit v) => v.state.isLoading),
+                            visible: _items.isNotEmpty && c.select((BaseAddressCubit v) => v.state.isLoading),
                             child: Padding(
                               padding: const EdgeInsets.all(10.0),
                               child: CircularProgressBar.adaptive(
@@ -269,15 +245,13 @@ class StreetSearchDelegate extends MaterialFullSearch<GoogleMapPlace?> {
     );
   }
 
-  Widget _itemBuilder(
-      BuildContext context, int index, List<GoogleMapPlace> results) {
+  Widget _itemBuilder(BuildContext context, int index, List<GoogleMapPlace> results) {
     final prediction = results.elementAt(index);
 
     return AdaptiveListTile(
       dense: prediction.formattedAddress.getOrNull == null,
       isThreeLine: prediction.formattedAddress.getOrNull != null,
-      tileColor:
-          App.resolveColor(Palette.cardColorLight, dark: Palette.cardColorDark),
+      tileColor: App.resolveColor(Palette.cardColorLight, dark: Palette.cardColorDark),
       trailing: Utils.nothing,
       noCupertinoBorder: true,
       horizontalTitleGap: 0.02.w,

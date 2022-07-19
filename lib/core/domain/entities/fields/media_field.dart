@@ -7,7 +7,7 @@ import 'package:auctionvillage/utils/utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kt_dart/collection.dart';
 
-class MediaField extends FieldObject<String?> {
+class MediaField extends StringFieldObject {
   static const MediaField DEFAULT = MediaField._(Right(AppAssets.unnamed));
 
   @override
@@ -38,14 +38,14 @@ class UploadableMedia {
   @override
   bool operator ==(other) {
     if (identical(this, other)) return true;
-    return other is UploadableMedia && other.image.valueOrNull == image.valueOrNull;
+    return other is UploadableMedia && other.image.getOrNull == image.getOrNull;
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(id), const DeepCollectionEquality().hash(image));
 
   @override
-  String toString() => 'UploadableMedia(url: ${image.valueOrNull})';
+  String toString() => 'UploadableMedia(url: ${image.getOrNull})';
 }
 
 extension MediaFieldX on KtList<UploadableMedia> {

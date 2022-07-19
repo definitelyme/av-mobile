@@ -16,11 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$BidHistory {
-  AmountField<double> get totalAuctionsParticipated =>
+  NumField<double> get totalAuctionsParticipated =>
       throw _privateConstructorUsedError;
-  AmountField<double> get totalWinningBid => throw _privateConstructorUsedError;
-  AmountField<double> get totalAmountSpent =>
-      throw _privateConstructorUsedError;
+  NumField<double> get totalWinningBid => throw _privateConstructorUsedError;
+  NumField<double> get totalAmountSpent => throw _privateConstructorUsedError;
   KtList<Deal> get deals => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -34,9 +33,9 @@ abstract class $BidHistoryCopyWith<$Res> {
           BidHistory value, $Res Function(BidHistory) then) =
       _$BidHistoryCopyWithImpl<$Res>;
   $Res call(
-      {AmountField<double> totalAuctionsParticipated,
-      AmountField<double> totalWinningBid,
-      AmountField<double> totalAmountSpent,
+      {NumField<double> totalAuctionsParticipated,
+      NumField<double> totalWinningBid,
+      NumField<double> totalAmountSpent,
       KtList<Deal> deals});
 }
 
@@ -59,15 +58,15 @@ class _$BidHistoryCopyWithImpl<$Res> implements $BidHistoryCopyWith<$Res> {
       totalAuctionsParticipated: totalAuctionsParticipated == freezed
           ? _value.totalAuctionsParticipated
           : totalAuctionsParticipated // ignore: cast_nullable_to_non_nullable
-              as AmountField<double>,
+              as NumField<double>,
       totalWinningBid: totalWinningBid == freezed
           ? _value.totalWinningBid
           : totalWinningBid // ignore: cast_nullable_to_non_nullable
-              as AmountField<double>,
+              as NumField<double>,
       totalAmountSpent: totalAmountSpent == freezed
           ? _value.totalAmountSpent
           : totalAmountSpent // ignore: cast_nullable_to_non_nullable
-              as AmountField<double>,
+              as NumField<double>,
       deals: deals == freezed
           ? _value.deals
           : deals // ignore: cast_nullable_to_non_nullable
@@ -84,9 +83,9 @@ abstract class _$$_BidHistoryCopyWith<$Res>
       __$$_BidHistoryCopyWithImpl<$Res>;
   @override
   $Res call(
-      {AmountField<double> totalAuctionsParticipated,
-      AmountField<double> totalWinningBid,
-      AmountField<double> totalAmountSpent,
+      {NumField<double> totalAuctionsParticipated,
+      NumField<double> totalWinningBid,
+      NumField<double> totalAmountSpent,
       KtList<Deal> deals});
 }
 
@@ -111,15 +110,15 @@ class __$$_BidHistoryCopyWithImpl<$Res> extends _$BidHistoryCopyWithImpl<$Res>
       totalAuctionsParticipated: totalAuctionsParticipated == freezed
           ? _value.totalAuctionsParticipated
           : totalAuctionsParticipated // ignore: cast_nullable_to_non_nullable
-              as AmountField<double>,
+              as NumField<double>,
       totalWinningBid: totalWinningBid == freezed
           ? _value.totalWinningBid
           : totalWinningBid // ignore: cast_nullable_to_non_nullable
-              as AmountField<double>,
+              as NumField<double>,
       totalAmountSpent: totalAmountSpent == freezed
           ? _value.totalAmountSpent
           : totalAmountSpent // ignore: cast_nullable_to_non_nullable
-              as AmountField<double>,
+              as NumField<double>,
       deals: deals == freezed
           ? _value.deals
           : deals // ignore: cast_nullable_to_non_nullable
@@ -139,11 +138,11 @@ class _$_BidHistory extends _BidHistory {
       : super._();
 
   @override
-  final AmountField<double> totalAuctionsParticipated;
+  final NumField<double> totalAuctionsParticipated;
   @override
-  final AmountField<double> totalWinningBid;
+  final NumField<double> totalWinningBid;
   @override
-  final AmountField<double> totalAmountSpent;
+  final NumField<double> totalAmountSpent;
   @override
   @JsonKey()
   final KtList<Deal> deals;
@@ -183,22 +182,20 @@ class _$_BidHistory extends _BidHistory {
 
 abstract class _BidHistory extends BidHistory {
   const factory _BidHistory(
-      {required final AmountField<double> totalAuctionsParticipated,
-      required final AmountField<double> totalWinningBid,
-      required final AmountField<double> totalAmountSpent,
+      {required final NumField<double> totalAuctionsParticipated,
+      required final NumField<double> totalWinningBid,
+      required final NumField<double> totalAmountSpent,
       final KtList<Deal> deals}) = _$_BidHistory;
   const _BidHistory._() : super._();
 
   @override
-  AmountField<double> get totalAuctionsParticipated =>
-      throw _privateConstructorUsedError;
+  NumField<double> get totalAuctionsParticipated;
   @override
-  AmountField<double> get totalWinningBid => throw _privateConstructorUsedError;
+  NumField<double> get totalWinningBid;
   @override
-  AmountField<double> get totalAmountSpent =>
-      throw _privateConstructorUsedError;
+  NumField<double> get totalAmountSpent;
   @override
-  KtList<Deal> get deals => throw _privateConstructorUsedError;
+  KtList<Deal> get deals;
   @override
   @JsonKey(ignore: true)
   _$$_BidHistoryCopyWith<_$_BidHistory> get copyWith =>

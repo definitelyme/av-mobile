@@ -66,6 +66,8 @@ class _FundWalletScreenState extends State<FundWalletScreen> {
       title: 'Fund Wallet',
       useSafeArea: true,
       enablePullDown: false,
+      scaffoldOverlayStyle: App.customSystemOverlay(ctx: context, android: context.androidOverlay, ios: context.iosOverlay),
+      toolbarOverlayStyle: App.customSystemOverlay(ctx: context, android: context.androidOverlay, ios: context.iosOverlay),
       actions: [
         BlocSelector<WalletCubit, WalletState, bool>(
           selector: (s) => s.isLoading,
@@ -102,7 +104,7 @@ class _FundWalletScreenState extends State<FundWalletScreen> {
                 validate: (s) => s.validate,
                 response: (s) => s.status,
                 onChanged: (cubit, _) => cubit.amountChanged(),
-                prefixIcon: (s) => const CurrencyPrefixWidget(Utils.currency),
+                prefixIcon: (s) => const CurrencyPrefixWidget(),
                 prefixMode: (s) => OverlayVisibilityMode.always,
                 inputFormatters: [
                   FilteringTextInputFormatter.digitsOnly,
@@ -162,7 +164,7 @@ class _FundWalletScreenState extends State<FundWalletScreen> {
                             Icon(
                               Icons.lock_outline_rounded,
                               size: 20,
-                              color: App.resolveColor(Palette.iconLight, dark: Palette.iconDark, context: c),
+                              color: App.resolveColor(Palette.iconLight, dark: Palette.iconDark, ctx: c),
                             ),
                             //
                             0.03.horizontalw,
@@ -211,11 +213,11 @@ class _PaymentMethodSelector extends StatelessWidget {
                           side: BorderSide(
                             color: App.resolveColor(
                               s.paymentMethod == e ? Palette.accentColor : Colors.transparent,
-                              context: c,
+                              ctx: c,
                             )!,
                           ),
                         ),
-                        color: App.resolveColor(Palette.cardColorLight, dark: Palette.cardColorDark, context: c),
+                        color: App.resolveColor(Palette.cardColorLight, dark: Palette.cardColorDark, ctx: c),
                         child: AdaptiveInkWell(
                           onTap: () => c.read<WalletCubit>().paymentMethodChanged(e),
                           borderRadius: BorderRadius.circular(Utils.inputBorderRadius),

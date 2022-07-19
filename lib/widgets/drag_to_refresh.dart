@@ -132,9 +132,17 @@ class DragToRefreshState extends State<DragToRefresh>
 
   void resetNoData() => controller.resetNoData();
 
-  void requestLoading() => controller.requestLoading();
+  void requestLoading() {
+    try {
+      controller.requestLoading();
+    } catch (_) {}
+  }
 
-  void requestRefresh() => controller.requestRefresh();
+  void requestRefresh() {
+    try {
+      controller.requestRefresh();
+    } catch (_) {}
+  }
 
   void updateController(RefreshController controller) => setState(() => controller = controller);
 

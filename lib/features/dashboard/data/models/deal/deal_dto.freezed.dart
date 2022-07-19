@@ -167,7 +167,9 @@ class _$_DealDTO extends _DealDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DealDTOToJson(this);
+    return _$$_DealDTOToJson(
+      this,
+    );
   }
 }
 
@@ -181,9 +183,9 @@ abstract class _DealDTO extends DealDTO {
 
   @override
   @JsonKey(name: '_meta')
-  MetaDTO? get meta => throw _privateConstructorUsedError;
+  MetaDTO? get meta;
   @override
-  DealDTOData get data => throw _privateConstructorUsedError;
+  DealDTOData get data;
   @override
   @JsonKey(ignore: true)
   _$$_DealDTOCopyWith<_$_DealDTO> get copyWith =>
@@ -1013,7 +1015,9 @@ class _$_DealDTOData extends _DealDTOData {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DealDTODataToJson(this);
+    return _$$_DealDTODataToJson(
+      this,
+    );
   }
 }
 
@@ -1087,93 +1091,93 @@ abstract class _DealDTOData extends DealDTOData {
 
   @override
   @JsonKey(name: '_id')
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
   @StringSerializer()
-  String? get basePrice => throw _privateConstructorUsedError;
+  String? get basePrice;
   @override
   @StringSerializer()
-  String? get amount => throw _privateConstructorUsedError;
+  String? get amount;
   @override
   @StringSerializer()
-  String? get country => throw _privateConstructorUsedError;
+  String? get country;
   @override
   @BooleanSerializer()
-  bool? get isPrivate => throw _privateConstructorUsedError;
+  bool? get isPrivate;
   @override
   @JsonKey(name: 'isFavorite')
   @BooleanSerializer()
-  bool? get isFavorite => throw _privateConstructorUsedError;
+  bool? get isFavorite;
   @override
   @JsonKey(name: 'status', toJson: DealStatusSerializer.toJsonString)
   @DealStatusSerializer()
-  DealStatus? get dealStatus => throw _privateConstructorUsedError;
+  DealStatus? get dealStatus;
   @override
   @BooleanSerializer()
-  bool? get sponsored => throw _privateConstructorUsedError;
+  bool? get sponsored;
   @override
   @JsonKey(name: 'plan', toJson: DealPlanTypeSerializer.toJsonString)
   @DealPlanTypeSerializer()
-  DealPlanType? get dealPlan => throw _privateConstructorUsedError;
+  DealPlanType? get dealPlan;
   @override
   @DoubleSerializer()
-  double? get admittanceFee => throw _privateConstructorUsedError;
+  double? get admittanceFee;
   @override
   @JsonKey(name: 'address')
-  String? get address => throw _privateConstructorUsedError;
+  String? get address;
   @override
   @IntegerSerializer()
-  int? get clicks => throw _privateConstructorUsedError;
+  int? get clicks;
   @override
   @IntegerSerializer()
-  int? get dealPriority => throw _privateConstructorUsedError;
+  int? get dealPriority;
   @override
   @JsonKey(toJson: BidStatusSerializer.toJsonString)
   @BidStatusSerializer()
-  BidStatus? get bidStatus => throw _privateConstructorUsedError;
+  BidStatus? get bidStatus;
   @override
   @BooleanSerializer()
-  bool? get isClosing => throw _privateConstructorUsedError;
+  bool? get isClosing;
   @override
   @BooleanSerializer()
-  bool? get active => throw _privateConstructorUsedError;
+  bool? get active;
   @override
   @DoubleSerializer()
-  double? get lastPriceOffered => throw _privateConstructorUsedError;
+  double? get lastPriceOffered;
   @override
   @JsonKey(toJson: OfferTypeSerializer.toJsonString)
   @OfferTypeSerializer()
-  OfferType? get offerType => throw _privateConstructorUsedError;
+  OfferType? get offerType;
   @override
   @TimestampConverter()
-  DateTime? get startDate => throw _privateConstructorUsedError;
+  DateTime? get startDate;
   @override
   @TimestampConverter()
-  DateTime? get endDate => throw _privateConstructorUsedError;
+  DateTime? get endDate;
   @override
   @JsonKey(toJson: DealTypeSerializer.toJsonString)
   @DealTypeSerializer()
-  DealType? get type => throw _privateConstructorUsedError;
+  DealType? get type;
   @override
   @JsonKey(toJson: QuantityTypeSerializer.toJsonString)
   @QuantityTypeSerializer()
-  QuantityType? get quantity => throw _privateConstructorUsedError;
+  QuantityType? get quantity;
   @override
   @JsonKey(toJson: BiddingTypeSerializer.toJsonString)
   @BiddingTypeSerializer()
-  BiddingType? get biddingType => throw _privateConstructorUsedError;
+  BiddingType? get biddingType;
   @override
-  UserDTO? get user => throw _privateConstructorUsedError;
+  UserDTO? get user;
   @override
-  UserDTO? get vendor => throw _privateConstructorUsedError;
+  UserDTO? get vendor;
   @override // UserDTO? lastBidder,
-  ProductDTOData? get product => throw _privateConstructorUsedError;
+  ProductDTOData? get product;
   @override // CategoryDTOData? category,
   @TimestampConverter()
-  DateTime? get createdAt => throw _privateConstructorUsedError;
+  DateTime? get createdAt;
   @override
   @TimestampConverter()
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$_DealDTODataCopyWith<_$_DealDTOData> get copyWith =>
@@ -1335,7 +1339,9 @@ class _$_DealListDTO extends _DealListDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DealListDTOToJson(this);
+    return _$$_DealListDTOToJson(
+      this,
+    );
   }
 }
 
@@ -1350,9 +1356,9 @@ abstract class _DealListDTO extends DealListDTO {
 
   @override
   @JsonKey(name: '_meta')
-  MetaDTO? get meta => throw _privateConstructorUsedError;
+  MetaDTO? get meta;
   @override
-  List<DealDTOData> get data => throw _privateConstructorUsedError;
+  List<DealDTOData> get data;
   @override
   @JsonKey(ignore: true)
   _$$_DealListDTOCopyWith<_$_DealListDTO> get copyWith =>

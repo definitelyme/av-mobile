@@ -9,6 +9,7 @@ import 'package:auctionvillage/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
@@ -20,14 +21,16 @@ class DashboardScreen extends StatefulWidget {
   _DashboardScreenState createState() => _DashboardScreenState();
 }
 
-class _DashboardScreenState extends State<DashboardScreen> with AutomaticKeepAliveClientMixin<DashboardScreen> {
+class _DashboardScreenState extends State<DashboardScreen> with DoubleTapToPop, AutomaticKeepAliveClientMixin<DashboardScreen> {
   late BottomNavigationCubit _cubit;
+  late CupertinoTabController _controller;
 
   @override
   void initState() {
-    super.initState();
     _cubit = context.read<BottomNavigationCubit>();
-    BlocProvider.of<AuthWatcherCubit>(context).subscribeUserChanges();
+    _controller = CupertinoTabController(initialIndex: _cubit.state.currentIndex);
+    context.read<AuthWatcherCubit>().subscribeUserChanges();
+    super.initState();
   }
 
   @override
@@ -51,15 +54,50 @@ class _DashboardScreenState extends State<DashboardScreen> with AutomaticKeepAli
   Widget build(BuildContext context) {
     super.build(context);
 
-    return DoubleTapClose(
-      child: AutoTabsRouter.builder(
-        routes: BottomNav.list.map((e) => e.router).toList(),
-        inheritNavigatorObservers: true,
-        builder: (_, children, router) => BlocSelector<BottomNavigationCubit, BottomNavigationState, int>(
-          selector: (s) => s.currentIndex,
-          builder: (c, currentIndex) => AdaptiveScaffold(
-            cupertinoTabBuilder: (_, i) => BottomNavigationState.tabs.toList()[i].values.first,
+    return AutoTabsRouter.builder(
+      inheritNavigatorObservers: true,
+      homeIndex: BottomNavigationState.homeIndex,
+      routes: BottomNav.list.map((e) => e.router).toList(),
+      navigatorObservers: () => <NavigatorObserver>[AutoRouteObserver()],
+      onRouterReady: (router) {
+        _cubit.attachListener(router);
+
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          router.setActiveIndex(_cubit.state.currentIndex);
+          if (App.platform.isIOS) _controller.index = _cubit.state.currentIndex;
+        });
+      },
+      builder: (c, children, router) {
+        final currentIndex = c.watchTabsRouter.activeIndex;
+
+        return WillPopScope(
+          onWillPop: maybePop,
+          child: AdaptiveScaffold(
+            cupertinoTabBuilder: (_, i) => CupertinoTabView(builder: (_) => BottomNavigationState.tabs.toList()[i].values.first),
             body: LazyIndexedStack(index: currentIndex, children: children),
+            cupertino: (data) => data.copyWith(
+              resizeToAvoidBottomInset: false,
+              backgroundColor: Colors.transparent,
+              controller: _controller,
+              bottomTabBar: CupertinoTabBar(
+                items: navItems(currentIndex),
+                backgroundColor: App.resolveColor(
+                  CupertinoColors.lightBackgroundGray.withAlpha(254),
+                  dark: CupertinoColors.quaternarySystemFill,
+                )!,
+                iconSize: 20,
+                inactiveColor: Colors.grey,
+                currentIndex: currentIndex,
+                activeColor: App.resolveColor(Palette.accentColor, dark: Palette.accentColor.shade100, ctx: c),
+                onTap: (i) {
+                  FocusManager.instance.primaryFocus?.unfocus();
+                  SystemChannels.textInput.invokeMethod('TextInput.hide');
+
+                  _controller.index = i;
+                  router.setActiveIndex(i);
+                },
+              ),
+            ),
             adaptiveBottomNav: PlatformNavBar(
               items: navItems(currentIndex),
               currentIndex: currentIndex,
@@ -69,21 +107,11 @@ class _DashboardScreenState extends State<DashboardScreen> with AutomaticKeepAli
                 unselectedItemColor: Colors.grey,
                 selectedItemColor: App.resolveColor(Palette.accentColor, dark: Palette.accentColor.shade100),
               ),
-              cupertino: (_, __) => CupertinoTabBarData(
-                iconSize: 20,
-                backgroundColor: App.resolveColor(
-                  CupertinoColors.lightBackgroundGray.withAlpha(254),
-                  dark: CupertinoColors.quaternarySystemFill,
-                )!,
-                inactiveColor: Colors.grey,
-                currentIndex: currentIndex,
-                activeColor: App.resolveColor(Palette.accentColor, dark: Palette.accentColor.shade100),
-              ),
-              itemChanged: (i) => _cubit.setCurrentIndex(router, i),
+              itemChanged: router.setActiveIndex,
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

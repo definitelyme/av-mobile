@@ -2,9 +2,7 @@ library pricing_plan_screen.dart;
 
 import 'package:auctionvillage/core/domain/entities/entities.dart';
 import 'package:auctionvillage/features/auth/presentation/managers/managers.dart';
-import 'package:auctionvillage/features/dashboard/domain/index.dart';
 import 'package:auctionvillage/features/dashboard/presentation/managers/index.dart';
-import 'package:auctionvillage/manager/locator/locator.dart';
 import 'package:auctionvillage/utils/utils.dart';
 import 'package:auctionvillage/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
@@ -14,31 +12,26 @@ import 'package:kt_dart/collection.dart';
 
 /// A stateless widget to render PricingPlanScreen.
 class PricingPlanScreen extends StatefulWidget with AutoRouteWrapper {
-  final Product product;
+  // final Product product;
 
-  const PricingPlanScreen(this.product, {Key? key}) : super(key: key);
+  const PricingPlanScreen({Key? key}) : super(key: key);
 
   @override
   State<PricingPlanScreen> createState() => _PricingPlanScreenState();
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider(
-      create: (_) => getIt<ProductBloc>()..add(ProductSyncEvent.init(product: product)),
-      child: BlocListener<ProductBloc, ProductState>(
-        listenWhen: (p, c) =>
-            p.status.getOrElse(() => null) != c.status.getOrElse(() => null) ||
-            (c.status.getOrElse(() => null) != null && (c.status.getOrElse(() => null)!.response.maybeMap(orElse: () => false))),
-        listener: (c, s) => s.status.fold(
-          () => null,
-          (it) => it?.response.map(
-            info: (i) => PopupDialog.info(message: i.message, show: i.message.isNotEmpty).render(c),
-            error: (f) => PopupDialog.error(message: f.message, show: f.show && f.message.isNotEmpty).render(c),
-            success: (s) => PopupDialog.success(message: s.message, show: s.message.isNotEmpty).render(c),
-          ),
+    return BlocListener<ProductBloc, ProductState>(
+      listenWhen: (p, c) =>
+          p.status.getOrElse(() => null) != c.status.getOrElse(() => null) ||
+          (c.status.getOrElse(() => null) != null && (c.status.getOrElse(() => null)!.response.maybeMap(orElse: () => false))),
+      listener: (c, s) => s.status.fold(
+        () => null,
+        (it) => it?.response.mapOrNull(
+          success: (s) => PopupDialog.success(message: s.message, show: s.message.isNotEmpty).render(c),
         ),
-        child: this,
       ),
+      child: this,
     );
   }
 }
@@ -172,7 +165,7 @@ class _PricingPlanScreenState extends State<PricingPlanScreen> {
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           AdaptiveText(
-                                            '${plan.amount.getOrNull}'.asCurrency(currency: Utils.currency),
+                                            '${plan.amount.getOrNull}'.asCurrency(currency: _autheticatedUser?.country?.symbol),
                                             maxLines: 1,
                                             fontSize: 25.sp,
                                             maxFontSize: 25,
@@ -259,7 +252,7 @@ class _PricingPlanScreenState extends State<PricingPlanScreen> {
                   disabled: s.isLoading || s.isSavingState || s.isCreatingProduct,
                   isLoading: s.isCreatingProduct,
                   onPressed: () {
-                    if (!c.read<AuthWatcherCubit>().state.isAuthenticated) {
+                    if (!c.read<AuthWatcherCubit>().isAuthenticated) {
                       Utils.popupIfNoAuth(c, msg: 'Login to complete this action!');
                       return;
                     } else if (_bloc.state.product.category == null) {
@@ -281,7 +274,7 @@ class _PricingPlanScreenState extends State<PricingPlanScreen> {
               ]),
             ),
           ),
-        ),
+        ).sliverSafeBottom,
       ],
     );
   }

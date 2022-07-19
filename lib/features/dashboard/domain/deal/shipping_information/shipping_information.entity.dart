@@ -13,12 +13,12 @@ class ShippingInformation with _$ShippingInformation {
   const ShippingInformation._();
 
   const factory ShippingInformation({
-    required BasicTextField<double?> width,
-    required BasicTextField<double?> weight,
-    required BasicTextField<double?> height,
-    required BasicTextField<double?> length,
-    required BasicTextField<String?> description,
-    required BasicTextField<String?> deliveryPeriod,
+    required NumField<double?> width,
+    required NumField<double?> weight,
+    required NumField<double?> height,
+    required NumField<double?> length,
+    required BasicTextField description,
+    required BasicTextField deliveryPeriod,
     @Default(false) bool isPickup,
   }) = _ShippingInformation;
 
@@ -34,23 +34,22 @@ class ShippingInformation with _$ShippingInformation {
     bool? isPickup,
   }) =>
       ShippingInformation(
-        width: BasicTextField(width),
-        weight: BasicTextField(weight),
-        height: BasicTextField(height),
-        length: BasicTextField(length),
+        width: NumField(width),
+        weight: NumField(weight),
+        height: NumField(height),
+        length: NumField(length),
         description: BasicTextField(description),
         deliveryPeriod: BasicTextField(deliveryPeriod),
         isPickup: isPickup ?? false,
       );
 
   ShippingInformation merge(ShippingInformation? other) => copyWith(
-        width: other?.width.isNotNull((it) => it as BasicTextField<double?>, orElse: (_) => width) ?? width,
-        weight: other?.weight.isNotNull((it) => it as BasicTextField<double?>, orElse: (_) => weight) ?? weight,
-        height: other?.height.isNotNull((it) => it as BasicTextField<double?>, orElse: (_) => height) ?? height,
-        length: other?.length.isNotNull((it) => it as BasicTextField<double?>, orElse: (_) => length) ?? length,
-        description: other?.description.isNotNull((it) => it as BasicTextField<String?>, orElse: (_) => description) ?? description,
-        deliveryPeriod:
-            other?.deliveryPeriod.isNotNull((it) => it as BasicTextField<String?>, orElse: (_) => deliveryPeriod) ?? deliveryPeriod,
+        width: other?.width.isNotNull((it) => it as NumField<double?>, orElse: (_) => width) ?? width,
+        weight: other?.weight.isNotNull((it) => it as NumField<double?>, orElse: (_) => weight) ?? weight,
+        height: other?.height.isNotNull((it) => it as NumField<double?>, orElse: (_) => height) ?? height,
+        length: other?.length.isNotNull((it) => it as NumField<double?>, orElse: (_) => length) ?? length,
+        description: other?.description.isNotNull((it) => it as BasicTextField, orElse: (_) => description) ?? description,
+        deliveryPeriod: other?.deliveryPeriod.isNotNull((it) => it as BasicTextField, orElse: (_) => deliveryPeriod) ?? deliveryPeriod,
         isPickup: other?.isPickup ?? isPickup,
       );
 

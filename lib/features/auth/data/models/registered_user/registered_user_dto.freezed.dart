@@ -206,7 +206,9 @@ class _$_RegisteredUserDTO extends _RegisteredUserDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RegisteredUserDTOToJson(this);
+    return _$$_RegisteredUserDTOToJson(
+      this,
+    );
   }
 }
 
@@ -223,13 +225,13 @@ abstract class _RegisteredUserDTO extends RegisteredUserDTO {
 
   @override
   @JsonKey(includeIfNull: false)
-  String? get status => throw _privateConstructorUsedError;
+  String? get status;
   @override
   @JsonKey(includeIfNull: false)
-  UserDTO? get data => throw _privateConstructorUsedError;
+  UserDTO? get data;
   @override
   @JsonKey(includeIfNull: false)
-  UserDTO? get user => throw _privateConstructorUsedError;
+  UserDTO? get user;
   @override
   @JsonKey(ignore: true)
   _$$_RegisteredUserDTOCopyWith<_$_RegisteredUserDTO> get copyWith =>

@@ -1,7 +1,7 @@
+import 'package:auctionvillage/core/data/index.dart';
 import 'package:auctionvillage/manager/locator/locator.dart';
 import 'package:auctionvillage/utils/utils.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart';
 
 // enum BuildFlavor { prod, staging, isolate, dev }
@@ -54,11 +54,8 @@ class BuildEnvironment implements Secrets {
 
   String get appApiKey => 'AuctionDevKey';
 
-  static String domain([BuildFlavor? value]) => (value ?? env.flavor).fold(
-        dev: () => '${EndPoints.APP_DEV_DOMAIN}',
-        //prod: () => kDebugMode ? '${EndPoints.APP_DEV_DOMAIN}' : '${EndPoints.APP_PROD_DOMAIN}',
-        prod: () => '${EndPoints.APP_DEV_DOMAIN}',
-      );
+  static String domain([BuildFlavor? value]) =>
+      (value ?? env.flavor).fold(dev: () => '${EndPoints.APP_DEV_DOMAIN}', prod: () => '${EndPoints.APP_PROD_DOMAIN}');
 
   static String get http => Uri.http(domain(), '').toString();
 
@@ -98,28 +95,14 @@ class BuildEnvironment implements Secrets {
   static Future<void> init({required BuildFlavor flavor}) async {
     _env ??= BuildEnvironment.factory(flavor: flavor, uri: Uri.https(domain(flavor), kDebugMode ? EndPoints.API_ENDPOINT : ''));
 
-    // This app is designed only to work vertically, so we limit
-    // orientations to portrait up and down.
-    await env.flavor.maybeWhen(
-      isolate: () => null,
-      orElse: () async {
-        await SystemChrome.setPreferredOrientations([
-          DeviceOrientation.portraitUp,
-          DeviceOrientation.portraitDown,
-        ]);
-      },
+    await env.flavor.fold(
+      dev: () => locator(BuildFlavor.dev.name),
+      prod: () => locator(BuildFlavor.prod.name),
     );
 
-    await flavor.fold(
-      dev: () async {
-        await locator(BuildFlavor.dev.name);
-        await getIt<FirebaseCrashlytics>().setCrashlyticsCollectionEnabled(!kDebugMode);
-      },
-      prod: () async {
-        await locator(BuildFlavor.prod.name);
-        await getIt<FirebaseCrashlytics>().setCrashlyticsCollectionEnabled(!kDebugMode);
-      },
-    );
+    await HiveClient.initialize();
+
+    await getIt<FirebaseCrashlytics>().setCrashlyticsCollectionEnabled(!kDebugMode);
   }
 }
 

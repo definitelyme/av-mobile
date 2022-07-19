@@ -14,11 +14,11 @@ class Rating with _$Rating {
   const Rating._();
 
   const factory Rating({
-    required BasicTextField<double> delivery,
-    required BasicTextField<double> responsiveness,
-    required BasicTextField<double> quality,
-    required BasicTextField<double> reliability,
-    required BasicTextField<double> rating,
+    required NumField<double> delivery,
+    required NumField<double> responsiveness,
+    required NumField<double> quality,
+    required NumField<double> reliability,
+    required NumField<double> rating,
     @Default(KtList.empty()) KtList<Review> reviews,
   }) = _Rating;
 
@@ -31,21 +31,20 @@ class Rating with _$Rating {
     List<ReviewDTO> reviews = const [],
   }) =>
       Rating(
-        delivery: BasicTextField(delivery ?? 0),
-        quality: BasicTextField(quality ?? 0),
-        responsiveness: BasicTextField(responsiveness ?? 0),
-        reliability: BasicTextField(reliability ?? 0),
-        rating: BasicTextField(rating ?? 0),
+        delivery: NumField(delivery ?? 0),
+        quality: NumField(quality ?? 0),
+        responsiveness: NumField(responsiveness ?? 0),
+        reliability: NumField(reliability ?? 0),
+        rating: NumField(rating ?? 0),
         reviews: KtList.from(reviews.map((e) => e.domain)),
       );
 
   Rating merge(Rating? other, {bool nextPage = false}) => Rating(
-        delivery: other?.delivery.isNotNull((it) => it as BasicTextField<double>, orElse: (_) => delivery) ?? delivery,
-        quality: other?.quality.isNotNull((it) => it as BasicTextField<double>, orElse: (_) => quality) ?? quality,
-        responsiveness:
-            other?.responsiveness.isNotNull((it) => it as BasicTextField<double>, orElse: (_) => responsiveness) ?? responsiveness,
-        reliability: other?.reliability.isNotNull((it) => it as BasicTextField<double>, orElse: (_) => reliability) ?? reliability,
-        rating: other?.rating.isNotNull((it) => it as BasicTextField<double>, orElse: (_) => rating) ?? rating,
+        delivery: other?.delivery.isNotNull((it) => it as NumField<double>, orElse: (_) => delivery) ?? delivery,
+        quality: other?.quality.isNotNull((it) => it as NumField<double>, orElse: (_) => quality) ?? quality,
+        responsiveness: other?.responsiveness.isNotNull((it) => it as NumField<double>, orElse: (_) => responsiveness) ?? responsiveness,
+        reliability: other?.reliability.isNotNull((it) => it as NumField<double>, orElse: (_) => reliability) ?? reliability,
+        rating: other?.rating.isNotNull((it) => it as NumField<double>, orElse: (_) => rating) ?? rating,
         reviews: other != null ? (!nextPage ? other.reviews : reviews.plusIfAbsent(other.reviews)) : reviews,
       );
 }
@@ -57,12 +56,12 @@ class Review extends BaseEntity with _$Review {
 
   const factory Review({
     required UniqueId<String?> id,
-    required BasicTextField<double> delivery,
-    required BasicTextField<double> quality,
-    required BasicTextField<double> responsiveness,
-    required BasicTextField<double> reliability,
-    required BasicTextField<double> rating,
-    required BasicTextField<String?> review,
+    required NumField<double> delivery,
+    required NumField<double> quality,
+    required NumField<double> responsiveness,
+    required NumField<double> reliability,
+    required NumField<double> rating,
+    required BasicTextField review,
     User? user,
     DateTime? createdAt,
     DateTime? updatedAt,
@@ -82,12 +81,12 @@ class Review extends BaseEntity with _$Review {
   }) =>
       Review(
         id: UniqueId.fromExternal(id),
-        delivery: BasicTextField<double>(delivery ?? 0),
-        quality: BasicTextField<double>(quality ?? 0),
-        responsiveness: BasicTextField<double>(responsiveness ?? 0),
-        reliability: BasicTextField<double>(reliability ?? 0),
-        rating: BasicTextField<double>(rating ?? 0),
-        review: BasicTextField<String?>(review),
+        delivery: NumField<double>(delivery ?? 0),
+        quality: NumField<double>(quality ?? 0),
+        responsiveness: NumField<double>(responsiveness ?? 0),
+        reliability: NumField<double>(reliability ?? 0),
+        rating: NumField<double>(rating ?? 0),
+        review: BasicTextField(review),
         user: user,
         createdAt: createdAt,
         updatedAt: updatedAt,

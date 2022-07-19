@@ -175,7 +175,9 @@ class _$_BankAccountDTO extends _BankAccountDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_BankAccountDTOToJson(this);
+    return _$$_BankAccountDTOToJson(
+      this,
+    );
   }
 }
 
@@ -190,11 +192,11 @@ abstract class _BankAccountDTO extends BankAccountDTO {
       _$_BankAccountDTO.fromJson;
 
   @override
-  String? get status => throw _privateConstructorUsedError;
+  String? get status;
   @override
-  String? get message => throw _privateConstructorUsedError;
+  String? get message;
   @override
-  _BankAccountData? get data => throw _privateConstructorUsedError;
+  _BankAccountData? get data;
   @override
   @JsonKey(ignore: true)
   _$$_BankAccountDTOCopyWith<_$_BankAccountDTO> get copyWith =>
@@ -344,7 +346,9 @@ class _$__BankAccountData extends __BankAccountData {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$__BankAccountDataToJson(this);
+    return _$$__BankAccountDataToJson(
+      this,
+    );
   }
 }
 
@@ -360,10 +364,10 @@ abstract class __BankAccountData extends _BankAccountData {
 
   @override
   @JsonKey(name: 'account_name')
-  String? get accountName => throw _privateConstructorUsedError;
+  String? get accountName;
   @override
   @JsonKey(name: 'account_number')
-  String? get accountNumber => throw _privateConstructorUsedError;
+  String? get accountNumber;
   @override
   @JsonKey(ignore: true)
   _$$__BankAccountDataCopyWith<_$__BankAccountData> get copyWith =>

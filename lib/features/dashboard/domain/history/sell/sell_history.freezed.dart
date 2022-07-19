@@ -16,9 +16,9 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SellHistory {
-  AmountField<double> get totalProducts => throw _privateConstructorUsedError;
-  AmountField<double> get totalSold => throw _privateConstructorUsedError;
-  AmountField<double> get revenue => throw _privateConstructorUsedError;
+  NumField<double> get totalProducts => throw _privateConstructorUsedError;
+  NumField<double> get totalSold => throw _privateConstructorUsedError;
+  NumField<double> get revenue => throw _privateConstructorUsedError;
   KtList<Deal> get deals => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -32,9 +32,9 @@ abstract class $SellHistoryCopyWith<$Res> {
           SellHistory value, $Res Function(SellHistory) then) =
       _$SellHistoryCopyWithImpl<$Res>;
   $Res call(
-      {AmountField<double> totalProducts,
-      AmountField<double> totalSold,
-      AmountField<double> revenue,
+      {NumField<double> totalProducts,
+      NumField<double> totalSold,
+      NumField<double> revenue,
       KtList<Deal> deals});
 }
 
@@ -57,15 +57,15 @@ class _$SellHistoryCopyWithImpl<$Res> implements $SellHistoryCopyWith<$Res> {
       totalProducts: totalProducts == freezed
           ? _value.totalProducts
           : totalProducts // ignore: cast_nullable_to_non_nullable
-              as AmountField<double>,
+              as NumField<double>,
       totalSold: totalSold == freezed
           ? _value.totalSold
           : totalSold // ignore: cast_nullable_to_non_nullable
-              as AmountField<double>,
+              as NumField<double>,
       revenue: revenue == freezed
           ? _value.revenue
           : revenue // ignore: cast_nullable_to_non_nullable
-              as AmountField<double>,
+              as NumField<double>,
       deals: deals == freezed
           ? _value.deals
           : deals // ignore: cast_nullable_to_non_nullable
@@ -82,9 +82,9 @@ abstract class _$$_SellHistoryCopyWith<$Res>
       __$$_SellHistoryCopyWithImpl<$Res>;
   @override
   $Res call(
-      {AmountField<double> totalProducts,
-      AmountField<double> totalSold,
-      AmountField<double> revenue,
+      {NumField<double> totalProducts,
+      NumField<double> totalSold,
+      NumField<double> revenue,
       KtList<Deal> deals});
 }
 
@@ -109,15 +109,15 @@ class __$$_SellHistoryCopyWithImpl<$Res> extends _$SellHistoryCopyWithImpl<$Res>
       totalProducts: totalProducts == freezed
           ? _value.totalProducts
           : totalProducts // ignore: cast_nullable_to_non_nullable
-              as AmountField<double>,
+              as NumField<double>,
       totalSold: totalSold == freezed
           ? _value.totalSold
           : totalSold // ignore: cast_nullable_to_non_nullable
-              as AmountField<double>,
+              as NumField<double>,
       revenue: revenue == freezed
           ? _value.revenue
           : revenue // ignore: cast_nullable_to_non_nullable
-              as AmountField<double>,
+              as NumField<double>,
       deals: deals == freezed
           ? _value.deals
           : deals // ignore: cast_nullable_to_non_nullable
@@ -137,11 +137,11 @@ class _$_SellHistory extends _SellHistory {
       : super._();
 
   @override
-  final AmountField<double> totalProducts;
+  final NumField<double> totalProducts;
   @override
-  final AmountField<double> totalSold;
+  final NumField<double> totalSold;
   @override
-  final AmountField<double> revenue;
+  final NumField<double> revenue;
   @override
   @JsonKey()
   final KtList<Deal> deals;
@@ -179,20 +179,20 @@ class _$_SellHistory extends _SellHistory {
 
 abstract class _SellHistory extends SellHistory {
   const factory _SellHistory(
-      {required final AmountField<double> totalProducts,
-      required final AmountField<double> totalSold,
-      required final AmountField<double> revenue,
+      {required final NumField<double> totalProducts,
+      required final NumField<double> totalSold,
+      required final NumField<double> revenue,
       final KtList<Deal> deals}) = _$_SellHistory;
   const _SellHistory._() : super._();
 
   @override
-  AmountField<double> get totalProducts => throw _privateConstructorUsedError;
+  NumField<double> get totalProducts;
   @override
-  AmountField<double> get totalSold => throw _privateConstructorUsedError;
+  NumField<double> get totalSold;
   @override
-  AmountField<double> get revenue => throw _privateConstructorUsedError;
+  NumField<double> get revenue;
   @override
-  KtList<Deal> get deals => throw _privateConstructorUsedError;
+  KtList<Deal> get deals;
   @override
   @JsonKey(ignore: true)
   _$$_SellHistoryCopyWith<_$_SellHistory> get copyWith =>

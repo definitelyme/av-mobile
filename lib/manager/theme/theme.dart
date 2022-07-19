@@ -1,2 +1,2 @@
-export 'manager/theme_cubit.dart';
+export 'theme_cubit.dart';
 export 'styles.dart';

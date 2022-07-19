@@ -196,7 +196,9 @@ class _$_PaginationDTO extends _PaginationDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaginationDTOToJson(this);
+    return _$$_PaginationDTOToJson(
+      this,
+    );
   }
 }
 
@@ -213,16 +215,16 @@ abstract class _PaginationDTO extends PaginationDTO {
 
   @override
   @JsonKey(name: 'current')
-  int? get currentPage => throw _privateConstructorUsedError;
+  int? get currentPage;
   @override
   @JsonKey(name: 'next')
-  int? get next => throw _privateConstructorUsedError;
+  int? get next;
   @override
   @JsonKey(name: 'per_page')
-  int? get perPage => throw _privateConstructorUsedError;
+  int? get perPage;
   @override
   @JsonKey(name: 'total_count')
-  int? get total => throw _privateConstructorUsedError;
+  int? get total;
   @override
   @JsonKey(ignore: true)
   _$$_PaginationDTOCopyWith<_$_PaginationDTO> get copyWith =>

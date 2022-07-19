@@ -288,7 +288,9 @@ class _$_BrandModelDTO extends _BrandModelDTO {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_BrandModelDTOToJson(this);
+    return _$$_BrandModelDTOToJson(
+      this,
+    );
   }
 }
 
@@ -310,27 +312,27 @@ abstract class _BrandModelDTO extends BrandModelDTO {
 
   @override
   @BooleanSerializer()
-  bool? get active => throw _privateConstructorUsedError;
+  bool? get active;
   @override
   @JsonKey(name: '_id')
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
   @TimestampConverter()
-  DateTime? get createdBy => throw _privateConstructorUsedError;
+  DateTime? get createdBy;
   @override
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
   @override
-  String? get brand => throw _privateConstructorUsedError;
+  String? get brand;
   @override
-  String? get slug => throw _privateConstructorUsedError;
-  @override
-  @TimestampConverter()
-  DateTime? get createdAt => throw _privateConstructorUsedError;
+  String? get slug;
   @override
   @TimestampConverter()
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get createdAt;
+  @override
+  @TimestampConverter()
+  DateTime? get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$_BrandModelDTOCopyWith<_$_BrandModelDTO> get copyWith =>

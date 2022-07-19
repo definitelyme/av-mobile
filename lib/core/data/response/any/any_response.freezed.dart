@@ -489,7 +489,9 @@ class _$ErrorResponse extends ErrorResponse with Failure {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ErrorResponseToJson(this);
+    return _$$ErrorResponseToJson(
+      this,
+    );
   }
 }
 
@@ -509,23 +511,23 @@ abstract class ErrorResponse extends AnyResponse implements Failure {
       _$ErrorResponse.fromJson;
 
   @JsonKey(name: 'statusCode')
-  int? get code => throw _privateConstructorUsedError;
+  int? get code;
   @override
-  bool? get status => throw _privateConstructorUsedError;
+  bool? get status;
   @override
   @JsonKey(includeIfNull: false, name: 'message')
-  String? get messageTxt => throw _privateConstructorUsedError;
+  String? get messageTxt;
   @override
   @JsonKey(ignore: true)
-  String? get details => throw _privateConstructorUsedError;
-  ServerFieldErrors? get errors => throw _privateConstructorUsedError;
+  String? get details;
+  ServerFieldErrors? get errors;
   @override
   @JsonKey(ignore: true)
-  bool get pop => throw _privateConstructorUsedError;
+  bool get pop;
   @JsonKey(ignore: true)
-  bool get show => throw _privateConstructorUsedError;
+  bool get show;
   @JsonKey(ignore: true)
-  Exception? get exception => throw _privateConstructorUsedError;
+  Exception? get exception;
   @override
   @JsonKey(ignore: true)
   _$$ErrorResponseCopyWith<_$ErrorResponse> get copyWith =>
@@ -768,7 +770,9 @@ class _$InfoResponseType extends InfoResponseType with Info {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$InfoResponseTypeToJson(this);
+    return _$$InfoResponseTypeToJson(
+      this,
+    );
   }
 }
 
@@ -784,16 +788,16 @@ abstract class InfoResponseType extends AnyResponse implements Info {
       _$InfoResponseType.fromJson;
 
   @override
-  bool? get status => throw _privateConstructorUsedError;
+  bool? get status;
   @override
   @JsonKey(includeIfNull: false, name: 'message')
-  String? get messageTxt => throw _privateConstructorUsedError;
+  String? get messageTxt;
   @override
   @JsonKey(ignore: true)
-  String? get details => throw _privateConstructorUsedError;
+  String? get details;
   @override
   @JsonKey(ignore: true)
-  bool get pop => throw _privateConstructorUsedError;
+  bool get pop;
   @override
   @JsonKey(ignore: true)
   _$$InfoResponseTypeCopyWith<_$InfoResponseType> get copyWith =>
@@ -1037,7 +1041,9 @@ class _$SuccessfulResponse extends SuccessfulResponse with Success {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SuccessfulResponseToJson(this);
+    return _$$SuccessfulResponseToJson(
+      this,
+    );
   }
 }
 
@@ -1053,16 +1059,16 @@ abstract class SuccessfulResponse extends AnyResponse implements Success {
       _$SuccessfulResponse.fromJson;
 
   @override
-  bool? get status => throw _privateConstructorUsedError;
+  bool? get status;
   @override
   @JsonKey(includeIfNull: false, name: 'message')
-  String? get messageTxt => throw _privateConstructorUsedError;
+  String? get messageTxt;
   @override
   @JsonKey(ignore: true)
-  String? get details => throw _privateConstructorUsedError;
+  String? get details;
   @override
   @JsonKey(ignore: true)
-  bool get pop => throw _privateConstructorUsedError;
+  bool get pop;
   @override
   @JsonKey(ignore: true)
   _$$SuccessfulResponseCopyWith<_$SuccessfulResponse> get copyWith =>

@@ -1,6 +1,6 @@
 library app.dart;
 
-import 'package:auctionvillage/core/presentation/managers/managers.dart';
+import 'package:auctionvillage/core/presentation/index.dart';
 import 'package:auctionvillage/entry.dart';
 import 'package:auctionvillage/features/auth/presentation/managers/managers.dart';
 import 'package:auctionvillage/manager/locator/locator.dart';
@@ -27,9 +27,9 @@ class AuctionVillageApp extends StatelessWidget {
 
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (_) => getIt<RootCubit>()),
         BlocProvider(create: (_) => getIt<ThemeCubit>()),
         BlocProvider(create: (_) => getIt<AuthWatcherCubit>()),
-        BlocProvider(create: (_) => getIt<BottomNavigationCubit>()),
         BlocProvider(create: (_) => getIt<DealCubit>()),
         BlocProvider(create: (_) => getIt<WalletCubit>()),
       ],

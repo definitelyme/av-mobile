@@ -145,7 +145,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
                                         ),
                                       ),
                                       //
-                                      if (item.product?.name.valueOrNull != null)
+                                      if (item.product?.name.getOrNull != null)
                                         Positioned.fill(
                                           child: Padding(
                                             padding: EdgeInsets.fromLTRB(0.035.w, 0.015.h, 0.035.w, 0.03.h),
@@ -234,7 +234,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
                                                                     children: [
                                                                       // if (item.basePrice.getOrNull.roundToIntOrDouble.toString().length <=
                                                                       //     5)
-                                                                      if (item.basePrice.getOrNull.roundToIntOrDouble.toString().length <=
+                                                                      if (item.basePrice.getExact(0).roundToIntOrDouble.toString().length <=
                                                                           12) ...[
                                                                         Flexible(
                                                                           flex: 2,
@@ -242,10 +242,11 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
                                                                             TextSpan(children: [
                                                                               if (item.country != null)
                                                                                 TextSpan(
-                                                                                  text: '${item.country?.symbol}',
+                                                                                  text: '${item.country?.symbolPadded}',
                                                                                   style: TextStyle(
                                                                                     color: Palette.accentGreen,
                                                                                     fontSize: 18.sp,
+                                                                                    fontWeight: FontWeight.bold,
                                                                                   ),
                                                                                 ),
                                                                               TextSpan(
@@ -339,7 +340,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
                     children: [
                       Expanded(
                         child: Material(
-                          color: App.resolveColor(Palette.cardColorLight, dark: Palette.secondaryColor, context: context),
+                          color: App.resolveColor(Palette.cardColorLight, dark: Palette.secondaryColor, ctx: context),
                           borderRadius: const BorderRadius.only(topLeft: Radius.circular(32), topRight: Radius.circular(32)),
                           child: DragToRefresh(
                             initialRefresh: true,
@@ -390,7 +391,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
                                                   color: App.resolveColor(
                                                     const Color(0xffF0F3FB),
                                                     dark: Palette.secondaryColor.shade700,
-                                                    context: context,
+                                                    ctx: context,
                                                   ),
                                                   shape: RoundedRectangleBorder(
                                                     borderRadius: 4.br,
@@ -398,7 +399,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin<
                                                       color: App.resolveColor(
                                                         const Color(0xffB5D3F9),
                                                         dark: Palette.cardColorDark,
-                                                        context: context,
+                                                        ctx: context,
                                                       )!,
                                                     ),
                                                   ),
@@ -522,7 +523,7 @@ class _CategoryBuilder extends StatelessWidget {
         SizedBox(
           width: 0.25.w,
           child: Material(
-            color: App.resolveColor(const Color(0xffF0F3FB), dark: Palette.cardColorDark, context: context),
+            color: App.resolveColor(const Color(0xffF0F3FB), dark: Palette.cardColorDark, ctx: context),
             borderRadius: 8.br,
             child: AdaptiveInkWell(
               onTap: () => navigator.navigate(DealsListRoute(title: '${category.name.getOrNull}', category: category)),
@@ -536,7 +537,7 @@ class _CategoryBuilder extends StatelessWidget {
                     children: [
                       Flexible(
                         child: Material(
-                          color: App.resolveColor(Palette.cardColorLight, dark: Palette.secondaryColor, context: context),
+                          color: App.resolveColor(Palette.cardColorLight, dark: Palette.secondaryColor, ctx: context),
                           borderRadius: 100.br,
                           child: Padding(
                             padding: EdgeInsets.all(0.021.w),

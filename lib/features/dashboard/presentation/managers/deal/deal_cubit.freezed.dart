@@ -27,7 +27,7 @@ mixin _$DealState {
   Rating? get rating => throw _privateConstructorUsedError;
   DealPlan? get selectedPlan => throw _privateConstructorUsedError;
   Product get currentProduct => throw _privateConstructorUsedError;
-  AmountField<double> get bidAmount => throw _privateConstructorUsedError;
+  NumField<double> get bidAmount => throw _privateConstructorUsedError;
   KtList<DealCategory> get categories => throw _privateConstructorUsedError;
   KtList<Deal> get homeDeals => throw _privateConstructorUsedError;
   KtList<Deal> get liveDeals => throw _privateConstructorUsedError;
@@ -58,7 +58,7 @@ abstract class $DealStateCopyWith<$Res> {
       Rating? rating,
       DealPlan? selectedPlan,
       Product currentProduct,
-      AmountField<double> bidAmount,
+      NumField<double> bidAmount,
       KtList<DealCategory> categories,
       KtList<Deal> homeDeals,
       KtList<Deal> liveDeals,
@@ -156,7 +156,7 @@ class _$DealStateCopyWithImpl<$Res> implements $DealStateCopyWith<$Res> {
       bidAmount: bidAmount == freezed
           ? _value.bidAmount
           : bidAmount // ignore: cast_nullable_to_non_nullable
-              as AmountField<double>,
+              as NumField<double>,
       categories: categories == freezed
           ? _value.categories
           : categories // ignore: cast_nullable_to_non_nullable
@@ -276,7 +276,7 @@ abstract class _$$_DealStateCopyWith<$Res> implements $DealStateCopyWith<$Res> {
       Rating? rating,
       DealPlan? selectedPlan,
       Product currentProduct,
-      AmountField<double> bidAmount,
+      NumField<double> bidAmount,
       KtList<DealCategory> categories,
       KtList<Deal> homeDeals,
       KtList<Deal> liveDeals,
@@ -383,7 +383,7 @@ class __$$_DealStateCopyWithImpl<$Res> extends _$DealStateCopyWithImpl<$Res>
       bidAmount: bidAmount == freezed
           ? _value.bidAmount
           : bidAmount // ignore: cast_nullable_to_non_nullable
-              as AmountField<double>,
+              as NumField<double>,
       categories: categories == freezed
           ? _value.categories
           : categories // ignore: cast_nullable_to_non_nullable
@@ -472,7 +472,7 @@ class _$_DealState implements _DealState {
   @override
   final Product currentProduct;
   @override
-  final AmountField<double> bidAmount;
+  final NumField<double> bidAmount;
   @override
   @JsonKey()
   final KtList<DealCategory> categories;
@@ -583,7 +583,7 @@ abstract class _DealState implements DealState {
       final Rating? rating,
       final DealPlan? selectedPlan,
       required final Product currentProduct,
-      required final AmountField<double> bidAmount,
+      required final NumField<double> bidAmount,
       final KtList<DealCategory> categories,
       final KtList<Deal> homeDeals,
       final KtList<Deal> liveDeals,
@@ -594,45 +594,45 @@ abstract class _DealState implements DealState {
       final Option<AppHttpResponse?> status}) = _$_DealState;
 
   @override
-  bool get isLoading => throw _privateConstructorUsedError;
+  bool get isLoading;
   @override
-  bool get isLoadingSponsored => throw _privateConstructorUsedError;
+  bool get isLoadingSponsored;
   @override
-  bool get isBidding => throw _privateConstructorUsedError;
+  bool get isBidding;
   @override
-  bool get validate => throw _privateConstructorUsedError;
+  bool get validate;
   @override
-  Deal get currentDeal => throw _privateConstructorUsedError;
+  Deal get currentDeal;
   @override
-  DealCategory get currentCategory => throw _privateConstructorUsedError;
+  DealCategory get currentCategory;
   @override
-  SellHistory? get sellHistory => throw _privateConstructorUsedError;
+  SellHistory? get sellHistory;
   @override
-  BidHistory? get bidHistory => throw _privateConstructorUsedError;
+  BidHistory? get bidHistory;
   @override
-  Rating? get rating => throw _privateConstructorUsedError;
+  Rating? get rating;
   @override
-  DealPlan? get selectedPlan => throw _privateConstructorUsedError;
+  DealPlan? get selectedPlan;
   @override
-  Product get currentProduct => throw _privateConstructorUsedError;
+  Product get currentProduct;
   @override
-  AmountField<double> get bidAmount => throw _privateConstructorUsedError;
+  NumField<double> get bidAmount;
   @override
-  KtList<DealCategory> get categories => throw _privateConstructorUsedError;
+  KtList<DealCategory> get categories;
   @override
-  KtList<Deal> get homeDeals => throw _privateConstructorUsedError;
+  KtList<Deal> get homeDeals;
   @override
-  KtList<Deal> get liveDeals => throw _privateConstructorUsedError;
+  KtList<Deal> get liveDeals;
   @override
-  KtList<Deal> get homeSponsoredDeals => throw _privateConstructorUsedError;
+  KtList<Deal> get homeSponsoredDeals;
   @override
-  KtList<Deal> get dealsList => throw _privateConstructorUsedError;
+  KtList<Deal> get dealsList;
   @override
-  KtList<MyWish> get wishlist => throw _privateConstructorUsedError;
+  KtList<MyWish> get wishlist;
   @override
-  KtList<DealPlan> get dealPlans => throw _privateConstructorUsedError;
+  KtList<DealPlan> get dealPlans;
   @override
-  Option<AppHttpResponse?> get status => throw _privateConstructorUsedError;
+  Option<AppHttpResponse?> get status;
   @override
   @JsonKey(ignore: true)
   _$$_DealStateCopyWith<_$_DealState> get copyWith =>

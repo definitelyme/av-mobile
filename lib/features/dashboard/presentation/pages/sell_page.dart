@@ -23,7 +23,7 @@ class _SellPageState extends State<SellPage> {
 
   @override
   void initState() {
-    _bloc = getIt<ProductBloc>();
+    _bloc = context.read<ProductBloc>();
     _bloc.add(const ProductPageControllerEvent.attachListener());
     _bloc.add(const ProductGetEvent.categories());
     super.initState();
@@ -42,18 +42,21 @@ class _SellPageState extends State<SellPage> {
             (c.status.getOrElse(() => null) != null && (c.status.getOrElse(() => null)!.response.maybeMap(orElse: () => false))),
         listener: (c, state) => state.status.fold(
           () => null,
-          (it) => it?.response.map(
-            info: (i) => PopupDialog.info(message: i.message, show: i.message.isNotEmpty).render(c),
-            error: (f) => PopupDialog.error(message: f.message, show: f.show && f.message.isNotEmpty).render(c),
-            success: (s) => PopupDialog.success(
-              message: s.message,
-              show: s.message.isNotEmpty,
-              listener: (status) => status?.fold(
-                dismissed: () {
-                  if (state.productCreated) _bloc.add(const ProductSyncEvent.clearForm());
-                },
-              ),
-            ).render(c),
+          (it) => it?.response.mapOrNull(
+            success: (s) {
+              if (App.currentRoute == DashboardRoute.name)
+                return PopupDialog.success(
+                  message: s.message,
+                  show: s.message.isNotEmpty,
+                  listener: (status) => status?.fold(
+                    dismissed: () {
+                      if (state.productCreated) _bloc.add(const ProductSyncEvent.clearForm());
+                    },
+                  ),
+                ).render(c);
+
+              return null;
+            },
           ),
         ),
         child: AdaptiveScaffold(
@@ -271,7 +274,7 @@ class _PageBuilderState extends State<_PageBuilder> {
           left: false,
           right: false,
           child: WidgetFocus(
-            unfocus: false,
+            // unfocus: false,
             child: Column(
               // mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -293,7 +296,7 @@ class _PageBuilderState extends State<_PageBuilder> {
                             onPressed: () {
                               _bloc.add(const ProductSyncEvent.validate(true));
                               final canFinish = _bloc.state.product.failure.isNone() && !_bloc.state.product.photos.isEmpty();
-                              if (canFinish) navigator.navigate(PricingPlanRoute(product: _bloc.state.product));
+                              if (canFinish) navigator.navigate(const PricingPlanRoute());
                             },
                           ),
                           child: AppButton(

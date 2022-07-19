@@ -44,7 +44,7 @@ class AdaptiveScaffold extends StatelessWidget {
         widgetKey: scaffoldKey,
         appBar: adaptiveToolbar?.build(),
         body: body ?? builder?.let((it) => Builder(builder: (c) => it(c))),
-        backgroundColor: backgroundColor ?? App.resolveColor(Palette.neutralF9, dark: Palette.secondaryColor, context: context),
+        backgroundColor: backgroundColor ?? App.resolveColor(Palette.neutralF9, dark: Palette.secondaryColor, ctx: context),
         bottomNavBar: adaptiveBottomNav,
         cupertinoTabChildBuilder: cupertinoTabBuilder,
         iosContentBottomPadding: iosContentBottomPadding,

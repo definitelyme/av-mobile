@@ -1,20 +1,21 @@
 import 'package:auctionvillage/widgets/widgets.dart';
+import 'package:enough_platform_widgets/enough_platform_widgets.dart' show CupertinoCheckboxListTile;
 import 'package:cupertino_list_tile/cupertino_list_tile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-enum _AdaptiveListTileType { normal, switchType }
+enum AdaptiveListTileType { normal, switchType, selectable }
 
 /// A stateless widget to render AdaptiveListTile.
 class AdaptiveListTile extends StatelessWidget {
-  @override
-  final Key? key;
+  final Key? widgetKey;
 
-  final _AdaptiveListTileType _type;
+  final AdaptiveListTileType _type;
 
   final void Function(bool?)? onChanged;
   final Color? activeColor;
+  final Color? checkColor;
   final ImageProvider<Object>? activeThumbImage;
   final Color? activeTrackColor;
   final bool autofocus;
@@ -48,21 +49,26 @@ class AdaptiveListTile extends StatelessWidget {
   final VoidCallback? onLongPress;
   final VoidCallback? onTap;
   final Widget? secondary;
+  final Color? thumbColor;
   final bool selected;
   final Color? selectedTileColor;
   final ShapeBorder? shape;
   final Widget? subtitle;
   final Color? tileColor;
   final Widget? title;
-  final Color? trackColor;
+  final Color? cupertinoTrackColor;
   final Widget? trailing;
+  final OutlinedBorder? checkBoxShape;
   // Switch
   final bool value;
 
   final VisualDensity? visualDensity;
 
   const AdaptiveListTile({
-    this.key,
+    Key? key,
+    this.widgetKey,
+    bool? value,
+    this.onChanged,
     this.autofocus = false,
     this.contentPadding,
     this.dense,
@@ -80,13 +86,26 @@ class AdaptiveListTile extends StatelessWidget {
     this.onLongPress,
     this.onTap,
     this.selected = false,
+    this.thumbColor,
     this.selectedTileColor,
     this.shape,
     this.subtitle,
-    this.tileColor,
     this.title,
+    this.tileColor,
+    this.cupertinoTrackColor,
+    this.activeColor,
+    this.checkColor,
+    this.activeThumbImage,
+    this.activeTrackColor,
+    ListTileControlAffinity? controlAffinity,
+    this.inactiveThumbColor,
+    this.inactiveThumbImage,
+    this.inactiveTrackColor,
+    this.secondary,
+    this.dragStartBehavior,
     this.trailing,
     this.visualDensity,
+    this.checkBoxShape,
     this.borderRadius = BorderRadius.zero,
     this.border = BorderSide.none,
     this.cupertinoPressedColor = CupertinoColors.systemFill,
@@ -94,26 +113,18 @@ class AdaptiveListTile extends StatelessWidget {
     this.material = false,
     this.cupertino = false,
     this.noCupertinoBorder = false,
-  })  : _type = _AdaptiveListTileType.normal,
-        value = false,
-        onChanged = null,
-        activeColor = null,
-        activeThumbImage = null,
-        activeTrackColor = null,
-        controlAffinity = null,
-        inactiveThumbColor = null,
-        inactiveThumbImage = null,
-        inactiveTrackColor = null,
-        secondary = null,
-        dragStartBehavior = null,
-        trackColor = null,
-        assert((material && !cupertino) ||
-            (!material || cupertino) ||
-            (!material || !cupertino)),
+    AdaptiveListTileType? type,
+  })  : _type = type ?? AdaptiveListTileType.normal,
+        controlAffinity = controlAffinity ?? ListTileControlAffinity.platform,
+        value = value ?? false,
+        assert((material && !cupertino) || (!material || cupertino) || (!material || !cupertino)),
+        assert(
+            type != AdaptiveListTileType.selectable || (type == AdaptiveListTileType.selectable && (value != null || onChanged != null))),
         super(key: key);
 
   const AdaptiveListTile.adaptiveSwitch({
-    this.key,
+    Key? key,
+    this.widgetKey,
     required this.value,
     required this.onChanged,
     this.activeColor,
@@ -129,20 +140,76 @@ class AdaptiveListTile extends StatelessWidget {
     this.isThreeLine = false,
     this.secondary,
     this.selected = false,
+    this.thumbColor,
     this.selectedTileColor,
     this.shape,
     this.subtitle,
     this.title,
     this.tileColor,
-    this.trackColor,
+    this.cupertinoTrackColor,
     this.borderRadius = BorderRadius.zero,
     this.border = BorderSide.none,
     this.dragStartBehavior = DragStartBehavior.start,
     this.material = false,
     this.cupertino = false,
     this.noCupertinoBorder = false,
-  })  : _type = _AdaptiveListTileType.switchType,
+  })  : _type = AdaptiveListTileType.switchType,
         enableFeedback = null,
+        checkColor = null,
+        enabled = true,
+        focusColor = null,
+        focusNode = null,
+        horizontalTitleGap = null,
+        hoverColor = null,
+        leading = null,
+        minLeadingWidth = null,
+        minVerticalPadding = null,
+        mouseCursor = null,
+        onLongPress = null,
+        onTap = null,
+        trailing = null,
+        visualDensity = null,
+        checkBoxShape = null,
+        cupertinoPressedColor = CupertinoColors.systemFill,
+        cupertinoBorder = null,
+        assert((material && !cupertino) || (!material || cupertino) || (!material || !cupertino)),
+        super(key: key);
+
+  const AdaptiveListTile.selectable({
+    Key? key,
+    this.widgetKey,
+    required this.value,
+    required this.onChanged,
+    this.activeColor,
+    this.autofocus = false,
+    this.contentPadding,
+    this.controlAffinity = ListTileControlAffinity.platform,
+    this.dense,
+    this.secondary,
+    this.selected = false,
+    this.selectedTileColor,
+    this.shape,
+    this.subtitle,
+    this.title,
+    this.tileColor,
+    this.checkColor,
+    this.checkBoxShape,
+    this.borderRadius = BorderRadius.zero,
+    this.border = BorderSide.none,
+    this.dragStartBehavior = DragStartBehavior.start,
+    this.material = false,
+    this.cupertino = false,
+    this.noCupertinoBorder = false,
+  })  : _type = AdaptiveListTileType.selectable,
+        enableFeedback = null,
+        cupertinoTrackColor = null,
+        thumbColor = null,
+        inactiveThumbColor = null,
+        inactiveThumbImage = null,
+        inactiveTrackColor = null,
+        activeTrackColor = null,
+        activeThumbImage = null,
+        isThreeLine = false,
         enabled = true,
         focusColor = null,
         focusNode = null,
@@ -158,14 +225,12 @@ class AdaptiveListTile extends StatelessWidget {
         visualDensity = null,
         cupertinoPressedColor = CupertinoColors.systemFill,
         cupertinoBorder = null,
-        assert((material && !cupertino) ||
-            (!material || cupertino) ||
-            (!material || !cupertino)),
+        assert((material && !cupertino) || (!material || cupertino) || (!material || !cupertino)),
         super(key: key);
 
   Widget get cupertinoTiles => _type.fold(
         normal: () => CupertinoListTile(
-          key: key,
+          key: widgetKey,
           autofocus: autofocus,
           contentPadding: contentPadding,
           dense: dense,
@@ -182,16 +247,14 @@ class AdaptiveListTile extends StatelessWidget {
           subtitle: subtitle,
           title: title,
           trailing: trailing,
-          border: noCupertinoBorder
-              ? const Border.fromBorderSide(BorderSide.none)
-              : cupertinoBorder,
+          border: noCupertinoBorder ? const Border.fromBorderSide(BorderSide.none) : cupertinoBorder,
           pressColor: cupertinoPressedColor,
         ),
         switchType: () => CupertinoFormRow(
           padding: EdgeInsets.zero,
           child: MergeSemantics(
             child: CupertinoListTile(
-              key: key,
+              key: widgetKey,
               autofocus: autofocus,
               contentPadding: contentPadding,
               dense: dense,
@@ -204,21 +267,36 @@ class AdaptiveListTile extends StatelessWidget {
               selected: selected,
               subtitle: subtitle,
               title: title,
-              border: noCupertinoBorder
-                  ? const Border.fromBorderSide(BorderSide.none)
-                  : cupertinoBorder,
+              border: noCupertinoBorder ? const Border.fromBorderSide(BorderSide.none) : cupertinoBorder,
               onTap: onTap,
               mouseCursor: mouseCursor,
               onLongPress: onLongPress,
               pressColor: cupertinoPressedColor,
               trailing: CupertinoSwitch(
-                key: key,
+                key: widgetKey,
                 value: value,
                 onChanged: onChanged!,
                 activeColor: activeColor,
-                trackColor: trackColor,
+                thumbColor: thumbColor,
+                trackColor: cupertinoTrackColor,
                 dragStartBehavior: dragStartBehavior!,
               ),
+            ),
+          ),
+        ),
+        selectable: () => DecoratedBox(
+          decoration: BoxDecoration(color: tileColor, borderRadius: borderRadius),
+          child: Material(
+            type: MaterialType.transparency,
+            child: CupertinoCheckboxListTile(
+              value: value,
+              onChanged: onChanged,
+              contentPadding: contentPadding,
+              activeColor: activeColor,
+              title: title,
+              subtitle: subtitle,
+              selected: selected,
+              checkColor: checkColor ?? activeColor,
             ),
           ),
         ),
@@ -226,7 +304,7 @@ class AdaptiveListTile extends StatelessWidget {
 
   Widget get materialTiles => _type.fold(
         normal: () => ListTile(
-          key: key,
+          key: widgetKey,
           autofocus: autofocus,
           contentPadding: contentPadding,
           dense: dense,
@@ -235,6 +313,7 @@ class AdaptiveListTile extends StatelessWidget {
           focusColor: focusColor,
           focusNode: focusNode,
           horizontalTitleGap: horizontalTitleGap,
+          selectedColor: selectedTileColor,
           hoverColor: hoverColor,
           isThreeLine: isThreeLine,
           leading: leading,
@@ -253,12 +332,16 @@ class AdaptiveListTile extends StatelessWidget {
           visualDensity: visualDensity,
         ),
         switchType: () => SwitchListTile(
-          key: key,
+          key: widgetKey,
           value: value,
           onChanged: onChanged!,
           activeColor: activeColor,
           activeThumbImage: activeThumbImage,
           activeTrackColor: activeTrackColor,
+          hoverColor: hoverColor,
+          enableFeedback: enableFeedback,
+          focusNode: focusNode,
+          visualDensity: visualDensity,
           autofocus: autofocus,
           contentPadding: contentPadding,
           controlAffinity: controlAffinity!,
@@ -274,6 +357,35 @@ class AdaptiveListTile extends StatelessWidget {
           subtitle: subtitle,
           title: title,
           tileColor: tileColor,
+        ),
+        selectable: () => DecoratedBox(
+          decoration: BoxDecoration(color: tileColor, borderRadius: borderRadius),
+          child: Material(
+            type: MaterialType.transparency,
+            child: CheckboxListTile(
+              value: value,
+              dense: dense,
+              autofocus: autofocus,
+              enableFeedback: enableFeedback,
+              onChanged: onChanged,
+              controlAffinity: controlAffinity!,
+              contentPadding: contentPadding,
+              activeColor: activeColor,
+              title: title,
+              isThreeLine: isThreeLine,
+              subtitle: subtitle,
+              tileColor: tileColor,
+              visualDensity: visualDensity,
+              secondary: trailing,
+              selected: selected,
+              selectedTileColor: selectedTileColor,
+              checkColor: activeColor,
+              checkboxShape: checkBoxShape,
+              focusNode: focusNode,
+              shape: shape,
+              // side: BorderSide(color: border.color, width: border.width),
+            ),
+          ),
         ),
       );
 
@@ -295,24 +407,24 @@ class AdaptiveListTile extends StatelessWidget {
     if (cupertino) return cupertinoTiles;
 
     return PlatformBuilder(
-      material: (_) => ClipRRect(
-        borderRadius: borderRadius,
-        child: materialTiles,
-      ),
+      material: (_) => ClipRRect(borderRadius: borderRadius, child: materialTiles),
       cupertino: (_) => cupertinoTiles,
     );
   }
 }
 
-extension on _AdaptiveListTileType {
+extension on AdaptiveListTileType {
   T fold<T>({
-    required T Function() normal,
     T Function()? switchType,
+    T Function()? selectable,
+    required T Function() normal,
   }) {
     switch (this) {
-      case _AdaptiveListTileType.switchType:
-        return switchType?.call() ?? normal.call();
-      case _AdaptiveListTileType.normal:
+      case AdaptiveListTileType.switchType:
+        return switchType != null ? switchType() : normal.call();
+      case AdaptiveListTileType.selectable:
+        return selectable != null ? selectable() : normal.call();
+      case AdaptiveListTileType.normal:
       default:
         return normal.call();
     }

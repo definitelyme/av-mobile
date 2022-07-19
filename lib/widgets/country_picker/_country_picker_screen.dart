@@ -22,8 +22,8 @@ class _CountryPickerScreenState extends State<CountryPickerScreen> {
   late double _containerHeight;
   late double _scrollerHeight;
 
-  var _text;
-  var _oldText;
+  String? _text;
+  String? _oldText;
   final _itemSizeHeight = 50.0;
   var _offsetContainer = 0.0;
 
@@ -32,7 +32,7 @@ class _CountryPickerScreenState extends State<CountryPickerScreen> {
   @override
   void initState() {
     super.initState();
-    _countries = widget.countries.sortedWith((a, b) => a.name.getOrNull!.compareTo(b.name.getOrNull!)).asList();
+    _countries = widget.countries.sortedWith((a, b) => a.name.getExact().compareTo(b.name.getExact())).asList();
     _scrollController = ScrollController();
     _scrollController!.addListener(_scrollListener);
   }
@@ -46,8 +46,8 @@ class _CountryPickerScreenState extends State<CountryPickerScreen> {
         backgroundColor: App.platform.material(App.resolveColor(Colors.white, dark: Palette.secondaryColor.shade300)),
         centerTitle: false,
         implyLeading: true,
-        showCupertinoCustomLeading: false,
         showMaterialCustomLeading: false,
+        showCupertinoCustomLeading: false,
         cupertinoImplyLeading: true,
         overlayStyle: App.customSystemOverlay(ctx: context, android: Brightness.dark),
       ),
@@ -83,6 +83,11 @@ class _CountryPickerScreenState extends State<CountryPickerScreen> {
                             fillColor: App.resolveColor(Palette.cardColorLight, dark: Palette.secondaryColor.shade400),
                             onChanged: _filterElements,
                             borderRadius: BorderRadius.zero,
+                            cupertinoBorderColorLight: Colors.transparent,
+                            cupertinoBorderColorDark: Colors.transparent,
+                            border: const OutlineInputBorder(borderSide: BorderSide.none, borderRadius: BorderRadius.zero),
+                            enabledBorder: const OutlineInputBorder(borderSide: BorderSide.none, borderRadius: BorderRadius.zero),
+                            focusBorder: const OutlineInputBorder(borderSide: BorderSide.none, borderRadius: BorderRadius.zero),
                           ),
                           //
                           const Padding(
@@ -96,8 +101,8 @@ class _CountryPickerScreenState extends State<CountryPickerScreen> {
                               dense: true,
                               material: true,
                               enableFeedback: true,
-                              leading: _flagSVG(widget.initial!.flag.getOrNull!, width: 32),
-                              title: AdaptiveText(widget.initial!.name.getOrNull!, fontSize: 16.sp),
+                              leading: _flagSVG(widget.initial, width: 32),
+                              title: AdaptiveText(widget.initial!.name.getExact(), fontSize: 16.sp),
                               trailing: const Padding(
                                 padding: EdgeInsets.only(right: 20.0),
                                 child: Icon(Icons.check, color: Colors.green),
@@ -150,9 +155,9 @@ class _CountryPickerScreenState extends State<CountryPickerScreen> {
         dense: true,
         material: true,
         enableFeedback: true,
-        leading: _flagSVG(it.flag.getOrNull!, width: 30),
+        leading: _flagSVG(it, width: 30),
         onTap: () => _sendDataBack(context, it),
-        title: AdaptiveText(it.name.getOrNull!, fontSize: 16.sp),
+        title: AdaptiveText(it.name.getExact(), fontSize: 16.sp),
       ),
     );
   }
@@ -161,9 +166,9 @@ class _CountryPickerScreenState extends State<CountryPickerScreen> {
     var scrollPosition = (_scrollController!.position.pixels / _itemSizeHeight).round();
     if (scrollPosition < _countries.length) {
       try {
-        var countryName = _countries.elementAt(scrollPosition).name.getOrNull;
+        var countryName = _countries.elementAt(scrollPosition).name.getExact();
         setState(() {
-          posSelected = countryName![0].toUpperCase().codeUnitAt(0) - 'A'.codeUnitAt(0);
+          posSelected = countryName[0].toUpperCase().codeUnitAt(0) - 'A'.codeUnitAt(0);
         });
       } catch (_) {}
     }
@@ -202,9 +207,9 @@ class _CountryPickerScreenState extends State<CountryPickerScreen> {
           .asList()
           .where(
             (e) =>
-                (e.name.getOrNull != null && e.name.getOrNull!.contains(s)) ||
+                (e.name.getExact().contains(s)) ||
                 (e.dialCode.getOrNull != null && e.dialCode.getOrNull!.contains(s)) ||
-                (e.name.getOrNull != null && e.name.getOrNull!.toUpperCase().contains(s)),
+                (e.name.getExact().toUpperCase().contains(s)),
           )
           .toList();
     });
@@ -242,7 +247,7 @@ class _CountryPickerScreenState extends State<CountryPickerScreen> {
             textAlign: TextAlign.center,
             style: (index == posSelected)
                 ? const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white)
-                : const TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: Colors.black),
+                : TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: App.resolveColor(Colors.black, dark: Colors.white)),
           ),
         ),
       ),

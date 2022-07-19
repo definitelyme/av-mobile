@@ -162,11 +162,11 @@ abstract class _TabNavigationState implements TabNavigationState {
       final bool isLoading}) = _$_TabNavigationState;
 
   @override
-  TabController? get tabController => throw _privateConstructorUsedError;
+  TabController? get tabController;
   @override
-  int get selectedTab => throw _privateConstructorUsedError;
+  int get selectedTab;
   @override
-  bool get isLoading => throw _privateConstructorUsedError;
+  bool get isLoading;
   @override
   @JsonKey(ignore: true)
   _$$_TabNavigationStateCopyWith<_$_TabNavigationState> get copyWith =>

@@ -449,7 +449,7 @@ abstract class _InitializeProductBlocEvent implements ProductSyncEvent {
   const factory _InitializeProductBlocEvent({final Product? product}) =
       _$_InitializeProductBlocEvent;
 
-  Product? get product => throw _privateConstructorUsedError;
+  Product? get product;
   @JsonKey(ignore: true)
   _$$_InitializeProductBlocEventCopyWith<_$_InitializeProductBlocEvent>
       get copyWith => throw _privateConstructorUsedError;
@@ -707,7 +707,7 @@ abstract class _CategoryChangedEvent implements ProductSyncEvent {
   const factory _CategoryChangedEvent(final DealCategory? category) =
       _$_CategoryChangedEvent;
 
-  DealCategory? get category => throw _privateConstructorUsedError;
+  DealCategory? get category;
   @JsonKey(ignore: true)
   _$$_CategoryChangedEventCopyWith<_$_CategoryChangedEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -965,7 +965,7 @@ abstract class _CountryChangedEvent implements ProductSyncEvent {
   const factory _CountryChangedEvent(final Country? country) =
       _$_CountryChangedEvent;
 
-  Country? get country => throw _privateConstructorUsedError;
+  Country? get country;
   @JsonKey(ignore: true)
   _$$_CountryChangedEventCopyWith<_$_CountryChangedEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1223,7 +1223,7 @@ abstract class _DealPlanChangedEvent implements ProductSyncEvent {
   const factory _DealPlanChangedEvent(final DealPlan? plan) =
       _$_DealPlanChangedEvent;
 
-  DealPlan? get plan => throw _privateConstructorUsedError;
+  DealPlan? get plan;
   @JsonKey(ignore: true)
   _$$_DealPlanChangedEventCopyWith<_$_DealPlanChangedEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1468,7 +1468,7 @@ abstract class _DealTypeChangedEvent implements ProductSyncEvent {
   const factory _DealTypeChangedEvent(final DealType? type) =
       _$_DealTypeChangedEvent;
 
-  DealType? get type => throw _privateConstructorUsedError;
+  DealType? get type;
   @JsonKey(ignore: true)
   _$$_DealTypeChangedEventCopyWith<_$_DealTypeChangedEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -4334,7 +4334,7 @@ abstract class _ProductDeliveryModeChangedEvent implements ProductSyncEvent {
   const factory _ProductDeliveryModeChangedEvent(final bool? value) =
       _$_ProductDeliveryModeChangedEvent;
 
-  bool? get value => throw _privateConstructorUsedError;
+  bool? get value;
   @JsonKey(ignore: true)
   _$$_ProductDeliveryModeChangedEventCopyWith<
           _$_ProductDeliveryModeChangedEvent>
@@ -4803,7 +4803,7 @@ abstract class _ProductConditionChangedEvent implements ProductSyncEvent {
   const factory _ProductConditionChangedEvent(final ItemCondition? value) =
       _$_ProductConditionChangedEvent;
 
-  ItemCondition? get value => throw _privateConstructorUsedError;
+  ItemCondition? get value;
   @JsonKey(ignore: true)
   _$$_ProductConditionChangedEventCopyWith<_$_ProductConditionChangedEvent>
       get copyWith => throw _privateConstructorUsedError;
@@ -5051,7 +5051,7 @@ abstract class _DealQuantityTypeChangedEvent implements ProductSyncEvent {
   const factory _DealQuantityTypeChangedEvent(final QuantityType? value) =
       _$_DealQuantityTypeChangedEvent;
 
-  QuantityType? get value => throw _privateConstructorUsedError;
+  QuantityType? get value;
   @JsonKey(ignore: true)
   _$$_DealQuantityTypeChangedEventCopyWith<_$_DealQuantityTypeChangedEvent>
       get copyWith => throw _privateConstructorUsedError;
@@ -5299,7 +5299,7 @@ abstract class _DealBiddingTypeChangedEvent implements ProductSyncEvent {
   const factory _DealBiddingTypeChangedEvent(final BiddingType? value) =
       _$_DealBiddingTypeChangedEvent;
 
-  BiddingType? get value => throw _privateConstructorUsedError;
+  BiddingType? get value;
   @JsonKey(ignore: true)
   _$$_DealBiddingTypeChangedEventCopyWith<_$_DealBiddingTypeChangedEvent>
       get copyWith => throw _privateConstructorUsedError;
@@ -5547,7 +5547,7 @@ abstract class _DealOfferTypeChangedEvent implements ProductSyncEvent {
   const factory _DealOfferTypeChangedEvent(final OfferType? value) =
       _$_DealOfferTypeChangedEvent;
 
-  OfferType? get value => throw _privateConstructorUsedError;
+  OfferType? get value;
   @JsonKey(ignore: true)
   _$$_DealOfferTypeChangedEventCopyWith<_$_DealOfferTypeChangedEvent>
       get copyWith => throw _privateConstructorUsedError;
@@ -5795,7 +5795,7 @@ abstract class _DealStartDateChangedEvent implements ProductSyncEvent {
   const factory _DealStartDateChangedEvent(final DateTime? value) =
       _$_DealStartDateChangedEvent;
 
-  DateTime? get value => throw _privateConstructorUsedError;
+  DateTime? get value;
   @JsonKey(ignore: true)
   _$$_DealStartDateChangedEventCopyWith<_$_DealStartDateChangedEvent>
       get copyWith => throw _privateConstructorUsedError;
@@ -6042,7 +6042,7 @@ abstract class _DealEndDateChangedEvent implements ProductSyncEvent {
   const factory _DealEndDateChangedEvent(final DateTime? value) =
       _$_DealEndDateChangedEvent;
 
-  DateTime? get value => throw _privateConstructorUsedError;
+  DateTime? get value;
   @JsonKey(ignore: true)
   _$$_DealEndDateChangedEventCopyWith<_$_DealEndDateChangedEvent>
       get copyWith => throw _privateConstructorUsedError;
@@ -6505,7 +6505,7 @@ abstract class _ProductColorChangedEvent implements ProductSyncEvent {
   const factory _ProductColorChangedEvent(final Color? value) =
       _$_ProductColorChangedEvent;
 
-  Color? get value => throw _privateConstructorUsedError;
+  Color? get value;
   @JsonKey(ignore: true)
   _$$_ProductColorChangedEventCopyWith<_$_ProductColorChangedEvent>
       get copyWith => throw _privateConstructorUsedError;
@@ -6755,7 +6755,7 @@ abstract class _ProductDeliveryPeriodChangedEvent implements ProductSyncEvent {
   const factory _ProductDeliveryPeriodChangedEvent(final String? value) =
       _$_ProductDeliveryPeriodChangedEvent;
 
-  String? get value => throw _privateConstructorUsedError;
+  String? get value;
   @JsonKey(ignore: true)
   _$$_ProductDeliveryPeriodChangedEventCopyWith<
           _$_ProductDeliveryPeriodChangedEvent>
@@ -7006,7 +7006,7 @@ abstract class _ProductWarrantyPeriodChangedEvent implements ProductSyncEvent {
   const factory _ProductWarrantyPeriodChangedEvent(final String? value) =
       _$_ProductWarrantyPeriodChangedEvent;
 
-  String? get value => throw _privateConstructorUsedError;
+  String? get value;
   @JsonKey(ignore: true)
   _$$_ProductWarrantyPeriodChangedEventCopyWith<
           _$_ProductWarrantyPeriodChangedEvent>
@@ -7257,7 +7257,7 @@ abstract class _ProductYearOfPurchaseChangedEvent implements ProductSyncEvent {
   const factory _ProductYearOfPurchaseChangedEvent(final String? value) =
       _$_ProductYearOfPurchaseChangedEvent;
 
-  String? get value => throw _privateConstructorUsedError;
+  String? get value;
   @JsonKey(ignore: true)
   _$$_ProductYearOfPurchaseChangedEventCopyWith<
           _$_ProductYearOfPurchaseChangedEvent>
@@ -7510,7 +7510,7 @@ abstract class _ProductYearOfManufactureChangedEvent
   const factory _ProductYearOfManufactureChangedEvent(final String? value) =
       _$_ProductYearOfManufactureChangedEvent;
 
-  String? get value => throw _privateConstructorUsedError;
+  String? get value;
   @JsonKey(ignore: true)
   _$$_ProductYearOfManufactureChangedEventCopyWith<
           _$_ProductYearOfManufactureChangedEvent>
@@ -7761,7 +7761,7 @@ abstract class _ProductRepairHistoryChangedEvent implements ProductSyncEvent {
   const factory _ProductRepairHistoryChangedEvent(final bool? value) =
       _$_ProductRepairHistoryChangedEvent;
 
-  bool? get value => throw _privateConstructorUsedError;
+  bool? get value;
   @JsonKey(ignore: true)
   _$$_ProductRepairHistoryChangedEventCopyWith<
           _$_ProductRepairHistoryChangedEvent>
@@ -8012,7 +8012,7 @@ abstract class _ProductRefundPolicyChangedEvent implements ProductSyncEvent {
   const factory _ProductRefundPolicyChangedEvent(final bool? value) =
       _$_ProductRefundPolicyChangedEvent;
 
-  bool? get value => throw _privateConstructorUsedError;
+  bool? get value;
   @JsonKey(ignore: true)
   _$$_ProductRefundPolicyChangedEventCopyWith<
           _$_ProductRefundPolicyChangedEvent>
@@ -8261,7 +8261,7 @@ abstract class _ProductTermsInfoChangedEvent implements ProductSyncEvent {
   const factory _ProductTermsInfoChangedEvent(final String? value) =
       _$_ProductTermsInfoChangedEvent;
 
-  String? get value => throw _privateConstructorUsedError;
+  String? get value;
   @JsonKey(ignore: true)
   _$$_ProductTermsInfoChangedEventCopyWith<_$_ProductTermsInfoChangedEvent>
       get copyWith => throw _privateConstructorUsedError;
@@ -8507,7 +8507,7 @@ abstract class _ValidateFormFieldEvent implements ProductSyncEvent {
   const factory _ValidateFormFieldEvent([final bool? validate]) =
       _$_ValidateFormFieldEvent;
 
-  bool? get validate => throw _privateConstructorUsedError;
+  bool? get validate;
   @JsonKey(ignore: true)
   _$$_ValidateFormFieldEventCopyWith<_$_ValidateFormFieldEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -8913,9 +8913,9 @@ abstract class _StoreNewProductEvent implements ProductStructEvent {
       {final AwaitCallback? callback}) = _$_StoreNewProductEvent;
 
   @override
-  User? get user => throw _privateConstructorUsedError;
+  User? get user;
   @override
-  AwaitCallback? get callback => throw _privateConstructorUsedError;
+  AwaitCallback? get callback;
   @override
   @JsonKey(ignore: true)
   _$$_StoreNewProductEventCopyWith<_$_StoreNewProductEvent> get copyWith =>
@@ -9146,8 +9146,8 @@ abstract class _GetDealPlansEvent implements ProductGetEvent {
   const factory _GetDealPlansEvent({final int? perPage, final bool nextPage}) =
       _$_GetDealPlansEvent;
 
-  int? get perPage => throw _privateConstructorUsedError;
-  bool get nextPage => throw _privateConstructorUsedError;
+  int? get perPage;
+  bool get nextPage;
   @JsonKey(ignore: true)
   _$$_GetDealPlansEventCopyWith<_$_GetDealPlansEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -9403,7 +9403,7 @@ abstract class _PageIndexChangedEvent implements ProductPageControllerEvent {
   const factory _PageIndexChangedEvent(final int index) =
       _$_PageIndexChangedEvent;
 
-  int get index => throw _privateConstructorUsedError;
+  int get index;
   @JsonKey(ignore: true)
   _$$_PageIndexChangedEventCopyWith<_$_PageIndexChangedEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -9532,8 +9532,8 @@ abstract class _OnNextPage implements ProductPageControllerEvent {
   const factory _OnNextPage(final List<dynamic> items, final int index) =
       _$_OnNextPage;
 
-  List<dynamic> get items => throw _privateConstructorUsedError;
-  int get index => throw _privateConstructorUsedError;
+  List<dynamic> get items;
+  int get index;
   @JsonKey(ignore: true)
   _$$_OnNextPageCopyWith<_$_OnNextPage> get copyWith =>
       throw _privateConstructorUsedError;
@@ -9750,9 +9750,9 @@ abstract class _OnAnimateToPage implements ProductPageControllerEvent {
   const factory _OnAnimateToPage(final int page,
       {final Duration? duration, final Curve? curve}) = _$_OnAnimateToPage;
 
-  int get page => throw _privateConstructorUsedError;
-  Duration? get duration => throw _privateConstructorUsedError;
-  Curve? get curve => throw _privateConstructorUsedError;
+  int get page;
+  Duration? get duration;
+  Curve? get curve;
   @JsonKey(ignore: true)
   _$$_OnAnimateToPageCopyWith<_$_OnAnimateToPage> get copyWith =>
       throw _privateConstructorUsedError;
@@ -9940,9 +9940,9 @@ abstract class _UploadMediaEvent implements ProductMediaEvents {
   const factory _UploadMediaEvent(final File file, [final int? index]) =
       _$_UploadMediaEvent;
 
-  File get file => throw _privateConstructorUsedError;
+  File get file;
   @override
-  int? get index => throw _privateConstructorUsedError;
+  int? get index;
   @override
   @JsonKey(ignore: true)
   _$$_UploadMediaEventCopyWith<_$_UploadMediaEvent> get copyWith =>
@@ -10055,7 +10055,7 @@ abstract class _PickCameraEvent implements ProductMediaEvents {
   const factory _PickCameraEvent([final int? index]) = _$_PickCameraEvent;
 
   @override
-  int? get index => throw _privateConstructorUsedError;
+  int? get index;
   @override
   @JsonKey(ignore: true)
   _$$_PickCameraEventCopyWith<_$_PickCameraEvent> get copyWith =>
@@ -10168,7 +10168,7 @@ abstract class _PickGalleryEvent implements ProductMediaEvents {
   const factory _PickGalleryEvent([final int? index]) = _$_PickGalleryEvent;
 
   @override
-  int? get index => throw _privateConstructorUsedError;
+  int? get index;
   @override
   @JsonKey(ignore: true)
   _$$_PickGalleryEventCopyWith<_$_PickGalleryEvent> get copyWith =>
@@ -10281,7 +10281,7 @@ abstract class _RemoveMediaEvent implements ProductMediaEvents {
   const factory _RemoveMediaEvent([final int? index]) = _$_RemoveMediaEvent;
 
   @override
-  int? get index => throw _privateConstructorUsedError;
+  int? get index;
   @override
   @JsonKey(ignore: true)
   _$$_RemoveMediaEventCopyWith<_$_RemoveMediaEvent> get copyWith =>
@@ -11028,82 +11028,65 @@ abstract class _ProductState implements ProductState {
       final Option<AppHttpResponse?> status}) = _$_ProductState;
 
   @override
-  bool get isLoading => throw _privateConstructorUsedError;
+  bool get isLoading;
   @override
-  bool get validate => throw _privateConstructorUsedError;
+  bool get validate;
   @override
-  bool get isFetchingCategories => throw _privateConstructorUsedError;
+  bool get isFetchingCategories;
   @override
-  bool get isSavingState => throw _privateConstructorUsedError;
+  bool get isSavingState;
   @override
-  bool get isCreatingProduct => throw _privateConstructorUsedError;
+  bool get isCreatingProduct;
   @override
-  bool get productCreated => throw _privateConstructorUsedError;
+  bool get productCreated;
   @override //
-  MoneyMaskedTextController get basePriceController =>
-      throw _privateConstructorUsedError;
+  MoneyMaskedTextController get basePriceController;
   @override
-  TextEditingController get itemNameTextController =>
-      throw _privateConstructorUsedError;
+  TextEditingController get itemNameTextController;
   @override
-  TextEditingController get stateTextController =>
-      throw _privateConstructorUsedError;
+  TextEditingController get stateTextController;
   @override
-  TextEditingController get townTextController =>
-      throw _privateConstructorUsedError;
+  TextEditingController get townTextController;
   @override
-  TextEditingController get descriptionTextController =>
-      throw _privateConstructorUsedError;
+  TextEditingController get descriptionTextController;
   @override
-  TextEditingController get brandTextController =>
-      throw _privateConstructorUsedError;
+  TextEditingController get brandTextController;
   @override
-  TextEditingController get brandModelTextController =>
-      throw _privateConstructorUsedError;
+  TextEditingController get brandModelTextController;
   @override
-  TextEditingController get transmissionTextController =>
-      throw _privateConstructorUsedError;
+  TextEditingController get transmissionTextController;
   @override
-  TextEditingController get shippingDescTextController =>
-      throw _privateConstructorUsedError;
+  TextEditingController get shippingDescTextController;
   @override
-  TextEditingController get addressTextController =>
-      throw _privateConstructorUsedError;
+  TextEditingController get addressTextController;
   @override
-  TextEditingController get weightTextController =>
-      throw _privateConstructorUsedError;
+  TextEditingController get weightTextController;
   @override
-  TextEditingController get widthTextController =>
-      throw _privateConstructorUsedError;
+  TextEditingController get widthTextController;
   @override
-  TextEditingController get heightTextController =>
-      throw _privateConstructorUsedError;
+  TextEditingController get heightTextController;
   @override
-  TextEditingController get lengthTextController =>
-      throw _privateConstructorUsedError;
+  TextEditingController get lengthTextController;
   @override
-  TextEditingController get termsInfoTextController =>
-      throw _privateConstructorUsedError;
+  TextEditingController get termsInfoTextController;
   @override
-  TextEditingController get startDateTextController =>
-      throw _privateConstructorUsedError;
+  TextEditingController get startDateTextController;
   @override
-  TextEditingController get endDateTextController =>
-      throw _privateConstructorUsedError;
+  TextEditingController get endDateTextController;
   @override //
-  DealPlan get selectedPlan => throw _privateConstructorUsedError;
+  DealPlan get selectedPlan;
   @override
-  Product get product => throw _privateConstructorUsedError;
+  Product get product;
   @override
-  PageController get controller => throw _privateConstructorUsedError;
+  PageController get controller;
   @override
-  int get currentIndex => throw _privateConstructorUsedError;
+  int get currentIndex;
   @override
-  KtList<DealCategory> get categories => throw _privateConstructorUsedError;
+  KtList<DealCategory> get categories;
   @override
-  KtList<DealPlan> get dealPlans => throw _privateConstructorUsedError;
+  KtList<DealPlan> get dealPlans;
   @override
-  Option<AppHttpResponse?> get status => throw _privateConstructorUsedError;
+  Option<AppHttpResponse?> get status;
   @override
   @JsonKey(ignore: true)
   _$$_ProductStateCopyWith<_$_ProductState> get copyWith =>

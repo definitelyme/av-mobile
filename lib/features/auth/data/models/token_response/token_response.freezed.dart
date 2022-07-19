@@ -177,7 +177,9 @@ class _$_TokenResponse extends _TokenResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TokenResponseToJson(this);
+    return _$$_TokenResponseToJson(
+      this,
+    );
   }
 }
 
@@ -196,13 +198,13 @@ abstract class _TokenResponse extends TokenResponse {
 
   @override
   @JsonKey(includeIfNull: false, name: 'token')
-  String? get accessToken => throw _privateConstructorUsedError;
+  String? get accessToken;
   @override
   @JsonKey(includeIfNull: false, name: 'token_type')
-  String? get tokenType => throw _privateConstructorUsedError;
+  String? get tokenType;
   @override
   @JsonKey(includeIfNull: false, name: 'expires_in')
-  int? get expiryDate => throw _privateConstructorUsedError;
+  int? get expiryDate;
   @override
   @JsonKey(ignore: true)
   _$$_TokenResponseCopyWith<_$_TokenResponse> get copyWith =>

@@ -16,9 +16,18 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AccessToken {
-  BasicTextField<String?> get accessToken => throw _privateConstructorUsedError;
+  @HiveField(1)
+  String? get accessToken => throw _privateConstructorUsedError;
+  @HiveField(1)
+  set accessToken(String? value) => throw _privateConstructorUsedError;
+  @HiveField(2)
   TokenType get tokenType => throw _privateConstructorUsedError;
-  BasicTextField<int?> get expiryDate => throw _privateConstructorUsedError;
+  @HiveField(2)
+  set tokenType(TokenType value) => throw _privateConstructorUsedError;
+  @HiveField(3)
+  int? get expiryDate => throw _privateConstructorUsedError;
+  @HiveField(3)
+  set expiryDate(int? value) => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AccessTokenCopyWith<AccessToken> get copyWith =>
@@ -31,9 +40,9 @@ abstract class $AccessTokenCopyWith<$Res> {
           AccessToken value, $Res Function(AccessToken) then) =
       _$AccessTokenCopyWithImpl<$Res>;
   $Res call(
-      {BasicTextField<String?> accessToken,
-      TokenType tokenType,
-      BasicTextField<int?> expiryDate});
+      {@HiveField(1) String? accessToken,
+      @HiveField(2) TokenType tokenType,
+      @HiveField(3) int? expiryDate});
 }
 
 /// @nodoc
@@ -54,7 +63,7 @@ class _$AccessTokenCopyWithImpl<$Res> implements $AccessTokenCopyWith<$Res> {
       accessToken: accessToken == freezed
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as String?,
       tokenType: tokenType == freezed
           ? _value.tokenType
           : tokenType // ignore: cast_nullable_to_non_nullable
@@ -62,7 +71,7 @@ class _$AccessTokenCopyWithImpl<$Res> implements $AccessTokenCopyWith<$Res> {
       expiryDate: expiryDate == freezed
           ? _value.expiryDate
           : expiryDate // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<int?>,
+              as int?,
     ));
   }
 }
@@ -75,9 +84,9 @@ abstract class _$$_AccessTokenCopyWith<$Res>
       __$$_AccessTokenCopyWithImpl<$Res>;
   @override
   $Res call(
-      {BasicTextField<String?> accessToken,
-      TokenType tokenType,
-      BasicTextField<int?> expiryDate});
+      {@HiveField(1) String? accessToken,
+      @HiveField(2) TokenType tokenType,
+      @HiveField(3) int? expiryDate});
 }
 
 /// @nodoc
@@ -100,7 +109,7 @@ class __$$_AccessTokenCopyWithImpl<$Res> extends _$AccessTokenCopyWithImpl<$Res>
       accessToken: accessToken == freezed
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as String?,
       tokenType: tokenType == freezed
           ? _value.tokenType
           : tokenType // ignore: cast_nullable_to_non_nullable
@@ -108,50 +117,35 @@ class __$$_AccessTokenCopyWithImpl<$Res> extends _$AccessTokenCopyWithImpl<$Res>
       expiryDate: expiryDate == freezed
           ? _value.expiryDate
           : expiryDate // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<int?>,
+              as int?,
     ));
   }
 }
 
 /// @nodoc
 
+@HiveType(typeId: 3, adapterName: 'AccessTokenAdapter')
 class _$_AccessToken extends _AccessToken {
-  const _$_AccessToken(
-      {required this.accessToken,
-      required this.tokenType,
-      required this.expiryDate})
+  _$_AccessToken(
+      {@HiveField(1) required this.accessToken,
+      @HiveField(2) required this.tokenType,
+      @HiveField(3) required this.expiryDate})
       : super._();
 
   @override
-  final BasicTextField<String?> accessToken;
+  @HiveField(1)
+  String? accessToken;
   @override
-  final TokenType tokenType;
+  @HiveField(2)
+  TokenType tokenType;
   @override
-  final BasicTextField<int?> expiryDate;
+  @HiveField(3)
+  int? expiryDate;
 
   @override
   String toString() {
     return 'AccessToken(accessToken: $accessToken, tokenType: $tokenType, expiryDate: $expiryDate)';
   }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_AccessToken &&
-            const DeepCollectionEquality()
-                .equals(other.accessToken, accessToken) &&
-            const DeepCollectionEquality().equals(other.tokenType, tokenType) &&
-            const DeepCollectionEquality()
-                .equals(other.expiryDate, expiryDate));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(accessToken),
-      const DeepCollectionEquality().hash(tokenType),
-      const DeepCollectionEquality().hash(expiryDate));
 
   @JsonKey(ignore: true)
   @override
@@ -160,18 +154,27 @@ class _$_AccessToken extends _AccessToken {
 }
 
 abstract class _AccessToken extends AccessToken {
-  const factory _AccessToken(
-      {required final BasicTextField<String?> accessToken,
-      required final TokenType tokenType,
-      required final BasicTextField<int?> expiryDate}) = _$_AccessToken;
-  const _AccessToken._() : super._();
+  factory _AccessToken(
+      {@HiveField(1) required String? accessToken,
+      @HiveField(2) required TokenType tokenType,
+      @HiveField(3) required int? expiryDate}) = _$_AccessToken;
+  _AccessToken._() : super._();
 
   @override
-  BasicTextField<String?> get accessToken => throw _privateConstructorUsedError;
+  @HiveField(1)
+  String? get accessToken;
+  @HiveField(1)
+  set accessToken(String? value);
   @override
-  TokenType get tokenType => throw _privateConstructorUsedError;
+  @HiveField(2)
+  TokenType get tokenType;
+  @HiveField(2)
+  set tokenType(TokenType value);
   @override
-  BasicTextField<int?> get expiryDate => throw _privateConstructorUsedError;
+  @HiveField(3)
+  int? get expiryDate;
+  @HiveField(3)
+  set expiryDate(int? value);
   @override
   @JsonKey(ignore: true)
   _$$_AccessTokenCopyWith<_$_AccessToken> get copyWith =>

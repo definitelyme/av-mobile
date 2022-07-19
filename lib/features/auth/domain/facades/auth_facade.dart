@@ -15,6 +15,18 @@ abstract class AuthFacade {
   Stream<Option<User?>> get onUserChanges;
   Future<Option<User?>> get user;
 
+  void cachePhone(Phone? phone);
+
+  void cacheEmail(EmailAddress? email);
+
+  Phone? getCachePhone();
+
+  EmailAddress? getCacheEmail();
+
+  void removePhone();
+
+  void removeEmail();
+
   Future<void> sink([Either<AppHttpResponse, Option<User?>> userOrFailure]);
 
   Future<void> update(Option<User?> user);
@@ -115,9 +127,6 @@ abstract class AuthFacade {
         return e;
       case AppNetworkExceptionReason.responseError:
       default:
-        // Log Unknown Exceptions to Firebase Analytics
-        await env.flavor.fold(prod: () => App.reportFlutterError(e, trace, reason: 'Probably an invalid access token'));
-
         // Log the user of if access token has expired
         return await e.fold(
           is401: () async {

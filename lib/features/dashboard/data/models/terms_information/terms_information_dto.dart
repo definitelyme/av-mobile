@@ -21,11 +21,11 @@ class TermsInformationDTO with _$TermsInformationDTO {
 
   /// Maps TermsInformation to a Data Transfer Object.
   factory TermsInformationDTO.fromDomain(TermsInformation? instance) => TermsInformationDTO(
-        yearOfPurchase: int.tryParse(instance?.yearOfPurchase.valueOrNull ?? ''),
+        yearOfPurchase: int.tryParse(instance?.yearOfPurchase.getOrNull ?? ''),
         repairHistory: instance?.hasRepairHistory,
         refundPolicy: instance?.hasRefundPolicy,
-        warranty: instance?.warranty.valueOrNull,
-        otherInfo: instance?.otherInformation.valueOrNull,
+        warranty: instance?.warranty.getOrNull,
+        otherInfo: instance?.otherInformation.getOrNull,
       );
 
   factory TermsInformationDTO.fromJson(Map<String, dynamic> json) => _$TermsInformationDTOFromJson(json);

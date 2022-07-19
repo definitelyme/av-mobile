@@ -25,7 +25,7 @@ mixin _$DebitCard {
   DebitCardNumber get cardNumber => throw _privateConstructorUsedError;
   DebitCardExpiryDate get cardExpiryDate => throw _privateConstructorUsedError;
   DebitCardCVV get cardCVV => throw _privateConstructorUsedError;
-  BasicTextField<String?> get masked => throw _privateConstructorUsedError;
+  BasicTextField get masked => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
   DateTime? get updatedAt => throw _privateConstructorUsedError;
 
@@ -48,7 +48,7 @@ abstract class $DebitCardCopyWith<$Res> {
       DebitCardNumber cardNumber,
       DebitCardExpiryDate cardExpiryDate,
       DebitCardCVV cardCVV,
-      BasicTextField<String?> masked,
+      BasicTextField masked,
       DateTime? createdAt,
       DateTime? updatedAt});
 }
@@ -116,7 +116,7 @@ class _$DebitCardCopyWithImpl<$Res> implements $DebitCardCopyWith<$Res> {
       masked: masked == freezed
           ? _value.masked
           : masked // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -145,7 +145,7 @@ abstract class _$$_DebitCardCopyWith<$Res> implements $DebitCardCopyWith<$Res> {
       DebitCardNumber cardNumber,
       DebitCardExpiryDate cardExpiryDate,
       DebitCardCVV cardCVV,
-      BasicTextField<String?> masked,
+      BasicTextField masked,
       DateTime? createdAt,
       DateTime? updatedAt});
 }
@@ -215,7 +215,7 @@ class __$$_DebitCardCopyWithImpl<$Res> extends _$DebitCardCopyWithImpl<$Res>
       masked: masked == freezed
           ? _value.masked
           : masked // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -268,7 +268,7 @@ class _$_DebitCard extends _DebitCard {
   @override
   final DebitCardCVV cardCVV;
   @override
-  final BasicTextField<String?> masked;
+  final BasicTextField masked;
   @override
   final DateTime? createdAt;
   @override
@@ -333,35 +333,35 @@ abstract class _DebitCard extends DebitCard {
       required final DebitCardNumber cardNumber,
       required final DebitCardExpiryDate cardExpiryDate,
       required final DebitCardCVV cardCVV,
-      required final BasicTextField<String?> masked,
+      required final BasicTextField masked,
       final DateTime? createdAt,
       final DateTime? updatedAt}) = _$_DebitCard;
   const _DebitCard._() : super._();
 
   @override
-  UniqueId<String?> get id => throw _privateConstructorUsedError;
+  UniqueId<String?> get id;
   @override
-  bool get cardAdded => throw _privateConstructorUsedError;
+  bool get cardAdded;
   @override
-  bool get pinAdded => throw _privateConstructorUsedError;
+  bool get pinAdded;
   @override
-  EmailAddress get email => throw _privateConstructorUsedError;
+  EmailAddress get email;
   @override
-  DebitCardBrand get brand => throw _privateConstructorUsedError;
+  DebitCardBrand get brand;
   @override
-  DebitCardName get cardName => throw _privateConstructorUsedError;
+  DebitCardName get cardName;
   @override
-  DebitCardNumber get cardNumber => throw _privateConstructorUsedError;
+  DebitCardNumber get cardNumber;
   @override
-  DebitCardExpiryDate get cardExpiryDate => throw _privateConstructorUsedError;
+  DebitCardExpiryDate get cardExpiryDate;
   @override
-  DebitCardCVV get cardCVV => throw _privateConstructorUsedError;
+  DebitCardCVV get cardCVV;
   @override
-  BasicTextField<String?> get masked => throw _privateConstructorUsedError;
+  BasicTextField get masked;
   @override
-  DateTime? get createdAt => throw _privateConstructorUsedError;
+  DateTime? get createdAt;
   @override
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$_DebitCardCopyWith<_$_DebitCard> get copyWith =>

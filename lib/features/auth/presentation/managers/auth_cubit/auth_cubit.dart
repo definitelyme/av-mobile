@@ -7,73 +7,42 @@ import 'package:auctionvillage/core/data/index.dart';
 import 'package:auctionvillage/core/domain/entities/entities.dart';
 import 'package:auctionvillage/core/presentation/managers/managers.dart';
 import 'package:auctionvillage/features/auth/domain/index.dart';
-import 'package:auctionvillage/features/auth/presentation/managers/watcher/auth_watcher_cubit.dart';
-import 'package:auctionvillage/manager/locator/locator.dart';
-import 'package:auctionvillage/manager/settings/external/preference_repository.dart';
+import 'package:auctionvillage/features/auth/presentation/managers/managers.dart';
+import 'package:auctionvillage/features/dashboard/presentation/managers/index.dart';
 import 'package:auctionvillage/utils/utils.dart';
-import 'package:bloc/bloc.dart';
 import 'package:cloudinary_public/cloudinary_public.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:injectable/injectable.dart';
-import 'package:kt_dart/collection.dart';
 
 part 'auth_cubit.freezed.dart';
 part 'auth_state.dart';
 
 @injectable
-class AuthCubit extends Cubit<AuthState> with BaseCubit<AuthState> {
+class AuthCubit extends BaseCubit<AuthState> {
   final AuthFacade _auth;
-  final PreferenceRepository _preferences;
+
   final CloudinaryPublic _cloudinary;
   final _picker = ImagePicker();
   User? _temp = User.blank();
 
-  AuthCubit(
-    this._auth,
-    this._preferences,
-    this._cloudinary,
-  ) : super(AuthState.initial());
-
-  @override
-  Future<void> close() {
-    // state.phoneTextController.dispose();
-    return super.close();
-  }
-
-  KtList<Country> get countries => getIt<AuthWatcherCubit>().state.countries;
-
-  Country? get _defaultCountry => countries.firstOrNull((e) => e.iso.getOrNull?.toLowerCase() == Country.defaultISO.toLowerCase());
-
-  Future<Phone?> _parsePhoneNumber(String? phone) async {
-    try {
-      final _phoneNumberData = await phone?.let((it) async => await PhoneNumber.getRegionInfoFromPhoneNumber(it));
-
-      final _country = countries.firstOrNull((e) => e.iso.getOrNull?.toLowerCase() == _phoneNumberData?.isoCode?.toLowerCase());
-
-      countryChanged(_country);
-
-      return _phoneNumberData?.let((it) => Phone(it.phoneNumber, country: _country));
-    } catch (e, tr) {
-      await App.report(exception: e, stack: tr);
-      return null;
-    }
-  }
+  AuthCubit(this._auth, this._cloudinary) : super(AuthState.initial());
 
   void init({bool loader = false}) async {
     toggleLoading(loader, none());
 
     // Retrieve stored / cached user data
-    final _cached = await _preferences.getString(Const.kPhoneNumberPrefKey);
+    final cached = await HiveClient.settingsBox?.get(Const.kPhoneNumberPrefKey) as String?;
 
     User? _user = state.user;
 
     Phone? _phoneNumber;
 
-    _phoneNumber = await _parsePhoneNumber(_cached);
+    _phoneNumber = await Phone.parseString(cached, format: true);
 
     Future.delayed(Duration(milliseconds: env.connectTimeout), () => toggleLoading(false));
 
@@ -82,17 +51,17 @@ class AuthCubit extends Cubit<AuthState> with BaseCubit<AuthState> {
     final p = ((_user?.phone.getOrNull != null && !_user!.phone.getOrNull!.startsWith('+')))
         ? '+${_user.phone.getOrNull}'
         : _user?.phone.getOrNull;
-    _phoneNumber = await _parsePhoneNumber(p);
+    _phoneNumber = await Phone.parseString(p, format: true);
 
     if (_phoneNumber?.getOrNull == null) countryChanged();
 
-    _user = _user?.copyWith(phone: _phoneNumber ?? _user.phone.ensure((p0) => (p0 as Phone), orElse: (_) => state.user.phone));
+    _user = _user?.copyWith(phone: _phoneNumber ?? _user.phone.ensure((p0) => p0 as Phone, orElse: (_) => state.user.phone));
 
     _temp = _user;
 
     emit(state.copyWith(
       user: _user!,
-      phoneTextController: state.phoneTextController..text = _phoneNumber?.noDialCode?.getOrNull ?? '',
+      phoneTextController: state.phoneTextController..text = _phoneNumber?.getOrNull ?? '',
     ));
 
     toggleLoading(false);
@@ -122,6 +91,11 @@ class AuthCubit extends Cubit<AuthState> with BaseCubit<AuthState> {
     if (!isClosed) toggleLoading(false);
   }
 
+  void initReset() {
+    final _cache = _auth.getCacheEmail();
+    emit(state.copyWith.user(email: _cache ?? state.user.email));
+  }
+
   bool get isDirty => _temp != state.user;
 
   void toggleLoading([bool? isLoading, Option<AppHttpResponse?>? status]) =>
@@ -139,14 +113,7 @@ class AuthCubit extends Cubit<AuthState> with BaseCubit<AuthState> {
 
   void oldPasswordChanged(String value) => emit(state.copyWith(oldPassword: Password(value)));
 
-  void countryChanged([Country? country]) {
-    phoneNumberChanged(state.phoneTextController.text);
-
-    emit(state.copyWith.user(
-      phone: state.user.phone.copyWith(state.user.phone.getOrNull, country: country),
-      country: country,
-    ));
-  }
+  void countryChanged([Country? country]) => phoneNumberChanged(state.phoneTextController.text, country: country);
 
   void passwordChanged(String value) => emit(state.copyWith(
         passwordMatches: state.confirmPassword.compare(value),
@@ -162,27 +129,18 @@ class AuthCubit extends Cubit<AuthState> with BaseCubit<AuthState> {
 
   void toggleAcceptTerms([bool? value]) => emit(state.copyWith(acceptedTerms: value ?? !state.acceptedTerms));
 
-  void phoneNumberChanged(String value) async {
-    final country = state.user.phone.country ?? _defaultCountry;
-    var phoneNumber = value;
+  void phoneNumberChanged(String value, {Country? country, bool format = true}) async {
+    final _country = country ?? state.user.phone.country;
 
-    try {
-      if (value.length > 2) {
-        var number = await PhoneNumber.getRegionInfoFromPhoneNumber(value, country?.iso.getOrNull ?? '');
-        var _parsed = await PhoneNumber.getParsableNumber(number);
-        if (_parsed.isNotEmpty) phoneNumber = _parsed;
-      }
-    } catch (e, tr) {
-      await App.report(exception: e, stack: tr);
-    }
+    final phoneNumber = await Phone.parseString(value, country: _country, format: true);
 
     emit(state.copyWith(
-      user: state.user.copyWith(phone: Phone(value.trim(), country: country)),
+      user: state.user.copyWith(phone: phoneNumber ?? Phone(value, country: _country)),
       phoneTextController: state.phoneTextController
-        ..text = phoneNumber
+        ..text = phoneNumber?.getOrNull ?? ''
         ..value = TextEditingValue(
-          text: phoneNumber,
-          selection: TextSelection.fromPosition(TextPosition(offset: phoneNumber.length)),
+          text: phoneNumber?.getOrNull ?? '',
+          selection: TextSelection.fromPosition(TextPosition(offset: (phoneNumber?.getOrNull ?? '').length)),
         ),
     ));
   }
@@ -289,11 +247,6 @@ class AuthCubit extends Cubit<AuthState> with BaseCubit<AuthState> {
         token: state.code,
       );
 
-      await result.response.maybeMap(
-        orElse: () async => null,
-        success: (s) async => await _preferences.remove(Const.kPhoneNumberPrefKey),
-      );
-
       emit(state.copyWith(
         status: optionOf(
           result.copyWith(
@@ -321,14 +274,6 @@ class AuthCubit extends Cubit<AuthState> with BaseCubit<AuthState> {
       final phone = state.user.phone.formatted?.getOrNull != null ? state.user.phone.formatted! : state.user.phone;
 
       result = await _auth.sendPasswordResetInstructions(phone);
-
-      await result.response.maybeMap(
-        orElse: () async => null,
-        success: (s) async => await _preferences.setString(
-          key: Const.kPhoneNumberPrefKey,
-          value: phone.getOrEmpty!,
-        ),
-      );
 
       emit(state.copyWith(
         status: optionOf(
@@ -365,11 +310,6 @@ class AuthCubit extends Cubit<AuthState> with BaseCubit<AuthState> {
         phone: state.user.phone.formatted!,
         newPassword: state.user.password,
         confirmation: state.confirmPassword,
-      );
-
-      await result.response.maybeMap(
-        orElse: () async => null,
-        success: (s) async => await _preferences.remove(Const.kPhoneNumberPrefKey),
       );
 
       emit(state.copyWith(
@@ -522,9 +462,15 @@ class AuthCubit extends Cubit<AuthState> with BaseCubit<AuthState> {
   Future<void> deleteAccount() async {
     toggleLoading(true, none());
 
-    final result = await _auth.deleteAccount();
-
-    emit(state.copyWith(status: some(result)));
+    try {
+      final result = await _auth.deleteAccount();
+      emit(state.copyWith(status: some(result)));
+    } catch (e) {
+      await navigator.navigatorKey.currentContext?.let((it) async {
+        await it.read<AuthWatcherCubit>().signOut();
+        it.read<BottomNavigationCubit>().reset();
+      });
+    }
 
     toggleLoading(false);
   }
@@ -534,15 +480,49 @@ extension AuthCubitX on AuthCubit {
   void pickCamera() async {
     emit(state.copyWith(isUploadingImage: true));
 
-    var _result = await _picker.pickImage(source: ImageSource.camera);
-    _uploadImage(_result);
+    try {
+      final _result = await _picker.pickImage(
+        source: ImageSource.camera,
+        maxWidth: Const.maxImageUploadWidth,
+        maxHeight: Const.maxImageUploadHeight,
+        imageQuality: Const.imageQuality,
+      );
+      _uploadImage(_result);
+    } on MissingPluginException catch (e) {
+      emit(state.copyWith(
+        isUploadingImage: false,
+        status: some(AppHttpResponse.failure(env.flavor.fold(prod: () => 'Photo upload failed!', dev: () => e.message))),
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+        isUploadingImage: false,
+        status: some(AppHttpResponse.failure(env.flavor.fold(prod: () => 'Error: $e', dev: () => '$e'))),
+      ));
+    }
   }
 
   void pickGallery() async {
     emit(state.copyWith(isUploadingImage: true));
 
-    var _result = await _picker.pickImage(source: ImageSource.gallery);
-    _uploadImage(_result);
+    try {
+      final _result = await _picker.pickImage(
+        source: ImageSource.gallery,
+        maxWidth: Const.maxImageUploadWidth,
+        maxHeight: Const.maxImageUploadHeight,
+        imageQuality: Const.imageQuality,
+      );
+      _uploadImage(_result);
+    } on MissingPluginException catch (e) {
+      emit(state.copyWith(
+        isUploadingImage: false,
+        status: some(AppHttpResponse.failure(env.flavor.fold(prod: () => 'Photo upload failed!', dev: () => e.message))),
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+        isUploadingImage: false,
+        status: some(AppHttpResponse.failure(env.flavor.fold(prod: () => 'Error: $e', dev: () => '$e'))),
+      ));
+    }
   }
 
   void _uploadImage(XFile? xfile) async {
@@ -593,7 +573,7 @@ extension AuthCubitX on AuthCubit {
           isUploadingImage: false,
           status: optionOf(AppHttpResponse.failure('Error ${e.statusCode}: ${e.message ?? e.responseString}')),
         ));
-        unawaited(App.report(exception: e, stack: tr));
+        unawaited(App.report(e, tr));
       }
     }
   }

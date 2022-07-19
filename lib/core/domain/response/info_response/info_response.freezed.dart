@@ -207,16 +207,16 @@ abstract class _InfoResponse extends InfoResponse {
   const _InfoResponse._() : super._();
 
   @override
-  bool? get status => throw _privateConstructorUsedError;
+  bool? get status;
   @override
-  String? get details => throw _privateConstructorUsedError;
+  String? get details;
   @override
-  InfoType get type => throw _privateConstructorUsedError;
+  InfoType get type;
   @override
-  String get message => throw _privateConstructorUsedError;
+  String get message;
   @override
   @JsonKey(ignore: true)
-  bool get pop => throw _privateConstructorUsedError;
+  bool get pop;
   @override
   @JsonKey(ignore: true)
   _$$_InfoResponseCopyWith<_$_InfoResponse> get copyWith =>

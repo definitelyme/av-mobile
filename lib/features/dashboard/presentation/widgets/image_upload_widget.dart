@@ -26,6 +26,8 @@ class ImageUploadWidget<Reactive extends BlocBase<ReactiveState>, ReactiveState>
   final void Function(Reactive)? onClosePressed;
   final bool showCenterIcon;
   final IconData? centerIcon;
+  final Color? indicatorColorLight;
+  final Color? indicatorColorDark;
 
   const ImageUploadWidget({
     Key? key,
@@ -44,6 +46,8 @@ class ImageUploadWidget<Reactive extends BlocBase<ReactiveState>, ReactiveState>
     this.onClosePressed,
     this.showCenterIcon = false,
     this.centerIcon,
+    this.indicatorColorLight,
+    this.indicatorColorDark,
   }) : super(key: key);
 
   @override
@@ -57,7 +61,13 @@ class ImageUploadWidget<Reactive extends BlocBase<ReactiveState>, ReactiveState>
           future: url?.call(s)?.let((it) => App.getImageDimensions(CachedNetworkImageProvider(it)).future) ??
               App.getImageDimensions(const AssetImage(AppAssets.unnamed)).future,
           builder: (_, snapshot) {
-            if (showLoading) if (!snapshot.hasData && !isLoading.call(s)) return const Center(child: CircularProgressBar.adaptive());
+            if (showLoading) if (!snapshot.hasData && !isLoading.call(s))
+              return Center(
+                child: CircularProgressBar.adaptive(
+                  color: indicatorColorDark,
+                  colorDark: indicatorColorLight,
+                ),
+              );
 
             final _height = height?.call(s) ?? width?.call(s) ?? snapshot.data?.height.toDouble();
 
@@ -132,7 +142,6 @@ class ImageUploadWidget<Reactive extends BlocBase<ReactiveState>, ReactiveState>
                             if (!isLoading.call(s))
                               await App.showAdaptiveBottomSheet(
                                 c,
-                                radius: Radius.zero,
                                 builder: (_) => DocumentPickerSheet(
                                   pickers: [
                                     DocumentPicker(

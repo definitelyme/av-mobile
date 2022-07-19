@@ -41,6 +41,8 @@ class ProductCard extends StatelessWidget {
                   fit: BoxFit.cover,
                   borderRadius: 6.br,
                   expandsFullscreen: true,
+                  progressIndicatorColor: Palette.accentColor,
+                  progressIndicatorColorDark: Palette.accentColor,
                 ),
               ),
               //
@@ -72,11 +74,16 @@ class ProductCard extends StatelessWidget {
                       Flexible(
                         child: AdaptiveText.rich(
                           TextSpan(children: [
-                            if (deal.lastPriceOffered.valueOrNull != null)
+                            if (deal.lastPriceOffered.getOrNull != null) ...[
                               TextSpan(
-                                text: '${deal.lastPriceOffered.getOrNull}'.asCurrency(),
+                                text: deal.country?.symbolPadded ?? '${Const.defaultCurrencyIcon} ',
+                                style: const TextStyle(color: Palette.accentGreen, fontWeight: FontWeight.bold),
+                              ),
+                              TextSpan(
+                                text: '${deal.lastPriceOffered.getOrNull}'.asCurrency(symbol: false),
                                 style: const TextStyle(fontWeight: FontWeight.bold),
                               ),
+                            ],
                             const TextSpan(text: '\n'),
                             if (deal.type == DealType.auction)
                               TextSpan(text: 'current Bid', style: TextStyle(fontSize: 14.sp, color: Colors.grey)),

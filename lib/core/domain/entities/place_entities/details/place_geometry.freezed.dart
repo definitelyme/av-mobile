@@ -179,9 +179,9 @@ abstract class _GeometryDTO implements PlaceGeometry {
       final PlaceViewport? viewport}) = _$_GeometryDTO;
 
   @override
-  PlaceCoordinate? get location => throw _privateConstructorUsedError;
+  PlaceCoordinate? get location;
   @override
-  PlaceViewport? get viewport => throw _privateConstructorUsedError;
+  PlaceViewport? get viewport;
   @override
   @JsonKey(ignore: true)
   _$$_GeometryDTOCopyWith<_$_GeometryDTO> get copyWith =>
@@ -353,9 +353,9 @@ abstract class _PlaceViewport implements PlaceViewport {
       final PlaceCoordinate? southwest}) = _$_PlaceViewport;
 
   @override
-  PlaceCoordinate? get northeast => throw _privateConstructorUsedError;
+  PlaceCoordinate? get northeast;
   @override
-  PlaceCoordinate? get southwest => throw _privateConstructorUsedError;
+  PlaceCoordinate? get southwest;
   @override
   @JsonKey(ignore: true)
   _$$_PlaceViewportCopyWith<_$_PlaceViewport> get copyWith =>
@@ -364,8 +364,8 @@ abstract class _PlaceViewport implements PlaceViewport {
 
 /// @nodoc
 mixin _$PlaceCoordinate {
-  BasicTextField<double?> get lat => throw _privateConstructorUsedError;
-  BasicTextField<double?> get lng => throw _privateConstructorUsedError;
+  NumField<double?> get lat => throw _privateConstructorUsedError;
+  NumField<double?> get lng => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PlaceCoordinateCopyWith<PlaceCoordinate> get copyWith =>
@@ -377,7 +377,7 @@ abstract class $PlaceCoordinateCopyWith<$Res> {
   factory $PlaceCoordinateCopyWith(
           PlaceCoordinate value, $Res Function(PlaceCoordinate) then) =
       _$PlaceCoordinateCopyWithImpl<$Res>;
-  $Res call({BasicTextField<double?> lat, BasicTextField<double?> lng});
+  $Res call({NumField<double?> lat, NumField<double?> lng});
 }
 
 /// @nodoc
@@ -398,11 +398,11 @@ class _$PlaceCoordinateCopyWithImpl<$Res>
       lat: lat == freezed
           ? _value.lat
           : lat // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double?>,
+              as NumField<double?>,
       lng: lng == freezed
           ? _value.lng
           : lng // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double?>,
+              as NumField<double?>,
     ));
   }
 }
@@ -414,7 +414,7 @@ abstract class _$$_PlaceCoordinateCopyWith<$Res>
           _$_PlaceCoordinate value, $Res Function(_$_PlaceCoordinate) then) =
       __$$_PlaceCoordinateCopyWithImpl<$Res>;
   @override
-  $Res call({BasicTextField<double?> lat, BasicTextField<double?> lng});
+  $Res call({NumField<double?> lat, NumField<double?> lng});
 }
 
 /// @nodoc
@@ -437,11 +437,11 @@ class __$$_PlaceCoordinateCopyWithImpl<$Res>
       lat: lat == freezed
           ? _value.lat
           : lat // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double?>,
+              as NumField<double?>,
       lng: lng == freezed
           ? _value.lng
           : lng // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double?>,
+              as NumField<double?>,
     ));
   }
 }
@@ -454,9 +454,9 @@ class _$_PlaceCoordinate
   const _$_PlaceCoordinate({required this.lat, required this.lng});
 
   @override
-  final BasicTextField<double?> lat;
+  final NumField<double?> lat;
   @override
-  final BasicTextField<double?> lng;
+  final NumField<double?> lng;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -495,13 +495,13 @@ class _$_PlaceCoordinate
 
 abstract class _PlaceCoordinate implements PlaceCoordinate {
   const factory _PlaceCoordinate(
-      {required final BasicTextField<double?> lat,
-      required final BasicTextField<double?> lng}) = _$_PlaceCoordinate;
+      {required final NumField<double?> lat,
+      required final NumField<double?> lng}) = _$_PlaceCoordinate;
 
   @override
-  BasicTextField<double?> get lat => throw _privateConstructorUsedError;
+  NumField<double?> get lat;
   @override
-  BasicTextField<double?> get lng => throw _privateConstructorUsedError;
+  NumField<double?> get lng;
   @override
   @JsonKey(ignore: true)
   _$$_PlaceCoordinateCopyWith<_$_PlaceCoordinate> get copyWith =>

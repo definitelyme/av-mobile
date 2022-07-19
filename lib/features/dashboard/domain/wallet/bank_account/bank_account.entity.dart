@@ -12,8 +12,8 @@ class BankAccount with _$BankAccount {
   const BankAccount._();
 
   const factory BankAccount({
-    required BasicTextField<String?> accountName,
-    required BasicTextField<String?> accountNumber,
+    required BasicTextField accountName,
+    required BasicTextField accountNumber,
     Bank? bank,
   }) = _BankAccount;
 
@@ -30,7 +30,7 @@ class BankAccount with _$BankAccount {
 
   BankAccount merge(BankAccount? other) => BankAccount(
         bank: other?.bank ?? bank,
-        accountName: other?.accountName.isNotNull((it) => it as BasicTextField<String?>, orElse: (_) => accountName) ?? accountName,
-        accountNumber: other?.accountNumber.isNotNull((it) => it as BasicTextField<String?>, orElse: (_) => accountNumber) ?? accountNumber,
+        accountName: other?.accountName.isNotNull((it) => it as BasicTextField, orElse: (_) => accountName) ?? accountName,
+        accountNumber: other?.accountNumber.isNotNull((it) => it as BasicTextField, orElse: (_) => accountNumber) ?? accountNumber,
       );
 }

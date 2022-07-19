@@ -5,7 +5,7 @@
         "dialCode": "+93",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "af_AF",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/af.svg"
     },
     {
@@ -23,7 +23,7 @@
         "dialCode": "+355",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "sq_AL",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/al.svg"
     },
     {
@@ -32,7 +32,7 @@
         "dialCode": "+213",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "ar_DZ",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/dz.svg"
     },
     {
@@ -50,7 +50,7 @@
         "dialCode": "+376",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "ca_AD",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/ad.svg"
     },
     {
@@ -59,7 +59,7 @@
         "dialCode": "+244",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "pt_AO",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/ao.svg"
     },
     {
@@ -95,7 +95,7 @@
         "dialCode": "+54",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "es_AR",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/ar.svg"
     },
     {
@@ -104,7 +104,7 @@
         "dialCode": "+374",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "hy_AM",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/am.svg"
     },
     {
@@ -113,7 +113,7 @@
         "dialCode": "+297",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "nl_AW",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/aw.svg"
     },
     {
@@ -140,7 +140,7 @@
         "dialCode": "+43",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "de_AT",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/at.svg"
     },
     {
@@ -149,7 +149,7 @@
         "dialCode": "+994",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "az_AZ",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/az.svg"
     },
     {
@@ -167,7 +167,7 @@
         "dialCode": "+973",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "ar_BH",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/bh.svg"
     },
     {
@@ -176,7 +176,7 @@
         "dialCode": "+880",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "bn_BD",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/bd.svg"
     },
     {
@@ -194,7 +194,7 @@
         "dialCode": "+375",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "be_BY",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/by.svg"
     },
     {
@@ -203,7 +203,7 @@
         "dialCode": "+32",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "nl_BE",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/be.svg"
     },
     {
@@ -221,7 +221,7 @@
         "dialCode": "+229",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "fr_BJ",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/bj.svg"
     },
     {
@@ -239,7 +239,7 @@
         "dialCode": "+975",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "dz_BT",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/bt.svg"
     },
     {
@@ -248,7 +248,7 @@
         "dialCode": "+591",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "es_BO",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/bo.svg"
     },
     {
@@ -257,7 +257,7 @@
         "dialCode": "+387",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "bs_BA",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/ba.svg"
     },
     {
@@ -275,7 +275,7 @@
         "dialCode": "+55",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "pt_BR",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/br.svg"
     },
     {
@@ -293,7 +293,7 @@
         "dialCode": "+673",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "ms_BN",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/bn.svg"
     },
     {
@@ -302,7 +302,7 @@
         "dialCode": "+359",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "bg_BG",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/bg.svg"
     },
     {
@@ -311,7 +311,7 @@
         "dialCode": "+226",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "fr_BF",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/bf.svg"
     },
     {
@@ -320,7 +320,7 @@
         "dialCode": "+257",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "fr_BI",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/bi.svg"
     },
     {
@@ -338,7 +338,7 @@
         "dialCode": "+237",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "fr_CM",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/cm.svg"
     },
     {
@@ -347,7 +347,7 @@
         "dialCode": "+1",
         "currency": "CAD",
         "currency_icon": "C$",
-        "locale": "en",
+        "locale": "en_CA",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/ca.svg"
     },
     {
@@ -356,7 +356,7 @@
         "dialCode": "+238",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "pt_CV",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/cv.svg"
     },
     {
@@ -365,7 +365,7 @@
         "dialCode": "+1345",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "en_KY",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/ky.svg"
     },
     {
@@ -374,7 +374,7 @@
         "dialCode": "+236",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "fr_CF",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/cf.svg"
     },
     {
@@ -383,7 +383,7 @@
         "dialCode": "+235",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "fr_TD",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/td.svg"
     },
     {
@@ -392,7 +392,7 @@
         "dialCode": "+56",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "es_CL",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/cl.svg"
     },
     {
@@ -401,7 +401,7 @@
         "dialCode": "+86",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "zh_CN",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/cn.svg"
     },
     {
@@ -410,7 +410,7 @@
         "dialCode": "+61",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "en_CX",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/cx.svg"
     },
     {
@@ -419,7 +419,7 @@
         "dialCode": "+61",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "en_CC",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/cc.svg"
     },
     {
@@ -428,7 +428,7 @@
         "dialCode": "+57",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "es_CO",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/co.svg"
     },
     {
@@ -437,7 +437,7 @@
         "dialCode": "+269",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "fr_KM",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/km.svg"
     },
     {
@@ -446,7 +446,7 @@
         "dialCode": "+242",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "fr_CG",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/cg.svg"
     },
     {
@@ -455,7 +455,7 @@
         "dialCode": "+682",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "en_CK",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/ck.svg"
     },
     {
@@ -464,7 +464,7 @@
         "dialCode": "+506",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "es_CR",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/cr.svg"
     },
     {
@@ -473,7 +473,7 @@
         "dialCode": "+385",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "hr_HR",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/hr.svg"
     },
     {
@@ -482,7 +482,7 @@
         "dialCode": "+53",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "es_CU",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/cu.svg"
     },
     {
@@ -491,7 +491,7 @@
         "dialCode": "+357",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "el_CY",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/cy.svg"
     },
     {
@@ -500,7 +500,7 @@
         "dialCode": "+420",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "cs_CZ",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/cz.svg"
     },
     {
@@ -509,7 +509,7 @@
         "dialCode": "+243",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "fr_CD",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/cd.svg"
     },
     {
@@ -518,7 +518,7 @@
         "dialCode": "+45",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "da_DK",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/dk.svg"
     },
     {
@@ -527,7 +527,7 @@
         "dialCode": "+253",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "fr_DJ",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/dj.svg"
     },
     {
@@ -536,7 +536,7 @@
         "dialCode": "+1767",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "en_DM",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/dm.svg"
     },
     {
@@ -545,7 +545,7 @@
         "dialCode": "+1849",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "es_DO",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/do.svg"
     },
     {
@@ -554,7 +554,7 @@
         "dialCode": "+593",
         "currency": "",
         "currency_icon": "",
-        "locale": "en",
+        "locale": "es_EC",
         "flag": "https://res.cloudinary.com/auctionvillage/image/upload/v1649096671/mobile/countries/ec.svg"
     },
     {

@@ -15,7 +15,7 @@ class DealState extends BaseState with _$DealState {
     Rating? rating,
     DealPlan? selectedPlan,
     required Product currentProduct,
-    required AmountField<double> bidAmount,
+    required NumField<double> bidAmount,
     @Default(KtList.empty()) KtList<DealCategory> categories,
     @Default(KtList.empty()) KtList<Deal> homeDeals,
     @Default(KtList.empty()) KtList<Deal> liveDeals,
@@ -30,6 +30,6 @@ class DealState extends BaseState with _$DealState {
         currentDeal: Deal.blank(),
         currentCategory: DealCategory.blank(),
         currentProduct: Product.blank(),
-        bidAmount: AmountField(0),
+        bidAmount: NumField(0),
       );
 }

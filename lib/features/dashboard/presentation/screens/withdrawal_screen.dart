@@ -120,7 +120,7 @@ class _WithdrawalScreenState extends State<WithdrawalScreen> {
                 validate: (s) => s.validate,
                 response: (s) => s.status,
                 onChanged: (cubit, _) => cubit.amountChanged(),
-                prefixIcon: (s) => const CurrencyPrefixWidget(Utils.currency),
+                prefixIcon: (s) => const CurrencyPrefixWidget(),
                 prefixMode: (s) => OverlayVisibilityMode.always,
                 inputFormatters: [
                   FilteringTextInputFormatter.digitsOnly,

@@ -1,12 +1,12 @@
 library country_picker_screen.dart;
 
+import 'dart:io';
+
 import 'package:auctionvillage/core/domain/entities/entities.dart';
-import 'package:auctionvillage/features/auth/presentation/managers/watcher/auth_watcher_cubit.dart';
 import 'package:auctionvillage/utils/utils.dart';
 import 'package:auctionvillage/widgets/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:kt_dart/collection.dart';
@@ -15,14 +15,39 @@ part '_country_picker_screen.dart';
 
 enum _CountryPickerView { flag, dialcode, flagAndCode, none }
 
-Widget _flagSVG(String url, {double? width, String? label}) => SvgPicture.network(
-      url,
-      width: width,
-      fit: BoxFit.contain,
-      allowDrawingOutsideViewBox: false,
-      excludeFromSemantics: true,
-      semanticsLabel: label,
-    );
+Widget _flagSVG(Country? country, {double? width, String? label}) {
+  const loader = CircularProgressBar.adaptive(
+    height: 20,
+    width: 20,
+    colorDark: Colors.white70,
+    strokeWidth: 1.5,
+  );
+
+  return country?.flag.getOrNull?.let((it) {
+        if (country.isNetwork) {
+          return SvgPicture.network(
+            it,
+            width: width,
+            fit: BoxFit.contain,
+            allowDrawingOutsideViewBox: false,
+            excludeFromSemantics: true,
+            semanticsLabel: label,
+            placeholderBuilder: (c) => loader,
+          );
+        } else {
+          return SvgPicture.file(
+            File(it),
+            width: width,
+            fit: BoxFit.contain,
+            allowDrawingOutsideViewBox: false,
+            excludeFromSemantics: true,
+            semanticsLabel: label,
+            placeholderBuilder: (c) => loader,
+          );
+        }
+      }) ??
+      Utils.nothing;
+}
 
 class CountryPicker extends StatefulWidget {
   final String? initialValue;
@@ -30,6 +55,7 @@ class CountryPicker extends StatefulWidget {
   final ValueChanged<Country?> onChanged;
   final Widget Function(BuildContext context, Country? country)? pickerBuilder;
   final _CountryPickerView _view;
+  final KtList<Country> countries;
   //
   final EdgeInsets? padding;
   final double? flagWidth;
@@ -46,10 +72,15 @@ class CountryPicker extends StatefulWidget {
   final Color? textColor;
   final Color? textColorDark;
   final StrutStyle? strutStyle;
+  final Color? dividerColorLight;
+  final Color? dividerColorDark;
 
   const CountryPicker({
     Key? key,
     this.initialValue,
+    this.countries = const KtList.empty(),
+    this.dividerColorLight,
+    this.dividerColorDark,
     required this.selected,
     required this.onChanged,
     required Widget Function(BuildContext context, Country? country) builder,
@@ -74,10 +105,13 @@ class CountryPicker extends StatefulWidget {
   const CountryPicker.flag({
     Key? key,
     this.initialValue,
+    this.countries = const KtList.empty(),
     required this.selected,
     required this.onChanged,
     this.padding,
     this.flagWidth,
+    this.dividerColorLight,
+    this.dividerColorDark,
   })  : _view = _CountryPickerView.flag,
         pickerBuilder = null,
         maxLines = null,
@@ -97,6 +131,7 @@ class CountryPicker extends StatefulWidget {
   const CountryPicker.flagAndCode({
     Key? key,
     this.initialValue,
+    this.countries = const KtList.empty(),
     required this.selected,
     required this.onChanged,
     this.padding,
@@ -113,6 +148,8 @@ class CountryPicker extends StatefulWidget {
     this.textColor,
     this.textColorDark,
     this.strutStyle,
+    this.dividerColorLight,
+    this.dividerColorDark,
   })  : _view = _CountryPickerView.flagAndCode,
         pickerBuilder = null,
         super(key: key);
@@ -120,6 +157,7 @@ class CountryPicker extends StatefulWidget {
   const CountryPicker.dialcode({
     Key? key,
     this.initialValue,
+    this.countries = const KtList.empty(),
     required this.selected,
     required this.onChanged,
     this.maxLines,
@@ -134,6 +172,8 @@ class CountryPicker extends StatefulWidget {
     this.textColor,
     this.textColorDark,
     this.strutStyle,
+    this.dividerColorLight,
+    this.dividerColorDark,
   })  : _view = _CountryPickerView.dialcode,
         pickerBuilder = null,
         flagWidth = null,
@@ -147,16 +187,23 @@ class CountryPicker extends StatefulWidget {
 class _CountryPickerState extends State<CountryPicker> {
   late Country? selectedItem;
 
-  KtList<Country> get list => context.read<AuthWatcherCubit>().state.countries;
+  KtList<Country> get list => widget.countries;
 
-  Country? get _default => list.firstOrNull((e) => e.iso.getOrNull?.toLowerCase() == Country.defaultISO.toLowerCase());
+  Country? get _default => list.firstOrNull((e) => e.iso.getExact().toLowerCase() == Country.defaultISO.toLowerCase());
+
+  @override
+  void didUpdateWidget(covariant CountryPicker oldWidget) {
+    final lastSelection = oldWidget.selected;
+    if (lastSelection != widget.selected) setState(() => selectedItem = widget.selected ?? _default);
+    super.didUpdateWidget(oldWidget);
+  }
 
   @override
   void initState() {
     if (widget.initialValue != null) {
       selectedItem = list.firstOrNull(
             (e) =>
-                (e.iso.getOrNull?.toLowerCase() == widget.initialValue?.toLowerCase()) ||
+                (e.iso.getExact().toLowerCase() == widget.initialValue?.toLowerCase()) ||
                 (e.dialCode.getOrNull?.toLowerCase() == widget.initialValue?.toLowerCase()),
           ) ??
           _default;
@@ -169,10 +216,10 @@ class _CountryPickerState extends State<CountryPicker> {
 
   void showCountryPicker() async {
     final result = await navigator.push(CountryPickerRoute(initial: selectedItem, countries: list));
-    final _pickedCountry = result as Country?;
+    final pickedCountry = result as Country?;
 
     setState(() {
-      selectedItem = _pickedCountry ?? selectedItem;
+      selectedItem = pickedCountry ?? selectedItem;
       widget.onChanged(selectedItem);
     });
   }
@@ -266,8 +313,9 @@ class _CountryPickerState extends State<CountryPicker> {
                 thickness: 1,
                 width: 0,
                 color: App.resolveColor(
-                  Palette.inputLightBorderColor,
-                  dark: Palette.inputDarkBorderColor,
+                  widget.dividerColorLight ?? Colors.grey.shade300,
+                  dark: widget.dividerColorDark ?? Colors.grey.shade800,
+                  ctx: context,
                 ),
               ),
             ),
@@ -291,8 +339,9 @@ class _CountryPickerState extends State<CountryPicker> {
                 thickness: 1,
                 width: 0,
                 color: App.resolveColor(
-                  Palette.inputLightBorderColor,
-                  dark: Palette.inputDarkBorderColor,
+                  widget.dividerColorLight ?? Colors.grey.shade300,
+                  dark: widget.dividerColorDark ?? Colors.grey.shade800,
+                  ctx: context,
                 ),
               ),
             ),
@@ -315,7 +364,7 @@ class _FlagView extends StatelessWidget {
   Widget build(BuildContext context) {
     return country?.flag.getOrNull == null || country!.flag.getOrNull!.isEmpty
         ? _DialCodeView(country)
-        : _flagSVG(country!.flag.getOrNull!, width: _flagWidth, label: '${country!.name.getOrNull}');
+        : _flagSVG(country, width: _flagWidth, label: '${country!.name.getOrNull}');
   }
 }
 
@@ -390,7 +439,7 @@ class _FlagAndCodeView extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Flexible(flex: 10, child: _flagSVG(country!.flag.getOrNull!, width: _flagWidth, label: '${country!.name.getOrNull}')),
+        Flexible(flex: 10, child: _flagSVG(country, width: _flagWidth, label: '${country!.name.getOrNull}')),
         const SizedBox(width: 4),
         Flexible(flex: 9, child: _DialCodeView(country)),
       ],

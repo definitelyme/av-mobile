@@ -272,9 +272,9 @@ abstract class _NoInternetConnectivity extends NetworkFailure {
   const _NoInternetConnectivity._() : super._();
 
   @override
-  String get message => throw _privateConstructorUsedError;
+  String get message;
   @override
-  bool get show => throw _privateConstructorUsedError;
+  bool get show;
   @override
   @JsonKey(ignore: true)
   _$$_NoInternetConnectivityCopyWith<_$_NoInternetConnectivity> get copyWith =>
@@ -443,9 +443,9 @@ abstract class _PoorInternetConnection extends NetworkFailure {
   const _PoorInternetConnection._() : super._();
 
   @override
-  String get message => throw _privateConstructorUsedError;
+  String get message;
   @override
-  bool get show => throw _privateConstructorUsedError;
+  bool get show;
   @override
   @JsonKey(ignore: true)
   _$$_PoorInternetConnectionCopyWith<_$_PoorInternetConnection> get copyWith =>
@@ -617,9 +617,9 @@ abstract class _NetworkFailureReceiveTimeout extends NetworkFailure {
   const _NetworkFailureReceiveTimeout._() : super._();
 
   @override
-  String get message => throw _privateConstructorUsedError;
+  String get message;
   @override
-  bool get show => throw _privateConstructorUsedError;
+  bool get show;
   @override
   @JsonKey(ignore: true)
   _$$_NetworkFailureReceiveTimeoutCopyWith<_$_NetworkFailureReceiveTimeout>
@@ -788,9 +788,9 @@ abstract class _NetworkFailureTimeout extends NetworkFailure {
   const _NetworkFailureTimeout._() : super._();
 
   @override
-  String get message => throw _privateConstructorUsedError;
+  String get message;
   @override
-  bool get show => throw _privateConstructorUsedError;
+  bool get show;
   @override
   @JsonKey(ignore: true)
   _$$_NetworkFailureTimeoutCopyWith<_$_NetworkFailureTimeout> get copyWith =>

@@ -17,8 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$Bank {
   UniqueId<String?> get id => throw _privateConstructorUsedError;
-  BasicTextField<String?> get code => throw _privateConstructorUsedError;
-  BasicTextField<String?> get bankName => throw _privateConstructorUsedError;
+  BasicTextField get code => throw _privateConstructorUsedError;
+  BasicTextField get bankName => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
   DateTime? get updatedAt => throw _privateConstructorUsedError;
 
@@ -32,8 +32,8 @@ abstract class $BankCopyWith<$Res> {
       _$BankCopyWithImpl<$Res>;
   $Res call(
       {UniqueId<String?> id,
-      BasicTextField<String?> code,
-      BasicTextField<String?> bankName,
+      BasicTextField code,
+      BasicTextField bankName,
       DateTime? createdAt,
       DateTime? updatedAt});
 }
@@ -62,11 +62,11 @@ class _$BankCopyWithImpl<$Res> implements $BankCopyWith<$Res> {
       code: code == freezed
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       bankName: bankName == freezed
           ? _value.bankName
           : bankName // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -86,8 +86,8 @@ abstract class _$$_BankCopyWith<$Res> implements $BankCopyWith<$Res> {
   @override
   $Res call(
       {UniqueId<String?> id,
-      BasicTextField<String?> code,
-      BasicTextField<String?> bankName,
+      BasicTextField code,
+      BasicTextField bankName,
       DateTime? createdAt,
       DateTime? updatedAt});
 }
@@ -117,11 +117,11 @@ class __$$_BankCopyWithImpl<$Res> extends _$BankCopyWithImpl<$Res>
       code: code == freezed
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       bankName: bankName == freezed
           ? _value.bankName
           : bankName // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -148,9 +148,9 @@ class _$_Bank extends _Bank {
   @override
   final UniqueId<String?> id;
   @override
-  final BasicTextField<String?> code;
+  final BasicTextField code;
   @override
-  final BasicTextField<String?> bankName;
+  final BasicTextField bankName;
   @override
   final DateTime? createdAt;
   @override
@@ -191,22 +191,22 @@ class _$_Bank extends _Bank {
 abstract class _Bank extends Bank {
   const factory _Bank(
       {required final UniqueId<String?> id,
-      required final BasicTextField<String?> code,
-      required final BasicTextField<String?> bankName,
+      required final BasicTextField code,
+      required final BasicTextField bankName,
       final DateTime? createdAt,
       final DateTime? updatedAt}) = _$_Bank;
   const _Bank._() : super._();
 
   @override
-  UniqueId<String?> get id => throw _privateConstructorUsedError;
+  UniqueId<String?> get id;
   @override
-  BasicTextField<String?> get code => throw _privateConstructorUsedError;
+  BasicTextField get code;
   @override
-  BasicTextField<String?> get bankName => throw _privateConstructorUsedError;
+  BasicTextField get bankName;
   @override
-  DateTime? get createdAt => throw _privateConstructorUsedError;
+  DateTime? get createdAt;
   @override
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$_BankCopyWith<_$_Bank> get copyWith => throw _privateConstructorUsedError;

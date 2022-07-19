@@ -26,7 +26,7 @@ class _AuctionProductTab extends StatelessWidget {
             focus: ProductState.auctionBasePriceFocus,
             capitalization: TextCapitalization.none,
             onChanged: (bloc, _) => bloc.add(const ProductSyncEvent.basePriceChanged()),
-            prefixIcon: (s) => const CurrencyPrefixWidget(Utils.currency),
+            prefixIcon: (s) => const CurrencyPrefixWidget(),
             prefixMode: (s) => OverlayVisibilityMode.always,
             inputFormatters: [
               FilteringTextInputFormatter.digitsOnly,

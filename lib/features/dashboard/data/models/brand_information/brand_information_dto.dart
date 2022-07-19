@@ -26,13 +26,13 @@ class BrandInformationDTO with _$BrandInformationDTO {
 
   /// Maps BrandInformation to a Data Transfer Object.
   factory BrandInformationDTO.fromDomain(BrandInformation? instance) => BrandInformationDTO(
-        brand: instance?.brand.valueOrNull,
-        brandModel: instance?.brandModel.valueOrNull,
-        transmission: instance?.transmission.valueOrNull,
-        yearOfManufacturer: int.tryParse(instance?.yearOfManufacture.valueOrNull ?? ''),
-        color: instance?.color?.valueOrNull != null ? Palette.stringHex(instance!.color!.valueOrNull!) : null,
+        brand: instance?.brand.getOrNull,
+        brandModel: instance?.brandModel.getOrNull,
+        transmission: instance?.transmission.getOrNull,
+        yearOfManufacturer: int.tryParse(instance?.yearOfManufacture.getOrNull ?? ''),
+        color: instance?.color?.getOrNull != null ? Palette.stringHex(instance!.color!.getOrNull!) : null,
         condition: instance?.condition,
-        description: instance?.description.valueOrNull,
+        description: instance?.description.getOrNull,
       );
 
   factory BrandInformationDTO.fromJson(Map<String, dynamic> json) => _$BrandInformationDTOFromJson(json);

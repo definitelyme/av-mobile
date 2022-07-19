@@ -16,8 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$BottomNavigationState {
+  TabsRouter? get tabRouter => throw _privateConstructorUsedError;
   int get currentIndex => throw _privateConstructorUsedError;
   int get previousIndex => throw _privateConstructorUsedError;
+  bool get hasActiveListener => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BottomNavigationStateCopyWith<BottomNavigationState> get copyWith =>
@@ -29,7 +31,11 @@ abstract class $BottomNavigationStateCopyWith<$Res> {
   factory $BottomNavigationStateCopyWith(BottomNavigationState value,
           $Res Function(BottomNavigationState) then) =
       _$BottomNavigationStateCopyWithImpl<$Res>;
-  $Res call({int currentIndex, int previousIndex});
+  $Res call(
+      {TabsRouter? tabRouter,
+      int currentIndex,
+      int previousIndex,
+      bool hasActiveListener});
 }
 
 /// @nodoc
@@ -43,10 +49,16 @@ class _$BottomNavigationStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? tabRouter = freezed,
     Object? currentIndex = freezed,
     Object? previousIndex = freezed,
+    Object? hasActiveListener = freezed,
   }) {
     return _then(_value.copyWith(
+      tabRouter: tabRouter == freezed
+          ? _value.tabRouter
+          : tabRouter // ignore: cast_nullable_to_non_nullable
+              as TabsRouter?,
       currentIndex: currentIndex == freezed
           ? _value.currentIndex
           : currentIndex // ignore: cast_nullable_to_non_nullable
@@ -55,6 +67,10 @@ class _$BottomNavigationStateCopyWithImpl<$Res>
           ? _value.previousIndex
           : previousIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      hasActiveListener: hasActiveListener == freezed
+          ? _value.hasActiveListener
+          : hasActiveListener // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -66,7 +82,11 @@ abstract class _$$_BottomNavigationStateCopyWith<$Res>
           $Res Function(_$_BottomNavigationState) then) =
       __$$_BottomNavigationStateCopyWithImpl<$Res>;
   @override
-  $Res call({int currentIndex, int previousIndex});
+  $Res call(
+      {TabsRouter? tabRouter,
+      int currentIndex,
+      int previousIndex,
+      bool hasActiveListener});
 }
 
 /// @nodoc
@@ -83,10 +103,16 @@ class __$$_BottomNavigationStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? tabRouter = freezed,
     Object? currentIndex = freezed,
     Object? previousIndex = freezed,
+    Object? hasActiveListener = freezed,
   }) {
     return _then(_$_BottomNavigationState(
+      tabRouter: tabRouter == freezed
+          ? _value.tabRouter
+          : tabRouter // ignore: cast_nullable_to_non_nullable
+              as TabsRouter?,
       currentIndex: currentIndex == freezed
           ? _value.currentIndex
           : currentIndex // ignore: cast_nullable_to_non_nullable
@@ -95,6 +121,10 @@ class __$$_BottomNavigationStateCopyWithImpl<$Res>
           ? _value.previousIndex
           : previousIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      hasActiveListener: hasActiveListener == freezed
+          ? _value.hasActiveListener
+          : hasActiveListener // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -103,18 +133,26 @@ class __$$_BottomNavigationStateCopyWithImpl<$Res>
 
 class _$_BottomNavigationState implements _BottomNavigationState {
   const _$_BottomNavigationState(
-      {this.currentIndex = 0, this.previousIndex = 0});
+      {this.tabRouter,
+      this.currentIndex = BottomNavigationState.homeIndex,
+      this.previousIndex = BottomNavigationState.homeIndex,
+      this.hasActiveListener = false});
 
+  @override
+  final TabsRouter? tabRouter;
   @override
   @JsonKey()
   final int currentIndex;
   @override
   @JsonKey()
   final int previousIndex;
+  @override
+  @JsonKey()
+  final bool hasActiveListener;
 
   @override
   String toString() {
-    return 'BottomNavigationState(currentIndex: $currentIndex, previousIndex: $previousIndex)';
+    return 'BottomNavigationState(tabRouter: $tabRouter, currentIndex: $currentIndex, previousIndex: $previousIndex, hasActiveListener: $hasActiveListener)';
   }
 
   @override
@@ -122,17 +160,22 @@ class _$_BottomNavigationState implements _BottomNavigationState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_BottomNavigationState &&
+            const DeepCollectionEquality().equals(other.tabRouter, tabRouter) &&
             const DeepCollectionEquality()
                 .equals(other.currentIndex, currentIndex) &&
             const DeepCollectionEquality()
-                .equals(other.previousIndex, previousIndex));
+                .equals(other.previousIndex, previousIndex) &&
+            const DeepCollectionEquality()
+                .equals(other.hasActiveListener, hasActiveListener));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(tabRouter),
       const DeepCollectionEquality().hash(currentIndex),
-      const DeepCollectionEquality().hash(previousIndex));
+      const DeepCollectionEquality().hash(previousIndex),
+      const DeepCollectionEquality().hash(hasActiveListener));
 
   @JsonKey(ignore: true)
   @override
@@ -143,13 +186,19 @@ class _$_BottomNavigationState implements _BottomNavigationState {
 
 abstract class _BottomNavigationState implements BottomNavigationState {
   const factory _BottomNavigationState(
-      {final int currentIndex,
-      final int previousIndex}) = _$_BottomNavigationState;
+      {final TabsRouter? tabRouter,
+      final int currentIndex,
+      final int previousIndex,
+      final bool hasActiveListener}) = _$_BottomNavigationState;
 
   @override
-  int get currentIndex => throw _privateConstructorUsedError;
+  TabsRouter? get tabRouter;
   @override
-  int get previousIndex => throw _privateConstructorUsedError;
+  int get currentIndex;
+  @override
+  int get previousIndex;
+  @override
+  bool get hasActiveListener;
   @override
   @JsonKey(ignore: true)
   _$$_BottomNavigationStateCopyWith<_$_BottomNavigationState> get copyWith =>

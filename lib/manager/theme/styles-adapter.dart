@@ -1,3 +1,4 @@
+// ignore: file_names
 part of 'styles.dart';
 
 class AppThemeAdapter extends TypeAdapter<AppTheme> {

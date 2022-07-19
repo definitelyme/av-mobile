@@ -1683,7 +1683,9 @@ class _$_ServerFieldErrors extends _ServerFieldErrors {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ServerFieldErrorsToJson(this);
+    return _$$_ServerFieldErrorsToJson(
+      this,
+    );
   }
 }
 
@@ -1796,154 +1798,154 @@ abstract class _ServerFieldErrors extends ServerFieldErrors {
 
   @override
   @JsonKey(includeIfNull: false)
-  List<String?>? get name => throw _privateConstructorUsedError;
+  List<String?>? get name;
   @override
   @JsonKey(includeIfNull: false, name: 'first_name')
-  List<String?>? get firstName => throw _privateConstructorUsedError;
+  List<String?>? get firstName;
   @override
   @JsonKey(includeIfNull: false, name: 'last_name')
-  List<String?>? get lastName => throw _privateConstructorUsedError;
+  List<String?>? get lastName;
   @override
   @JsonKey(includeIfNull: false)
-  List<String?>? get token => throw _privateConstructorUsedError;
+  List<String?>? get token;
   @override
   @JsonKey(includeIfNull: false)
-  List<String?>? get email => throw _privateConstructorUsedError;
+  List<String?>? get email;
   @override
   @JsonKey(includeIfNull: false)
-  List<String?>? get gender => throw _privateConstructorUsedError;
+  List<String?>? get gender;
   @override
   @JsonKey(includeIfNull: false)
-  List<String?>? get age => throw _privateConstructorUsedError;
+  List<String?>? get age;
   @override
   @JsonKey(includeIfNull: false)
-  List<String?>? get phone => throw _privateConstructorUsedError;
+  List<String?>? get phone;
   @override
   @JsonKey(includeIfNull: false)
-  List<String?>? get password => throw _privateConstructorUsedError;
+  List<String?>? get password;
   @override
   @JsonKey(includeIfNull: false, name: 'current_password')
-  List<String?>? get oldPassword => throw _privateConstructorUsedError;
+  List<String?>? get oldPassword;
   @override
   @JsonKey(includeIfNull: false)
-  List<String?>? get code => throw _privateConstructorUsedError;
+  List<String?>? get code;
   @override
   @JsonKey(includeIfNull: false)
-  List<String?>? get type => throw _privateConstructorUsedError;
+  List<String?>? get type;
   @override
   @JsonKey(includeIfNull: false)
-  List<String?>? get description => throw _privateConstructorUsedError;
+  List<String?>? get description;
   @override
   @JsonKey(includeIfNull: false)
-  List<String?>? get document => throw _privateConstructorUsedError;
+  List<String?>? get document;
   @override
   @JsonKey(includeIfNull: false)
-  List<String?>? get duration => throw _privateConstructorUsedError;
+  List<String?>? get duration;
   @override
   @JsonKey(includeIfNull: false)
-  List<String?>? get amount => throw _privateConstructorUsedError;
+  List<String?>? get amount;
   @override
   @JsonKey(includeIfNull: false, name: 'currency_id')
-  List<String?>? get currencyId => throw _privateConstructorUsedError;
+  List<String?>? get currencyId;
   @override
   @JsonKey(includeIfNull: false)
-  List<String?>? get country => throw _privateConstructorUsedError;
+  List<String?>? get country;
   @override
   @JsonKey(includeIfNull: false)
-  List<String?>? get comment => throw _privateConstructorUsedError;
+  List<String?>? get comment;
   @override
   @JsonKey(includeIfNull: false, name: 'account_number')
-  List<String?>? get accountNumber => throw _privateConstructorUsedError;
+  List<String?>? get accountNumber;
   @override
   @JsonKey(includeIfNull: false, name: 'bank_id')
-  List<String?>? get bankId => throw _privateConstructorUsedError;
+  List<String?>? get bankId;
   @override
   @JsonKey(includeIfNull: false)
-  List<String?>? get recipient => throw _privateConstructorUsedError;
+  List<String?>? get recipient;
   @override
   @JsonKey(includeIfNull: false)
-  List<String?>? get plan => throw _privateConstructorUsedError;
+  List<String?>? get plan;
   @override
   @JsonKey(includeIfNull: false, name: 'payment_method')
-  List<String?>? get paymentMethod => throw _privateConstructorUsedError;
+  List<String?>? get paymentMethod;
   @override
   @JsonKey(includeIfNull: false)
-  List<String?>? get lat => throw _privateConstructorUsedError;
+  List<String?>? get lat;
   @override
   @JsonKey(includeIfNull: false)
-  List<String?>? get long => throw _privateConstructorUsedError;
+  List<String?>? get long;
   @override
   @JsonKey(includeIfNull: false)
-  List<String?>? get zip => throw _privateConstructorUsedError;
+  List<String?>? get zip;
   @override
   @JsonKey(includeIfNull: false)
-  List<String?>? get instructions => throw _privateConstructorUsedError;
+  List<String?>? get instructions;
   @override
   @JsonKey(includeIfNull: false, name: 'country_id')
-  List<String?>? get countryId => throw _privateConstructorUsedError;
+  List<String?>? get countryId;
   @override
   @JsonKey(includeIfNull: false)
-  List<String?>? get alias => throw _privateConstructorUsedError;
+  List<String?>? get alias;
   @override
   @JsonKey(includeIfNull: false)
-  List<String?>? get apartment => throw _privateConstructorUsedError;
+  List<String?>? get apartment;
   @override
   @JsonKey(includeIfNull: false)
-  List<String?>? get street => throw _privateConstructorUsedError;
+  List<String?>? get street;
   @override
   @JsonKey(includeIfNull: false)
-  List<String?>? get town => throw _privateConstructorUsedError;
+  List<String?>? get town;
   @override
   @JsonKey(includeIfNull: false)
-  List<String?>? get city => throw _privateConstructorUsedError;
+  List<String?>? get city;
   @override
   @JsonKey(includeIfNull: false, name: 'state_id')
-  List<String?>? get stateId => throw _privateConstructorUsedError;
+  List<String?>? get stateId;
   @override
   @JsonKey(includeIfNull: false)
-  List<String?>? get state => throw _privateConstructorUsedError;
+  List<String?>? get state;
   @override
   @JsonKey(includeIfNull: false)
-  List<String?>? get landmark => throw _privateConstructorUsedError;
+  List<String?>? get landmark;
   @override
   @JsonKey(includeIfNull: false, name: 'card_id')
-  List<String?>? get cardId => throw _privateConstructorUsedError;
+  List<String?>? get cardId;
   @override
   @JsonKey(includeIfNull: false, name: 'card_number')
-  List<String?>? get cardNumber => throw _privateConstructorUsedError;
+  List<String?>? get cardNumber;
   @override
   @JsonKey(includeIfNull: false, name: 'card_name')
-  List<String?>? get cardName => throw _privateConstructorUsedError;
+  List<String?>? get cardName;
   @override
   @JsonKey(includeIfNull: false, name: 'pickup_lat')
-  List<String?>? get pickupLat => throw _privateConstructorUsedError;
+  List<String?>? get pickupLat;
   @override
   @JsonKey(includeIfNull: false, name: 'destination_lat')
-  List<String?>? get destLat => throw _privateConstructorUsedError;
+  List<String?>? get destLat;
   @override
   @JsonKey(includeIfNull: false, name: 'receiver_full_name')
-  List<String?>? get receiverName => throw _privateConstructorUsedError;
+  List<String?>? get receiverName;
   @override
   @JsonKey(includeIfNull: false, name: 'receiver_phone_number')
-  List<String?>? get receiverPhone => throw _privateConstructorUsedError;
+  List<String?>? get receiverPhone;
   @override
   @JsonKey(includeIfNull: false, name: 'item_name')
-  List<String?>? get itemName => throw _privateConstructorUsedError;
+  List<String?>? get itemName;
   @override
   @JsonKey(includeIfNull: false)
-  List<String?>? get quantity => throw _privateConstructorUsedError;
+  List<String?>? get quantity;
   @override
   @JsonKey(includeIfNull: false)
-  List<String?>? get images => throw _privateConstructorUsedError;
+  List<String?>? get images;
   @override
   @JsonKey(includeIfNull: false, name: 'unit_price')
-  List<String?>? get unitPrice => throw _privateConstructorUsedError;
+  List<String?>? get unitPrice;
   @override
   @JsonKey(includeIfNull: false, name: 'required_date')
-  List<String?>? get requiredDate => throw _privateConstructorUsedError;
+  List<String?>? get requiredDate;
   @override
   @JsonKey(includeIfNull: false, name: 'message')
-  List<String?>? get supportMessage => throw _privateConstructorUsedError;
+  List<String?>? get supportMessage;
   @override
   @JsonKey(ignore: true)
   _$$_ServerFieldErrorsCopyWith<_$_ServerFieldErrors> get copyWith =>

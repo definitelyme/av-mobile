@@ -17,12 +17,11 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$Country {
   UniqueId<String?>? get id => throw _privateConstructorUsedError;
-  BasicTextField<String?> get name => throw _privateConstructorUsedError;
-  BasicTextField<String?> get iso => throw _privateConstructorUsedError;
-  BasicTextField<String?> get dialCode => throw _privateConstructorUsedError;
-  BasicTextField<String?> get flag => throw _privateConstructorUsedError;
-  BasicTextField<String?> get currencyIcon =>
-      throw _privateConstructorUsedError;
+  BasicTextField get name => throw _privateConstructorUsedError;
+  BasicTextField get iso => throw _privateConstructorUsedError;
+  BasicTextField get dialCode => throw _privateConstructorUsedError;
+  BasicTextField get flag => throw _privateConstructorUsedError;
+  BasicTextField get currencyIcon => throw _privateConstructorUsedError;
   String? get locale => throw _privateConstructorUsedError;
   CurrencyType? get type => throw _privateConstructorUsedError;
 
@@ -36,11 +35,11 @@ abstract class $CountryCopyWith<$Res> {
       _$CountryCopyWithImpl<$Res>;
   $Res call(
       {UniqueId<String?>? id,
-      BasicTextField<String?> name,
-      BasicTextField<String?> iso,
-      BasicTextField<String?> dialCode,
-      BasicTextField<String?> flag,
-      BasicTextField<String?> currencyIcon,
+      BasicTextField name,
+      BasicTextField iso,
+      BasicTextField dialCode,
+      BasicTextField flag,
+      BasicTextField currencyIcon,
       String? locale,
       CurrencyType? type});
 }
@@ -72,23 +71,23 @@ class _$CountryCopyWithImpl<$Res> implements $CountryCopyWith<$Res> {
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       iso: iso == freezed
           ? _value.iso
           : iso // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       dialCode: dialCode == freezed
           ? _value.dialCode
           : dialCode // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       flag: flag == freezed
           ? _value.flag
           : flag // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       currencyIcon: currencyIcon == freezed
           ? _value.currencyIcon
           : currencyIcon // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       locale: locale == freezed
           ? _value.locale
           : locale // ignore: cast_nullable_to_non_nullable
@@ -109,11 +108,11 @@ abstract class _$$_CountryCopyWith<$Res> implements $CountryCopyWith<$Res> {
   @override
   $Res call(
       {UniqueId<String?>? id,
-      BasicTextField<String?> name,
-      BasicTextField<String?> iso,
-      BasicTextField<String?> dialCode,
-      BasicTextField<String?> flag,
-      BasicTextField<String?> currencyIcon,
+      BasicTextField name,
+      BasicTextField iso,
+      BasicTextField dialCode,
+      BasicTextField flag,
+      BasicTextField currencyIcon,
       String? locale,
       CurrencyType? type});
 }
@@ -146,23 +145,23 @@ class __$$_CountryCopyWithImpl<$Res> extends _$CountryCopyWithImpl<$Res>
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       iso: iso == freezed
           ? _value.iso
           : iso // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       dialCode: dialCode == freezed
           ? _value.dialCode
           : dialCode // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       flag: flag == freezed
           ? _value.flag
           : flag // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       currencyIcon: currencyIcon == freezed
           ? _value.currencyIcon
           : currencyIcon // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       locale: locale == freezed
           ? _value.locale
           : locale // ignore: cast_nullable_to_non_nullable
@@ -192,15 +191,15 @@ class _$_Country extends _Country {
   @override
   final UniqueId<String?>? id;
   @override
-  final BasicTextField<String?> name;
+  final BasicTextField name;
   @override
-  final BasicTextField<String?> iso;
+  final BasicTextField iso;
   @override
-  final BasicTextField<String?> dialCode;
+  final BasicTextField dialCode;
   @override
-  final BasicTextField<String?> flag;
+  final BasicTextField flag;
   @override
-  final BasicTextField<String?> currencyIcon;
+  final BasicTextField currencyIcon;
   @override
   @JsonKey()
   final String? locale;
@@ -212,34 +211,6 @@ class _$_Country extends _Country {
     return 'Country(id: $id, name: $name, iso: $iso, dialCode: $dialCode, flag: $flag, currencyIcon: $currencyIcon, locale: $locale, type: $type)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_Country &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.iso, iso) &&
-            const DeepCollectionEquality().equals(other.dialCode, dialCode) &&
-            const DeepCollectionEquality().equals(other.flag, flag) &&
-            const DeepCollectionEquality()
-                .equals(other.currencyIcon, currencyIcon) &&
-            const DeepCollectionEquality().equals(other.locale, locale) &&
-            const DeepCollectionEquality().equals(other.type, type));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(iso),
-      const DeepCollectionEquality().hash(dialCode),
-      const DeepCollectionEquality().hash(flag),
-      const DeepCollectionEquality().hash(currencyIcon),
-      const DeepCollectionEquality().hash(locale),
-      const DeepCollectionEquality().hash(type));
-
   @JsonKey(ignore: true)
   @override
   _$$_CountryCopyWith<_$_Country> get copyWith =>
@@ -249,32 +220,31 @@ class _$_Country extends _Country {
 abstract class _Country extends Country {
   const factory _Country(
       {final UniqueId<String?>? id,
-      required final BasicTextField<String?> name,
-      required final BasicTextField<String?> iso,
-      required final BasicTextField<String?> dialCode,
-      required final BasicTextField<String?> flag,
-      required final BasicTextField<String?> currencyIcon,
+      required final BasicTextField name,
+      required final BasicTextField iso,
+      required final BasicTextField dialCode,
+      required final BasicTextField flag,
+      required final BasicTextField currencyIcon,
       final String? locale,
       final CurrencyType? type}) = _$_Country;
   const _Country._() : super._();
 
   @override
-  UniqueId<String?>? get id => throw _privateConstructorUsedError;
+  UniqueId<String?>? get id;
   @override
-  BasicTextField<String?> get name => throw _privateConstructorUsedError;
+  BasicTextField get name;
   @override
-  BasicTextField<String?> get iso => throw _privateConstructorUsedError;
+  BasicTextField get iso;
   @override
-  BasicTextField<String?> get dialCode => throw _privateConstructorUsedError;
+  BasicTextField get dialCode;
   @override
-  BasicTextField<String?> get flag => throw _privateConstructorUsedError;
+  BasicTextField get flag;
   @override
-  BasicTextField<String?> get currencyIcon =>
-      throw _privateConstructorUsedError;
+  BasicTextField get currencyIcon;
   @override
-  String? get locale => throw _privateConstructorUsedError;
+  String? get locale;
   @override
-  CurrencyType? get type => throw _privateConstructorUsedError;
+  CurrencyType? get type;
   @override
   @JsonKey(ignore: true)
   _$$_CountryCopyWith<_$_Country> get copyWith =>

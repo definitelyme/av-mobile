@@ -268,7 +268,9 @@ class _$_FailureResponse extends _FailureResponse with Failure {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_FailureResponseToJson(this);
+    return _$$_FailureResponseToJson(
+      this,
+    );
   }
 }
 
@@ -287,24 +289,24 @@ abstract class _FailureResponse extends FailureResponse implements Failure {
       _$_FailureResponse.fromJson;
 
   @override
-  int? get code => throw _privateConstructorUsedError;
+  int? get code;
   @override
   @JsonKey(defaultValue: false)
-  bool? get status => throw _privateConstructorUsedError;
+  bool? get status;
   @override // String? error,
-  ServerFieldErrors? get errors => throw _privateConstructorUsedError;
+  ServerFieldErrors? get errors;
   @override
   @JsonKey(defaultValue: '')
-  String get message => throw _privateConstructorUsedError;
+  String get message;
   @override
   @JsonKey(ignore: true)
-  String? get details => throw _privateConstructorUsedError;
+  String? get details;
   @override
   @JsonKey(ignore: true)
-  bool get pop => throw _privateConstructorUsedError;
+  bool get pop;
   @override
   @JsonKey(ignore: true)
-  bool get show => throw _privateConstructorUsedError;
+  bool get show;
   @override
   @JsonKey(ignore: true)
   _$$_FailureResponseCopyWith<_$_FailureResponse> get copyWith =>

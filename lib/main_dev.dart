@@ -1,43 +1,41 @@
+library main_dev.dart;
+
 import 'dart:async';
 
 import 'package:auctionvillage/app.dart';
 import 'package:auctionvillage/core/domain/facades/index.dart';
 import 'package:auctionvillage/utils/utils.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_downloader/flutter_downloader.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  // Preserve Native Splash Screen
+  FlutterNativeSplash.preserve(widgetsBinding: WidgetsFlutterBinding.ensureInitialized());
 
-  try {
-    // Initializes Hive with a valid directory in your app files.
-    await Hive.initFlutter();
-    await Hive.openBox<String>(Const.kAccessTokenBoxKey);
-  } catch (e, trace) {
-    log.e('Error initializing Hive', e, trace);
-  }
+  unawaited(SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge, overlays: [SystemUiOverlay.bottom, SystemUiOverlay.top]));
 
-  // Initialize Hydrated storage
-  final storage = await HydratedStorage.build(storageDirectory: await Utils.cacheDir);
+  // Initialize Flutter Downloader
+  await FlutterDownloader.initialize(debug: kDebugMode);
 
-  await HydratedBlocOverrides.runZoned(
-    () async => await runZonedGuarded(
-      () async {
-        // Initialize awesome notifications
-        await AwesomeNotifications().initialize(
-          'resource://drawable/res_notification_app_icon',
-          MessagingFacade.channels,
-        );
-
-        // Setup Environmental variables & Service provider
-        await BuildEnvironment.init(flavor: BuildFlavor.dev);
-
-        runApp(const AuctionVillageApp());
-      },
-      (error, stackTrace) => log.wtf(error.toString(), error, stackTrace),
-    ),
-    storage: storage,
+  // Initialize awesome notifications
+  await AwesomeNotifications().initialize(
+    'resource://drawable/res_notification_app_icon',
+    MessagingFacade.channels,
   );
+
+  // Setup Environmental variables & Service provider
+  await BuildEnvironment.init(flavor: BuildFlavor.dev);
+
+  // This app is designed only to work vertically, so we limit
+  // orientations to portrait up and down.
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
+  runApp(const AuctionVillageApp());
+
+  // Remove Native splash
+  FlutterNativeSplash.remove();
 }

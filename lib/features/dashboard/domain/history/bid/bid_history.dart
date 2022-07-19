@@ -14,9 +14,9 @@ class BidHistory with _$BidHistory {
   const BidHistory._();
 
   const factory BidHistory({
-    required AmountField<double> totalAuctionsParticipated,
-    required AmountField<double> totalWinningBid,
-    required AmountField<double> totalAmountSpent,
+    required NumField<double> totalAuctionsParticipated,
+    required NumField<double> totalWinningBid,
+    required NumField<double> totalAmountSpent,
     @Default(KtList.empty()) KtList<Deal> deals,
   }) = _BidHistory;
 
@@ -37,20 +37,20 @@ class BidHistory with _$BidHistory {
     KtList<Deal> history = const KtList.empty(),
   }) =>
       BidHistory(
-        totalAmountSpent: AmountField(totalAmountSpent ?? 0),
-        totalAuctionsParticipated: AmountField(totalAuctionsParticipated ?? 0),
-        totalWinningBid: AmountField(totalWinningBid ?? 0),
+        totalAmountSpent: NumField(totalAmountSpent ?? 0),
+        totalAuctionsParticipated: NumField(totalAuctionsParticipated ?? 0),
+        totalWinningBid: NumField(totalWinningBid ?? 0),
         deals: history,
       );
 
   BidHistory merge(BidHistory? other, {bool nextPage = false}) => copyWith(
         totalAuctionsParticipated:
-            other?.totalAuctionsParticipated.isNotNull((it) => it as AmountField<double>, orElse: (_) => totalAuctionsParticipated) ??
+            other?.totalAuctionsParticipated.isNotNull((it) => it as NumField<double>, orElse: (_) => totalAuctionsParticipated) ??
                 totalAuctionsParticipated,
         totalWinningBid:
-            other?.totalWinningBid.isNotNull((it) => it as AmountField<double>, orElse: (_) => totalWinningBid) ?? totalWinningBid,
+            other?.totalWinningBid.isNotNull((it) => it as NumField<double>, orElse: (_) => totalWinningBid) ?? totalWinningBid,
         totalAmountSpent:
-            other?.totalAmountSpent.isNotNull((it) => it as AmountField<double>, orElse: (_) => totalAmountSpent) ?? totalAmountSpent,
+            other?.totalAmountSpent.isNotNull((it) => it as NumField<double>, orElse: (_) => totalAmountSpent) ?? totalAmountSpent,
         deals: other != null ? (!nextPage ? other.deals : deals.plusIfAbsent(other.deals)) : deals,
       );
 }

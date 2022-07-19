@@ -8,7 +8,11 @@ mixin _ImagePickerMixin on BaseBloc<ProductEvent, ProductState> {
       await _pickMedia(emit, ImageSource.camera, evt.index);
     } on MissingPluginException catch (e) {
       emit(state.copyWith(
-        status: some(AppHttpResponse.info(env.flavor.fold(prod: () => 'Cancelled!', dev: () => e.message))),
+        status: some(AppHttpResponse.failure(env.flavor.fold(prod: () => 'Image upload failed!', dev: () => e.message))),
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+        status: some(AppHttpResponse.failure(env.flavor.fold(prod: () => 'Error: $e', dev: () => '$e'))),
       ));
     }
   }
@@ -18,7 +22,11 @@ mixin _ImagePickerMixin on BaseBloc<ProductEvent, ProductState> {
       await _pickMedia(emit, ImageSource.gallery, evt.index);
     } on MissingPluginException catch (e) {
       emit(state.copyWith(
-        status: some(AppHttpResponse.info(env.flavor.fold(prod: () => 'Cancelled!', dev: () => e.message))),
+        status: some(AppHttpResponse.failure(env.flavor.fold(prod: () => 'Image upload failed!', dev: () => e.message))),
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+        status: some(AppHttpResponse.failure(env.flavor.fold(prod: () => 'Error: $e', dev: () => '$e'))),
       ));
     }
   }
@@ -33,7 +41,12 @@ mixin _ImagePickerMixin on BaseBloc<ProductEvent, ProductState> {
     String? fileName;
     var fileSize = 0;
 
-    final _result = await _picker.pickImage(source: source, maxHeight: 480, maxWidth: 640, imageQuality: 30);
+    final _result = await _picker.pickImage(
+      source: source,
+      maxWidth: Const.maxImageUploadWidth,
+      maxHeight: Const.maxImageUploadHeight,
+      imageQuality: Const.imageQuality,
+    );
 
     if (_result == null) {
       file = await _attemptFileRetrieval(_picker);

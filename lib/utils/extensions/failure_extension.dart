@@ -30,4 +30,23 @@ extension XFailure on Failure {
         return (T is Widget) ? const SizedBox.shrink() as T : orElse.call();
     }
   }
+
+  T maybeWhen<T>({
+    T Function()? is401,
+
+    /// NotFoundError
+    T Function()? is404,
+
+    /// Used as a default to prevent null-pointer exceptions
+    required T Function() orElse,
+  }) {
+    switch (code) {
+      case Failure.UNAUTHENTICATED:
+        return is401 != null ? is401() : orElse.call();
+      case 404:
+        return is404 != null ? is404() : orElse.call();
+      default:
+        return (T is Widget) ? const SizedBox.shrink() as T : orElse.call();
+    }
+  }
 }

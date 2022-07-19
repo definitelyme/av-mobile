@@ -12,8 +12,8 @@ class Bank extends BaseEntity with _$Bank {
 
   const factory Bank({
     required UniqueId<String?> id,
-    required BasicTextField<String?> code,
-    required BasicTextField<String?> bankName,
+    required BasicTextField code,
+    required BasicTextField bankName,
     DateTime? createdAt,
     DateTime? updatedAt,
   }) = _Bank;

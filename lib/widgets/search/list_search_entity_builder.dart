@@ -5,7 +5,7 @@ class ListSearchEntityBuilder<E extends BaseEntity> extends StatefulWidget {
   final int tabIndex;
 
   /// Builder for the list item
-  final Widget Function(BuildContext, E) builder;
+  final Widget Function(BuildContext, E, int) builder;
 
   /// Widget built when there's no item in [items] that
   /// matches current query.
@@ -39,17 +39,13 @@ class ListSearchEntityBuilder<E extends BaseEntity> extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _ListSearchEntityBuilderState<E> createState() =>
-      _ListSearchEntityBuilderState();
+  _ListSearchEntityBuilderState<E> createState() => _ListSearchEntityBuilderState();
 }
 
-class _ListSearchEntityBuilderState<E extends BaseEntity>
-    extends State<ListSearchEntityBuilder<E>> {
+class _ListSearchEntityBuilderState<E extends BaseEntity> extends State<ListSearchEntityBuilder<E>> {
   double get _verticalgap => widget.verticalGap ?? 0.015;
 
-  String get _countBuilder =>
-      widget.titleCountBuilder?.call(widget.entities.size) ??
-      '${widget.entities.size} Results Found';
+  String get _countBuilder => widget.titleCountBuilder?.call(widget.entities.size) ?? '${widget.entities.size} Results Found';
 
   @override
   Widget build(BuildContext context) {
@@ -72,10 +68,7 @@ class _ListSearchEntityBuilderState<E extends BaseEntity>
                             const TextSpan(text: 'No Result Found'),
                             if (widget.name != null) ...[
                               const TextSpan(text: ' In '),
-                              TextSpan(
-                                  text: '${widget.name}',
-                                  style: const TextStyle(
-                                      color: Palette.accentColor)),
+                              TextSpan(text: '${widget.name}', style: const TextStyle(color: Palette.accentColor)),
                             ],
                           ]),
                           maxLines: 1,
@@ -94,18 +87,14 @@ class _ListSearchEntityBuilderState<E extends BaseEntity>
               enablePullUp: true,
               onLoading: widget.onLoadMore,
               child: CustomScrollView(
-                key: widget.name != null
-                    ? PageStorageKey<String>(widget.name!)
-                    : null,
+                key: widget.name != null ? PageStorageKey<String>(widget.name!) : null,
                 primary: true,
                 shrinkWrap: true,
-                keyboardDismissBehavior:
-                    ScrollViewKeyboardDismissBehavior.onDrag,
+                keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
                 slivers: [
                   if (widget.showCountBuilder && widget.entities.isNotEmpty())
                     SliverPadding(
-                      padding: EdgeInsets.symmetric(vertical: 0.01.h)
-                          .merge(widget.padding),
+                      padding: EdgeInsets.symmetric(vertical: 0.01.h).merge(widget.padding),
                       sliver: SliverToBoxAdapter(
                         child: AdaptiveText(
                           _countBuilder,
@@ -128,7 +117,7 @@ class _ListSearchEntityBuilderState<E extends BaseEntity>
                         (_, i) => Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            widget.builder(context, widget.entities.get(i)),
+                            widget.builder(context, widget.entities.get(i), i),
                             //
                             _verticalgap.verticalh,
                           ],

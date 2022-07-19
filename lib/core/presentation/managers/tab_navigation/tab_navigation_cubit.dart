@@ -2,8 +2,8 @@ library tab_navigation_cubit.dart;
 
 import 'package:auctionvillage/utils/utils.dart' as util;
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 part 'tab_navigation_cubit.freezed.dart';

@@ -1,14 +1,17 @@
 library currency_prefix_widget.dart;
 
+import 'package:auctionvillage/core/domain/entities/entities.dart';
+import 'package:auctionvillage/features/auth/presentation/managers/managers.dart';
 import 'package:auctionvillage/utils/utils.dart';
 import 'package:auctionvillage/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 /// A stateless widget to render CurrencyPrefixWidget.
 class CurrencyPrefixWidget extends StatelessWidget {
-  final String currency;
+  const CurrencyPrefixWidget({Key? key}) : super(key: key);
 
-  const CurrencyPrefixWidget(this.currency, {Key? key}) : super(key: key);
+  Country? get currencyIcon => navigator.navigatorKey.currentContext?.let((it) => it.read<AuthWatcherCubit>().state.user?.country);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +32,7 @@ class CurrencyPrefixWidget extends StatelessWidget {
             ),
             child: Center(
               child: AdaptiveText(
-                currency,
+                currencyIcon?.symbol ?? '${Const.defaultCurrencyIcon}',
                 isDefault: true,
                 maxLines: 1,
                 wrapWords: false,

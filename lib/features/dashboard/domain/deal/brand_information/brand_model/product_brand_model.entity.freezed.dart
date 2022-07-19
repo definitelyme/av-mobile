@@ -19,9 +19,9 @@ mixin _$ProductBrandModel {
   UniqueId<String?> get id => throw _privateConstructorUsedError;
   UniqueId<String?> get brandId => throw _privateConstructorUsedError;
   bool get isActive => throw _privateConstructorUsedError;
-  BasicTextField<String?> get name => throw _privateConstructorUsedError;
-  BasicTextField<String?> get description => throw _privateConstructorUsedError;
-  BasicTextField<String?> get slug => throw _privateConstructorUsedError;
+  BasicTextField get name => throw _privateConstructorUsedError;
+  BasicTextField get description => throw _privateConstructorUsedError;
+  BasicTextField get slug => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
   DateTime? get updatedAt => throw _privateConstructorUsedError;
 
@@ -39,9 +39,9 @@ abstract class $ProductBrandModelCopyWith<$Res> {
       {UniqueId<String?> id,
       UniqueId<String?> brandId,
       bool isActive,
-      BasicTextField<String?> name,
-      BasicTextField<String?> description,
-      BasicTextField<String?> slug,
+      BasicTextField name,
+      BasicTextField description,
+      BasicTextField slug,
       DateTime? createdAt,
       DateTime? updatedAt});
 }
@@ -82,15 +82,15 @@ class _$ProductBrandModelCopyWithImpl<$Res>
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       slug: slug == freezed
           ? _value.slug
           : slug // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -114,9 +114,9 @@ abstract class _$$_ProductBrandModelCopyWith<$Res>
       {UniqueId<String?> id,
       UniqueId<String?> brandId,
       bool isActive,
-      BasicTextField<String?> name,
-      BasicTextField<String?> description,
-      BasicTextField<String?> slug,
+      BasicTextField name,
+      BasicTextField description,
+      BasicTextField slug,
       DateTime? createdAt,
       DateTime? updatedAt});
 }
@@ -159,15 +159,15 @@ class __$$_ProductBrandModelCopyWithImpl<$Res>
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       slug: slug == freezed
           ? _value.slug
           : slug // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -202,11 +202,11 @@ class _$_ProductBrandModel extends _ProductBrandModel {
   @JsonKey()
   final bool isActive;
   @override
-  final BasicTextField<String?> name;
+  final BasicTextField name;
   @override
-  final BasicTextField<String?> description;
+  final BasicTextField description;
   @override
-  final BasicTextField<String?> slug;
+  final BasicTextField slug;
   @override
   final DateTime? createdAt;
   @override
@@ -257,29 +257,29 @@ abstract class _ProductBrandModel extends ProductBrandModel {
       {required final UniqueId<String?> id,
       required final UniqueId<String?> brandId,
       final bool isActive,
-      required final BasicTextField<String?> name,
-      required final BasicTextField<String?> description,
-      required final BasicTextField<String?> slug,
+      required final BasicTextField name,
+      required final BasicTextField description,
+      required final BasicTextField slug,
       final DateTime? createdAt,
       final DateTime? updatedAt}) = _$_ProductBrandModel;
   const _ProductBrandModel._() : super._();
 
   @override
-  UniqueId<String?> get id => throw _privateConstructorUsedError;
+  UniqueId<String?> get id;
   @override
-  UniqueId<String?> get brandId => throw _privateConstructorUsedError;
+  UniqueId<String?> get brandId;
   @override
-  bool get isActive => throw _privateConstructorUsedError;
+  bool get isActive;
   @override
-  BasicTextField<String?> get name => throw _privateConstructorUsedError;
+  BasicTextField get name;
   @override
-  BasicTextField<String?> get description => throw _privateConstructorUsedError;
+  BasicTextField get description;
   @override
-  BasicTextField<String?> get slug => throw _privateConstructorUsedError;
+  BasicTextField get slug;
   @override
-  DateTime? get createdAt => throw _privateConstructorUsedError;
+  DateTime? get createdAt;
   @override
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$_ProductBrandModelCopyWith<_$_ProductBrandModel> get copyWith =>

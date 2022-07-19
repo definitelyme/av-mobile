@@ -12,10 +12,10 @@ class AdaptiveToolbar {
   final Key? key;
   final String? title;
   final Widget headline;
-  final Widget? leadingIcon;
+  final IconData? leadingIcon;
   final double leadingElevation;
   final double? leadingSplashRadius;
-  final EdgeInsets? leadingPadding;
+  final Widget? materialLeading;
   final TextStyle? titleStyle;
   final bool centerTitle;
   final bool implyLeading;
@@ -29,6 +29,7 @@ class AdaptiveToolbar {
   final Color? backgroundColor;
   final Color? leadingIconColor;
   final Color? leadingBgColor;
+  final BorderRadius? leadingBorderRadius;
   final List<Widget> actions;
   final String? tooltip;
   final String? semantics;
@@ -39,6 +40,7 @@ class AdaptiveToolbar {
   // Cupertino
   final Widget? titleWidget;
   // final Widget? cupertinoLeadingIcon;
+  final Color? cupertinoTitleColor;
   final bool cupertinoImplyLeading;
   final bool implyMiddle;
   final AlignmentGeometry cupertinoLeadingAlignment;
@@ -52,8 +54,11 @@ class AdaptiveToolbar {
   final EdgeInsetsDirectional? padding;
   final bool transitionBetweenRoutes;
   // Adaptive
-  final MaterialAppBarData Function(MaterialAppBarData)? material;
-  final CupertinoNavigationBarData Function(CupertinoNavigationBarData)? cupertino;
+  final MaterialAppBarData Function(MaterialAppBarData)? materialConfig;
+  final CupertinoNavigationBarData Function(CupertinoNavigationBarData)? cupertinoConfig;
+  final bool material;
+  final bool cupertino;
+  final Object? heroTag;
 
   const AdaptiveToolbar({
     this.key,
@@ -63,7 +68,7 @@ class AdaptiveToolbar {
     this.leadingIcon,
     this.leadingElevation = 2,
     this.leadingSplashRadius,
-    this.leadingPadding,
+    this.materialLeading,
     this.titleStyle,
     this.centerTitle = true,
     this.implyLeading = true,
@@ -77,6 +82,7 @@ class AdaptiveToolbar {
     this.backgroundColor,
     this.leadingIconColor,
     this.leadingBgColor,
+    this.leadingBorderRadius,
     this.actions = const [],
     this.tooltip,
     this.builder,
@@ -87,6 +93,7 @@ class AdaptiveToolbar {
     this.implyMiddle = false,
     this.materialTitleColor,
     // this.cupertinoLeadingIcon,
+    this.cupertinoTitleColor,
     this.cupertinoLeadingWidget,
     this.cupertinoLeading = 'Close',
     this.cupertinoLeadingStyle,
@@ -97,8 +104,11 @@ class AdaptiveToolbar {
     this.previousPageTitle,
     this.brightness,
     this.transitionBetweenRoutes = true,
-    this.material,
-    this.cupertino,
+    this.materialConfig,
+    this.cupertinoConfig,
+    this.material = true,
+    this.cupertino = true,
+    this.heroTag,
   });
 
   static AdaptiveToolbar selection({
@@ -115,7 +125,6 @@ class AdaptiveToolbar {
   }) {
     return AdaptiveToolbar(
       leadingSplashRadius: 20,
-      leadingPadding: const EdgeInsets.all(8),
       showCupertinoCustomLeading: showCupertinoCustomLeading,
       showMaterialCustomLeading: showMaterialCustomLeading,
       centerTitle: false,
@@ -127,7 +136,7 @@ class AdaptiveToolbar {
           App.resolveColor(
             Palette.neutralF4,
             dark: Palette.cardColorDark,
-            context: getIt<AppRouter>().navigatorKey.currentContext,
+            ctx: getIt<AppRouter>().navigatorKey.currentContext,
           ),
       title: App.platform.material(countBuilder?.call(count) ?? '$count selected'),
       materialTitleColor: materialTitleColor,
@@ -139,7 +148,7 @@ class AdaptiveToolbar {
     );
   }
 
-  BuildContext? get _context => getIt<AppRouter>().navigatorKey.currentContext;
+  BuildContext? get _context => navigator.navigatorKey.currentContext;
 
   String get _titleText => title ?? '';
 
@@ -152,11 +161,11 @@ class AdaptiveToolbar {
               ? TextStyle(
                   fontWeight: FontWeight.w600,
                   fontSize: fontSize,
-                  color: materialTitleColor ?? App.resolveColor(Palette.text100, dark: Palette.headingDark, context: _context),
+                  color: materialTitleColor ?? App.resolveColor(Palette.text100, dark: Palette.headingDark, ctx: _context),
                 ).merge(titleStyle)
               : TextStyle(
                   fontWeight: FontWeight.w600,
-                  color: materialTitleColor ?? App.resolveColor(Palette.text100, dark: Palette.headingDark, context: _context),
+                  color: materialTitleColor ?? App.resolveColor(Palette.text100, dark: Palette.headingDark, ctx: _context),
                 ).merge(titleStyle),
           wrapWords: false,
           softWrap: false,
@@ -168,58 +177,64 @@ class AdaptiveToolbar {
 
   SystemUiOverlayStyle get systemUIOverlayStyle => overlayStyle ?? App.systemUIOverlayStyle(_context);
 
-  Widget? get _materialLeading => (showMaterialCustomLeading == false)
-      ? null
-      : Semantics.fromProperties(
+  String get _tooltip => tooltip ?? Utils.platform_(material: 'Back', cupertino: 'Close')!;
+
+  Widget? get _materialLeading => (showMaterialCustomLeading == true || (_context != null && _context!.watchRouter.canPopSelfOrChildren))
+      ? Semantics.fromProperties(
           properties: SemanticsProperties(label: tooltip, hint: tooltip, button: true),
           child: Tooltip(
-            message: tooltip ?? 'Back',
-            child: ClipRRect(
-              borderRadius: 100.br,
-              child: Material(
-                type: leadingBgColor == null ? MaterialType.transparency : MaterialType.button,
-                color: leadingBgColor,
-                elevation: leadingElevation,
-                child: IconButton(
-                  icon: leadingIcon ?? Icon(Icons.keyboard_backspace_rounded, color: leadingIconColor),
-                  onPressed: leadingAction ?? navigator.pop,
-                  splashRadius: leadingSplashRadius ?? 20,
-                  padding: leadingPadding ?? const EdgeInsets.all(16),
-                  color: leadingIconColor ?? _context?.let((it) => Theme.of(it).scaffoldBackgroundColor.invertLuminance),
+            message: _tooltip,
+            child: materialLeading ??
+                Center(
+                  child: Ink(
+                    width: 40,
+                    height: 40,
+                    decoration: ShapeDecoration(
+                      color: leadingBgColor,
+                      shape: RoundedRectangleBorder(borderRadius: leadingBorderRadius ?? 100.br),
+                    ),
+                    child: IconButton(
+                      icon: Icon(leadingIcon ?? Icons.keyboard_backspace_rounded, color: leadingIconColor),
+                      onPressed: leadingAction ?? navigator.pop,
+                      splashRadius: leadingSplashRadius ?? 20,
+                      padding: EdgeInsets.zero,
+                      enableFeedback: true,
+                    ),
+                  ),
                 ),
+          ),
+        )
+      : null;
+
+  Widget? get _cupertinoLeading => (showCupertinoCustomLeading == true || (_context != null && _context!.watchRouter.canPopSelfOrChildren))
+      ? Semantics.fromProperties(
+          properties: SemanticsProperties(label: tooltip, hint: tooltip, button: true),
+          child: Tooltip(
+            message: _tooltip,
+            child: GestureDetector(
+              onTap: leadingAction ?? navigator.pop,
+              child: CupertinoButton(
+                onPressed: leadingAction ?? navigator.pop,
+                padding: EdgeInsets.zero,
+                alignment: cupertinoLeadingAlignment,
+                color: cupertinoLeadingBackgroundColor,
+                child: cupertinoLeadingWidget ??
+                    AdaptiveText(
+                      cupertinoLeading,
+                      style: cupertinoLeadingStyle ?? TextStyle(color: cupertinoTitleColor ?? _cupertinoBackgroundColor.invertLuminance),
+                    ),
               ),
             ),
           ),
-        );
-
-  Widget get _cupertinoLeading => Semantics.fromProperties(
-        properties: SemanticsProperties(label: tooltip, hint: tooltip, button: true),
-        child: Tooltip(
-          message: tooltip ?? 'Close',
-          child: leadingIcon ??
-              GestureDetector(
-                onTap: leadingAction ?? navigator.pop,
-                child: CupertinoButton(
-                  onPressed: leadingAction ?? navigator.pop,
-                  padding: EdgeInsets.zero,
-                  alignment: cupertinoLeadingAlignment,
-                  color: cupertinoLeadingBackgroundColor,
-                  child: cupertinoLeadingWidget ??
-                      AdaptiveText(
-                        cupertinoLeading,
-                        style: cupertinoLeadingStyle ?? TextStyle(color: _cupertinoBackgroundColor.invertLuminance),
-                      ),
-                ),
-              ),
-        ),
-      );
+        )
+      : null;
 
   Color get _cupertinoBackgroundColor =>
       backgroundColor ??
       App.resolveColor(
         CupertinoColors.lightBackgroundGray.withAlpha(254),
         dark: CupertinoColors.quaternarySystemFill,
-        context: _context,
+        ctx: _context,
       )!;
 
   MaterialAppBarData get _materialAppBarData => MaterialAppBarData(
@@ -231,7 +246,7 @@ class AdaptiveToolbar {
         elevation: elevation,
         backgroundColor: backgroundColor ?? Colors.transparent,
         actions: actions,
-        leading: _materialLeading,
+        leading: MyHero(tag: heroTag, child: _materialLeading ?? Utils.nothing),
         title: titleWidget ?? _title,
         leadingWidth: leadingWidth,
       );
@@ -245,28 +260,24 @@ class AdaptiveToolbar {
         brightness: brightness,
         transitionBetweenRoutes: transitionBetweenRoutes,
         title: !implyMiddle ? (cupertinoTitleAlignment != null ? Align(alignment: cupertinoTitleAlignment!, child: _title) : _title) : null,
-        trailing: Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: actions,
-        ),
-        leading: leadingIcon ??
-            (cupertinoImplyLeading
-                ? null
-                : (showCupertinoCustomLeading ?? (_context != null && _context!.watchRouter.canPopSelfOrChildren))
-                    ? _cupertinoLeading
-                    : null),
+        trailing: Row(mainAxisSize: MainAxisSize.min, mainAxisAlignment: MainAxisAlignment.end, children: actions),
+        leading: materialLeading ?? (cupertinoImplyLeading ? null : _cupertinoLeading),
       );
 
-  PlatformAppBar build() {
-    return PlatformAppBar(
-      widgetKey: key,
-      automaticallyImplyLeading: implyLeading,
-      backgroundColor: backgroundColor,
-      trailingActions: actions,
-      material: (_, __) => material?.call(_materialAppBarData) ?? _materialAppBarData,
-      cupertino: (_, __) => cupertino?.call(_cupertinoNavigationBarData) ?? _cupertinoNavigationBarData,
-    );
+  PlatformAppBar? build() {
+    if (!material)
+      return null;
+    else if (!cupertino)
+      return null;
+    else
+      return PlatformAppBar(
+        widgetKey: key,
+        automaticallyImplyLeading: implyLeading,
+        backgroundColor: backgroundColor,
+        trailingActions: actions,
+        material: (_, __) => materialConfig?.call(_materialAppBarData) ?? _materialAppBarData,
+        cupertino: (_, __) => cupertinoConfig?.call(_cupertinoNavigationBarData) ?? _cupertinoNavigationBarData,
+      );
   }
 }
 

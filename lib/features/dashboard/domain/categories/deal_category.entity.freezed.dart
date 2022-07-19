@@ -19,14 +19,13 @@ mixin _$DealCategory {
   UniqueId<String?> get id => throw _privateConstructorUsedError;
   MediaField get asset => throw _privateConstructorUsedError;
   bool get isActive => throw _privateConstructorUsedError;
-  BasicTextField<String?> get name => throw _privateConstructorUsedError;
-  BasicTextField<String?> get slug => throw _privateConstructorUsedError;
-  BasicTextField<String?> get description => throw _privateConstructorUsedError;
-  BasicTextField<double?> get charge => throw _privateConstructorUsedError;
-  BasicTextField<double?> get percentageIncrease =>
+  BasicTextField get name => throw _privateConstructorUsedError;
+  BasicTextField get slug => throw _privateConstructorUsedError;
+  BasicTextField get description => throw _privateConstructorUsedError;
+  NumField<double?> get charge => throw _privateConstructorUsedError;
+  NumField<double?> get percentageIncrease =>
       throw _privateConstructorUsedError;
-  BasicTextField<int> get productsAssigned =>
-      throw _privateConstructorUsedError;
+  NumField<int> get productsAssigned => throw _privateConstructorUsedError;
   Deal? get deal => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
   DateTime? get updatedAt => throw _privateConstructorUsedError;
@@ -45,12 +44,12 @@ abstract class $DealCategoryCopyWith<$Res> {
       {UniqueId<String?> id,
       MediaField asset,
       bool isActive,
-      BasicTextField<String?> name,
-      BasicTextField<String?> slug,
-      BasicTextField<String?> description,
-      BasicTextField<double?> charge,
-      BasicTextField<double?> percentageIncrease,
-      BasicTextField<int> productsAssigned,
+      BasicTextField name,
+      BasicTextField slug,
+      BasicTextField description,
+      NumField<double?> charge,
+      NumField<double?> percentageIncrease,
+      NumField<int> productsAssigned,
       Deal? deal,
       DateTime? createdAt,
       DateTime? updatedAt});
@@ -97,27 +96,27 @@ class _$DealCategoryCopyWithImpl<$Res> implements $DealCategoryCopyWith<$Res> {
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       slug: slug == freezed
           ? _value.slug
           : slug // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       charge: charge == freezed
           ? _value.charge
           : charge // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double?>,
+              as NumField<double?>,
       percentageIncrease: percentageIncrease == freezed
           ? _value.percentageIncrease
           : percentageIncrease // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double?>,
+              as NumField<double?>,
       productsAssigned: productsAssigned == freezed
           ? _value.productsAssigned
           : productsAssigned // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<int>,
+              as NumField<int>,
       deal: deal == freezed
           ? _value.deal
           : deal // ignore: cast_nullable_to_non_nullable
@@ -156,12 +155,12 @@ abstract class _$$_DealCategoryCopyWith<$Res>
       {UniqueId<String?> id,
       MediaField asset,
       bool isActive,
-      BasicTextField<String?> name,
-      BasicTextField<String?> slug,
-      BasicTextField<String?> description,
-      BasicTextField<double?> charge,
-      BasicTextField<double?> percentageIncrease,
-      BasicTextField<int> productsAssigned,
+      BasicTextField name,
+      BasicTextField slug,
+      BasicTextField description,
+      NumField<double?> charge,
+      NumField<double?> percentageIncrease,
+      NumField<int> productsAssigned,
       Deal? deal,
       DateTime? createdAt,
       DateTime? updatedAt});
@@ -212,27 +211,27 @@ class __$$_DealCategoryCopyWithImpl<$Res>
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       slug: slug == freezed
           ? _value.slug
           : slug // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>,
+              as BasicTextField,
       charge: charge == freezed
           ? _value.charge
           : charge // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double?>,
+              as NumField<double?>,
       percentageIncrease: percentageIncrease == freezed
           ? _value.percentageIncrease
           : percentageIncrease // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<double?>,
+              as NumField<double?>,
       productsAssigned: productsAssigned == freezed
           ? _value.productsAssigned
           : productsAssigned // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<int>,
+              as NumField<int>,
       deal: deal == freezed
           ? _value.deal
           : deal // ignore: cast_nullable_to_non_nullable
@@ -275,17 +274,17 @@ class _$_DealCategory extends _DealCategory {
   @JsonKey()
   final bool isActive;
   @override
-  final BasicTextField<String?> name;
+  final BasicTextField name;
   @override
-  final BasicTextField<String?> slug;
+  final BasicTextField slug;
   @override
-  final BasicTextField<String?> description;
+  final BasicTextField description;
   @override
-  final BasicTextField<double?> charge;
+  final NumField<double?> charge;
   @override
-  final BasicTextField<double?> percentageIncrease;
+  final NumField<double?> percentageIncrease;
   @override
-  final BasicTextField<int> productsAssigned;
+  final NumField<int> productsAssigned;
   @override
   final Deal? deal;
   @override
@@ -347,43 +346,41 @@ abstract class _DealCategory extends DealCategory {
       {required final UniqueId<String?> id,
       required final MediaField asset,
       final bool isActive,
-      required final BasicTextField<String?> name,
-      required final BasicTextField<String?> slug,
-      required final BasicTextField<String?> description,
-      required final BasicTextField<double?> charge,
-      required final BasicTextField<double?> percentageIncrease,
-      required final BasicTextField<int> productsAssigned,
+      required final BasicTextField name,
+      required final BasicTextField slug,
+      required final BasicTextField description,
+      required final NumField<double?> charge,
+      required final NumField<double?> percentageIncrease,
+      required final NumField<int> productsAssigned,
       final Deal? deal,
       final DateTime? createdAt,
       final DateTime? updatedAt}) = _$_DealCategory;
   const _DealCategory._() : super._();
 
   @override
-  UniqueId<String?> get id => throw _privateConstructorUsedError;
+  UniqueId<String?> get id;
   @override
-  MediaField get asset => throw _privateConstructorUsedError;
+  MediaField get asset;
   @override
-  bool get isActive => throw _privateConstructorUsedError;
+  bool get isActive;
   @override
-  BasicTextField<String?> get name => throw _privateConstructorUsedError;
+  BasicTextField get name;
   @override
-  BasicTextField<String?> get slug => throw _privateConstructorUsedError;
+  BasicTextField get slug;
   @override
-  BasicTextField<String?> get description => throw _privateConstructorUsedError;
+  BasicTextField get description;
   @override
-  BasicTextField<double?> get charge => throw _privateConstructorUsedError;
+  NumField<double?> get charge;
   @override
-  BasicTextField<double?> get percentageIncrease =>
-      throw _privateConstructorUsedError;
+  NumField<double?> get percentageIncrease;
   @override
-  BasicTextField<int> get productsAssigned =>
-      throw _privateConstructorUsedError;
+  NumField<int> get productsAssigned;
   @override
-  Deal? get deal => throw _privateConstructorUsedError;
+  Deal? get deal;
   @override
-  DateTime? get createdAt => throw _privateConstructorUsedError;
+  DateTime? get createdAt;
   @override
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$_DealCategoryCopyWith<_$_DealCategory> get copyWith =>

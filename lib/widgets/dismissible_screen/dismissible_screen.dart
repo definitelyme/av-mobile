@@ -142,7 +142,7 @@ class _DismissibleScreenState extends State<DismissibleScreen> {
   double get _startingOpacity => widget.startingOpacity ?? 1;
   AdaptiveToolbar get _toolbar => AdaptiveToolbar(
         overlayStyle: App.customSystemOverlay(ctx: context, ios: Brightness.light, android: Brightness.light),
-        material: (data) => data.copyWith(),
+        materialConfig: (data) => data.copyWith(),
         leadingIconColor: _backgroundColor.invertLuminance,
         actions: widget.actions,
         backgroundColor: App.platform.cupertino(CupertinoColors.quaternarySystemFill),

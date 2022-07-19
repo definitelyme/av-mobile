@@ -18,8 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$PlaceOpeningHours {
   bool? get openNow => throw _privateConstructorUsedError;
   KtList<PlaceOpeningPeriod> get periods => throw _privateConstructorUsedError;
-  KtList<BasicTextField<String?>?> get weekdayText =>
-      throw _privateConstructorUsedError;
+  KtList<BasicTextField?> get weekdayText => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PlaceOpeningHoursCopyWith<PlaceOpeningHours> get copyWith =>
@@ -34,7 +33,7 @@ abstract class $PlaceOpeningHoursCopyWith<$Res> {
   $Res call(
       {bool? openNow,
       KtList<PlaceOpeningPeriod> periods,
-      KtList<BasicTextField<String?>?> weekdayText});
+      KtList<BasicTextField?> weekdayText});
 }
 
 /// @nodoc
@@ -64,7 +63,7 @@ class _$PlaceOpeningHoursCopyWithImpl<$Res>
       weekdayText: weekdayText == freezed
           ? _value.weekdayText
           : weekdayText // ignore: cast_nullable_to_non_nullable
-              as KtList<BasicTextField<String?>?>,
+              as KtList<BasicTextField?>,
     ));
   }
 }
@@ -79,7 +78,7 @@ abstract class _$$_PlaceOpeningHoursCopyWith<$Res>
   $Res call(
       {bool? openNow,
       KtList<PlaceOpeningPeriod> periods,
-      KtList<BasicTextField<String?>?> weekdayText});
+      KtList<BasicTextField?> weekdayText});
 }
 
 /// @nodoc
@@ -111,7 +110,7 @@ class __$$_PlaceOpeningHoursCopyWithImpl<$Res>
       weekdayText: weekdayText == freezed
           ? _value.weekdayText
           : weekdayText // ignore: cast_nullable_to_non_nullable
-              as KtList<BasicTextField<String?>?>,
+              as KtList<BasicTextField?>,
     ));
   }
 }
@@ -133,7 +132,7 @@ class _$_PlaceOpeningHours
   final KtList<PlaceOpeningPeriod> periods;
   @override
   @JsonKey()
-  final KtList<BasicTextField<String?>?> weekdayText;
+  final KtList<BasicTextField?> weekdayText;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -177,18 +176,16 @@ class _$_PlaceOpeningHours
 
 abstract class _PlaceOpeningHours implements PlaceOpeningHours {
   const factory _PlaceOpeningHours(
-          {final bool? openNow,
-          final KtList<PlaceOpeningPeriod> periods,
-          final KtList<BasicTextField<String?>?> weekdayText}) =
-      _$_PlaceOpeningHours;
+      {final bool? openNow,
+      final KtList<PlaceOpeningPeriod> periods,
+      final KtList<BasicTextField?> weekdayText}) = _$_PlaceOpeningHours;
 
   @override
-  bool? get openNow => throw _privateConstructorUsedError;
+  bool? get openNow;
   @override
-  KtList<PlaceOpeningPeriod> get periods => throw _privateConstructorUsedError;
+  KtList<PlaceOpeningPeriod> get periods;
   @override
-  KtList<BasicTextField<String?>?> get weekdayText =>
-      throw _privateConstructorUsedError;
+  KtList<BasicTextField?> get weekdayText;
   @override
   @JsonKey(ignore: true)
   _$$_PlaceOpeningHoursCopyWith<_$_PlaceOpeningHours> get copyWith =>
@@ -363,9 +360,9 @@ abstract class _PlaceOpeningPeriod implements PlaceOpeningPeriod {
       final PlaceHours? open}) = _$_PlaceOpeningPeriod;
 
   @override
-  PlaceHours? get close => throw _privateConstructorUsedError;
+  PlaceHours? get close;
   @override
-  PlaceHours? get open => throw _privateConstructorUsedError;
+  PlaceHours? get open;
   @override
   @JsonKey(ignore: true)
   _$$_PlaceOpeningPeriodCopyWith<_$_PlaceOpeningPeriod> get copyWith =>
@@ -374,8 +371,8 @@ abstract class _PlaceOpeningPeriod implements PlaceOpeningPeriod {
 
 /// @nodoc
 mixin _$PlaceHours {
-  BasicTextField<int?>? get day => throw _privateConstructorUsedError;
-  BasicTextField<String?>? get time => throw _privateConstructorUsedError;
+  NumField<int?>? get day => throw _privateConstructorUsedError;
+  BasicTextField? get time => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PlaceHoursCopyWith<PlaceHours> get copyWith =>
@@ -387,7 +384,7 @@ abstract class $PlaceHoursCopyWith<$Res> {
   factory $PlaceHoursCopyWith(
           PlaceHours value, $Res Function(PlaceHours) then) =
       _$PlaceHoursCopyWithImpl<$Res>;
-  $Res call({BasicTextField<int?>? day, BasicTextField<String?>? time});
+  $Res call({NumField<int?>? day, BasicTextField? time});
 }
 
 /// @nodoc
@@ -407,11 +404,11 @@ class _$PlaceHoursCopyWithImpl<$Res> implements $PlaceHoursCopyWith<$Res> {
       day: day == freezed
           ? _value.day
           : day // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<int?>?,
+              as NumField<int?>?,
       time: time == freezed
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>?,
+              as BasicTextField?,
     ));
   }
 }
@@ -423,7 +420,7 @@ abstract class _$$_PlaceHoursCopyWith<$Res>
           _$_PlaceHours value, $Res Function(_$_PlaceHours) then) =
       __$$_PlaceHoursCopyWithImpl<$Res>;
   @override
-  $Res call({BasicTextField<int?>? day, BasicTextField<String?>? time});
+  $Res call({NumField<int?>? day, BasicTextField? time});
 }
 
 /// @nodoc
@@ -445,11 +442,11 @@ class __$$_PlaceHoursCopyWithImpl<$Res> extends _$PlaceHoursCopyWithImpl<$Res>
       day: day == freezed
           ? _value.day
           : day // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<int?>?,
+              as NumField<int?>?,
       time: time == freezed
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
-              as BasicTextField<String?>?,
+              as BasicTextField?,
     ));
   }
 }
@@ -460,9 +457,9 @@ class _$_PlaceHours with DiagnosticableTreeMixin implements _PlaceHours {
   const _$_PlaceHours({this.day, this.time});
 
   @override
-  final BasicTextField<int?>? day;
+  final NumField<int?>? day;
   @override
-  final BasicTextField<String?>? time;
+  final BasicTextField? time;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -501,13 +498,12 @@ class _$_PlaceHours with DiagnosticableTreeMixin implements _PlaceHours {
 
 abstract class _PlaceHours implements PlaceHours {
   const factory _PlaceHours(
-      {final BasicTextField<int?>? day,
-      final BasicTextField<String?>? time}) = _$_PlaceHours;
+      {final NumField<int?>? day, final BasicTextField? time}) = _$_PlaceHours;
 
   @override
-  BasicTextField<int?>? get day => throw _privateConstructorUsedError;
+  NumField<int?>? get day;
   @override
-  BasicTextField<String?>? get time => throw _privateConstructorUsedError;
+  BasicTextField? get time;
   @override
   @JsonKey(ignore: true)
   _$$_PlaceHoursCopyWith<_$_PlaceHours> get copyWith =>

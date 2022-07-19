@@ -6,6 +6,7 @@ import 'package:auctionvillage/features/dashboard/presentation/pages/index.dart'
 import 'package:auctionvillage/features/dashboard/presentation/screens/index.dart';
 import 'package:auctionvillage/features/onboarding/index.dart';
 import 'package:auctionvillage/manager/router/guards/guards.dart';
+import 'package:auctionvillage/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
 
 @AdaptiveAutoRouter(
@@ -212,6 +213,13 @@ import 'package:auto_route/auto_route.dart';
       usesPathAsKey: true,
       fullscreenDialog: true,
       page: CountryPickerScreen,
+    ),
+    //
+    AdaptiveRoute(
+      fullMatch: true,
+      maintainState: true,
+      usesPathAsKey: true,
+      page: AppearanceScreen,
     ),
   ],
 )
