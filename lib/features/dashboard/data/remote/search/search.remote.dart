@@ -25,7 +25,6 @@ abstract class SearchRemote {
     @Query('searchParam') required String param,
     @Query('page') int? page,
     @Query('per_page') int? perPage,
-    @Query('population') String population = _defaultPopulation,
   });
 
   @GET(EndPoints.SEARCH_FOR_ANYTHING)
@@ -34,5 +33,6 @@ abstract class SearchRemote {
     @Query('searchParam') required String param,
     @Query('page') int? page,
     @Query('per_page') int? perPage,
+    @Query('population') String population = _defaultPopulation,
   });
 }

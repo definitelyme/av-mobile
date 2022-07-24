@@ -17,18 +17,13 @@ class _SearchRemote implements SearchRemote {
 
   @override
   Future<UserListDTO> users(
-      {model = 'user',
-      required param,
-      page,
-      perPage,
-      population = _defaultPopulation}) async {
+      {model = 'user', required param, page, perPage}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'model': model,
       r'searchParam': param,
       r'page': page,
-      r'per_page': perPage,
-      r'population': population
+      r'per_page': perPage
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
@@ -45,13 +40,18 @@ class _SearchRemote implements SearchRemote {
 
   @override
   Future<DealListDTO> deals(
-      {model = 'deal', required param, page, perPage}) async {
+      {model = 'deal',
+      required param,
+      page,
+      perPage,
+      population = _defaultPopulation}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'model': model,
       r'searchParam': param,
       r'page': page,
-      r'per_page': perPage
+      r'per_page': perPage,
+      r'population': population
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};

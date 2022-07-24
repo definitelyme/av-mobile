@@ -300,7 +300,7 @@ class EditProfileScreen extends StatelessWidget with AutoRouteWrapper {
                         ),
                       ),
                     );
-                  }),
+                  },),
             ]),
           ),
         ),

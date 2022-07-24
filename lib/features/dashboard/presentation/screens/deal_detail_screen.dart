@@ -582,7 +582,7 @@ class _DealDetailScreenState extends State<DealDetailScreen> {
                     // VendorReviewsExpandable(widget.product),
                   ]),
                 ),
-              ),
+              ).sliverSafeBottom,
               //
               // SliverPadding(
               //   padding: EdgeInsets.symmetric(horizontal: App.sidePadding, vertical: 0.025.h),

@@ -40,14 +40,13 @@ class LoginLayout extends StatelessWidget with AutoRouteWrapper {
         child: AdaptiveScaffold(
           backgroundColor: Palette.accentColor,
           overlayStyle: App.customSystemOverlay(ctx: context, ios: Brightness.dark, android: Brightness.light),
-          adaptiveToolbar: !context.watchRouter.canPopSelfOrChildren
-              ? null
-              : AdaptiveToolbar(
-                  leadingIconColor: Colors.white,
-                  cupertinoImplyLeading: true,
-                  showCupertinoCustomLeading: false,
-                  overlayStyle: App.customSystemOverlay(ctx: context, ios: Brightness.dark, android: Brightness.light),
-                ),
+          adaptiveToolbar: AdaptiveToolbar(
+            leadingIconColor: Colors.white,
+            cupertinoImplyLeading: true,
+            showCupertinoCustomLeading: false,
+            backgroundColor: Colors.transparent,
+            overlayStyle: App.customSystemOverlay(ctx: context, ios: Brightness.dark, android: Brightness.light),
+          ),
           builder: (c) => WidgetFocus(
             child: SingleChildScrollView(
               physics: Utils.physics,
@@ -62,13 +61,13 @@ class LoginLayout extends StatelessWidget with AutoRouteWrapper {
                     fit: StackFit.expand,
                     children: [
                       Positioned(
-                        top: 0.14.h,
+                        top: 0.08.h,
                         right: 0,
                         child: AppAssets.hammerBig,
                       ),
                       //
                       Positioned(
-                        top: 0.22.h,
+                        top: 0.15.h,
                         left: 0,
                         right: 0.2.w,
                         child: Padding(
@@ -118,7 +117,7 @@ class LoginLayout extends StatelessWidget with AutoRouteWrapper {
                       ),
                       //
                       Positioned(
-                        top: 0.38.h,
+                        top: 0.31.h,
                         left: 0,
                         right: 0,
                         bottom: 0,
